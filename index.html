@@ -87,7 +87,8 @@ img, iframe { max-width: 100%; }
 
 /* ===== HERO ===== */
 .hero { padding: 76px 0 40px; }
-.hero-grid { display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 50px; align-items:center; }
+.hero-grid { display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 50px 50px; align-items:start; }
+.hero-grid > div:first-child { padding-top: 6px; }
 .kicker { display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); background:var(--accent-bg); border:1px solid var(--accent-dim); padding:6px 14px; border-radius:999px; margin-bottom:22px; }
 h1 { font-size:46px; line-height:1.12; font-weight:800; letter-spacing:-0.02em; margin-bottom:20px; }
 h1 .grad { background:linear-gradient(90deg,var(--accent),var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent; }
@@ -108,8 +109,11 @@ h1 .grad { background:linear-gradient(90deg,var(--accent),var(--violet)); -webki
 .dot.r{background:#fb7185}.dot.y{background:#fbbf24}.dot.g{background:#34d399}
 .browser-url { flex:1; margin-left:10px; background:var(--inset); border:1px solid var(--line); border-radius:6px; padding:4px 12px; font-size:11.5px; color:var(--faint); text-align:center; }
 .browser-mock iframe { width:100%; height:480px; border:none; display:block; background:#0a0d12; }
-.pc-requirement-note { margin-top:16px; display:flex; align-items:flex-start; gap:10px; background:rgba(251,191,36,.10); border:1px solid rgba(251,191,36,.4); border-radius:10px; padding:13px 16px; font-size:13.5px; color:var(--text); line-height:1.55; }
+.pc-requirement-note { grid-column: 1 / -1; margin-top:28px; display:flex; align-items:flex-start; gap:12px; background:rgba(251,191,36,.10); border:1px solid rgba(251,191,36,.4); border-radius:10px; padding:16px 20px; font-size:13.5px; color:var(--text); line-height:1.6; }
+.pc-requirement-note .prn-icon { flex-shrink:0; font-size:16px; line-height:1.6; }
+.pc-requirement-note .prn-text { flex:1; }
 .pc-requirement-note strong { color:var(--warn); }
+.pc-requirement-note a { color:var(--accent); font-weight:700; white-space:nowrap; }
 
 /* ===== STATS ===== */
 .stats-section { padding: 40px 0 20px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
@@ -180,6 +184,10 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
   h1 { font-size:34px; }
   .guide-cta { grid-template-columns: 1fr; text-align:center; }
   .shadow-banner { grid-template-columns: 1fr; text-align:center; }
+  .hero-grid > div:first-child { padding-top:0; }
+}
+@media (max-width: 760px) {
+  .nav-links { display:none; }
 }
 
 /* ===== GOLD INTRO SEQUENCE ===== */
@@ -275,16 +283,16 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
 <body>
 
 <nav class="nav"><div class="nav-inner">
-  <div class="brand"><span class="brand-mark"></span>JaviD Future Bot <em>V18.0</em></div>
+  <a href="index.html" class="brand"><span class="brand-mark"></span>JaviD Future Bot <em>V18.0</em></a>
   <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#how-it-works">How It Works</a>
-    <a href="#shadow-mode">Shadow Mode</a>
+    <a href="index.html#features">Features</a>
+    <a href="index.html#how-it-works">How It Works</a>
+    <a href="index.html#shadow-mode">Shadow Mode</a>
     <a href="results.html">Real Results</a>
     <a href="manual.html">User Manual</a>
     <a href="binance-signup-api-guide.html">New to Binance?</a>
   </div>
-  <a href="#download" class="nav-cta">Download Now</a>
+  <a href="index.html#download" class="nav-cta">Download Now</a>
 </div></nav>
 
 <!-- ================= HEADLINE BANNER ================= -->
@@ -320,7 +328,10 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
     </div>
     <iframe src="dashboard-preview.html" title="JaviD Future Bot live dashboard preview" loading="lazy"></iframe>
   </div>
-  <div class="pc-requirement-note">🖥️ <strong>Requires a PC that stays on 24/7.</strong> Trading runs entirely on your own machine — no cloud server, no custody — so it only executes while your computer is powered on and connected to the internet. Don't want to leave your main PC running? A low-cost cloud VM (AWS, etc.) or a small always-on mini PC works just as well — <a href="binance-signup-api-guide.html#part7">see recommended setups →</a></div>
+  <div class="pc-requirement-note">
+    <span class="prn-icon">🖥️</span>
+    <span class="prn-text"><strong>Requires a PC that stays on 24/7.</strong> Trading runs entirely on your own machine — no cloud server, no custody — so it only executes while your computer is powered on and connected to the internet. Don't want to leave your main PC running? A low-cost cloud VM (AWS, etc.) or a small always-on mini PC works just as well — <a href="binance-signup-api-guide.html#part7">see recommended setups →</a></span>
+  </div>
 </div></header>
 
 <!-- ================= BINANCE REFERRAL BANNER ================= -->

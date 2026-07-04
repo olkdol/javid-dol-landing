@@ -184,8 +184,8 @@ canvas { width: 100%; height: 200px; display: block; }
    uniformly-scaled unit (like a screenshot), so nothing ever reflows,
    overlaps, or gets cut off — it just gets smaller. */
 html, body { overflow: hidden; }
-body { display: flex; align-items: center; justify-content: center; }
-#stage { width: 1120px; height: 640px; flex-shrink: 0; transform-origin: center center; }
+body { display: flex; align-items: flex-start; justify-content: center; }
+#stage { width: 1120px; height: 640px; flex-shrink: 0; transform-origin: top center; }
 #stage #app { width: 100%; height: 100%; }
 </style>
 </head>
@@ -386,7 +386,11 @@ body { display: flex; align-items: center; justify-content: center; }
   var stage = document.getElementById('stage');
   var W = 1120, H = 640;
   function fit() {
-    var scale = Math.min(window.innerWidth / W, window.innerHeight / H, 1);
+    // Scale to fill the available width completely (no letterboxing).
+    // Any extra height beyond the iframe's viewport is simply clipped by
+    // the top-anchored, overflow-hidden body, so there is never dead
+    // empty space below the dashboard content.
+    var scale = window.innerWidth / W;
     stage.style.transform = 'scale(' + scale + ')';
   }
   window.addEventListener('resize', fit);
