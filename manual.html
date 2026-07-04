@@ -38,6 +38,8 @@ h1 { font-size:36px; font-weight:800; letter-spacing:-0.02em; margin-bottom:16px
 .toc-grid a { display:flex; gap:8px; color:var(--text); font-size:13.5px; padding:4px 0; }
 .toc-grid a:hover { color:var(--accent); }
 .toc-grid a b { color:var(--accent); min-width:16px; }
+.warning-note { display:flex; align-items:flex-start; gap:10px; background:rgba(251,191,36,.10); border:1px solid rgba(251,191,36,.4); border-radius:12px; padding:16px 20px; margin:-16px 0 40px; font-size:14px; color:var(--text); line-height:1.6; }
+.warning-note strong { color:var(--warn); }
 
 .step { padding:44px 0; border-top:1px solid var(--line); }
 .step-num { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:9px; background:var(--accent-bg); color:var(--accent); font-weight:800; font-size:15px; margin-bottom:16px; }
@@ -112,6 +114,7 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
       <a href="#s9"><b>9.</b> Positions — Zero Risk</a>
     </div>
   </div>
+  <div class="warning-note">⚠️ <strong>If the program stops or your PC shuts down while a position is open</strong>, close that position manually in the Binance app under Futures, then restart the program before resuming. <strong>Caution:</strong> closing a position may result in a loss, depending on its price relative to your entry at that moment.</div>
 </div>
 
 <section class="step" id="s1"><div class="wrap">
