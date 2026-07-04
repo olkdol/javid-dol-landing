@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://javid-dol.uk/sitemap.xml

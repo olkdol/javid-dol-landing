@@ -3,9 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Create a Binance Account &amp; Futures API Key (2026 Guide) — JaviD Future Bot</title>
-<meta name="description" content="A plain-English, up-to-date walkthrough for signing up on Binance, completing identity verification, enabling a Futures account, and creating a correctly-permissioned API key.">
+<title>코인 자동매매 시작 전 필수 세팅 | Binance API Key Guide — JaviD Future Bot</title>
+<meta name="description" content="코인 자동매매 프로그램을 시작하기 전 알아야 할 바이낸스 계정·API 키 설정법. Account signup, identity verification, enabling Futures, correctly-permissioned API key, and running the bot 24/7.">
+<meta name="keywords" content="코인 자동매매, 바이낸스 API 키, 바이낸스 회원가입, binance futures api setup">
 <link rel="canonical" href="https://javid-dol.uk/binance-signup-api-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="코인 자동매매 시작 전 필수 세팅 — Binance API Key Guide">
+<meta property="og:description" content="바이낸스 계정 생성부터 API 키 권한 설정, 24시간 운영 환경 구성까지 코인 자동매매 프로그램 실행에 필요한 모든 단계.">
+<meta property="og:url" content="https://javid-dol.uk/binance-signup-api-guide.html">
 <style>
 :root {
   --bg: #0a0d12; --surface:#0f131a; --panel:#111823; --panel-2:#131b27; --inset:#0d1420;
@@ -123,6 +128,7 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
       <li><a href="#part4">Create your API key</a></li>
       <li><a href="#part5">Set the correct permissions (the step people miss)</a></li>
       <li><a href="#part6">Connect it to JaviD Future Bot</a></li>
+      <li><a href="#part7">Keep it running 24/7 (cloud VM or mini PC)</a></li>
       <li><a href="#faq">Troubleshooting &amp; FAQ</a></li>
     </ol>
   </div>
@@ -190,10 +196,21 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
 <section class="part" id="part5"><div class="wrap">
   <div class="part-num">5</div>
   <h2>Set the Correct Permissions</h2>
-  <p>A freshly created key defaults to <b>Enable Reading</b> only. To let JaviD Future Bot place orders, you need to edit the key:</p>
+  <p>A freshly created key defaults to <b>Enable Reading</b> only. To let JaviD Future Bot place orders — and nothing more than that — you need to edit the key and check exactly three boxes.</p>
+  <div class="callout tip">
+    <b>✅ Check exactly these three, nothing else:</b>
+    <ul style="margin:10px 0 0; padding-left:22px; line-height:1.9;">
+      <li>Enable Reading <small style="color:var(--faint);">(already on by default)</small></li>
+      <li>Enable Spot &amp; Margin &amp; Stock Trading</li>
+      <li>Enable Futures</li>
+    </ul>
+  </div>
+  <div class="callout danger">
+    <b>❌ Leave every other box unchecked:</b> Enable Margin Loan, Repay &amp; Transfer · Permits Universal Transfer · Enable Withdrawals · Enable Prediction Trading · Enable Symbol Whitelist.
+    <p style="margin-top:8px; color:inherit;">None of these are needed for JaviD Future Bot to trade. Leaving them off means that even in a worst-case scenario where your API key was ever exposed, no one could move funds off the exchange, transfer between wallets, or touch anything beyond placing and managing futures trades — your assets stay yours.</p>
+  </div>
   <ul class="steplist">
-    <li><b>Check "Enable Futures."</b></li>
-    <li><b>Add an IP restriction — this is mandatory, not optional.</b><small>Since a January 2023 policy change, Binance will not grant any permission beyond read-only unless the key is restricted to specific IPs. Choose "Restrict access to trusted IPs only" and enter the public IPv4 address of the PC that will run the bot (search "what is my ip", or use JaviD's built-in "Run Connection Diagnostics" button, which detects and reports it for you).</small></li>
+    <li><b>Add an IP restriction — this is mandatory, not optional.</b><small>Since a January 2023 policy change, Binance will not grant any permission beyond read-only unless the key is restricted to specific IPs. Choose "Restrict access to trusted IPs only" and enter the public IPv4 address of the machine that will run the bot (search "what is my ip", or use JaviD's built-in "Run Connection Diagnostics" button, which detects and reports it for you).</small></li>
     <li><b>Leave "Enable Withdrawals" OFF.</b><small>A trading bot never needs withdrawal permission. If anything you're configuring asks you to turn this on, stop and reconsider.</small></li>
     <li><b>Save, then wait 5–10 minutes</b> for the IP whitelist change to fully propagate before testing the connection.</li>
   </ul>
@@ -210,6 +227,19 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
     <li><b>Click Save, then Test Connection.</b> A green checkmark means you're ready to go.</li>
     <li><b>Turn on Shadow Mode</b> and verify the bot's behavior for a few days before ever switching to live trading.</li>
   </ul>
+</div></section>
+
+<!-- PART 7 -->
+<section class="part" id="part7"><div class="wrap">
+  <div class="part-num">7</div>
+  <h2>Keep It Running 24/7</h2>
+  <p>JaviD Future Bot only trades while it's actually running — Binance's futures market never closes, so the machine running the bot needs to stay powered on and connected 24 hours a day, 365 days a year. Your everyday laptop works for a first test, but most users move to one of these two setups once they go live:</p>
+  <ul class="steplist">
+    <li><b>A cloud virtual machine</b> (Amazon AWS EC2, or any comparable VPS provider).<small>Rented by the month, always on, remotely accessible from anywhere, and no need to leave your personal laptop running or worry about it sleeping, updating, or losing power. A small/low-tier instance is enough — the bot itself is lightweight.</small></li>
+    <li><b>A dedicated mini PC or spare desktop, left on at home.</b><small>An Intel NUC-class mini PC (or any always-on machine you don't otherwise need) draws very little power, stays quiet, and can be plugged into a UPS to survive short outages. Just make sure Windows sleep/hibernate is disabled and the internet connection is stable.</small></li>
+  </ul>
+  <div class="callout tip"><b>Either option works equally well.</b> The only requirements are: the machine stays powered on, stays connected to the internet, and (per Part 5) has its IP address whitelisted on your Binance API key. If you move the bot to a new machine or your IP changes, just update the IP restriction on the key.</div>
+  <div class="callout warn"><b>Reminder:</b> if the machine restarts or loses power while a position is open, close that position manually from the Binance app under Futures before restarting the bot — see the <a href="manual.html">User Manual</a> for details.</div>
 </div></section>
 
 <!-- FAQ -->
