@@ -231,6 +231,20 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
 }
 @media (max-width:640px) { .intro-sequence { height: 130px; } }
 
+/* ===== AI STRATEGY VISUAL ===== */
+.ai-strategy-row { display:grid; grid-template-columns: 0.95fr 1.05fr; gap:44px; align-items:center; margin-bottom:48px; }
+.ai-strategy-img { width:100%; display:block; border-radius:14px; border:1px solid var(--line-2); box-shadow:0 30px 70px -30px rgba(0,0,0,.65); }
+.ai-strategy-copy h3 { font-size:24px; line-height:1.35; margin-bottom:14px; }
+.ai-strategy-copy p { color:var(--muted); font-size:15px; line-height:1.75; }
+@media (max-width:920px) { .ai-strategy-row { grid-template-columns:1fr; } }
+
+/* ===== FEATURE CARD THUMBNAILS ===== */
+.feature-thumb { width:100%; height:104px; object-fit:cover; object-position:center; border-radius:10px; border:1px solid var(--line-2); margin-bottom:16px; display:block; }
+
+/* ===== HOW IT WORKS VISUAL ===== */
+.hiw-visual { text-align:center; margin-bottom:40px; }
+.hiw-visual img { max-width:640px; width:100%; border-radius:14px; border:1px solid var(--line-2); box-shadow:0 30px 70px -30px rgba(0,0,0,.6); }
+
 /* ===== PRECISION VS IMPULSE ===== */
 .edge-grid { display:grid; grid-template-columns: 1fr 1fr; gap:24px; margin-bottom:36px; }
 .edge-card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:30px 28px; }
@@ -352,6 +366,13 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
     <div class="section-kicker">Why Automation Wins</div>
     <div class="section-title">The Edge Isn't the Strategy. It's Sticking to It.</div>
   </div>
+  <div class="ai-strategy-row">
+    <img src="images/ai-strategy.webp" alt="AI-designed trading strategy — a digital AI figure analyzing a rising price chart" class="ai-strategy-img">
+    <div class="ai-strategy-copy">
+      <h3>Every Trade Starts With a Strategy AI Already Tested.</h3>
+      <p>JaviD Future Bot doesn't guess, and it doesn't trade on a hunch. Each of its three strategies was built and refined through AI-driven quantitative analysis — reading years of price action, volatility regimes, and order-flow data before a single rule was ever locked in. The bot's only job afterward is to execute that AI-designed strategy exactly, every 10 seconds, without hesitation, fatigue, or a change of heart.</p>
+    </div>
+  </div>
   <div class="edge-grid">
     <div class="edge-card">
       <div class="edge-icon">🔬</div>
@@ -389,6 +410,7 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
     <div class="section-kicker">How It Works</div>
     <div class="section-title">From Download to Live Trading in Under Ten Minutes</div>
   </div>
+  <div class="hiw-visual"><img src="images/auto-trade.webp" alt="Automated buy and sell execution on a rising candlestick chart"></div>
   <div class="steps">
     <div class="step-card">
       <div class="step-num">1</div>
@@ -416,32 +438,32 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
   </div>
   <div class="features-grid">
     <div class="feature-card">
-      <div class="feature-icon teal">🔒</div>
+      <img class="feature-thumb" src="images/secure-trading.webp" alt="Secure, non-custodial trading illustration">
       <h3>100% Local &amp; Non-Custodial</h3>
       <p>Your API keys never leave your PC. Encrypted locally, executed locally — there is no server in the middle that can be hacked or go down.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon violet">🧠</div>
+      <img class="feature-thumb" src="images/predictive-ai.webp" alt="Predictive AI signal illustration for buy and sell decisions">
       <h3>Three Independent Strategies</h3>
       <p>Strategy-A (JaviD AGRT), Strategy-B (Mean Reversion) and Strategy-C (Breakout) scan your selected coins every 10 seconds. Run one at a time, or let all three rotate.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon teal">📡</div>
+      <img class="feature-thumb" src="images/smart-order-execution.webp" alt="Smart order execution illustration">
       <h3>Exits Built for Volatility</h3>
       <p>ATR trailing stops, VWAP reversion, CVD divergence, liquidation-avoidance and volume-spike detection — five signal layers guarding every open position, not just a stop-loss line.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon violet">⚙️</div>
+      <img class="feature-thumb" src="images/data-analysis.webp" alt="Automated data analysis illustration across multiple charts">
       <h3>Watches Every Pair at Once</h3>
       <p>Pick your own coins, or use the one-click "Top 20 by Turnover" shortcut. The dashboard tracks every position across dozens of pairs at the same time, without slowing down.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon teal">🎚️</div>
+      <img class="feature-thumb" src="images/optimized-path.webp" alt="Optimized risk-adjusted growth path illustration">
       <h3>Sized to Your Risk Tolerance</h3>
       <p>Aggressive, Normal, or Stable investment modes automatically size every entry as a fraction of your balance — the bot adapts to you, not the other way around.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon violet">📨</div>
+      <img class="feature-thumb" src="images/monitoring-247.webp" alt="24/7 automated monitoring illustration">
       <h3>Reports, Sent to Telegram</h3>
       <p>Balance, equity, cumulative P&amp;L, ROI, win rate and open positions — sent straight to your phone, whenever you ask or on whatever schedule you set.</p>
     </div>
