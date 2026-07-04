@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JaviD Future Bot V18.0 — Automated Binance Futures Trading, 24/7</title>
+<meta name="description" content="The Binance USDⓈ-M futures bot built for traders who don't stop watching the market — because it never does. Three quant-built strategies, tick-level exits, 100% local execution. Windows &amp; macOS.">
+<link rel="canonical" href="https://javid-dol.uk/">
+<style>
+:root {
+  --bg: #0a0d12;
+  --surface: #0f131a;
+  --panel: #111823;
+  --panel-2: #131b27;
+  --inset: #0d1420;
+  --line: #1c2530;
+  --line-2: #27303f;
+  --text: #dbe4f0;
+  --muted: #7d8aa0;
+  --faint: #5f6b7d;
+  --accent: #2dd4bf;
+  --accent-dim: #14655c;
+  --accent-bg: #0e3b34;
+  --violet: #8b5cf6;
+  --up: #34d399;
+  --down: #fb7185;
+  --warn: #fbbf24;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(139,92,246,0.10), transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(45,212,191,0.06), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+}
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+img, iframe { max-width: 100%; }
+
+/* ===== NAV ===== */
+.nav {
+  position: sticky; top:0; z-index: 50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 16px 24px; background: rgba(10,13,18,0.85); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner { max-width: 1180px; margin:0 auto; width:100%; display:flex; align-items:center; justify-content:space-between; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:16px; letter-spacing:0.01em; }
+.brand-mark { width:22px; height:22px; background: conic-gradient(from 210deg, var(--accent), var(--violet), var(--accent)); clip-path: polygon(50% 0, 100% 28%, 100% 72%, 50% 100%, 0 72%, 0 28%); }
+.brand em { font-style:normal; color:var(--accent); font-size:12px; font-weight:700; margin-left:2px; }
+.nav-links { display:flex; align-items:center; gap:28px; font-size:13.5px; color:var(--muted); font-weight:600; }
+.nav-links a:hover { color:var(--text); }
+.nav-cta { background: linear-gradient(135deg,#14b8a6,#0d9488); color:#04211d; padding:9px 18px; border-radius:999px; font-weight:800; font-size:13px; }
+
+/* ===== HERO ===== */
+.hero { padding: 76px 0 40px; }
+.hero-grid { display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 50px; align-items:center; }
+.kicker { display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); background:var(--accent-bg); border:1px solid var(--accent-dim); padding:6px 14px; border-radius:999px; margin-bottom:22px; }
+h1 { font-size:46px; line-height:1.12; font-weight:800; letter-spacing:-0.02em; margin-bottom:20px; }
+h1 .grad { background:linear-gradient(90deg,var(--accent),var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.sub { font-size:17px; color:var(--muted); max-width:520px; margin-bottom:30px; }
+.cta-row { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:16px; }
+.btn { display:inline-flex; align-items:center; gap:9px; padding:14px 26px; border-radius:10px; font-weight:800; font-size:14.5px; cursor:pointer; border:1px solid transparent; }
+.btn-primary { background:linear-gradient(135deg,#14b8a6,#0d9488); color:#04211d; box-shadow:0 12px 30px -10px rgba(20,184,166,.55); }
+.btn-primary:hover { filter:brightness(1.08); }
+.btn-ghost { border-color:var(--line-2); color:var(--text); background:transparent; }
+.btn-ghost:hover { border-color:var(--accent-dim); color:var(--accent); }
+.hero-note { font-size:12.5px; color:var(--faint); }
+.hero-note a { color:var(--accent); font-weight:700; }
+
+/* Browser mockup for dashboard preview */
+.browser-mock { border-radius:14px; overflow:hidden; border:1px solid var(--line-2); box-shadow:0 40px 90px -30px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.02); background:var(--surface); }
+.browser-bar { display:flex; align-items:center; gap:8px; padding:10px 14px; background:#0e1420; border-bottom:1px solid var(--line-2); }
+.dot { width:10px; height:10px; border-radius:50%; }
+.dot.r{background:#fb7185}.dot.y{background:#fbbf24}.dot.g{background:#34d399}
+.browser-url { flex:1; margin-left:10px; background:var(--inset); border:1px solid var(--line); border-radius:6px; padding:4px 12px; font-size:11.5px; color:var(--faint); text-align:center; }
+.browser-mock iframe { width:100%; height:480px; border:none; display:block; background:#0a0d12; }
+
+/* ===== STATS ===== */
+.stats-section { padding: 40px 0 20px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.stats-kicker { text-align:center; font-size:13px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--violet); margin-bottom:8px; }
+.stats-title { text-align:center; font-size:26px; font-weight:800; margin-bottom:36px; }
+.stats-grid { display:grid; grid-template-columns: repeat(4,1fr); gap:18px; }
+.stat-card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:26px 20px; text-align:center; }
+.stat-num { font-size:30px; font-weight:800; background:linear-gradient(135deg,var(--accent),var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:8px; }
+.stat-label { font-size:13px; color:var(--muted); line-height:1.5; }
+
+/* ===== HOW IT WORKS ===== */
+.section { padding: 80px 0; }
+.section-head { text-align:center; max-width:640px; margin:0 auto 50px; }
+.section-kicker { font-size:13px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+.section-title { font-size:32px; font-weight:800; letter-spacing:-0.01em; }
+.steps { display:grid; grid-template-columns: repeat(3,1fr); gap:24px; }
+.step-card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:30px 26px; position:relative; }
+.step-num { width:38px; height:38px; border-radius:10px; background:var(--accent-bg); color:var(--accent); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:16px; margin-bottom:18px; }
+.step-card h3 { font-size:17px; margin-bottom:10px; }
+.step-card p { color:var(--muted); font-size:14px; line-height:1.6; }
+.step-arrow { display:none; }
+
+/* ===== FEATURES ===== */
+.features-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:20px; }
+.feature-card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:26px; transition:border-color .15s; }
+.feature-card:hover { border-color: var(--accent-dim); }
+.feature-icon { width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:16px; }
+.feature-icon.teal { background:var(--accent-bg); }
+.feature-icon.violet { background:rgba(139,92,246,.14); }
+.feature-card h3 { font-size:16px; margin-bottom:8px; }
+.feature-card p { color:var(--muted); font-size:13.5px; line-height:1.6; }
+.feature-tag { display:inline-block; margin-top:12px; font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:3px 9px; border-radius:6px; }
+.feature-tag.new { background:rgba(251,191,36,.14); color:var(--warn); }
+
+/* ===== SHADOW MODE BANNER ===== */
+.shadow-banner-section { padding: 10px 0 80px; }
+.shadow-banner { display:grid; grid-template-columns: 1fr auto; align-items:center; gap:30px; background:linear-gradient(135deg, rgba(45,212,191,.08), rgba(139,92,246,.08)); border:1px solid var(--accent-dim); border-radius:16px; padding:34px 38px; }
+.shadow-banner h3 { font-size:22px; margin-bottom:10px; }
+.shadow-banner p { color:var(--muted); font-size:14.5px; max-width:520px; }
+
+/* ===== BINANCE GUIDE CTA ===== */
+.guide-cta { background:var(--panel-2); border:1px solid var(--line); border-radius:16px; padding:36px 40px; display:grid; grid-template-columns: auto 1fr auto; align-items:center; gap:24px; }
+.guide-cta .emoji { font-size:40px; }
+.guide-cta h3 { font-size:19px; margin-bottom:6px; }
+.guide-cta p { color:var(--muted); font-size:13.5px; }
+
+/* ===== DISCLAIMER / FINAL CTA ===== */
+.final-cta { text-align:center; padding: 30px 0 20px; }
+.final-cta h2 { font-size:34px; font-weight:800; margin-bottom:16px; }
+.final-cta p { color:var(--muted); margin-bottom:30px; }
+.dl-row { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.dl-row .btn { flex-direction:column; gap:2px; line-height:1.3; }
+.dl-row .btn .os-sub { font-size:11px; font-weight:600; opacity:.75; }
+.dl-row .btn-disabled { background:var(--panel); color:var(--faint); border:1px solid var(--line-2); box-shadow:none; cursor:not-allowed; position:relative; pointer-events:none; }
+.dl-row .btn-disabled .os-sub { opacity:.6; }
+.coming-soon-badge { position:absolute; top:-10px; right:-10px; background:var(--warn); color:#241a02; font-size:10px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; padding:3px 9px; border-radius:999px; box-shadow:0 6px 16px -6px rgba(251,191,36,.6); }
+.dl-note { margin-top:16px; font-size:12.5px; color:var(--faint); }
+.disclaimer { max-width:760px; margin:50px auto 0; text-align:center; font-size:11.5px; color:var(--faint); line-height:1.7; border-top:1px solid var(--line); padding-top:24px; }
+
+/* ===== FOOTER ===== */
+footer { border-top:1px solid var(--line); padding: 34px 0; }
+.footer-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:12.5px; color:var(--faint); }
+.footer-links { display:flex; gap:20px; }
+.footer-links a:hover { color:var(--accent); }
+
+@media (max-width: 920px) {
+  .hero-grid, .steps, .features-grid, .stats-grid { grid-template-columns: 1fr; }
+  h1 { font-size:34px; }
+  .guide-cta { grid-template-columns: 1fr; text-align:center; }
+  .shadow-banner { grid-template-columns: 1fr; text-align:center; }
+}
+
+/* ===== GOLD INTRO SEQUENCE ===== */
+.intro-sequence {
+  position: relative;
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  padding: 0 20px;
+  background: radial-gradient(600px 220px at 50% 45%, rgba(255,215,0,0.07), transparent 70%);
+  border-bottom: 1px solid var(--line);
+}
+.intro-phrase {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  white-space: nowrap;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #fff3c4, #ffd54a, #d4a017, #ffd54a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(255,215,0,.28));
+  opacity: 0;
+  animation: goldCycle 12s ease-in-out infinite;
+}
+.intro-phrase.p1 { font-size: clamp(24px, 4vw, 48px); animation-delay: 0s; }
+.intro-phrase.p2 { font-size: clamp(18px, 2.6vw, 30px); animation-delay: 3s; }
+.intro-phrase.p3 { font-size: clamp(24px, 4vw, 48px); animation-delay: 6s; }
+.intro-phrase.p4 { font-size: clamp(26px, 4.4vw, 52px); animation-delay: 9s; }
+@keyframes goldCycle {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(.7); }
+  6%   { opacity: 1; transform: translate(-50%, -50%) scale(1.06); }
+  18%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  25%  { opacity: 0; transform: translate(-50%, -50%) scale(1.25); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.25); }
+}
+@media (max-width:640px) { .intro-sequence { height: 130px; } }
+
+/* ===== PRECISION VS IMPULSE ===== */
+.edge-grid { display:grid; grid-template-columns: 1fr 1fr; gap:24px; margin-bottom:36px; }
+.edge-card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:30px 28px; }
+.edge-card .edge-icon { font-size:26px; margin-bottom:14px; }
+.edge-card h3 { font-size:19px; margin-bottom:10px; }
+.edge-card p { color:var(--muted); font-size:14.5px; line-height:1.7; }
+.edge-quote { text-align:center; font-size:18px; font-style:italic; color:var(--text); opacity:.9; }
+@media (max-width:920px) { .edge-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <div class="brand"><span class="brand-mark"></span>JaviD Future Bot <em>V18.0</em></div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#shadow-mode">Shadow Mode</a>
+    <a href="results.html">Live Results</a>
+    <a href="manual.html">User Manual</a>
+    <a href="binance-signup-api-guide.html">New to Binance?</a>
+  </div>
+  <a href="#download" class="nav-cta">Download Now</a>
+</div></nav>
+
+<!-- ================= GOLD INTRO SEQUENCE ================= -->
+<div class="intro-sequence">
+  <span class="intro-phrase p1">A Precision Strategy, Engineered by AI</span>
+  <span class="intro-phrase p2">And</span>
+  <span class="intro-phrase p3">Trust the Power of Time</span>
+  <span class="intro-phrase p4">JaviD Future Bot</span>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero"><div class="wrap hero-grid">
+  <div>
+    <span class="kicker">⚡ Binance USDⓈ-M Futures · Automated Execution Engine</span>
+    <h1>The Market Never Closes.<br><span class="grad">Neither Should Your Strategy.</span></h1>
+    <p class="sub">JaviD Future Bot scans Binance USDⓈ-M futures every 10 seconds and executes with tick-level precision, long after you've closed the laptop for the night. Three strategies built on quant logic, running from a dashboard you can actually watch.</p>
+    <div class="cta-row">
+      <a href="#download" class="btn btn-primary">⬇ Download &amp; Deploy</a>
+      <a href="#shadow-mode" class="btn btn-ghost">🪞 Try Shadow Mode First</a>
+    </div>
+    <p class="hero-note">Available for <strong style="color:var(--text);">Windows &amp; macOS</strong>. New to Binance? <a href="binance-signup-api-guide.html">Get your account + API key set up in 5 minutes →</a></p>
+  </div>
+  <div class="browser-mock">
+    <div class="browser-bar">
+      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span class="browser-url">🔒 localhost:8002 — runs 100% on your PC</span>
+    </div>
+    <iframe src="dashboard-preview.html" title="JaviD Future Bot live dashboard preview" loading="lazy"></iframe>
+  </div>
+</div></header>
+
+<!-- ================= PRECISION VS IMPULSE ================= -->
+<section class="section" style="padding-top:20px;"><div class="wrap">
+  <div class="section-head">
+    <div class="section-kicker">Why Automation Wins</div>
+    <div class="section-title">The Edge Isn't the Strategy. It's Sticking to It.</div>
+  </div>
+  <div class="edge-grid">
+    <div class="edge-card">
+      <div class="edge-icon">🔬</div>
+      <h3>Precision</h3>
+      <p>Every entry JaviD takes comes from the same handful of indicators, checked again every single cycle — ATR bands, VWAP deviation, CVD flow, volume-spike thresholds. No memory of the last trade, no gut feeling talking it into or out of a setup.</p>
+    </div>
+    <div class="edge-card">
+      <div class="edge-icon">⏳</div>
+      <h3>Time</h3>
+      <p>Most manual traders don't lose to the market — they lose to a moment: the revenge trade after a loss, the FOMO entry, the exit made out of fear. A bot that runs 24 hours a day never has that moment. It just keeps doing what it did yesterday, which is usually the whole point.</p>
+    </div>
+  </div>
+  <p class="edge-quote">"A precision strategy, engineered by AI. And — trust the power of time."</p>
+</div></section>
+
+<!-- ================= STATS / SOCIAL PROOF ================= -->
+<section class="stats-section"><div class="wrap">
+  <div class="stats-kicker">Built On Logic, Not Luck</div>
+  <div class="stats-title">This isn't a signal group selling calls. It's software you can open up and check yourself.</div>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num">99.9%</div><div class="stat-label">Uptime — local execution means zero server crashes</div></div>
+    <div class="stat-card"><div class="stat-num">0.1s</div><div class="stat-label">Latency — direct WebSocket connection to Binance</div></div>
+    <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Quant-built strategies, scanning in parallel — 24/7</div></div>
+    <div class="stat-card"><div class="stat-num">500+</div><div class="stat-label">Symbols available for continuous, simultaneous monitoring</div></div>
+  </div>
+</div></section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="section" id="how-it-works"><div class="wrap">
+  <div class="section-head">
+    <div class="section-kicker">How It Works</div>
+    <div class="section-title">From Download to Live Trading in Under Ten Minutes</div>
+  </div>
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3>Download &amp; Launch</h3>
+      <p>Double-click <code>start.bat</code>. Dependencies install automatically on first run — then your dashboard opens, ready to configure.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3>Connect Your Binance API</h3>
+      <p>Paste your API key into the Settings tab and hit Test Connection. Keys are encrypted and stored only on your PC — we never see them, and withdrawal permission is never required.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3>Verify, Then Go Live</h3>
+      <p>Run Shadow Mode first and watch the strategies trade with zero real risk. When you trust what you see, confirm your leverage/margin summary and hit Start Trading.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ================= FEATURES ================= -->
+<section class="section" id="features"><div class="wrap">
+  <div class="section-head">
+    <div class="section-kicker">Core Features</div>
+    <div class="section-title">Built Like a Quant Desk. Runs Like an App.</div>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon teal">🔒</div>
+      <h3>100% Local &amp; Non-Custodial</h3>
+      <p>Your API keys never leave your PC. Encrypted locally, executed locally — there is no server in the middle that can be hacked or go down.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon violet">🧠</div>
+      <h3>Three Independent Strategies</h3>
+      <p>Strategy-A (JaviD AGRT), Strategy-B (Mean Reversion) and Strategy-C (Breakout) scan your selected coins every 10 seconds. Run one at a time, or let all three rotate.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon teal">📡</div>
+      <h3>Exits Built for Volatility</h3>
+      <p>ATR trailing stops, VWAP reversion, CVD divergence, liquidation-avoidance and volume-spike detection — five signal layers guarding every open position, not just a stop-loss line.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon violet">⚙️</div>
+      <h3>Watches Every Pair at Once</h3>
+      <p>Pick your own coins, or use the one-click "Top 20 by Turnover" shortcut. The dashboard tracks every position across dozens of pairs at the same time, without slowing down.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon teal">🎚️</div>
+      <h3>Sized to Your Risk Tolerance</h3>
+      <p>Aggressive, Normal, or Stable investment modes automatically size every entry as a fraction of your balance — the bot adapts to you, not the other way around.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon violet">📨</div>
+      <h3>Reports, Sent to Telegram</h3>
+      <p>Balance, equity, cumulative P&amp;L, ROI, win rate and open positions — sent straight to your phone, whenever you ask or on whatever schedule you set.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ================= SHADOW MODE ================= -->
+<section class="shadow-banner-section" id="shadow-mode"><div class="wrap">
+  <div class="shadow-banner">
+    <div>
+      <h3>🪞 Try It Before You Risk a Single Dollar</h3>
+      <p>Shadow Mode runs every strategy against live market data with a virtual balance — real signals, real timing, zero real orders. Shadow Mode also uses the real exchange's live API, and trades run on virtual USDT — so the experience is nearly identical to trading with real money. Watch it work for as long as you need before a single real dollar is on the line.</p>
+    </div>
+    <a href="#download" class="btn btn-primary">Download &amp; Try Shadow Mode</a>
+  </div>
+</div></section>
+
+<!-- ================= NEW TO BINANCE CTA ================= -->
+<section class="section" style="padding-top:0"><div class="wrap">
+  <div class="guide-cta">
+    <div class="emoji">📊</div>
+    <div>
+      <h3>Don't just take our word for it.</h3>
+      <p>Real operating history, straight from the dashboard — balance, cumulative P&amp;L, and win rate over actual runtime, screenshot by screenshot.</p>
+    </div>
+    <a href="results.html" class="btn btn-ghost">See the Live Results →</a>
+  </div>
+  <div class="guide-cta" style="margin-top:20px;">
+    <div class="emoji">🧭</div>
+    <div>
+      <h3>Never used Binance before?</h3>
+      <p>We wrote a plain-English walkthrough covering account signup, identity verification, and creating a Futures-enabled API key — the exact steps, in order.</p>
+    </div>
+    <a href="binance-signup-api-guide.html" class="btn btn-ghost">Read the Setup Guide →</a>
+  </div>
+  <div class="guide-cta" style="margin-top:20px;">
+    <div class="emoji">🖥️</div>
+    <div>
+      <h3>Want to see the app before you download it?</h3>
+      <p>A real, screen-by-screen walkthrough — onboarding, API setup, Symbol Selection, and Shadow Mode running live — nine actual screens, not mockups.</p>
+    </div>
+    <a href="manual.html" class="btn btn-ghost">View the User Manual →</a>
+  </div>
+</div></section>
+
+<!-- ================= FINAL CTA + DISCLAIMER ================= -->
+<section class="section final-cta" id="download"><div class="wrap">
+  <h2>Stop Trading Only When You're Watching.</h2>
+  <p>A real Binance USDⓈ-M futures execution engine that runs entirely on your own PC — your keys, your funds, your control, on every single trade.</p>
+  <div class="dl-row">
+    <span class="btn btn-disabled" style="font-size:16px; padding:16px 34px;" aria-disabled="true">🪟 Coming Soon<span class="os-sub">Windows · .exe</span><span class="coming-soon-badge">Soon</span></span>
+    <span class="btn btn-disabled" style="font-size:16px; padding:16px 34px;" aria-disabled="true">🍎 Coming Soon<span class="os-sub">macOS · .app</span><span class="coming-soon-badge">Soon</span></span>
+  </div>
+  <p class="dl-note">Downloads are opening soon — check back shortly. No subscription, no monthly fee, just the software, running on your own machine.</p>
+
+  <div class="disclaimer">
+    Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. JaviD Future Bot is a standalone execution tool — it does not guarantee profits, and past performance shown in this preview is illustrative demo data, not a live trading record. All trading decisions and their outcomes are the sole responsibility of the user; JaviD Future Bot does not provide investment advice and does not custody funds or execute trades on any server — every order is placed directly from your own device using your own Binance API credentials.
+  </div>
+</div></section>
+
+<footer><div class="wrap footer-row">
+  <span>© 2026 JaviD Future Bot · javid-dol.uk</span>
+  <div class="footer-links">
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="results.html">Live Results</a>
+    <a href="manual.html">User Manual</a>
+    <a href="binance-signup-api-guide.html">Binance Setup Guide</a>
+  </div>
+</div></footer>
+
+</body>
+</html>

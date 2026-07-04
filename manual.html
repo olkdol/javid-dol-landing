@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JaviD Future Bot V18.0 — User Manual Walkthrough</title>
+<meta name="description" content="A real, screen-by-screen walkthrough of JaviD Future Bot V18.0 — from first launch and API setup to Shadow Mode and live positions.">
+<link rel="canonical" href="https://javid-dol.uk/manual.html">
+<style>
+:root {
+  --bg: #0a0d12; --surface:#0f131a; --panel:#111823; --panel-2:#131b27; --inset:#0d1420;
+  --line:#1c2530; --line-2:#27303f; --text:#dbe4f0; --muted:#7d8aa0; --faint:#5f6b7d;
+  --accent:#2dd4bf; --accent-dim:#14655c; --accent-bg:#0e3b34; --violet:#8b5cf6;
+  --up:#34d399; --down:#fb7185; --warn:#fbbf24;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'Segoe UI', system-ui, -apple-system, sans-serif; letter-spacing:-0.01em; line-height:1.6; }
+a { color:var(--accent); }
+.wrap { max-width: 980px; margin:0 auto; padding:0 24px; }
+img { max-width:100%; display:block; }
+
+.nav { position:sticky; top:0; z-index:50; display:flex; padding:16px 24px; background:rgba(10,13,18,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.nav-inner { max-width:1180px; margin:0 auto; width:100%; display:flex; align-items:center; justify-content:space-between; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:16px; }
+.brand-mark { width:22px; height:22px; background:conic-gradient(from 210deg, var(--accent), var(--violet), var(--accent)); clip-path:polygon(50% 0,100% 28%,100% 72%,50% 100%,0 72%,0 28%); }
+.brand em { font-style:normal; color:var(--accent); font-size:12px; font-weight:700; margin-left:2px; }
+.back-link { font-size:13.5px; color:var(--muted); font-weight:600; }
+.back-link:hover { color:var(--accent); }
+
+.hero { padding:64px 0 20px; text-align:center; }
+.kicker { display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); background:var(--accent-bg); border:1px solid var(--accent-dim); padding:6px 14px; border-radius:999px; margin-bottom:20px; }
+h1 { font-size:36px; font-weight:800; letter-spacing:-0.02em; margin-bottom:16px; }
+.hero p.sub { color:var(--muted); font-size:16px; max-width:620px; margin:0 auto 8px; }
+
+.toc { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px 26px; margin:40px 0; }
+.toc h4 { font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-bottom:12px; }
+.toc-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:8px 20px; }
+.toc-grid a { display:flex; gap:8px; color:var(--text); font-size:13.5px; padding:4px 0; }
+.toc-grid a:hover { color:var(--accent); }
+.toc-grid a b { color:var(--accent); min-width:16px; }
+
+.step { padding:44px 0; border-top:1px solid var(--line); }
+.step-num { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:9px; background:var(--accent-bg); color:var(--accent); font-weight:800; font-size:15px; margin-bottom:16px; }
+.step h2 { font-size:22px; margin-bottom:16px; }
+.shot-frame { border-radius:12px; overflow:hidden; border:1px solid var(--line-2); background:#05070a; box-shadow:0 30px 70px -30px rgba(0,0,0,.6); margin-bottom:18px; }
+.shot-frame img { width:100%; }
+.caption { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:18px 22px; font-size:14.5px; color:var(--muted); line-height:1.65; }
+.caption b { color:var(--text); }
+
+.cta-band { text-align:center; padding:60px 0; }
+.cta-band h3 { font-size:24px; margin-bottom:12px; }
+.cta-band p { color:var(--muted); margin-bottom:24px; }
+.btn { display:inline-flex; align-items:center; gap:9px; padding:14px 28px; border-radius:10px; font-weight:800; font-size:14.5px; background:linear-gradient(135deg,#14b8a6,#0d9488); color:#04211d; box-shadow:0 12px 30px -10px rgba(20,184,166,.55); }
+
+footer { border-top:1px solid var(--line); padding:34px 0; }
+.footer-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:12.5px; color:var(--faint); }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { color:var(--faint); }
+.footer-links a:hover { color:var(--accent); }
+
+@media (max-width:640px){ h1{font-size:28px;} .step h2{font-size:19px;} .toc-grid{grid-template-columns:1fr 1fr;} }
+
+/* ===== GOLD INTRO SEQUENCE ===== */
+.intro-sequence { position:relative; height:170px; display:flex; align-items:center; justify-content:center; overflow:hidden; text-align:center; padding:0 20px; background:radial-gradient(600px 220px at 50% 45%, rgba(255,215,0,0.07), transparent 70%); border-bottom:1px solid var(--line); }
+.intro-phrase { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(.7); white-space:nowrap; font-weight:800; letter-spacing:-0.01em; background:linear-gradient(135deg,#fff3c4,#ffd54a,#d4a017,#ffd54a); -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 0 18px rgba(255,215,0,.28)); opacity:0; animation:goldCycle 12s ease-in-out infinite; }
+.intro-phrase.p1 { font-size:clamp(24px,4vw,48px); animation-delay:0s; }
+.intro-phrase.p2 { font-size:clamp(18px,2.6vw,30px); animation-delay:3s; }
+.intro-phrase.p3 { font-size:clamp(24px,4vw,48px); animation-delay:6s; }
+.intro-phrase.p4 { font-size:clamp(26px,4.4vw,52px); animation-delay:9s; }
+@keyframes goldCycle {
+  0%   { opacity:0; transform:translate(-50%,-50%) scale(.7); }
+  6%   { opacity:1; transform:translate(-50%,-50%) scale(1.06); }
+  18%  { opacity:1; transform:translate(-50%,-50%) scale(1); }
+  25%  { opacity:0; transform:translate(-50%,-50%) scale(1.25); }
+  100% { opacity:0; transform:translate(-50%,-50%) scale(1.25); }
+}
+@media (max-width:640px) { .intro-sequence { height:130px; } }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <div class="brand"><span class="brand-mark"></span>JaviD Future Bot <em>V18.0</em></div>
+  <a href="index.html" class="back-link">← Back to Home</a>
+</div></nav>
+
+<div class="intro-sequence">
+  <span class="intro-phrase p1">A Precision Strategy, Engineered by AI</span>
+  <span class="intro-phrase p2">And</span>
+  <span class="intro-phrase p3">Trust the Power of Time</span>
+  <span class="intro-phrase p4">JaviD Future Bot</span>
+</div>
+
+<header class="hero"><div class="wrap">
+  <span class="kicker">🖥 User Manual</span>
+  <h1>A Real Walkthrough of JaviD Future Bot</h1>
+  <p class="sub">Nine actual screens from the app, in order — from first launch to live Shadow Mode positions. No mockups, this is exactly what you'll see.</p>
+</div></header>
+
+<div class="wrap">
+  <div class="toc">
+    <h4>On this page</h4>
+    <div class="toc-grid">
+      <a href="#s1"><b>1.</b> First Launch — Onboarding</a>
+      <a href="#s2"><b>2.</b> Settings — Connect API</a>
+      <a href="#s3"><b>3.</b> Dashboard — At a Glance</a>
+      <a href="#s4"><b>4.</b> Investment Mode</a>
+      <a href="#s5"><b>5.</b> Telegram Reports</a>
+      <a href="#s6"><b>6.</b> Entry Mode &amp; Leverage</a>
+      <a href="#s7"><b>7.</b> Symbol Selection</a>
+      <a href="#s8"><b>8.</b> Shadow Mode — Dashboard</a>
+      <a href="#s9"><b>9.</b> Positions — Zero Risk</a>
+    </div>
+  </div>
+</div>
+
+<section class="step" id="s1"><div class="wrap">
+  <div class="step-num">1</div>
+  <h2>First Launch — Guided Onboarding</h2>
+  <div class="shot-frame"><img src="screenshots/shot1.png" alt="JaviD Future Bot first-launch onboarding modal"></div>
+  <div class="caption">New users are walked through the 4-step setup flow the moment the app opens, plus a safety checklist (leverage, confirmation modal, one-bot-per-account) before they can ever go live.</div>
+</div></section>
+
+<section class="step" id="s2"><div class="wrap">
+  <div class="step-num">2</div>
+  <h2>Settings — Connect Your Binance API</h2>
+  <div class="shot-frame"><img src="screenshots/shot2.png" alt="JaviD Future Bot Settings tab with Binance API key fields"></div>
+  <div class="caption">Paste your Access/Secret Key, hit Save, then Test Connection. Keys are encrypted and stored only on your PC — never transmitted anywhere else. You can track your overall setup progress at any time via the <b>"Standard Trading Flow"</b> guide bar at the top of the dashboard, which highlights exactly which step you're on.</div>
+</div></section>
+
+<section class="step" id="s3"><div class="wrap">
+  <div class="step-num">3</div>
+  <h2>Dashboard — At a Glance</h2>
+  <div class="shot-frame"><img src="screenshots/shot3.png" alt="JaviD Future Bot main dashboard, idle state"></div>
+  <div class="caption">Balance, cumulative P&amp;L, ROI and open positions in one view. Shown here idle, waiting for symbol selection and candle load before trading can start.</div>
+</div></section>
+
+<section class="step" id="s4"><div class="wrap">
+  <div class="step-num">4</div>
+  <h2>Investment Mode — Risk-Tiered Position Sizing</h2>
+  <div class="shot-frame"><img src="screenshots/shot4.png" alt="JaviD Future Bot Investment Mode panel"></div>
+  <div class="caption">Aggressive (1/300), Normal (1/500) or Stable (1/700) — every entry is automatically sized as a fraction of the account balance, so risk scales to the trader's comfort level.</div>
+</div></section>
+
+<section class="step" id="s5"><div class="wrap">
+  <div class="step-num">5</div>
+  <h2>Telegram Reports</h2>
+  <div class="shot-frame"><img src="screenshots/shot5.png" alt="JaviD Future Bot Telegram Notification panel"></div>
+  <div class="caption">Optional and notification-only: balance, equity, cumulative P&amp;L, ROI, win rate and open positions delivered to Telegram on demand or on an automatic schedule.</div>
+</div></section>
+
+<section class="step" id="s6"><div class="wrap">
+  <div class="step-num">6</div>
+  <h2>Entry Mode &amp; Leverage Control</h2>
+  <div class="shot-frame"><img src="screenshots/shot6.png" alt="JaviD Future Bot Entry Mode and Leverage settings"></div>
+  <div class="caption">Choose Conservative (first-match-only) or Multi-strategy rotation, and set leverage from 3x to 15x — full control over how aggressively the bot trades.</div>
+</div></section>
+
+<section class="step" id="s7"><div class="wrap">
+  <div class="step-num">7</div>
+  <h2>Symbol Selection — 500+ Pairs</h2>
+  <div class="shot-frame"><img src="screenshots/shot7.png" alt="JaviD Future Bot Symbol Selection tab"></div>
+  <div class="caption">Click <b>Select All</b> to select every listed pair (optionally narrow the list first with Volume Filter / Exclude Bottom 20), then click <b>Save Selection</b> to confirm and begin loading candle data.</div>
+</div></section>
+
+<section class="step" id="s8"><div class="wrap">
+  <div class="step-num">8</div>
+  <h2>Shadow Mode — Live on the Dashboard</h2>
+  <div class="shot-frame"><img src="screenshots/shot8.png" alt="JaviD Future Bot dashboard running in Shadow Mode"></div>
+  <div class="caption">Shadow Mode also uses the real exchange's live API, and trades run on virtual USDT — so the experience is nearly identical to trading with real money. Here it is actively managing 6 simulated positions with zero real orders placed.</div>
+</div></section>
+
+<section class="step" id="s9"><div class="wrap">
+  <div class="step-num">9</div>
+  <h2>Positions — Real-Time Tracking, Zero Risk</h2>
+  <div class="shot-frame"><img src="screenshots/shot9.png" alt="JaviD Future Bot Positions tab in Shadow Mode"></div>
+  <div class="caption">Every simulated position shows live entry price, current price, PnL and ROE exactly as it would in live trading. Shadow Mode also uses the real exchange's live API, and trades run on virtual USDT, so it closely mirrors real trading without risking real funds.</div>
+</div></section>
+
+<section class="cta-band"><div class="wrap">
+  <h3>Ready to see it on your own machine?</h3>
+  <p>Free download, runs 100% locally — your keys never leave your PC.</p>
+  <a href="index.html#download" class="btn">⬇ Back to JaviD Future Bot</a>
+</div></section>
+
+<footer><div class="wrap footer-row">
+  <span>© 2026 JaviD Future Bot · javid-dol.uk</span>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="results.html">Live Results</a>
+    <a href="binance-signup-api-guide.html">Binance Setup Guide</a>
+  </div>
+</div></footer>
+
+</body>
+</html>

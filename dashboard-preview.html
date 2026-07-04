@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JaviD Future Bot V18.0 — Live Preview</title>
+<style>
+:root {
+  --bg: #0a0d12;
+  --surface: #0f131a;
+  --panel: #111823;
+  --inset: #0d1420;
+  --line: #1c2530;
+  --line-2: #27303f;
+  --text: #dbe4f0;
+  --muted: #7d8aa0;
+  --faint: #5f6b7d;
+  --accent: #2dd4bf;
+  --accent-dim: #14655c;
+  --accent-bg: #0e3b34;
+  --violet: #8b5cf6;
+  --up: #34d399;
+  --down: #fb7185;
+  --warn: #fbbf24;
+  --radius: 6px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  background:
+    radial-gradient(1200px 500px at 85% -10%, rgba(139,92,246,0.07), transparent 60%),
+    radial-gradient(900px 420px at -10% 110%, rgba(45,212,191,0.05), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'Pretendard', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+}
+#app { display: flex; flex-direction: column; height: 100vh; }
+.topbar {
+  display: flex; align-items: center; gap: 22px;
+  height: 54px; padding: 0 18px;
+  background: linear-gradient(180deg, #0e1420, #0b0f16);
+  border-bottom: 1px solid var(--line-2);
+  flex-shrink: 0;
+}
+.brand { display: flex; align-items: center; gap: 10px; min-width: 230px; }
+.brand-mark {
+  width: 20px; height: 20px; flex-shrink: 0;
+  background: conic-gradient(from 210deg, var(--accent), var(--violet), var(--accent));
+  clip-path: polygon(50% 0, 100% 28%, 100% 72%, 50% 100%, 0 72%, 0 28%);
+}
+.app-title { font-size: 15px; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
+.app-title em { font-style: normal; color: var(--accent); font-weight: 600; font-size: 12px; margin-left: 2px; }
+.license-info { font-size: 11px; color: var(--faint); }
+.topnav { display: flex; gap: 2px; flex: 1; height: 100%; }
+.nav-btn {
+  position: relative; display: flex; align-items: center; gap: 6px;
+  padding: 0 15px; height: 100%;
+  background: none; border: none; cursor: pointer;
+  color: var(--muted); font-size: 12.5px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  transition: color .15s; font-family: inherit;
+}
+.nav-btn:hover { color: var(--text); }
+.nav-btn.active { color: var(--accent); }
+.nav-btn.active::after {
+  content: ''; position: absolute; left: 12px; right: 12px; bottom: 0;
+  height: 2px; background: linear-gradient(90deg, var(--accent), var(--violet));
+}
+.topbar-right { display: flex; align-items: center; gap: 14px; }
+.status-cluster { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); white-space: nowrap; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.status-running { background: var(--accent); box-shadow: 0 0 0 3px rgba(45,212,191,.18); animation: pulse 1.8s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.55} }
+.btn-start-stop {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 20px; border-radius: 999px;
+  border: 1px solid var(--down); cursor: pointer;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
+  background: transparent; color: var(--down); font-family: inherit;
+}
+.main-layout.workspace { display: flex; flex: 1; overflow: hidden; }
+.content-area { flex: 1; overflow-y: auto; padding: 20px 24px 60px; }
+.dock {
+  width: 250px; flex-shrink: 0; overflow-y: auto;
+  background: var(--surface);
+  border-left: 1px solid var(--line-2);
+  padding: 14px 14px 40px;
+}
+.dock-title {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--faint);
+  padding: 4px 2px 10px; border-bottom: 1px solid var(--line);
+  margin-bottom: 12px;
+}
+.shadow-toggle-container, .investment-mode-container {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent-dim);
+  border-radius: var(--radius);
+  padding: 12px; margin-bottom: 12px;
+}
+.investment-mode-container { border-left-color: #4c3a80; }
+.shadow-toggle-label, .investment-mode-label {
+  display: flex; align-items: center; gap: 9px; font-size: 13px;
+}
+.shadow-toggle-slider {
+  width: 34px; height: 18px; border-radius: 999px; flex-shrink: 0;
+  background: var(--line-2); position: relative;
+}
+.shadow-toggle-slider::before {
+  content: ''; position: absolute; top: 2px; left: 2px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #94a3b8;
+}
+.shadow-help { font-size: 11px; color: var(--faint); margin-top: 8px; line-height: 1.5; }
+.mode-buttons { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin-top: 10px; }
+.mode-btn {
+  background: var(--inset); border: 1px solid var(--line); border-radius: 5px;
+  padding: 7px 4px; font-size: 10.5px; color: var(--muted); text-align: center; line-height: 1.5;
+}
+.mode-btn.active { border-color: var(--violet); color: #cbb8ff; background: rgba(139,92,246,.1); }
+.mode-info { margin-top: 10px; font-size: 11.5px; color: var(--muted); }
+.mode-info-row { display: flex; justify-content: space-between; padding: 3px 0; }
+.view { display: none; }
+.view.active { display: block; }
+.view-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.view-header h2 { font-size: 18px; font-weight: 700; }
+.status-badge { font-size: 11px; padding: 3px 10px; background: var(--accent-bg); color: var(--accent); border-radius: 12px; margin-left: 8px; }
+.kpi-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 18px; }
+.kpi-card {
+  position: relative; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 8px; padding: 16px 18px; overflow: hidden;
+}
+.kpi-label { font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
+.kpi-value { font-size: 24px; font-weight: 700; }
+.kpi-value.up { color: var(--up); }
+.kpi-sub { font-size: 11.5px; color: var(--faint); margin-top: 5px; }
+.kpi-icon { position: absolute; right: 14px; top: 14px; font-size: 20px; opacity: .18; }
+.dashboard-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; margin-bottom: 16px; }
+.panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.panel-header h3 { font-size: 13.5px; font-weight: 700; }
+.panel-sub { font-size: 12px; color: var(--faint); }
+.market-cards-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 14px; }
+.market-card { background: var(--inset); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; }
+.card-label { font-size: 11px; color: var(--faint); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+.card-row { display: flex; align-items: center; gap: 6px; margin-bottom: 2px; }
+.coin-icon { color: var(--warn); font-size: 13px; }
+.card-price-inline { font-weight: 700; font-size: 13.5px; }
+.card-change-inline { font-size: 12px; font-weight: 600; }
+.card-change-inline.up, .up { color: var(--up); }
+.card-change-inline.down, .down { color: var(--down); }
+.card-sub { font-size: 11px; color: var(--faint); margin-top: 3px; }
+.card-price { font-size: 18px; font-weight: 700; margin: 4px 0; }
+.sentiment-bar { display: flex; height: 7px; border-radius: 4px; overflow: hidden; background: var(--line); margin: 6px 0; }
+.sentiment-up { background: var(--up); }
+.sentiment-down { background: var(--down); }
+.up-ratio { color: var(--up); font-weight: 700; }
+.down-ratio { color: var(--down); font-weight: 700; }
+.volatility-bar-bg { height: 6px; border-radius: 4px; background: var(--line); margin: 6px 0; overflow: hidden; }
+.volatility-bar { height: 100%; width: 42%; background: linear-gradient(90deg, var(--accent), var(--warn)); }
+.dashboard-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.top-panel { background: var(--inset); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; }
+.top-panel h4 { font-size: 12px; margin-bottom: 6px; color: var(--muted); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.data-table td, .data-table th { padding: 5px 6px; text-align: left; border-bottom: 1px solid var(--line); }
+.data-table th { color: var(--faint); font-weight: 600; font-size: 10.5px; text-transform: uppercase; }
+.pos-badge { font-size: 10px; padding: 2px 7px; border-radius: 4px; font-weight: 700; }
+.pos-long { background: rgba(52,211,153,.15); color: var(--up); }
+.pos-short { background: rgba(251,113,133,.15); color: var(--down); }
+.strat-tag { font-size: 10px; padding: 2px 7px; border-radius: 4px; background: rgba(139,92,246,.15); color: #cbb8ff; }
+canvas { width: 100%; height: 200px; display: block; }
+.shadow-banner {
+  background: rgba(45,212,191,.08); border: 1px solid var(--accent-dim); color: var(--accent);
+  padding: 8px 14px; border-radius: 6px; font-size: 12.5px; margin-bottom: 14px;
+}
+</style>
+</head>
+<body>
+<div id="app">
+    <header class="topbar">
+        <div class="brand">
+            <span class="brand-mark"></span>
+            <span class="app-title">JaviD Future Bot <em>V18.0</em></span>
+        </div>
+        <nav class="topnav">
+            <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+            <button class="nav-btn" data-view="positions">Positions</button>
+            <button class="nav-btn" data-view="symbols">Symbol Selection</button>
+            <button class="nav-btn" data-view="records">Records</button>
+            <button class="nav-btn" data-view="settings">Settings</button>
+            <button class="nav-btn" data-view="logs">Logs</button>
+        </nav>
+        <div class="topbar-right">
+            <span class="status-cluster">
+                <span class="status-dot status-running"></span>
+                <span>Trading in progress</span>
+            </span>
+            <button class="btn-start-stop">■ Stop Trading</button>
+        </div>
+    </header>
+
+    <div class="main-layout workspace">
+        <main class="content-area">
+            <section id="view-dashboard" class="view active">
+                <div class="view-header">
+                    <h2>Dashboard <span class="status-badge">Running</span></h2>
+                </div>
+
+                <div class="kpi-row">
+                    <div class="kpi-card">
+                        <div class="kpi-label">Balance</div>
+                        <div class="kpi-value">$12,480.55</div>
+                        <div class="kpi-sub">Available: $9,120.10</div>
+                        <div class="kpi-icon">💰</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Cumulative P&amp;L</div>
+                        <div class="kpi-value up">+$2,480.55</div>
+                        <div class="kpi-sub">Total 214 Trades</div>
+                        <div class="kpi-icon">📈</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Cumulative ROI</div>
+                        <div class="kpi-value up">+24.85%</div>
+                        <div class="kpi-sub">Win Rate: 68.4%</div>
+                        <div class="kpi-icon">%</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Position</div>
+                        <div class="kpi-value">4</div>
+                        <div class="kpi-sub">Order: 4</div>
+                        <div class="kpi-icon">📊</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-panel">
+                    <div class="panel-header">
+                        <h3>📊 Daily Return Chart (Based on Starting Balance)</h3>
+                        <span class="panel-sub">Baseline: $10,000.00 · Change: <span class="up">+24.8%</span></span>
+                    </div>
+                    <canvas id="chart-canvas" width="1100" height="200"></canvas>
+                </div>
+
+                <div class="dashboard-panel">
+                    <div class="panel-header">
+                        <h3>📈 Market Trend</h3>
+                        <span class="panel-sub">Updated: just now</span>
+                    </div>
+                    <div class="market-cards-grid">
+                        <div class="market-card">
+                            <div class="card-label">BTC / ETH</div>
+                            <div class="card-row"><span class="coin-icon">₿</span><span class="card-price-inline">$109,420</span><span class="card-change-inline up">+2.14%</span></div>
+                            <div class="card-sub">H: 110,880 L: 106,510</div>
+                            <div class="card-row"><span class="coin-icon">Ξ</span><span class="card-price-inline">$4,180</span><span class="card-change-inline up">+3.02%</span></div>
+                            <div class="card-sub">H: 4,240 L: 3,990</div>
+                        </div>
+                        <div class="market-card">
+                            <div class="card-label">Market Sentiment</div>
+                            <div class="sentiment-bar"><div class="sentiment-up" style="width:62%"></div><div class="sentiment-down" style="width:38%"></div></div>
+                            <div><span class="up-ratio">312 up</span> / <span class="down-ratio">188 down</span></div>
+                            <div class="card-sub">Total 500 (62% up)</div>
+                            <div class="card-sub">Avg Change: +1.42%</div>
+                        </div>
+                        <div class="market-card">
+                            <div class="card-label">⚡ Market Volatility</div>
+                            <div class="card-price up">Normal</div>
+                            <div class="volatility-bar-bg"><div class="volatility-bar"></div></div>
+                            <div class="card-sub">avg |1.8%|</div>
+                            <div class="card-sub">Intraday Range: 2.6%</div>
+                        </div>
+                        <div class="market-card">
+                            <div class="card-label">↕ Funding Rate</div>
+                            <div class="card-sub">Avg +0.0086%</div>
+                            <div class="card-sub">High: DOGE +0.041%</div>
+                            <div class="card-sub">Low: LTC -0.012%</div>
+                        </div>
+                    </div>
+                    <div class="dashboard-row">
+                        <div class="top-panel">
+                            <h4>↗ Top Gainers</h4>
+                            <table class="data-table"><tbody>
+                                <tr><td>SOL</td><td class="up">+8.42%</td></tr>
+                                <tr><td>SUI</td><td class="up">+6.15%</td></tr>
+                                <tr><td>DOGE</td><td class="up">+5.03%</td></tr>
+                            </tbody></table>
+                        </div>
+                        <div class="top-panel">
+                            <h4>↘ Top Losers</h4>
+                            <table class="data-table"><tbody>
+                                <tr><td>LTC</td><td class="down">-3.21%</td></tr>
+                                <tr><td>ADA</td><td class="down">-2.44%</td></tr>
+                                <tr><td>DOT</td><td class="down">-1.98%</td></tr>
+                            </tbody></table>
+                        </div>
+                        <div class="top-panel">
+                            <h4>📊 Top Volume</h4>
+                            <table class="data-table"><tbody>
+                                <tr><td>BTC</td><td>$2.4B</td></tr>
+                                <tr><td>ETH</td><td>$1.1B</td></tr>
+                                <tr><td>SOL</td><td>$640M</td></tr>
+                            </tbody></table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-positions" class="view">
+                <div class="view-header"><h2>Position (4)</h2></div>
+                <table class="data-table">
+                    <thead><tr><th>Symbol</th><th>Direction</th><th>Qty</th><th>Lev</th><th>Entry</th><th>Current</th><th>PNL</th><th>ROE</th><th>Strategy</th></tr></thead>
+                    <tbody>
+                        <tr><td>BTCUSDT</td><td><span class="pos-badge pos-long">LONG</span></td><td>0.042</td><td>5x</td><td>106,880</td><td>109,420</td><td class="up">+$106.68</td><td class="up">+11.9%</td><td><span class="strat-tag">Strategy-A</span></td></tr>
+                        <tr><td>ETHUSDT</td><td><span class="pos-badge pos-long">LONG</span></td><td>1.85</td><td>5x</td><td>4,050</td><td>4,180</td><td class="up">+$240.50</td><td class="up">+15.8%</td><td><span class="strat-tag">Strategy-B</span></td></tr>
+                        <tr><td>SOLUSDT</td><td><span class="pos-badge pos-long">LONG</span></td><td>28.4</td><td>5x</td><td>178.20</td><td>193.40</td><td class="up">+$431.76</td><td class="up">+42.6%</td><td><span class="strat-tag">Strategy-C</span></td></tr>
+                        <tr><td>XRPUSDT</td><td><span class="pos-badge pos-short">SHORT</span></td><td>1240</td><td>5x</td><td>2.415</td><td>2.389</td><td class="up">+$32.24</td><td class="up">+5.4%</td><td><span class="strat-tag">Strategy-A</span></td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="view-symbols" class="view">
+                <div class="view-header"><h2>Symbol Selection <span class="panel-sub">(Total 526 / Selected 20)</span></h2></div>
+                <p class="panel-sub">Top 20 by Turnover selected — candle data loaded.</p>
+            </section>
+
+            <section id="view-records" class="view">
+                <div class="view-header"><h2>Trade Records</h2></div>
+                <p class="panel-sub">214 closed trades · Win rate 68.4% · Avg ROE +9.2%</p>
+            </section>
+
+            <section id="view-settings" class="view">
+                <div class="view-header"><h2>Settings</h2></div>
+                <p class="panel-sub">Binance API · Investment Mode · Telegram Notification · Entry Mode · Leverage</p>
+            </section>
+
+            <section id="view-logs" class="view">
+                <div class="view-header"><h2>Logs</h2></div>
+                <p class="panel-sub">[TRADE] SOLUSDT LONG entry filled @ 178.20 (Strategy-C) — warmup complete, cooldown clear</p>
+            </section>
+        </main>
+
+        <aside class="dock">
+            <div class="dock-title">Operations Console</div>
+            <div class="shadow-toggle-container">
+                <label class="shadow-toggle-label">
+                    <span class="shadow-toggle-slider"></span>
+                    <span>🪞 Shadow Mode<br><small style="color:var(--faint)">Live Trading Mode</small></span>
+                </label>
+                <div class="shadow-help">Try it risk-free first: records signals only, no real orders — verified against live market data.</div>
+            </div>
+            <div class="investment-mode-container">
+                <label class="investment-mode-label">
+                    <span class="shadow-toggle-slider" style="background:var(--violet)"></span>
+                    <span>💰 Investment Mode<br><small style="color:var(--faint)">Normal (1/500)</small></span>
+                </label>
+                <div class="mode-buttons">
+                    <div class="mode-btn">🔥 Aggressive<br>1/300</div>
+                    <div class="mode-btn active">⚖️ Normal<br>1/500</div>
+                    <div class="mode-btn">🛡️ Stable<br>1/700</div>
+                </div>
+                <div class="mode-info">
+                    <div class="mode-info-row"><span>Balance:</span><strong>$12,480.55</strong></div>
+                    <div class="mode-info-row"><span>Margin / Entry:</span><strong>$24.96</strong></div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+<script>
+document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('view-' + btn.dataset.view).classList.add('active');
+    });
+});
+// Draw a stylized ascending equity curve
+const c = document.getElementById('chart-canvas');
+const ctx = c.getContext('2d');
+function draw() {
+    const w = c.width, h = c.height;
+    ctx.clearRect(0,0,w,h);
+    const pts = [];
+    let y = h*0.78, seed = 42;
+    function rnd(){ seed = (seed*9301+49297)%233280; return seed/233280; }
+    for (let i=0;i<60;i++){
+        y -= (rnd()*10 - 2.2);
+        y = Math.max(h*0.08, Math.min(h*0.85, y));
+        pts.push(y);
+    }
+    // grid
+    ctx.strokeStyle = '#1c2530'; ctx.lineWidth = 1;
+    for (let g=1; g<4; g++){
+        const gy = h/4*g;
+        ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(w,gy); ctx.stroke();
+    }
+    // area fill
+    const grad = ctx.createLinearGradient(0,0,0,h);
+    grad.addColorStop(0,'rgba(45,212,191,0.35)');
+    grad.addColorStop(1,'rgba(45,212,191,0.0)');
+    ctx.beginPath();
+    pts.forEach((py,i)=>{ const px = i/(pts.length-1)*w; if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py); });
+    ctx.lineTo(w,h); ctx.lineTo(0,h); ctx.closePath();
+    ctx.fillStyle = grad; ctx.fill();
+    // line
+    ctx.beginPath();
+    pts.forEach((py,i)=>{ const px = i/(pts.length-1)*w; if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py); });
+    ctx.strokeStyle = '#2dd4bf'; ctx.lineWidth = 2.5; ctx.stroke();
+}
+draw();
+</script>
+</body>
+</html>
