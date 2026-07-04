@@ -203,6 +203,36 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
 .edge-card p { color:var(--muted); font-size:14.5px; line-height:1.7; }
 .edge-quote { text-align:center; font-size:18px; font-style:italic; color:var(--text); opacity:.9; }
 @media (max-width:920px) { .edge-grid { grid-template-columns:1fr; } }
+
+/* ===== BINANCE REFERRAL BANNER ===== */
+.ref-banner { background:linear-gradient(135deg, rgba(240,185,11,.14), rgba(240,185,11,.03)); border:1px solid rgba(240,185,11,.4); border-radius:16px; padding:28px 34px; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:22px; }
+.ref-banner .rb-icon { width:46px; height:46px; border-radius:12px; background:rgba(240,185,11,.18); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.ref-banner h3 { font-size:17px; margin-bottom:5px; }
+.ref-banner p { color:var(--muted); font-size:13.5px; }
+.btn-binance { background:#f0b90b; color:#1c1505; box-shadow:0 12px 26px -10px rgba(240,185,11,.5); white-space:nowrap; }
+.btn-binance:hover { filter:brightness(1.06); }
+
+/* ===== AI COMPETITION PROOF STRIP ===== */
+.proof-strip { display:flex; align-items:flex-start; gap:16px; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px 26px; margin-top:28px; }
+.proof-strip .p-icon { font-size:24px; }
+.proof-strip p { color:var(--muted); font-size:13.5px; line-height:1.75; }
+.proof-strip a { color:var(--accent); font-weight:700; }
+
+/* ===== FEE REBATE MODEL ===== */
+.rebate-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.rebate-card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:28px 26px; }
+.rebate-card h3 { font-size:17px; margin-bottom:10px; }
+.rebate-card p { color:var(--muted); font-size:14px; line-height:1.75; }
+.rebate-card.no { border-color:rgba(251,113,133,.35); }
+.rebate-card.yes { border-color:var(--accent-dim); }
+
+/* ===== EXECUTION GUIDE / SIM DATA ===== */
+.sim-note { font-size:12.5px; color:var(--faint); margin-top:16px; text-align:center; line-height:1.7; }
+
+@media (max-width:920px) {
+  .ref-banner { grid-template-columns:1fr; text-align:center; }
+  .rebate-grid { grid-template-columns:1fr; }
+}
 </style>
 </head>
 <body>
@@ -250,6 +280,18 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
   <div class="pc-requirement-note">🖥️ <strong>Requires a PC that stays on 24/7.</strong> Trading runs entirely on your own machine — no cloud server, no custody — so it only executes while your computer is powered on and connected to the internet.</div>
 </div></header>
 
+<!-- ================= BINANCE REFERRAL BANNER ================= -->
+<section class="section" style="padding:0 0 20px;"><div class="wrap">
+  <div class="ref-banner">
+    <div class="rb-icon">🟡</div>
+    <div>
+      <h3>Don't have a Binance account yet?</h3>
+      <p>Sign up through our official partner link — the exact same Binance registration flow, at zero extra cost to you. It's how JaviD Future Bot keeps running with no subscription fee, ever.</p>
+    </div>
+    <a href="https://www.binance.com/register?ref=PKNNLUSL" target="_blank" rel="noopener" class="btn btn-binance">Create Binance Account →</a>
+  </div>
+</div></section>
+
 <!-- ================= PRECISION VS IMPULSE ================= -->
 <section class="section" style="padding-top:20px;"><div class="wrap">
   <div class="section-head">
@@ -269,6 +311,10 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
     </div>
   </div>
   <p class="edge-quote">"A precision strategy, engineered by AI. And — trust the power of time."</p>
+  <div class="proof-strip">
+    <div class="p-icon">🏆</div>
+    <p>This isn't just our theory. In the 2025 <b style="color:var(--text);">Alpha Arena</b> AI trading competition — six leading AI models, real capital, real crypto markets — the winning model didn't trade the most, it traded the least: entering with conviction on a clear trend and holding through the correction, while rivals panicked, over-traded, and gave back their capital in fees and bad exits. Strategic entry, then patience through the noise, beat constant intervention. <a href="https://www.digitaltoday.co.kr/news/articleView.html?idxno=602557" target="_blank" rel="noopener">Read the coverage →</a></p>
+  </div>
 </div></section>
 
 <!-- ================= STATS / SOCIAL PROOF ================= -->
@@ -356,6 +402,51 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
       <p>Shadow Mode runs every strategy against live market data with a virtual balance — real signals, real timing, zero real orders. Shadow Mode also uses the real exchange's live API, and trades run on virtual USDT — so the experience is nearly identical to trading with real money. Watch it work for as long as you need before a single real dollar is on the line.</p>
     </div>
     <a href="#download" class="btn btn-primary">Download &amp; Try Shadow Mode</a>
+  </div>
+</div></section>
+
+<!-- ================= EXECUTION GUIDE + LIVE SIM DATA ================= -->
+<section class="section" id="execution-guide" style="padding-top:0"><div class="wrap">
+  <div class="section-head">
+    <div class="section-kicker">Running It For Real</div>
+    <div class="section-title">Position Sizing, and What 1,000+ USDT Actually Looks Like</div>
+  </div>
+  <div class="edge-grid">
+    <div class="edge-card">
+      <div class="edge-icon">📐</div>
+      <h3>Why We Recommend 1,000 USDT Minimum</h3>
+      <p>Each entry sizes at up to 1/300th of your account balance per trade — that's the mechanism that spreads risk across dozens of simultaneous positions instead of betting big on any single one. Below roughly 1,000 USDT, that per-trade slice gets small enough that exchange minimum-notional limits and fees start cutting into the edge. 1,000 USDT and up is where the strategy runs the way it was designed to.</p>
+    </div>
+    <div class="edge-card">
+      <div class="edge-icon">🕐</div>
+      <h3>What This Looks Like Live</h3>
+      <p>Below is an actual Shadow Mode account status, pulled directly from a live Telegram report — real Binance market data, a balance over 1,000 USDT, and zero real capital at risk while it runs. It's one account, one snapshot in time, not a promise of what any future run will do.</p>
+    </div>
+  </div>
+  <div class="stats-grid" style="margin-top:24px;">
+    <div class="stat-card"><div class="stat-num">1,032.77</div><div class="stat-label">Balance (USDT) — Shadow Mode, virtual funds</div></div>
+    <div class="stat-card"><div class="stat-num">+32.77</div><div class="stat-label">Cumulative P&amp;L (USDT) across 97 trades</div></div>
+    <div class="stat-card"><div class="stat-num">+3.28%</div><div class="stat-label">Cumulative return since Shadow Mode start</div></div>
+    <div class="stat-card"><div class="stat-num">81.4%</div><div class="stat-label">Win rate over the same run</div></div>
+  </div>
+  <p class="sim-note">Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses, exactly as the bot's exit logic was still managing them. Shadow Mode uses live Binance market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results.</p>
+</div></section>
+
+<!-- ================= FEE REBATE BUSINESS MODEL ================= -->
+<section class="section" style="padding-top:0"><div class="wrap">
+  <div class="section-head">
+    <div class="section-kicker">Business Model, No Fine Print</div>
+    <div class="section-title">We Don't Touch Your Funds. We Split a Sliver of the Exchange Fee.</div>
+  </div>
+  <div class="rebate-grid">
+    <div class="rebate-card no">
+      <h3>❌ Not This</h3>
+      <p>We never take custody of your money, never charge a subscription or performance fee, and never hold withdrawal access to your Binance account. There is no management fee hidden anywhere in this product — and no one at JaviD ever touches your capital.</p>
+    </div>
+    <div class="rebate-card yes">
+      <h3>✅ Actually This</h3>
+      <p>Binance already charges a small trading fee on every order you place — with or without JaviD. Through Binance's official Broker Program, a portion of that existing fee is shared back to us when you trade under our referral link. You pay Binance the exact same fee either way; we simply receive a rebate slice of it, funded by Binance, not by you.</p>
+    </div>
   </div>
 </div></section>
 
