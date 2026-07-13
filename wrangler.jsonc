@@ -1,0 +1,44 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "javid-dol-landing",
+  "compatibility_date": "2026-07-13",
+  "main": "worker.js",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "compatibility_flags": ["nodejs_compat"],
+
+  // --- Fill these in from the Cloudflare dashboard, then commit + push ---
+
+  // D1 (community board). Storage & Databases -> D1 SQL Database -> javid-board-db
+  // -> copy "Database ID" shown on that page into database_id below.
+  "d1_databases": [
+    {
+      "binding": "BOARD_DB",
+      "database_name": "javid-board-db",
+      "database_id": "fca31922-123f-424c-83b4-a069e2900761"
+    }
+  ],
+
+  // KV (download access codes). Storage & Databases -> KV -> create/open the
+  // namespace you use for codes -> copy "Namespace ID" into id below.
+  "kv_namespaces": [
+    {
+      "binding": "DOWNLOAD_CODES",
+      "id": "2f6d1c363a654543bec03a58dfd76b18"
+    }
+  ],
+
+  // R2 (installer zip files). Storage & Databases -> R2 -> your bucket ->
+  // bucket_name is just the bucket's name as shown in the dashboard.
+  "r2_buckets": [
+    {
+      "binding": "DOWNLOADS_BUCKET",
+      "bucket_name": "javid-downloads"
+    }
+  ]
+}
