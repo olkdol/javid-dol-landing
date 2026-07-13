@@ -74,6 +74,43 @@ h1 { font-size:36px; font-weight:800; letter-spacing:-0.02em; margin-bottom:16px
 .board-panel { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:26px 26px 30px; margin-bottom:60px; }
 .board-panel h4 { font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-bottom:18px; }
 
+/* ===== BOARD (D1-backed) ===== */
+.board-write { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px 24px; margin-bottom:20px; }
+.board-write h4 { font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-bottom:14px; }
+.bw-row { margin-bottom:10px; }
+input[type=text], input[type=password], textarea {
+  width:100%; background:var(--inset); border:1px solid var(--line-2); color:var(--text);
+  border-radius:8px; padding:10px 12px; font-size:13.5px; font-family:inherit;
+}
+textarea { min-height:90px; resize:vertical; }
+.bw-secret { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); margin-bottom:10px; }
+.bw-secret input { width:auto; }
+.bw-pass { display:none; margin-bottom:10px; }
+.bw-pass.show { display:block; }
+.board-submit-msg { font-size:12.5px; margin-top:8px; min-height:16px; }
+.board-submit-msg.err { color:var(--warn); }
+.board-submit-msg.ok { color:var(--accent); }
+
+.board-toolbar { display:flex; justify-content:flex-end; margin-bottom:10px; }
+.board-admin-link { font-size:12px; color:var(--faint); cursor:pointer; text-decoration:underline; }
+
+.board-post { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 20px; margin-bottom:12px; }
+.bp-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:10px; flex-wrap:wrap; }
+.bp-name { font-weight:700; font-size:13.5px; }
+.bp-date { font-size:11.5px; color:var(--faint); }
+.bp-lock { font-size:11.5px; color:var(--warn); font-weight:700; margin-left:6px; }
+.bp-content { font-size:14px; color:var(--text); line-height:1.6; white-space:pre-wrap; }
+.bp-locked-box { display:flex; gap:8px; align-items:center; }
+.bp-locked-box input { max-width:160px; }
+.bp-reply { margin-top:12px; padding:12px 14px; background:var(--inset); border-left:3px solid var(--accent); border-radius:6px; font-size:13.5px; color:var(--text); }
+.bp-reply b { color:var(--accent); }
+.bp-admin-actions { display:flex; gap:10px; margin-top:12px; }
+.bp-reply-form { display:none; margin-top:10px; flex-direction:column; gap:8px; }
+.bp-reply-form.show { display:flex; }
+.btn-sm { padding:7px 14px !important; font-size:12px !important; box-shadow:none !important; }
+.btn-outline { background:transparent !important; color:var(--text) !important; border:1px solid var(--line-2); }
+.btn-danger { background:rgba(251,113,133,.12) !important; color:#f6b9c4 !important; border:1px solid rgba(251,113,133,.4); box-shadow:none !important; }
+
 .cta-band { text-align:center; padding:10px 0 60px; }
 .cta-band h3 { font-size:22px; margin-bottom:12px; }
 .cta-band p { color:var(--muted); margin-bottom:22px; }
@@ -126,21 +163,182 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
 </div></header>
 
 <div class="wrap">
-  <div class="board-note">💬 <span><b>How this works:</b> type your name and question below, no login needed. Every post is reviewed and answered directly here — most questions get a reply within a day or two. For anything urgent, use Telegram instead.</span></div>
+  <div class="board-note">💬 <span><b>How this works:</b> type your name and question below, no login needed. Mark a post <b>secret</b> to set your own password — only you (with that password) and the JaviD admin can read it. Every post is reviewed and answered directly here.</span></div>
+
+  <div class="board-write">
+    <h4>Write a question</h4>
+    <div class="bw-row"><input type="text" id="bwName" placeholder="Your name" maxlength="40" /></div>
+    <div class="bw-row"><textarea id="bwContent" placeholder="What do you want to ask?" maxlength="4000"></textarea></div>
+    <label class="bw-secret"><input type="checkbox" id="bwSecret" /> Make this a secret post (password-protected)</label>
+    <div class="bw-pass" id="bwPassWrap"><input type="password" id="bwPass" placeholder="Set a password to read it later" maxlength="100" /></div>
+    <button type="button" class="btn" onclick="submitPost()">Post</button>
+    <p class="board-submit-msg" id="bwMsg"></p>
+  </div>
+
+  <div class="board-toolbar"><span class="board-admin-link" id="adminLink" onclick="adminLogin()">Admin</span></div>
 
   <div class="board-panel">
     <h4>Questions &amp; Answers</h4>
-    <!-- Cusdis embed — replace data-app-id with your real App ID from cusdis.com -->
-    <div id="cusdis_thread"
-      data-host="https://cusdis.com"
-      data-app-id="YOUR_CUSDIS_APP_ID"
-      data-page-id="board-main"
-      data-page-url="https://javid-dol.uk/board.html"
-      data-page-title="JaviD Future Bot — Community Board"
-    ></div>
-    <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+    <div id="boardList"><p style="color:var(--faint);font-size:13px;">Loading…</p></div>
   </div>
 </div>
+
+<script>
+const ADMIN_KEY_STORAGE = 'javid_board_admin_key';
+function getAdminKey() { return localStorage.getItem(ADMIN_KEY_STORAGE) || ''; }
+
+function adminLogin() {
+  if (getAdminKey()) {
+    if (confirm('Log out of admin mode?')) {
+      localStorage.removeItem(ADMIN_KEY_STORAGE);
+      updateAdminLink();
+      loadPosts();
+    }
+    return;
+  }
+  const key = prompt('Enter admin key:');
+  if (!key) return;
+  localStorage.setItem(ADMIN_KEY_STORAGE, key);
+  updateAdminLink();
+  loadPosts();
+}
+
+function updateAdminLink() {
+  document.getElementById('adminLink').textContent = getAdminKey() ? 'Admin mode ON (click to log out)' : 'Admin';
+}
+
+document.getElementById('bwSecret').addEventListener('change', function () {
+  document.getElementById('bwPassWrap').classList.toggle('show', this.checked);
+});
+
+async function submitPost() {
+  const name = document.getElementById('bwName').value.trim();
+  const content = document.getElementById('bwContent').value.trim();
+  const secret = document.getElementById('bwSecret').checked;
+  const password = document.getElementById('bwPass').value;
+  const msg = document.getElementById('bwMsg');
+  if (!name || !content) { msg.textContent = 'Enter your name and question.'; msg.className = 'board-submit-msg err'; return; }
+  if (secret && !password) { msg.textContent = 'Set a password for the secret post.'; msg.className = 'board-submit-msg err'; return; }
+  msg.textContent = 'Posting…'; msg.className = 'board-submit-msg';
+  try {
+    const res = await fetch('/api/board/posts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, content, secret, password })
+    });
+    if (!res.ok) throw new Error();
+    document.getElementById('bwName').value = '';
+    document.getElementById('bwContent').value = '';
+    document.getElementById('bwSecret').checked = false;
+    document.getElementById('bwPass').value = '';
+    document.getElementById('bwPassWrap').classList.remove('show');
+    msg.textContent = 'Posted.'; msg.className = 'board-submit-msg ok';
+    loadPosts();
+  } catch (e) {
+    msg.textContent = 'Something went wrong. Try again.'; msg.className = 'board-submit-msg err';
+  }
+}
+
+function fmtDate(iso) { try { return new Date(iso).toLocaleString(); } catch (e) { return iso; } }
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str == null ? '' : str;
+  return d.innerHTML;
+}
+
+async function loadPosts() {
+  const list = document.getElementById('boardList');
+  list.innerHTML = '<p style="color:var(--faint);font-size:13px;">Loading…</p>';
+  const headers = {};
+  const adminKey = getAdminKey();
+  if (adminKey) headers['x-admin-key'] = adminKey;
+  try {
+    const res = await fetch('/api/board/posts', { headers });
+    const data = await res.json();
+    const posts = data.posts || [];
+    if (!posts.length) {
+      list.innerHTML = '<p style="color:var(--faint);font-size:13px;">No questions yet — be the first to ask.</p>';
+      return;
+    }
+    list.innerHTML = posts.map(renderPost).join('');
+  } catch (e) {
+    list.innerHTML = '<p style="color:var(--warn);font-size:13px;">Could not load posts.</p>';
+  }
+}
+
+function renderPost(p) {
+  const admin = !!getAdminKey();
+  const locked = p.is_secret && p.content === null;
+  let bodyHtml;
+  if (locked) {
+    bodyHtml = '<div class="bp-locked-box"><input type="password" id="unlock-' + p.id + '" placeholder="Password" maxlength="100" />' +
+      '<button type="button" class="btn btn-sm btn-outline" onclick="unlockPost(' + p.id + ')">Unlock</button></div>' +
+      '<div id="unlocked-' + p.id + '"></div>';
+  } else {
+    bodyHtml = '<div class="bp-content">' + escapeHtml(p.content) + '</div>';
+  }
+  const reply = p.reply ? '<div class="bp-reply"><b>Admin reply:</b> ' + escapeHtml(p.reply) + '</div>' : '';
+  const adminActions = admin
+    ? '<div class="bp-admin-actions">' +
+        '<button type="button" class="btn btn-sm btn-danger" onclick="deletePost(' + p.id + ')">🗑 Delete</button>' +
+        '<button type="button" class="btn btn-sm btn-outline" onclick="toggleReplyForm(' + p.id + ')">↩ Reply</button>' +
+      '</div>' +
+      '<div class="bp-reply-form" id="replyform-' + p.id + '">' +
+        '<textarea id="replytext-' + p.id + '" placeholder="Write a reply…" maxlength="2000"></textarea>' +
+        '<button type="button" class="btn btn-sm" style="align-self:flex-start;" onclick="submitReply(' + p.id + ')">Send reply</button>' +
+      '</div>'
+    : '';
+  return '<div class="board-post" id="post-' + p.id + '">' +
+      '<div class="bp-head"><span class="bp-name">' + escapeHtml(p.name) + (p.is_secret ? '<span class="bp-lock">🔒 Secret</span>' : '') + '</span>' +
+      '<span class="bp-date">' + fmtDate(p.created_at) + '</span></div>' +
+      bodyHtml + reply + adminActions +
+    '</div>';
+}
+
+async function unlockPost(id) {
+  const input = document.getElementById('unlock-' + id);
+  const password = input.value;
+  if (!password) return;
+  const target = document.getElementById('unlocked-' + id);
+  try {
+    const res = await fetch('/api/board/posts/' + id + '?password=' + encodeURIComponent(password));
+    const data = await res.json();
+    if (!res.ok) { target.innerHTML = '<p style="color:var(--warn);font-size:12.5px;margin-top:6px;">Wrong password.</p>'; return; }
+    target.innerHTML = '<div class="bp-content" style="margin-top:10px;">' + escapeHtml(data.content) + '</div>';
+  } catch (e) {
+    target.innerHTML = '<p style="color:var(--warn);font-size:12.5px;">Error unlocking post.</p>';
+  }
+}
+
+function toggleReplyForm(id) { document.getElementById('replyform-' + id).classList.toggle('show'); }
+
+async function submitReply(id) {
+  const text = document.getElementById('replytext-' + id).value.trim();
+  if (!text) return;
+  try {
+    const res = await fetch('/api/board/posts/' + id, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json', 'x-admin-key': getAdminKey() },
+      body: JSON.stringify({ reply: text })
+    });
+    if (!res.ok) { alert('Failed to send reply.'); return; }
+    loadPosts();
+  } catch (e) { alert('Failed to send reply.'); }
+}
+
+async function deletePost(id) {
+  if (!confirm('Delete this post permanently?')) return;
+  try {
+    const res = await fetch('/api/board/posts/' + id, { method: 'DELETE', headers: { 'x-admin-key': getAdminKey() } });
+    if (!res.ok) { alert('Failed to delete (wrong admin key?).'); return; }
+    loadPosts();
+  } catch (e) { alert('Failed to delete.'); }
+}
+
+updateAdminLink();
+loadPosts();
+</script>
 
 <section class="cta-band"><div class="wrap">
   <h3>Ready to try it yourself?</h3>
