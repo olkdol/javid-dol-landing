@@ -92,35 +92,29 @@ img, iframe { max-width: 100%; }
 .nav-links a:hover { color:var(--text); }
 .nav-cta { background: linear-gradient(135deg,#14b8a6,#0d9488); color:#04211d; padding:9px 18px; border-radius:999px; font-weight:800; font-size:13px; }
 
-/* ===== GOLD INTRO SEQUENCE ===== */
-.intro-sequence {
-  position: relative; height: 150px;
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden; text-align: center; padding: 0 20px;
-  background: radial-gradient(600px 220px at 50% 45%, rgba(255,215,0,0.07), transparent 70%);
-  border-bottom: 1px solid var(--line);
+/* ===== PAIN-POINT TICKER ===== */
+.ticker { position: sticky; top: 57px; z-index: 45; background: linear-gradient(180deg, rgba(15,19,26,.97), rgba(10,13,18,.97)); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); overflow: hidden; }
+.ticker-inner { max-width: 860px; margin: 0 auto; padding: 12px 24px; min-height: 84px; display:flex; align-items:center; justify-content:center; position:relative; }
+.ticker-slide { position:absolute; left:24px; right:24px; display:flex; align-items:center; justify-content:center; gap:14px; opacity:0; text-align:left; text-decoration:none; animation: tickerCycle 27s ease-in-out infinite; }
+.ticker-slide .tk-icon { font-size:26px; flex-shrink:0; }
+.ticker-slide .tk-text { text-align:left; }
+.ticker-slide .tk-text b { display:block; color:var(--accent); font-size:14px; font-weight:800; letter-spacing:-0.01em; }
+.ticker-slide .tk-text span { display:block; color:var(--text); font-size:13px; margin-top:3px; }
+.ticker-slide .tk-text small { display:block; color:var(--faint); font-size:11px; margin-top:3px; }
+.ticker-slide.t1 { animation-delay: 0s; }
+.ticker-slide.t2 { animation-delay: 4.5s; }
+.ticker-slide.t3 { animation-delay: 9s; }
+.ticker-slide.t4 { animation-delay: 13.5s; }
+.ticker-slide.t5 { animation-delay: 18s; }
+.ticker-slide.t6 { animation-delay: 22.5s; }
+@keyframes tickerCycle {
+  0%   { opacity: 0; transform: translateY(6px); }
+  3%   { opacity: 1; transform: translateY(0); }
+  15%  { opacity: 1; }
+  18%  { opacity: 0; transform: translateY(-6px); }
+  100% { opacity: 0; }
 }
-.intro-phrase {
-  position: absolute; left: 50%; top: 50%;
-  transform: translate(-50%, -50%) scale(0.7);
-  white-space: nowrap; font-weight: 800; letter-spacing: -0.01em;
-  background: linear-gradient(135deg, #fff3c4, #ffd54a, #d4a017, #ffd54a);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  filter: drop-shadow(0 0 18px rgba(255,215,0,.28));
-  opacity: 0; animation: goldCycle 12s ease-in-out infinite;
-}
-.intro-phrase.p1 { font-size: clamp(24px, 4vw, 46px); animation-delay: 0s; }
-.intro-phrase.p2 { font-size: clamp(18px, 2.6vw, 30px); animation-delay: 3s; }
-.intro-phrase.p3 { font-size: clamp(24px, 4vw, 46px); animation-delay: 6s; }
-.intro-phrase.p4 { font-size: clamp(26px, 4.4vw, 50px); animation-delay: 9s; }
-@keyframes goldCycle {
-  0%   { opacity: 0; transform: translate(-50%, -50%) scale(.7); }
-  6%   { opacity: 1; transform: translate(-50%, -50%) scale(1.06); }
-  18%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  25%  { opacity: 0; transform: translate(-50%, -50%) scale(1.25); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.25); }
-}
-@media (max-width:640px) { .intro-sequence { height: 120px; } }
+@media (max-width:640px) { .ticker-inner { min-height:96px; padding:10px 16px; } .ticker-slide { left:16px; right:16px; } .ticker-slide .tk-icon { font-size:22px; } }
 
 /* ===== HERO ===== */
 .hero { padding: 64px 0 30px; }
@@ -313,6 +307,20 @@ h1 .grad { background:linear-gradient(90deg,var(--accent),var(--violet)); -webki
 .dl-note { margin-top:14px; font-size:12.5px; color:var(--faint); }
 .dl-note a { color:var(--accent); font-weight:700; }
 .disclaimer { max-width:760px; margin:50px auto 0; text-align:center; font-size:11.5px; color:var(--faint); line-height:1.7; border-top:1px solid var(--line); padding-top:24px; }
+.dl-gate { max-width:460px; margin:28px auto 0; }
+.dl-gate-label { display:block; font-size:12.5px; font-weight:700; color:var(--muted); margin-bottom:8px; text-align:center; }
+.dl-gate-row { display:flex; justify-content:center; margin-bottom:14px; }
+.dl-gate-input { width:100%; max-width:320px; background:var(--panel); border:1px solid var(--line-2); color:var(--text); font-size:14px; font-weight:700; letter-spacing:.04em; text-align:center; padding:13px 16px; border-radius:10px; text-transform:uppercase; }
+.dl-gate-input:focus { outline:none; border-color:var(--accent-dim); }
+.dl-gate-buttons { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.dl-gate-buttons .btn[disabled] { opacity:.55; cursor:not-allowed; }
+.dl-gate-msg { min-height:18px; text-align:center; font-size:13px; font-weight:700; margin-top:12px; }
+.dl-gate-error { color:var(--warn); }
+.dl-gate-ok { color:var(--accent); }
+.dl-gate-help { text-align:center; font-size:12.5px; color:var(--faint); margin-top:6px; }
+.dl-gate-help a { color:var(--accent); font-weight:700; }
+.nav-highlight { position:relative; color:var(--accent) !important; }
+.nav-highlight .nh-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--violet); margin-left:5px; vertical-align:middle; }
 
 /* ===== FOOTER ===== */
 footer { border-top:1px solid var(--line); padding: 34px 0; }
@@ -350,17 +358,20 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
     <a href="results.html">Real Results</a>
     <a href="manual.html">User Manual</a>
     <a href="binance-signup-api-guide.html">New to Binance?</a>
+    <a href="board.html" class="nav-highlight">Community Board<span class="nh-dot"></span></a>
   </div>
   <a href="index.html#download" class="nav-cta">⬇ Free Download</a>
 </div></nav>
 
-<!-- ================= GOLD INTRO SEQUENCE ================= -->
-<div class="intro-sequence">
-  <span class="intro-phrase p1">A Precision Strategy, Engineered by AI</span>
-  <span class="intro-phrase p2">And</span>
-  <span class="intro-phrase p3">Trust the Power of Time</span>
-  <span class="intro-phrase p4">JaviD Future Bot</span>
-</div>
+<!-- ================= PAIN-POINT TICKER ================= -->
+<div class="ticker"><div class="ticker-inner">
+  <div class="ticker-slide t1"><span class="tk-icon">🌙</span><span class="tk-text"><b>Still watching charts and trading through the night?</b><span>Let an AI-built strategy judge and execute for you, 24/7.</span></span></div>
+  <div class="ticker-slide t2"><span class="tk-icon">🛡️</span><span class="tk-text"><b>Not sure you can trust an auto-trading program?</b><span>Run Shadow Mode first — switch to live trading once you trust it.</span><small>Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small></span></div>
+  <a class="ticker-slide t3" href="results.html"><span class="tk-icon">📊</span><span class="tk-text"><b>Curious what the real win rate looks like?</b><span>Check the real trading results on this site and judge for yourself.</span></span></a>
+  <div class="ticker-slide t4"><span class="tk-icon">🪙</span><span class="tk-text"><b>Only trading Bitcoin futures?</b><span>Trade 500+ altcoin futures and stack consistent results, every day.</span></span></div>
+  <div class="ticker-slide t5"><span class="tk-icon">⚖️</span><span class="tk-text"><b>Worried about liquidation on leveraged futures?</b><span>Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.</span><small>Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.</small></span></div>
+  <div class="ticker-slide t6"><span class="tk-icon">🌱</span><span class="tk-text"><b>Think your starting amount is too small?</b><span>Entry size resizes daily off your live balance — feel what compounding does.</span></span></div>
+</div></div>
 
 <!-- ================= HERO ================= -->
 <header class="hero"><div class="wrap hero-grid">
@@ -639,22 +650,6 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
   </div>
 </div></section>
 
-<!-- ================= ABOUT DEVELOPER ================= -->
-<section class="section" id="about" style="padding-top:0"><div class="wrap">
-  <div class="section-head">
-    <div class="section-kicker">Who Built This</div>
-    <div class="section-title">Not an Anonymous Team. One Engineer, Twenty Years In.</div>
-  </div>
-  <div class="about-card">
-    <div class="about-avatar">👨‍💻</div>
-    <div>
-      <h3>Built by someone whose day job is precision</h3>
-      <p>JaviD Future Bot is built by a developer with <b>20 years of systematic-trading research</b> behind him — and a current career as an <b>R&amp;D engineer in precision optics</b>, a field where tolerance for error is effectively zero. This isn't an outsourced product shipped by a marketing team; it's the exact tool the developer runs on his own account, every day, turned into a product.</p>
-      <p>That's why the design bar is simple: <b>"Would I trust it with my own money?"</b> The no-server local architecture, the API design that never asks for withdrawal permission, and a Real Results page that publishes losing trades unedited — all of it comes from that one standard.</p>
-    </div>
-  </div>
-</div></section>
-
 <!-- ================= CODE TRANSPARENCY / ARCHITECTURE ================= -->
 <section class="section" id="transparency" style="padding-top:0"><div class="wrap">
   <div class="section-head">
@@ -797,13 +792,21 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
 <section class="section final-cta" id="download"><div class="wrap">
   <h2>Stop Trading Only When You're Watching.</h2>
   <p>A real Binance USDⓈ-M futures execution engine that runs entirely on your own PC — your keys, your funds, your control, on every single trade.</p>
-  <div class="dl-row">
-    <a href="downloads/JaviD_Future_Bot_Windows.zip" class="btn btn-primary" style="font-size:16px; padding:16px 34px;" download>🪟 Download for Windows<span class="os-sub">JaviD_Future_Bot_Windows.zip</span></a>
-    <a href="downloads/JaviD_Future_Bot_macOS.zip" class="btn btn-primary" style="font-size:16px; padding:16px 34px;" download>🍎 Download for macOS<span class="os-sub">JaviD_Future_Bot_macOS.zip</span></a>
+  <div class="dl-gate" id="dlGate">
+    <label for="dlCode" class="dl-gate-label">Enter your access code to download</label>
+    <div class="dl-gate-row">
+      <input type="text" id="dlCode" class="dl-gate-input" placeholder="e.g. JAVID-7X9K2M" autocomplete="off" maxlength="40" />
+    </div>
+    <div class="dl-gate-buttons">
+      <button type="button" class="btn btn-primary" style="font-size:16px; padding:16px 34px;" onclick="javidDownload('windows', this)">🪟 Download for Windows</button>
+      <button type="button" class="btn btn-primary" style="font-size:16px; padding:16px 34px;" onclick="javidDownload('mac', this)">🍎 Download for macOS</button>
+    </div>
+    <p class="dl-gate-msg" id="dlGateMsg"></p>
+    <p class="dl-gate-help">No code yet? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">Join the Telegram community</a> — codes are issued free after you sign up with our Binance referral link.</p>
   </div>
   <span class="free-badge">$0 subscription · Free forever · No credit card</span>
-  <p class="dl-note">Download → unzip → run <code>start.bat</code>. First time? Follow along with the <a href="manual.html">User Manual</a>.</p>
-  <p class="dl-note">Questions about the program? Email us at <a href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a>.</p>
+  <p class="dl-note">Enter your code → click your OS → unzip → run <code>start.bat</code>. First time? Follow along with the <a href="manual.html">User Manual</a>.</p>
+  <p class="dl-note">Questions about the program? Email us at <a href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a> or ask on the <a href="board.html">Community Board</a>.</p>
 
   <div class="disclaimer">
     Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. JaviD Future Bot is a standalone execution tool — it does not guarantee profits. Performance figures on this page are Shadow Mode (virtual balance) data and snapshots of real dashboard records from specific periods; they do not guarantee or imply future results. All trading decisions and their outcomes are the sole responsibility of the user. JaviD Future Bot does not provide investment advice, does not custody funds, and does not execute trades on any server — every order is placed directly from your own device using your own Binance API credentials.
@@ -820,9 +823,59 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
     <a href="results.html">Real Results</a>
     <a href="manual.html">User Manual</a>
     <a href="binance-signup-api-guide.html">Binance Setup Guide</a>
+    <a href="https://github.com/olkdol/javid-future-bot" target="_blank" rel="noopener">GitHub</a>
+    <a href="board.html">Community Board</a>
     <a href="mailto:javidfuturebot@javid-dol.uk">Contact</a>
   </div>
 </div></footer>
+
+<script>
+async function javidDownload(platform, btnEl){
+  var input = document.getElementById('dlCode');
+  var msg = document.getElementById('dlGateMsg');
+  var code = (input.value || '').trim();
+  var buttons = document.querySelectorAll('.dl-gate-buttons .btn');
+  if (!code) {
+    msg.textContent = 'Enter your access code first.';
+    msg.className = 'dl-gate-msg dl-gate-error';
+    input.focus();
+    return;
+  }
+  buttons.forEach(function(b){ b.setAttribute('disabled', 'disabled'); });
+  msg.textContent = 'Checking code…';
+  msg.className = 'dl-gate-msg';
+  try {
+    var res = await fetch('/api/download', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code: code, platform: platform })
+    });
+    if (!res.ok) {
+      var data = {};
+      try { data = await res.json(); } catch (e) {}
+      msg.textContent = data.error === 'invalid_code'
+        ? 'That code is not valid. Double-check it, or ask in the Telegram community.'
+        : 'Something went wrong. Please try again in a moment.';
+      msg.className = 'dl-gate-msg dl-gate-error';
+      return;
+    }
+    var blob = await res.blob();
+    var filename = platform === 'mac' ? 'JaviD_Future_Bot_macOS.zip' : 'JaviD_Future_Bot_Windows.zip';
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    msg.textContent = 'Download started — check your browser downloads.';
+    msg.className = 'dl-gate-msg dl-gate-ok';
+  } catch (err) {
+    msg.textContent = 'Network error. Please try again.';
+    msg.className = 'dl-gate-msg dl-gate-error';
+  } finally {
+    buttons.forEach(function(b){ b.removeAttribute('disabled'); });
+  }
+}
+</script>
 
 <script>
 (function(){

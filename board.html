@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Board | JaviD Future Bot — Ask Us Anything</title>
+<meta name="description" content="Ask questions about JaviD Future Bot setup, strategy, or troubleshooting and get a direct reply from the team. No account required to post.">
+<meta name="keywords" content="crypto trading bot support, binance futures bot questions, JaviD Future Bot help">
+<link rel="canonical" href="https://javid-dol.uk/board.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Community Board — JaviD Future Bot">
+<meta property="og:description" content="Ask questions about setup, strategy, or troubleshooting. No account required — we reply directly here.">
+<meta property="og:url" content="https://javid-dol.uk/board.html">
+<style>
+:root {
+  --bg: #0a0d12; --surface:#0f131a; --panel:#111823; --panel-2:#131b27; --inset:#0d1420;
+  --line:#1c2530; --line-2:#27303f; --text:#dbe4f0; --muted:#7d8aa0; --faint:#5f6b7d;
+  --accent:#2dd4bf; --accent-dim:#14655c; --accent-bg:#0e3b34; --violet:#8b5cf6;
+  --up:#34d399; --down:#fb7185; --warn:#fbbf24;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'Segoe UI', system-ui, -apple-system, sans-serif; letter-spacing:-0.01em; line-height:1.6; }
+a { color:var(--accent); }
+.wrap { max-width: 980px; margin:0 auto; padding:0 24px; }
+
+.nav { position:sticky; top:0; z-index:50; display:flex; padding:16px 24px; background:rgba(10,13,18,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.nav-inner { max-width:1180px; margin:0 auto; width:100%; display:flex; align-items:center; justify-content:space-between; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:16px; }
+.brand-mark { width:22px; height:22px; background:conic-gradient(from 210deg, var(--accent), var(--violet), var(--accent)); clip-path:polygon(50% 0,100% 28%,100% 72%,50% 100%,0 72%,0 28%); }
+.brand em { font-style:normal; color:var(--accent); font-size:12px; font-weight:700; margin-left:2px; }
+.nav-links { display:flex; align-items:center; gap:26px; font-size:13.5px; color:var(--muted); font-weight:600; }
+.nav-links a:hover { color:var(--text); }
+.nav-cta { background: linear-gradient(135deg,#14b8a6,#0d9488); color:#04211d; padding:9px 18px; border-radius:999px; font-weight:800; font-size:13px; }
+.nav-highlight { position:relative; color:var(--accent) !important; }
+.nav-highlight .nh-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--violet); margin-left:5px; vertical-align:middle; }
+@media (max-width:760px) { .nav-links { display:none; } }
+
+/* ===== PAIN-POINT TICKER ===== */
+.ticker { position: sticky; top: 57px; z-index: 45; background: linear-gradient(180deg, rgba(15,19,26,.97), rgba(10,13,18,.97)); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); overflow: hidden; }
+.ticker-inner { max-width: 860px; margin: 0 auto; padding: 12px 24px; min-height: 84px; display:flex; align-items:center; justify-content:center; position:relative; }
+.ticker-slide { position:absolute; left:24px; right:24px; display:flex; align-items:center; justify-content:center; gap:14px; opacity:0; text-align:left; text-decoration:none; animation: tickerCycle 27s ease-in-out infinite; }
+.ticker-slide .tk-icon { font-size:26px; flex-shrink:0; }
+.ticker-slide .tk-text { text-align:left; }
+.ticker-slide .tk-text b { display:block; color:var(--accent); font-size:14px; font-weight:800; letter-spacing:-0.01em; }
+.ticker-slide .tk-text span { display:block; color:var(--text); font-size:13px; margin-top:3px; }
+.ticker-slide .tk-text small { display:block; color:var(--faint); font-size:11px; margin-top:3px; }
+.ticker-slide.t1 { animation-delay: 0s; }
+.ticker-slide.t2 { animation-delay: 4.5s; }
+.ticker-slide.t3 { animation-delay: 9s; }
+.ticker-slide.t4 { animation-delay: 13.5s; }
+.ticker-slide.t5 { animation-delay: 18s; }
+.ticker-slide.t6 { animation-delay: 22.5s; }
+@keyframes tickerCycle {
+  0%   { opacity: 0; transform: translateY(6px); }
+  3%   { opacity: 1; transform: translateY(0); }
+  15%  { opacity: 1; }
+  18%  { opacity: 0; transform: translateY(-6px); }
+  100% { opacity: 0; }
+}
+@media (max-width:640px) { .ticker-inner { min-height:96px; padding:10px 16px; } .ticker-slide { left:16px; right:16px; } .ticker-slide .tk-icon { font-size:22px; } }
+
+.hero { padding:64px 0 30px; text-align:center; }
+.kicker { display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); background:var(--accent-bg); border:1px solid var(--accent-dim); padding:6px 14px; border-radius:999px; margin-bottom:20px; }
+h1 { font-size:36px; font-weight:800; letter-spacing:-0.02em; margin-bottom:16px; }
+.hero p.sub { color:var(--muted); font-size:16px; max-width:620px; margin:0 auto 8px; }
+
+.quick-links { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:26px 0 10px; }
+.quick-links a { display:inline-flex; align-items:center; gap:8px; background:var(--panel); border:1px solid var(--line-2); color:var(--text); font-size:13.5px; font-weight:700; padding:10px 18px; border-radius:999px; }
+.quick-links a:hover { border-color:var(--accent-dim); color:var(--accent); }
+
+.board-note { display:flex; align-items:flex-start; gap:10px; background:rgba(45,212,191,.08); border:1px solid var(--accent-dim); border-radius:12px; padding:16px 20px; margin:36px 0 28px; font-size:14px; color:var(--text); line-height:1.6; }
+.board-note b { color:var(--accent); }
+
+.board-panel { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:26px 26px 30px; margin-bottom:60px; }
+.board-panel h4 { font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-bottom:18px; }
+
+.cta-band { text-align:center; padding:10px 0 60px; }
+.cta-band h3 { font-size:22px; margin-bottom:12px; }
+.cta-band p { color:var(--muted); margin-bottom:22px; }
+.btn { display:inline-flex; align-items:center; gap:9px; padding:14px 28px; border-radius:10px; font-weight:800; font-size:14.5px; background:linear-gradient(135deg,#14b8a6,#0d9488); color:#04211d; box-shadow:0 12px 30px -10px rgba(20,184,166,.55); }
+
+footer { border-top:1px solid var(--line); padding:34px 0; }
+.footer-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:12.5px; color:var(--faint); }
+.footer-links { display:flex; gap:20px; flex-wrap:wrap; }
+.footer-links a { color:var(--faint); }
+.footer-links a:hover { color:var(--accent); }
+
+@media (max-width:640px){ h1{font-size:28px;} }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="brand"><span class="brand-mark"></span>JaviD Future Bot <em>V18.0</em></a>
+  <div class="nav-links">
+    <a href="index.html#features">Features</a>
+    <a href="index.html#how-it-works">How It Works</a>
+    <a href="index.html#shadow-mode">Shadow Mode</a>
+    <a href="results.html">Real Results</a>
+    <a href="manual.html">User Manual</a>
+    <a href="binance-signup-api-guide.html">New to Binance?</a>
+    <a href="board.html" class="nav-highlight">Community Board<span class="nh-dot"></span></a>
+  </div>
+  <a href="index.html#download" class="nav-cta">Download Now</a>
+</div></nav>
+
+<div class="ticker"><div class="ticker-inner">
+  <div class="ticker-slide t1"><span class="tk-icon">🌙</span><span class="tk-text"><b>Still watching charts and trading through the night?</b><span>Let an AI-built strategy judge and execute for you, 24/7.</span></span></div>
+  <div class="ticker-slide t2"><span class="tk-icon">🛡️</span><span class="tk-text"><b>Not sure you can trust an auto-trading program?</b><span>Run Shadow Mode first — switch to live trading once you trust it.</span><small>Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small></span></div>
+  <a class="ticker-slide t3" href="results.html"><span class="tk-icon">📊</span><span class="tk-text"><b>Curious what the real win rate looks like?</b><span>Check the real trading results on this site and judge for yourself.</span></span></a>
+  <div class="ticker-slide t4"><span class="tk-icon">🪙</span><span class="tk-text"><b>Only trading Bitcoin futures?</b><span>Trade 500+ altcoin futures and stack consistent results, every day.</span></span></div>
+  <div class="ticker-slide t5"><span class="tk-icon">⚖️</span><span class="tk-text"><b>Worried about liquidation on leveraged futures?</b><span>Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.</span><small>Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.</small></span></div>
+  <div class="ticker-slide t6"><span class="tk-icon">🌱</span><span class="tk-text"><b>Think your starting amount is too small?</b><span>Entry size resizes daily off your live balance — feel what compounding does.</span></span></div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <span class="kicker">💬 Community Board</span>
+  <h1>Ask Us Anything About JaviD Future Bot</h1>
+  <p class="sub">Setup issues, strategy questions, feature requests — post below and we'll reply directly on this page. No account or sign-up required to post.</p>
+  <div class="quick-links">
+    <a href="manual.html">📖 Check the User Manual first</a>
+    <a href="index.html#faq">❓ Read the FAQ</a>
+    <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">📲 Faster answer? Ask in Telegram</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk">✉️ Email us</a>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <div class="board-note">💬 <span><b>How this works:</b> type your name and question below, no login needed. Every post is reviewed and answered directly here — most questions get a reply within a day or two. For anything urgent, use Telegram instead.</span></div>
+
+  <div class="board-panel">
+    <h4>Questions &amp; Answers</h4>
+    <!-- Cusdis embed — replace data-app-id with your real App ID from cusdis.com -->
+    <div id="cusdis_thread"
+      data-host="https://cusdis.com"
+      data-app-id="YOUR_CUSDIS_APP_ID"
+      data-page-id="board-main"
+      data-page-url="https://javid-dol.uk/board.html"
+      data-page-title="JaviD Future Bot — Community Board"
+    ></div>
+    <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+  </div>
+</div>
+
+<section class="cta-band"><div class="wrap">
+  <h3>Ready to try it yourself?</h3>
+  <p>Free download, runs 100% locally — your keys never leave your PC.</p>
+  <a href="index.html#download" class="btn">⬇ Back to JaviD Future Bot</a>
+</div></section>
+
+<footer><div class="wrap footer-row">
+  <span>© 2026 JaviD Future Bot · javid-dol.uk</span>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="results.html">Real Results</a>
+    <a href="manual.html">User Manual</a>
+    <a href="binance-signup-api-guide.html">Binance Setup Guide</a>
+    <a href="https://github.com/olkdol/javid-future-bot" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk">Contact</a>
+  </div>
+</div></footer>
+
+</body>
+</html>
