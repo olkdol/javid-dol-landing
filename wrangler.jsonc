@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "javid-dol-landing",
+  "name": "javid-dol-landing2",
   "compatibility_date": "2026-07-13",
   "main": "worker.js",
   "observability": {
