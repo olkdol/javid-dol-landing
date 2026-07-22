@@ -1,14 +1,7 @@
-// Cloudflare Workers entry point for javid-dol-landing.
-//
-// This project deploys as a Worker with static assets (the current unified
-// Cloudflare product), NOT classic "Pages". That means files under
-// /functions are not auto-routed the way Pages Functions used to be —
-// this file manually wires those same handlers in so nothing else has to
-// change inside /functions.
-//
-// Routing: requests to /api/* are handled below by importing the existing
-// Pages-Functions-style handlers directly. Everything else (index.html,
-// board.html, images, etc.) falls through to the static assets binding.
+// Cloudflare Workers entry point for javidfuturebot2 (Bitget edition).
+// Same pattern as the main javid-dol-landing worker: /api/* is handled here
+// by importing the Pages-Functions-style handlers directly; everything else
+// falls through to the static assets binding.
 
 import { onRequestPost as downloadPost, onRequestGet as downloadGet } from "./functions/api/download.js";
 import { onRequestGet as boardListGet, onRequestPost as boardListPost } from "./functions/api/board/posts.js";
@@ -54,7 +47,6 @@ export default {
       });
     }
 
-    // No API route matched — serve the static file.
     return env.ASSETS.fetch(request);
   },
 };

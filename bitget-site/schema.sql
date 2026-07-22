@@ -1,4 +1,4 @@
--- JaviD Future Bot community board — D1 schema
+-- JaviD Future Bot (Bitget edition) community board + live status — D1 schema
 -- Run this once in the D1 database's Console tab (Cloudflare dashboard),
 -- or via: wrangler d1 execute <DB_NAME> --file=schema.sql
 
@@ -15,8 +15,7 @@ CREATE TABLE IF NOT EXISTS posts (
 );
 
 -- Single-row table holding the operator's live account snapshot, pushed
--- periodically by the local bot. Only one row (id = 1) ever exists — every
--- push overwrites it. Powers the "Live Proof" section on index.html.
+-- periodically by the local bot. Only one row (id = 1) ever exists.
 CREATE TABLE IF NOT EXISTS live_status (
   id INTEGER PRIMARY KEY CHECK (id = 1),
   balance REAL,

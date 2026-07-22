@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://javidfuturebot2.javid-dol.uk/sitemap.xml

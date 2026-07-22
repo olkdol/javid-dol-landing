@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Board | JaviD Future Bot — Ask Us Anything</title>
+<meta name="description" content="Ask questions about JaviD Future Bot setup, strategy, or troubleshooting and get a direct reply from the team. No account required to post.">
+<link rel="canonical" href="https://javidfuturebot2.javid-dol.uk/board.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08090b; --bg2:#0d0f12; --panel:#101317; --panel-2:#131920; --inset:#0b0d10;
+  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+  --text:#e9ebee; --muted:#9aa0aa; --faint:#6b707a;
+  --accent:#00f0ff; --accent-dim:#0a4f57; --accent-bg:#082a2e; --accent2:#e8b44c;
+  --up:#3ddc84; --down:#ff6b6b; --warn:#e8b44c;
+  --serif:'Playfair Display',Georgia,serif; --sans:'Inter',-apple-system,sans-serif;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6;}
+a{color:var(--accent); text-decoration:none;}
+.wrap{max-width:900px; margin:0 auto; padding:0 24px;}
+.serif{font-family:var(--serif);}
+
+nav{position:sticky; top:0; z-index:50; background:rgba(8,9,11,.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+.nav-row{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:1180px; margin:0 auto;}
+.nav-logo{font-family:var(--serif); font-size:18px; font-weight:600;}
+.nav-logo b{color:var(--accent); font-weight:600;}
+.nav-links{display:flex; gap:28px; align-items:center;}
+.nav-links a{font-size:13px; color:var(--faint);}
+.nav-links a:hover{color:var(--text);}
+.nav-highlight{color:var(--accent) !important;}
+.nav-cta{font-size:12px; letter-spacing:.06em; text-transform:uppercase; border:1px solid var(--line); padding:9px 18px; border-radius:100px;}
+.nav-cta:hover{border-color:var(--accent); color:var(--accent);}
+@media (max-width:820px){ .nav-links{display:none;} }
+
+.hero{padding:64px 0 30px; text-align:center;}
+.kicker{display:inline-flex; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:18px;}
+h1{font-family:var(--serif); font-size:clamp(28px,4vw,42px); font-weight:600; margin-bottom:16px;}
+.hero p.sub{color:var(--muted); font-size:15px; max-width:600px; margin:0 auto 8px;}
+
+.quick-links{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin:26px 0 10px;}
+.quick-links a{display:inline-flex; align-items:center; gap:8px; background:var(--panel); border:1px solid var(--line-2); color:var(--text); font-size:13px; font-weight:600; padding:10px 18px; border-radius:100px;}
+.quick-links a:hover{border-color:var(--accent-dim); color:var(--accent);}
+
+.board-note{display:flex; gap:10px; background:rgba(0,240,255,.06); border:1px solid var(--accent-dim); border-radius:10px; padding:16px 20px; margin:36px 0 28px; font-size:14px; line-height:1.6;}
+.board-note b{color:var(--accent);}
+
+.board-write{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:22px 24px; margin-bottom:20px;}
+.board-write h4{font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-bottom:14px;}
+.bw-row{margin-bottom:10px;}
+input[type=text], input[type=password], textarea{
+  width:100%; background:var(--inset); border:1px solid var(--line-2); color:var(--text);
+  border-radius:8px; padding:10px 12px; font-size:13.5px; font-family:inherit;
+}
+textarea{min-height:90px; resize:vertical;}
+.bw-secret{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); margin-bottom:10px;}
+.bw-secret input{width:auto;}
+.bw-pass{display:none; margin-bottom:10px;}
+.bw-pass.show{display:block;}
+.board-submit-msg{font-size:12.5px; margin-top:8px; min-height:16px;}
+.board-submit-msg.err{color:var(--warn);}
+.board-submit-msg.ok{color:var(--accent);}
+
+.board-toolbar{display:flex; justify-content:flex-end; margin-bottom:10px;}
+.board-admin-link{font-size:12px; color:var(--faint); cursor:pointer; text-decoration:underline;}
+
+.board-panel{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:26px; margin-bottom:60px;}
+.board-panel h4{font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-bottom:18px;}
+
+.board-post{background:var(--panel-2); border:1px solid var(--line); border-radius:8px; padding:16px 20px; margin-bottom:12px;}
+.bp-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:10px; flex-wrap:wrap;}
+.bp-name{font-weight:700; font-size:13.5px;}
+.bp-date{font-size:11.5px; color:var(--faint);}
+.bp-lock{font-size:11.5px; color:var(--warn); font-weight:700; margin-left:6px;}
+.bp-content{font-size:14px; white-space:pre-wrap;}
+.bp-locked-box{display:flex; gap:8px; align-items:center;}
+.bp-locked-box input{max-width:160px;}
+.bp-reply{margin-top:12px; padding:12px 14px; background:var(--inset); border-left:3px solid var(--accent); border-radius:6px; font-size:13.5px;}
+.bp-reply b{color:var(--accent);}
+.bp-admin-actions{display:flex; gap:10px; margin-top:12px;}
+.bp-reply-form{display:none; margin-top:10px; flex-direction:column; gap:8px;}
+.bp-reply-form.show{display:flex;}
+.btn-sm{padding:7px 14px !important; font-size:12px !important;}
+.btn-outline{background:transparent !important; color:var(--text) !important; border:1px solid var(--line-2);}
+.btn-danger{background:rgba(255,107,107,.12) !important; color:#ffb3b3 !important; border:1px solid rgba(255,107,107,.4);}
+
+.cta-band{text-align:center; padding:10px 0 60px;}
+.cta-band h3{font-family:var(--serif); font-size:24px; margin-bottom:12px; font-weight:600;}
+.cta-band p{color:var(--muted); margin-bottom:22px;}
+.btn{display:inline-flex; align-items:center; gap:9px; padding:14px 28px; border-radius:100px; font-weight:700; font-size:14px; background:var(--accent); color:#04211d;}
+
+footer{border-top:1px solid var(--line); padding:34px 0;}
+.footer-row{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:12.5px; color:var(--faint);}
+.footer-links{display:flex; gap:20px; flex-wrap:wrap;}
+.footer-links a{color:var(--faint);}
+.footer-links a:hover{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-row">
+  <a href="index.html" class="nav-logo">JaviD <b>Future Bot</b></a>
+  <div class="nav-links">
+    <a href="index.html#capabilities">Capabilities</a>
+    <a href="index.html#architecture">Architecture</a>
+    <a href="index.html#research">Research</a>
+    <a href="bitget-signup-api-guide.html">New to Bitget?</a>
+    <a href="board.html" class="nav-highlight">Community Board</a>
+  </div>
+  <a href="index.html#download" class="nav-cta">Get Access</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <span class="kicker">💬 Community Board</span>
+  <h1>Ask Us Anything About JaviD Future Bot</h1>
+  <p class="sub">Setup issues, strategy questions, feature requests — post below and we'll reply directly on this page. No account or sign-up required to post.</p>
+  <div class="quick-links">
+    <a href="bitget-signup-api-guide.html">📖 Check the Setup Guide first</a>
+    <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">📲 Faster answer? Ask in Telegram</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk">✉️ Email us</a>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <div class="board-note">💬 <span><b>How this works:</b> type your name and question below, no login needed. Mark a post <b>secret</b> to set your own password — only you (with that password) and the JaviD admin can read it. Every post is reviewed and answered directly here.</span></div>
+
+  <div class="board-write">
+    <h4>Write a question</h4>
+    <div class="bw-row"><input type="text" id="bwName" placeholder="Your name" maxlength="40" /></div>
+    <div class="bw-row"><textarea id="bwContent" placeholder="What do you want to ask?" maxlength="4000"></textarea></div>
+    <label class="bw-secret"><input type="checkbox" id="bwSecret" /> Make this a secret post (password-protected)</label>
+    <div class="bw-pass" id="bwPassWrap"><input type="password" id="bwPass" placeholder="Set a password to read it later" maxlength="100" /></div>
+    <button type="button" class="btn" onclick="submitPost()">Post</button>
+    <p class="board-submit-msg" id="bwMsg"></p>
+  </div>
+
+  <div class="board-toolbar"><span class="board-admin-link" id="adminLink" onclick="adminLogin()">Admin</span></div>
+
+  <div class="board-panel">
+    <h4>Questions &amp; Answers</h4>
+    <div id="boardList"><p style="color:var(--faint);font-size:13px;">Loading…</p></div>
+  </div>
+</div>
+
+<script>
+const ADMIN_KEY_STORAGE = 'javid_board_admin_key';
+function getAdminKey() { return localStorage.getItem(ADMIN_KEY_STORAGE) || ''; }
+
+function adminLogin() {
+  if (getAdminKey()) {
+    if (confirm('Log out of admin mode?')) {
+      localStorage.removeItem(ADMIN_KEY_STORAGE);
+      updateAdminLink();
+      loadPosts();
+    }
+    return;
+  }
+  const key = prompt('Enter admin key:');
+  if (!key) return;
+  localStorage.setItem(ADMIN_KEY_STORAGE, key);
+  updateAdminLink();
+  loadPosts();
+}
+
+function updateAdminLink() {
+  document.getElementById('adminLink').textContent = getAdminKey() ? 'Admin mode ON (click to log out)' : 'Admin';
+}
+
+document.getElementById('bwSecret').addEventListener('change', function () {
+  document.getElementById('bwPassWrap').classList.toggle('show', this.checked);
+});
+
+async function submitPost() {
+  const name = document.getElementById('bwName').value.trim();
+  const content = document.getElementById('bwContent').value.trim();
+  const secret = document.getElementById('bwSecret').checked;
+  const password = document.getElementById('bwPass').value;
+  const msg = document.getElementById('bwMsg');
+  if (!name || !content) { msg.textContent = 'Enter your name and question.'; msg.className = 'board-submit-msg err'; return; }
+  if (secret && !password) { msg.textContent = 'Set a password for the secret post.'; msg.className = 'board-submit-msg err'; return; }
+  msg.textContent = 'Posting…'; msg.className = 'board-submit-msg';
+  try {
+    const res = await fetch('/api/board/posts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, content, secret, password })
+    });
+    if (!res.ok) throw new Error();
+    document.getElementById('bwName').value = '';
+    document.getElementById('bwContent').value = '';
+    document.getElementById('bwSecret').checked = false;
+    document.getElementById('bwPass').value = '';
+    document.getElementById('bwPassWrap').classList.remove('show');
+    msg.textContent = 'Posted.'; msg.className = 'board-submit-msg ok';
+    loadPosts();
+  } catch (e) {
+    msg.textContent = 'Something went wrong. Try again.'; msg.className = 'board-submit-msg err';
+  }
+}
+
+function fmtDate(iso) { try { return new Date(iso).toLocaleString(); } catch (e) { return iso; } }
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str == null ? '' : str;
+  return d.innerHTML;
+}
+
+async function loadPosts() {
+  const list = document.getElementById('boardList');
+  list.innerHTML = '<p style="color:var(--faint);font-size:13px;">Loading…</p>';
+  const headers = {};
+  const adminKey = getAdminKey();
+  if (adminKey) headers['x-admin-key'] = adminKey;
+  try {
+    const res = await fetch('/api/board/posts', { headers });
+    const data = await res.json();
+    const posts = data.posts || [];
+    if (!posts.length) {
+      list.innerHTML = '<p style="color:var(--faint);font-size:13px;">No questions yet — be the first to ask.</p>';
+      return;
+    }
+    list.innerHTML = posts.map(renderPost).join('');
+  } catch (e) {
+    list.innerHTML = '<p style="color:var(--warn);font-size:13px;">Could not load posts.</p>';
+  }
+}
+
+function renderPost(p) {
+  const admin = !!getAdminKey();
+  const locked = p.is_secret && p.content === null;
+  let bodyHtml;
+  if (locked) {
+    bodyHtml = '<div class="bp-locked-box"><input type="password" id="unlock-' + p.id + '" placeholder="Password" maxlength="100" />' +
+      '<button type="button" class="btn btn-sm btn-outline" onclick="unlockPost(' + p.id + ')">Unlock</button></div>' +
+      '<div id="unlocked-' + p.id + '"></div>';
+  } else {
+    bodyHtml = '<div class="bp-content">' + escapeHtml(p.content) + '</div>';
+  }
+  const reply = p.reply ? '<div class="bp-reply"><b>Admin reply:</b> ' + escapeHtml(p.reply) + '</div>' : '';
+  const adminActions = admin
+    ? '<div class="bp-admin-actions">' +
+        '<button type="button" class="btn btn-sm btn-danger" onclick="deletePost(' + p.id + ')">🗑 Delete</button>' +
+        '<button type="button" class="btn btn-sm btn-outline" onclick="toggleReplyForm(' + p.id + ')">↩ Reply</button>' +
+      '</div>' +
+      '<div class="bp-reply-form" id="replyform-' + p.id + '">' +
+        '<textarea id="replytext-' + p.id + '" placeholder="Write a reply…" maxlength="2000"></textarea>' +
+        '<button type="button" class="btn btn-sm" style="align-self:flex-start;" onclick="submitReply(' + p.id + ')">Send reply</button>' +
+      '</div>'
+    : '';
+  return '<div class="board-post" id="post-' + p.id + '">' +
+      '<div class="bp-head"><span class="bp-name">' + escapeHtml(p.name) + (p.is_secret ? '<span class="bp-lock">🔒 Secret</span>' : '') + '</span>' +
+      '<span class="bp-date">' + fmtDate(p.created_at) + '</span></div>' +
+      bodyHtml + reply + adminActions +
+    '</div>';
+}
+
+async function unlockPost(id) {
+  const input = document.getElementById('unlock-' + id);
+  const password = input.value;
+  if (!password) return;
+  const target = document.getElementById('unlocked-' + id);
+  try {
+    const res = await fetch('/api/board/posts/' + id + '?password=' + encodeURIComponent(password));
+    const data = await res.json();
+    if (!res.ok) { target.innerHTML = '<p style="color:var(--warn);font-size:12.5px;margin-top:6px;">Wrong password.</p>'; return; }
+    target.innerHTML = '<div class="bp-content" style="margin-top:10px;">' + escapeHtml(data.content) + '</div>';
+  } catch (e) {
+    target.innerHTML = '<p style="color:var(--warn);font-size:12.5px;">Error unlocking post.</p>';
+  }
+}
+
+function toggleReplyForm(id) { document.getElementById('replyform-' + id).classList.toggle('show'); }
+
+async function submitReply(id) {
+  const text = document.getElementById('replytext-' + id).value.trim();
+  if (!text) return;
+  try {
+    const res = await fetch('/api/board/posts/' + id, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json', 'x-admin-key': getAdminKey() },
+      body: JSON.stringify({ reply: text })
+    });
+    if (!res.ok) { alert('Failed to send reply.'); return; }
+    loadPosts();
+  } catch (e) { alert('Failed to send reply.'); }
+}
+
+async function deletePost(id) {
+  if (!confirm('Delete this post permanently?')) return;
+  try {
+    const res = await fetch('/api/board/posts/' + id, { method: 'DELETE', headers: { 'x-admin-key': getAdminKey() } });
+    if (!res.ok) { alert('Failed to delete (wrong admin key?).'); return; }
+    loadPosts();
+  } catch (e) { alert('Failed to delete.'); }
+}
+
+updateAdminLink();
+loadPosts();
+</script>
+
+<section class="cta-band"><div class="wrap">
+  <h3>Ready to try it yourself?</h3>
+  <p>Free download, runs 100% locally — your keys never leave your PC.</p>
+  <a href="index.html#download" class="btn">⬇ Back to JaviD Future Bot</a>
+</div></section>
+
+<footer><div class="wrap footer-row">
+  <span>© 2026 JaviD Future Bot · javidfuturebot2.javid-dol.uk</span>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="bitget-signup-api-guide.html">Bitget Setup Guide</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk">Contact</a>
+  </div>
+</div></footer>
+
+</body>
+</html>

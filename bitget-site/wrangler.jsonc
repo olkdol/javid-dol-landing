@@ -1,0 +1,46 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "javidfuturebot2-landing",
+  "compatibility_date": "2026-07-13",
+  "main": "worker.js",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "compatibility_flags": ["nodejs_compat"],
+
+  // --- Fill these in from the Cloudflare dashboard after creating this
+  // project, then commit + push. Same pattern as the main javid-dol-landing
+  // project, but with SEPARATE resources so Binance/Bitget data never mixes. ---
+
+  // D1 (community board + live status). Storage & Databases -> D1 SQL Database
+  // -> create a new database (e.g. "javid-board-db-bitget") -> copy "Database ID".
+  "d1_databases": [
+    {
+      "binding": "BOARD_DB",
+      "database_name": "javid-board-db-bitget",
+      "database_id": "PASTE_D1_DATABASE_ID_HERE"
+    }
+  ],
+
+  // KV (download access codes). Storage & Databases -> KV -> create a new
+  // namespace (e.g. "DOWNLOAD_CODES_BITGET") -> copy "Namespace ID".
+  "kv_namespaces": [
+    {
+      "binding": "DOWNLOAD_CODES",
+      "id": "PASTE_KV_NAMESPACE_ID_HERE"
+    }
+  ],
+
+  // R2 (installer zip files). Storage & Databases -> R2 -> create a new
+  // bucket (e.g. "javid-downloads-bitget") -> bucket_name is its name.
+  "r2_buckets": [
+    {
+      "binding": "DOWNLOADS_BUCKET",
+      "bucket_name": "PASTE_R2_BUCKET_NAME_HERE"
+    }
+  ]
+}

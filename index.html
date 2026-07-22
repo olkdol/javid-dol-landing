@@ -410,16 +410,48 @@ footer { border-top:1px solid var(--line); padding: 34px 0; }
   <div class="section-head" style="margin-bottom:36px;">
     <div class="section-kicker">Live Proof</div>
     <div class="section-title">Before the Pitch, Here's an Account Running Right Now</div>
-    <p class="section-sub">Below is a Shadow Mode account snapshot pulled straight from a live Telegram report — real Binance market data, virtual USDT, zero real capital at risk.</p>
+    <p class="section-sub" id="liveProofSub">Below is a Shadow Mode account snapshot pulled straight from a live Telegram report — real Binance market data, virtual USDT, zero real capital at risk.</p>
+    <p id="liveBadge" style="display:none;margin-top:8px;font-size:13px;font-weight:700;color:#3ddc84;">🟢 Live — updated <span id="liveUpdated"></span> ago</p>
   </div>
   <div class="stats-grid">
-    <div class="stat-card"><div class="stat-num">1,032.77</div><div class="stat-label">Balance (USDT) — Shadow Mode, virtual funds</div></div>
-    <div class="stat-card"><div class="stat-num">+32.77</div><div class="stat-label">Cumulative P&amp;L (USDT) across 97 trades</div></div>
-    <div class="stat-card"><div class="stat-num">+3.28%</div><div class="stat-label">Cumulative return since Shadow Mode start</div></div>
-    <div class="stat-card"><div class="stat-num">81.4%</div><div class="stat-label">Win rate over the same run</div></div>
+    <div class="stat-card"><div class="stat-num" id="lpBalance">1,032.77</div><div class="stat-label">Balance (USDT) — Shadow Mode, virtual funds</div></div>
+    <div class="stat-card"><div class="stat-num" id="lpPnl">+32.77</div><div class="stat-label" id="lpPnlLabel">Cumulative P&amp;L (USDT) across 97 trades</div></div>
+    <div class="stat-card"><div class="stat-num" id="lpReturn">+3.28%</div><div class="stat-label">Cumulative return since Shadow Mode start</div></div>
+    <div class="stat-card"><div class="stat-num" id="lpWinRate">81.4%</div><div class="stat-label">Win rate over the same run</div></div>
   </div>
-  <p class="sim-note">Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses, exactly as the bot's exit logic was still managing them. Shadow Mode trades live Binance market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" style="color:var(--accent);font-weight:700;">Real Results</a> page.</p>
+  <p class="sim-note" id="lpNote">Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses, exactly as the bot's exit logic was still managing them. Shadow Mode trades live Binance market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" style="color:var(--accent);font-weight:700;">Real Results</a> page.</p>
 </div></section>
+
+<script>
+(function(){
+  function timeAgo(iso){
+    var diffMs = Date.now() - new Date(iso).getTime();
+    var mins = Math.max(0, Math.round(diffMs / 60000));
+    if (mins < 1) return 'just now';
+    if (mins < 60) return mins + 'm';
+    var hrs = Math.round(mins / 60);
+    if (hrs < 24) return hrs + 'h';
+    return Math.round(hrs / 24) + 'd';
+  }
+  function fmtNum(n, decimals){
+    var sign = n > 0 ? '+' : '';
+    return sign + n.toFixed(decimals);
+  }
+  fetch('/api/status').then(function(r){ return r.json(); }).then(function(data){
+    if (!data || !data.live) return; // keep static fallback snapshot as-is
+    document.getElementById('lpBalance').textContent = Number(data.balance).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+    document.getElementById('lpPnl').textContent = fmtNum(Number(data.cumulative_pnl), 2);
+    if (data.trade_count) document.getElementById('lpPnlLabel').textContent = 'Cumulative P&L (USDT) across ' + data.trade_count + ' trades';
+    document.getElementById('lpReturn').textContent = fmtNum(Number(data.cumulative_return_pct), 2) + '%';
+    document.getElementById('lpWinRate').textContent = Number(data.win_rate).toFixed(1) + '%';
+    document.getElementById('liveUpdated').textContent = timeAgo(data.updated_at);
+    document.getElementById('liveBadge').style.display = 'block';
+    document.getElementById('liveProofSub').textContent = 'Live account snapshot, pulled directly from the running bot — real Binance market data, virtual USDT, zero real capital at risk.';
+    var openTxt = data.open_positions != null ? data.open_positions + ' positions open right now, ' : '';
+    document.getElementById('lpNote').innerHTML = 'Live data, refreshed automatically — ' + openTxt + 'a mix of floating gains and losses as the bot\'s exit logic manages them in real time. Shadow Mode trades live Binance market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" style="color:var(--accent);font-weight:700;">Real Results</a> page.';
+  }).catch(function(){ /* static fallback stays visible */ });
+})();
+</script>
 
 <!-- ================= SCREENSHOT SHOWCASE (video slot) ================= -->
 <!-- TODO: when a screen-recording (mp4/YouTube) is ready, replace the .showcase-stage content with a <video> or iframe -->
