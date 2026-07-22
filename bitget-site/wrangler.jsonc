@@ -22,7 +22,7 @@
     {
       "binding": "BOARD_DB",
       "database_name": "javid-board-db-bitget",
-      "database_id": "PASTE_D1_DATABASE_ID_HERE"
+      "database_id": "984b1bcb-c257-496e-b5c4-6c73a1c1b994"
     }
   ],
 
@@ -31,7 +31,7 @@
   "kv_namespaces": [
     {
       "binding": "DOWNLOAD_CODES",
-      "id": "PASTE_KV_NAMESPACE_ID_HERE"
+      "id": "57ea8a6bb25e4e4da2d850fd045e3b23"
     }
   ],
 
@@ -40,7 +40,7 @@
   "r2_buckets": [
     {
       "binding": "DOWNLOADS_BUCKET",
-      "bucket_name": "PASTE_R2_BUCKET_NAME_HERE"
+      "bucket_name": "javid-downloads-bitget"
     }
   ]
 }
