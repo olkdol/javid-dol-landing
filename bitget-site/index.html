@@ -461,14 +461,11 @@
   <div class="section-title">$0 subscription. Free forever.</div>
   <p class="section-sub">A real Bitget USDT-M futures execution engine that runs entirely on your own PC — your keys, your funds, your control, on every single trade.</p>
   <div class="dl-gate" id="dlGate">
-    <label for="dlCode" class="dl-gate-label">Enter your access code to download</label>
-    <input type="text" id="dlCode" class="dl-gate-input" placeholder="Insert UID" autocomplete="off" maxlength="40" />
     <div class="dl-gate-buttons">
-      <button type="button" class="btn btn-primary" onclick="javidDownload('windows', this)">🪟 Download for Windows</button>
-      <button type="button" class="btn btn-ghost" onclick="javidDownload('mac', this)">🍎 Download for macOS</button>
+      <a href="downloads/JaviD_Future_Bot_Bitget_Windows.zip" class="btn btn-primary" download>🪟 Download for Windows</a>
+      <a href="downloads/JaviD_Future_Bot_Bitget_macOS.zip" class="btn btn-ghost" download>🍎 Download for macOS</a>
     </div>
-    <p class="dl-gate-msg" id="dlGateMsg"></p>
-    <p class="dl-gate-help">No code yet? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">Join the Telegram community</a> — codes are issued free after you sign up with our Bitget referral link.</p>
+    <p class="dl-gate-help">Questions during setup? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">Join the Telegram community</a>.</p>
   </div>
 </div></section>
 
@@ -681,53 +678,7 @@ document.querySelectorAll('.netCanvas').forEach(function(canvas){
   }).catch(function(){});
 })();
 
-/* ---------- Download gate ---------- */
-async function javidDownload(platform, btnEl){
-  var input = document.getElementById('dlCode');
-  var msg = document.getElementById('dlGateMsg');
-  var code = (input.value || '').trim();
-  var buttons = document.querySelectorAll('.dl-gate-buttons .btn');
-
-  if (!code) {
-    msg.textContent = 'Enter your access code first.';
-    msg.className = 'dl-gate-msg dl-gate-error';
-    input.focus();
-    return;
-  }
-  buttons.forEach(function(b){ b.setAttribute('disabled', 'disabled'); });
-  msg.textContent = 'Checking code…';
-  msg.className = 'dl-gate-msg';
-  try {
-    var res = await fetch('/api/download', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ code: code, platform: platform })
-    });
-    if (!res.ok) {
-      var data = {};
-      try { data = await res.json(); } catch (e) {}
-      msg.textContent = data.error === 'invalid_code'
-        ? 'That code is not valid. Double-check it, or ask in the Telegram community.'
-        : 'Something went wrong. Please try again in a moment.';
-      msg.className = 'dl-gate-msg dl-gate-error';
-      return;
-    }
-    var blob = await res.blob();
-    var filename = platform === 'mac' ? 'JaviD_Future_Bot_Bitget_macOS.zip' : 'JaviD_Future_Bot_Bitget_Windows.zip';
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url; a.download = filename;
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    msg.textContent = 'Download started — check your downloads folder.';
-    msg.className = 'dl-gate-msg dl-gate-ok';
-  } catch (e) {
-    msg.textContent = 'Something went wrong. Please try again in a moment.';
-    msg.className = 'dl-gate-msg dl-gate-error';
-  } finally {
-    buttons.forEach(function(b){ b.removeAttribute('disabled'); });
-  }
-}
+/* ---------- Download gate: temporarily disabled — direct links used instead (see #download section) ---------- */
 </script>
 </body>
 </html>
