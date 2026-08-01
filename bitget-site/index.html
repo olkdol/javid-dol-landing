@@ -586,14 +586,12 @@
   <p class="mx-auto mt-4 max-w-xl text-[15px] text-slate-500">Let JaviD take care of the tedious tasks — while you keep your keys, your funds, your control, on every single trade.</p>
 
   <div class="mx-auto mt-9 max-w-md rounded-2xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-900/5">
-    <label for="dlCode" class="mb-2.5 block text-[12.5px] font-bold text-slate-500">Enter your access code to download</label>
-    <input type="text" id="dlCode" placeholder="Insert UID" autocomplete="off" maxlength="40" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3.5 text-center text-[14px] font-bold uppercase tracking-wide text-slate-900 outline-none focus:border-indigo-500 focus:bg-white">
-    <div class="mt-4 flex flex-wrap justify-center gap-3">
-      <button type="button" onclick="javidDownload('windows', this)" class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</button>
-      <button type="button" onclick="javidDownload('mac', this)" class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</button>
+    <p class="mb-4 text-[12.5px] font-bold text-slate-500">Free, instant download — no code, no signup required</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="downloads/JaviD_Future_Bot_Bitget_Windows.zip" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</a>
+      <a href="downloads/JaviD_Future_Bot_Bitget_macOS.zip" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</a>
     </div>
-    <p id="dlGateMsg" class="mt-3 min-h-[18px] text-[13px] font-semibold"></p>
-    <p class="mt-1.5 text-[12.5px] text-slate-400">No code yet? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" class="font-bold text-indigo-600 hover:underline">Join the Telegram community</a> — codes are issued free after you sign up with our Bitget referral link.</p>
+    <p class="mt-3.5 text-[12.5px] text-slate-400">Don't have a Bitget account yet? <a href="https://partner.bitget.com/bg/javid003" target="_blank" rel="noopener" class="font-bold text-indigo-600 hover:underline">Sign up through our official partner link</a>.</p>
   </div>
 
   <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12.5px] font-semibold text-slate-500">
@@ -601,7 +599,7 @@
     <span class="flex items-center gap-1.5"><i data-lucide="check" class="h-4 w-4 text-emerald-500"></i>No hidden fees</span>
     <span class="flex items-center gap-1.5"><i data-lucide="check" class="h-4 w-4 text-emerald-500"></i>No credit card</span>
   </div>
-  <p class="mt-4 text-[12.5px] text-slate-400">Enter your code → click your OS → unzip → run <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. First time? Follow along with the <a href="manual.html" class="font-bold text-indigo-600 hover:underline">User Manual</a>.</p>
+  <p class="mt-4 text-[12.5px] text-slate-400">Click your OS → unzip → run <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. First time? Follow along with the <a href="manual.html" class="font-bold text-indigo-600 hover:underline">User Manual</a>.</p>
   <p class="mt-1.5 text-[12.5px] text-slate-400">Questions? Email <a href="mailto:javidfuturebot@javid-dol.uk" class="font-bold text-indigo-600 hover:underline">javidfuturebot@javid-dol.uk</a> or ask on the <a href="board.html" class="font-bold text-indigo-600 hover:underline">Community Board</a>.</p>
 
   <p class="mx-auto mt-12 max-w-2xl border-t border-slate-200 pt-6 text-[11.5px] leading-relaxed text-slate-400">Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. JaviD Future Bot is a standalone execution tool — it does not guarantee profits. Performance figures on this page are Shadow Mode (virtual balance) data and snapshots of real dashboard records from specific periods; they do not guarantee or imply future results. All trading decisions and their outcomes are the sole responsibility of the user. JaviD Future Bot does not provide investment advice, does not custody funds, and does not execute trades on any server — every order is placed directly from your own device using your own Bitget API credentials.</p>
@@ -656,54 +654,6 @@
     <span>Bitget USDT-M Futures automation · Windows &amp; macOS</span>
   </div>
 </div></footer>
-
-<script>
-async function javidDownload(platform, btnEl){
-  var input = document.getElementById('dlCode');
-  var msg = document.getElementById('dlGateMsg');
-  var code = (input.value || '').trim();
-  var buttons = document.querySelectorAll('#download button');
-  if (!code) {
-    msg.textContent = 'Enter your access code first.';
-    msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-amber-600';
-    input.focus();
-    return;
-  }
-  buttons.forEach(function(b){ b.setAttribute('disabled', 'disabled'); });
-  msg.textContent = 'Checking code…';
-  msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-slate-500';
-  try {
-    var res = await fetch('/api/download', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ code: code, platform: platform })
-    });
-    if (!res.ok) {
-      var data = {};
-      try { data = await res.json(); } catch (e) {}
-      msg.textContent = data.error === 'invalid_code'
-        ? 'That code is not valid. Double-check it, or ask in the Telegram community.'
-        : 'Something went wrong. Please try again in a moment.';
-      msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-amber-600';
-      return;
-    }
-    var blob = await res.blob();
-    var filename = platform === 'mac' ? 'JaviD_Future_Bot_Bitget_macOS.zip' : 'JaviD_Future_Bot_Bitget_Windows.zip';
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url; a.download = filename;
-    document.body.appendChild(a); a.click(); a.remove();
-    URL.revokeObjectURL(url);
-    msg.textContent = 'Download started — check your browser downloads.';
-    msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-emerald-600';
-  } catch (err) {
-    msg.textContent = 'Network error. Please try again.';
-    msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-amber-600';
-  } finally {
-    buttons.forEach(function(b){ b.removeAttribute('disabled'); });
-  }
-}
-</script>
 
 <script>
 (function(){
