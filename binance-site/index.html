@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JaviD Future Bot — Automated Binance Futures Trading Bot, 24/7 | Free Crypto Auto Trading</title>
+<meta name="description" content="JaviD Future Bot — the automated Binance USDⓈ-M futures trading program. No impulse trades, no emotion: three quant-built strategies, tick-level exits, 100% local execution. Free forever, Windows &amp; macOS.">
+<meta name="keywords" content="crypto auto trading, binance futures bot, automated crypto trading, crypto trading bot, binance auto trading, futures trading bot, free trading bot">
+<link rel="canonical" href="https://bn.javidtrading.com/">
+<link rel="icon" type="image/png" href="images/favicon-32.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JaviD Future Bot">
+<meta property="og:title" content="JaviD Future Bot — Automated Binance Futures Trading, 24/7">
+<meta property="og:description" content="Trade Binance futures around the clock with an automated program instead of impulse. Three quant strategies, tick-level exits, 100% local execution. Free forever.">
+<meta property="og:url" content="https://bn.javidtrading.com/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JaviD Future Bot — Automated Binance Futures Trading">
+<meta name="twitter:description" content="Trade Binance futures 24/7 with an automated program. Free forever, 100% local execution.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "JaviD Future Bot",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Windows, macOS",
+  "description": "An automated trading program for Binance USDⓈ-M futures. Runs three quant-built strategies 24/7 without emotional interference, with every order executed locally on the user's own PC.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://bn.javidtrading.com/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is it really free? No hidden costs?","acceptedAnswer":{"@type":"Answer","text":"Yes — no subscription, no purchase price, no performance fee. Revenue comes solely from Binance's official Broker Program: a share of the trading fee you already pay Binance is rebated to us by Binance. You never pay anything extra."}},
+    {"@type":"Question","name":"Is my API key safe?","acceptedAnswer":{"@type":"Answer","text":"Your API key is encrypted and stored locally on your own PC — it is never sent to any external server. Withdrawal permission is never required, so even if a key leaked, funds could not be withdrawn."}},
+    {"@type":"Question","name":"Are profits guaranteed?","acceptedAnswer":{"@type":"Answer","text":"No. JaviD Future Bot is a tool that executes a defined strategy without emotion — it does not guarantee profits. Crypto futures trading carries a high risk of loss, and all trading decisions and outcomes are the user's responsibility."}},
+    {"@type":"Question","name":"Do I need to know how to code?","acceptedAnswer":{"@type":"Answer","text":"No. Download, double-click start.bat, paste your API key, pick your coins, and start. No code is ever written."}}
+  ]
+}
+</script>
+<style>
+/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+@layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-space-y-reverse:0;--tw-border-style:solid;--tw-gradient-position:initial;--tw-gradient-from:#0000;--tw-gradient-via:#0000;--tw-gradient-to:#0000;--tw-gradient-stops:initial;--tw-gradient-via-stops:initial;--tw-gradient-from-position:0%;--tw-gradient-via-position:50%;--tw-gradient-to-position:100%;--tw-leading:initial;--tw-font-weight:initial;--tw-tracking:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-backdrop-blur:initial;--tw-backdrop-brightness:initial;--tw-backdrop-contrast:initial;--tw-backdrop-grayscale:initial;--tw-backdrop-hue-rotate:initial;--tw-backdrop-invert:initial;--tw-backdrop-opacity:initial;--tw-backdrop-saturate:initial;--tw-backdrop-sepia:initial;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial}}}@layer theme{:root,:host{--font-sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--font-mono:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--color-amber-50:oklch(98.7% .022 95.277);--color-amber-300:oklch(87.9% .169 91.605);--color-amber-600:oklch(66.6% .179 58.318);--color-emerald-50:oklch(97.9% .021 166.113);--color-emerald-300:oklch(84.5% .143 164.978);--color-emerald-400:oklch(76.5% .177 163.223);--color-emerald-500:oklch(69.6% .17 162.48);--color-emerald-600:oklch(59.6% .145 163.225);--color-sky-500:oklch(68.5% .169 237.323);--color-sky-600:oklch(58.8% .158 241.966);--color-indigo-50:oklch(96.2% .018 272.314);--color-indigo-100:oklch(93% .034 272.788);--color-indigo-200:oklch(87% .065 274.039);--color-indigo-300:oklch(78.5% .115 274.713);--color-indigo-400:oklch(67.3% .182 276.935);--color-indigo-500:oklch(58.5% .233 277.117);--color-indigo-600:oklch(51.1% .262 276.966);--color-indigo-700:oklch(45.7% .24 277.023);--color-rose-300:oklch(81% .117 11.638);--color-rose-500:oklch(64.5% .246 16.439);--color-slate-50:oklch(98.4% .003 247.858);--color-slate-100:oklch(96.8% .007 247.896);--color-slate-200:oklch(92.9% .013 255.508);--color-slate-300:oklch(86.9% .022 252.894);--color-slate-400:oklch(70.4% .04 256.788);--color-slate-500:oklch(55.4% .046 257.417);--color-slate-600:oklch(44.6% .043 257.281);--color-slate-700:oklch(37.2% .044 257.287);--color-slate-800:oklch(27.9% .041 260.031);--color-slate-900:oklch(20.8% .042 265.755);--color-black:#000;--color-white:#fff;--spacing:.25rem;--container-md:28rem;--container-xl:36rem;--container-2xl:42rem;--container-3xl:48rem;--container-4xl:56rem;--container-5xl:64rem;--container-6xl:72rem;--text-sm:.875rem;--text-sm--line-height:calc(1.25 / .875);--text-2xl:1.5rem;--text-2xl--line-height:calc(2 / 1.5);--text-3xl:1.875rem;--text-3xl--line-height:calc(2.25 / 1.875);--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-extrabold:800;--font-weight-black:900;--tracking-tight:-.025em;--tracking-wide:.025em;--tracking-widest:.1em;--leading-snug:1.375;--leading-relaxed:1.625;--radius-md:.375rem;--radius-lg:.5rem;--radius-xl:.75rem;--radius-2xl:1rem;--aspect-video:16 / 9;--default-transition-duration:.15s;--default-transition-timing-function:cubic-bezier(.4, 0, .2, 1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,:after,:before,::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}::file-selector-button{box-sizing:border-box;border:0 solid;margin:0;padding:0}html,:host{-webkit-text-size-adjust:100%;tab-size:4;line-height:1.5;font-family:var(--default-font-family,-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring:where(:not(iframe)){outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not ((-webkit-appearance:-apple-pay-button))) or (contain-intrinsic-size:1px){::placeholder{color:currentColor}@supports (color:color-mix(in lab, red, red)){::placeholder{color:color-mix(in oklab, currentcolor 50%, transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit{padding-block:0}::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-datetime-edit-month-field{padding-block:0}::-webkit-datetime-edit-day-field{padding-block:0}::-webkit-datetime-edit-hour-field{padding-block:0}::-webkit-datetime-edit-minute-field{padding-block:0}::-webkit-datetime-edit-second-field{padding-block:0}::-webkit-datetime-edit-millisecond-field{padding-block:0}::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]){appearance:button}::file-selector-button{appearance:button}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer components;@layer utilities{.relative{position:relative}.sticky{position:sticky}.top-0{top:0}.z-50{z-index:50}.mx-auto{margin-inline:auto}.mt-1{margin-top:var(--spacing)}.mt-1\.5{margin-top:calc(var(--spacing) * 1.5)}.mt-2{margin-top:calc(var(--spacing) * 2)}.mt-2\.5{margin-top:calc(var(--spacing) * 2.5)}.mt-3{margin-top:calc(var(--spacing) * 3)}.mt-4{margin-top:calc(var(--spacing) * 4)}.mt-5{margin-top:calc(var(--spacing) * 5)}.mt-6{margin-top:calc(var(--spacing) * 6)}.mt-7{margin-top:calc(var(--spacing) * 7)}.mt-8{margin-top:calc(var(--spacing) * 8)}.mt-9{margin-top:calc(var(--spacing) * 9)}.mt-10{margin-top:calc(var(--spacing) * 10)}.mt-12{margin-top:calc(var(--spacing) * 12)}.mt-14{margin-top:calc(var(--spacing) * 14)}.mb-2{margin-bottom:calc(var(--spacing) * 2)}.mb-2\.5{margin-bottom:calc(var(--spacing) * 2.5)}.mb-3{margin-bottom:calc(var(--spacing) * 3)}.mb-4{margin-bottom:calc(var(--spacing) * 4)}.mb-6{margin-bottom:calc(var(--spacing) * 6)}.mb-10{margin-bottom:calc(var(--spacing) * 10)}.mb-12{margin-bottom:calc(var(--spacing) * 12)}.ml-2{margin-left:calc(var(--spacing) * 2)}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.aspect-video{aspect-ratio:var(--aspect-video)}.h-2{height:calc(var(--spacing) * 2)}.h-2\.5{height:calc(var(--spacing) * 2.5)}.h-3{height:calc(var(--spacing) * 3)}.h-3\.5{height:calc(var(--spacing) * 3.5)}.h-4{height:calc(var(--spacing) * 4)}.h-4\.5{height:calc(var(--spacing) * 4.5)}.h-5{height:calc(var(--spacing) * 5)}.h-5\.5{height:calc(var(--spacing) * 5.5)}.h-6{height:calc(var(--spacing) * 6)}.h-9{height:calc(var(--spacing) * 9)}.h-10{height:calc(var(--spacing) * 10)}.h-11{height:calc(var(--spacing) * 11)}.h-12{height:calc(var(--spacing) * 12)}.h-14{height:calc(var(--spacing) * 14)}.h-28{height:calc(var(--spacing) * 28)}.h-\[380px\]{height:380px}.h-full{height:100%}.max-h-0{max-height:0}.min-h-\[18px\]{min-height:18px}.min-h-screen{min-height:100vh}.w-2{width:calc(var(--spacing) * 2)}.w-2\.5{width:calc(var(--spacing) * 2.5)}.w-3{width:calc(var(--spacing) * 3)}.w-3\.5{width:calc(var(--spacing) * 3.5)}.w-4{width:calc(var(--spacing) * 4)}.w-4\.5{width:calc(var(--spacing) * 4.5)}.w-5{width:calc(var(--spacing) * 5)}.w-5\.5{width:calc(var(--spacing) * 5.5)}.w-6{width:calc(var(--spacing) * 6)}.w-9{width:calc(var(--spacing) * 9)}.w-10{width:calc(var(--spacing) * 10)}.w-11{width:calc(var(--spacing) * 11)}.w-12{width:calc(var(--spacing) * 12)}.w-14{width:calc(var(--spacing) * 14)}.w-full{width:100%}.max-w-2xl{max-width:var(--container-2xl)}.max-w-3xl{max-width:var(--container-3xl)}.max-w-4xl{max-width:var(--container-4xl)}.max-w-5xl{max-width:var(--container-5xl)}.max-w-6xl{max-width:var(--container-6xl)}.max-w-md{max-width:var(--container-md)}.max-w-xl{max-width:var(--container-xl)}.min-w-\[640px\]{min-width:640px}.flex-1{flex:1}.shrink-0{flex-shrink:0}.border-collapse{border-collapse:collapse}.cursor-pointer{cursor:pointer}.list-none{list-style-type:none}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.gap-1{gap:var(--spacing)}.gap-1\.5{gap:calc(var(--spacing) * 1.5)}.gap-2{gap:calc(var(--spacing) * 2)}.gap-3{gap:calc(var(--spacing) * 3)}.gap-4{gap:calc(var(--spacing) * 4)}.gap-6{gap:calc(var(--spacing) * 6)}.gap-8{gap:calc(var(--spacing) * 8)}.gap-10{gap:calc(var(--spacing) * 10)}:where(.space-y-2>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-4>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)))}.gap-x-6{column-gap:calc(var(--spacing) * 6)}.gap-y-2{row-gap:calc(var(--spacing) * 2)}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.scroll-smooth{scroll-behavior:smooth}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:var(--radius-2xl)}.rounded-full{border-radius:3.40282e38px}.rounded-lg{border-radius:var(--radius-lg)}.rounded-md{border-radius:var(--radius-md)}.rounded-xl{border-radius:var(--radius-xl)}.border{border-style:var(--tw-border-style);border-width:1px}.border-0{border-style:var(--tw-border-style);border-width:0}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-indigo-200{border-color:var(--color-indigo-200)}.border-slate-100{border-color:var(--color-slate-100)}.border-slate-200{border-color:var(--color-slate-200)}.border-slate-300{border-color:var(--color-slate-300)}.border-white{border-color:var(--color-white)}.border-white\/10{border-color:#ffffff1a}@supports (color:color-mix(in lab, red, red)){.border-white\/10{border-color:color-mix(in oklab, var(--color-white) 10%, transparent)}}.bg-\[\#F0B90B\]{background-color:#f0b90b}.bg-\[\#F0B90B\]\/15{background-color:oklab(81.3204% .00952435 .16462/.15)}.bg-amber-300{background-color:var(--color-amber-300)}.bg-emerald-50{background-color:var(--color-emerald-50)}.bg-emerald-300{background-color:var(--color-emerald-300)}.bg-emerald-400{background-color:var(--color-emerald-400)}.bg-indigo-50{background-color:var(--color-indigo-50)}.bg-indigo-50\/40{background-color:#eef2ff66}@supports (color:color-mix(in lab, red, red)){.bg-indigo-50\/40{background-color:color-mix(in oklab, var(--color-indigo-50) 40%, transparent)}}.bg-indigo-50\/60{background-color:#eef2ff99}@supports (color:color-mix(in lab, red, red)){.bg-indigo-50\/60{background-color:color-mix(in oklab, var(--color-indigo-50) 60%, transparent)}}.bg-indigo-100{background-color:var(--color-indigo-100)}.bg-indigo-600{background-color:var(--color-indigo-600)}.bg-rose-300{background-color:var(--color-rose-300)}.bg-sky-500{background-color:var(--color-sky-500)}.bg-slate-50{background-color:var(--color-slate-50)}.bg-slate-100{background-color:var(--color-slate-100)}.bg-slate-300{background-color:var(--color-slate-300)}.bg-slate-900{background-color:var(--color-slate-900)}.bg-white{background-color:var(--color-white)}.bg-white\/5{background-color:#ffffff0d}@supports (color:color-mix(in lab, red, red)){.bg-white\/5{background-color:color-mix(in oklab, var(--color-white) 5%, transparent)}}.bg-white\/90{background-color:#ffffffe6}@supports (color:color-mix(in lab, red, red)){.bg-white\/90{background-color:color-mix(in oklab, var(--color-white) 90%, transparent)}}.bg-gradient-to-b{--tw-gradient-position:to bottom in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-gradient-to-br{--tw-gradient-position:to bottom right in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.from-amber-50{--tw-gradient-from:var(--color-amber-50);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-indigo-50{--tw-gradient-from:var(--color-indigo-50);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-indigo-50\/60{--tw-gradient-from:#eef2ff99}@supports (color:color-mix(in lab, red, red)){.from-indigo-50\/60{--tw-gradient-from:color-mix(in oklab, var(--color-indigo-50) 60%, transparent)}}.from-indigo-50\/60{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-indigo-50\/70{--tw-gradient-from:#eef2ffb3}@supports (color:color-mix(in lab, red, red)){.from-indigo-50\/70{--tw-gradient-from:color-mix(in oklab, var(--color-indigo-50) 70%, transparent)}}.from-indigo-50\/70{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.via-white{--tw-gradient-via:var(--color-white);--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.to-white{--tw-gradient-to:var(--color-white);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.object-contain{object-fit:contain}.object-cover{object-fit:cover}.p-2{padding:calc(var(--spacing) * 2)}.p-4{padding:calc(var(--spacing) * 4)}.p-6{padding:calc(var(--spacing) * 6)}.p-7{padding:calc(var(--spacing) * 7)}.p-8{padding:calc(var(--spacing) * 8)}.p-9{padding:calc(var(--spacing) * 9)}.px-1{padding-inline:var(--spacing)}.px-1\.5{padding-inline:calc(var(--spacing) * 1.5)}.px-2{padding-inline:calc(var(--spacing) * 2)}.px-2\.5{padding-inline:calc(var(--spacing) * 2.5)}.px-3{padding-inline:calc(var(--spacing) * 3)}.px-3\.5{padding-inline:calc(var(--spacing) * 3.5)}.px-4{padding-inline:calc(var(--spacing) * 4)}.px-5{padding-inline:calc(var(--spacing) * 5)}.px-6{padding-inline:calc(var(--spacing) * 6)}.px-7{padding-inline:calc(var(--spacing) * 7)}.px-8{padding-inline:calc(var(--spacing) * 8)}.py-0{padding-block:0}.py-0\.5{padding-block:calc(var(--spacing) * .5)}.py-1{padding-block:var(--spacing)}.py-1\.5{padding-block:calc(var(--spacing) * 1.5)}.py-2{padding-block:calc(var(--spacing) * 2)}.py-2\.5{padding-block:calc(var(--spacing) * 2.5)}.py-3{padding-block:calc(var(--spacing) * 3)}.py-3\.5{padding-block:calc(var(--spacing) * 3.5)}.py-4{padding-block:calc(var(--spacing) * 4)}.py-14{padding-block:calc(var(--spacing) * 14)}.py-16{padding-block:calc(var(--spacing) * 16)}.pt-6{padding-top:calc(var(--spacing) * 6)}.pt-16{padding-top:calc(var(--spacing) * 16)}.pb-5{padding-bottom:calc(var(--spacing) * 5)}.pb-14{padding-bottom:calc(var(--spacing) * 14)}.pb-16{padding-bottom:calc(var(--spacing) * 16)}.text-center{text-align:center}.text-left{text-align:left}.font-sans{font-family:var(--font-sans)}.text-2xl{font-size:var(--text-2xl);line-height:var(--tw-leading,var(--text-2xl--line-height))}.text-3xl{font-size:var(--text-3xl);line-height:var(--tw-leading,var(--text-3xl--line-height))}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-\[9px\]{font-size:9px}.text-\[10\.5px\]{font-size:10.5px}.text-\[10px\]{font-size:10px}.text-\[11\.5px\]{font-size:11.5px}.text-\[11px\]{font-size:11px}.text-\[12\.5px\]{font-size:12.5px}.text-\[12px\]{font-size:12px}.text-\[13\.5px\]{font-size:13.5px}.text-\[13px\]{font-size:13px}.text-\[14\.5px\]{font-size:14.5px}.text-\[14px\]{font-size:14px}.text-\[15\.5px\]{font-size:15.5px}.text-\[15px\]{font-size:15px}.text-\[16\.5px\]{font-size:16.5px}.text-\[16px\]{font-size:16px}.text-\[17px\]{font-size:17px}.text-\[18px\]{font-size:18px}.text-\[22px\]{font-size:22px}.text-\[28px\]{font-size:28px}.text-\[36px\]{font-size:36px}.leading-\[1\.12\]{--tw-leading:1.12;line-height:1.12}.leading-relaxed{--tw-leading:var(--leading-relaxed);line-height:var(--leading-relaxed)}.leading-snug{--tw-leading:var(--leading-snug);line-height:var(--leading-snug)}.font-black{--tw-font-weight:var(--font-weight-black);font-weight:var(--font-weight-black)}.font-bold{--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold)}.font-extrabold{--tw-font-weight:var(--font-weight-extrabold);font-weight:var(--font-weight-extrabold)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.tracking-tight{--tw-tracking:var(--tracking-tight);letter-spacing:var(--tracking-tight)}.tracking-wide{--tw-tracking:var(--tracking-wide);letter-spacing:var(--tracking-wide)}.tracking-widest{--tw-tracking:var(--tracking-widest);letter-spacing:var(--tracking-widest)}.whitespace-nowrap{white-space:nowrap}.text-\[\#F0B90B\]{color:#f0b90b}.text-amber-600{color:var(--color-amber-600)}.text-black{color:var(--color-black)}.text-emerald-400{color:var(--color-emerald-400)}.text-emerald-500{color:var(--color-emerald-500)}.text-emerald-600{color:var(--color-emerald-600)}.text-indigo-300{color:var(--color-indigo-300)}.text-indigo-400{color:var(--color-indigo-400)}.text-indigo-600{color:var(--color-indigo-600)}.text-rose-500{color:var(--color-rose-500)}.text-slate-400{color:var(--color-slate-400)}.text-slate-500{color:var(--color-slate-500)}.text-slate-600{color:var(--color-slate-600)}.text-slate-700{color:var(--color-slate-700)}.text-slate-800{color:var(--color-slate-800)}.text-slate-900{color:var(--color-slate-900)}.text-white{color:var(--color-white)}.uppercase{text-transform:uppercase}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-0{opacity:0}.shadow-2xl{--tw-shadow:0 25px 50px -12px var(--tw-shadow-color,#00000040);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px var(--tw-shadow-color,#0000001a), 0 4px 6px -4px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,#0000001a), 0 8px 10px -6px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-indigo-600{--tw-shadow-color:oklch(51.1% .262 276.966)}@supports (color:color-mix(in lab, red, red)){.shadow-indigo-600{--tw-shadow-color:color-mix(in oklab, var(--color-indigo-600) var(--tw-shadow-alpha), transparent)}}.shadow-indigo-600\/25{--tw-shadow-color:#4f39f640}@supports (color:color-mix(in lab, red, red)){.shadow-indigo-600\/25{--tw-shadow-color:color-mix(in oklab, color-mix(in oklab, var(--color-indigo-600) 25%, transparent) var(--tw-shadow-alpha), transparent)}}.shadow-slate-900{--tw-shadow-color:oklch(20.8% .042 265.755)}@supports (color:color-mix(in lab, red, red)){.shadow-slate-900{--tw-shadow-color:color-mix(in oklab, var(--color-slate-900) var(--tw-shadow-alpha), transparent)}}.shadow-slate-900\/5{--tw-shadow-color:#0f172b0d}@supports (color:color-mix(in lab, red, red)){.shadow-slate-900\/5{--tw-shadow-color:color-mix(in oklab, color-mix(in oklab, var(--color-slate-900) 5%, transparent) var(--tw-shadow-alpha), transparent)}}.shadow-slate-900\/10{--tw-shadow-color:#0f172b1a}@supports (color:color-mix(in lab, red, red)){.shadow-slate-900\/10{--tw-shadow-color:color-mix(in oklab, color-mix(in oklab, var(--color-slate-900) 10%, transparent) var(--tw-shadow-alpha), transparent)}}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.transition{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,-webkit-backdrop-filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.outline-none{--tw-outline-style:none;outline-style:none}.open\:border-indigo-300:is([open],:popover-open,:open){border-color:var(--color-indigo-300)}.open\:shadow-md:is([open],:popover-open,:open){--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,#0000001a), 0 2px 4px -2px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}@media (hover:hover){.hover\:border-indigo-300:hover{border-color:var(--color-indigo-300)}.hover\:bg-indigo-700:hover{background-color:var(--color-indigo-700)}.hover\:bg-sky-600:hover{background-color:var(--color-sky-600)}.hover\:bg-slate-50:hover{background-color:var(--color-slate-50)}.hover\:text-indigo-600:hover{color:var(--color-indigo-600)}.hover\:underline:hover{text-decoration-line:underline}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,#0000001a), 0 2px 4px -2px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.hover\:brightness-105:hover{--tw-brightness:brightness(105%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}}.focus\:border-indigo-500:focus{border-color:var(--color-indigo-500)}.focus\:bg-white:focus{background-color:var(--color-white)}.disabled\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\:opacity-50:disabled{opacity:.5}@media (min-width:40rem){.sm\:inline-flex{display:inline-flex}.sm\:h-\[440px\]{height:440px}.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:grid-cols-\[1fr_auto\]{grid-template-columns:1fr auto}.sm\:grid-cols-\[auto_1fr_auto\]{grid-template-columns:auto 1fr auto}.sm\:pt-20{padding-top:calc(var(--spacing) * 20)}.sm\:text-3xl{font-size:var(--text-3xl);line-height:var(--tw-leading,var(--text-3xl--line-height))}.sm\:text-\[32px\]{font-size:32px}.sm\:text-\[34px\]{font-size:34px}.sm\:text-\[52px\]{font-size:52px}}@media (min-width:48rem){.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\:grid-cols-\[auto_1fr_auto\]{grid-template-columns:auto 1fr auto}}@media (min-width:64rem){.lg\:sticky{position:sticky}.lg\:top-24{top:calc(var(--spacing) * 24)}.lg\:col-span-1{grid-column:span 1/span 1}.lg\:flex{display:flex}.lg\:hidden{display:none}.lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.lg\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.lg\:grid-cols-\[1\.3fr_1fr\]{grid-template-columns:1.3fr 1fr}.lg\:grid-cols-\[1fr_1fr\]{grid-template-columns:1fr 1fr}.lg\:items-center{align-items:center}.lg\:items-start{align-items:flex-start}}}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-gradient-position{syntax:"*";inherits:false}@property --tw-gradient-from{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-via{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-to{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-stops{syntax:"*";inherits:false}@property --tw-gradient-via-stops{syntax:"*";inherits:false}@property --tw-gradient-from-position{syntax:"<length-percentage>";inherits:false;initial-value:0%}@property --tw-gradient-via-position{syntax:"<length-percentage>";inherits:false;initial-value:50%}@property --tw-gradient-to-position{syntax:"<length-percentage>";inherits:false;initial-value:100%}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-tracking{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-backdrop-blur{syntax:"*";inherits:false}@property --tw-backdrop-brightness{syntax:"*";inherits:false}@property --tw-backdrop-contrast{syntax:"*";inherits:false}@property --tw-backdrop-grayscale{syntax:"*";inherits:false}@property --tw-backdrop-hue-rotate{syntax:"*";inherits:false}@property --tw-backdrop-invert{syntax:"*";inherits:false}@property --tw-backdrop-opacity{syntax:"*";inherits:false}@property --tw-backdrop-saturate{syntax:"*";inherits:false}@property --tw-backdrop-sepia{syntax:"*";inherits:false}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}
+</style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+<style>
+  html, body { background:#ffffff; }
+  ::selection { background: rgba(79,70,229,.18); }
+  details.faq-item summary::-webkit-details-marker{display:none}
+  details.faq-item summary{list-style:none;cursor:pointer}
+  details.faq-item .chev{transition:transform .2s ease}
+  details.faq-item[open] .chev{transform:rotate(180deg)}
+  details.faq-item[open]{border-color:#4f46e5; box-shadow:0 0 0 1px #4f46e5}
+  .showcase-slide { position:absolute; inset:0; opacity:0; transition:opacity .6s ease; }
+  .showcase-slide.active { opacity:1; }
+  #mobileNav { transition: max-height .25s ease, opacity .2s ease; }
+  .grad-ring { background: linear-gradient(135deg,#4f46e5,#7c3aed); }
+</style>
+</head>
+<body class="min-h-screen bg-white font-sans text-slate-700 antialiased">
+
+<!-- ============ PROMO BANNER ============ -->
+<div class="bg-slate-900 px-6 py-2.5 text-center text-[13px] font-medium text-white">
+  🚀 JaviD Future Bot <b>V18</b> is live — tray mode, Shadow Mode live data, and more. <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" class="font-bold text-indigo-300 hover:underline">See what's new →</a>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
+    <a href="index.html" class="flex items-center gap-2 font-extrabold tracking-tight text-slate-900">
+      <img src="images/javid-icon.png" alt="JaviD Future Bot" class="h-9 w-9 rounded-full object-cover">
+      JaviD Future Bot
+      <span class="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[11px] font-bold text-indigo-600">V18</span>
+    </a>
+    <div class="hidden items-center gap-6 text-[13.5px] font-semibold text-slate-600 lg:flex">
+      <a href="#features" class="transition hover:text-indigo-600">Features</a>
+      <a href="#how-it-works" class="transition hover:text-indigo-600">How It Works</a>
+      <a href="#compare" class="transition hover:text-indigo-600">Compare</a>
+      <a href="#faq" class="transition hover:text-indigo-600">FAQ</a>
+      <a href="results.html" class="transition hover:text-indigo-600">Real Results</a>
+      <a href="manual.html" class="transition hover:text-indigo-600">User Manual</a>
+      <a href="binance-signup-api-guide.html" class="transition hover:text-indigo-600">New to Binance?</a>
+      <a href="board.html" class="flex items-center gap-1.5 text-indigo-600">Community<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">NEW</span></a>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="#download" class="hidden items-center gap-1.5 rounded-lg bg-indigo-600 px-4 py-2 text-[13px] font-bold text-white shadow-sm transition hover:bg-indigo-700 sm:inline-flex">
+        Free Download
+      </a>
+      <button id="navToggle" class="rounded-lg border border-slate-200 p-2 text-slate-600 lg:hidden" aria-label="Toggle menu"><i data-lucide="menu" class="h-5 w-5"></i></button>
+    </div>
+  </div>
+  <div id="mobileNav" class="max-h-0 overflow-hidden opacity-0 lg:hidden">
+    <div class="flex flex-col gap-1 border-t border-slate-200 px-6 py-4 text-sm font-semibold text-slate-700">
+      <a href="#features" class="rounded-lg px-2 py-2 hover:bg-slate-50">Features</a>
+      <a href="#how-it-works" class="rounded-lg px-2 py-2 hover:bg-slate-50">How It Works</a>
+      <a href="#compare" class="rounded-lg px-2 py-2 hover:bg-slate-50">Compare</a>
+      <a href="#faq" class="rounded-lg px-2 py-2 hover:bg-slate-50">FAQ</a>
+      <a href="results.html" class="rounded-lg px-2 py-2 hover:bg-slate-50">Real Results</a>
+      <a href="manual.html" class="rounded-lg px-2 py-2 hover:bg-slate-50">User Manual</a>
+      <a href="binance-signup-api-guide.html" class="rounded-lg px-2 py-2 hover:bg-slate-50">New to Binance?</a>
+      <a href="board.html" class="rounded-lg px-2 py-2 text-indigo-600 hover:bg-slate-50">Community Board</a>
+      <a href="#download" class="mt-2 inline-flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-bold text-white">Free Download</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="relative overflow-hidden bg-gradient-to-b from-indigo-50/70 via-white to-white pt-16 pb-14 sm:pt-20">
+  <div class="mx-auto max-w-6xl px-6 text-center">
+    <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white px-3.5 py-1.5 text-[11.5px] font-bold uppercase tracking-widest text-indigo-600 shadow-sm">
+      <i data-lucide="zap" class="h-3.5 w-3.5"></i> Binance USDⓈ-M Futures Automation
+    </span>
+    <h1 class="mx-auto max-w-3xl text-[36px] font-extrabold leading-[1.12] tracking-tight text-slate-900 sm:text-[52px]">Crypto Trading Bot for Binance Futures, Built to Run 24/7</h1>
+    <p class="mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-slate-500">Automate your Binance futures trading to reduce stress and emotional mistakes. No emotion, no missed entries, no staying up all night — tick-level precision, 100% local execution.</p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+      <a href="#download" class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-7 py-3.5 text-[15px] font-bold text-white shadow-lg shadow-indigo-600/25 transition hover:bg-indigo-700"><i data-lucide="download" class="h-4.5 w-4.5"></i> Start Free — Download Now</a>
+      <a href="#shadow-mode" class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-7 py-3.5 text-[15px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600">Try Shadow Mode First</a>
+    </div>
+    <div class="mx-auto mt-8 flex max-w-md items-center justify-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-[12.5px] font-semibold text-slate-500 shadow-sm">
+      <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#F0B90B] text-[9px] font-black text-black">B</span>
+      Fast signup via our official Binance partner link — same fees, zero extra cost
+    </div>
+    <p class="mt-4 text-[12.5px] text-slate-400">$0 subscription · Free forever · Windows &amp; macOS · No credit card</p>
+  </div>
+  <div class="relative mx-auto mt-14 max-w-5xl px-6">
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/10">
+      <div class="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-2.5">
+        <span class="h-2.5 w-2.5 rounded-full bg-rose-300"></span><span class="h-2.5 w-2.5 rounded-full bg-amber-300"></span><span class="h-2.5 w-2.5 rounded-full bg-emerald-300"></span>
+        <span class="ml-2 flex-1 rounded-md bg-white px-3 py-1 text-center text-[11px] text-slate-400 border border-slate-200">🔒 localhost:8002 — runs 100% on your PC</span>
+      </div>
+      <img src="images/dashboard-live.png" alt="JaviD Future Bot live dashboard — real balance, cumulative P&amp;L, ROI, and market trend panel" class="w-full">
+    </div>
+  </div>
+</header>
+
+<!-- ============ STRATEGY SHOWCASE ============ -->
+<section class="border-t border-slate-100 py-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="mb-10 grid items-center gap-10 md:grid-cols-2">
+    <div>
+      <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-600">Strategy Engine</div>
+      <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Three Quant-Built Strategies, Scanning in Parallel</h2>
+      <p class="mt-3 text-[15px] text-slate-500">Each strategy was designed and refined through AI-driven quantitative analysis before a single rule was locked in. Run one, or run all three together.</p>
+    </div>
+    <img src="images/ai-strategy.webp" alt="AI-designed trading strategy — a digital AI figure analyzing a rising price chart" class="w-full rounded-2xl border border-slate-200 shadow-sm">
+  </div>
+  <div class="grid gap-4 md:grid-cols-3">
+    <details class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm open:shadow-md open:border-indigo-300" open>
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="activity" class="h-5 w-5"></i></span>
+          <div><div class="text-[15.5px] font-bold text-slate-900">Strategy-A · JaviD AGRT</div><div class="text-[12px] text-slate-400">Binance USDⓈ-M Futures</div></div>
+        </div>
+        <i data-lucide="chevron-down" class="chev h-5 w-5 text-slate-400"></i>
+      </summary>
+      <p class="mt-4 text-[13.5px] leading-relaxed text-slate-500">JaviD's core adaptive-grid & trend logic. Reads ATR bands and VWAP deviation to time entries, and manages exits with tick-level precision every 10 seconds.</p>
+    </details>
+    <details class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm open:shadow-md open:border-indigo-300">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="repeat" class="h-5 w-5"></i></span>
+          <div><div class="text-[15.5px] font-bold text-slate-900">Strategy-B · Mean Reversion</div><div class="text-[12px] text-slate-400">Binance USDⓈ-M Futures</div></div>
+        </div>
+        <i data-lucide="chevron-down" class="chev h-5 w-5 text-slate-400"></i>
+      </summary>
+      <p class="mt-4 text-[13.5px] leading-relaxed text-slate-500">Watches CVD flow and volume-spike thresholds for overextended moves, then trades the snap-back with liquidation-avoidance sizing baked in.</p>
+    </details>
+    <details class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm open:shadow-md open:border-indigo-300">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="trending-up" class="h-5 w-5"></i></span>
+          <div><div class="text-[15.5px] font-bold text-slate-900">Strategy-C · Breakout</div><div class="text-[12px] text-slate-400">Binance USDⓈ-M Futures</div></div>
+        </div>
+        <i data-lucide="chevron-down" class="chev h-5 w-5 text-slate-400"></i>
+      </summary>
+      <p class="mt-4 text-[13.5px] leading-relaxed text-slate-500">Built for volatility expansion — ATR trailing stops and VWAP reversion protect the position once a breakout is confirmed and momentum is in play.</p>
+    </details>
+  </div>
+</div></section>
+
+<!-- ============ LIVE PROOF STATS ============ -->
+<section id="live-proof" class="bg-slate-900 py-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-400">Live Proof</div>
+    <h2 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">Before the Pitch, Here's an Account Running Right Now</h2>
+    <p id="liveProofSub" class="mt-3 text-[15px] text-slate-400">A Shadow Mode account snapshot pulled straight from a live Telegram report — real Binance market data, virtual USDT, zero real capital at risk.</p>
+    <p id="liveBadge" class="mt-2 hidden items-center justify-center gap-1.5 text-[13px] font-bold text-emerald-400"><span class="h-2 w-2 rounded-full bg-emerald-400"></span>Live — updated <span id="liveUpdated"></span> ago</p>
+  </div>
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+    <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"><div class="text-[28px] font-extrabold text-white" id="lpBalance">1,032.77</div><div class="mt-1.5 text-[12px] leading-snug text-slate-400">Balance (USDT) — Shadow Mode, virtual funds</div></div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"><div class="text-[28px] font-extrabold text-emerald-400" id="lpPnl">+32.77</div><div class="mt-1.5 text-[12px] leading-snug text-slate-400" id="lpPnlLabel">Cumulative P&amp;L (USDT) across 97 trades</div></div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"><div class="text-[28px] font-extrabold text-emerald-400" id="lpReturn">+3.28%</div><div class="mt-1.5 text-[12px] leading-snug text-slate-400">Cumulative return since Shadow Mode start</div></div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"><div class="text-[28px] font-extrabold text-indigo-400" id="lpWinRate">81.4%</div><div class="mt-1.5 text-[12px] leading-snug text-slate-400">Win rate over the same run</div></div>
+  </div>
+  <p class="mx-auto mt-6 max-w-3xl text-center text-[12px] leading-relaxed text-slate-500" id="lpNote">Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live Binance market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.</p>
+</div></section>
+
+<script>
+(function(){
+  function timeAgo(iso){
+    var diffMs = Date.now() - new Date(iso).getTime();
+    var mins = Math.max(0, Math.round(diffMs / 60000));
+    if (mins < 1) return 'just now';
+    if (mins < 60) return mins + 'm';
+    var hrs = Math.round(mins / 60);
+    if (hrs < 24) return hrs + 'h';
+    return Math.round(hrs / 24) + 'd';
+  }
+  function fmtNum(n, decimals){
+    var sign = n > 0 ? '+' : '';
+    return sign + n.toFixed(decimals);
+  }
+  fetch('/api/status').then(function(r){ return r.json(); }).then(function(data){
+    if (!data || !data.live) return;
+    document.getElementById('lpBalance').textContent = Number(data.balance).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+    document.getElementById('lpPnl').textContent = fmtNum(Number(data.cumulative_pnl), 2);
+    if (data.trade_count) document.getElementById('lpPnlLabel').textContent = 'Cumulative P&L (USDT) across ' + data.trade_count + ' trades';
+    document.getElementById('lpReturn').textContent = fmtNum(Number(data.cumulative_return_pct), 2) + '%';
+    document.getElementById('lpWinRate').textContent = Number(data.win_rate).toFixed(1) + '%';
+    document.getElementById('liveUpdated').textContent = timeAgo(data.updated_at);
+    var badge = document.getElementById('liveBadge'); badge.classList.remove('hidden'); badge.classList.add('flex');
+    document.getElementById('liveProofSub').textContent = 'Live account snapshot, pulled directly from the running bot — real Binance market data, virtual USDT, zero real capital at risk.';
+    var openTxt = data.open_positions != null ? data.open_positions + ' positions open right now, ' : '';
+    document.getElementById('lpNote').innerHTML = 'Live data, refreshed automatically — ' + openTxt + 'a mix of floating gains and losses as the bot\'s exit logic manages them in real time. Shadow Mode trades live Binance market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.';
+  }).catch(function(){});
+})();
+</script>
+
+<!-- ============ THREE REASONS ============ -->
+<section class="py-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-600">Why JaviD</div>
+    <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Three Reasons Traders Switch to JaviD</h2>
+  </div>
+  <div class="grid gap-4 md:grid-cols-3">
+    <div class="rounded-2xl border border-slate-200 p-7">
+      <i data-lucide="server-off" class="mb-3 h-6 w-6 text-indigo-600"></i>
+      <h3 class="text-[16px] font-bold text-slate-900">Zero servers in the middle</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500">100% local execution and non-custodial by design — your API key and your funds never leave your control.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 p-7">
+      <i data-lucide="flask-conical" class="mb-3 h-6 w-6 text-indigo-600"></i>
+      <h3 class="text-[16px] font-bold text-slate-900">Validate before you risk anything</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500">Shadow Mode runs every strategy on live market data with a virtual balance — real signals, zero real orders, for as long as you need.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 p-7">
+      <i data-lucide="shield" class="mb-3 h-6 w-6 text-indigo-600"></i>
+      <h3 class="text-[16px] font-bold text-slate-900">Five-layer risk management</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500">ATR trailing stops, VWAP reversion, CVD divergence, liquidation-avoidance and volume-spike detection guard every open position.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ 3-STEP ONBOARDING ============ -->
+<section id="how-it-works" class="bg-slate-50 py-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-600">Getting Started</div>
+    <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Start Your Automated Trading in 3 Easy Steps</h2>
+  </div>
+  <div class="grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-start">
+  <div class="space-y-4">
+    <div class="grid items-center gap-8 rounded-2xl border border-slate-200 bg-white p-8 md:grid-cols-[auto_1fr_auto]">
+      <div class="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-600 text-[18px] font-extrabold text-white">1</div>
+      <div><h3 class="text-[18px] font-bold text-slate-900">Download &amp; launch the app</h3><p class="mt-1.5 text-[14px] text-slate-500">Double-click <code class="rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600">start.bat</code> — dependencies install automatically and your dashboard opens, ready to configure.</p></div>
+      <a href="#download" class="whitespace-nowrap rounded-lg border border-slate-300 px-5 py-2.5 text-[13.5px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600">Download →</a>
+    </div>
+    <div class="grid items-center gap-8 rounded-2xl border border-slate-200 bg-white p-8 md:grid-cols-[auto_1fr_auto]">
+      <div class="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-600 text-[18px] font-extrabold text-white">2</div>
+      <div><h3 class="text-[18px] font-bold text-slate-900">Connect your Binance API key</h3><p class="mt-1.5 text-[14px] text-slate-500">Paste your key into Settings and hit Test Connection. Encrypted and stored only on your PC — withdrawal permission is never required.</p></div>
+      <a href="binance-signup-api-guide.html" class="whitespace-nowrap rounded-lg border border-slate-300 px-5 py-2.5 text-[13.5px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600">Setup guide →</a>
+    </div>
+    <div class="grid items-center gap-8 rounded-2xl border border-slate-200 bg-white p-8 md:grid-cols-[auto_1fr_auto]">
+      <div class="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-600 text-[18px] font-extrabold text-white">3</div>
+      <div><h3 class="text-[18px] font-bold text-slate-900">Verify in Shadow Mode, then go live</h3><p class="mt-1.5 text-[14px] text-slate-500">Watch the strategies trade with zero real risk. When you trust what you see, confirm your leverage/margin summary and hit Start Trading.</p></div>
+      <a href="#shadow-mode" class="whitespace-nowrap rounded-lg border border-slate-300 px-5 py-2.5 text-[13.5px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600">Shadow Mode →</a>
+    </div>
+  </div>
+  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm lg:sticky lg:top-24">
+    <img src="screenshots/shot1.png" alt="Real in-app welcome guide — the exact 4-step onboarding screen shown on first launch" class="w-full">
+    <p class="border-t border-slate-200 px-4 py-3 text-[12px] text-slate-400">Real screenshot — the welcome guide you'll see on first launch</p>
+  </div>
+  </div>
+</div></section>
+
+<!-- ============ MID CTA ============ -->
+<section class="py-16"><div class="mx-auto max-w-4xl px-6 text-center">
+  <h2 class="text-[28px] font-extrabold tracking-tight text-slate-900 sm:text-[32px]">Start Trading on JaviD Today</h2>
+  <p class="mt-3 text-[15px] text-slate-500">Seize opportunities that manual traders can't.</p>
+  <a href="#download" class="mt-7 inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-8 py-4 text-[15px] font-bold text-white shadow-lg shadow-indigo-600/25 transition hover:bg-indigo-700"><i data-lucide="download" class="h-4.5 w-4.5"></i> Start Free Now</a>
+</div></section>
+
+<!-- ============ AUDIENCE SEGMENTATION ============ -->
+<section class="bg-slate-50 py-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-600">Who It's For</div>
+    <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Built for Every Kind of Trader</h2>
+    <p class="mt-3 text-[15px] text-slate-500">From your very first bot to verifying the architecture yourself — JaviD works for you.</p>
+  </div>
+  <div class="grid gap-4 md:grid-cols-3">
+    <div class="rounded-2xl border border-slate-200 bg-white p-7">
+      <span class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="sprout" class="h-5.5 w-5.5"></i></span>
+      <h3 class="text-[16.5px] font-bold text-slate-900">New to trading bots</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500">Download, double-click <code class="rounded bg-slate-100 px-1 py-0.5 text-[12px]">start.bat</code>, paste your key, pick coins (or one-click Top 20), and start. No code, anywhere. The User Manual walks through all 9 real screens.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-7">
+      <span class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="sliders-horizontal" class="h-5.5 w-5.5"></i></span>
+      <h3 class="text-[16.5px] font-bold text-slate-900">Experienced traders</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500">Fine-tune with Aggressive/Normal/Stable sizing modes, run all three strategies in parallel across 500+ symbols, and monitor everything from a live dashboard.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-7">
+      <span class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="terminal-square" class="h-5.5 w-5.5"></i></span>
+      <h3 class="text-[16.5px] font-bold text-slate-900">Security-conscious &amp; technical users</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500">Open your firewall or network monitor while it runs — the only connection you'll see is Binance. No middle server, ever. See the <a href="#transparency" class="font-bold text-indigo-600 hover:underline">architecture breakdown</a>.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ TOOLKIT / FEATURES ============ -->
+<section id="features" class="py-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-600">JaviD Trading Toolkit</div>
+    <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Built Like a Quant Desk. Runs Like an App.</h2>
+    <p class="mt-3 text-[15px] text-slate-500">New to bots? Start with the green tags. The indigo tags are the professional-grade engine working underneath.</p>
+  </div>
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
+      <img src="images/secure-trading.webp" alt="Secure, non-custodial trading illustration" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <span class="mb-3 inline-block rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-emerald-600">For Everyone</span>
+      <h3 class="text-[16px] font-bold text-slate-900">100% Local &amp; Non-Custodial</h3>
+      <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">Your API keys never leave your PC. Encrypted locally, executed locally.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
+      <img src="images/data-analysis.webp" alt="Automated data analysis illustration across multiple charts" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <span class="mb-3 inline-block rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-emerald-600">For Everyone</span>
+      <h3 class="text-[16px] font-bold text-slate-900">One-Click Coin Selection</h3>
+      <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">Pick your own coins, or hit "Top 20 by Turnover" once and you're done.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
+      <img src="images/monitoring-247.webp" alt="24/7 automated monitoring illustration" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <span class="mb-3 inline-block rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-emerald-600">For Everyone</span>
+      <h3 class="text-[16px] font-bold text-slate-900">Reports, Sent to Telegram</h3>
+      <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">Balance, P&amp;L, ROI, win rate and open positions — on request or on schedule.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
+      <img src="images/predictive-ai.webp" alt="Predictive AI signal illustration for buy and sell decisions" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <span class="mb-3 inline-block rounded-full bg-indigo-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-indigo-600">Pro Engine</span>
+      <h3 class="text-[16px] font-bold text-slate-900">Three Independent Strategies</h3>
+      <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">Run one at a time, or run all three together across your selected coins.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
+      <img src="images/smart-order-execution.webp" alt="Smart order execution illustration" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <span class="mb-3 inline-block rounded-full bg-indigo-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-indigo-600">Pro Engine</span>
+      <h3 class="text-[16px] font-bold text-slate-900">Exits Built for Volatility</h3>
+      <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">Five signal layers guarding every open position, not just a stop-loss line.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
+      <img src="images/optimized-path.webp" alt="Optimized risk-adjusted growth path illustration" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <span class="mb-3 inline-block rounded-full bg-indigo-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-indigo-600">Pro Engine</span>
+      <h3 class="text-[16px] font-bold text-slate-900">Sized to Your Risk Tolerance</h3>
+      <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">Aggressive, Normal, or Stable modes size every entry as a fraction of balance.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
+      <img src="images/future-contract.webp" alt="Futures contract illustration — a signed agreement representing perpetual futures trading" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <span class="mb-3 inline-block rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-emerald-600">For Everyone</span>
+      <h3 class="text-[16px] font-bold text-slate-900">Built for USDⓈ-M Futures, Not Adapted</h3>
+      <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">Every strategy, exit rule, and risk model is engineered for perpetual futures from the ground up — not retrofitted from a spot bot.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
+      <img src="images/profit-maximize.webp" alt="Profit tracking illustration — rising bar chart with balance and percentage return" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <span class="mb-3 inline-block rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-emerald-600">For Everyone</span>
+      <h3 class="text-[16px] font-bold text-slate-900">Every Trade Logged, P&amp;L Tracked</h3>
+      <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">Balance, cumulative P&amp;L, ROI and win rate are calculated automatically from your real trade history — nothing rounded in your favor.</p>
+    </div>
+  </div>
+  <div class="mt-10 text-center"><a href="manual.html" class="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-6 py-3 text-[14px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600">Preview it in 9 real screens <i data-lucide="arrow-right" class="h-4 w-4"></i></a></div>
+</div></section>
+
+<!-- ============ SHOWCASE ============ -->
+<section id="showcase" class="bg-slate-50 py-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-600">See It Running</div>
+    <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Not Mockups. Actual Dashboard Screens.</h2>
+  </div>
+  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-900/5">
+    <div class="relative aspect-video bg-slate-50" id="scStage">
+      <div class="showcase-slide active"><img src="results/dashboard-overview.png" alt="JaviD Future Bot dashboard — cumulative P&L and win rate" loading="lazy" class="h-full w-full object-contain"></div>
+      <div class="showcase-slide"><img src="results/open-positions.png" alt="Open positions running simultaneously" loading="lazy" class="h-full w-full object-contain"></div>
+      <div class="showcase-slide"><img src="results/daily-returns.png" alt="Daily return record" loading="lazy" class="h-full w-full object-contain"></div>
+      <div class="showcase-slide"><img src="results/trade-records-1.png" alt="Individual trade execution records" loading="lazy" class="h-full w-full object-contain"></div>
+      <div class="showcase-slide"><img src="results/trade-records-2.png" alt="Individual trade execution records, second batch" loading="lazy" class="h-full w-full object-contain"></div>
+      <div class="showcase-slide"><img src="results/trade-records-3.png" alt="Individual trade execution records, third batch" loading="lazy" class="h-full w-full object-contain"></div>
+      <div class="showcase-slide"><img src="results/trade-records-4.png" alt="Individual trade execution records, fourth batch" loading="lazy" class="h-full w-full object-contain"></div>
+    </div>
+    <div class="flex items-center justify-between gap-4 border-t border-slate-200 px-6 py-4 text-[13px] text-slate-500">
+      <span id="scCaption">Cumulative P&amp;L and win rate — the same market-trend panel the bot references live</span>
+      <span class="flex shrink-0 gap-2" id="scDots"></span>
+    </div>
+  </div>
+  <div class="mt-8 text-center"><a href="results.html" class="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-6 py-3 text-[14px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600">See the full screenshot record <i data-lucide="arrow-right" class="h-4 w-4"></i></a></div>
+</div></section>
+
+<!-- ============ EXCHANGE SPOTLIGHT ============ -->
+<section class="py-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="grid items-center gap-6 rounded-2xl border border-slate-200 bg-gradient-to-br from-amber-50 to-white p-9 sm:grid-cols-[auto_1fr_auto]">
+    <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#F0B90B]/15 text-2xl font-black text-[#F0B90B]">B</span>
+    <div>
+      <h3 class="text-[18px] font-bold text-slate-900">Officially built for Binance USDⓈ-M Futures</h3>
+      <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">One exchange, done properly — 500+ symbols, direct WebSocket connection, 0.1s latency. Sign up through our official partner link and pay Binance the exact same fees; that referral rebate is what keeps JaviD free forever.</p>
+    </div>
+    <a href="https://www.binance.com/register?ref=PKNNLUSL" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-[#F0B90B] px-6 py-3.5 text-[14px] font-extrabold text-black shadow-sm transition hover:brightness-105">Create Binance Account <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
+  </div>
+</div></section>
+
+<!-- ============ SHADOW MODE ============ -->
+<section id="shadow-mode" class="pb-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="grid items-center gap-8 rounded-2xl border border-indigo-200 bg-indigo-50/60 p-9 sm:grid-cols-[1fr_auto]">
+    <div>
+      <h3 class="flex items-center gap-2 text-[22px] font-bold text-slate-900"><i data-lucide="flask-conical" class="h-6 w-6 text-indigo-600"></i> Try It Before You Risk a Single Dollar</h3>
+      <p class="mt-2.5 max-w-xl text-[14.5px] leading-relaxed text-slate-600">Shadow Mode runs every strategy against live market data with a virtual balance — real signals, real timing, zero real orders. It uses the real exchange's live API, so the experience is nearly identical to trading with real money.</p>
+    </div>
+    <a href="#download" class="inline-flex shrink-0 items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-lg shadow-indigo-600/25 transition hover:bg-indigo-700">Download &amp; Try Shadow Mode</a>
+  </div>
+</div></section>
+
+<!-- ============ POSITION SIZING + FEE MODEL ============ -->
+<section class="pb-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
+  <div class="grid gap-4">
+    <div class="rounded-2xl border border-slate-200 p-7">
+      <i data-lucide="ruler" class="mb-3 h-6 w-6 text-indigo-600"></i>
+      <h3 class="text-[17px] font-bold text-slate-900">Why 1,000 USDT Minimum</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500">Each entry sizes at up to 1/300th of your balance per trade, spreading risk across dozens of positions. Below ~1,000 USDT, exchange minimum-notional limits and fees start cutting into the edge.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 p-7">
+      <i data-lucide="badge-dollar-sign" class="mb-3 h-6 w-6 text-indigo-600"></i>
+      <h3 class="text-[17px] font-bold text-slate-900">We Split a Sliver of the Exchange Fee</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500">Binance already charges a small trading fee on every order — with or without JaviD. A portion of that existing fee is rebated to us by Binance, not by you. No subscription, no performance fee, ever.</p>
+    </div>
+  </div>
+  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <img src="screenshots/shot4.png" alt="Real in-app Investment Mode screen — Aggressive, Normal, and Stable position-sizing presets" class="w-full">
+    <p class="border-t border-slate-200 px-4 py-3 text-[12px] text-slate-400">Real screenshot — the actual Investment Mode panel, balance ÷ 300 / 500 / 700</p>
+  </div>
+  </div>
+</div></section>
+
+<!-- ============ COMPARISON ============ -->
+<section id="compare" class="bg-slate-50 py-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-600">Why JaviD</div>
+    <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">How It Stacks Up Against Subscription Bots and Signal Groups</h2>
+  </div>
+  <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <table class="w-full min-w-[640px] border-collapse text-[13.5px]">
+      <thead>
+        <tr class="bg-slate-50">
+          <th class="p-4"></th>
+          <th class="bg-indigo-50 p-4 text-[14px] font-extrabold text-indigo-600">JaviD Future Bot</th>
+          <th class="p-4 font-semibold text-slate-600">Cloud Subscription Bots</th>
+          <th class="p-4 font-semibold text-slate-600">Telegram Signal Groups</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr class="border-t border-slate-200"><th class="p-4 text-left text-[12.5px] font-semibold text-slate-500">Cost</th><td class="bg-indigo-50/40 p-4 font-bold text-emerald-600">$0 — free forever</td><td class="p-4 text-rose-500">$20–$100+/month</td><td class="p-4 text-rose-500">Monthly fee + zero accountability</td></tr>
+        <tr class="border-t border-slate-200"><th class="p-4 text-left text-[12.5px] font-semibold text-slate-500">Where it runs</th><td class="bg-indigo-50/40 p-4 font-bold text-emerald-600">100% on your PC (local)</td><td class="p-4 text-amber-600">Third-party cloud servers</td><td class="p-4 text-rose-500">Manual — you place every order</td></tr>
+        <tr class="border-t border-slate-200"><th class="p-4 text-left text-[12.5px] font-semibold text-slate-500">API key storage</th><td class="bg-indigo-50/40 p-4 font-bold text-emerald-600">Encrypted on your PC</td><td class="p-4 text-rose-500">Uploaded to their servers</td><td class="p-4 text-slate-400">—</td></tr>
+        <tr class="border-t border-slate-200"><th class="p-4 text-left text-[12.5px] font-semibold text-slate-500">Withdrawal permission</th><td class="bg-indigo-50/40 p-4 font-bold text-emerald-600">Never required</td><td class="p-4 text-amber-600">Varies by service</td><td class="p-4 text-slate-400">—</td></tr>
+        <tr class="border-t border-slate-200"><th class="p-4 text-left text-[12.5px] font-semibold text-slate-500">Strategy basis</th><td class="bg-indigo-50/40 p-4 font-bold text-emerald-600">AI-driven quant design · logic disclosed</td><td class="p-4 text-amber-600">Black box</td><td class="p-4 text-rose-500">Operator's gut feeling</td></tr>
+        <tr class="border-t border-slate-200"><th class="p-4 text-left text-[12.5px] font-semibold text-slate-500">Monitoring</th><td class="bg-indigo-50/40 p-4 font-bold text-emerald-600">Live dashboard + Telegram reports</td><td class="p-4 text-amber-600">Web dashboard</td><td class="p-4 text-rose-500">None</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+
+<!-- ============ COMMUNITY ============ -->
+<section id="community" class="py-16"><div class="mx-auto max-w-6xl px-6 text-center">
+  <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-600">Community</div>
+  <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Join the JaviD Community</h2>
+  <p class="mx-auto mt-3 max-w-xl text-[15px] text-slate-500">Update announcements, strategy-setup tips, and Shadow Mode live-data reports land in the Telegram channel first. Trade notes and questions go on the Community Board.</p>
+  <div class="mt-7 flex flex-wrap justify-center gap-4">
+    <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg bg-sky-500 px-7 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-sky-600"><i data-lucide="send" class="h-4.5 w-4.5"></i> Join Telegram</a>
+    <a href="board.html" class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-7 py-3.5 text-[14.5px] font-extrabold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600"><i data-lucide="message-square" class="h-4.5 w-4.5"></i> Community Board</a>
+  </div>
+</div></section>
+
+<!-- ============ SECURITY & TRUST ============ -->
+<section id="transparency" class="bg-slate-900 py-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-400">Security &amp; Trust</div>
+    <h2 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">Secure by Design. Local. Verifiable.</h2>
+    <p class="mt-3 text-[15px] text-slate-400">Instead of asking you to trust us — open your firewall or network monitor while the app runs. The only connection you'll see is Binance.</p>
+  </div>
+  <div class="grid gap-4 md:grid-cols-3">
+    <div class="rounded-2xl border border-white/10 bg-white/5 p-7">
+      <i data-lucide="server-off" class="mb-3 h-6 w-6 text-indigo-400"></i>
+      <h3 class="text-[16px] font-bold text-white">Zero Middle Servers</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-400">No JaviD-owned server ever sees your orders, balance, or strategy data. There is no point of attack because there is no point in between.</p>
+    </div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 p-7">
+      <i data-lucide="key-round" class="mb-3 h-6 w-6 text-indigo-400"></i>
+      <h3 class="text-[16px] font-bold text-white">Funds Solely Accessible By You</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-400">Every feature works with withdrawal permission switched off — our setup guide explicitly tells you to leave it off.</p>
+    </div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 p-7">
+      <i data-lucide="folder-lock" class="mb-3 h-6 w-6 text-indigo-400"></i>
+      <h3 class="text-[16px] font-bold text-white">Your Records Stay Yours</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-400">Trade history, logs, and settings all live on your PC. You never have to request your data from us — and we couldn't hide it if we wanted to.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-16"><div class="mx-auto max-w-6xl px-6">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-600">FAQ</div>
+    <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">The Questions You'd Ask Before Paying</h2>
+    <p class="mt-3 text-[15px] text-slate-500">…except there's nothing to pay. It's free. Still, here's what you'll want to know:</p>
+  </div>
+  <div class="mx-auto grid max-w-5xl gap-3 md:grid-cols-2">
+    <details class="faq-item rounded-xl border border-slate-200 bg-white" open>
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">Is it really free? No hidden costs?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">Yes — <b class="text-slate-800">no subscription, no purchase price, no performance fee.</b> The only revenue source is Binance's official Broker Program: a share of the trading fee you already pay Binance gets rebated to us, by Binance.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">Is it safe to enter my API key?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">Your API key is <b class="text-slate-800">encrypted and stored locally on your own PC</b> — it is never transmitted anywhere, and withdrawal permission is never required.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">Are profits guaranteed?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500"><b class="text-slate-800">No.</b> It's a tool that executes a defined strategy 24/7 without emotion. Crypto futures carry a serious risk of loss — validate in Shadow Mode before going live.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">How close is Shadow Mode to real trading?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">Shadow Mode uses <b class="text-slate-800">the real exchange's live API</b> with <b class="text-slate-800">virtual USDT</b> — signals, timing, and data are identical to live trading; only the real orders are withheld.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">What happens if my PC shuts down mid-trade?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">New entries and position management stop. Positions already open remain on the exchange, and the bot re-detects and resumes managing them on restart. An always-on mini PC or low-cost cloud VM is recommended.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">What's the minimum capital?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">We recommend <b class="text-slate-800">1,000 USDT or more</b> so per-trade sizing (up to 1/300th of balance) stays above exchange minimum-notional limits.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">What about flash crashes and liquidation risk?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">Five layers of exit logic manage every position, but no system can fully eliminate the risk of violent moves in futures markets. Keep leverage conservative.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">Can I use it without knowing how to code?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">Yes — download, double-click start.bat, paste your API key, pick coins, start. No code, anywhere. The <a href="manual.html" class="font-bold text-indigo-600 hover:underline">User Manual</a> covers it in 9 real screens.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">Which exchanges and markets are supported?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">Currently <b class="text-slate-800">Binance USDⓈ-M Futures</b> only, monitoring 500+ symbols simultaneously.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">Does it run on Windows and macOS?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">Yes — both. No high-end hardware needed, just a PC that stays on 24/7 with an internet connection.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">Do I have to sign up through your referral link?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">You can use an existing account, but only partner-link signups generate the fee rebate that keeps this software free.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">How do I set up Telegram alerts?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">Enter your bot token and chat ID in Settings — you'll get balance, P&amp;L, ROI, win rate and open-position reports on request or on schedule.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">What's the refund policy?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">The price is $0, so there's nothing to refund. Delete it anytime — no cancellation flow, no penalty.</div>
+    </details>
+    <details class="faq-item rounded-xl border border-slate-200 bg-white">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900">How do updates work?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500">New versions are announced on this page and in the <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" class="font-bold text-indigo-600 hover:underline">Telegram channel</a>. Download and overwrite — settings are preserved.</div>
+    </details>
+  </div>
+</div></section>
+
+<!-- ============ FINAL CTA ============ -->
+<section id="download" class="bg-gradient-to-b from-indigo-50/60 to-white py-16"><div class="mx-auto max-w-3xl px-6 text-center">
+  <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-[34px]">Why Aren't You Trading Yet?</h2>
+  <p class="mx-auto mt-4 max-w-xl text-[15px] text-slate-500">Let JaviD take care of the tedious tasks — while you keep your keys, your funds, your control, on every single trade.</p>
+
+  <div class="mx-auto mt-9 max-w-md rounded-2xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-900/5">
+    <label for="dlCode" class="mb-2.5 block text-[12.5px] font-bold text-slate-500">Enter your access code to download</label>
+    <input type="text" id="dlCode" placeholder="Insert UID" autocomplete="off" maxlength="40" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3.5 text-center text-[14px] font-bold uppercase tracking-wide text-slate-900 outline-none focus:border-indigo-500 focus:bg-white">
+    <div class="mt-4 flex flex-wrap justify-center gap-3">
+      <button type="button" onclick="javidDownload('windows', this)" class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</button>
+      <button type="button" onclick="javidDownload('mac', this)" class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</button>
+    </div>
+    <p id="dlGateMsg" class="mt-3 min-h-[18px] text-[13px] font-semibold"></p>
+    <p class="mt-1.5 text-[12.5px] text-slate-400">No code yet? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" class="font-bold text-indigo-600 hover:underline">Join the Telegram community</a> — codes are issued free after you sign up with our Binance referral link.</p>
+  </div>
+
+  <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12.5px] font-semibold text-slate-500">
+    <span class="flex items-center gap-1.5"><i data-lucide="check" class="h-4 w-4 text-emerald-500"></i>No obligations</span>
+    <span class="flex items-center gap-1.5"><i data-lucide="check" class="h-4 w-4 text-emerald-500"></i>No hidden fees</span>
+    <span class="flex items-center gap-1.5"><i data-lucide="check" class="h-4 w-4 text-emerald-500"></i>No credit card</span>
+  </div>
+  <p class="mt-4 text-[12.5px] text-slate-400">Enter your code → click your OS → unzip → run <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. First time? Follow along with the <a href="manual.html" class="font-bold text-indigo-600 hover:underline">User Manual</a>.</p>
+  <p class="mt-1.5 text-[12.5px] text-slate-400">Questions? Email <a href="mailto:javidfuturebot@javid-dol.uk" class="font-bold text-indigo-600 hover:underline">javidfuturebot@javid-dol.uk</a> or ask on the <a href="board.html" class="font-bold text-indigo-600 hover:underline">Community Board</a>.</p>
+
+  <p class="mx-auto mt-12 max-w-2xl border-t border-slate-200 pt-6 text-[11.5px] leading-relaxed text-slate-400">Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. JaviD Future Bot is a standalone execution tool — it does not guarantee profits. Performance figures on this page are Shadow Mode (virtual balance) data and snapshots of real dashboard records from specific periods; they do not guarantee or imply future results. All trading decisions and their outcomes are the sole responsibility of the user. JaviD Future Bot does not provide investment advice, does not custody funds, and does not execute trades on any server — every order is placed directly from your own device using your own Binance API credentials.</p>
+</div></section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-slate-200 bg-slate-50 py-14"><div class="mx-auto max-w-6xl px-6">
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+    <div class="lg:col-span-1">
+      <a href="index.html" class="flex items-center gap-2 font-extrabold text-slate-900"><span class="grad-ring flex h-6 w-6 items-center justify-center rounded-md text-white"><i data-lucide="zap" class="h-3.5 w-3.5"></i></span>JaviD Future Bot</a>
+      <p class="mt-3 text-[12.5px] leading-relaxed text-slate-500">Automated Binance USDⓈ-M futures execution — 100% local, non-custodial, free forever.</p>
+    </div>
+    <div>
+      <h4 class="mb-3 text-[11.5px] font-extrabold uppercase tracking-wide text-slate-400">Product</h4>
+      <ul class="space-y-2 text-[13px] text-slate-600">
+        <li><a href="#features" class="hover:text-indigo-600">Features</a></li>
+        <li><a href="#how-it-works" class="hover:text-indigo-600">How It Works</a></li>
+        <li><a href="#compare" class="hover:text-indigo-600">Compare</a></li>
+        <li><a href="#shadow-mode" class="hover:text-indigo-600">Shadow Mode</a></li>
+        <li><a href="#download" class="hover:text-indigo-600">Free Download</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="mb-3 text-[11.5px] font-extrabold uppercase tracking-wide text-slate-400">Resources</h4>
+      <ul class="space-y-2 text-[13px] text-slate-600">
+        <li><a href="results.html" class="hover:text-indigo-600">Real Results</a></li>
+        <li><a href="manual.html" class="hover:text-indigo-600">User Manual</a></li>
+        <li><a href="binance-signup-api-guide.html" class="hover:text-indigo-600">Binance Setup Guide</a></li>
+        <li><a href="#faq" class="hover:text-indigo-600">FAQ</a></li>
+        <li><a href="https://github.com/olkdol/javid-future-bot" target="_blank" rel="noopener" class="hover:text-indigo-600">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="mb-3 text-[11.5px] font-extrabold uppercase tracking-wide text-slate-400">Community</h4>
+      <ul class="space-y-2 text-[13px] text-slate-600">
+        <li><a href="board.html" class="hover:text-indigo-600">Community Board</a></li>
+        <li><a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" class="hover:text-indigo-600">Telegram Channel</a></li>
+        <li><a href="mailto:javidfuturebot@javid-dol.uk" class="hover:text-indigo-600">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="mb-3 text-[11.5px] font-extrabold uppercase tracking-wide text-slate-400">Legal</h4>
+      <ul class="space-y-2 text-[13px] text-slate-600">
+        <li><span class="text-slate-500">Not investment advice</span></li>
+        <li><span class="text-slate-500">No custody of funds</span></li>
+        <li><span class="text-slate-500">Trading involves risk of loss</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 pt-6 text-[12.5px] text-slate-400">
+    <span>© 2026 JaviD Future Bot · bn.javidtrading.com</span>
+    <span>Binance USDⓈ-M Futures automation · Windows &amp; macOS</span>
+  </div>
+</div></footer>
+
+<script>
+async function javidDownload(platform, btnEl){
+  var input = document.getElementById('dlCode');
+  var msg = document.getElementById('dlGateMsg');
+  var code = (input.value || '').trim();
+  var buttons = document.querySelectorAll('#download button');
+  if (!code) {
+    msg.textContent = 'Enter your access code first.';
+    msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-amber-600';
+    input.focus();
+    return;
+  }
+  buttons.forEach(function(b){ b.setAttribute('disabled', 'disabled'); });
+  msg.textContent = 'Checking code…';
+  msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-slate-500';
+  try {
+    var res = await fetch('/api/download', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code: code, platform: platform })
+    });
+    if (!res.ok) {
+      var data = {};
+      try { data = await res.json(); } catch (e) {}
+      msg.textContent = data.error === 'invalid_code'
+        ? 'That code is not valid. Double-check it, or ask in the Telegram community.'
+        : 'Something went wrong. Please try again in a moment.';
+      msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-amber-600';
+      return;
+    }
+    var blob = await res.blob();
+    var filename = platform === 'mac' ? 'JaviD_Future_Bot_macOS.zip' : 'JaviD_Future_Bot_Windows.zip';
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    msg.textContent = 'Download started — check your browser downloads.';
+    msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-emerald-600';
+  } catch (err) {
+    msg.textContent = 'Network error. Please try again.';
+    msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-amber-600';
+  } finally {
+    buttons.forEach(function(b){ b.removeAttribute('disabled'); });
+  }
+}
+</script>
+
+<script>
+(function(){
+  var slides = document.querySelectorAll('#scStage .showcase-slide');
+  var dotsWrap = document.getElementById('scDots');
+  var captionEl = document.getElementById('scCaption');
+  if (!slides.length || !dotsWrap) return;
+  var captions = [
+    'Cumulative P&L and win rate — the same market-trend panel the bot references live',
+    'Positions open simultaneously — floating gains and losses side by side, unedited',
+    'Daily return record — the good days and the bad days both stay in',
+    'Individual trade records — entry, exit, and P&L logged per trade',
+    'More trade records — Strategy-A and Strategy-C entries, short and long',
+    'More trade records — a full multi-day run, unedited',
+    'More trade records — every closed position, in order'
+  ];
+  var idx = 0, timer = null;
+  slides.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', 'Screen ' + (i+1));
+    b.className = 'h-2 w-2 rounded-full ' + (i === 0 ? 'bg-indigo-600' : 'bg-slate-300');
+    b.addEventListener('click', function(){ go(i); restart(); });
+    dotsWrap.appendChild(b);
+  });
+  var dots = dotsWrap.querySelectorAll('button');
+  function go(i){
+    slides[idx].classList.remove('active'); dots[idx].className = 'h-2 w-2 rounded-full bg-slate-300';
+    idx = i;
+    slides[idx].classList.add('active'); dots[idx].className = 'h-2 w-2 rounded-full bg-indigo-600';
+    if (captionEl) captionEl.textContent = captions[idx] || '';
+  }
+  function next(){ go((idx + 1) % slides.length); }
+  function restart(){ if (timer) clearInterval(timer); timer = setInterval(next, 5000); }
+  restart();
+})();
+
+(function(){
+  var btn = document.getElementById('navToggle');
+  var nav = document.getElementById('mobileNav');
+  if (!btn || !nav) return;
+  var open = false;
+  btn.addEventListener('click', function(){
+    open = !open;
+    nav.style.maxHeight = open ? nav.scrollHeight + 'px' : '0px';
+    nav.style.opacity = open ? '1' : '0';
+  });
+})();
+
+function initIcons(){ if (window.lucide && typeof lucide.createIcons === 'function') { lucide.createIcons(); } }
+initIcons();
+window.addEventListener('load', initIcons);
+setTimeout(initIcons, 1500);
+</script>
+
+</body>
+</html>

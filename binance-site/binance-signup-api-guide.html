@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binance Account &amp; API Key Setup Guide | JaviD Future Bot</title>
+<meta name="description" content="Everything to set up before your first automated trade — Binance account signup, identity verification, enabling Futures, a correctly-permissioned API key, and running the bot 24/7.">
+<meta name="keywords" content="binance api key setup, binance futures api setup, binance account signup guide">
+<link rel="canonical" href="https://javid-dol.uk/binance-signup-api-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Binance Account &amp; API Key Setup Guide — JaviD Future Bot">
+<meta property="og:description" content="From account creation to API key permissions and a 24/7 runtime setup — every step needed to run the bot.">
+<meta property="og:url" content="https://javid-dol.uk/binance-signup-api-guide.html">
+<style>
+:root {
+  --bg: #0a0d12; --surface:#0f131a; --panel:#111823; --panel-2:#131b27; --inset:#0d1420;
+  --line:#1c2530; --line-2:#27303f; --text:#dbe4f0; --muted:#7d8aa0; --faint:#5f6b7d;
+  --accent:#2dd4bf; --accent-dim:#14655c; --accent-bg:#0e3b34; --violet:#8b5cf6;
+  --up:#34d399; --down:#fb7185; --warn:#fbbf24;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'Segoe UI', system-ui, -apple-system, sans-serif; letter-spacing:-0.01em; line-height:1.6; }
+a { color:var(--accent); }
+.wrap { max-width: 860px; margin:0 auto; padding:0 24px; }
+code { background:var(--inset); border:1px solid var(--line); padding:2px 7px; border-radius:5px; font-size:.92em; color:var(--accent); }
+
+.nav { position:sticky; top:0; z-index:50; display:flex; padding:16px 24px; background:rgba(10,13,18,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.nav-inner { max-width:1180px; margin:0 auto; width:100%; display:flex; align-items:center; justify-content:space-between; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:16px; }
+.brand-mark { width:22px; height:22px; background:conic-gradient(from 210deg, var(--accent), var(--violet), var(--accent)); clip-path:polygon(50% 0,100% 28%,100% 72%,50% 100%,0 72%,0 28%); }
+.brand em { font-style:normal; color:var(--accent); font-size:12px; font-weight:700; margin-left:2px; }
+.nav-links { display:flex; align-items:center; gap:28px; font-size:13.5px; color:var(--muted); font-weight:600; }
+.nav-links a:hover { color:var(--text); }
+.nav-cta { background: linear-gradient(135deg,#14b8a6,#0d9488); color:#04211d; padding:9px 18px; border-radius:999px; font-weight:800; font-size:13px; }
+.nav-highlight { position:relative; color:var(--accent) !important; }
+.nav-highlight .nh-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--violet); margin-left:5px; vertical-align:middle; }
+@media (max-width:760px) { .nav-links { display:none; } }
+
+.hero { padding:64px 0 20px; text-align:center; }
+.kicker { display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); background:var(--accent-bg); border:1px solid var(--accent-dim); padding:6px 14px; border-radius:999px; margin-bottom:20px; }
+h1 { font-size:36px; font-weight:800; letter-spacing:-0.02em; margin-bottom:16px; }
+.hero p.sub { color:var(--muted); font-size:16px; max-width:600px; margin:0 auto 8px; }
+.updated { font-size:12px; color:var(--faint); margin-top:14px; }
+
+.toc { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px 26px; margin:40px 0; }
+.toc h4 { font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-bottom:12px; }
+.toc ol { padding-left:20px; color:var(--text); font-size:14.5px; }
+.toc li { margin-bottom:6px; }
+.toc a { color:var(--text); }
+.toc a:hover { color:var(--accent); }
+
+.part { padding:44px 0; border-top:1px solid var(--line); }
+.part-num { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:9px; background:var(--accent-bg); color:var(--accent); font-weight:800; font-size:15px; margin-bottom:16px; }
+.part h2 { font-size:24px; margin-bottom:14px; }
+.part p { color:var(--muted); margin-bottom:16px; font-size:15px; }
+.steplist { list-style:none; counter-reset: step; margin:20px 0; }
+.steplist li { counter-increment: step; position:relative; padding-left:38px; margin-bottom:16px; font-size:14.5px; color:var(--text); }
+.steplist li::before { content: counter(step); position:absolute; left:0; top:0; width:24px; height:24px; border-radius:7px; background:var(--panel); border:1px solid var(--line-2); color:var(--accent); font-weight:800; font-size:12px; display:flex; align-items:center; justify-content:center; }
+.steplist li b { color:var(--text); }
+.steplist li small { display:block; color:var(--faint); margin-top:2px; }
+
+.callout { border-radius:12px; padding:18px 22px; margin:22px 0; font-size:14px; line-height:1.65; }
+.callout.warn { background:rgba(251,191,36,.08); border:1px solid rgba(251,191,36,.35); color:#f4d99b; }
+.callout.danger { background:rgba(251,113,133,.08); border:1px solid rgba(251,113,133,.35); color:#f6b9c4; }
+.callout.tip { background:rgba(45,212,191,.08); border:1px solid var(--accent-dim); color:#a9ece3; }
+.callout b { color:#fff; }
+
+table.faq { width:100%; border-collapse:collapse; margin:18px 0; font-size:13.5px; }
+table.faq th, table.faq td { border:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top; }
+table.faq th { background:var(--panel); color:var(--muted); font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; }
+table.faq td { color:var(--muted); }
+table.faq td:first-child { color:var(--text); font-weight:600; white-space:nowrap; }
+
+.cta-band { text-align:center; padding:60px 0; }
+.cta-band h3 { font-size:24px; margin-bottom:12px; }
+.cta-band p { color:var(--muted); margin-bottom:24px; }
+.btn { display:inline-flex; align-items:center; gap:9px; padding:14px 28px; border-radius:10px; font-weight:800; font-size:14.5px; background:linear-gradient(135deg,#14b8a6,#0d9488); color:#04211d; box-shadow:0 12px 30px -10px rgba(20,184,166,.55); }
+
+footer { border-top:1px solid var(--line); padding:34px 0; }
+.footer-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:12.5px; color:var(--faint); }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { color:var(--faint); }
+.footer-links a:hover { color:var(--accent); }
+
+@media (max-width:640px){ h1{font-size:28px;} .part h2{font-size:20px;} }
+
+/* ===== PAIN-POINT TICKER ===== */
+.ticker { position: sticky; top: 57px; z-index: 45; background: linear-gradient(180deg, rgba(15,19,26,.97), rgba(10,13,18,.97)); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); overflow: hidden; }
+.ticker-inner { max-width: 860px; margin: 0 auto; padding: 12px 24px; min-height: 84px; display:flex; align-items:center; justify-content:center; position:relative; }
+.ticker-slide { position:absolute; left:24px; right:24px; display:flex; align-items:center; justify-content:center; gap:14px; opacity:0; text-align:left; text-decoration:none; animation: tickerCycle 27s ease-in-out infinite; }
+.ticker-slide .tk-icon { font-size:26px; flex-shrink:0; }
+.ticker-slide .tk-text { text-align:left; }
+.ticker-slide .tk-text b { display:block; color:var(--accent); font-size:14px; font-weight:800; letter-spacing:-0.01em; }
+.ticker-slide .tk-text span { display:block; color:var(--text); font-size:13px; margin-top:3px; }
+.ticker-slide .tk-text small { display:block; color:var(--faint); font-size:11px; margin-top:3px; }
+.ticker-slide.t1 { animation-delay: 0s; }
+.ticker-slide.t2 { animation-delay: 4.5s; }
+.ticker-slide.t3 { animation-delay: 9s; }
+.ticker-slide.t4 { animation-delay: 13.5s; }
+.ticker-slide.t5 { animation-delay: 18s; }
+.ticker-slide.t6 { animation-delay: 22.5s; }
+@keyframes tickerCycle {
+  0%   { opacity: 0; transform: translateY(6px); }
+  3%   { opacity: 1; transform: translateY(0); }
+  15%  { opacity: 1; }
+  18%  { opacity: 0; transform: translateY(-6px); }
+  100% { opacity: 0; }
+}
+@media (max-width:640px) { .ticker-inner { min-height:96px; padding:10px 16px; } .ticker-slide { left:16px; right:16px; } .ticker-slide .tk-icon { font-size:22px; } }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="brand"><span class="brand-mark"></span>JaviD Future Bot <em>V18.0</em></a>
+  <div class="nav-links">
+    <a href="index.html#features">Features</a>
+    <a href="index.html#how-it-works">How It Works</a>
+    <a href="index.html#shadow-mode">Shadow Mode</a>
+    <a href="results.html">Real Results</a>
+    <a href="manual.html">User Manual</a>
+    <a href="binance-signup-api-guide.html">New to Binance?</a>
+    <a href="board.html" class="nav-highlight">Community Board<span class="nh-dot"></span></a>
+  </div>
+  <a href="index.html#download" class="nav-cta">Download Now</a>
+</div></nav>
+
+<div class="ticker"><div class="ticker-inner">
+  <div class="ticker-slide t1"><span class="tk-icon">🌙</span><span class="tk-text"><b>Still watching charts and trading through the night?</b><span>Let an AI-built strategy judge and execute for you, 24/7.</span></span></div>
+  <div class="ticker-slide t2"><span class="tk-icon">🛡️</span><span class="tk-text"><b>Not sure you can trust an auto-trading program?</b><span>Run Shadow Mode first — switch to live trading once you trust it.</span><small>Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small></span></div>
+  <a class="ticker-slide t3" href="results.html"><span class="tk-icon">📊</span><span class="tk-text"><b>Curious what the real win rate looks like?</b><span>Check the real trading results on this site and judge for yourself.</span></span></a>
+  <div class="ticker-slide t4"><span class="tk-icon">🪙</span><span class="tk-text"><b>Only trading Bitcoin futures?</b><span>Trade 500+ altcoin futures and stack consistent results, every day.</span></span></div>
+  <div class="ticker-slide t5"><span class="tk-icon">⚖️</span><span class="tk-text"><b>Worried about liquidation on leveraged futures?</b><span>Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.</span><small>Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.</small></span></div>
+  <div class="ticker-slide t6"><span class="tk-icon">🌱</span><span class="tk-text"><b>Think your starting amount is too small?</b><span>Entry size resizes daily off your live balance — feel what compounding does.</span></span></div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <span class="kicker">🧭 Setup Guide</span>
+  <h1>How to Create a Binance Account &amp; Futures API Key</h1>
+  <p class="sub">Everything you need before your first trade with JaviD Future Bot — account signup, identity verification, enabling Futures, and generating an API key with the correct permissions.</p>
+  <p class="updated">Written for the current Binance web flow · Last checked July 2026</p>
+</div></header>
+
+<div class="wrap">
+  <div class="toc">
+    <h4>On this page</h4>
+    <ol>
+      <li><a href="#part1">Create your Binance account</a></li>
+      <li><a href="#part2">Complete identity verification (KYC)</a></li>
+      <li><a href="#part3">Enable your Futures account</a></li>
+      <li><a href="#part4">Create your API key</a></li>
+      <li><a href="#part5">Set the correct permissions (the step people miss)</a></li>
+      <li><a href="#part6">Connect it to JaviD Future Bot</a></li>
+      <li><a href="#part7">Keep it running 24/7 (cloud VM or mini PC)</a></li>
+      <li><a href="#faq">Troubleshooting &amp; FAQ</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- PART 1 -->
+<section class="part" id="part1"><div class="wrap">
+  <div class="part-num">1</div>
+  <h2>Create Your Binance Account</h2>
+  <p>Registration takes about 5 minutes. Use our official partner signup link below — it's the same Binance registration flow, at zero extra cost to you, and it's how JaviD Future Bot stays free with no subscription fee.</p>
+  <div class="callout tip" style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;">
+    <span><b>Don't have an account yet?</b> Sign up through our partner link — same official Binance flow, no extra cost.</span>
+    <a href="https://www.binance.com/register?ref=PKNNLUSL" target="_blank" rel="noopener" class="btn" style="background:#f0b90b;color:#1c1505;white-space:nowrap;">Create Account →</a>
+  </div>
+  <ul class="steplist">
+    <li><b>Go to binance.com and click Register.</b><small>You can sign up with an email address, a phone number, or continue with your Google/Apple account.</small></li>
+    <li><b>Set your password.</b><small>Minimum 8 characters with at least one uppercase letter and one number — we'd recommend adding a symbol too for a stronger key.</small></li>
+    <li><b>Enter the 6-digit verification code</b> sent to your email or phone.<small>The code is time-limited (typically ~30 minutes), so check your inbox/spam folder right away.</small></li>
+    <li><b>Turn on Two-Factor Authentication (2FA) immediately</b> from your account security settings.<small>Google Authenticator or a Passkey both work. You'll need 2FA active later to create an API key.</small></li>
+  </ul>
+  <div class="callout tip"><b>Tip:</b> Use a password manager and a dedicated email for exchange accounts — it's the single easiest way to avoid account-takeover phishing.</div>
+</div></section>
+
+<!-- PART 2 -->
+<section class="part" id="part2"><div class="wrap">
+  <div class="part-num">2</div>
+  <h2>Complete Identity Verification (KYC)</h2>
+  <p>Registering alone doesn't unlock trading. You need identity verification before you can deposit meaningfully or trade Futures.</p>
+  <ul class="steplist">
+    <li><b>Open your profile menu → Identification.</b><small>Select your country/region of residence and the ID document type (national ID card, driver's license, or passport).</small></li>
+    <li><b>Upload photos of your ID</b>, then complete the facial verification (a quick selfie/liveness check).</li>
+    <li><b>Wait for approval</b> — this usually clears in 5–15 minutes. Your profile status changes from <i>Unverified</i> to <i>Verified</i> once approved.</li>
+  </ul>
+  <div class="callout warn"><b>Note:</b> Some higher-tier API permissions now require the "Verified Plus" identity level rather than basic verification. If your API Management page shows restrictions you can't clear, check whether your account needs the additional verification step.</div>
+</div></section>
+
+<!-- PART 3 -->
+<section class="part" id="part3"><div class="wrap">
+  <div class="part-num">3</div>
+  <h2>Enable Your Futures Account — Before You Create an API Key</h2>
+  <img src="images/future-contract.webp" alt="Futures contract illustration" style="max-width:340px; width:100%; margin:0 auto 22px; display:block; border-radius:12px; border:1px solid var(--line-2); box-shadow:0 20px 50px -20px rgba(0,0,0,.5);">
+  <p>This step is easy to do out of order, and doing it out of order is the single most common setup mistake.</p>
+  <ul class="steplist">
+    <li><b>Open the [Futures] menu</b> from the top navigation.</li>
+    <li><b>Complete the futures risk questionnaire</b> if this is your first time — a short quiz confirming you understand leveraged trading risk.</li>
+    <li><b>Activate your USDⓈ-M Futures account.</b><small>Once active, you'll see a Futures wallet alongside your Spot wallet.</small></li>
+  </ul>
+  <div class="callout danger"><b>Do this before Part 4:</b> if your API key already existed before you activated Futures (or if you have Portfolio Margin enabled), that key will never be able to get Futures permission — you'll have to delete it and create a fresh one. Enable Futures first, API key second.</div>
+</div></section>
+
+<!-- PART 4 -->
+<section class="part" id="part4"><div class="wrap">
+  <div class="part-num">4</div>
+  <h2>Create Your API Key</h2>
+  <p>Before you can create a key, Binance requires: 2FA enabled, at least a token deposit into your Spot wallet (to activate the account), and completed identity verification — all covered in Parts 1–2.</p>
+  <ul class="steplist">
+    <li><b>Profile icon → Account → API Management.</b></li>
+    <li><b>Click Create API</b>, then choose <b>System generated</b>.<small>This uses standard HMAC authentication and gives you an API Key + Secret Key — the pairing JaviD Future Bot expects.</small></li>
+    <li><b>Give it a label</b>, e.g. <code>JaviD-Bot</code>, so you can recognize it later.</li>
+    <li><b>Verify with 2FA</b> (authenticator code, passkey, or email confirmation).</li>
+    <li><b>Your key is created</b> — but by default it can only read data. Continue to Part 5 before using it.</li>
+  </ul>
+</div></section>
+
+<!-- PART 5 -->
+<section class="part" id="part5"><div class="wrap">
+  <div class="part-num">5</div>
+  <h2>Set the Correct Permissions</h2>
+  <p>A freshly created key defaults to <b>Enable Reading</b> only. To let JaviD Future Bot place orders — and nothing more than that — you need to edit the key and check exactly three boxes.</p>
+  <div class="callout tip">
+    <b>✅ Check exactly these three, nothing else:</b>
+    <ul style="margin:10px 0 0; padding-left:22px; line-height:1.9;">
+      <li>Enable Reading <small style="color:var(--faint);">(already on by default)</small></li>
+      <li>Enable Spot &amp; Margin &amp; Stock Trading</li>
+      <li>Enable Futures</li>
+    </ul>
+  </div>
+  <div class="callout danger">
+    <b>❌ Leave every other box unchecked:</b> Enable Margin Loan, Repay &amp; Transfer · Permits Universal Transfer · Enable Withdrawals · Enable Prediction Trading · Enable Symbol Whitelist.
+    <p style="margin-top:8px; color:inherit;">None of these are needed for JaviD Future Bot to trade. Leaving them off means that even in a worst-case scenario where your API key was ever exposed, no one could move funds off the exchange, transfer between wallets, or touch anything beyond placing and managing futures trades — your assets stay yours.</p>
+  </div>
+  <ul class="steplist">
+    <li><b>Add an IP restriction — this is mandatory, not optional.</b><small>Since a January 2023 policy change, Binance will not grant any permission beyond read-only unless the key is restricted to specific IPs. Choose "Restrict access to trusted IPs only" and enter the public IPv4 address of the machine that will run the bot (search "what is my ip", or use JaviD's built-in "Run Connection Diagnostics" button, which detects and reports it for you).</small></li>
+    <li><b>Leave "Enable Withdrawals" OFF.</b><small>A trading bot never needs withdrawal permission. If anything you're configuring asks you to turn this on, stop and reconsider.</small></li>
+    <li><b>Save, then wait 5–10 minutes</b> for the IP whitelist change to fully propagate before testing the connection.</li>
+  </ul>
+  <div class="callout warn"><b>Copy your Secret Key now:</b> it is shown exactly once. If you navigate away without saving it, you'll need to delete the key and generate a new one.</div>
+</div></section>
+
+<!-- PART 6 -->
+<section class="part" id="part6"><div class="wrap">
+  <div class="part-num">6</div>
+  <h2>Connect It to JaviD Future Bot</h2>
+  <ul class="steplist">
+    <li><b>Launch JaviD Future Bot</b> (<code>start.bat</code>) — your browser opens automatically to the dashboard.</li>
+    <li><b>Go to the Settings tab</b> and paste your Access Key and Secret Key.<small>Watch for accidental leading/trailing spaces when pasting.</small></li>
+    <li><b>Click Save, then Test Connection.</b> A green checkmark means you're ready to go.</li>
+    <li><b>Turn on Shadow Mode</b> and verify the bot's behavior for a few days before ever switching to live trading.</li>
+  </ul>
+</div></section>
+
+<!-- PART 7 -->
+<section class="part" id="part7"><div class="wrap">
+  <div class="part-num">7</div>
+  <h2>Keep It Running 24/7</h2>
+  <p>JaviD Future Bot only trades while it's actually running — Binance's futures market never closes, so the machine running the bot needs to stay powered on and connected 24 hours a day, 365 days a year. Your everyday laptop works for a first test, but most users move to one of these two setups once they go live:</p>
+  <ul class="steplist">
+    <li><b>A cloud virtual machine</b> (Amazon AWS EC2, or any comparable VPS provider).<small>Rented by the month, always on, remotely accessible from anywhere, and no need to leave your personal laptop running or worry about it sleeping, updating, or losing power. A small/low-tier instance is enough — the bot itself is lightweight.</small></li>
+    <li><b>A dedicated mini PC or spare desktop, left on at home.</b><small>An Intel NUC-class mini PC (or any always-on machine you don't otherwise need) draws very little power, stays quiet, and can be plugged into a UPS to survive short outages. Just make sure Windows sleep/hibernate is disabled and the internet connection is stable.</small></li>
+  </ul>
+  <div class="callout tip"><b>Either option works equally well.</b> The only requirements are: the machine stays powered on, stays connected to the internet, and (per Part 5) has its IP address whitelisted on your Binance API key. If you move the bot to a new machine or your IP changes, just update the IP restriction on the key.</div>
+  <div class="callout warn"><b>Reminder:</b> if the machine restarts or loses power while a position is open, close that position manually from the Binance app under Futures before restarting the bot — see the <a href="manual.html">User Manual</a> for details.</div>
+</div></section>
+
+<!-- FAQ -->
+<section class="part" id="faq"><div class="wrap">
+  <div class="part-num">?</div>
+  <h2>Troubleshooting &amp; FAQ</h2>
+  <table class="faq">
+    <tr><th>Symptom</th><th>Cause / Fix</th></tr>
+    <tr><td>HTTP 451 error</td><td>Binance blocks Futures API access from some regions, including Korean IPs. Run the bot from an overseas VPS or through a VPN.</td></tr>
+    <tr><td>-2015 error on Test Connection</td><td>Your IP restriction hasn't propagated yet, or you entered the wrong IP. Wait 5–10 minutes and re-check the address.</td></tr>
+    <tr><td>-1022 Signature error</td><td>Almost always a Secret Key copy/paste issue — re-copy it, watching for hidden line breaks or spaces.</td></tr>
+    <tr><td>-1021 Timestamp error</td><td>Your PC's clock has drifted. Turn on automatic time sync in Windows settings.</td></tr>
+    <tr><td>Can't enable Futures permission on the key</td><td>The key was created before your Futures account was activated (see Part 3). Delete it and create a new one, in the right order.</td></tr>
+    <tr><td>Can't enable any permission beyond Read</td><td>You skipped the IP restriction step in Part 5 — it's mandatory for any non-read permission.</td></tr>
+  </table>
+</div></section>
+
+<section class="cta-band"><div class="wrap">
+  <h3>Ready to connect your key?</h3>
+  <p>Head back to the dashboard and finish setup in under a minute.</p>
+  <a href="index.html#download" class="btn">⬇ Back to JaviD Future Bot</a>
+</div></section>
+
+<footer><div class="wrap footer-row">
+  <span>© 2026 JaviD Future Bot · javid-dol.uk</span>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="results.html">Real Results</a>
+    <a href="manual.html">User Manual</a>
+    <a href="index.html#features">Features</a>
+    <a href="https://github.com/olkdol/javid-future-bot" target="_blank" rel="noopener">GitHub</a>
+    <a href="board.html">Community Board</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk">Contact</a>
+  </div>
+</div></footer>
+
+</body>
+</html>

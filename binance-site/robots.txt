@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bn.javidtrading.com/sitemap.xml

@@ -1,0 +1,42 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "javid-bn-landing",
+  "compatibility_date": "2026-07-13",
+  "main": "worker.js",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Same D1/KV/R2 as the main javid-dol-landing project on purpose — this
+  // site (bn.javidtrading.com) is a new skin/domain for the SAME Binance bot
+  // product as javid-dol.uk, so it shares the exact same board/status data,
+  // download codes, and installer files. Do NOT point these at the -bitget
+  // resources.
+
+  "d1_databases": [
+    {
+      "binding": "BOARD_DB",
+      "database_name": "javid-board-db",
+      "database_id": "fca31922-123f-424c-83b4-a069e2900761"
+    }
+  ],
+
+  "kv_namespaces": [
+    {
+      "binding": "DOWNLOAD_CODES",
+      "id": "2f6d1c363a654543bec03a58dfd76b18"
+    }
+  ],
+
+  "r2_buckets": [
+    {
+      "binding": "DOWNLOADS_BUCKET",
+      "bucket_name": "javid-downloads"
+    }
+  ]
+}

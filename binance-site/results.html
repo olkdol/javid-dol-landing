@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Trading Results | JaviD Future Bot — Actual Dashboard Records</title>
+<meta name="description" content="Real dashboard screenshots from an actual JaviD Future Bot run — balance, cumulative P&amp;L, win rate, open positions, and trade-by-trade records. No mockups, no demo data.">
+<meta name="keywords" content="binance bot results, crypto auto trading results, trading bot real performance">
+<link rel="canonical" href="https://javid-dol.uk/results.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Real Trading Results — JaviD Future Bot">
+<meta property="og:description" content="Balance, cumulative P&amp;L, win rate, and trade records from a real account — published as-is, losses included.">
+<meta property="og:url" content="https://javid-dol.uk/results.html">
+<style>
+:root {
+  --bg: #0a0d12; --surface:#0f131a; --panel:#111823; --panel-2:#131b27; --inset:#0d1420;
+  --line:#1c2530; --line-2:#27303f; --text:#dbe4f0; --muted:#7d8aa0; --faint:#5f6b7d;
+  --accent:#2dd4bf; --accent-dim:#14655c; --accent-bg:#0e3b34; --violet:#8b5cf6;
+  --up:#34d399; --down:#fb7185; --warn:#fbbf24;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { background:var(--bg); color:var(--text); font-family:'Segoe UI', system-ui, -apple-system, sans-serif; letter-spacing:-0.01em; line-height:1.6; }
+a { color:var(--accent); }
+.wrap { max-width: 980px; margin:0 auto; padding:0 24px; }
+img { max-width:100%; display:block; }
+
+.nav { position:sticky; top:0; z-index:50; display:flex; padding:16px 24px; background:rgba(10,13,18,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.nav-inner { max-width:1180px; margin:0 auto; width:100%; display:flex; align-items:center; justify-content:space-between; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:16px; }
+.brand-mark { width:22px; height:22px; background:conic-gradient(from 210deg, var(--accent), var(--violet), var(--accent)); clip-path:polygon(50% 0,100% 28%,100% 72%,50% 100%,0 72%,0 28%); }
+.brand em { font-style:normal; color:var(--accent); font-size:12px; font-weight:700; margin-left:2px; }
+.nav-links { display:flex; align-items:center; gap:28px; font-size:13.5px; color:var(--muted); font-weight:600; }
+.nav-links a:hover { color:var(--text); }
+.nav-cta { background: linear-gradient(135deg,#14b8a6,#0d9488); color:#04211d; padding:9px 18px; border-radius:999px; font-weight:800; font-size:13px; }
+.nav-highlight { position:relative; color:var(--accent) !important; }
+.nav-highlight .nh-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--violet); margin-left:5px; vertical-align:middle; }
+@media (max-width:760px) { .nav-links { display:none; } }
+
+.hero { padding:64px 0 20px; text-align:center; }
+.kicker { display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); background:var(--accent-bg); border:1px solid var(--accent-dim); padding:6px 14px; border-radius:999px; margin-bottom:20px; }
+h1 { font-size:36px; font-weight:800; letter-spacing:-0.02em; margin-bottom:16px; }
+.hero p.sub { color:var(--muted); font-size:16px; max-width:640px; margin:0 auto 8px; }
+.hero-note { font-size:12.5px; color:var(--faint); max-width:640px; margin:14px auto 0; }
+
+/* ===== STATS ===== */
+.stats-section { padding: 30px 0 10px; }
+.stats-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin:30px 0 10px; }
+.stat-card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:24px 18px; text-align:center; }
+.stat-num { font-size:26px; font-weight:800; margin-bottom:6px; }
+.stat-num.up { color:var(--up); }
+.stat-num.down { color:var(--down); }
+.stat-num.grad { background:linear-gradient(135deg,var(--accent),var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.stat-label { font-size:12.5px; color:var(--muted); line-height:1.5; }
+.window-note { text-align:center; font-size:12.5px; color:var(--faint); margin-top:6px; }
+
+.step { padding:44px 0; border-top:1px solid var(--line); }
+.step-num { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:9px; background:var(--accent-bg); color:var(--accent); font-weight:800; font-size:15px; margin-bottom:16px; }
+.step h2 { font-size:22px; margin-bottom:16px; }
+.shot-frame { border-radius:12px; overflow:hidden; border:1px solid var(--line-2); background:#05070a; box-shadow:0 30px 70px -30px rgba(0,0,0,.6); margin-bottom:18px; }
+.shot-frame img { width:100%; }
+.caption { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:18px 22px; font-size:14.5px; color:var(--muted); line-height:1.65; }
+.caption b { color:var(--text); }
+.caption b.up { color:var(--up); }
+.caption b.down { color:var(--down); }
+
+.cta-band { text-align:center; padding:60px 0 20px; }
+.cta-band h3 { font-size:24px; margin-bottom:12px; }
+.cta-band p { color:var(--muted); margin-bottom:24px; }
+.btn { display:inline-flex; align-items:center; gap:9px; padding:14px 28px; border-radius:10px; font-weight:800; font-size:14.5px; background:linear-gradient(135deg,#14b8a6,#0d9488); color:#04211d; box-shadow:0 12px 30px -10px rgba(20,184,166,.55); }
+
+.disclaimer { max-width:780px; margin:40px auto 0; text-align:center; font-size:11.5px; color:var(--faint); line-height:1.75; border-top:1px solid var(--line); padding-top:24px; }
+
+footer { border-top:1px solid var(--line); padding:34px 0; }
+.footer-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:12.5px; color:var(--faint); }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { color:var(--faint); }
+.footer-links a:hover { color:var(--accent); }
+
+@media (max-width:640px){ h1{font-size:28px;} .step h2{font-size:19px;} .stats-grid{grid-template-columns:1fr 1fr;} }
+
+/* ===== PAIN-POINT TICKER ===== */
+.ticker { position: sticky; top: 57px; z-index: 45; background: linear-gradient(180deg, rgba(15,19,26,.97), rgba(10,13,18,.97)); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); overflow: hidden; }
+.ticker-inner { max-width: 860px; margin: 0 auto; padding: 12px 24px; min-height: 84px; display:flex; align-items:center; justify-content:center; position:relative; }
+.ticker-slide { position:absolute; left:24px; right:24px; display:flex; align-items:center; justify-content:center; gap:14px; opacity:0; text-align:left; text-decoration:none; animation: tickerCycle 27s ease-in-out infinite; }
+.ticker-slide .tk-icon { font-size:26px; flex-shrink:0; }
+.ticker-slide .tk-text { text-align:left; }
+.ticker-slide .tk-text b { display:block; color:var(--accent); font-size:14px; font-weight:800; letter-spacing:-0.01em; }
+.ticker-slide .tk-text span { display:block; color:var(--text); font-size:13px; margin-top:3px; }
+.ticker-slide .tk-text small { display:block; color:var(--faint); font-size:11px; margin-top:3px; }
+.ticker-slide.t1 { animation-delay: 0s; }
+.ticker-slide.t2 { animation-delay: 4.5s; }
+.ticker-slide.t3 { animation-delay: 9s; }
+.ticker-slide.t4 { animation-delay: 13.5s; }
+.ticker-slide.t5 { animation-delay: 18s; }
+.ticker-slide.t6 { animation-delay: 22.5s; }
+@keyframes tickerCycle {
+  0%   { opacity: 0; transform: translateY(6px); }
+  3%   { opacity: 1; transform: translateY(0); }
+  15%  { opacity: 1; }
+  18%  { opacity: 0; transform: translateY(-6px); }
+  100% { opacity: 0; }
+}
+@media (max-width:640px) { .ticker-inner { min-height:96px; padding:10px 16px; } .ticker-slide { left:16px; right:16px; } .ticker-slide .tk-icon { font-size:22px; } }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="brand"><span class="brand-mark"></span>JaviD Future Bot <em>V18.0</em></a>
+  <div class="nav-links">
+    <a href="index.html#features">Features</a>
+    <a href="index.html#how-it-works">How It Works</a>
+    <a href="index.html#shadow-mode">Shadow Mode</a>
+    <a href="results.html">Real Results</a>
+    <a href="manual.html">User Manual</a>
+    <a href="binance-signup-api-guide.html">New to Binance?</a>
+    <a href="board.html" class="nav-highlight">Community Board<span class="nh-dot"></span></a>
+  </div>
+  <a href="index.html#download" class="nav-cta">Download Now</a>
+</div></nav>
+
+<div class="ticker"><div class="ticker-inner">
+  <div class="ticker-slide t1"><span class="tk-icon">🌙</span><span class="tk-text"><b>Still watching charts and trading through the night?</b><span>Let an AI-built strategy judge and execute for you, 24/7.</span></span></div>
+  <div class="ticker-slide t2"><span class="tk-icon">🛡️</span><span class="tk-text"><b>Not sure you can trust an auto-trading program?</b><span>Run Shadow Mode first — switch to live trading once you trust it.</span><small>Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small></span></div>
+  <a class="ticker-slide t3" href="results.html"><span class="tk-icon">📊</span><span class="tk-text"><b>Curious what the real win rate looks like?</b><span>Check the real trading results on this site and judge for yourself.</span></span></a>
+  <div class="ticker-slide t4"><span class="tk-icon">🪙</span><span class="tk-text"><b>Only trading Bitcoin futures?</b><span>Trade 500+ altcoin futures and stack consistent results, every day.</span></span></div>
+  <div class="ticker-slide t5"><span class="tk-icon">⚖️</span><span class="tk-text"><b>Worried about liquidation on leveraged futures?</b><span>Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.</span><small>Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.</small></span></div>
+  <div class="ticker-slide t6"><span class="tk-icon">🌱</span><span class="tk-text"><b>Think your starting amount is too small?</b><span>Entry size resizes daily off your live balance — feel what compounding does.</span></span></div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <span class="kicker">📊 Real Results</span>
+  <h1>Real Screenshots, From a Real Run.</h1>
+  <p class="sub">No mockups, no illustrative demo data. Every image on this page is a direct screenshot taken from the JaviD Future Bot dashboard during an actual multi-week run.</p>
+  <p class="hero-note">Window shown: 2026-05-26 – 2026-06-14. This is a single account over a single period — it is one data point, not a promise of what any future run will do.</p>
+  <img src="images/profit-maximize.webp" alt="Maximizing profit illustration with a rising bar chart" style="max-width:420px; width:100%; margin:28px auto 0; display:block; border-radius:14px; border:1px solid var(--line-2); box-shadow:0 30px 70px -30px rgba(0,0,0,.6);">
+</div></header>
+
+<div class="wrap">
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num up">+212.29</div><div class="stat-label">Cumulative P&amp;L (USDT)</div></div>
+      <div class="stat-card"><div class="stat-num grad">265</div><div class="stat-label">Total closed trades</div></div>
+      <div class="stat-card"><div class="stat-num up">93.2%</div><div class="stat-label">Win rate</div></div>
+      <div class="stat-card"><div class="stat-num grad">+12.02%</div><div class="stat-label">Average ROE per trade</div></div>
+      <div class="stat-card"><div class="stat-num up">+13.10</div><div class="stat-label">Best single trade (USDT)</div></div>
+      <div class="stat-card"><div class="stat-num down">-12.64</div><div class="stat-label">Worst single trade (USDT)</div></div>
+    </div>
+    <p class="window-note">Figures read directly from the Records tab shown below — nothing here is rounded up or cherry-picked from a shorter window.</p>
+    <p class="window-note" style="margin-top:10px;">Note: the live snapshot on the <a href="index.html#live-proof" style="color:var(--accent);font-weight:700;">main page</a> (81.4% win rate, +3.28%) is a <b>separate, ongoing Shadow Mode run</b> started later — different account, different period. The 93.2% figure on this page belongs to the 2026-05-26 – 2026-06-14 run shown in these screenshots only. Different runs produce different numbers; that's exactly why we publish both instead of quoting one.</p>
+  </section>
+</div>
+
+<section class="step" id="s1"><div class="wrap">
+  <div class="step-num">1</div>
+  <h2>Daily Return Chart — Three Weeks, Day by Day</h2>
+  <div class="shot-frame"><img src="results/daily-returns.png" alt="JaviD Future Bot daily return chart, 2026-05-26 to 2026-06-14"></div>
+  <div class="caption">Day-by-day change against the starting balance for the full window. Mostly green, one red day (06-13) — the kind of path a strategy that keeps running through drawdowns actually produces, not a straight line up.</div>
+</div></section>
+
+<section class="step" id="s2"><div class="wrap">
+  <div class="step-num">2</div>
+  <h2>Dashboard — Cumulative Numbers</h2>
+  <div class="shot-frame"><img src="results/dashboard-overview.png" alt="JaviD Future Bot dashboard showing cumulative P&L and win rate"></div>
+  <div class="caption">Cumulative P&amp;L of <b class="up">+$212.29</b> across <b>265 trades</b> at a <b class="up">93.2% win rate</b>, alongside the same market-trend and funding-rate panel the bot uses live to size and time entries.</div>
+</div></section>
+
+<section class="step" id="s3"><div class="wrap">
+  <div class="step-num">3</div>
+  <h2>Open Positions — Mid-Run Snapshot</h2>
+  <div class="shot-frame"><img src="results/open-positions.png" alt="JaviD Future Bot open positions table with live entry price, PnL and ROE"></div>
+  <div class="caption">A snapshot of 4 positions open at once — this is the honest picture, not a highlight reel: one position up <b class="up">+461%</b> ROE, another down <b class="down">-367%</b> ROE, side by side, exactly as the bot's own exit logic was still managing them.</div>
+</div></section>
+
+<section class="step" id="s4"><div class="wrap">
+  <div class="step-num">4</div>
+  <h2>Trade Records — Early in the Run</h2>
+  <div class="shot-frame"><img src="results/trade-records-1.png" alt="JaviD Future Bot trade records table, first days of the run"></div>
+  <div class="caption">Individual closed trades from the opening days (starting 2026-05-26), with symbol, strategy, entry/liquidation price, quantity, PnL and ROE recorded for every single close.</div>
+</div></section>
+
+<section class="step" id="s5"><div class="wrap">
+  <div class="step-num">5</div>
+  <h2>Trade Records — Mid-Run</h2>
+  <div class="shot-frame"><img src="results/trade-records-2.png" alt="JaviD Future Bot trade records table, mid-run"></div>
+  <div class="caption">Strategy-A and Strategy-C both active here, rotating across ESPORTSUSDT and PLAYUSDT — the kind of repetitive, small-edge, high-frequency trades that make up the bulk of the 265-trade total.</div>
+</div></section>
+
+<section class="step" id="s6"><div class="wrap">
+  <div class="step-num">6</div>
+  <h2>Trade Records — Including the Losses</h2>
+  <div class="shot-frame"><img src="results/trade-records-3.png" alt="JaviD Future Bot trade records table showing both wins and losses"></div>
+  <div class="caption">Losing trades are left in, unedited — including a <b class="down">-42.25%</b> and a <b class="down">-142.30%</b> ROE close on the same day. A 93% win rate still means losses happen; this is what they look like in the record.</div>
+</div></section>
+
+<section class="step" id="s7"><div class="wrap">
+  <div class="step-num">7</div>
+  <h2>Trade Records — Final Days</h2>
+  <div class="shot-frame"><img src="results/trade-records-4.png" alt="JaviD Future Bot trade records table, final days of the run"></div>
+  <div class="caption">The closing stretch of the window (through 2026-06-14), mixing wins and losses across HUDDT, PLAYUSDT and SPACEUSDT — the same three strategies still running, unattended, on the same rules as day one.</div>
+</div></section>
+
+<section class="cta-band"><div class="wrap">
+  <h3>Want to see this running on your own account?</h3>
+  <p>Start in Shadow Mode with a virtual balance — same live data, same strategies, zero real risk.</p>
+  <a href="index.html#download" class="btn">⬇ Back to JaviD Future Bot</a>
+
+  <div class="disclaimer">
+    These screenshots reflect the actual results of one account trading during the window shown above. Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. Past performance — including everything shown on this page — is not indicative of future results, and this run should not be read as a guarantee, projection, or typical outcome for any other account, symbol selection, market condition, or time period. JaviD Future Bot does not provide investment advice, does not custody funds, and does not execute trades on any server; every order shown here was placed directly from the account holder's own device using their own Binance API credentials, and all trading decisions and their outcomes remain the sole responsibility of the user.
+  </div>
+</div></section>
+
+<footer><div class="wrap footer-row">
+  <span>© 2026 JaviD Future Bot · javid-dol.uk</span>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="manual.html">User Manual</a>
+    <a href="binance-signup-api-guide.html">Binance Setup Guide</a>
+    <a href="https://github.com/olkdol/javid-future-bot" target="_blank" rel="noopener">GitHub</a>
+    <a href="board.html">Community Board</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk">Contact</a>
+  </div>
+</div></footer>
+
+</body>
+</html>
