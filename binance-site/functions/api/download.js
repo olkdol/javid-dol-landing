@@ -1,62 +1,72 @@
-// Cloudflare Pages Function — serves /api/download (POST)
-// Validates an access code against KV (DOWNLOAD_CODES), then streams the
-// matching file straight out of a private R2 bucket (DOWNLOADS_BUCKET).
-// The zip files must NOT live in the public /downloads folder of this repo —
-// only in R2 — otherwise this gate is pointless (the direct URL would still work).
+// Cloudflare Pages Function — serves /api/download
 //
-// Required bindings on the Cloudflare Pages project (Settings → Functions):
-//   KV namespace   -> variable name: DOWNLOAD_CODES
-//   R2 bucket      -> variable name: DOWNLOADS_BUCKET
+// The access-code gate was removed: downloads are now FREE and open. A plain
+// GET streams the installer straight out of the private R2 bucket
+// (DOWNLOADS_BUCKET), so the front-end is just an <a href> and the browser
+// handles the transfer natively.
 //
-// To add/remove valid codes: Cloudflare dashboard → Workers & Pages → KV →
-// DOWNLOAD_CODES → Add entry. Key = the code (any case, it's normalized to
-// uppercase below), value = anything (e.g. "active" or a note to yourself).
-// No redeploy needed — KV changes are live immediately.
+// The zips still live ONLY in R2, never in this repo's public folder — that
+// keeps the 25 MB binaries out of git and means publishing a new release is
+// just replacing the R2 object, with no redeploy.
+//
+// Required binding on the Cloudflare project (Settings → Bindings):
+//   R2 bucket -> variable name: DOWNLOADS_BUCKET
+//
+// (The DOWNLOAD_CODES KV namespace is no longer read by this endpoint. It can
+// stay bound harmlessly, or be unbound once nothing else uses it.)
 
 const FILES = {
   windows: "JaviD_Future_Bot_Windows.zip",
   mac: "JaviD_Future_Bot_macOS.zip",
 };
 
-export async function onRequestPost({ request, env }) {
-  let body;
-  try {
-    body = await request.json();
-  } catch (e) {
-    return json({ error: "invalid_request" }, 400);
-  }
+function pickPlatform(value) {
+  const v = String(value || "").toLowerCase();
+  if (v === "mac" || v === "macos" || v === "osx" || v === "darwin") return "mac";
+  return "windows";
+}
 
-  const code = String(body.code || "").trim().toUpperCase();
-  const platform = body.platform === "mac" ? "mac" : "windows";
-
-  if (!code) return json({ error: "missing_code" }, 400);
-  if (!env.DOWNLOAD_CODES || !env.DOWNLOADS_BUCKET) {
-    return json({ error: "not_configured" }, 500);
-  }
-
-  const record = await env.DOWNLOAD_CODES.get(code);
-  if (!record) return json({ error: "invalid_code" }, 403);
-
-  // Uncomment to make codes single-use (deletes the code after first success):
-  // await env.DOWNLOAD_CODES.delete(code);
+async function serve(env, platform) {
+  if (!env.DOWNLOADS_BUCKET) return json({ error: "not_configured" }, 500);
 
   const fileKey = FILES[platform];
   const object = await env.DOWNLOADS_BUCKET.get(fileKey);
-  if (!object) return json({ error: "file_not_found" }, 404);
+  if (!object) return json({ error: "file_not_found", file: fileKey }, 404);
 
-  return new Response(object.body, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/zip",
-      "Content-Disposition": `attachment; filename="${fileKey}"`,
-      "Cache-Control": "no-store",
-    },
-  });
+  const headers = new Headers();
+  headers.set("Content-Type", "application/zip");
+  headers.set("Content-Disposition", `attachment; filename="${fileKey}"`);
+  // Don't let an edge cache pin an old build after the R2 object is replaced.
+  headers.set("Cache-Control", "no-store");
+  headers.set("Accept-Ranges", "bytes");
+  if (object.size != null) headers.set("Content-Length", String(object.size));
+  if (object.httpEtag) headers.set("ETag", object.httpEtag);
+
+  return new Response(object.body, { status: 200, headers });
 }
 
-// Reject any method other than POST.
-export async function onRequestGet() {
-  return json({ error: "method_not_allowed" }, 405);
+// Primary path: <a href="/api/download?platform=windows">
+export async function onRequestGet({ request, env }) {
+  const url = new URL(request.url);
+  return serve(env, pickPlatform(url.searchParams.get("platform")));
+}
+
+// HEAD, so a browser can probe size before downloading.
+export async function onRequestHead({ request, env }) {
+  const res = await onRequestGet({ request, env });
+  return new Response(null, { status: res.status, headers: res.headers });
+}
+
+// Kept so any older cached copy of the page (which POSTed a JSON body) still
+// works instead of failing. The code field, if present, is ignored.
+export async function onRequestPost({ request, env }) {
+  let body = {};
+  try {
+    body = await request.json();
+  } catch (e) {
+    body = {};
+  }
+  return serve(env, pickPlatform(body.platform));
 }
 
 function json(data, status = 200) {

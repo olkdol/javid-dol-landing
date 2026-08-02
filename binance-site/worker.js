@@ -10,7 +10,11 @@
 // Pages-Functions-style handlers directly. Everything else (index.html,
 // board.html, images, etc.) falls through to the static assets binding.
 
-import { onRequestPost as downloadPost, onRequestGet as downloadGet } from "./functions/api/download.js";
+import {
+  onRequestPost as downloadPost,
+  onRequestGet as downloadGet,
+  onRequestHead as downloadHead,
+} from "./functions/api/download.js";
 import { onRequestGet as boardListGet, onRequestPost as boardListPost } from "./functions/api/board/posts.js";
 import {
   onRequestGet as boardItemGet,
@@ -27,7 +31,9 @@ export default {
 
     try {
       if (pathname === "/api/download") {
-        return request.method === "POST" ? await downloadPost(base) : await downloadGet(base);
+        if (request.method === "POST") return await downloadPost(base);
+        if (request.method === "HEAD") return await downloadHead(base);
+        return await downloadGet(base);
       }
 
       if (pathname === "/api/board/posts") {

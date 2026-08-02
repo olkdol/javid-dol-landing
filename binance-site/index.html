@@ -39,7 +39,7 @@
     {"@type":"Question","name":"Is it really free? No hidden costs?","acceptedAnswer":{"@type":"Answer","text":"Yes — no subscription, no purchase price, no performance fee. Revenue comes solely from Binance's official Broker Program: a share of the trading fee you already pay Binance is rebated to us by Binance. You never pay anything extra."}},
     {"@type":"Question","name":"Is my API key safe?","acceptedAnswer":{"@type":"Answer","text":"Your API key is encrypted and stored locally on your own PC — it is never sent to any external server. Withdrawal permission is never required, so even if a key leaked, funds could not be withdrawn."}},
     {"@type":"Question","name":"Are profits guaranteed?","acceptedAnswer":{"@type":"Answer","text":"No. JaviD Future Bot is a tool that executes a defined strategy without emotion — it does not guarantee profits. Crypto futures trading carries a high risk of loss, and all trading decisions and outcomes are the user's responsibility."}},
-    {"@type":"Question","name":"Do I need to know how to code?","acceptedAnswer":{"@type":"Answer","text":"No. Download, double-click start.bat, paste your API key, pick your coins, and start. No code is ever written."}}
+    {"@type":"Question","name":"Do I need to know how to code?","acceptedAnswer":{"@type":"Answer","text":"No. Download, double-click JaviD_Future_Bot, paste your API key, pick your coins, and start. No code is ever written."}}
   ]
 }
 </script>
@@ -287,7 +287,7 @@
   <div class="space-y-4">
     <div class="grid items-center gap-8 rounded-2xl border border-slate-200 bg-white p-8 md:grid-cols-[auto_1fr_auto]">
       <div class="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-600 text-[18px] font-extrabold text-white">1</div>
-      <div><h3 class="text-[18px] font-bold text-slate-900" data-i18n="step_1_title">Download &amp; launch the app</h3><p class="mt-1.5 text-[14px] text-slate-500" data-i18n="step_1_desc">Double-click <code class="rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600">start.bat</code> — dependencies install automatically and your dashboard opens, ready to configure.</p></div>
+      <div><h3 class="text-[18px] font-bold text-slate-900" data-i18n="step_1_title">Download &amp; launch the app</h3><p class="mt-1.5 text-[14px] text-slate-500" data-i18n="step_1_desc">Double-click <code class="rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600">JaviD_Future_Bot</code> — dependencies install automatically and your dashboard opens, ready to configure.</p></div>
       <a href="#download" class="whitespace-nowrap rounded-lg border border-slate-300 px-5 py-2.5 text-[13.5px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600" data-i18n="step_1_link">Download →</a>
     </div>
     <div class="grid items-center gap-8 rounded-2xl border border-slate-200 bg-white p-8 md:grid-cols-[auto_1fr_auto]">
@@ -326,7 +326,7 @@
     <div class="rounded-2xl border border-slate-200 bg-white p-7">
       <span class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="sprout" class="h-5.5 w-5.5"></i></span>
       <h3 class="text-[16.5px] font-bold text-slate-900" data-i18n="audience_1_title">New to trading bots</h3>
-      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500" data-i18n="audience_1_desc">Download, double-click <code class="rounded bg-slate-100 px-1 py-0.5 text-[12px]">start.bat</code>, paste your key, pick coins (or one-click Top 20), and start. No code, anywhere. The User Manual walks through all 9 real screens.</p>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500" data-i18n="audience_1_desc">Download, double-click <code class="rounded bg-slate-100 px-1 py-0.5 text-[12px]">JaviD_Future_Bot</code>, paste your key, pick coins (or one-click Top 20), and start. No code, anywhere. The User Manual walks through all 9 real screens.</p>
     </div>
     <div class="rounded-2xl border border-slate-200 bg-white p-7">
       <span class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="sliders-horizontal" class="h-5.5 w-5.5"></i></span>
@@ -573,7 +573,7 @@
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900"><span data-i18n="faq_q8">Can I use it without knowing how to code?</span><i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
-      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a8">Yes — download, double-click start.bat, paste your API key, pick coins, start. No code, anywhere. The <a href="manual.html" class="font-bold text-indigo-600 hover:underline">User Manual</a> covers it in 9 real screens.</div>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a8">Yes — download, double-click JaviD_Future_Bot, paste your API key, pick coins, start. No code, anywhere. The <a href="manual.html" class="font-bold text-indigo-600 hover:underline">User Manual</a> covers it in 9 real screens.</div>
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900"><span data-i18n="faq_q9">Which exchanges and markets are supported?</span><i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
@@ -608,14 +608,12 @@
   <p class="mx-auto mt-4 max-w-xl text-[15px] text-slate-500" data-i18n="final_sub">Let JaviD take care of the tedious tasks — while you keep your keys, your funds, your control, on every single trade.</p>
 
   <div class="mx-auto mt-9 max-w-md rounded-2xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-900/5">
-    <label for="dlCode" class="mb-2.5 block text-[12.5px] font-bold text-slate-500" data-i18n="dl_label">Enter your access code to download</label>
-    <input type="text" id="dlCode" placeholder="Insert UID" autocomplete="off" maxlength="40" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3.5 text-center text-[14px] font-bold uppercase tracking-wide text-slate-900 outline-none focus:border-indigo-500 focus:bg-white">
-    <div class="mt-4 flex flex-wrap justify-center gap-3">
-      <button type="button" onclick="javidDownload('windows', this)" class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</button>
-      <button type="button" onclick="javidDownload('mac', this)" class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</button>
+    <p class="mb-4 text-[12.5px] font-bold text-slate-500" data-i18n="dl_label">Free download — no access code required</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="/api/download?platform=windows" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</a>
+      <a href="/api/download?platform=mac" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</a>
     </div>
-    <p id="dlGateMsg" class="mt-3 min-h-[18px] text-[13px] font-semibold"></p>
-    <p class="mt-1.5 text-[12.5px] text-slate-400" data-i18n="dl_no_code_note">No code yet? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" class="font-bold text-indigo-600 hover:underline">Join the Telegram community</a> — codes are issued free after you sign up with our Binance referral link.</p>
+    <p class="mt-4 text-[12.5px] text-slate-400" data-i18n="dl_no_code_note">Free forever, no sign-up. Want release news and support? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" class="font-bold text-indigo-600 hover:underline">Join the Telegram community</a>.</p>
   </div>
 
   <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12.5px] font-semibold text-slate-500">
@@ -623,7 +621,7 @@
     <span class="flex items-center gap-1.5"><i data-lucide="check" class="h-4 w-4 text-emerald-500"></i><span data-i18n="dl_perk_2">No hidden fees</span></span>
     <span class="flex items-center gap-1.5"><i data-lucide="check" class="h-4 w-4 text-emerald-500"></i><span data-i18n="dl_perk_3">No credit card</span></span>
   </div>
-  <p class="mt-4 text-[12.5px] text-slate-400" data-i18n="dl_flow_note">Enter your code → click your OS → unzip → run <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. First time? Follow along with the <a href="manual.html" class="font-bold text-indigo-600 hover:underline">User Manual</a>.</p>
+  <p class="mt-4 text-[12.5px] text-slate-400" data-i18n="dl_flow_note">Enter your code → click your OS → unzip → run <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">JaviD_Future_Bot</code>. First time? Follow along with the <a href="manual.html" class="font-bold text-indigo-600 hover:underline">User Manual</a>.</p>
   <p class="mt-1.5 text-[12.5px] text-slate-400" data-i18n="dl_contact_note">Questions? Email <a href="mailto:javidfuturebot@javid-dol.uk" class="font-bold text-indigo-600 hover:underline">javidfuturebot@javid-dol.uk</a> or ask on the <a href="board.html" class="font-bold text-indigo-600 hover:underline">Community Board</a>.</p>
 
   <p class="mx-auto mt-12 max-w-2xl border-t border-slate-200 pt-6 text-[11.5px] leading-relaxed text-slate-400" data-i18n="final_disclaimer">Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. JaviD Future Bot is a standalone execution tool — it does not guarantee profits. Performance figures on this page are Shadow Mode (virtual balance) data and snapshots of real dashboard records from specific periods; they do not guarantee or imply future results. All trading decisions and their outcomes are the sole responsibility of the user. JaviD Future Bot does not provide investment advice, does not custody funds, and does not execute trades on any server — every order is placed directly from your own device using your own Binance API credentials.</p>
@@ -687,51 +685,7 @@ function javidT(key, fallback){
   if (typeof I18N !== 'undefined' && I18N.en && I18N.en[key] != null) return I18N.en[key];
   return fallback;
 }
-async function javidDownload(platform, btnEl){
-  var input = document.getElementById('dlCode');
-  var msg = document.getElementById('dlGateMsg');
-  var code = (input.value || '').trim();
-  var buttons = document.querySelectorAll('#download button');
-  if (!code) {
-    msg.textContent = javidT('dl_msg_no_code', 'Enter your access code first.');
-    msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-amber-600';
-    input.focus();
-    return;
-  }
-  buttons.forEach(function(b){ b.setAttribute('disabled', 'disabled'); });
-  msg.textContent = javidT('dl_msg_checking', 'Checking code…');
-  msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-slate-500';
-  try {
-    var res = await fetch('/api/download', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ code: code, platform: platform })
-    });
-    if (!res.ok) {
-      var data = {};
-      try { data = await res.json(); } catch (e) {}
-      msg.textContent = data.error === 'invalid_code'
-        ? javidT('dl_msg_invalid', 'That code is not valid. Double-check it, or ask in the Telegram community.')
-        : javidT('dl_msg_generic_error', 'Something went wrong. Please try again in a moment.');
-      msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-amber-600';
-      return;
-    }
-    var blob = await res.blob();
-    var filename = platform === 'mac' ? 'JaviD_Future_Bot_macOS.zip' : 'JaviD_Future_Bot_Windows.zip';
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url; a.download = filename;
-    document.body.appendChild(a); a.click(); a.remove();
-    URL.revokeObjectURL(url);
-    msg.textContent = javidT('dl_msg_success', 'Download started — check your browser downloads.');
-    msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-emerald-600';
-  } catch (err) {
-    msg.textContent = javidT('dl_msg_network_error', 'Network error. Please try again.');
-    msg.className = 'mt-3 min-h-[18px] text-[13px] font-semibold text-amber-600';
-  } finally {
-    buttons.forEach(function(b){ b.removeAttribute('disabled'); });
-  }
-}
+
 </script>
 
 <script>
@@ -785,7 +739,7 @@ setTimeout(initIcons, 1500);
 <script>
 var I18N = {
   en: {
-  "audience_1_desc": "Download, double-click <code class=\"rounded bg-slate-100 px-1 py-0.5 text-[12px]\">start.bat</code>, paste your key, pick coins (or one-click Top 20), and start. No code, anywhere. The User Manual walks through all 9 real screens.",
+  "audience_1_desc": "Download, double-click <code class=\"rounded bg-slate-100 px-1 py-0.5 text-[12px]\">JaviD_Future_Bot</code>, paste your key, pick coins (or one-click Top 20), and start. No code, anywhere. The User Manual walks through all 9 real screens.",
   "audience_1_title": "New to trading bots",
   "audience_2_desc": "Fine-tune with Aggressive/Normal/Stable sizing modes, run all three strategies in parallel across 500+ symbols, and monitor everything from a live dashboard.",
   "audience_2_title": "Experienced traders",
@@ -829,15 +783,9 @@ var I18N = {
   "compare_withdrawal_javid": "Never required",
   "cta_free_download": "Free Download",
   "dl_contact_note": "Questions? Email <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:javidfuturebot@javid-dol.uk\">javidfuturebot@javid-dol.uk</a> or ask on the <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">Community Board</a>.",
-  "dl_flow_note": "Enter your code → click your OS → unzip → run <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">start.bat</code>. First time? Follow along with the <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">User Manual</a>.",
-  "dl_label": "Enter your access code to download",
-  "dl_msg_checking": "Checking code…",
-  "dl_msg_generic_error": "Something went wrong. Please try again in a moment.",
-  "dl_msg_invalid": "That code is not valid. Double-check it, or ask in the Telegram community.",
-  "dl_msg_network_error": "Network error. Please try again.",
-  "dl_msg_no_code": "Enter your access code first.",
-  "dl_msg_success": "Download started — check your browser downloads.",
-  "dl_no_code_note": "No code yet? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Join the Telegram community</a> — codes are issued free after you sign up with our Binance referral link.",
+  "dl_flow_note": "Click your OS → unzip → run <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. It starts in your system tray; click the tray icon to open the dashboard. First time? Follow along with the <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">User Manual</a>.",
+  "dl_label": "Free download — no access code required",
+  "dl_no_code_note": "Free forever, no sign-up. Want release news and support? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Join the Telegram community</a>.",
   "dl_perk_1": "No obligations",
   "dl_perk_2": "No hidden fees",
   "dl_perk_3": "No credit card",
@@ -856,7 +804,7 @@ var I18N = {
   "faq_a5": "New entries and position management stop. Positions already open remain on the exchange, and the bot re-detects and resumes managing them on restart. An always-on mini PC or low-cost cloud VM is recommended.",
   "faq_a6": "We recommend <b class=\"text-slate-800\">1,000 USDT or more</b> so per-trade sizing (up to 1/300th of balance) stays above exchange minimum-notional limits.",
   "faq_a7": "Five layers of exit logic manage every position, but no system can fully eliminate the risk of violent moves in futures markets. Keep leverage conservative.",
-  "faq_a8": "Yes — download, double-click start.bat, paste your API key, pick coins, start. No code, anywhere. The <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">User Manual</a> covers it in 9 real screens.",
+  "faq_a8": "Yes — download, double-click JaviD_Future_Bot, paste your API key, pick coins, start. No code, anywhere. The <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">User Manual</a> covers it in 9 real screens.",
   "faq_a9": "Currently <b class=\"text-slate-800\">Binance USDⓈ-M Futures</b> only, monitoring 500+ symbols simultaneously.",
   "faq_eyebrow": "FAQ",
   "faq_h2": "The Questions You'd Ask Before Paying",
@@ -974,7 +922,7 @@ var I18N = {
   "showcase_h2": "Not Mockups. Actual Dashboard Screens.",
   "showcase_link": "See the full screenshot record",
   "sizing_screenshot_caption": "Real screenshot — the actual Investment Mode panel, balance ÷ 300 / 500 / 700",
-  "step_1_desc": "Double-click <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600\">start.bat</code> — dependencies install automatically and your dashboard opens, ready to configure.",
+  "step_1_desc": "Double-click <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600\">JaviD_Future_Bot</code> — dependencies install automatically and your dashboard opens, ready to configure.",
   "step_1_link": "Download →",
   "step_1_title": "Download &amp; launch the app",
   "step_2_desc": "Paste your key into Settings and hit Test Connection. Encrypted and stored only on your PC — withdrawal permission is never required.",
@@ -1002,7 +950,7 @@ var I18N = {
   "toolkit_sub": "New to bots? Start with the green tags. The indigo tags are the professional-grade engine working underneath."
 },
   ko: {
-  "audience_1_desc": "다운로드 후 <code class=\"rounded bg-slate-100 px-1 py-0.5 text-[12px]\">start.bat</code>을 더블클릭하고, 키를 붙여넣고, 코인을 선택(또는 원클릭 Top 20)한 뒤 시작하세요. 코드는 전혀 필요 없습니다. 사용 설명서에서 실제 화면 9개로 전 과정을 안내합니다.",
+  "audience_1_desc": "다운로드 후 <code class=\"rounded bg-slate-100 px-1 py-0.5 text-[12px]\">JaviD_Future_Bot</code>을 더블클릭하고, 키를 붙여넣고, 코인을 선택(또는 원클릭 Top 20)한 뒤 시작하세요. 코드는 전혀 필요 없습니다. 사용 설명서에서 실제 화면 9개로 전 과정을 안내합니다.",
   "audience_1_title": "자동매매 봇이 처음이신 분",
   "audience_2_desc": "공격적/일반/안정 사이징 모드로 세밀하게 조정하고, 500개 이상의 심볼에서 세 가지 전략을 동시에 실행하며, 실시간 대시보드로 모든 것을 모니터링하세요.",
   "audience_2_title": "숙련된 트레이더",
@@ -1046,15 +994,9 @@ var I18N = {
   "compare_withdrawal_javid": "절대 필요 없음",
   "cta_free_download": "무료 다운로드",
   "dl_contact_note": "문의사항이 있으신가요? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:javidfuturebot@javid-dol.uk\">javidfuturebot@javid-dol.uk</a>로 이메일을 보내시거나 <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">커뮤니티 게시판</a>에 남겨주세요.",
-  "dl_flow_note": "코드 입력 → OS 선택 → 압축 해제 → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">start.bat</code> 실행. 처음이신가요? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">사용 설명서</a>를 따라 해보세요.",
-  "dl_label": "다운로드하려면 액세스 코드를 입력하세요",
-  "dl_msg_checking": "코드 확인 중…",
-  "dl_msg_generic_error": "문제가 발생했습니다. 잠시 후 다시 시도해주세요.",
-  "dl_msg_invalid": "코드가 유효하지 않습니다. 다시 확인하시거나 텔레그램 커뮤니티에 문의해주세요.",
-  "dl_msg_network_error": "네트워크 오류입니다. 다시 시도해주세요.",
-  "dl_msg_no_code": "먼저 액세스 코드를 입력해주세요.",
-  "dl_msg_success": "다운로드가 시작되었습니다 — 브라우저 다운로드 목록을 확인하세요.",
-  "dl_no_code_note": "코드가 아직 없으신가요? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">텔레그램 커뮤니티에 참여</a>하세요 — 바이낸스 추천 링크로 가입하면 코드가 무료로 발급됩니다.",
+  "dl_flow_note": "OS 선택 → 압축 해제 → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code> 실행. 작업 표시줄 트레이에서 시작되며, 트레이 아이콘을 클릭하면 대시보드가 열립니다. 처음이신가요? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">사용 설명서</a>를 따라 해보세요.",
+  "dl_label": "무료 다운로드 — 액세스 코드가 필요 없습니다",
+  "dl_no_code_note": "영구 무료이며 가입이 필요 없습니다. 새 버전 소식과 지원은 <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">텔레그램 커뮤니티</a>에서 안내됩니다.",
   "dl_perk_1": "의무 없음",
   "dl_perk_2": "숨겨진 수수료 없음",
   "dl_perk_3": "신용카드 불필요",
@@ -1073,7 +1015,7 @@ var I18N = {
   "faq_a5": "신규 진입과 포지션 관리가 중단됩니다. 이미 보유 중인 포지션은 거래소에 그대로 남아 있으며, 봇이 재시작 시 이를 다시 감지해 관리를 재개합니다. 상시 전원이 켜진 미니 PC나 저렴한 클라우드 VM 사용을 권장합니다.",
   "faq_a6": "<b class=\"text-slate-800\">1,000 USDT 이상</b>을 권장합니다. 거래당 사이징(잔고의 최대 1/300)이 거래소 최소 명목가 기준을 넘도록 유지하기 위함입니다.",
   "faq_a7": "5단계의 청산 로직이 모든 포지션을 관리하지만, 선물 시장의 급격한 움직임에 대한 위험을 완전히 없앨 수 있는 시스템은 없습니다. 레버리지는 보수적으로 유지하세요.",
-  "faq_a8": "네 — 다운로드 후 start.bat을 더블클릭하고, API 키를 붙여넣고, 코인을 선택한 뒤 시작하면 됩니다. 코드는 전혀 필요 없습니다. <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">사용 설명서</a>에서 실제 화면 9개로 안내합니다.",
+  "faq_a8": "네 — 다운로드 후 JaviD_Future_Bot을 더블클릭하고, API 키를 붙여넣고, 코인을 선택한 뒤 시작하면 됩니다. 코드는 전혀 필요 없습니다. <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">사용 설명서</a>에서 실제 화면 9개로 안내합니다.",
   "faq_a9": "현재는 <b class=\"text-slate-800\">바이낸스 USDⓈ-M 선물</b>만 지원하며, 500개 이상의 심볼을 동시에 모니터링합니다.",
   "faq_eyebrow": "FAQ",
   "faq_h2": "결제 전에 물어볼 만한 질문들",
@@ -1191,7 +1133,7 @@ var I18N = {
   "showcase_h2": "목업이 아닙니다. 실제 대시보드 화면입니다.",
   "showcase_link": "전체 스크린샷 기록 보기",
   "sizing_screenshot_caption": "실제 화면 캡처 — 실제 투자 모드 패널, 잔고 ÷ 300 / 500 / 700",
-  "step_1_desc": "<code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600\">start.bat</code>를 더블클릭하세요 — 종속 요소가 자동으로 설치되고 대시보드가 열려 바로 설정할 수 있습니다.",
+  "step_1_desc": "<code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600\">JaviD_Future_Bot</code>를 더블클릭하세요 — 종속 요소가 자동으로 설치되고 대시보드가 열려 바로 설정할 수 있습니다.",
   "step_1_link": "다운로드 →",
   "step_1_title": "앱 다운로드 &amp; 실행",
   "step_2_desc": "설정에 키를 붙여넣고 연결 테스트를 누르세요. 암호화되어 내 PC에만 저장되며 — 출금 권한은 절대 필요하지 않습니다.",
@@ -1219,7 +1161,7 @@ var I18N = {
   "toolkit_sub": "봇이 처음이신가요? 초록색 태그부터 시작하세요. 인디고색 태그는 그 아래에서 작동하는 프로급 엔진입니다."
 },
   ja: {
-  "audience_1_desc": "ダウンロードして<code class=\"rounded bg-slate-100 px-1 py-0.5 text-[12px]\">start.bat</code>をダブルクリックし、キーを貼り付けて、コインを選び(またはワンクリックでTop 20)、開始するだけ。コードは一切不要です。取扱説明書では実際の画面9枚で全工程を解説しています。",
+  "audience_1_desc": "ダウンロードして<code class=\"rounded bg-slate-100 px-1 py-0.5 text-[12px]\">JaviD_Future_Bot</code>をダブルクリックし、キーを貼り付けて、コインを選び(またはワンクリックでTop 20)、開始するだけ。コードは一切不要です。取扱説明書では実際の画面9枚で全工程を解説しています。",
   "audience_1_title": "自動売買ボットが初めての方",
   "audience_2_desc": "Aggressive/Normal/Stableのサイジングモードで微調整し、500以上の銘柄で3つの戦略を同時に実行、すべてをライブダッシュボードで監視できます。",
   "audience_2_title": "経験豊富なトレーダー",
@@ -1263,15 +1205,9 @@ var I18N = {
   "compare_withdrawal_javid": "一切不要",
   "cta_free_download": "無料ダウンロード",
   "dl_contact_note": "ご質問がありますか?<a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:javidfuturebot@javid-dol.uk\">javidfuturebot@javid-dol.uk</a>までメールするか、<a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">コミュニティ掲示板</a>でお尋ねください。",
-  "dl_flow_note": "コードを入力 → OSをクリック → 解凍 → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">start.bat</code>を実行。初めての方は<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">取扱説明書</a>を参考にしてください。",
-  "dl_label": "ダウンロードするにはアクセスコードを入力してください",
-  "dl_msg_checking": "コードを確認中…",
-  "dl_msg_generic_error": "問題が発生しました。しばらくしてからもう一度お試しください。",
-  "dl_msg_invalid": "そのコードは無効です。確認するか、Telegramコミュニティでお尋ねください。",
-  "dl_msg_network_error": "ネットワークエラーです。もう一度お試しください。",
-  "dl_msg_no_code": "先にアクセスコードを入力してください。",
-  "dl_msg_success": "ダウンロードを開始しました — ブラウザのダウンロード一覧をご確認ください。",
-  "dl_no_code_note": "コードをまだお持ちでないですか?<a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Telegramコミュニティに参加</a>してください — Binance紹介リンクから登録すると、コードが無料で発行されます。",
+  "dl_flow_note": "OSをクリック → 解凍 → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>を実行。システムトレイで起動し、トレイアイコンをクリックするとダッシュボードが開きます。初めての方は<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">取扱説明書</a>を参考にしてください。",
+  "dl_label": "無料ダウンロード — アクセスコードは不要です",
+  "dl_no_code_note": "永久無料、登録不要です。新バージョンの情報やサポートは<a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Telegramコミュニティ</a>でご案内しています。",
   "dl_perk_1": "義務なし",
   "dl_perk_2": "隠れた手数料なし",
   "dl_perk_3": "クレジットカード不要",
@@ -1290,7 +1226,7 @@ var I18N = {
   "faq_a5": "新規エントリーとポジション管理が停止します。すでに保有中のポジションは取引所側にそのまま残り、再起動時にボットがそれを再検知して管理を再開します。常時電源が入ったミニPCや低コストのクラウドVMの利用を推奨します。",
   "faq_a6": "<b class=\"text-slate-800\">1,000 USDT以上</b>を推奨します。1取引あたりのサイジング(残高の最大1/300)を取引所の最小名目金額基準より上に保つためです。",
   "faq_a7": "5層のイグジットロジックがすべてのポジションを管理しますが、先物市場の急変動リスクを完全になくせるシステムはありません。レバレッジは控えめに保ってください。",
-  "faq_a8": "はい — ダウンロードしてstart.batをダブルクリックし、APIキーを貼り付けて、コインを選んで開始するだけです。コードは一切不要です。<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">取扱説明書</a>で実際の画面9枚を使って解説しています。",
+  "faq_a8": "はい — ダウンロードしてJaviD_Future_Botをダブルクリックし、APIキーを貼り付けて、コインを選んで開始するだけです。コードは一切不要です。<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">取扱説明書</a>で実際の画面9枚を使って解説しています。",
   "faq_a9": "現在は<b class=\"text-slate-800\">Binance USDⓈ-M先物</b>のみに対応しており、500以上の銘柄を同時にモニタリングしています。",
   "faq_eyebrow": "よくある質問",
   "faq_h2": "お支払いの前に聞きたい質問",
@@ -1408,7 +1344,7 @@ var I18N = {
   "showcase_h2": "モックアップではありません。実際のダッシュボード画面です。",
   "showcase_link": "スクリーンショットの全記録を見る",
   "sizing_screenshot_caption": "実際のスクリーンショット — 実際のInvestment Modeパネル、残高÷300/500/700",
-  "step_1_desc": "<code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600\">start.bat</code>をダブルクリック — 依存関係が自動でインストールされ、ダッシュボードが開いて設定できます。",
+  "step_1_desc": "<code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600\">JaviD_Future_Bot</code>をダブルクリック — 依存関係が自動でインストールされ、ダッシュボードが開いて設定できます。",
   "step_1_link": "ダウンロード →",
   "step_1_title": "アプリをダウンロード &amp; 起動",
   "step_2_desc": "キーを設定画面に貼り付けて接続テストを実行。暗号化されPCにのみ保存され — 出金権限は一切不要です。",
@@ -1436,7 +1372,7 @@ var I18N = {
   "toolkit_sub": "ボットが初めての方はグリーンのタグから。インディゴのタグはその裏で動くプロ仕様のエンジンです。"
 },
   zh: {
-  "audience_1_desc": "下载后双击 <code class=\"rounded bg-slate-100 px-1 py-0.5 text-[12px]\">start.bat</code>,粘贴密钥,选择币种(或一键选择成交额 Top 20),然后开始。全程无需写代码。使用手册用 9 个真实界面带你逐步了解。",
+  "audience_1_desc": "下载后双击 <code class=\"rounded bg-slate-100 px-1 py-0.5 text-[12px]\">JaviD_Future_Bot</code>,粘贴密钥,选择币种(或一键选择成交额 Top 20),然后开始。全程无需写代码。使用手册用 9 个真实界面带你逐步了解。",
   "audience_1_title": "交易机器人新手",
   "audience_2_desc": "通过 Aggressive/Normal/Stable 仓位模式精细调整,在 500 多个币种上同时并行运行三套策略,并通过实时仪表盘监控一切。",
   "audience_2_title": "资深交易者",
@@ -1480,15 +1416,9 @@ var I18N = {
   "compare_withdrawal_javid": "从不需要",
   "cta_free_download": "免费下载",
   "dl_contact_note": "有问题?发邮件至 <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:javidfuturebot@javid-dol.uk\">javidfuturebot@javid-dol.uk</a>,或前往<a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">社区论坛</a>提问。",
-  "dl_flow_note": "输入访问码 → 选择系统 → 解压 → 运行 <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">start.bat</code>。第一次使用?可以参考<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">使用手册</a>。",
-  "dl_label": "输入你的访问码以下载",
-  "dl_msg_checking": "正在验证访问码…",
-  "dl_msg_generic_error": "出现了一些问题,请稍后再试。",
-  "dl_msg_invalid": "该访问码无效。请仔细核对,或前往 Telegram 社区咨询。",
-  "dl_msg_network_error": "网络错误,请重试。",
-  "dl_msg_no_code": "请先输入访问码。",
-  "dl_msg_success": "下载已开始 — 请查看浏览器的下载列表。",
-  "dl_no_code_note": "还没有访问码?<a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">加入 Telegram 社区</a> — 通过我们的币安推荐链接注册后即可免费获得访问码。",
+  "dl_flow_note": "选择系统 → 解压 → 运行 <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>。程序会在系统托盘启动,点击托盘图标即可打开面板。第一次使用?可以参考<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">使用手册</a>。",
+  "dl_label": "免费下载 — 无需访问码",
+  "dl_no_code_note": "永久免费,无需注册。想第一时间获知新版本与技术支持?<a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">加入 Telegram 社区</a>。",
   "dl_perk_1": "无任何义务",
   "dl_perk_2": "无隐藏费用",
   "dl_perk_3": "无需信用卡",
@@ -1507,7 +1437,7 @@ var I18N = {
   "faq_a5": "新开仓和持仓管理会停止。已经持有的仓位仍留在交易所,重启后机器人会重新识别并恢复管理。建议使用常开的迷你主机或低成本云主机。",
   "faq_a6": "我们建议<b class=\"text-slate-800\">1,000 USDT 或以上</b>,以确保单笔仓位规模(最高为余额的 1/300)高于交易所的最小名义价值限制。",
   "faq_a7": "五层离场逻辑会管理每一个仓位,但没有任何系统能完全消除合约市场剧烈波动带来的风险。请保持保守的杠杆倍数。",
-  "faq_a8": "可以 — 下载后双击 start.bat,粘贴 API 密钥,选择币种,然后开始。全程无需写代码。<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">使用手册</a>用 9 个真实界面带你逐步了解。",
+  "faq_a8": "可以 — 下载后双击 JaviD_Future_Bot,粘贴 API 密钥,选择币种,然后开始。全程无需写代码。<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">使用手册</a>用 9 个真实界面带你逐步了解。",
   "faq_a9": "目前仅支持<b class=\"text-slate-800\">币安 USDⓈ-M 合约</b>,同时监控 500 多个币种。",
   "faq_eyebrow": "常见问题",
   "faq_h2": "付款之前你会想问的问题",
@@ -1625,7 +1555,7 @@ var I18N = {
   "showcase_h2": "不是效果图,是真实的仪表盘界面。",
   "showcase_link": "查看完整截图记录",
   "sizing_screenshot_caption": "真实截图 — 实际的 Investment Mode 面板,余额 ÷ 300 / 500 / 700",
-  "step_1_desc": "双击 <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600\">start.bat</code> — 依赖会自动安装,仪表盘随即打开,可直接配置。",
+  "step_1_desc": "双击 <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600\">JaviD_Future_Bot</code> — 依赖会自动安装,仪表盘随即打开,可直接配置。",
   "step_1_link": "下载 →",
   "step_1_title": "下载并启动应用",
   "step_2_desc": "将密钥粘贴到设置中并点击测试连接。密钥经过加密,仅保存在你的电脑上 — 无需提现权限。",
@@ -1653,7 +1583,7 @@ var I18N = {
   "toolkit_sub": "刚接触机器人?从绿色标签开始。靛蓝色标签是背后运行的专业级引擎。"
 },
   es: {
-  "audience_1_desc": "Descarga, haz doble clic en <code class=\"rounded bg-slate-100 px-1 py-0.5 text-[12px]\">start.bat</code>, pega tu clave, elige monedas (o usa el Top 20 con un clic) y empieza. Sin código, en ningún momento. El manual de usuario recorre las 9 pantallas reales paso a paso.",
+  "audience_1_desc": "Descarga, haz doble clic en <code class=\"rounded bg-slate-100 px-1 py-0.5 text-[12px]\">JaviD_Future_Bot</code>, pega tu clave, elige monedas (o usa el Top 20 con un clic) y empieza. Sin código, en ningún momento. El manual de usuario recorre las 9 pantallas reales paso a paso.",
   "audience_1_title": "Nuevo en los bots de trading",
   "audience_2_desc": "Ajusta con los modos de tamaño Agresivo/Normal/Estable, ejecuta las tres estrategias en paralelo en más de 500 símbolos, y monitoriza todo desde un panel en vivo.",
   "audience_2_title": "Traders con experiencia",
@@ -1697,15 +1627,9 @@ var I18N = {
   "compare_withdrawal_javid": "Nunca requerido",
   "cta_free_download": "Descarga gratis",
   "dl_contact_note": "¿Preguntas? Escribe a <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:javidfuturebot@javid-dol.uk\">javidfuturebot@javid-dol.uk</a> o pregunta en el <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">foro de la comunidad</a>.",
-  "dl_flow_note": "Introduce tu código → elige tu sistema operativo → descomprime → ejecuta <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">start.bat</code>. ¿Primera vez? Sigue la guía del <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manual de usuario</a>.",
-  "dl_label": "Introduce tu código de acceso para descargar",
-  "dl_msg_checking": "Comprobando el código…",
-  "dl_msg_generic_error": "Algo salió mal. Inténtalo de nuevo en un momento.",
-  "dl_msg_invalid": "Ese código no es válido. Revísalo, o pregunta en la comunidad de Telegram.",
-  "dl_msg_network_error": "Error de red. Inténtalo de nuevo.",
-  "dl_msg_no_code": "Introduce primero tu código de acceso.",
-  "dl_msg_success": "Descarga iniciada — revisa las descargas de tu navegador.",
-  "dl_no_code_note": "¿Aún no tienes código? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Únete a la comunidad de Telegram</a> — los códigos se entregan gratis después de registrarte con nuestro enlace de referido de Binance.",
+  "dl_flow_note": "Elige tu sistema operativo → descomprime → ejecuta <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. Se inicia en la bandeja del sistema; haz clic en el icono para abrir el panel. ¿Primera vez? Sigue la guía del <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manual de usuario</a>.",
+  "dl_label": "Descarga gratuita: no necesitas código de acceso",
+  "dl_no_code_note": "Gratis para siempre, sin registro. ¿Quieres novedades y soporte? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Únete a la comunidad de Telegram</a>.",
   "dl_perk_1": "Sin compromisos",
   "dl_perk_2": "Sin comisiones ocultas",
   "dl_perk_3": "Sin tarjeta de crédito",
@@ -1724,7 +1648,7 @@ var I18N = {
   "faq_a5": "Las nuevas entradas y la gestión de posiciones se detienen. Las posiciones ya abiertas permanecen en el exchange, y el bot las vuelve a detectar y retoma su gestión al reiniciar. Se recomienda un mini PC siempre encendido o una VM en la nube de bajo coste.",
   "faq_a6": "Recomendamos <b class=\"text-slate-800\">1.000 USDT o más</b> para que el dimensionado por operación (hasta 1/300 del saldo) se mantenga por encima de los límites de valor nocional mínimo del exchange.",
   "faq_a7": "Cinco capas de lógica de salida gestionan cada posición, pero ningún sistema puede eliminar por completo el riesgo de movimientos violentos en los mercados de futuros. Mantén el apalancamiento conservador.",
-  "faq_a8": "Sí — descarga, haz doble clic en start.bat, pega tu clave API, elige monedas, empieza. Sin código, en ningún momento. El <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manual de usuario</a> lo cubre en 9 pantallas reales.",
+  "faq_a8": "Sí — descarga, haz doble clic en JaviD_Future_Bot, pega tu clave API, elige monedas, empieza. Sin código, en ningún momento. El <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manual de usuario</a> lo cubre en 9 pantallas reales.",
   "faq_a9": "Actualmente solo <b class=\"text-slate-800\">futuros USDⓈ-M de Binance</b>, monitorizando más de 500 símbolos simultáneamente.",
   "faq_eyebrow": "Preguntas frecuentes",
   "faq_h2": "Las preguntas que harías antes de pagar",
@@ -1842,7 +1766,7 @@ var I18N = {
   "showcase_h2": "No son maquetas. Son pantallas reales del panel.",
   "showcase_link": "Ver el registro completo de capturas",
   "sizing_screenshot_caption": "Captura real — el panel real de Investment Mode, saldo ÷ 300 / 500 / 700",
-  "step_1_desc": "Haz doble clic en <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600\">start.bat</code> — las dependencias se instalan automáticamente y se abre tu panel, listo para configurar.",
+  "step_1_desc": "Haz doble clic en <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600\">JaviD_Future_Bot</code> — las dependencias se instalan automáticamente y se abre tu panel, listo para configurar.",
   "step_1_link": "Descargar →",
   "step_1_title": "Descarga &amp; abre la app",
   "step_2_desc": "Pega tu clave en Ajustes y pulsa Probar conexión. Se cifra y se guarda solo en tu PC — nunca se requiere permiso de retiro.",
@@ -1870,7 +1794,7 @@ var I18N = {
   "toolkit_sub": "¿Nuevo en bots? Empieza por las etiquetas verdes. Las etiquetas índigo son el motor de nivel profesional que trabaja por debajo."
 },
   fr: {
-  "audience_1_desc": "Téléchargez, double-cliquez sur <code class=\"rounded bg-slate-100 px-1 py-0.5 text-[12px]\">start.bat</code>, collez votre clé, choisissez vos cryptos (ou utilisez le Top 20 en un clic), et démarrez. Aucun code, nulle part. Le manuel d'utilisation détaille les 9 écrans réels étape par étape.",
+  "audience_1_desc": "Téléchargez, double-cliquez sur <code class=\"rounded bg-slate-100 px-1 py-0.5 text-[12px]\">JaviD_Future_Bot</code>, collez votre clé, choisissez vos cryptos (ou utilisez le Top 20 en un clic), et démarrez. Aucun code, nulle part. Le manuel d'utilisation détaille les 9 écrans réels étape par étape.",
   "audience_1_title": "Nouveau dans les bots de trading",
   "audience_2_desc": "Ajustez finement avec les modes de dimensionnement Agressif/Normal/Stable, exécutez les trois stratégies en parallèle sur plus de 500 symboles, et surveillez tout depuis un tableau de bord en direct.",
   "audience_2_title": "Traders expérimentés",
@@ -1914,15 +1838,9 @@ var I18N = {
   "compare_withdrawal_javid": "Jamais requise",
   "cta_free_download": "Téléchargement gratuit",
   "dl_contact_note": "Des questions ? Écrivez à <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:javidfuturebot@javid-dol.uk\">javidfuturebot@javid-dol.uk</a> ou posez votre question sur le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">forum communautaire</a>.",
-  "dl_flow_note": "Saisissez votre code → cliquez sur votre système → décompressez → exécutez <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">start.bat</code>. Première fois ? Suivez le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manuel d'utilisation</a>.",
-  "dl_label": "Saisissez votre code d'accès pour télécharger",
-  "dl_msg_checking": "Vérification du code…",
-  "dl_msg_generic_error": "Une erreur s'est produite. Veuillez réessayer dans un instant.",
-  "dl_msg_invalid": "Ce code n'est pas valide. Vérifiez-le, ou demandez de l'aide sur la communauté Telegram.",
-  "dl_msg_network_error": "Erreur réseau. Veuillez réessayer.",
-  "dl_msg_no_code": "Veuillez d'abord saisir votre code d'accès.",
-  "dl_msg_success": "Téléchargement lancé — vérifiez les téléchargements de votre navigateur.",
-  "dl_no_code_note": "Pas encore de code ? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Rejoignez la communauté Telegram</a> — les codes sont délivrés gratuitement après inscription via notre lien de parrainage Binance.",
+  "dl_flow_note": "Cliquez sur votre système → décompressez → exécutez <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. L'app démarre dans la barre d'état système ; cliquez sur l'icône pour ouvrir le tableau de bord. Première fois ? Suivez le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manuel d'utilisation</a>.",
+  "dl_label": "Téléchargement gratuit — aucun code d'accès requis",
+  "dl_no_code_note": "Gratuit pour toujours, sans inscription. Pour les nouveautés et le support, <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">rejoignez la communauté Telegram</a>.",
   "dl_perk_1": "Aucun engagement",
   "dl_perk_2": "Aucuns frais cachés",
   "dl_perk_3": "Aucune carte bancaire",
@@ -1941,7 +1859,7 @@ var I18N = {
   "faq_a5": "Les nouvelles entrées et la gestion des positions s'arrêtent. Les positions déjà ouvertes restent sur la plateforme, et le bot les redétecte et reprend leur gestion au redémarrage. Un mini PC toujours allumé ou une VM cloud à faible coût est recommandé.",
   "faq_a6": "Nous recommandons <b class=\"text-slate-800\">1 000 USDT ou plus</b> afin que le dimensionnement par trade (jusqu'à 1/300e du solde) reste au-dessus des limites de valeur notionnelle minimale de la plateforme.",
   "faq_a7": "Cinq couches de logique de sortie gèrent chaque position, mais aucun système ne peut éliminer totalement le risque de mouvements violents sur les marchés à terme. Gardez un effet de levier conservateur.",
-  "faq_a8": "Oui — téléchargez, double-cliquez sur start.bat, collez votre clé API, choisissez vos cryptos, démarrez. Aucun code, nulle part. Le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manuel d'utilisation</a> couvre tout cela en 9 écrans réels.",
+  "faq_a8": "Oui — téléchargez, double-cliquez sur JaviD_Future_Bot, collez votre clé API, choisissez vos cryptos, démarrez. Aucun code, nulle part. Le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manuel d'utilisation</a> couvre tout cela en 9 écrans réels.",
   "faq_a9": "Actuellement, uniquement les <b class=\"text-slate-800\">contrats à terme USDⓈ-M Binance</b>, avec plus de 500 symboles surveillés simultanément.",
   "faq_eyebrow": "FAQ",
   "faq_h2": "Les questions que vous poseriez avant de payer",
@@ -2059,7 +1977,7 @@ var I18N = {
   "showcase_h2": "Ce ne sont pas des maquettes. Ce sont de vrais écrans du tableau de bord.",
   "showcase_link": "Voir l'historique complet des captures d'écran",
   "sizing_screenshot_caption": "Capture d'écran réelle — le vrai panneau Investment Mode, solde ÷ 300 / 500 / 700",
-  "step_1_desc": "Double-cliquez sur <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600\">start.bat</code> — les dépendances s'installent automatiquement et votre tableau de bord s'ouvre, prêt à configurer.",
+  "step_1_desc": "Double-cliquez sur <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-[12.5px] text-indigo-600\">JaviD_Future_Bot</code> — les dépendances s'installent automatiquement et votre tableau de bord s'ouvre, prêt à configurer.",
   "step_1_link": "Télécharger →",
   "step_1_title": "Téléchargez &amp; lancez l'application",
   "step_2_desc": "Collez votre clé dans les Paramètres et cliquez sur Tester la connexion. Chiffrée et stockée uniquement sur votre PC — l'autorisation de retrait n'est jamais requise.",
@@ -2126,5 +2044,6 @@ function applyLang(lang){
 })();
 </script>
 
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "fd849fc9136b478e926aa09c7715f7bd"}'></script>
 </body>
 </html>
