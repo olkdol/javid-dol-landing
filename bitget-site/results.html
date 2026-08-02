@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Real Results | JaviD Future Bot</title>
 <meta name="description" content="Screenshot-by-screenshot dashboard record from the JaviD Future Bot execution engine — the same software that runs the Bitget edition.">
-<link rel="canonical" href="https://bg.javidtrading.com/results">
+<link rel="canonical" href="https://javidfuturebot2.javid-dol.uk/results.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -40,45 +40,217 @@ footer{border-top:1px solid var(--line); padding:34px 0;}
 .footer-links{display:flex; gap:20px; flex-wrap:wrap;}
 .footer-links a{color:var(--faint);}
 .footer-links a:hover{color:var(--accent);}
+.lang-switch{position:relative;}
+.lang-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border:1px solid var(--line);background:transparent;color:var(--text);padding:7px 12px;border-radius:100px;cursor:pointer;}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent);}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:60;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);min-width:150px;padding:6px;display:none;}
+.lang-menu.open{display:block;}
+.lang-menu button{display:flex;width:100%;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:none;background:none;font-size:13px;font-weight:600;text-align:left;cursor:pointer;color:var(--text);}
+.lang-menu button:hover{background:rgba(255,255,255,.06);}
+.lang-menu button.active{color:var(--accent);background:rgba(0,240,255,.08);}
 </style>
 </head>
 <body>
 <nav><div class="nav-row">
   <a href="index.html" class="nav-logo">JaviD <b>Future Bot</b></a>
   <div class="nav-links">
-    <a href="index.html#capabilities">Capabilities</a>
-    <a href="index.html#architecture">Architecture</a>
-    <a href="board.html">Community Board</a>
-    <a href="bitget-signup-api-guide.html">New to Bitget?</a>
+    <a href="index.html#capabilities" data-i18n="nav_capabilities">Capabilities</a>
+    <a href="index.html#architecture" data-i18n="nav_architecture">Architecture</a>
+    <a href="board.html" data-i18n="nav_community_board">Community Board</a>
+    <a href="bitget-signup-api-guide.html" data-i18n="nav_new_to_bitget">New to Bitget?</a>
   </div>
-  <a href="index.html#download" class="nav-cta">Get Access</a>
+  <div style="display:flex;align-items:center;gap:14px">
+    <a href="index.html#download" class="nav-cta" data-i18n="nav_cta">Get Access</a>
+    <div class="lang-switch">
+      <button type="button" id="langBtn" class="lang-btn" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" style="width:14px;height:14px"><circle cx="10" cy="10" r="7.25"/><path d="M2.75 10h14.5M10 2.75c2.4 2.4 2.4 12.1 0 14.5M10 2.75c-2.4 2.4-2.4 12.1 0 14.5"/></svg>
+        Language
+      </button>
+      <div id="langMenu" class="lang-menu" role="menu"></div>
+    </div>
+  </div>
 </div></nav>
 
 <header class="hero"><div class="wrap">
-  <div class="kicker">Real Results</div>
-  <h1>Not Mockups. Actual Dashboard Screens.</h1>
-  <p>Screenshot-by-screenshot record straight from the JaviD Future Bot dashboard — the same execution engine that powers the Bitget edition, unedited, losing trades included.</p>
+  <div class="kicker" data-i18n="kicker">Real Results</div>
+  <h1 data-i18n="hero_h1">Not Mockups. Actual Dashboard Screens.</h1>
+  <p data-i18n="hero_sub">Screenshot-by-screenshot record straight from the JaviD Future Bot dashboard — the same execution engine that powers the Bitget edition, unedited, losing trades included.</p>
 </div></header>
 
 <div class="wrap">
-  <div class="note"><b>A note on these screenshots:</b> the dashboard, strategy engine, and execution logic shown here are identical to the Bitget edition — only the connected exchange differs. Bitget-specific live results will be published on this page as the operator's Bitget account accumulates a track record. In the meantime, the <a href="index.html#live-proof">Live Proof</a> section on the home page reflects real-time data where available.</div>
+  <div class="note" data-i18n="note"><b>A note on these screenshots:</b> the dashboard, strategy engine, and execution logic shown here are identical to the Bitget edition — only the connected exchange differs. Bitget-specific live results will be published on this page as the operator's Bitget account accumulates a track record. In the meantime, the <a href="index.html#live-proof">Live Proof</a> section on the home page reflects real-time data where available.</div>
 
   <div class="gallery">
-    <div class="shot"><img src="/results/dashboard-overview.png" alt="JaviD Future Bot dashboard showing cumulative P&L and win rate" loading="lazy"><div class="shot-cap">Dashboard overview — cumulative P&amp;L and win rate</div></div>
-    <div class="shot"><img src="/results/open-positions.png" alt="JaviD Future Bot open positions table" loading="lazy"><div class="shot-cap">Open positions — live entry price, PnL, and ROE</div></div>
-    <div class="shot"><img src="/results/daily-returns.png" alt="JaviD Future Bot daily return chart" loading="lazy"><div class="shot-cap">Daily return record across the run</div></div>
-    <div class="shot"><img src="/results/trade-records-1.png" alt="JaviD Future Bot trade records table" loading="lazy"><div class="shot-cap">Individual trade execution records</div></div>
+    <div class="shot"><img src="https://javid-dol.uk/results/dashboard-overview.png" alt="JaviD Future Bot dashboard showing cumulative P&L and win rate" loading="lazy"><div class="shot-cap" data-i18n="shot1_cap">Dashboard overview — cumulative P&amp;L and win rate</div></div>
+    <div class="shot"><img src="https://javid-dol.uk/results/open-positions.png" alt="JaviD Future Bot open positions table" loading="lazy"><div class="shot-cap" data-i18n="shot2_cap">Open positions — live entry price, PnL, and ROE</div></div>
+    <div class="shot"><img src="https://javid-dol.uk/results/daily-returns.png" alt="JaviD Future Bot daily return chart" loading="lazy"><div class="shot-cap" data-i18n="shot3_cap">Daily return record across the run</div></div>
+    <div class="shot"><img src="https://javid-dol.uk/results/trade-records-1.png" alt="JaviD Future Bot trade records table" loading="lazy"><div class="shot-cap" data-i18n="shot4_cap">Individual trade execution records</div></div>
   </div>
 </div>
 
 <footer><div class="wrap footer-row">
-  <span>© 2026 JaviD Future Bot · bg.javidtrading.com</span>
+  <span>© 2026 JaviD Future Bot · javidfuturebot2.javid-dol.uk</span>
   <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="bitget-signup-api-guide.html">Bitget Setup Guide</a>
-    <a href="board.html">Community Board</a>
-    <a href="mailto:javidfuturebot@javid-dol.uk">Contact</a>
+    <a href="index.html" data-i18n="footer_home">Home</a>
+    <a href="bitget-signup-api-guide.html" data-i18n="footer_bitget_guide">Bitget Setup Guide</a>
+    <a href="board.html" data-i18n="footer_community_board">Community Board</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk" data-i18n="footer_contact">Contact</a>
   </div>
 </div></footer>
+
+<script>
+var I18N = {
+  en: {
+    nav_capabilities: 'Capabilities',
+    nav_architecture: 'Architecture',
+    nav_community_board: 'Community Board',
+    nav_new_to_bitget: 'New to Bitget?',
+    nav_cta: 'Get Access',
+    kicker: 'Real Results',
+    hero_h1: 'Not Mockups. Actual Dashboard Screens.',
+    hero_sub: 'Screenshot-by-screenshot record straight from the JaviD Future Bot dashboard — the same execution engine that powers the Bitget edition, unedited, losing trades included.',
+    note: '<b>A note on these screenshots:</b> the dashboard, strategy engine, and execution logic shown here are identical to the Bitget edition — only the connected exchange differs. Bitget-specific live results will be published on this page as the operator\'s Bitget account accumulates a track record. In the meantime, the <a href="index.html#live-proof">Live Proof</a> section on the home page reflects real-time data where available.',
+    shot1_cap: 'Dashboard overview — cumulative P&amp;L and win rate',
+    shot2_cap: 'Open positions — live entry price, PnL, and ROE',
+    shot3_cap: 'Daily return record across the run',
+    shot4_cap: 'Individual trade execution records',
+    footer_home: 'Home',
+    footer_bitget_guide: 'Bitget Setup Guide',
+    footer_community_board: 'Community Board',
+    footer_contact: 'Contact'
+  },
+  ko: {
+    nav_capabilities: '기능',
+    nav_architecture: '아키텍처',
+    nav_community_board: '커뮤니티 게시판',
+    nav_new_to_bitget: '비트겟이 처음이신가요?',
+    nav_cta: '액세스 받기',
+    kicker: '실제 결과',
+    hero_h1: '목업이 아닙니다. 실제 대시보드 화면입니다.',
+    hero_sub: 'JaviD Future Bot 대시보드에서 직접 캡처한 스크린샷 기록입니다 — Bitget 버전을 구동하는 동일한 실행 엔진이며, 편집 없이 손실 거래도 그대로 포함되어 있습니다.',
+    note: '<b>이 스크린샷에 대한 안내:</b> 여기에 표시된 대시보드, 전략 엔진, 실행 로직은 Bitget 버전과 동일하며 연결된 거래소만 다릅니다. Bitget 전용 실시간 결과는 운영자의 Bitget 계정에 트랙 레코드가 쌓이는 대로 이 페이지에 게시될 예정입니다. 그 동안에는 홈페이지의 <a href="index.html#live-proof">실시간 증빙</a> 섹션에서 가능한 실시간 데이터를 확인하실 수 있습니다.',
+    shot1_cap: '대시보드 개요 — 누적 손익 및 승률',
+    shot2_cap: '오픈 포지션 — 실시간 진입가, 손익, ROE',
+    shot3_cap: '운영 기간 전체의 일별 수익률 기록',
+    shot4_cap: '개별 거래 체결 기록',
+    footer_home: '홈',
+    footer_bitget_guide: 'Bitget 설정 가이드',
+    footer_community_board: '커뮤니티 게시판',
+    footer_contact: '문의'
+  },
+  ja: {
+    nav_capabilities: '機能',
+    nav_architecture: 'アーキテクチャ',
+    nav_community_board: 'コミュニティ掲示板',
+    nav_new_to_bitget: 'Bitgetが初めての方へ',
+    nav_cta: 'アクセスを取得',
+    kicker: '実際の結果',
+    hero_h1: 'モックアップではありません。実際のダッシュボード画面です。',
+    hero_sub: 'JaviD Future Bot ダッシュボードから直接記録したスクリーンショットです — Bitget版と同じ実行エンジンによるもので、編集は一切なく、損失トレードも含めてそのまま公開しています。',
+    note: '<b>このスクリーンショットについて:</b> ここに表示されているダッシュボード、戦略エンジン、実行ロジックはBitget版と同一であり、異なるのは接続先の取引所のみです。Bitget固有のライブ実績は、運営者のBitgetアカウントに実績が蓄積され次第、このページに公開されます。それまでの間は、ホームページの<a href="index.html#live-proof">ライブプルーフ</a>セクションで利用可能なリアルタイムデータをご確認いただけます。',
+    shot1_cap: 'ダッシュボード概要 — 累積損益と勝率',
+    shot2_cap: 'オープンポジション — リアルタイムのエントリー価格、損益、ROE',
+    shot3_cap: '運用期間全体の日次リターン記録',
+    shot4_cap: '個別トレードの約定記録',
+    footer_home: 'ホーム',
+    footer_bitget_guide: 'Bitgetセットアップガイド',
+    footer_community_board: 'コミュニティ掲示板',
+    footer_contact: 'お問い合わせ'
+  },
+  zh: {
+    nav_capabilities: '功能',
+    nav_architecture: '架构',
+    nav_community_board: '社区论坛',
+    nav_new_to_bitget: '初次使用 Bitget？',
+    nav_cta: '立即获取',
+    kicker: '真实成果',
+    hero_h1: '并非模拟图，而是真实的仪表盘画面。',
+    hero_sub: '直接来自 JaviD Future Bot 仪表盘的逐张截图记录 — 与 Bitget 版本使用相同的执行引擎，未经任何编辑，亏损交易也如实包含在内。',
+    note: '<b>关于这些截图的说明：</b> 此处展示的仪表盘、策略引擎和执行逻辑与 Bitget 版本完全相同，唯一不同的是所连接的交易所。随着运营者的 Bitget 账户积累交易记录，Bitget 专属的实盘结果将陆续发布在本页面。在此之前，主页上的<a href="index.html#live-proof">实时证明</a>板块会展示可获取的实时数据。',
+    shot1_cap: '仪表盘概览 — 累计盈亏与胜率',
+    shot2_cap: '持仓中 — 实时入场价、盈亏与 ROE',
+    shot3_cap: '整个运行期间的每日收益记录',
+    shot4_cap: '单笔交易执行记录',
+    footer_home: '首页',
+    footer_bitget_guide: 'Bitget 设置指南',
+    footer_community_board: '社区论坛',
+    footer_contact: '联系我们'
+  },
+  es: {
+    nav_capabilities: 'Funciones',
+    nav_architecture: 'Arquitectura',
+    nav_community_board: 'Foro de la comunidad',
+    nav_new_to_bitget: '¿Nuevo en Bitget?',
+    nav_cta: 'Obtener acceso',
+    kicker: 'Resultados reales',
+    hero_h1: 'No son maquetas. Son capturas reales del panel.',
+    hero_sub: 'Registro capturado directamente del panel de JaviD Future Bot, pantalla por pantalla — el mismo motor de ejecución que impulsa la edición de Bitget, sin editar, incluidas las operaciones perdedoras.',
+    note: '<b>Una nota sobre estas capturas:</b> el panel, el motor de estrategias y la lógica de ejecución que se muestran aquí son idénticos a los de la edición de Bitget; solo cambia el exchange conectado. Los resultados en vivo específicos de Bitget se publicarán en esta página a medida que la cuenta de Bitget del operador acumule un historial. Mientras tanto, la sección <a href="index.html#live-proof">Prueba en vivo</a> de la página de inicio muestra datos en tiempo real cuando están disponibles.',
+    shot1_cap: 'Resumen del panel — P&amp;L acumulado y tasa de aciertos',
+    shot2_cap: 'Posiciones abiertas — precio de entrada en vivo, P&amp;L y ROE',
+    shot3_cap: 'Registro de rentabilidad diaria durante todo el periodo',
+    shot4_cap: 'Registros de ejecución de operaciones individuales',
+    footer_home: 'Inicio',
+    footer_bitget_guide: 'Guía de configuración de Bitget',
+    footer_community_board: 'Foro de la comunidad',
+    footer_contact: 'Contacto'
+  },
+  fr: {
+    nav_capabilities: 'Fonctionnalités',
+    nav_architecture: 'Architecture',
+    nav_community_board: 'Forum communautaire',
+    nav_new_to_bitget: 'Nouveau sur Bitget ?',
+    nav_cta: "Obtenir l'accès",
+    kicker: 'Résultats réels',
+    hero_h1: 'Pas des maquettes. De vrais écrans du tableau de bord.',
+    hero_sub: "Enregistrement capture d'écran par capture d'écran, directement issu du tableau de bord JaviD Future Bot — le même moteur d'exécution qui alimente l'édition Bitget, non modifié, pertes incluses.",
+    note: '<b>Une remarque sur ces captures d\'écran :</b> le tableau de bord, le moteur de stratégie et la logique d\'exécution présentés ici sont identiques à l\'édition Bitget — seul l\'exchange connecté diffère. Les résultats en direct spécifiques à Bitget seront publiés sur cette page à mesure que le compte Bitget de l\'opérateur accumule un historique. En attendant, la section <a href="index.html#live-proof">Preuve en direct</a> de la page d\'accueil affiche des données en temps réel lorsque disponibles.',
+    shot1_cap: "Aperçu du tableau de bord — P&amp;L cumulé et taux de réussite",
+    shot2_cap: "Positions ouvertes — prix d'entrée en direct, P&amp;L et ROE",
+    shot3_cap: 'Historique des rendements quotidiens sur toute la période',
+    shot4_cap: 'Registres des transactions individuelles exécutées',
+    footer_home: 'Accueil',
+    footer_bitget_guide: 'Guide de configuration Bitget',
+    footer_community_board: 'Forum communautaire',
+    footer_contact: 'Contact'
+  }
+};
+var LANGS = [
+  {code:'en', label:'English'}, {code:'ko', label:'한국어'}, {code:'ja', label:'日本語'},
+  {code:'zh', label:'中文'}, {code:'es', label:'Español'}, {code:'fr', label:'Français'}
+];
+var STORAGE_KEY = 'javid_lang';
+window.CURRENT_LANG = 'en';
+function applyLang(lang){
+  if (!I18N[lang]) lang = 'en';
+  window.CURRENT_LANG = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    var val = (I18N[lang] && I18N[lang][key] != null) ? I18N[lang][key] : I18N.en[key];
+    if (val != null) el.innerHTML = val;
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+  document.querySelectorAll('.lang-menu button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+}
+(function(){
+  var menu = document.getElementById('langMenu');
+  var btn = document.getElementById('langBtn');
+  LANGS.forEach(function(l){
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('data-lang', l.code); b.setAttribute('role','menuitem');
+    b.textContent = l.label;
+    b.addEventListener('click', function(){ applyLang(l.code); menu.classList.remove('open'); });
+    menu.appendChild(b);
+  });
+  btn.addEventListener('click', function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+  document.addEventListener('click', function(){ menu.classList.remove('open'); });
+  var saved;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch(e){}
+  applyLang(saved || 'en');
+})();
+</script>
 </body>
 </html>

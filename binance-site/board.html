@@ -123,6 +123,15 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
 .footer-links a:hover { color:var(--accent); }
 
 @media (max-width:640px){ h1{font-size:28px;} }
+
+.lang-switch{position:relative;}
+.lang-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border:1px solid var(--line);background:transparent;color:var(--text);padding:7px 12px;border-radius:100px;cursor:pointer;}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent);}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:60;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);min-width:150px;padding:6px;display:none;}
+.lang-menu.open{display:block;}
+.lang-menu button{display:flex;width:100%;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:none;background:none;font-size:13px;font-weight:600;text-align:left;cursor:pointer;color:var(--text);}
+.lang-menu button:hover{background:rgba(255,255,255,.06);}
+.lang-menu button.active{color:var(--accent);background:rgba(0,240,255,.08);}
 </style>
 </head>
 <body>
@@ -130,56 +139,63 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
 <nav class="nav"><div class="nav-inner">
   <a href="index.html" class="brand"><span class="brand-mark"></span>JaviD Future Bot <em>V18.0</em></a>
   <div class="nav-links">
-    <a href="index.html#features">Features</a>
-    <a href="index.html#how-it-works">How It Works</a>
-    <a href="index.html#shadow-mode">Shadow Mode</a>
-    <a href="results.html">Real Results</a>
-    <a href="manual.html">User Manual</a>
-    <a href="binance-signup-api-guide.html">New to Binance?</a>
-    <a href="board.html" class="nav-highlight">Community Board<span class="nh-dot"></span></a>
+    <a href="index.html#features" data-i18n="nav_features">Features</a>
+    <a href="index.html#how-it-works" data-i18n="nav_how">How It Works</a>
+    <a href="index.html#shadow-mode" data-i18n="nav_shadow">Shadow Mode</a>
+    <a href="results.html" data-i18n="nav_results">Real Results</a>
+    <a href="manual.html" data-i18n="nav_manual">User Manual</a>
+    <a href="binance-signup-api-guide.html" data-i18n="nav_new_binance">New to Binance?</a>
+    <a href="board.html" class="nav-highlight" data-i18n="nav_board">Community Board<span class="nh-dot"></span></a>
+    <div class="lang-switch">
+      <button type="button" id="langBtn" class="lang-btn" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" style="width:14px;height:14px"><circle cx="10" cy="10" r="7.25"/><path d="M2.75 10h14.5M10 2.75c2.4 2.4 2.4 12.1 0 14.5M10 2.75c-2.4 2.4-2.4 12.1 0 14.5"/></svg>
+        Language
+      </button>
+      <div id="langMenu" class="lang-menu" role="menu"></div>
+    </div>
   </div>
-  <a href="index.html#download" class="nav-cta">Download Now</a>
+  <a href="index.html#download" class="nav-cta" data-i18n="nav_download">Download Now</a>
 </div></nav>
 
 <div class="ticker"><div class="ticker-inner">
-  <div class="ticker-slide t1"><span class="tk-icon">🌙</span><span class="tk-text"><b>Still watching charts and trading through the night?</b><span>Let an AI-built strategy judge and execute for you, 24/7.</span></span></div>
-  <div class="ticker-slide t2"><span class="tk-icon">🛡️</span><span class="tk-text"><b>Not sure you can trust an auto-trading program?</b><span>Run Shadow Mode first — switch to live trading once you trust it.</span><small>Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small></span></div>
-  <a class="ticker-slide t3" href="results.html"><span class="tk-icon">📊</span><span class="tk-text"><b>Curious what the real win rate looks like?</b><span>Check the real trading results on this site and judge for yourself.</span></span></a>
-  <div class="ticker-slide t4"><span class="tk-icon">🪙</span><span class="tk-text"><b>Only trading Bitcoin futures?</b><span>Trade 500+ altcoin futures and stack consistent results, every day.</span></span></div>
-  <div class="ticker-slide t5"><span class="tk-icon">⚖️</span><span class="tk-text"><b>Worried about liquidation on leveraged futures?</b><span>Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.</span><small>Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.</small></span></div>
-  <div class="ticker-slide t6"><span class="tk-icon">🌱</span><span class="tk-text"><b>Think your starting amount is too small?</b><span>Entry size resizes daily off your live balance — feel what compounding does.</span></span></div>
+  <div class="ticker-slide t1"><span class="tk-icon">🌙</span><span class="tk-text" data-i18n="tick1"><b>Still watching charts and trading through the night?</b><span>Let an AI-built strategy judge and execute for you, 24/7.</span></span></div>
+  <div class="ticker-slide t2"><span class="tk-icon">🛡️</span><span class="tk-text" data-i18n="tick2"><b>Not sure you can trust an auto-trading program?</b><span>Run Shadow Mode first — switch to live trading once you trust it.</span><small>Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small></span></div>
+  <a class="ticker-slide t3" href="results.html"><span class="tk-icon">📊</span><span class="tk-text" data-i18n="tick3"><b>Curious what the real win rate looks like?</b><span>Check the real trading results on this site and judge for yourself.</span></span></a>
+  <div class="ticker-slide t4"><span class="tk-icon">🪙</span><span class="tk-text" data-i18n="tick4"><b>Only trading Bitcoin futures?</b><span>Trade 500+ altcoin futures and stack consistent results, every day.</span></span></div>
+  <div class="ticker-slide t5"><span class="tk-icon">⚖️</span><span class="tk-text" data-i18n="tick5"><b>Worried about liquidation on leveraged futures?</b><span>Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.</span><small>Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.</small></span></div>
+  <div class="ticker-slide t6"><span class="tk-icon">🌱</span><span class="tk-text" data-i18n="tick6"><b>Think your starting amount is too small?</b><span>Entry size resizes daily off your live balance — feel what compounding does.</span></span></div>
 </div></div>
 
 <header class="hero"><div class="wrap">
-  <span class="kicker">💬 Community Board</span>
-  <h1>Ask Us Anything About JaviD Future Bot</h1>
-  <p class="sub">Setup issues, strategy questions, feature requests — post below and we'll reply directly on this page. No account or sign-up required to post.</p>
+  <span class="kicker" data-i18n="hero_kicker">💬 Community Board</span>
+  <h1 data-i18n="hero_h1">Ask Us Anything About JaviD Future Bot</h1>
+  <p class="sub" data-i18n="hero_sub">Setup issues, strategy questions, feature requests — post below and we'll reply directly on this page. No account or sign-up required to post.</p>
   <div class="quick-links">
-    <a href="manual.html">📖 Check the User Manual first</a>
-    <a href="index.html#faq">❓ Read the FAQ</a>
-    <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">📲 Faster answer? Ask in Telegram</a>
-    <a href="mailto:javidfuturebot@javid-dol.uk">✉️ Email us</a>
+    <a href="manual.html" data-i18n="ql_manual">📖 Check the User Manual first</a>
+    <a href="index.html#faq" data-i18n="ql_faq">❓ Read the FAQ</a>
+    <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" data-i18n="ql_telegram">📲 Faster answer? Ask in Telegram</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk" data-i18n="ql_email">✉️ Email us</a>
   </div>
 </div></header>
 
 <div class="wrap">
-  <div class="board-note">💬 <span><b>How this works:</b> type your name and question below, no login needed. Mark a post <b>secret</b> to set your own password — only you (with that password) and the JaviD admin can read it. Every post is reviewed and answered directly here.</span></div>
+  <div class="board-note" data-i18n="board_note">💬 <span><b>How this works:</b> type your name and question below, no login needed. Mark a post <b>secret</b> to set your own password — only you (with that password) and the JaviD admin can read it. Every post is reviewed and answered directly here.</span></div>
 
   <div class="board-write">
-    <h4>Write a question</h4>
-    <div class="bw-row"><input type="text" id="bwName" placeholder="Your name" maxlength="40" /></div>
-    <div class="bw-row"><textarea id="bwContent" placeholder="What do you want to ask?" maxlength="4000"></textarea></div>
-    <label class="bw-secret"><input type="checkbox" id="bwSecret" /> Make this a secret post (password-protected)</label>
-    <div class="bw-pass" id="bwPassWrap"><input type="password" id="bwPass" placeholder="Set a password to read it later" maxlength="100" /></div>
-    <button type="button" class="btn" onclick="submitPost()">Post</button>
+    <h4 data-i18n="bw_title">Write a question</h4>
+    <div class="bw-row"><input type="text" id="bwName" placeholder="Your name" maxlength="40" data-i18n-placeholder="bw_name_ph" /></div>
+    <div class="bw-row"><textarea id="bwContent" placeholder="What do you want to ask?" maxlength="4000" data-i18n-placeholder="bw_content_ph"></textarea></div>
+    <label class="bw-secret"><input type="checkbox" id="bwSecret" /> <span data-i18n="bw_secret_label">Make this a secret post (password-protected)</span></label>
+    <div class="bw-pass" id="bwPassWrap"><input type="password" id="bwPass" placeholder="Set a password to read it later" maxlength="100" data-i18n-placeholder="bw_pass_ph" /></div>
+    <button type="button" class="btn" onclick="submitPost()" data-i18n="bw_post_btn">Post</button>
     <p class="board-submit-msg" id="bwMsg"></p>
   </div>
 
   <div class="board-toolbar"><span class="board-admin-link" id="adminLink" onclick="adminLogin()">Admin</span></div>
 
   <div class="board-panel">
-    <h4>Questions &amp; Answers</h4>
-    <div id="boardList"><p style="color:var(--faint);font-size:13px;">Loading…</p></div>
+    <h4 data-i18n="board_panel_title">Questions &amp; Answers</h4>
+    <div id="boardList"><p style="color:var(--faint);font-size:13px;" data-i18n="loading">Loading…</p></div>
   </div>
 </div>
 
@@ -189,14 +205,14 @@ function getAdminKey() { return localStorage.getItem(ADMIN_KEY_STORAGE) || ''; }
 
 function adminLogin() {
   if (getAdminKey()) {
-    if (confirm('Log out of admin mode?')) {
+    if (confirm(t('confirm_logout_admin'))) {
       localStorage.removeItem(ADMIN_KEY_STORAGE);
       updateAdminLink();
       loadPosts();
     }
     return;
   }
-  const key = prompt('Enter admin key:');
+  const key = prompt(t('prompt_admin_key'));
   if (!key) return;
   localStorage.setItem(ADMIN_KEY_STORAGE, key);
   updateAdminLink();
@@ -204,7 +220,7 @@ function adminLogin() {
 }
 
 function updateAdminLink() {
-  document.getElementById('adminLink').textContent = getAdminKey() ? 'Admin mode ON (click to log out)' : 'Admin';
+  document.getElementById('adminLink').textContent = getAdminKey() ? t('admin_on') : t('admin_off');
 }
 
 document.getElementById('bwSecret').addEventListener('change', function () {
@@ -217,9 +233,9 @@ async function submitPost() {
   const secret = document.getElementById('bwSecret').checked;
   const password = document.getElementById('bwPass').value;
   const msg = document.getElementById('bwMsg');
-  if (!name || !content) { msg.textContent = 'Enter your name and question.'; msg.className = 'board-submit-msg err'; return; }
-  if (secret && !password) { msg.textContent = 'Set a password for the secret post.'; msg.className = 'board-submit-msg err'; return; }
-  msg.textContent = 'Posting…'; msg.className = 'board-submit-msg';
+  if (!name || !content) { msg.textContent = t('msg_enter_name_question'); msg.className = 'board-submit-msg err'; return; }
+  if (secret && !password) { msg.textContent = t('msg_set_password'); msg.className = 'board-submit-msg err'; return; }
+  msg.textContent = t('msg_posting'); msg.className = 'board-submit-msg';
   try {
     const res = await fetch('/api/board/posts', {
       method: 'POST',
@@ -232,10 +248,10 @@ async function submitPost() {
     document.getElementById('bwSecret').checked = false;
     document.getElementById('bwPass').value = '';
     document.getElementById('bwPassWrap').classList.remove('show');
-    msg.textContent = 'Posted.'; msg.className = 'board-submit-msg ok';
+    msg.textContent = t('msg_posted'); msg.className = 'board-submit-msg ok';
     loadPosts();
   } catch (e) {
-    msg.textContent = 'Something went wrong. Try again.'; msg.className = 'board-submit-msg err';
+    msg.textContent = t('msg_error_generic'); msg.className = 'board-submit-msg err';
   }
 }
 
@@ -249,7 +265,7 @@ function escapeHtml(str) {
 
 async function loadPosts() {
   const list = document.getElementById('boardList');
-  list.innerHTML = '<p style="color:var(--faint);font-size:13px;">Loading…</p>';
+  list.innerHTML = '<p style="color:var(--faint);font-size:13px;">' + t('loading') + '</p>';
   const headers = {};
   const adminKey = getAdminKey();
   if (adminKey) headers['x-admin-key'] = adminKey;
@@ -258,12 +274,12 @@ async function loadPosts() {
     const data = await res.json();
     const posts = data.posts || [];
     if (!posts.length) {
-      list.innerHTML = '<p style="color:var(--faint);font-size:13px;">No questions yet — be the first to ask.</p>';
+      list.innerHTML = '<p style="color:var(--faint);font-size:13px;">' + t('no_questions') + '</p>';
       return;
     }
     list.innerHTML = posts.map(renderPost).join('');
   } catch (e) {
-    list.innerHTML = '<p style="color:var(--warn);font-size:13px;">Could not load posts.</p>';
+    list.innerHTML = '<p style="color:var(--warn);font-size:13px;">' + t('could_not_load') + '</p>';
   }
 }
 
@@ -272,25 +288,25 @@ function renderPost(p) {
   const locked = p.is_secret && p.content === null;
   let bodyHtml;
   if (locked) {
-    bodyHtml = '<div class="bp-locked-box"><input type="password" id="unlock-' + p.id + '" placeholder="Password" maxlength="100" />' +
-      '<button type="button" class="btn btn-sm btn-outline" onclick="unlockPost(' + p.id + ')">Unlock</button></div>' +
+    bodyHtml = '<div class="bp-locked-box"><input type="password" id="unlock-' + p.id + '" placeholder="' + t('ph_password') + '" maxlength="100" />' +
+      '<button type="button" class="btn btn-sm btn-outline" onclick="unlockPost(' + p.id + ')">' + t('btn_unlock') + '</button></div>' +
       '<div id="unlocked-' + p.id + '"></div>';
   } else {
     bodyHtml = '<div class="bp-content">' + escapeHtml(p.content) + '</div>';
   }
-  const reply = p.reply ? '<div class="bp-reply"><b>Admin reply:</b> ' + escapeHtml(p.reply) + '</div>' : '';
+  const reply = p.reply ? '<div class="bp-reply"><b>' + t('admin_reply_label') + '</b> ' + escapeHtml(p.reply) + '</div>' : '';
   const adminActions = admin
     ? '<div class="bp-admin-actions">' +
-        '<button type="button" class="btn btn-sm btn-danger" onclick="deletePost(' + p.id + ')">🗑 Delete</button>' +
-        '<button type="button" class="btn btn-sm btn-outline" onclick="toggleReplyForm(' + p.id + ')">↩ Reply</button>' +
+        '<button type="button" class="btn btn-sm btn-danger" onclick="deletePost(' + p.id + ')">' + t('btn_delete') + '</button>' +
+        '<button type="button" class="btn btn-sm btn-outline" onclick="toggleReplyForm(' + p.id + ')">' + t('btn_reply_toggle') + '</button>' +
       '</div>' +
       '<div class="bp-reply-form" id="replyform-' + p.id + '">' +
-        '<textarea id="replytext-' + p.id + '" placeholder="Write a reply…" maxlength="2000"></textarea>' +
-        '<button type="button" class="btn btn-sm" style="align-self:flex-start;" onclick="submitReply(' + p.id + ')">Send reply</button>' +
+        '<textarea id="replytext-' + p.id + '" placeholder="' + t('ph_reply_text') + '" maxlength="2000"></textarea>' +
+        '<button type="button" class="btn btn-sm" style="align-self:flex-start;" onclick="submitReply(' + p.id + ')">' + t('btn_send_reply') + '</button>' +
       '</div>'
     : '';
   return '<div class="board-post" id="post-' + p.id + '">' +
-      '<div class="bp-head"><span class="bp-name">' + escapeHtml(p.name) + (p.is_secret ? '<span class="bp-lock">🔒 Secret</span>' : '') + '</span>' +
+      '<div class="bp-head"><span class="bp-name">' + escapeHtml(p.name) + (p.is_secret ? '<span class="bp-lock">' + t('badge_secret') + '</span>' : '') + '</span>' +
       '<span class="bp-date">' + fmtDate(p.created_at) + '</span></div>' +
       bodyHtml + reply + adminActions +
     '</div>';
@@ -304,10 +320,10 @@ async function unlockPost(id) {
   try {
     const res = await fetch('/api/board/posts/' + id + '?password=' + encodeURIComponent(password));
     const data = await res.json();
-    if (!res.ok) { target.innerHTML = '<p style="color:var(--warn);font-size:12.5px;margin-top:6px;">Wrong password.</p>'; return; }
+    if (!res.ok) { target.innerHTML = '<p style="color:var(--warn);font-size:12.5px;margin-top:6px;">' + t('wrong_password') + '</p>'; return; }
     target.innerHTML = '<div class="bp-content" style="margin-top:10px;">' + escapeHtml(data.content) + '</div>';
   } catch (e) {
-    target.innerHTML = '<p style="color:var(--warn);font-size:12.5px;">Error unlocking post.</p>';
+    target.innerHTML = '<p style="color:var(--warn);font-size:12.5px;">' + t('error_unlocking') + '</p>';
   }
 }
 
@@ -322,41 +338,285 @@ async function submitReply(id) {
       headers: { 'Content-Type': 'application/json', 'x-admin-key': getAdminKey() },
       body: JSON.stringify({ reply: text })
     });
-    if (!res.ok) { alert('Failed to send reply.'); return; }
+    if (!res.ok) { alert(t('failed_send_reply')); return; }
     loadPosts();
-  } catch (e) { alert('Failed to send reply.'); }
+  } catch (e) { alert(t('failed_send_reply')); }
 }
 
 async function deletePost(id) {
-  if (!confirm('Delete this post permanently?')) return;
+  if (!confirm(t('confirm_delete_post'))) return;
   try {
     const res = await fetch('/api/board/posts/' + id, { method: 'DELETE', headers: { 'x-admin-key': getAdminKey() } });
-    if (!res.ok) { alert('Failed to delete (wrong admin key?).'); return; }
+    if (!res.ok) { alert(t('failed_delete_wrong_key')); return; }
     loadPosts();
-  } catch (e) { alert('Failed to delete.'); }
+  } catch (e) { alert(t('failed_delete')); }
 }
 
-updateAdminLink();
-loadPosts();
+function onLangChanged(lang) {
+  // Refresh the two pieces of UI that are populated by JS with (previously) hardcoded
+  // strings, so they pick up the new language. loadPosts() re-renders straight from the
+  // API response (or the loading/empty/error state) — it never touches post data itself,
+  // it just re-runs renderPost() so static button labels use the new language.
+  updateAdminLink();
+  loadPosts();
+}
+
+// updateAdminLink()/loadPosts() are triggered once the i18n script below runs applyLang()
+// on load (which calls onLangChanged()), so they always run after t()/I18N are defined.
 </script>
 
+
 <section class="cta-band"><div class="wrap">
-  <h3>Ready to try it yourself?</h3>
-  <p>Free download, runs 100% locally — your keys never leave your PC.</p>
-  <a href="index.html#download" class="btn">⬇ Back to JaviD Future Bot</a>
+  <h3 data-i18n="cta_h3">Ready to try it yourself?</h3>
+  <p data-i18n="cta_p">Free download, runs 100% locally — your keys never leave your PC.</p>
+  <a href="index.html#download" class="btn" data-i18n="cta_btn">⬇ Back to JaviD Future Bot</a>
 </div></section>
 
 <footer><div class="wrap footer-row">
-  <span>© 2026 JaviD Future Bot · bn.javidtrading.com</span>
+  <span data-i18n="footer_copy">© 2026 JaviD Future Bot · bn.javidtrading.com</span>
   <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="results.html">Real Results</a>
-    <a href="manual.html">User Manual</a>
-    <a href="binance-signup-api-guide.html">Binance Setup Guide</a>
-    <a href="https://github.com/olkdol/javid-future-bot" target="_blank" rel="noopener">GitHub</a>
-    <a href="mailto:javidfuturebot@javid-dol.uk">Contact</a>
+    <a href="index.html" data-i18n="footer_home">Home</a>
+    <a href="results.html" data-i18n="footer_results">Real Results</a>
+    <a href="manual.html" data-i18n="footer_manual">User Manual</a>
+    <a href="binance-signup-api-guide.html" data-i18n="footer_binance_guide">Binance Setup Guide</a>
+    <a href="https://github.com/olkdol/javid-future-bot" target="_blank" rel="noopener" data-i18n="footer_github">GitHub</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk" data-i18n="footer_contact">Contact</a>
   </div>
 </div></footer>
+
+<script>
+var I18N = {
+  en: {
+    nav_features: `Features`, nav_how: `How It Works`, nav_shadow: `Shadow Mode`, nav_results: `Real Results`,
+    nav_manual: `User Manual`, nav_new_binance: `New to Binance?`, nav_board: `Community Board<span class="nh-dot"></span>`, nav_download: `Download Now`,
+    tick1: `<b>Still watching charts and trading through the night?</b><span>Let an AI-built strategy judge and execute for you, 24/7.</span>`,
+    tick2: `<b>Not sure you can trust an auto-trading program?</b><span>Run Shadow Mode first — switch to live trading once you trust it.</span><small>Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small>`,
+    tick3: `<b>Curious what the real win rate looks like?</b><span>Check the real trading results on this site and judge for yourself.</span>`,
+    tick4: `<b>Only trading Bitcoin futures?</b><span>Trade 500+ altcoin futures and stack consistent results, every day.</span>`,
+    tick5: `<b>Worried about liquidation on leveraged futures?</b><span>Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.</span><small>Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.</small>`,
+    tick6: `<b>Think your starting amount is too small?</b><span>Entry size resizes daily off your live balance — feel what compounding does.</span>`,
+    hero_kicker: `💬 Community Board`, hero_h1: `Ask Us Anything About JaviD Future Bot`,
+    hero_sub: `Setup issues, strategy questions, feature requests — post below and we'll reply directly on this page. No account or sign-up required to post.`,
+    ql_manual: `📖 Check the User Manual first`, ql_faq: `❓ Read the FAQ`,
+    ql_telegram: `📲 Faster answer? Ask in Telegram`, ql_email: `✉️ Email us`,
+    board_note: `💬 <span><b>How this works:</b> type your name and question below, no login needed. Mark a post <b>secret</b> to set your own password — only you (with that password) and the JaviD admin can read it. Every post is reviewed and answered directly here.</span>`,
+    bw_title: `Write a question`, bw_name_ph: `Your name`, bw_content_ph: `What do you want to ask?`,
+    bw_secret_label: `Make this a secret post (password-protected)`, bw_pass_ph: `Set a password to read it later`, bw_post_btn: `Post`,
+    admin_off: `Admin`, admin_on: `Admin mode ON (click to log out)`,
+    board_panel_title: `Questions & Answers`,
+    loading: `Loading…`, no_questions: `No questions yet — be the first to ask.`, could_not_load: `Could not load posts.`,
+    btn_unlock: `Unlock`, ph_password: `Password`, admin_reply_label: `Admin reply:`,
+    btn_delete: `🗑 Delete`, btn_reply_toggle: `↩ Reply`, ph_reply_text: `Write a reply…`, btn_send_reply: `Send reply`,
+    badge_secret: `🔒 Secret`,
+    wrong_password: `Wrong password.`, error_unlocking: `Error unlocking post.`,
+    msg_enter_name_question: `Enter your name and question.`, msg_set_password: `Set a password for the secret post.`,
+    msg_posting: `Posting…`, msg_posted: `Posted.`, msg_error_generic: `Something went wrong. Try again.`,
+    failed_send_reply: `Failed to send reply.`, failed_delete_wrong_key: `Failed to delete (wrong admin key?).`, failed_delete: `Failed to delete.`,
+    confirm_delete_post: `Delete this post permanently?`, confirm_logout_admin: `Log out of admin mode?`, prompt_admin_key: `Enter admin key:`,
+    cta_h3: `Ready to try it yourself?`, cta_p: `Free download, runs 100% locally — your keys never leave your PC.`, cta_btn: `⬇ Back to JaviD Future Bot`,
+    footer_copy: `© 2026 JaviD Future Bot · bn.javidtrading.com`, footer_home: `Home`, footer_results: `Real Results`,
+    footer_manual: `User Manual`, footer_binance_guide: `Binance Setup Guide`, footer_github: `GitHub`, footer_contact: `Contact`
+  },
+  ko: {
+    nav_features: `기능`, nav_how: `작동 방식`, nav_shadow: `섀도우 모드`, nav_results: `실제 결과`,
+    nav_manual: `사용 설명서`, nav_new_binance: `바이낸스가 처음이신가요?`, nav_board: `커뮤니티 게시판<span class="nh-dot"></span>`, nav_download: `지금 다운로드`,
+    tick1: `<b>아직도 밤새 차트를 보며 트레이딩하시나요?</b><span>AI 기반 전략이 24시간 판단하고 실행하도록 맡겨보세요.</span>`,
+    tick2: `<b>자동매매 프로그램을 믿을 수 있을지 확신이 없으신가요?</b><span>먼저 섀도우 모드로 실행해보고, 신뢰가 생기면 실거래로 전환하세요.</span><small>팁: 실거래는 1000 USDT 이상으로 시작하세요 — 잔고가 적으면 진입 횟수가 매우 적을 수 있습니다.</small>`,
+    tick3: `<b>실제 승률이 궁금하신가요?</b><span>이 사이트의 실제 트레이딩 결과를 확인하고 직접 판단해보세요.</span>`,
+    tick4: `<b>비트코인 선물만 거래하고 계신가요?</b><span>500개 이상의 알트코인 선물을 거래하며 매일 꾸준한 결과를 쌓아보세요.</span>`,
+    tick5: `<b>레버리지 선물의 청산이 걱정되시나요?</b><span>1/300, 1/500, 1/700 잔고 기반 사이징으로 방어하세요.</span><small>예: 10배 레버리지에서 약 30,000% 변동까지 청산을 방어할 수 있습니다.</small>`,
+    tick6: `<b>시작 금액이 너무 적다고 생각하시나요?</b><span>진입 크기는 실시간 잔고에 따라 매일 재조정됩니다 — 복리의 효과를 직접 느껴보세요.</span>`,
+    hero_kicker: `💬 커뮤니티 게시판`, hero_h1: `JaviD Future Bot에 대해 무엇이든 물어보세요`,
+    hero_sub: `설치 문제, 전략 관련 질문, 기능 요청 등 아래에 남겨주시면 이 페이지에서 직접 답변해 드립니다. 게시에 계정이나 가입은 필요하지 않습니다.`,
+    ql_manual: `📖 먼저 사용 설명서를 확인하세요`, ql_faq: `❓ 자주 묻는 질문 보기`,
+    ql_telegram: `📲 더 빠른 답변을 원하시나요? 텔레그램으로 문의하세요`, ql_email: `✉️ 이메일 문의`,
+    board_note: `💬 <span><b>이용 방법:</b> 아래에 이름과 질문을 입력하세요, 로그인은 필요 없습니다. 게시물을 <b>비밀글</b>로 표시하면 직접 비밀번호를 설정할 수 있습니다 — 해당 비밀번호를 아는 본인과 JaviD 관리자만 읽을 수 있습니다. 모든 게시물은 검토 후 이 페이지에서 직접 답변됩니다.</span>`,
+    bw_title: `질문 작성하기`, bw_name_ph: `이름`, bw_content_ph: `무엇을 질문하시겠어요?`,
+    bw_secret_label: `이 게시물을 비밀글로 설정 (비밀번호 보호)`, bw_pass_ph: `나중에 확인할 비밀번호를 설정하세요`, bw_post_btn: `게시하기`,
+    admin_off: `관리자`, admin_on: `관리자 모드 켜짐 (클릭하여 로그아웃)`,
+    board_panel_title: `질문과 답변`,
+    loading: `불러오는 중…`, no_questions: `아직 질문이 없습니다 — 첫 번째 질문을 남겨보세요.`, could_not_load: `게시물을 불러올 수 없습니다.`,
+    btn_unlock: `잠금 해제`, ph_password: `비밀번호`, admin_reply_label: `관리자 답변:`,
+    btn_delete: `🗑 삭제`, btn_reply_toggle: `↩ 답글`, ph_reply_text: `답글을 작성하세요…`, btn_send_reply: `답글 보내기`,
+    badge_secret: `🔒 비밀글`,
+    wrong_password: `비밀번호가 올바르지 않습니다.`, error_unlocking: `게시물 잠금 해제 중 오류가 발생했습니다.`,
+    msg_enter_name_question: `이름과 질문을 입력해주세요.`, msg_set_password: `비밀글의 비밀번호를 설정해주세요.`,
+    msg_posting: `게시 중…`, msg_posted: `게시되었습니다.`, msg_error_generic: `문제가 발생했습니다. 다시 시도해주세요.`,
+    failed_send_reply: `답글 전송에 실패했습니다.`, failed_delete_wrong_key: `삭제에 실패했습니다 (관리자 키가 잘못되었을 수 있습니다).`, failed_delete: `삭제에 실패했습니다.`,
+    confirm_delete_post: `이 게시물을 영구적으로 삭제하시겠습니까?`, confirm_logout_admin: `관리자 모드를 로그아웃하시겠습니까?`, prompt_admin_key: `관리자 키를 입력하세요:`,
+    cta_h3: `직접 사용해볼 준비가 되셨나요?`, cta_p: `무료 다운로드, 100% 로컬에서 실행 — API 키가 PC 밖으로 나가지 않습니다.`, cta_btn: `⬇ JaviD Future Bot으로 돌아가기`,
+    footer_copy: `© 2026 JaviD Future Bot · bn.javidtrading.com`, footer_home: `홈`, footer_results: `실제 결과`,
+    footer_manual: `사용 설명서`, footer_binance_guide: `바이낸스 설정 가이드`, footer_github: `GitHub`, footer_contact: `문의하기`
+  },
+  ja: {
+    nav_features: `機能`, nav_how: `使い方`, nav_shadow: `シャドーモード`, nav_results: `実際の結果`,
+    nav_manual: `ユーザーマニュアル`, nav_new_binance: `バイナンスは初めてですか？`, nav_board: `コミュニティボード<span class="nh-dot"></span>`, nav_download: `今すぐダウンロード`,
+    tick1: `<b>まだ夜通しチャートを見てトレードしていますか？</b><span>AI構築の戦略に24時間365日、判断と執行を任せましょう。</span>`,
+    tick2: `<b>自動売買プログラムを信頼できるか不安ですか？</b><span>まずシャドーモードで試し、信頼できたらライブ取引に切り替えましょう。</span><small>ヒント：ライブ取引は1000 USDT以上で開始してください — 残高が少ないとエントリー回数が非常に少なくなる場合があります。</small>`,
+    tick3: `<b>実際の勝率が気になりますか？</b><span>このサイトの実際の取引結果を確認して、ご自身で判断してください。</span>`,
+    tick4: `<b>ビットコイン先物だけを取引していますか？</b><span>500以上のアルトコイン先物を取引し、毎日安定した結果を積み重ねましょう。</span>`,
+    tick5: `<b>レバレッジ先物の強制清算が心配ですか？</b><span>1/300、1/500、1/700の残高ベースサイジングで防御しましょう。</span><small>例：10倍レバレッジの場合、約30,000%の値動きまで強制清算を防ぐことができます。</small>`,
+    tick6: `<b>元手が少なすぎると思っていますか？</b><span>エントリーサイズはライブ残高に応じて毎日調整されます — 複利の効果を実感してください。</span>`,
+    hero_kicker: `💬 コミュニティボード`, hero_h1: `JaviD Future Botについて何でもお聞きください`,
+    hero_sub: `セットアップの問題、戦略に関する質問、機能リクエストなど、下に投稿してください。このページで直接返信します。投稿にアカウントや登録は不要です。`,
+    ql_manual: `📖 まずユーザーマニュアルを確認`, ql_faq: `❓ FAQを読む`,
+    ql_telegram: `📲 もっと早く回答が欲しいですか？Telegramで質問`, ql_email: `✉️ メールで問い合わせる`,
+    board_note: `💬 <span><b>使い方：</b>下にお名前と質問を入力してください。ログインは不要です。投稿を<b>シークレット</b>にすると独自のパスワードを設定できます — そのパスワードを知る本人とJaviD管理者のみが読めます。すべての投稿は確認の上、このページで直接回答します。</span>`,
+    bw_title: `質問を書く`, bw_name_ph: `お名前`, bw_content_ph: `何を質問したいですか？`,
+    bw_secret_label: `この投稿をシークレットにする（パスワード保護）`, bw_pass_ph: `後で読むためのパスワードを設定してください`, bw_post_btn: `投稿する`,
+    admin_off: `管理者`, admin_on: `管理者モードON（クリックでログアウト）`,
+    board_panel_title: `質問と回答`,
+    loading: `読み込み中…`, no_questions: `まだ質問がありません — 最初の質問をしてみましょう。`, could_not_load: `投稿を読み込めませんでした。`,
+    btn_unlock: `ロック解除`, ph_password: `パスワード`, admin_reply_label: `管理者からの返信：`,
+    btn_delete: `🗑 削除`, btn_reply_toggle: `↩ 返信`, ph_reply_text: `返信を入力…`, btn_send_reply: `返信を送信`,
+    badge_secret: `🔒 シークレット`,
+    wrong_password: `パスワードが違います。`, error_unlocking: `投稿のロック解除中にエラーが発生しました。`,
+    msg_enter_name_question: `お名前と質問を入力してください。`, msg_set_password: `シークレット投稿のパスワードを設定してください。`,
+    msg_posting: `投稿中…`, msg_posted: `投稿しました。`, msg_error_generic: `問題が発生しました。もう一度お試しください。`,
+    failed_send_reply: `返信の送信に失敗しました。`, failed_delete_wrong_key: `削除に失敗しました（管理者キーが間違っている可能性があります）。`, failed_delete: `削除に失敗しました。`,
+    confirm_delete_post: `この投稿を完全に削除しますか？`, confirm_logout_admin: `管理者モードからログアウトしますか？`, prompt_admin_key: `管理者キーを入力してください：`,
+    cta_h3: `自分で試してみる準備はできましたか？`, cta_p: `無料ダウンロード、100%ローカルで動作 — APIキーはPCの外に出ません。`, cta_btn: `⬇ JaviD Future Botに戻る`,
+    footer_copy: `© 2026 JaviD Future Bot · bn.javidtrading.com`, footer_home: `ホーム`, footer_results: `実際の結果`,
+    footer_manual: `ユーザーマニュアル`, footer_binance_guide: `バイナンス設定ガイド`, footer_github: `GitHub`, footer_contact: `お問い合わせ`
+  },
+  zh: {
+    nav_features: `功能`, nav_how: `工作原理`, nav_shadow: `影子模式`, nav_results: `真实结果`,
+    nav_manual: `用户手册`, nav_new_binance: `刚接触币安？`, nav_board: `社区留言板<span class="nh-dot"></span>`, nav_download: `立即下载`,
+    tick1: `<b>还在整夜盯盘交易吗？</b><span>让 AI 构建的策略 24/7 为你判断并执行交易。</span>`,
+    tick2: `<b>不确定能否信任自动交易程序？</b><span>先运行影子模式——信任之后再切换到实盘交易。</span><small>提示：实盘建议从 1000 USDT 以上开始——余额较小可能导致进场次数很少。</small>`,
+    tick3: `<b>好奇真实胜率是多少？</b><span>查看本站的真实交易结果，自行判断。</span>`,
+    tick4: `<b>只交易比特币期货吗？</b><span>交易 500 多种山寨币期货，每天积累稳定的成果。</span>`,
+    tick5: `<b>担心杠杆期货被强平吗？</b><span>使用 1/300、1/500 或 1/700 的按余额仓位控制来防御。</span><small>例如，在 10 倍杠杆下，这可以防御约 30,000% 的行情波动导致的强平。</small>`,
+    tick6: `<b>觉得起始资金太少了？</b><span>入场仓位会根据你的实时余额每天重新调整——感受复利的力量。</span>`,
+    hero_kicker: `💬 社区留言板`, hero_h1: `关于 JaviD Future Bot，尽管问我们`,
+    hero_sub: `安装问题、策略疑问、功能建议——在下方发帖，我们会直接在本页面回复。发帖无需账号或注册。`,
+    ql_manual: `📖 请先查看用户手册`, ql_faq: `❓ 查看常见问题`,
+    ql_telegram: `📲 想要更快的回复？在 Telegram 上提问`, ql_email: `✉️ 给我们发邮件`,
+    board_note: `💬 <span><b>使用方法：</b>在下方输入你的姓名和问题，无需登录。将帖子标记为<b>私密</b>即可设置自己的密码——只有知道该密码的你和 JaviD 管理员可以查看。所有帖子都会经过审核并在此页面直接回复。</span>`,
+    bw_title: `撰写问题`, bw_name_ph: `你的姓名`, bw_content_ph: `你想问什么？`,
+    bw_secret_label: `将此帖设为私密（密码保护）`, bw_pass_ph: `设置密码，以便日后查看`, bw_post_btn: `发布`,
+    admin_off: `管理员`, admin_on: `管理员模式已开启（点击退出登录）`,
+    board_panel_title: `问题与解答`,
+    loading: `加载中…`, no_questions: `目前还没有问题——快来第一个提问吧。`, could_not_load: `无法加载帖子。`,
+    btn_unlock: `解锁`, ph_password: `密码`, admin_reply_label: `管理员回复：`,
+    btn_delete: `🗑 删除`, btn_reply_toggle: `↩ 回复`, ph_reply_text: `输入回复内容…`, btn_send_reply: `发送回复`,
+    badge_secret: `🔒 私密`,
+    wrong_password: `密码错误。`, error_unlocking: `解锁帖子时出错。`,
+    msg_enter_name_question: `请输入姓名和问题。`, msg_set_password: `请为私密帖子设置密码。`,
+    msg_posting: `发布中…`, msg_posted: `已发布。`, msg_error_generic: `出了点问题，请重试。`,
+    failed_send_reply: `回复发送失败。`, failed_delete_wrong_key: `删除失败（管理员密钥是否有误？）。`, failed_delete: `删除失败。`,
+    confirm_delete_post: `确定要永久删除此帖吗？`, confirm_logout_admin: `确定要退出管理员模式吗？`, prompt_admin_key: `请输入管理员密钥：`,
+    cta_h3: `准备好亲自试试了吗？`, cta_p: `免费下载，100% 本地运行——你的密钥永远不会离开你的电脑。`, cta_btn: `⬇ 返回 JaviD Future Bot`,
+    footer_copy: `© 2026 JaviD Future Bot · bn.javidtrading.com`, footer_home: `首页`, footer_results: `真实结果`,
+    footer_manual: `用户手册`, footer_binance_guide: `币安设置指南`, footer_github: `GitHub`, footer_contact: `联系我们`
+  },
+  es: {
+    nav_features: `Funciones`, nav_how: `Cómo funciona`, nav_shadow: `Modo Sombra`, nav_results: `Resultados reales`,
+    nav_manual: `Manual de usuario`, nav_new_binance: `¿Nuevo en Binance?`, nav_board: `Foro comunitario<span class="nh-dot"></span>`, nav_download: `Descargar ahora`,
+    tick1: `<b>¿Sigues mirando gráficos y operando toda la noche?</b><span>Deja que una estrategia creada con IA decida y ejecute por ti, 24/7.</span>`,
+    tick2: `<b>¿No estás seguro de poder confiar en un programa de trading automático?</b><span>Ejecuta primero el Modo Sombra y cambia a operativa real cuando confíes en él.</span><small>Consejo: empieza en real con 1000+ USDT — con saldos menores podrías ver muy pocas entradas.</small>`,
+    tick3: `<b>¿Tienes curiosidad por saber cómo es la tasa de acierto real?</b><span>Consulta los resultados reales de trading en este sitio y júzgalo tú mismo.</span>`,
+    tick4: `<b>¿Solo operas futuros de Bitcoin?</b><span>Opera más de 500 futuros de altcoins y acumula resultados constantes cada día.</span>`,
+    tick5: `<b>¿Te preocupa la liquidación en futuros apalancados?</b><span>Defiéndete con un tamaño de posición basado en el saldo de 1/300, 1/500 o 1/700.</span><small>Ej.: con apalancamiento 10x, esto puede defender frente a liquidación hasta un movimiento de aproximadamente el 30,000%.</small>`,
+    tick6: `<b>¿Crees que tu importe inicial es demasiado pequeño?</b><span>El tamaño de entrada se ajusta a diario según tu saldo real — siente lo que hace el interés compuesto.</span>`,
+    hero_kicker: `💬 Foro comunitario`, hero_h1: `Pregúntanos lo que quieras sobre JaviD Future Bot`,
+    hero_sub: `Problemas de configuración, preguntas de estrategia, solicitudes de funciones: publica abajo y te responderemos directamente en esta página. No se requiere cuenta ni registro para publicar.`,
+    ql_manual: `📖 Consulta primero el manual de usuario`, ql_faq: `❓ Lee las preguntas frecuentes`,
+    ql_telegram: `📲 ¿Respuesta más rápida? Pregunta en Telegram`, ql_email: `✉️ Envíanos un correo`,
+    board_note: `💬 <span><b>Cómo funciona:</b> escribe tu nombre y tu pregunta abajo, no necesitas iniciar sesión. Marca una publicación como <b>secreta</b> para establecer tu propia contraseña — solo tú (con esa contraseña) y el administrador de JaviD podrán leerla. Cada publicación se revisa y se responde directamente aquí.</span>`,
+    bw_title: `Escribe una pregunta`, bw_name_ph: `Tu nombre`, bw_content_ph: `¿Qué quieres preguntar?`,
+    bw_secret_label: `Convertir esto en una publicación secreta (protegida por contraseña)`, bw_pass_ph: `Establece una contraseña para leerlo más tarde`, bw_post_btn: `Publicar`,
+    admin_off: `Admin`, admin_on: `Modo administrador ACTIVADO (haz clic para cerrar sesión)`,
+    board_panel_title: `Preguntas y respuestas`,
+    loading: `Cargando…`, no_questions: `Aún no hay preguntas — sé el primero en preguntar.`, could_not_load: `No se pudieron cargar las publicaciones.`,
+    btn_unlock: `Desbloquear`, ph_password: `Contraseña`, admin_reply_label: `Respuesta del administrador:`,
+    btn_delete: `🗑 Eliminar`, btn_reply_toggle: `↩ Responder`, ph_reply_text: `Escribe una respuesta…`, btn_send_reply: `Enviar respuesta`,
+    badge_secret: `🔒 Secreto`,
+    wrong_password: `Contraseña incorrecta.`, error_unlocking: `Error al desbloquear la publicación.`,
+    msg_enter_name_question: `Introduce tu nombre y tu pregunta.`, msg_set_password: `Establece una contraseña para la publicación secreta.`,
+    msg_posting: `Publicando…`, msg_posted: `Publicado.`, msg_error_generic: `Algo salió mal. Inténtalo de nuevo.`,
+    failed_send_reply: `No se pudo enviar la respuesta.`, failed_delete_wrong_key: `No se pudo eliminar (¿clave de administrador incorrecta?).`, failed_delete: `No se pudo eliminar.`,
+    confirm_delete_post: `¿Eliminar esta publicación permanentemente?`, confirm_logout_admin: `¿Cerrar sesión del modo administrador?`, prompt_admin_key: `Introduce la clave de administrador:`,
+    cta_h3: `¿Listo para probarlo tú mismo?`, cta_p: `Descarga gratuita, se ejecuta 100% localmente — tus claves nunca salen de tu PC.`, cta_btn: `⬇ Volver a JaviD Future Bot`,
+    footer_copy: `© 2026 JaviD Future Bot · bn.javidtrading.com`, footer_home: `Inicio`, footer_results: `Resultados reales`,
+    footer_manual: `Manual de usuario`, footer_binance_guide: `Guía de configuración de Binance`, footer_github: `GitHub`, footer_contact: `Contacto`
+  },
+  fr: {
+    nav_features: `Fonctionnalités`, nav_how: `Comment ça marche`, nav_shadow: `Mode Shadow`, nav_results: `Résultats réels`,
+    nav_manual: `Manuel utilisateur`, nav_new_binance: `Nouveau sur Binance ?`, nav_board: `Forum communautaire<span class="nh-dot"></span>`, nav_download: `Télécharger maintenant`,
+    tick1: `<b>Vous surveillez encore les graphiques et tradez toute la nuit ?</b><span>Laissez une stratégie conçue par IA juger et exécuter pour vous, 24h/24 et 7j/7.</span>`,
+    tick2: `<b>Vous n'êtes pas sûr de pouvoir faire confiance à un programme de trading automatique ?</b><span>Lancez d'abord le Mode Shadow — passez en trading réel une fois que vous lui faites confiance.</span><small>Astuce : démarrez en réel avec 1000+ USDT — avec un solde plus petit, vous pourriez voir très peu d'entrées.</small>`,
+    tick3: `<b>Curieux de connaître le vrai taux de réussite ?</b><span>Consultez les résultats de trading réels sur ce site et jugez par vous-même.</span>`,
+    tick4: `<b>Vous ne tradez que les futures Bitcoin ?</b><span>Tradez plus de 500 futures d'altcoins et accumulez des résultats constants, chaque jour.</span>`,
+    tick5: `<b>Inquiet à propos de la liquidation sur les futures à effet de levier ?</b><span>Protégez-vous avec un dimensionnement basé sur le solde de 1/300, 1/500 ou 1/700.</span><small>Ex. avec un effet de levier 10x, cela peut protéger contre la liquidation jusqu'à un mouvement d'environ 30 000 %.</small>`,
+    tick6: `<b>Vous pensez que votre montant de départ est trop petit ?</b><span>La taille d'entrée est recalculée chaque jour selon votre solde réel — ressentez l'effet des intérêts composés.</span>`,
+    hero_kicker: `💬 Forum communautaire`, hero_h1: `Posez-nous toutes vos questions sur JaviD Future Bot`,
+    hero_sub: `Problèmes d'installation, questions de stratégie, demandes de fonctionnalités — publiez ci-dessous et nous répondrons directement sur cette page. Aucun compte ni inscription requis pour publier.`,
+    ql_manual: `📖 Consultez d'abord le manuel utilisateur`, ql_faq: `❓ Consulter la FAQ`,
+    ql_telegram: `📲 Réponse plus rapide ? Posez votre question sur Telegram`, ql_email: `✉️ Contactez-nous par e-mail`,
+    board_note: `💬 <span><b>Comment ça marche :</b> saisissez votre nom et votre question ci-dessous, aucune connexion nécessaire. Marquez une publication comme <b>secrète</b> pour définir votre propre mot de passe — seul vous (avec ce mot de passe) et l'administrateur JaviD pourrez la lire. Chaque publication est examinée et recevra une réponse directement ici.</span>`,
+    bw_title: `Rédiger une question`, bw_name_ph: `Votre nom`, bw_content_ph: `Que souhaitez-vous demander ?`,
+    bw_secret_label: `Rendre cette publication secrète (protégée par mot de passe)`, bw_pass_ph: `Définissez un mot de passe pour le relire plus tard`, bw_post_btn: `Publier`,
+    admin_off: `Admin`, admin_on: `Mode administrateur ACTIVÉ (cliquez pour vous déconnecter)`,
+    board_panel_title: `Questions et réponses`,
+    loading: `Chargement…`, no_questions: `Aucune question pour l'instant — soyez le premier à poser une question.`, could_not_load: `Impossible de charger les publications.`,
+    btn_unlock: `Déverrouiller`, ph_password: `Mot de passe`, admin_reply_label: `Réponse de l'administrateur :`,
+    btn_delete: `🗑 Supprimer`, btn_reply_toggle: `↩ Répondre`, ph_reply_text: `Rédigez une réponse…`, btn_send_reply: `Envoyer la réponse`,
+    badge_secret: `🔒 Secret`,
+    wrong_password: `Mot de passe incorrect.`, error_unlocking: `Erreur lors du déverrouillage de la publication.`,
+    msg_enter_name_question: `Saisissez votre nom et votre question.`, msg_set_password: `Définissez un mot de passe pour la publication secrète.`,
+    msg_posting: `Publication…`, msg_posted: `Publié.`, msg_error_generic: `Une erreur s'est produite. Veuillez réessayer.`,
+    failed_send_reply: `Échec de l'envoi de la réponse.`, failed_delete_wrong_key: `Échec de la suppression (clé administrateur incorrecte ?).`, failed_delete: `Échec de la suppression.`,
+    confirm_delete_post: `Supprimer définitivement cette publication ?`, confirm_logout_admin: `Se déconnecter du mode administrateur ?`, prompt_admin_key: `Saisissez la clé administrateur :`,
+    cta_h3: `Prêt à l'essayer vous-même ?`, cta_p: `Téléchargement gratuit, fonctionne à 100% en local — vos clés ne quittent jamais votre PC.`, cta_btn: `⬇ Retour à JaviD Future Bot`,
+    footer_copy: `© 2026 JaviD Future Bot · bn.javidtrading.com`, footer_home: `Accueil`, footer_results: `Résultats réels`,
+    footer_manual: `Manuel utilisateur`, footer_binance_guide: `Guide de configuration Binance`, footer_github: `GitHub`, footer_contact: `Contact`
+  }
+};
+var LANGS = [
+  {code:'en', label:'English'}, {code:'ko', label:'한국어'}, {code:'ja', label:'日本語'},
+  {code:'zh', label:'中文'}, {code:'es', label:'Español'}, {code:'fr', label:'Français'}
+];
+var STORAGE_KEY = 'javid_lang';
+window.CURRENT_LANG = 'en';
+function t(key){ return (I18N[window.CURRENT_LANG] && I18N[window.CURRENT_LANG][key] != null) ? I18N[window.CURRENT_LANG][key] : I18N.en[key]; }
+function applyLang(lang){
+  if (!I18N[lang]) lang = 'en';
+  window.CURRENT_LANG = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    var val = (I18N[lang] && I18N[lang][key] != null) ? I18N[lang][key] : I18N.en[key];
+    if (val != null) el.innerHTML = val;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+    var key = el.getAttribute('data-i18n-placeholder');
+    var val = (I18N[lang] && I18N[lang][key] != null) ? I18N[lang][key] : I18N.en[key];
+    if (val != null) el.setAttribute('placeholder', val);
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+  document.querySelectorAll('.lang-menu button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+  if (typeof onLangChanged === 'function') onLangChanged(lang); // hook you define to re-render dynamic button labels if any posts are currently rendered
+}
+(function(){
+  var menu = document.getElementById('langMenu');
+  var btn = document.getElementById('langBtn');
+  LANGS.forEach(function(l){
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('data-lang', l.code); b.setAttribute('role','menuitem');
+    b.textContent = l.label;
+    b.addEventListener('click', function(){ applyLang(l.code); menu.classList.remove('open'); });
+    menu.appendChild(b);
+  });
+  btn.addEventListener('click', function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+  document.addEventListener('click', function(){ menu.classList.remove('open'); });
+  var saved;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch(e){}
+  applyLang(saved || 'en'); // also triggers the initial updateAdminLink() + loadPosts() via onLangChanged()
+})();
+</script>
 
 </body>
 </html>

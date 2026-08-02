@@ -94,6 +94,16 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
   100% { opacity: 0; }
 }
 @media (max-width:640px) { .ticker-inner { min-height:96px; padding:10px 16px; } .ticker-slide { left:16px; right:16px; } .ticker-slide .tk-icon { font-size:22px; } }
+
+/* ===== LANGUAGE SWITCHER ===== */
+.lang-switch{position:relative;}
+.lang-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border:1px solid var(--line);background:transparent;color:var(--text);padding:7px 12px;border-radius:100px;cursor:pointer;}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent);}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:60;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);min-width:150px;padding:6px;display:none;}
+.lang-menu.open{display:block;}
+.lang-menu button{display:flex;width:100%;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:none;background:none;font-size:13px;font-weight:600;text-align:left;cursor:pointer;color:var(--text);}
+.lang-menu button:hover{background:rgba(255,255,255,.06);}
+.lang-menu button.active{color:var(--accent);background:rgba(0,240,255,.08);}
 </style>
 </head>
 <body>
@@ -101,130 +111,574 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
 <nav class="nav"><div class="nav-inner">
   <a href="index.html" class="brand"><span class="brand-mark"></span>JaviD Future Bot <em>V18.0</em></a>
   <div class="nav-links">
-    <a href="index.html#features">Features</a>
-    <a href="index.html#how-it-works">How It Works</a>
-    <a href="index.html#shadow-mode">Shadow Mode</a>
-    <a href="results.html">Real Results</a>
-    <a href="manual.html">User Manual</a>
-    <a href="binance-signup-api-guide.html">New to Binance?</a>
-    <a href="board.html" class="nav-highlight">Community Board<span class="nh-dot"></span></a>
+    <a href="index.html#features" data-i18n="nav_features">Features</a>
+    <a href="index.html#how-it-works" data-i18n="nav_how_it_works">How It Works</a>
+    <a href="index.html#shadow-mode" data-i18n="nav_shadow_mode">Shadow Mode</a>
+    <a href="results.html" data-i18n="nav_real_results">Real Results</a>
+    <a href="manual.html" data-i18n="nav_user_manual">User Manual</a>
+    <a href="binance-signup-api-guide.html" data-i18n="nav_new_to_binance">New to Binance?</a>
+    <a href="board.html" class="nav-highlight" data-i18n="nav_community_board">Community Board<span class="nh-dot"></span></a>
   </div>
-  <a href="index.html#download" class="nav-cta">Download Now</a>
+  <div class="lang-switch">
+    <button type="button" id="langBtn" class="lang-btn" aria-haspopup="true" aria-expanded="false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" style="width:14px;height:14px"><circle cx="10" cy="10" r="7.25"/><path d="M2.75 10h14.5M10 2.75c2.4 2.4 2.4 12.1 0 14.5M10 2.75c-2.4 2.4-2.4 12.1 0 14.5"/></svg>
+      Language
+    </button>
+    <div id="langMenu" class="lang-menu" role="menu"></div>
+  </div>
+  <a href="index.html#download" class="nav-cta" data-i18n="nav_cta">Download Now</a>
 </div></nav>
 
 <div class="ticker"><div class="ticker-inner">
-  <div class="ticker-slide t1"><span class="tk-icon">🌙</span><span class="tk-text"><b>Still watching charts and trading through the night?</b><span>Let an AI-built strategy judge and execute for you, 24/7.</span></span></div>
-  <div class="ticker-slide t2"><span class="tk-icon">🛡️</span><span class="tk-text"><b>Not sure you can trust an auto-trading program?</b><span>Run Shadow Mode first — switch to live trading once you trust it.</span><small>Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small></span></div>
-  <a class="ticker-slide t3" href="results.html"><span class="tk-icon">📊</span><span class="tk-text"><b>Curious what the real win rate looks like?</b><span>Check the real trading results on this site and judge for yourself.</span></span></a>
-  <div class="ticker-slide t4"><span class="tk-icon">🪙</span><span class="tk-text"><b>Only trading Bitcoin futures?</b><span>Trade 500+ altcoin futures and stack consistent results, every day.</span></span></div>
-  <div class="ticker-slide t5"><span class="tk-icon">⚖️</span><span class="tk-text"><b>Worried about liquidation on leveraged futures?</b><span>Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.</span><small>Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.</small></span></div>
-  <div class="ticker-slide t6"><span class="tk-icon">🌱</span><span class="tk-text"><b>Think your starting amount is too small?</b><span>Entry size resizes daily off your live balance — feel what compounding does.</span></span></div>
+  <div class="ticker-slide t1"><span class="tk-icon">🌙</span><span class="tk-text"><b data-i18n="ticker_t1_b">Still watching charts and trading through the night?</b><span data-i18n="ticker_t1_span">Let an AI-built strategy judge and execute for you, 24/7.</span></span></div>
+  <div class="ticker-slide t2"><span class="tk-icon">🛡️</span><span class="tk-text"><b data-i18n="ticker_t2_b">Not sure you can trust an auto-trading program?</b><span data-i18n="ticker_t2_span">Run Shadow Mode first — switch to live trading once you trust it.</span><small data-i18n="ticker_t2_small">Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small></span></div>
+  <a class="ticker-slide t3" href="results.html"><span class="tk-icon">📊</span><span class="tk-text"><b data-i18n="ticker_t3_b">Curious what the real win rate looks like?</b><span data-i18n="ticker_t3_span">Check the real trading results on this site and judge for yourself.</span></span></a>
+  <div class="ticker-slide t4"><span class="tk-icon">🪙</span><span class="tk-text"><b data-i18n="ticker_t4_b">Only trading Bitcoin futures?</b><span data-i18n="ticker_t4_span">Trade 500+ altcoin futures and stack consistent results, every day.</span></span></div>
+  <div class="ticker-slide t5"><span class="tk-icon">⚖️</span><span class="tk-text"><b data-i18n="ticker_t5_b">Worried about liquidation on leveraged futures?</b><span data-i18n="ticker_t5_span">Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.</span><small data-i18n="ticker_t5_small">Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.</small></span></div>
+  <div class="ticker-slide t6"><span class="tk-icon">🌱</span><span class="tk-text"><b data-i18n="ticker_t6_b">Think your starting amount is too small?</b><span data-i18n="ticker_t6_span">Entry size resizes daily off your live balance — feel what compounding does.</span></span></div>
 </div></div>
 
 <header class="hero"><div class="wrap">
-  <span class="kicker">🖥 User Manual</span>
-  <h1>A Real Walkthrough of JaviD Future Bot</h1>
-  <p class="sub">Nine actual screens from the app, in order — from first launch to live Shadow Mode positions. No mockups, this is exactly what you'll see.</p>
+  <span class="kicker" data-i18n="hero_kicker">🖥 User Manual</span>
+  <h1 data-i18n="hero_h1">A Real Walkthrough of JaviD Future Bot</h1>
+  <p class="sub" data-i18n="hero_sub">Nine actual screens from the app, in order — from first launch to live Shadow Mode positions. No mockups, this is exactly what you'll see.</p>
 </div></header>
 
 <div class="wrap">
   <div class="toc">
-    <h4>On this page</h4>
+    <h4 data-i18n="toc_h4">On this page</h4>
     <div class="toc-grid">
-      <a href="#s1"><b>1.</b> First Launch — Onboarding</a>
-      <a href="#s2"><b>2.</b> Settings — Connect API</a>
-      <a href="#s3"><b>3.</b> Dashboard — At a Glance</a>
-      <a href="#s4"><b>4.</b> Investment Mode</a>
-      <a href="#s5"><b>5.</b> Telegram Reports</a>
-      <a href="#s6"><b>6.</b> Entry Mode &amp; Leverage</a>
-      <a href="#s7"><b>7.</b> Symbol Selection</a>
-      <a href="#s8"><b>8.</b> Shadow Mode — Dashboard</a>
-      <a href="#s9"><b>9.</b> Positions — Zero Risk</a>
+      <a href="#s1" data-i18n="toc_1"><b>1.</b> First Launch — Onboarding</a>
+      <a href="#s2" data-i18n="toc_2"><b>2.</b> Settings — Connect API</a>
+      <a href="#s3" data-i18n="toc_3"><b>3.</b> Dashboard — At a Glance</a>
+      <a href="#s4" data-i18n="toc_4"><b>4.</b> Investment Mode</a>
+      <a href="#s5" data-i18n="toc_5"><b>5.</b> Telegram Reports</a>
+      <a href="#s6" data-i18n="toc_6"><b>6.</b> Entry Mode &amp; Leverage</a>
+      <a href="#s7" data-i18n="toc_7"><b>7.</b> Symbol Selection</a>
+      <a href="#s8" data-i18n="toc_8"><b>8.</b> Shadow Mode — Dashboard</a>
+      <a href="#s9" data-i18n="toc_9"><b>9.</b> Positions — Zero Risk</a>
     </div>
   </div>
-  <div class="warning-note">⚠️ <strong>If the program stops or your PC shuts down while a position is open</strong>, close that position manually in the Binance app under Futures, then restart the program before resuming. <strong>Caution:</strong> closing a position may result in a loss, depending on its price relative to your entry at that moment.</div>
+  <div class="warning-note" data-i18n="warning_note">⚠️ <strong>If the program stops or your PC shuts down while a position is open</strong>, close that position manually in the Binance app under Futures, then restart the program before resuming. <strong>Caution:</strong> closing a position may result in a loss, depending on its price relative to your entry at that moment.</div>
 </div>
 
 <section class="step" id="s1"><div class="wrap">
   <div class="step-num">1</div>
-  <h2>First Launch — Guided Onboarding</h2>
+  <h2 data-i18n="step1_h2">First Launch — Guided Onboarding</h2>
   <div class="shot-frame"><img src="screenshots/shot1.png" alt="JaviD Future Bot first-launch onboarding modal"></div>
-  <div class="caption">New users are walked through the 4-step setup flow the moment the app opens, plus a safety checklist (leverage, confirmation modal, one-bot-per-account) before they can ever go live.</div>
+  <div class="caption" data-i18n="step1_caption">New users are walked through the 4-step setup flow the moment the app opens, plus a safety checklist (leverage, confirmation modal, one-bot-per-account) before they can ever go live.</div>
 </div></section>
 
 <section class="step" id="s2"><div class="wrap">
   <div class="step-num">2</div>
-  <h2>Settings — Connect Your Binance API</h2>
+  <h2 data-i18n="step2_h2">Settings — Connect Your Binance API</h2>
   <div class="shot-frame"><img src="screenshots/shot2.png" alt="JaviD Future Bot Settings tab with Binance API key fields"></div>
-  <div class="caption">Paste your Access/Secret Key, hit Save, then Test Connection. Keys are encrypted and stored only on your PC — never transmitted anywhere else. You can track your overall setup progress at any time via the <b>"Standard Trading Flow"</b> guide bar at the top of the dashboard, which highlights exactly which step you're on.</div>
+  <div class="caption" data-i18n="step2_caption">Paste your Access/Secret Key, hit Save, then Test Connection. Keys are encrypted and stored only on your PC — never transmitted anywhere else. You can track your overall setup progress at any time via the <b>"Standard Trading Flow"</b> guide bar at the top of the dashboard, which highlights exactly which step you're on.</div>
 </div></section>
 
 <section class="step" id="s3"><div class="wrap">
   <div class="step-num">3</div>
-  <h2>Dashboard — At a Glance</h2>
+  <h2 data-i18n="step3_h2">Dashboard — At a Glance</h2>
   <div class="shot-frame"><img src="screenshots/shot3.png" alt="JaviD Future Bot main dashboard, idle state"></div>
-  <div class="caption">Balance, cumulative P&amp;L, ROI and open positions in one view. Shown here idle, waiting for symbol selection and candle load before trading can start.</div>
+  <div class="caption" data-i18n="step3_caption">Balance, cumulative P&amp;L, ROI and open positions in one view. Shown here idle, waiting for symbol selection and candle load before trading can start.</div>
 </div></section>
 
 <section class="step" id="s4"><div class="wrap">
   <div class="step-num">4</div>
-  <h2>Investment Mode — Risk-Tiered Position Sizing</h2>
+  <h2 data-i18n="step4_h2">Investment Mode — Risk-Tiered Position Sizing</h2>
   <div class="shot-frame"><img src="screenshots/shot4.png" alt="JaviD Future Bot Investment Mode panel"></div>
-  <div class="caption">Aggressive (1/300), Normal (1/500) or Stable (1/700) — every entry is automatically sized as a fraction of the account balance, so risk scales to the trader's comfort level.</div>
+  <div class="caption" data-i18n="step4_caption">Aggressive (1/300), Normal (1/500) or Stable (1/700) — every entry is automatically sized as a fraction of the account balance, so risk scales to the trader's comfort level.</div>
 </div></section>
 
 <section class="step" id="s5"><div class="wrap">
   <div class="step-num">5</div>
-  <h2>Telegram Reports</h2>
+  <h2 data-i18n="step5_h2">Telegram Reports</h2>
   <div class="shot-frame"><img src="screenshots/shot5.png" alt="JaviD Future Bot Telegram Notification panel"></div>
-  <div class="caption">Optional and notification-only: balance, equity, cumulative P&amp;L, ROI, win rate and open positions delivered to Telegram on demand or on an automatic schedule.</div>
+  <div class="caption" data-i18n="step5_caption">Optional and notification-only: balance, equity, cumulative P&amp;L, ROI, win rate and open positions delivered to Telegram on demand or on an automatic schedule.</div>
 </div></section>
 
 <section class="step" id="s6"><div class="wrap">
   <div class="step-num">6</div>
-  <h2>Entry Mode &amp; Leverage Control</h2>
+  <h2 data-i18n="step6_h2">Entry Mode &amp; Leverage Control</h2>
   <div class="shot-frame"><img src="screenshots/shot6.png" alt="JaviD Future Bot Entry Mode and Leverage settings"></div>
-  <div class="caption">Choose Conservative (first-match-only) or Multi-strategy rotation, and set leverage from 3x to 15x — full control over how aggressively the bot trades.</div>
+  <div class="caption" data-i18n="step6_caption">Choose Conservative (first-match-only) or Multi-strategy rotation, and set leverage from 3x to 15x — full control over how aggressively the bot trades.</div>
 </div></section>
 
 <section class="step" id="s7"><div class="wrap">
   <div class="step-num">7</div>
-  <h2>Symbol Selection — 500+ Pairs</h2>
+  <h2 data-i18n="step7_h2">Symbol Selection — 500+ Pairs</h2>
   <div class="shot-frame"><img src="screenshots/shot7.png" alt="JaviD Future Bot Symbol Selection tab"></div>
-  <div class="caption">Click <b>Select All</b> to select every listed pair (optionally narrow the list first with Volume Filter / Exclude Bottom 20), then click <b>Save Selection</b> to confirm and begin loading candle data.</div>
+  <div class="caption" data-i18n="step7_caption">Click <b>Select All</b> to select every listed pair (optionally narrow the list first with Volume Filter / Exclude Bottom 20), then click <b>Save Selection</b> to confirm and begin loading candle data.</div>
 </div></section>
 
 <section class="step" id="s8"><div class="wrap">
   <div class="step-num">8</div>
-  <h2>Shadow Mode — Live on the Dashboard</h2>
+  <h2 data-i18n="step8_h2">Shadow Mode — Live on the Dashboard</h2>
   <div class="shot-frame"><img src="screenshots/shot8.png" alt="JaviD Future Bot dashboard running in Shadow Mode"></div>
-  <div class="caption">Shadow Mode also uses the real exchange's live API, and trades run on virtual USDT — so the experience is nearly identical to trading with real money. Here it is actively managing 6 simulated positions with zero real orders placed.</div>
+  <div class="caption" data-i18n="step8_caption">Shadow Mode also uses the real exchange's live API, and trades run on virtual USDT — so the experience is nearly identical to trading with real money. Here it is actively managing 6 simulated positions with zero real orders placed.</div>
 </div></section>
 
 <section class="step" id="s9"><div class="wrap">
   <div class="step-num">9</div>
-  <h2>Positions — Real-Time Tracking, Zero Risk</h2>
+  <h2 data-i18n="step9_h2">Positions — Real-Time Tracking, Zero Risk</h2>
   <div class="shot-frame"><img src="screenshots/shot9.png" alt="JaviD Future Bot Positions tab in Shadow Mode"></div>
-  <div class="caption">Every simulated position shows live entry price, current price, PnL and ROE exactly as it would in live trading. Shadow Mode also uses the real exchange's live API, and trades run on virtual USDT, so it closely mirrors real trading without risking real funds.</div>
+  <div class="caption" data-i18n="step9_caption">Every simulated position shows live entry price, current price, PnL and ROE exactly as it would in live trading. Shadow Mode also uses the real exchange's live API, and trades run on virtual USDT, so it closely mirrors real trading without risking real funds.</div>
 </div></section>
 
 <section class="cta-band"><div class="wrap">
-  <h3>Ready to see it on your own machine?</h3>
-  <p>Free download, runs 100% locally — your keys never leave your PC.</p>
-  <a href="index.html#download" class="btn">⬇ Back to JaviD Future Bot</a>
+  <h3 data-i18n="cta_h3">Ready to see it on your own machine?</h3>
+  <p data-i18n="cta_p">Free download, runs 100% locally — your keys never leave your PC.</p>
+  <a href="index.html#download" class="btn" data-i18n="cta_btn">⬇ Back to JaviD Future Bot</a>
 </div></section>
 
 <footer><div class="wrap footer-row">
-  <span>© 2026 JaviD Future Bot · bn.javidtrading.com</span>
+  <span data-i18n="footer_copyright">© 2026 JaviD Future Bot · bn.javidtrading.com</span>
   <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="results.html">Real Results</a>
-    <a href="binance-signup-api-guide.html">Binance Setup Guide</a>
-    <a href="https://github.com/olkdol/javid-future-bot" target="_blank" rel="noopener">GitHub</a>
-    <a href="board.html">Community Board</a>
-    <a href="mailto:javidfuturebot@javid-dol.uk">Contact</a>
+    <a href="index.html" data-i18n="footer_home">Home</a>
+    <a href="results.html" data-i18n="footer_real_results">Real Results</a>
+    <a href="binance-signup-api-guide.html" data-i18n="footer_binance_setup">Binance Setup Guide</a>
+    <a href="https://github.com/olkdol/javid-future-bot" target="_blank" rel="noopener" data-i18n="footer_github">GitHub</a>
+    <a href="board.html" data-i18n="footer_community_board">Community Board</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk" data-i18n="footer_contact">Contact</a>
   </div>
 </div></footer>
+
+<script>
+var I18N = {
+  en: {
+    nav_features: `Features`,
+    nav_how_it_works: `How It Works`,
+    nav_shadow_mode: `Shadow Mode`,
+    nav_real_results: `Real Results`,
+    nav_user_manual: `User Manual`,
+    nav_new_to_binance: `New to Binance?`,
+    nav_community_board: `Community Board<span class="nh-dot"></span>`,
+    nav_cta: `Download Now`,
+    ticker_t1_b: `Still watching charts and trading through the night?`,
+    ticker_t1_span: `Let an AI-built strategy judge and execute for you, 24/7.`,
+    ticker_t2_b: `Not sure you can trust an auto-trading program?`,
+    ticker_t2_span: `Run Shadow Mode first — switch to live trading once you trust it.`,
+    ticker_t2_small: `Tip: start live with 1000+ USDT — smaller balances may see very few entries.`,
+    ticker_t3_b: `Curious what the real win rate looks like?`,
+    ticker_t3_span: `Check the real trading results on this site and judge for yourself.`,
+    ticker_t4_b: `Only trading Bitcoin futures?`,
+    ticker_t4_span: `Trade 500+ altcoin futures and stack consistent results, every day.`,
+    ticker_t5_b: `Worried about liquidation on leveraged futures?`,
+    ticker_t5_span: `Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.`,
+    ticker_t5_small: `Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.`,
+    ticker_t6_b: `Think your starting amount is too small?`,
+    ticker_t6_span: `Entry size resizes daily off your live balance — feel what compounding does.`,
+    hero_kicker: `🖥 User Manual`,
+    hero_h1: `A Real Walkthrough of JaviD Future Bot`,
+    hero_sub: `Nine actual screens from the app, in order — from first launch to live Shadow Mode positions. No mockups, this is exactly what you'll see.`,
+    toc_h4: `On this page`,
+    toc_1: `<b>1.</b> First Launch — Onboarding`,
+    toc_2: `<b>2.</b> Settings — Connect API`,
+    toc_3: `<b>3.</b> Dashboard — At a Glance`,
+    toc_4: `<b>4.</b> Investment Mode`,
+    toc_5: `<b>5.</b> Telegram Reports`,
+    toc_6: `<b>6.</b> Entry Mode & Leverage`,
+    toc_7: `<b>7.</b> Symbol Selection`,
+    toc_8: `<b>8.</b> Shadow Mode — Dashboard`,
+    toc_9: `<b>9.</b> Positions — Zero Risk`,
+    warning_note: `⚠️ <strong>If the program stops or your PC shuts down while a position is open</strong>, close that position manually in the Binance app under Futures, then restart the program before resuming. <strong>Caution:</strong> closing a position may result in a loss, depending on its price relative to your entry at that moment.`,
+    step1_h2: `First Launch — Guided Onboarding`,
+    step1_caption: `New users are walked through the 4-step setup flow the moment the app opens, plus a safety checklist (leverage, confirmation modal, one-bot-per-account) before they can ever go live.`,
+    step2_h2: `Settings — Connect Your Binance API`,
+    step2_caption: `Paste your Access/Secret Key, hit Save, then Test Connection. Keys are encrypted and stored only on your PC — never transmitted anywhere else. You can track your overall setup progress at any time via the <b>"Standard Trading Flow"</b> guide bar at the top of the dashboard, which highlights exactly which step you're on.`,
+    step3_h2: `Dashboard — At a Glance`,
+    step3_caption: `Balance, cumulative P&L, ROI and open positions in one view. Shown here idle, waiting for symbol selection and candle load before trading can start.`,
+    step4_h2: `Investment Mode — Risk-Tiered Position Sizing`,
+    step4_caption: `Aggressive (1/300), Normal (1/500) or Stable (1/700) — every entry is automatically sized as a fraction of the account balance, so risk scales to the trader's comfort level.`,
+    step5_h2: `Telegram Reports`,
+    step5_caption: `Optional and notification-only: balance, equity, cumulative P&L, ROI, win rate and open positions delivered to Telegram on demand or on an automatic schedule.`,
+    step6_h2: `Entry Mode & Leverage Control`,
+    step6_caption: `Choose Conservative (first-match-only) or Multi-strategy rotation, and set leverage from 3x to 15x — full control over how aggressively the bot trades.`,
+    step7_h2: `Symbol Selection — 500+ Pairs`,
+    step7_caption: `Click <b>Select All</b> to select every listed pair (optionally narrow the list first with Volume Filter / Exclude Bottom 20), then click <b>Save Selection</b> to confirm and begin loading candle data.`,
+    step8_h2: `Shadow Mode — Live on the Dashboard`,
+    step8_caption: `Shadow Mode also uses the real exchange's live API, and trades run on virtual USDT — so the experience is nearly identical to trading with real money. Here it is actively managing 6 simulated positions with zero real orders placed.`,
+    step9_h2: `Positions — Real-Time Tracking, Zero Risk`,
+    step9_caption: `Every simulated position shows live entry price, current price, PnL and ROE exactly as it would in live trading. Shadow Mode also uses the real exchange's live API, and trades run on virtual USDT, so it closely mirrors real trading without risking real funds.`,
+    cta_h3: `Ready to see it on your own machine?`,
+    cta_p: `Free download, runs 100% locally — your keys never leave your PC.`,
+    cta_btn: `⬇ Back to JaviD Future Bot`,
+    footer_copyright: `© 2026 JaviD Future Bot · bn.javidtrading.com`,
+    footer_home: `Home`,
+    footer_real_results: `Real Results`,
+    footer_binance_setup: `Binance Setup Guide`,
+    footer_github: `GitHub`,
+    footer_community_board: `Community Board`,
+    footer_contact: `Contact`
+  },
+  ko: {
+    nav_features: `기능`,
+    nav_how_it_works: `작동 방식`,
+    nav_shadow_mode: `섀도 모드`,
+    nav_real_results: `실거래 결과`,
+    nav_user_manual: `사용 설명서`,
+    nav_new_to_binance: `바이낸스가 처음이신가요?`,
+    nav_community_board: `커뮤니티 게시판<span class="nh-dot"></span>`,
+    nav_cta: `지금 다운로드`,
+    ticker_t1_b: `아직도 밤새 차트를 보며 매매하고 계신가요?`,
+    ticker_t1_span: `AI 기반 전략이 24시간 판단하고 실행하도록 맡겨보세요.`,
+    ticker_t2_b: `자동매매 프로그램을 믿을 수 있을지 확신이 서지 않으신가요?`,
+    ticker_t2_span: `먼저 섀도 모드로 실행해 보고, 신뢰가 생기면 실거래로 전환하세요.`,
+    ticker_t2_small: `팁: 실거래는 1000 USDT 이상으로 시작하세요 — 잔고가 적으면 진입 횟수가 매우 적을 수 있습니다.`,
+    ticker_t3_b: `실제 승률이 궁금하신가요?`,
+    ticker_t3_span: `이 사이트에 공개된 실제 거래 결과를 확인하고 직접 판단해 보세요.`,
+    ticker_t4_b: `비트코인 선물만 거래하고 계신가요?`,
+    ticker_t4_span: `500개 이상의 알트코인 선물을 거래하며 매일 꾸준한 수익을 쌓아보세요.`,
+    ticker_t5_b: `레버리지 선물의 청산이 걱정되시나요?`,
+    ticker_t5_span: `1/300, 1/500, 1/700 잔고 기반 사이징으로 청산 위험을 방어하세요.`,
+    ticker_t5_small: `예: 10배 레버리지 기준, 약 30,000%의 변동까지 청산을 방어할 수 있습니다.`,
+    ticker_t6_b: `시작 자금이 너무 적다고 생각하시나요?`,
+    ticker_t6_span: `진입 규모는 매일 실제 잔고에 맞춰 재조정됩니다 — 복리의 힘을 직접 느껴보세요.`,
+    hero_kicker: `🖥 사용 설명서`,
+    hero_h1: `JaviD Future Bot 실제 화면 둘러보기`,
+    hero_sub: `첫 실행부터 실시간 섀도 모드 포지션까지, 앱의 실제 화면 9개를 순서대로 소개합니다. 목업이 아닌, 실제로 보시게 될 화면 그대로입니다.`,
+    toc_h4: `이 페이지의 목차`,
+    toc_1: `<b>1.</b> 첫 실행 — 온보딩`,
+    toc_2: `<b>2.</b> 설정 — API 연결`,
+    toc_3: `<b>3.</b> 대시보드 — 한눈에 보기`,
+    toc_4: `<b>4.</b> 투자 모드`,
+    toc_5: `<b>5.</b> 텔레그램 리포트`,
+    toc_6: `<b>6.</b> 진입 모드 및 레버리지`,
+    toc_7: `<b>7.</b> 심볼 선택`,
+    toc_8: `<b>8.</b> 섀도 모드 — 대시보드`,
+    toc_9: `<b>9.</b> 포지션 — 무위험`,
+    warning_note: `⚠️ <strong>포지션이 열려 있는 상태에서 프로그램이 멈추거나 PC가 꺼진 경우</strong>, 바이낸스 앱의 선물(Futures) 메뉴에서 해당 포지션을 직접 청산한 뒤 프로그램을 재시작하고 이어서 진행하세요. <strong>주의:</strong> 포지션을 청산하면 그 시점의 진입가 대비 가격에 따라 손실이 발생할 수 있습니다.`,
+    step1_h2: `첫 실행 — 가이드 온보딩`,
+    step1_caption: `앱을 처음 실행하면 4단계 설정 흐름을 바로 안내받으며, 실거래를 시작하기 전에 레버리지, 확인 모달, 계정당 봇 1개 제한 등 안전 점검 항목도 함께 확인하게 됩니다.`,
+    step2_h2: `설정 — 바이낸스 API 연결`,
+    step2_caption: `Access/Secret Key를 붙여넣고 Save를 누른 뒤 Test Connection을 클릭하세요. 키는 암호화되어 오직 사용자의 PC에만 저장되며, 외부로 전송되지 않습니다. 대시보드 상단의 <b>"Standard Trading Flow"</b> 가이드 바를 통해 전체 설정 진행 상황과 현재 단계를 언제든 확인할 수 있습니다.`,
+    step3_h2: `대시보드 — 한눈에 보기`,
+    step3_caption: `잔고, 누적 손익(P&L), ROI, 보유 포지션을 한 화면에서 확인합니다. 여기서는 심볼 선택과 캔들 데이터 로드를 기다리는 대기 상태를 보여줍니다.`,
+    step4_h2: `투자 모드 — 위험도별 포지션 사이징`,
+    step4_caption: `Aggressive(1/300), Normal(1/500), Stable(1/700) 중에서 선택하면 모든 진입 규모가 계좌 잔고 비율에 따라 자동으로 조정되어, 트레이더가 편안하게 느끼는 수준에 맞춰 위험이 조절됩니다.`,
+    step5_h2: `텔레그램 리포트`,
+    step5_caption: `선택 사항이며 알림 전용입니다: 잔고, 자산 가치, 누적 손익(P&L), ROI, 승률, 보유 포지션이 요청 시 또는 자동 예약에 따라 텔레그램으로 전송됩니다.`,
+    step6_h2: `진입 모드 및 레버리지 제어`,
+    step6_caption: `Conservative(첫 신호만 적용) 또는 Multi-strategy 로테이션 중에서 선택하고, 레버리지를 3배에서 15배까지 설정할 수 있어 봇의 공격성을 원하는 대로 조절할 수 있습니다.`,
+    step7_h2: `심볼 선택 — 500개 이상의 페어`,
+    step7_caption: `<b>Select All</b>을 클릭하면 목록에 있는 모든 페어가 선택됩니다(먼저 Volume Filter / Exclude Bottom 20으로 목록을 좁힐 수도 있습니다). 이후 <b>Save Selection</b>을 클릭하면 선택이 저장되고 캔들 데이터 로드가 시작됩니다.`,
+    step8_h2: `섀도 모드 — 대시보드에서 실시간으로`,
+    step8_caption: `섀도 모드 역시 실제 거래소의 실시간 API를 사용하며, 매매는 가상 USDT로 진행되므로 실제 자금으로 거래하는 것과 거의 동일한 경험을 제공합니다. 여기서는 실제 주문이 하나도 발생하지 않은 채 6개의 시뮬레이션 포지션을 실시간으로 관리하고 있습니다.`,
+    step9_h2: `포지션 — 실시간 추적, 무위험`,
+    step9_caption: `모든 시뮬레이션 포지션은 실거래와 동일하게 실시간 진입가, 현재가, PnL, ROE를 보여줍니다. 섀도 모드 역시 실제 거래소의 실시간 API를 사용하고 가상 USDT로 매매가 이루어지므로, 실제 자금을 위험에 노출하지 않으면서도 실거래와 매우 유사하게 동작합니다.`,
+    cta_h3: `내 PC에서 직접 확인해 보시겠어요?`,
+    cta_p: `무료 다운로드, 100% 로컬 실행 — 사용자의 키는 절대 PC 밖으로 나가지 않습니다.`,
+    cta_btn: `⬇ JaviD Future Bot으로 돌아가기`,
+    footer_copyright: `© 2026 JaviD Future Bot · bn.javidtrading.com`,
+    footer_home: `홈`,
+    footer_real_results: `실거래 결과`,
+    footer_binance_setup: `바이낸스 설정 가이드`,
+    footer_github: `GitHub`,
+    footer_community_board: `커뮤니티 게시판`,
+    footer_contact: `문의하기`
+  },
+  ja: {
+    nav_features: `機能`,
+    nav_how_it_works: `仕組み`,
+    nav_shadow_mode: `シャドーモード`,
+    nav_real_results: `実際の運用結果`,
+    nav_user_manual: `取扱説明書`,
+    nav_new_to_binance: `バイナンスは初めてですか？`,
+    nav_community_board: `コミュニティ掲示板<span class="nh-dot"></span>`,
+    nav_cta: `今すぐダウンロード`,
+    ticker_t1_b: `まだ夜通しチャートを見ながら取引していませんか？`,
+    ticker_t1_span: `AIが構築した戦略に24時間365日、判断と執行を任せましょう。`,
+    ticker_t2_b: `自動売買プログラムを信頼できるか不安ですか？`,
+    ticker_t2_span: `まずはシャドーモードで試し、信頼できると感じたら実取引に切り替えましょう。`,
+    ticker_t2_small: `ヒント: 実取引は1000 USDT以上で開始してください。残高が少ないとエントリー回数が非常に少なくなる場合があります。`,
+    ticker_t3_b: `実際の勝率が気になりますか？`,
+    ticker_t3_span: `このサイトに掲載された実際の取引結果を確認し、ご自身の目で判断してください。`,
+    ticker_t4_b: `ビットコイン先物だけを取引していませんか？`,
+    ticker_t4_span: `500種類以上のアルトコイン先物を取引し、毎日安定した成果を積み重ねましょう。`,
+    ticker_t5_b: `レバレッジ先物のロスカットが心配ですか？`,
+    ticker_t5_span: `1/300、1/500、1/700の残高連動サイジングでロスカットに備えましょう。`,
+    ticker_t5_small: `例: 10倍レバレッジの場合、約30,000%の値動きまでロスカットを防げます。`,
+    ticker_t6_b: `元手が少なすぎると思っていませんか？`,
+    ticker_t6_span: `エントリー額は実際の残高に応じて毎日再計算されます。複利の力を体感してください。`,
+    hero_kicker: `🖥 取扱説明書`,
+    hero_h1: `JaviD Future Botのリアルな画面ガイド`,
+    hero_sub: `初回起動からシャドーモードでのリアルタイムポジションまで、アプリの実際の画面9枚を順番に紹介します。モックアップではなく、実際に表示される画面そのものです。`,
+    toc_h4: `このページの目次`,
+    toc_1: `<b>1.</b> 初回起動 — オンボーディング`,
+    toc_2: `<b>2.</b> 設定 — API接続`,
+    toc_3: `<b>3.</b> ダッシュボード — 概要`,
+    toc_4: `<b>4.</b> 投資モード`,
+    toc_5: `<b>5.</b> テレグラムレポート`,
+    toc_6: `<b>6.</b> エントリーモードとレバレッジ`,
+    toc_7: `<b>7.</b> 銘柄選択`,
+    toc_8: `<b>8.</b> シャドーモード — ダッシュボード`,
+    toc_9: `<b>9.</b> ポジション — リスクゼロ`,
+    warning_note: `⚠️ <strong>ポジション保有中にプログラムが停止した、またはPCがシャットダウンした場合</strong>は、バイナンスアプリのFutures画面から該当ポジションを手動で決済してから、プログラムを再起動して再開してください。<strong>注意:</strong> ポジションを決済すると、その時点のエントリー価格との差により損失が発生する場合があります。`,
+    step1_h2: `初回起動 — ガイド付きオンボーディング`,
+    step1_caption: `初めて起動した瞬間から4ステップのセットアップフローに沿って案内され、実取引を開始できるようになる前に、レバレッジ、確認モーダル、1アカウント1ボットといった安全チェックリストも表示されます。`,
+    step2_h2: `設定 — バイナンスAPIを接続する`,
+    step2_caption: `Access/Secret Keyを貼り付けてSaveを押し、続けてTest Connectionをクリックしてください。キーは暗号化され、お使いのPC上にのみ保存されます。他へ送信されることはありません。ダッシュボード上部の<b>「Standard Trading Flow」</b>ガイドバーで、現在どのステップにいるかを含む全体の設定進捗をいつでも確認できます。`,
+    step3_h2: `ダッシュボード — 概要をひと目で確認`,
+    step3_caption: `残高、累計損益(P&L)、ROI、保有ポジションを1画面で確認できます。ここでは銘柄選択とローソク足データの読み込みを待機している、取引開始前の状態を示しています。`,
+    step4_h2: `投資モード — リスク段階別ポジションサイジング`,
+    step4_caption: `Aggressive(1/300)、Normal(1/500)、Stable(1/700)のいずれかを選ぶと、すべてのエントリーが口座残高に対する割合として自動的にサイズ調整され、トレーダーが快適に感じるレベルにリスクが合わせられます。`,
+    step5_h2: `テレグラムレポート`,
+    step5_caption: `任意設定で通知専用の機能です。残高、資産評価額、累計損益(P&L)、ROI、勝率、保有ポジションを、リクエスト時または自動スケジュールでテレグラムに配信します。`,
+    step6_h2: `エントリーモードとレバレッジ制御`,
+    step6_caption: `Conservative(最初に一致した条件のみ)またはMulti-strategyローテーションから選び、レバレッジを3倍から15倍まで設定できます。ボットの積極性を自分の思い通りにコントロールできます。`,
+    step7_h2: `銘柄選択 — 500ペア以上`,
+    step7_caption: `<b>Select All</b>をクリックすると表示されている全ペアが選択されます(事前にVolume FilterやExclude Bottom 20で対象を絞り込むことも可能です)。その後<b>Save Selection</b>をクリックすると選択内容が確定し、ローソク足データの読み込みが始まります。`,
+    step8_h2: `シャドーモード — ダッシュボードでリアルタイムに稼働`,
+    step8_caption: `シャドーモードも実際の取引所のライブAPIを使用し、取引は仮想USDTで行われるため、実際の資金で取引しているのとほぼ同じ体験が得られます。ここでは実際の注文を一切発生させずに、6件のシミュレーションポジションをリアルタイムで管理しています。`,
+    step9_h2: `ポジション — リアルタイム追跡、リスクゼロ`,
+    step9_caption: `すべてのシミュレーションポジションで、実取引と全く同じようにリアルタイムのエントリー価格、現在価格、PnL、ROEが表示されます。シャドーモードも実際の取引所のライブAPIを使用し、仮想USDTで取引が行われるため、実際の資金をリスクにさらすことなく実取引に近い動きを体験できます。`,
+    cta_h3: `ご自身のPCで実際に試してみませんか？`,
+    cta_p: `無料ダウンロード、100%ローカルで動作。あなたのキーがPCの外に出ることはありません。`,
+    cta_btn: `⬇ JaviD Future Botに戻る`,
+    footer_copyright: `© 2026 JaviD Future Bot · bn.javidtrading.com`,
+    footer_home: `ホーム`,
+    footer_real_results: `実際の運用結果`,
+    footer_binance_setup: `バイナンス設定ガイド`,
+    footer_github: `GitHub`,
+    footer_community_board: `コミュニティ掲示板`,
+    footer_contact: `お問い合わせ`
+  },
+  zh: {
+    nav_features: `功能`,
+    nav_how_it_works: `工作原理`,
+    nav_shadow_mode: `影子模式`,
+    nav_real_results: `真实交易结果`,
+    nav_user_manual: `使用手册`,
+    nav_new_to_binance: `第一次使用币安？`,
+    nav_community_board: `社区论坛<span class="nh-dot"></span>`,
+    nav_cta: `立即下载`,
+    ticker_t1_b: `还在整夜盯盘、手动下单吗？`,
+    ticker_t1_span: `交给AI构建的策略，全天24小时为你判断并执行交易。`,
+    ticker_t2_b: `不确定能否信任自动交易程序？`,
+    ticker_t2_span: `先用影子模式跑一遍，建立信任后再切换到实盘交易。`,
+    ticker_t2_small: `提示：实盘建议从1000 USDT以上开始，资金过少可能导致开仓次数非常有限。`,
+    ticker_t3_b: `想知道真实胜率到底如何？`,
+    ticker_t3_span: `查看本站公开的真实交易结果，自己来判断。`,
+    ticker_t4_b: `只交易比特币合约吗？`,
+    ticker_t4_span: `交易500多个山寨币合约，每天稳步积累收益。`,
+    ticker_t5_b: `担心杠杆合约爆仓吗？`,
+    ticker_t5_span: `通过1/300、1/500或1/700的按余额比例仓位控制来防御爆仓风险。`,
+    ticker_t5_small: `例如：在10倍杠杆下，可抵御约30,000%的行情波动而不被强平。`,
+    ticker_t6_b: `觉得起始资金太少？`,
+    ticker_t6_span: `开仓规模每天都会根据实盘余额自动调整，亲身感受复利的力量。`,
+    hero_kicker: `🖥 使用手册`,
+    hero_h1: `JaviD Future Bot 真实界面全流程演示`,
+    hero_sub: `按顺序展示应用的9张真实截图，从首次启动到影子模式下的实时持仓。绝非效果图，这就是你实际会看到的界面。`,
+    toc_h4: `本页目录`,
+    toc_1: `<b>1.</b> 首次启动 — 新手引导`,
+    toc_2: `<b>2.</b> 设置 — 连接API`,
+    toc_3: `<b>3.</b> 仪表盘 — 一览全局`,
+    toc_4: `<b>4.</b> 投资模式`,
+    toc_5: `<b>5.</b> 电报(Telegram)报告`,
+    toc_6: `<b>6.</b> 入场模式与杠杆`,
+    toc_7: `<b>7.</b> 交易对选择`,
+    toc_8: `<b>8.</b> 影子模式 — 仪表盘`,
+    toc_9: `<b>9.</b> 持仓 — 零风险`,
+    warning_note: `⚠️ <strong>如果在持仓期间程序停止运行或电脑关机</strong>，请先在币安App的合约(Futures)页面手动平掉该仓位，然后重启程序再继续操作。<strong>注意：</strong>平仓可能会造成亏损，具体取决于平仓时价格相对于开仓价的位置。`,
+    step1_h2: `首次启动 — 引导式新手上手`,
+    step1_caption: `新用户在打开应用的那一刻起就会进入4步设置流程，并在能够进行实盘交易之前完成安全检查清单（杠杆设置、确认弹窗、每个账户仅限一个机器人）。`,
+    step2_h2: `设置 — 连接你的币安API`,
+    step2_caption: `粘贴你的Access/Secret Key，点击Save，再点击Test Connection。密钥经过加密，仅保存在你自己的电脑上，绝不会传输到其他任何地方。你可以随时通过仪表盘顶部的<b>"Standard Trading Flow"</b>引导条查看整体设置进度，以及你当前所处的具体步骤。`,
+    step3_h2: `仪表盘 — 一览全局`,
+    step3_caption: `余额、累计盈亏(P&L)、ROI和当前持仓一目了然。此处展示的是等待选择交易对、加载K线数据、尚未开始交易的空闲状态。`,
+    step4_h2: `投资模式 — 按风险等级分级的仓位管理`,
+    step4_caption: `选择Aggressive(1/300)、Normal(1/500)或Stable(1/700)，每笔开仓都会按账户余额的比例自动计算仓位大小，让风险水平与交易者的接受程度相匹配。`,
+    step5_h2: `电报(Telegram)报告`,
+    step5_caption: `该功能为可选项，仅用于通知：余额、权益、累计盈亏(P&L)、ROI、胜率和当前持仓，可按需或按自动计划推送到Telegram。`,
+    step6_h2: `入场模式与杠杆控制`,
+    step6_caption: `可选择Conservative(仅首个匹配信号)或Multi-strategy轮转模式，并将杠杆设置为3倍至15倍，完全掌控机器人的交易激进程度。`,
+    step7_h2: `交易对选择 — 500多个交易对`,
+    step7_caption: `点击<b>Select All</b>可选中列表中的所有交易对(也可先用Volume Filter/Exclude Bottom 20缩小范围)，然后点击<b>Save Selection</b>确认选择并开始加载K线数据。`,
+    step8_h2: `影子模式 — 仪表盘实时运行`,
+    step8_caption: `影子模式同样使用真实交易所的实时API，交易以虚拟USDT进行，因此体验与真实资金交易几乎完全一致。此处正在零真实下单的情况下，实时管理6个模拟持仓。`,
+    step9_h2: `持仓 — 实时跟踪，零风险`,
+    step9_caption: `每个模拟持仓都会像实盘交易一样，实时显示开仓价、当前价、PnL和ROE。影子模式同样使用真实交易所的实时API，交易以虚拟USDT进行，因此在不承担真实资金风险的前提下，能高度还原真实交易的表现。`,
+    cta_h3: `准备好在自己的电脑上亲自体验了吗？`,
+    cta_p: `免费下载，100%本地运行，你的密钥永远不会离开你的电脑。`,
+    cta_btn: `⬇ 返回 JaviD Future Bot`,
+    footer_copyright: `© 2026 JaviD Future Bot · bn.javidtrading.com`,
+    footer_home: `首页`,
+    footer_real_results: `真实交易结果`,
+    footer_binance_setup: `币安设置指南`,
+    footer_github: `GitHub`,
+    footer_community_board: `社区论坛`,
+    footer_contact: `联系我们`
+  },
+  es: {
+    nav_features: `Funciones`,
+    nav_how_it_works: `Cómo funciona`,
+    nav_shadow_mode: `Modo Sombra`,
+    nav_real_results: `Resultados reales`,
+    nav_user_manual: `Manual de usuario`,
+    nav_new_to_binance: `¿Nuevo en Binance?`,
+    nav_community_board: `Foro de la comunidad<span class="nh-dot"></span>`,
+    nav_cta: `Descargar ahora`,
+    ticker_t1_b: `¿Sigues mirando gráficos y operando toda la noche?`,
+    ticker_t1_span: `Deja que una estrategia creada con IA decida y ejecute por ti, las 24 horas del día.`,
+    ticker_t2_b: `¿No estás seguro de poder confiar en un programa de trading automático?`,
+    ticker_t2_span: `Primero ejecuta el Modo Sombra — cambia a operativa real cuando confíes en él.`,
+    ticker_t2_small: `Consejo: empieza en real con 1000 USDT o más — con saldos menores puede haber muy pocas entradas.`,
+    ticker_t3_b: `¿Tienes curiosidad por el porcentaje de acierto real?`,
+    ticker_t3_span: `Consulta los resultados de trading reales publicados en este sitio y júzgalo por ti mismo.`,
+    ticker_t4_b: `¿Solo operas futuros de Bitcoin?`,
+    ticker_t4_span: `Opera con más de 500 futuros de altcoins y acumula resultados constantes cada día.`,
+    ticker_t5_b: `¿Te preocupa la liquidación en futuros apalancados?`,
+    ticker_t5_span: `Protégete con un tamaño de posición basado en el saldo de 1/300, 1/500 o 1/700.`,
+    ticker_t5_small: `Ej.: con un apalancamiento de 10x, esto puede proteger frente a la liquidación ante un movimiento de hasta aproximadamente el 30.000 %.`,
+    ticker_t6_b: `¿Crees que tu capital inicial es demasiado pequeño?`,
+    ticker_t6_span: `El tamaño de entrada se reajusta cada día según tu saldo real — comprueba tú mismo el efecto del interés compuesto.`,
+    hero_kicker: `🖥 Manual de usuario`,
+    hero_h1: `Un recorrido real por JaviD Future Bot`,
+    hero_sub: `Nueve capturas reales de la aplicación, en orden — desde el primer inicio hasta posiciones en vivo del Modo Sombra. Sin montajes, esto es exactamente lo que verás.`,
+    toc_h4: `En esta página`,
+    toc_1: `<b>1.</b> Primer inicio — Incorporación`,
+    toc_2: `<b>2.</b> Ajustes — Conectar API`,
+    toc_3: `<b>3.</b> Panel — Vista general`,
+    toc_4: `<b>4.</b> Modo de inversión`,
+    toc_5: `<b>5.</b> Informes de Telegram`,
+    toc_6: `<b>6.</b> Modo de entrada y apalancamiento`,
+    toc_7: `<b>7.</b> Selección de símbolos`,
+    toc_8: `<b>8.</b> Modo Sombra — Panel`,
+    toc_9: `<b>9.</b> Posiciones — Sin riesgo`,
+    warning_note: `⚠️ <strong>Si el programa se detiene o tu PC se apaga mientras una posición está abierta</strong>, cierra esa posición manualmente en la app de Binance, en la sección Futures, y luego reinicia el programa antes de continuar. <strong>Precaución:</strong> cerrar una posición puede generar una pérdida, según el precio en ese momento respecto a tu precio de entrada.`,
+    step1_h2: `Primer inicio — Incorporación guiada`,
+    step1_caption: `Los nuevos usuarios son guiados por el flujo de configuración de 4 pasos en cuanto abren la app, además de una lista de verificación de seguridad (apalancamiento, ventana de confirmación, un solo bot por cuenta) antes de poder operar en real.`,
+    step2_h2: `Ajustes — Conecta tu API de Binance`,
+    step2_caption: `Pega tu Access/Secret Key, pulsa Save y luego Test Connection. Las claves se cifran y se guardan únicamente en tu PC — nunca se transmiten a ningún otro lugar. Puedes seguir el progreso general de tu configuración en cualquier momento a través de la barra guía <b>"Standard Trading Flow"</b> en la parte superior del panel, que resalta exactamente en qué paso te encuentras.`,
+    step3_h2: `Panel — Vista general`,
+    step3_caption: `Saldo, P&L acumulado, ROI y posiciones abiertas en una sola vista. Aquí se muestra en estado inactivo, a la espera de la selección de símbolos y la carga de velas antes de poder empezar a operar.`,
+    step4_h2: `Modo de inversión — Tamaño de posición por niveles de riesgo`,
+    step4_caption: `Aggressive (1/300), Normal (1/500) o Stable (1/700) — cada entrada se dimensiona automáticamente como una fracción del saldo de la cuenta, de modo que el riesgo se ajusta al nivel de comodidad del trader.`,
+    step5_h2: `Informes de Telegram`,
+    step5_caption: `Opcional y solo de notificación: saldo, patrimonio, P&L acumulado, ROI, porcentaje de acierto y posiciones abiertas enviados a Telegram bajo demanda o según una programación automática.`,
+    step6_h2: `Modo de entrada y control de apalancamiento`,
+    step6_caption: `Elige entre Conservative (solo la primera coincidencia) o rotación Multi-strategy, y ajusta el apalancamiento de 3x a 15x — control total sobre la agresividad con la que opera el bot.`,
+    step7_h2: `Selección de símbolos — Más de 500 pares`,
+    step7_caption: `Haz clic en <b>Select All</b> para seleccionar todos los pares listados (opcionalmente puedes acotar antes la lista con Volume Filter / Exclude Bottom 20) y luego haz clic en <b>Save Selection</b> para confirmar y empezar a cargar los datos de velas.`,
+    step8_h2: `Modo Sombra — En vivo en el panel`,
+    step8_caption: `El Modo Sombra también utiliza la API en vivo del exchange real, y las operaciones se ejecutan con USDT virtual — por lo que la experiencia es casi idéntica a operar con dinero real. Aquí se están gestionando activamente 6 posiciones simuladas sin colocar ninguna orden real.`,
+    step9_h2: `Posiciones — Seguimiento en tiempo real, sin riesgo`,
+    step9_caption: `Cada posición simulada muestra el precio de entrada en tiempo real, el precio actual, el PnL y el ROE exactamente como lo haría en operativa real. El Modo Sombra también utiliza la API en vivo del exchange real, y las operaciones se ejecutan con USDT virtual, por lo que refleja de cerca la operativa real sin arriesgar fondos reales.`,
+    cta_h3: `¿Listo para verlo en tu propio equipo?`,
+    cta_p: `Descarga gratuita, funciona 100 % en local — tus claves nunca salen de tu PC.`,
+    cta_btn: `⬇ Volver a JaviD Future Bot`,
+    footer_copyright: `© 2026 JaviD Future Bot · bn.javidtrading.com`,
+    footer_home: `Inicio`,
+    footer_real_results: `Resultados reales`,
+    footer_binance_setup: `Guía de configuración de Binance`,
+    footer_github: `GitHub`,
+    footer_community_board: `Foro de la comunidad`,
+    footer_contact: `Contacto`
+  },
+  fr: {
+    nav_features: `Fonctionnalités`,
+    nav_how_it_works: `Fonctionnement`,
+    nav_shadow_mode: `Mode Fantôme`,
+    nav_real_results: `Résultats réels`,
+    nav_user_manual: `Manuel d'utilisation`,
+    nav_new_to_binance: `Nouveau sur Binance ?`,
+    nav_community_board: `Forum communautaire<span class="nh-dot"></span>`,
+    nav_cta: `Télécharger maintenant`,
+    ticker_t1_b: `Vous passez encore vos nuits à surveiller les graphiques ?`,
+    ticker_t1_span: `Laissez une stratégie conçue par IA juger et exécuter les trades pour vous, 24 h/24 et 7 j/7.`,
+    ticker_t2_b: `Vous n'êtes pas sûr de pouvoir faire confiance à un programme de trading automatique ?`,
+    ticker_t2_span: `Lancez d'abord le Mode Fantôme — passez au trading réel une fois que vous lui faites confiance.`,
+    ticker_t2_small: `Astuce : démarrez en réel avec 1000 USDT ou plus — avec des soldes plus faibles, le nombre d'entrées peut être très limité.`,
+    ticker_t3_b: `Curieux de connaître le vrai taux de réussite ?`,
+    ticker_t3_span: `Consultez les résultats de trading réels publiés sur ce site et jugez par vous-même.`,
+    ticker_t4_b: `Vous ne tradez que les futures Bitcoin ?`,
+    ticker_t4_span: `Tradez plus de 500 futures d'altcoins et accumulez des résultats réguliers, jour après jour.`,
+    ticker_t5_b: `Inquiet à propos de la liquidation sur les futures à effet de levier ?`,
+    ticker_t5_span: `Protégez-vous avec un dimensionnement basé sur le solde de 1/300, 1/500 ou 1/700.`,
+    ticker_t5_small: `Ex. : avec un effet de levier x10, cela peut protéger contre la liquidation jusqu'à un mouvement d'environ 30 000 %.`,
+    ticker_t6_b: `Vous pensez que votre capital de départ est trop faible ?`,
+    ticker_t6_span: `La taille des entrées est recalculée chaque jour en fonction de votre solde réel — découvrez par vous-même l'effet des intérêts composés.`,
+    hero_kicker: `🖥 Manuel d'utilisation`,
+    hero_h1: `Une visite guidée réelle de JaviD Future Bot`,
+    hero_sub: `Neuf véritables captures d'écran de l'application, dans l'ordre — du premier lancement aux positions en direct en Mode Fantôme. Aucun montage, c'est exactement ce que vous verrez.`,
+    toc_h4: `Sur cette page`,
+    toc_1: `<b>1.</b> Premier lancement — Prise en main`,
+    toc_2: `<b>2.</b> Paramètres — Connexion de l'API`,
+    toc_3: `<b>3.</b> Tableau de bord — Vue d'ensemble`,
+    toc_4: `<b>4.</b> Mode d'investissement`,
+    toc_5: `<b>5.</b> Rapports Telegram`,
+    toc_6: `<b>6.</b> Mode d'entrée et effet de levier`,
+    toc_7: `<b>7.</b> Sélection des symboles`,
+    toc_8: `<b>8.</b> Mode Fantôme — Tableau de bord`,
+    toc_9: `<b>9.</b> Positions — Risque nul`,
+    warning_note: `⚠️ <strong>Si le programme s'arrête ou que votre PC s'éteint alors qu'une position est ouverte</strong>, fermez manuellement cette position dans l'application Binance, dans la section Futures, puis redémarrez le programme avant de reprendre. <strong>Attention :</strong> fermer une position peut entraîner une perte, selon le prix au moment de la clôture par rapport à votre prix d'entrée.`,
+    step1_h2: `Premier lancement — Prise en main guidée`,
+    step1_caption: `Dès l'ouverture de l'application, les nouveaux utilisateurs sont guidés à travers un processus de configuration en 4 étapes, ainsi qu'une liste de vérification de sécurité (effet de levier, fenêtre de confirmation, un seul bot par compte) avant de pouvoir passer en trading réel.`,
+    step2_h2: `Paramètres — Connectez votre API Binance`,
+    step2_caption: `Collez votre Access/Secret Key, cliquez sur Save, puis sur Test Connection. Les clés sont chiffrées et stockées uniquement sur votre PC — elles ne sont jamais transmises ailleurs. Vous pouvez suivre à tout moment l'avancement global de votre configuration via la barre de guidage « Standard Trading Flow » en haut du tableau de bord, qui met en évidence l'étape exacte où vous en êtes.`,
+    step3_h2: `Tableau de bord — Vue d'ensemble`,
+    step3_caption: `Solde, P&L cumulé, ROI et positions ouvertes réunis en une seule vue. Il est montré ici au repos, en attente de la sélection des symboles et du chargement des chandeliers avant de pouvoir commencer à trader.`,
+    step4_h2: `Mode d'investissement — Dimensionnement des positions par niveau de risque`,
+    step4_caption: `Aggressive (1/300), Normal (1/500) ou Stable (1/700) — chaque entrée est automatiquement dimensionnée comme une fraction du solde du compte, de sorte que le risque s'adapte au niveau de confort du trader.`,
+    step5_h2: `Rapports Telegram`,
+    step5_caption: `Fonction optionnelle, à titre de notification uniquement : solde, capitaux propres, P&L cumulé, ROI, taux de réussite et positions ouvertes envoyés sur Telegram à la demande ou selon une programmation automatique.`,
+    step6_h2: `Mode d'entrée et contrôle de l'effet de levier`,
+    step6_caption: `Choisissez entre Conservative (uniquement la première correspondance) ou la rotation Multi-strategy, et réglez l'effet de levier de 3x à 15x — un contrôle total sur l'agressivité avec laquelle le bot trade.`,
+    step7_h2: `Sélection des symboles — Plus de 500 paires`,
+    step7_caption: `Cliquez sur <b>Select All</b> pour sélectionner toutes les paires listées (vous pouvez d'abord affiner la liste avec Volume Filter / Exclude Bottom 20), puis cliquez sur <b>Save Selection</b> pour confirmer et lancer le chargement des données de chandeliers.`,
+    step8_h2: `Mode Fantôme — En direct sur le tableau de bord`,
+    step8_caption: `Le Mode Fantôme utilise lui aussi l'API en direct de l'exchange réel, et les trades s'exécutent en USDT virtuel — l'expérience est donc quasiment identique au trading avec de l'argent réel. Il gère ici activement 6 positions simulées sans qu'aucun ordre réel ne soit passé.`,
+    step9_h2: `Positions — Suivi en temps réel, risque nul`,
+    step9_caption: `Chaque position simulée affiche le prix d'entrée en temps réel, le prix actuel, le PnL et le ROE exactement comme en trading réel. Le Mode Fantôme utilise lui aussi l'API en direct de l'exchange réel, et les trades s'exécutent en USDT virtuel, ce qui reproduit fidèlement le trading réel sans jamais risquer de fonds réels.`,
+    cta_h3: `Prêt à le voir tourner sur votre propre machine ?`,
+    cta_p: `Téléchargement gratuit, fonctionne 100 % en local — vos clés ne quittent jamais votre PC.`,
+    cta_btn: `⬇ Retour à JaviD Future Bot`,
+    footer_copyright: `© 2026 JaviD Future Bot · bn.javidtrading.com`,
+    footer_home: `Accueil`,
+    footer_real_results: `Résultats réels`,
+    footer_binance_setup: `Guide de configuration Binance`,
+    footer_github: `GitHub`,
+    footer_community_board: `Forum communautaire`,
+    footer_contact: `Contact`
+  }
+};
+var LANGS = [
+  {code:'en', label:'English'}, {code:'ko', label:'한국어'}, {code:'ja', label:'日本語'},
+  {code:'zh', label:'中文'}, {code:'es', label:'Español'}, {code:'fr', label:'Français'}
+];
+var STORAGE_KEY = 'javid_lang';
+window.CURRENT_LANG = 'en';
+function applyLang(lang){
+  if (!I18N[lang]) lang = 'en';
+  window.CURRENT_LANG = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    var val = (I18N[lang] && I18N[lang][key] != null) ? I18N[lang][key] : I18N.en[key];
+    if (val != null) el.innerHTML = val;
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+  document.querySelectorAll('.lang-menu button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+}
+(function(){
+  var menu = document.getElementById('langMenu');
+  var btn = document.getElementById('langBtn');
+  LANGS.forEach(function(l){
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('data-lang', l.code); b.setAttribute('role','menuitem');
+    b.textContent = l.label;
+    b.addEventListener('click', function(){ applyLang(l.code); menu.classList.remove('open'); });
+    menu.appendChild(b);
+  });
+  btn.addEventListener('click', function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+  document.addEventListener('click', function(){ menu.classList.remove('open'); });
+  var saved;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch(e){}
+  applyLang(saved || 'en');
+})();
+</script>
 
 </body>
 </html>

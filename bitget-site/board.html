@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Community Board | JaviD Future Bot — Ask Us Anything</title>
 <meta name="description" content="Ask questions about JaviD Future Bot setup, strategy, or troubleshooting and get a direct reply from the team. No account required to post.">
-<link rel="canonical" href="https://bg.javidtrading.com/board">
+<link rel="canonical" href="https://javidfuturebot2.javid-dol.uk/board.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -97,6 +97,15 @@ footer{border-top:1px solid var(--line); padding:34px 0;}
 .footer-links{display:flex; gap:20px; flex-wrap:wrap;}
 .footer-links a{color:var(--faint);}
 .footer-links a:hover{color:var(--accent);}
+
+.lang-switch{position:relative;}
+.lang-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border:1px solid var(--line);background:transparent;color:var(--text);padding:7px 12px;border-radius:100px;cursor:pointer;}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent);}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:60;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);min-width:150px;padding:6px;display:none;}
+.lang-menu.open{display:block;}
+.lang-menu button{display:flex;width:100%;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:none;background:none;font-size:13px;font-weight:600;text-align:left;cursor:pointer;color:var(--text);}
+.lang-menu button:hover{background:rgba(255,255,255,.06);}
+.lang-menu button.active{color:var(--accent);background:rgba(0,240,255,.08);}
 </style>
 </head>
 <body>
@@ -104,44 +113,51 @@ footer{border-top:1px solid var(--line); padding:34px 0;}
 <nav><div class="nav-row">
   <a href="index.html" class="nav-logo">JaviD <b>Future Bot</b></a>
   <div class="nav-links">
-    <a href="index.html#capabilities">Capabilities</a>
-    <a href="index.html#architecture">Architecture</a>
-    <a href="index.html#research">Research</a>
-    <a href="bitget-signup-api-guide.html">New to Bitget?</a>
-    <a href="board.html" class="nav-highlight">Community Board</a>
+    <a href="index.html#capabilities" data-i18n="nav_capabilities">Capabilities</a>
+    <a href="index.html#architecture" data-i18n="nav_architecture">Architecture</a>
+    <a href="index.html#research" data-i18n="nav_research">Research</a>
+    <a href="bitget-signup-api-guide.html" data-i18n="nav_bitget">New to Bitget?</a>
+    <a href="board.html" class="nav-highlight" data-i18n="nav_board">Community Board</a>
+    <div class="lang-switch">
+      <button type="button" id="langBtn" class="lang-btn" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" style="width:14px;height:14px"><circle cx="10" cy="10" r="7.25"/><path d="M2.75 10h14.5M10 2.75c2.4 2.4 2.4 12.1 0 14.5M10 2.75c-2.4 2.4-2.4 12.1 0 14.5"/></svg>
+        Language
+      </button>
+      <div id="langMenu" class="lang-menu" role="menu"></div>
+    </div>
   </div>
-  <a href="index.html#download" class="nav-cta">Get Access</a>
+  <a href="index.html#download" class="nav-cta" data-i18n="nav_get_access">Get Access</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
-  <span class="kicker">💬 Community Board</span>
-  <h1>Ask Us Anything About JaviD Future Bot</h1>
-  <p class="sub">Setup issues, strategy questions, feature requests — post below and we'll reply directly on this page. No account or sign-up required to post.</p>
+  <span class="kicker" data-i18n="hero_kicker">💬 Community Board</span>
+  <h1 data-i18n="hero_h1">Ask Us Anything About JaviD Future Bot</h1>
+  <p class="sub" data-i18n="hero_sub">Setup issues, strategy questions, feature requests — post below and we'll reply directly on this page. No account or sign-up required to post.</p>
   <div class="quick-links">
-    <a href="bitget-signup-api-guide.html">📖 Check the Setup Guide first</a>
-    <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">📲 Faster answer? Ask in Telegram</a>
-    <a href="mailto:javidfuturebot@javid-dol.uk">✉️ Email us</a>
+    <a href="bitget-signup-api-guide.html" data-i18n="quick_guide">📖 Check the Setup Guide first</a>
+    <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" data-i18n="quick_telegram">📲 Faster answer? Ask in Telegram</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk" data-i18n="quick_email">✉️ Email us</a>
   </div>
 </div></header>
 
 <div class="wrap">
-  <div class="board-note">💬 <span><b>How this works:</b> type your name and question below, no login needed. Mark a post <b>secret</b> to set your own password — only you (with that password) and the JaviD admin can read it. Every post is reviewed and answered directly here.</span></div>
+  <div class="board-note" data-i18n="board_note">💬 <span><b>How this works:</b> type your name and question below, no login needed. Mark a post <b>secret</b> to set your own password — only you (with that password) and the JaviD admin can read it. Every post is reviewed and answered directly here.</span></div>
 
   <div class="board-write">
-    <h4>Write a question</h4>
-    <div class="bw-row"><input type="text" id="bwName" placeholder="Your name" maxlength="40" /></div>
-    <div class="bw-row"><textarea id="bwContent" placeholder="What do you want to ask?" maxlength="4000"></textarea></div>
-    <label class="bw-secret"><input type="checkbox" id="bwSecret" /> Make this a secret post (password-protected)</label>
-    <div class="bw-pass" id="bwPassWrap"><input type="password" id="bwPass" placeholder="Set a password to read it later" maxlength="100" /></div>
-    <button type="button" class="btn" onclick="submitPost()">Post</button>
+    <h4 data-i18n="write_h4">Write a question</h4>
+    <div class="bw-row"><input type="text" id="bwName" placeholder="Your name" maxlength="40" data-i18n-placeholder="name_placeholder" /></div>
+    <div class="bw-row"><textarea id="bwContent" placeholder="What do you want to ask?" maxlength="4000" data-i18n-placeholder="content_placeholder"></textarea></div>
+    <label class="bw-secret"><input type="checkbox" id="bwSecret" /> <span data-i18n="secret_label">Make this a secret post (password-protected)</span></label>
+    <div class="bw-pass" id="bwPassWrap"><input type="password" id="bwPass" placeholder="Set a password to read it later" maxlength="100" data-i18n-placeholder="pass_placeholder" /></div>
+    <button type="button" class="btn" onclick="submitPost()" data-i18n="post_button">Post</button>
     <p class="board-submit-msg" id="bwMsg"></p>
   </div>
 
   <div class="board-toolbar"><span class="board-admin-link" id="adminLink" onclick="adminLogin()">Admin</span></div>
 
   <div class="board-panel">
-    <h4>Questions &amp; Answers</h4>
-    <div id="boardList"><p style="color:var(--faint);font-size:13px;">Loading…</p></div>
+    <h4 data-i18n="qa_h4">Questions &amp; Answers</h4>
+    <div id="boardList"><p style="color:var(--faint);font-size:13px;" data-i18n="loading_text">Loading…</p></div>
   </div>
 </div>
 
@@ -151,14 +167,14 @@ function getAdminKey() { return localStorage.getItem(ADMIN_KEY_STORAGE) || ''; }
 
 function adminLogin() {
   if (getAdminKey()) {
-    if (confirm('Log out of admin mode?')) {
+    if (confirm(t('confirm_logout'))) {
       localStorage.removeItem(ADMIN_KEY_STORAGE);
       updateAdminLink();
       loadPosts();
     }
     return;
   }
-  const key = prompt('Enter admin key:');
+  const key = prompt(t('prompt_admin_key'));
   if (!key) return;
   localStorage.setItem(ADMIN_KEY_STORAGE, key);
   updateAdminLink();
@@ -166,7 +182,7 @@ function adminLogin() {
 }
 
 function updateAdminLink() {
-  document.getElementById('adminLink').textContent = getAdminKey() ? 'Admin mode ON (click to log out)' : 'Admin';
+  document.getElementById('adminLink').textContent = getAdminKey() ? t('admin_on') : t('admin_off');
 }
 
 document.getElementById('bwSecret').addEventListener('change', function () {
@@ -179,9 +195,9 @@ async function submitPost() {
   const secret = document.getElementById('bwSecret').checked;
   const password = document.getElementById('bwPass').value;
   const msg = document.getElementById('bwMsg');
-  if (!name || !content) { msg.textContent = 'Enter your name and question.'; msg.className = 'board-submit-msg err'; return; }
-  if (secret && !password) { msg.textContent = 'Set a password for the secret post.'; msg.className = 'board-submit-msg err'; return; }
-  msg.textContent = 'Posting…'; msg.className = 'board-submit-msg';
+  if (!name || !content) { msg.textContent = t('msg_enter_name_question'); msg.className = 'board-submit-msg err'; return; }
+  if (secret && !password) { msg.textContent = t('msg_set_password_secret'); msg.className = 'board-submit-msg err'; return; }
+  msg.textContent = t('msg_posting'); msg.className = 'board-submit-msg';
   try {
     const res = await fetch('/api/board/posts', {
       method: 'POST',
@@ -194,10 +210,10 @@ async function submitPost() {
     document.getElementById('bwSecret').checked = false;
     document.getElementById('bwPass').value = '';
     document.getElementById('bwPassWrap').classList.remove('show');
-    msg.textContent = 'Posted.'; msg.className = 'board-submit-msg ok';
+    msg.textContent = t('msg_posted'); msg.className = 'board-submit-msg ok';
     loadPosts();
   } catch (e) {
-    msg.textContent = 'Something went wrong. Try again.'; msg.className = 'board-submit-msg err';
+    msg.textContent = t('msg_error_try_again'); msg.className = 'board-submit-msg err';
   }
 }
 
@@ -211,7 +227,7 @@ function escapeHtml(str) {
 
 async function loadPosts() {
   const list = document.getElementById('boardList');
-  list.innerHTML = '<p style="color:var(--faint);font-size:13px;">Loading…</p>';
+  list.innerHTML = '<p style="color:var(--faint);font-size:13px;">' + t('loading_text') + '</p>';
   const headers = {};
   const adminKey = getAdminKey();
   if (adminKey) headers['x-admin-key'] = adminKey;
@@ -220,12 +236,12 @@ async function loadPosts() {
     const data = await res.json();
     const posts = data.posts || [];
     if (!posts.length) {
-      list.innerHTML = '<p style="color:var(--faint);font-size:13px;">No questions yet — be the first to ask.</p>';
+      list.innerHTML = '<p style="color:var(--faint);font-size:13px;">' + t('no_questions_text') + '</p>';
       return;
     }
     list.innerHTML = posts.map(renderPost).join('');
   } catch (e) {
-    list.innerHTML = '<p style="color:var(--warn);font-size:13px;">Could not load posts.</p>';
+    list.innerHTML = '<p style="color:var(--warn);font-size:13px;">' + t('could_not_load') + '</p>';
   }
 }
 
@@ -234,25 +250,25 @@ function renderPost(p) {
   const locked = p.is_secret && p.content === null;
   let bodyHtml;
   if (locked) {
-    bodyHtml = '<div class="bp-locked-box"><input type="password" id="unlock-' + p.id + '" placeholder="Password" maxlength="100" />' +
-      '<button type="button" class="btn btn-sm btn-outline" onclick="unlockPost(' + p.id + ')">Unlock</button></div>' +
+    bodyHtml = '<div class="bp-locked-box"><input type="password" id="unlock-' + p.id + '" placeholder="' + t('unlock_password_placeholder') + '" maxlength="100" />' +
+      '<button type="button" class="btn btn-sm btn-outline" onclick="unlockPost(' + p.id + ')">' + t('unlock_button') + '</button></div>' +
       '<div id="unlocked-' + p.id + '"></div>';
   } else {
     bodyHtml = '<div class="bp-content">' + escapeHtml(p.content) + '</div>';
   }
-  const reply = p.reply ? '<div class="bp-reply"><b>Admin reply:</b> ' + escapeHtml(p.reply) + '</div>' : '';
+  const reply = p.reply ? '<div class="bp-reply"><b>' + t('admin_reply_label') + '</b> ' + escapeHtml(p.reply) + '</div>' : '';
   const adminActions = admin
     ? '<div class="bp-admin-actions">' +
-        '<button type="button" class="btn btn-sm btn-danger" onclick="deletePost(' + p.id + ')">🗑 Delete</button>' +
-        '<button type="button" class="btn btn-sm btn-outline" onclick="toggleReplyForm(' + p.id + ')">↩ Reply</button>' +
+        '<button type="button" class="btn btn-sm btn-danger" onclick="deletePost(' + p.id + ')">' + t('delete_button') + '</button>' +
+        '<button type="button" class="btn btn-sm btn-outline" onclick="toggleReplyForm(' + p.id + ')">' + t('reply_button') + '</button>' +
       '</div>' +
       '<div class="bp-reply-form" id="replyform-' + p.id + '">' +
-        '<textarea id="replytext-' + p.id + '" placeholder="Write a reply…" maxlength="2000"></textarea>' +
-        '<button type="button" class="btn btn-sm" style="align-self:flex-start;" onclick="submitReply(' + p.id + ')">Send reply</button>' +
+        '<textarea id="replytext-' + p.id + '" placeholder="' + t('reply_placeholder') + '" maxlength="2000"></textarea>' +
+        '<button type="button" class="btn btn-sm" style="align-self:flex-start;" onclick="submitReply(' + p.id + ')">' + t('send_reply_button') + '</button>' +
       '</div>'
     : '';
   return '<div class="board-post" id="post-' + p.id + '">' +
-      '<div class="bp-head"><span class="bp-name">' + escapeHtml(p.name) + (p.is_secret ? '<span class="bp-lock">🔒 Secret</span>' : '') + '</span>' +
+      '<div class="bp-head"><span class="bp-name">' + escapeHtml(p.name) + (p.is_secret ? '<span class="bp-lock">' + t('secret_tag') + '</span>' : '') + '</span>' +
       '<span class="bp-date">' + fmtDate(p.created_at) + '</span></div>' +
       bodyHtml + reply + adminActions +
     '</div>';
@@ -266,10 +282,10 @@ async function unlockPost(id) {
   try {
     const res = await fetch('/api/board/posts/' + id + '?password=' + encodeURIComponent(password));
     const data = await res.json();
-    if (!res.ok) { target.innerHTML = '<p style="color:var(--warn);font-size:12.5px;margin-top:6px;">Wrong password.</p>'; return; }
+    if (!res.ok) { target.innerHTML = '<p style="color:var(--warn);font-size:12.5px;margin-top:6px;">' + t('wrong_password') + '</p>'; return; }
     target.innerHTML = '<div class="bp-content" style="margin-top:10px;">' + escapeHtml(data.content) + '</div>';
   } catch (e) {
-    target.innerHTML = '<p style="color:var(--warn);font-size:12.5px;">Error unlocking post.</p>';
+    target.innerHTML = '<p style="color:var(--warn);font-size:12.5px;">' + t('error_unlocking') + '</p>';
   }
 }
 
@@ -284,38 +300,424 @@ async function submitReply(id) {
       headers: { 'Content-Type': 'application/json', 'x-admin-key': getAdminKey() },
       body: JSON.stringify({ reply: text })
     });
-    if (!res.ok) { alert('Failed to send reply.'); return; }
+    if (!res.ok) { alert(t('alert_reply_failed')); return; }
     loadPosts();
-  } catch (e) { alert('Failed to send reply.'); }
+  } catch (e) { alert(t('alert_reply_failed')); }
 }
 
 async function deletePost(id) {
-  if (!confirm('Delete this post permanently?')) return;
+  if (!confirm(t('confirm_delete'))) return;
   try {
     const res = await fetch('/api/board/posts/' + id, { method: 'DELETE', headers: { 'x-admin-key': getAdminKey() } });
-    if (!res.ok) { alert('Failed to delete (wrong admin key?).'); return; }
+    if (!res.ok) { alert(t('alert_delete_failed')); return; }
     loadPosts();
-  } catch (e) { alert('Failed to delete.'); }
+  } catch (e) { alert(t('alert_delete_error')); }
 }
 
-updateAdminLink();
-loadPosts();
+// Re-renders admin-link text and re-fetches/re-renders the currently visible
+// posts (button labels, "Loading…"/"No questions" strings, etc.) whenever the
+// UI language changes. Called once on initial load (via applyLang in the
+// language-switcher script below) and again on every language switch. Does
+// NOT alter post data — loadPosts()/renderPost() are unchanged aside from
+// swapping their static button/status labels through t().
+function onLangChanged(lang) {
+  updateAdminLink();
+  loadPosts();
+}
 </script>
 
 <section class="cta-band"><div class="wrap">
-  <h3>Ready to try it yourself?</h3>
-  <p>Free download, runs 100% locally — your keys never leave your PC.</p>
-  <a href="index.html#download" class="btn">⬇ Back to JaviD Future Bot</a>
+  <h3 data-i18n="cta_h3">Ready to try it yourself?</h3>
+  <p data-i18n="cta_p">Free download, runs 100% locally — your keys never leave your PC.</p>
+  <a href="index.html#download" class="btn" data-i18n="cta_button">⬇ Back to JaviD Future Bot</a>
 </div></section>
 
 <footer><div class="wrap footer-row">
-  <span>© 2026 JaviD Future Bot · bg.javidtrading.com</span>
+  <span data-i18n="footer_copyright">© 2026 JaviD Future Bot · javidfuturebot2.javid-dol.uk</span>
   <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="bitget-signup-api-guide.html">Bitget Setup Guide</a>
-    <a href="mailto:javidfuturebot@javid-dol.uk">Contact</a>
+    <a href="index.html" data-i18n="footer_home">Home</a>
+    <a href="bitget-signup-api-guide.html" data-i18n="footer_guide">Bitget Setup Guide</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk" data-i18n="footer_contact">Contact</a>
   </div>
 </div></footer>
+
+<script>
+var I18N = {
+  en: {
+    nav_capabilities: "Capabilities",
+    nav_architecture: "Architecture",
+    nav_research: "Research",
+    nav_bitget: "New to Bitget?",
+    nav_board: "Community Board",
+    nav_get_access: "Get Access",
+    hero_kicker: "💬 Community Board",
+    hero_h1: "Ask Us Anything About JaviD Future Bot",
+    hero_sub: "Setup issues, strategy questions, feature requests — post below and we'll reply directly on this page. No account or sign-up required to post.",
+    quick_guide: "📖 Check the Setup Guide first",
+    quick_telegram: "📲 Faster answer? Ask in Telegram",
+    quick_email: "✉️ Email us",
+    board_note: "💬 <span><b>How this works:</b> type your name and question below, no login needed. Mark a post <b>secret</b> to set your own password — only you (with that password) and the JaviD admin can read it. Every post is reviewed and answered directly here.</span>",
+    write_h4: "Write a question",
+    secret_label: "Make this a secret post (password-protected)",
+    post_button: "Post",
+    qa_h4: "Questions &amp; Answers",
+    loading_text: "Loading…",
+    cta_h3: "Ready to try it yourself?",
+    cta_p: "Free download, runs 100% locally — your keys never leave your PC.",
+    cta_button: "⬇ Back to JaviD Future Bot",
+    footer_copyright: "© 2026 JaviD Future Bot · javidfuturebot2.javid-dol.uk",
+    footer_home: "Home",
+    footer_guide: "Bitget Setup Guide",
+    footer_contact: "Contact",
+    name_placeholder: "Your name",
+    content_placeholder: "What do you want to ask?",
+    pass_placeholder: "Set a password to read it later",
+    admin_off: "Admin",
+    admin_on: "Admin mode ON (click to log out)",
+    confirm_logout: "Log out of admin mode?",
+    prompt_admin_key: "Enter admin key:",
+    msg_enter_name_question: "Enter your name and question.",
+    msg_set_password_secret: "Set a password for the secret post.",
+    msg_posting: "Posting…",
+    msg_posted: "Posted.",
+    msg_error_try_again: "Something went wrong. Try again.",
+    no_questions_text: "No questions yet — be the first to ask.",
+    could_not_load: "Could not load posts.",
+    admin_reply_label: "Admin reply:",
+    delete_button: "🗑 Delete",
+    reply_button: "↩ Reply",
+    reply_placeholder: "Write a reply…",
+    send_reply_button: "Send reply",
+    unlock_button: "Unlock",
+    unlock_password_placeholder: "Password",
+    wrong_password: "Wrong password.",
+    error_unlocking: "Error unlocking post.",
+    secret_tag: "🔒 Secret",
+    confirm_delete: "Delete this post permanently?",
+    alert_reply_failed: "Failed to send reply.",
+    alert_delete_failed: "Failed to delete (wrong admin key?).",
+    alert_delete_error: "Failed to delete."
+  },
+  ko: {
+    nav_capabilities: "기능",
+    nav_architecture: "아키텍처",
+    nav_research: "리서치",
+    nav_bitget: "Bitget이 처음이신가요?",
+    nav_board: "커뮤니티 게시판",
+    nav_get_access: "지금 시작하기",
+    hero_kicker: "💬 커뮤니티 게시판",
+    hero_h1: "JaviD Future Bot에 무엇이든 물어보세요",
+    hero_sub: "설정 문제, 전략 질문, 기능 요청 등 아래에 남겨주시면 이 페이지에서 직접 답변해 드립니다. 게시에는 계정이나 가입이 필요하지 않습니다.",
+    quick_guide: "📖 먼저 설정 가이드 확인하기",
+    quick_telegram: "📲 더 빠른 답변? 텔레그램에서 문의하기",
+    quick_email: "✉️ 이메일로 문의하기",
+    board_note: "💬 <span><b>이용 방법:</b> 로그인 없이 아래에 이름과 질문을 입력하세요. 게시물을 <b>비밀글</b>로 설정하면 직접 비밀번호를 지정할 수 있으며, 해당 비밀번호를 아는 본인과 JaviD 관리자만 읽을 수 있습니다. 모든 게시물은 검토 후 이곳에서 직접 답변됩니다.</span>",
+    write_h4: "질문 작성하기",
+    secret_label: "이 게시물을 비밀글로 설정 (비밀번호 보호)",
+    post_button: "게시하기",
+    qa_h4: "질문 &amp; 답변",
+    loading_text: "불러오는 중…",
+    cta_h3: "직접 사용해 볼 준비가 되셨나요?",
+    cta_p: "무료 다운로드, 100% 로컬 실행 — 키가 PC를 벗어나지 않습니다.",
+    cta_button: "⬇ JaviD Future Bot으로 돌아가기",
+    footer_copyright: "© 2026 JaviD Future Bot · javidfuturebot2.javid-dol.uk",
+    footer_home: "홈",
+    footer_guide: "Bitget 설정 가이드",
+    footer_contact: "문의하기",
+    name_placeholder: "이름",
+    content_placeholder: "무엇을 물어보고 싶으신가요?",
+    pass_placeholder: "나중에 확인할 비밀번호를 설정하세요",
+    admin_off: "관리자",
+    admin_on: "관리자 모드 켜짐 (클릭하여 로그아웃)",
+    confirm_logout: "관리자 모드에서 로그아웃하시겠습니까?",
+    prompt_admin_key: "관리자 키를 입력하세요:",
+    msg_enter_name_question: "이름과 질문을 입력해주세요.",
+    msg_set_password_secret: "비밀글의 비밀번호를 설정해주세요.",
+    msg_posting: "게시하는 중…",
+    msg_posted: "게시되었습니다.",
+    msg_error_try_again: "문제가 발생했습니다. 다시 시도해주세요.",
+    no_questions_text: "아직 질문이 없습니다 — 첫 질문을 남겨보세요.",
+    could_not_load: "게시물을 불러올 수 없습니다.",
+    admin_reply_label: "관리자 답변:",
+    delete_button: "🗑 삭제",
+    reply_button: "↩ 답글",
+    reply_placeholder: "답글을 작성하세요…",
+    send_reply_button: "답글 보내기",
+    unlock_button: "잠금 해제",
+    unlock_password_placeholder: "비밀번호",
+    wrong_password: "비밀번호가 올바르지 않습니다.",
+    error_unlocking: "게시물 잠금 해제 중 오류가 발생했습니다.",
+    secret_tag: "🔒 비밀글",
+    confirm_delete: "이 게시물을 영구적으로 삭제하시겠습니까?",
+    alert_reply_failed: "답글 전송에 실패했습니다.",
+    alert_delete_failed: "삭제에 실패했습니다 (관리자 키가 잘못되었나요?).",
+    alert_delete_error: "삭제에 실패했습니다."
+  },
+  ja: {
+    nav_capabilities: "機能",
+    nav_architecture: "アーキテクチャ",
+    nav_research: "リサーチ",
+    nav_bitget: "Bitgetが初めての方へ",
+    nav_board: "コミュニティ掲示板",
+    nav_get_access: "今すぐ始める",
+    hero_kicker: "💬 コミュニティ掲示板",
+    hero_h1: "JaviD Future Botについて何でも聞いてください",
+    hero_sub: "セットアップの問題、戦略に関する質問、機能のリクエストなど、以下に投稿してください。このページで直接回答いたします。投稿にアカウントや登録は必要ありません。",
+    quick_guide: "📖 まずセットアップガイドを確認",
+    quick_telegram: "📲 もっと早い回答が欲しい方はTelegramへ",
+    quick_email: "✉️ メールでお問い合わせ",
+    board_note: "💬 <span><b>ご利用方法:</b> ログイン不要で、以下にお名前と質問を入力してください。投稿を<b>シークレット</b>に設定すると、独自のパスワードを設定できます。そのパスワードを知っているご本人とJaviD管理者のみが読むことができます。すべての投稿は確認の上、こちらで直接回答されます。</span>",
+    write_h4: "質問を書く",
+    secret_label: "この投稿をシークレットにする（パスワード保護）",
+    post_button: "投稿する",
+    qa_h4: "質問 &amp; 回答",
+    loading_text: "読み込み中…",
+    cta_h3: "実際に試してみませんか？",
+    cta_p: "無料ダウンロード、100%ローカルで動作 — あなたの鍵がPCから外に出ることはありません。",
+    cta_button: "⬇ JaviD Future Botに戻る",
+    footer_copyright: "© 2026 JaviD Future Bot · javidfuturebot2.javid-dol.uk",
+    footer_home: "ホーム",
+    footer_guide: "Bitgetセットアップガイド",
+    footer_contact: "お問い合わせ",
+    name_placeholder: "お名前",
+    content_placeholder: "何を質問したいですか？",
+    pass_placeholder: "後で読むためのパスワードを設定してください",
+    admin_off: "管理者",
+    admin_on: "管理者モードON（クリックでログアウト）",
+    confirm_logout: "管理者モードからログアウトしますか？",
+    prompt_admin_key: "管理者キーを入力してください:",
+    msg_enter_name_question: "お名前と質問を入力してください。",
+    msg_set_password_secret: "シークレット投稿のパスワードを設定してください。",
+    msg_posting: "投稿中…",
+    msg_posted: "投稿しました。",
+    msg_error_try_again: "問題が発生しました。もう一度お試しください。",
+    no_questions_text: "まだ質問はありません — 最初の質問を投稿してみましょう。",
+    could_not_load: "投稿を読み込めませんでした。",
+    admin_reply_label: "管理者の返信:",
+    delete_button: "🗑 削除",
+    reply_button: "↩ 返信",
+    reply_placeholder: "返信を入力してください…",
+    send_reply_button: "返信を送信",
+    unlock_button: "ロック解除",
+    unlock_password_placeholder: "パスワード",
+    wrong_password: "パスワードが違います。",
+    error_unlocking: "投稿のロック解除中にエラーが発生しました。",
+    secret_tag: "🔒 シークレット",
+    confirm_delete: "この投稿を完全に削除しますか？",
+    alert_reply_failed: "返信の送信に失敗しました。",
+    alert_delete_failed: "削除に失敗しました（管理者キーが間違っていませんか？）。",
+    alert_delete_error: "削除に失敗しました。"
+  },
+  zh: {
+    nav_capabilities: "功能",
+    nav_architecture: "架构",
+    nav_research: "研究",
+    nav_bitget: "初次使用 Bitget？",
+    nav_board: "社区留言板",
+    nav_get_access: "立即获取",
+    hero_kicker: "💬 社区留言板",
+    hero_h1: "关于 JaviD Future Bot 的任何问题都可以问我们",
+    hero_sub: "设置问题、策略咨询、功能建议——请在下方发帖，我们会直接在本页面回复您。发帖无需注册或登录账户。",
+    quick_guide: "📖 请先查看设置指南",
+    quick_telegram: "📲 想要更快得到回复？在 Telegram 上提问",
+    quick_email: "✉️ 给我们发邮件",
+    board_note: "💬 <span><b>使用说明：</b>无需登录，在下方填写您的姓名和问题即可。将帖子标记为<b>私密</b>可自行设置密码——只有知道密码的您和 JaviD 管理员才能查看。所有帖子经审核后会直接在本页面回复。</span>",
+    write_h4: "提出问题",
+    secret_label: "将此帖设为私密（需密码保护）",
+    post_button: "发布",
+    qa_h4: "问题 &amp; 解答",
+    loading_text: "加载中…",
+    cta_h3: "准备好亲自体验了吗？",
+    cta_p: "免费下载，100% 本地运行——您的密钥绝不会离开您的电脑。",
+    cta_button: "⬇ 返回 JaviD Future Bot",
+    footer_copyright: "© 2026 JaviD Future Bot · javidfuturebot2.javid-dol.uk",
+    footer_home: "首页",
+    footer_guide: "Bitget 设置指南",
+    footer_contact: "联系我们",
+    name_placeholder: "您的姓名",
+    content_placeholder: "您想问什么？",
+    pass_placeholder: "设置密码以便日后查看",
+    admin_off: "管理员",
+    admin_on: "管理员模式已开启（点击退出）",
+    confirm_logout: "确定要退出管理员模式吗？",
+    prompt_admin_key: "请输入管理员密钥：",
+    msg_enter_name_question: "请输入您的姓名和问题。",
+    msg_set_password_secret: "请为该私密帖设置密码。",
+    msg_posting: "发布中…",
+    msg_posted: "已发布。",
+    msg_error_try_again: "出现问题，请重试。",
+    no_questions_text: "暂无提问——快来发布第一个问题吧。",
+    could_not_load: "无法加载帖子。",
+    admin_reply_label: "管理员回复：",
+    delete_button: "🗑 删除",
+    reply_button: "↩ 回复",
+    reply_placeholder: "输入回复内容…",
+    send_reply_button: "发送回复",
+    unlock_button: "解锁",
+    unlock_password_placeholder: "密码",
+    wrong_password: "密码错误。",
+    error_unlocking: "解锁帖子时出错。",
+    secret_tag: "🔒 私密",
+    confirm_delete: "确定要永久删除此帖吗？",
+    alert_reply_failed: "回复发送失败。",
+    alert_delete_failed: "删除失败（管理员密钥是否有误？）。",
+    alert_delete_error: "删除失败。"
+  },
+  es: {
+    nav_capabilities: "Funciones",
+    nav_architecture: "Arquitectura",
+    nav_research: "Investigación",
+    nav_bitget: "¿Nuevo en Bitget?",
+    nav_board: "Foro de la comunidad",
+    nav_get_access: "Obtener acceso",
+    hero_kicker: "💬 Foro de la comunidad",
+    hero_h1: "Pregúntanos lo que quieras sobre JaviD Future Bot",
+    hero_sub: "Problemas de configuración, preguntas sobre estrategia, solicitudes de funciones — publica a continuación y te responderemos directamente en esta página. No se necesita cuenta ni registro para publicar.",
+    quick_guide: "📖 Consulta primero la guía de configuración",
+    quick_telegram: "📲 ¿Respuesta más rápida? Pregunta en Telegram",
+    quick_email: "✉️ Escríbenos por correo",
+    board_note: "💬 <span><b>Cómo funciona:</b> escribe tu nombre y tu pregunta a continuación, no se requiere inicio de sesión. Marca una publicación como <b>secreta</b> para establecer tu propia contraseña — solo tú (con esa contraseña) y el administrador de JaviD podrán leerla. Cada publicación se revisa y se responde directamente aquí.</span>",
+    write_h4: "Escribe una pregunta",
+    secret_label: "Convertir esto en una publicación secreta (protegida con contraseña)",
+    post_button: "Publicar",
+    qa_h4: "Preguntas &amp; Respuestas",
+    loading_text: "Cargando…",
+    cta_h3: "¿Listo para probarlo tú mismo?",
+    cta_p: "Descarga gratuita, funciona 100% en local — tus claves nunca salen de tu PC.",
+    cta_button: "⬇ Volver a JaviD Future Bot",
+    footer_copyright: "© 2026 JaviD Future Bot · javidfuturebot2.javid-dol.uk",
+    footer_home: "Inicio",
+    footer_guide: "Guía de configuración de Bitget",
+    footer_contact: "Contacto",
+    name_placeholder: "Tu nombre",
+    content_placeholder: "¿Qué quieres preguntar?",
+    pass_placeholder: "Establece una contraseña para leerlo más tarde",
+    admin_off: "Admin",
+    admin_on: "Modo admin activado (clic para cerrar sesión)",
+    confirm_logout: "¿Cerrar sesión del modo administrador?",
+    prompt_admin_key: "Introduce la clave de administrador:",
+    msg_enter_name_question: "Introduce tu nombre y tu pregunta.",
+    msg_set_password_secret: "Establece una contraseña para la publicación secreta.",
+    msg_posting: "Publicando…",
+    msg_posted: "Publicado.",
+    msg_error_try_again: "Algo salió mal. Inténtalo de nuevo.",
+    no_questions_text: "Aún no hay preguntas — sé el primero en preguntar.",
+    could_not_load: "No se pudieron cargar las publicaciones.",
+    admin_reply_label: "Respuesta del administrador:",
+    delete_button: "🗑 Eliminar",
+    reply_button: "↩ Responder",
+    reply_placeholder: "Escribe una respuesta…",
+    send_reply_button: "Enviar respuesta",
+    unlock_button: "Desbloquear",
+    unlock_password_placeholder: "Contraseña",
+    wrong_password: "Contraseña incorrecta.",
+    error_unlocking: "Error al desbloquear la publicación.",
+    secret_tag: "🔒 Secreto",
+    confirm_delete: "¿Eliminar esta publicación permanentemente?",
+    alert_reply_failed: "No se pudo enviar la respuesta.",
+    alert_delete_failed: "No se pudo eliminar (¿clave de administrador incorrecta?).",
+    alert_delete_error: "No se pudo eliminar."
+  },
+  fr: {
+    nav_capabilities: "Fonctionnalités",
+    nav_architecture: "Architecture",
+    nav_research: "Recherche",
+    nav_bitget: "Nouveau sur Bitget ?",
+    nav_board: "Forum communautaire",
+    nav_get_access: "Obtenir l'accès",
+    hero_kicker: "💬 Forum communautaire",
+    hero_h1: "Posez-nous toutes vos questions sur JaviD Future Bot",
+    hero_sub: "Problèmes de configuration, questions de stratégie, demandes de fonctionnalités — publiez ci-dessous et nous vous répondrons directement sur cette page. Aucun compte ni inscription n'est nécessaire pour publier.",
+    quick_guide: "📖 Consultez d'abord le guide de configuration",
+    quick_telegram: "📲 Réponse plus rapide ? Posez votre question sur Telegram",
+    quick_email: "✉️ Envoyez-nous un e-mail",
+    board_note: "💬 <span><b>Comment ça marche :</b> indiquez votre nom et votre question ci-dessous, aucune connexion requise. Marquez une publication comme <b>secrète</b> pour définir votre propre mot de passe — seul vous (avec ce mot de passe) et l'administrateur JaviD pourrez la lire. Chaque publication est examinée et recevra une réponse directement ici.</span>",
+    write_h4: "Rédiger une question",
+    secret_label: "Rendre cette publication secrète (protégée par mot de passe)",
+    post_button: "Publier",
+    qa_h4: "Questions &amp; Réponses",
+    loading_text: "Chargement…",
+    cta_h3: "Prêt à l'essayer vous-même ?",
+    cta_p: "Téléchargement gratuit, fonctionne 100 % en local — vos clés ne quittent jamais votre PC.",
+    cta_button: "⬇ Retour à JaviD Future Bot",
+    footer_copyright: "© 2026 JaviD Future Bot · javidfuturebot2.javid-dol.uk",
+    footer_home: "Accueil",
+    footer_guide: "Guide de configuration Bitget",
+    footer_contact: "Contact",
+    name_placeholder: "Votre nom",
+    content_placeholder: "Que voulez-vous demander ?",
+    pass_placeholder: "Définissez un mot de passe pour le relire plus tard",
+    admin_off: "Admin",
+    admin_on: "Mode admin activé (cliquez pour vous déconnecter)",
+    confirm_logout: "Se déconnecter du mode administrateur ?",
+    prompt_admin_key: "Entrez la clé administrateur :",
+    msg_enter_name_question: "Indiquez votre nom et votre question.",
+    msg_set_password_secret: "Définissez un mot de passe pour la publication secrète.",
+    msg_posting: "Publication…",
+    msg_posted: "Publié.",
+    msg_error_try_again: "Une erreur est survenue. Veuillez réessayer.",
+    no_questions_text: "Aucune question pour l'instant — soyez le premier à demander.",
+    could_not_load: "Impossible de charger les publications.",
+    admin_reply_label: "Réponse de l'administrateur :",
+    delete_button: "🗑 Supprimer",
+    reply_button: "↩ Répondre",
+    reply_placeholder: "Rédigez une réponse…",
+    send_reply_button: "Envoyer la réponse",
+    unlock_button: "Déverrouiller",
+    unlock_password_placeholder: "Mot de passe",
+    wrong_password: "Mot de passe incorrect.",
+    error_unlocking: "Erreur lors du déverrouillage de la publication.",
+    secret_tag: "🔒 Secret",
+    confirm_delete: "Supprimer définitivement cette publication ?",
+    alert_reply_failed: "Échec de l'envoi de la réponse.",
+    alert_delete_failed: "Échec de la suppression (clé administrateur incorrecte ?).",
+    alert_delete_error: "Échec de la suppression."
+  }
+};
+var LANGS = [
+  {code:'en', label:'English'}, {code:'ko', label:'한국어'}, {code:'ja', label:'日本語'},
+  {code:'zh', label:'中文'}, {code:'es', label:'Español'}, {code:'fr', label:'Français'}
+];
+var STORAGE_KEY = 'javid_lang';
+window.CURRENT_LANG = 'en';
+function t(key){ return (I18N[window.CURRENT_LANG] && I18N[window.CURRENT_LANG][key] != null) ? I18N[window.CURRENT_LANG][key] : I18N.en[key]; }
+function applyLang(lang){
+  if (!I18N[lang]) lang = 'en';
+  window.CURRENT_LANG = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    var val = (I18N[lang] && I18N[lang][key] != null) ? I18N[lang][key] : I18N.en[key];
+    if (val != null) el.innerHTML = val;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+    var key = el.getAttribute('data-i18n-placeholder');
+    var val = (I18N[lang] && I18N[lang][key] != null) ? I18N[lang][key] : I18N.en[key];
+    if (val != null) el.setAttribute('placeholder', val);
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+  document.querySelectorAll('.lang-menu button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+  if (typeof onLangChanged === 'function') onLangChanged(lang); // hook you define to re-render dynamic button labels if any posts are currently rendered
+}
+(function(){
+  var menu = document.getElementById('langMenu');
+  var btn = document.getElementById('langBtn');
+  LANGS.forEach(function(l){
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('data-lang', l.code); b.setAttribute('role','menuitem');
+    b.textContent = l.label;
+    b.addEventListener('click', function(){ applyLang(l.code); menu.classList.remove('open'); });
+    menu.appendChild(b);
+  });
+  btn.addEventListener('click', function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+  document.addEventListener('click', function(){ menu.classList.remove('open'); });
+  var saved;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch(e){}
+  applyLang(saved || 'en');
+})();
+</script>
 
 </body>
 </html>

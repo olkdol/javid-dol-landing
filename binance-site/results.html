@@ -102,6 +102,15 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
   100% { opacity: 0; }
 }
 @media (max-width:640px) { .ticker-inner { min-height:96px; padding:10px 16px; } .ticker-slide { left:16px; right:16px; } .ticker-slide .tk-icon { font-size:22px; } }
+
+.lang-switch{position:relative;}
+.lang-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border:1px solid var(--line);background:transparent;color:var(--text);padding:7px 12px;border-radius:100px;cursor:pointer;}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent);}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:60;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);min-width:150px;padding:6px;display:none;}
+.lang-menu.open{display:block;}
+.lang-menu button{display:flex;width:100%;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:none;background:none;font-size:13px;font-weight:600;text-align:left;cursor:pointer;color:var(--text);}
+.lang-menu button:hover{background:rgba(255,255,255,.06);}
+.lang-menu button.active{color:var(--accent);background:rgba(0,240,255,.08);}
 </style>
 </head>
 <body>
@@ -109,119 +118,517 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
 <nav class="nav"><div class="nav-inner">
   <a href="index.html" class="brand"><span class="brand-mark"></span>JaviD Future Bot <em>V18.0</em></a>
   <div class="nav-links">
-    <a href="index.html#features">Features</a>
-    <a href="index.html#how-it-works">How It Works</a>
-    <a href="index.html#shadow-mode">Shadow Mode</a>
-    <a href="results.html">Real Results</a>
-    <a href="manual.html">User Manual</a>
-    <a href="binance-signup-api-guide.html">New to Binance?</a>
-    <a href="board.html" class="nav-highlight">Community Board<span class="nh-dot"></span></a>
+    <a href="index.html#features" data-i18n="nav_features">Features</a>
+    <a href="index.html#how-it-works" data-i18n="nav_how_it_works">How It Works</a>
+    <a href="index.html#shadow-mode" data-i18n="nav_shadow_mode">Shadow Mode</a>
+    <a href="results.html" data-i18n="nav_real_results">Real Results</a>
+    <a href="manual.html" data-i18n="nav_user_manual">User Manual</a>
+    <a href="binance-signup-api-guide.html" data-i18n="nav_new_to_binance">New to Binance?</a>
+    <a href="board.html" class="nav-highlight"><span data-i18n="nav_community_board">Community Board</span><span class="nh-dot"></span></a>
   </div>
-  <a href="index.html#download" class="nav-cta">Download Now</a>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-switch">
+      <button type="button" id="langBtn" class="lang-btn" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" style="width:14px;height:14px"><circle cx="10" cy="10" r="7.25"/><path d="M2.75 10h14.5M10 2.75c2.4 2.4 2.4 12.1 0 14.5M10 2.75c-2.4 2.4-2.4 12.1 0 14.5"/></svg>
+        Language
+      </button>
+      <div id="langMenu" class="lang-menu" role="menu"></div>
+    </div>
+    <a href="index.html#download" class="nav-cta" data-i18n="nav_cta_download">Download Now</a>
+  </div>
 </div></nav>
 
 <div class="ticker"><div class="ticker-inner">
-  <div class="ticker-slide t1"><span class="tk-icon">🌙</span><span class="tk-text"><b>Still watching charts and trading through the night?</b><span>Let an AI-built strategy judge and execute for you, 24/7.</span></span></div>
-  <div class="ticker-slide t2"><span class="tk-icon">🛡️</span><span class="tk-text"><b>Not sure you can trust an auto-trading program?</b><span>Run Shadow Mode first — switch to live trading once you trust it.</span><small>Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small></span></div>
-  <a class="ticker-slide t3" href="results.html"><span class="tk-icon">📊</span><span class="tk-text"><b>Curious what the real win rate looks like?</b><span>Check the real trading results on this site and judge for yourself.</span></span></a>
-  <div class="ticker-slide t4"><span class="tk-icon">🪙</span><span class="tk-text"><b>Only trading Bitcoin futures?</b><span>Trade 500+ altcoin futures and stack consistent results, every day.</span></span></div>
-  <div class="ticker-slide t5"><span class="tk-icon">⚖️</span><span class="tk-text"><b>Worried about liquidation on leveraged futures?</b><span>Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.</span><small>Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.</small></span></div>
-  <div class="ticker-slide t6"><span class="tk-icon">🌱</span><span class="tk-text"><b>Think your starting amount is too small?</b><span>Entry size resizes daily off your live balance — feel what compounding does.</span></span></div>
+  <div class="ticker-slide t1"><span class="tk-icon">🌙</span><span class="tk-text"><b data-i18n="ticker_t1_title">Still watching charts and trading through the night?</b><span data-i18n="ticker_t1_text">Let an AI-built strategy judge and execute for you, 24/7.</span></span></div>
+  <div class="ticker-slide t2"><span class="tk-icon">🛡️</span><span class="tk-text"><b data-i18n="ticker_t2_title">Not sure you can trust an auto-trading program?</b><span data-i18n="ticker_t2_text">Run Shadow Mode first — switch to live trading once you trust it.</span><small data-i18n="ticker_t2_small">Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small></span></div>
+  <a class="ticker-slide t3" href="results.html"><span class="tk-icon">📊</span><span class="tk-text"><b data-i18n="ticker_t3_title">Curious what the real win rate looks like?</b><span data-i18n="ticker_t3_text">Check the real trading results on this site and judge for yourself.</span></span></a>
+  <div class="ticker-slide t4"><span class="tk-icon">🪙</span><span class="tk-text"><b data-i18n="ticker_t4_title">Only trading Bitcoin futures?</b><span data-i18n="ticker_t4_text">Trade 500+ altcoin futures and stack consistent results, every day.</span></span></div>
+  <div class="ticker-slide t5"><span class="tk-icon">⚖️</span><span class="tk-text"><b data-i18n="ticker_t5_title">Worried about liquidation on leveraged futures?</b><span data-i18n="ticker_t5_text">Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.</span><small data-i18n="ticker_t5_small">Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.</small></span></div>
+  <div class="ticker-slide t6"><span class="tk-icon">🌱</span><span class="tk-text"><b data-i18n="ticker_t6_title">Think your starting amount is too small?</b><span data-i18n="ticker_t6_text">Entry size resizes daily off your live balance — feel what compounding does.</span></span></div>
 </div></div>
 
 <header class="hero"><div class="wrap">
-  <span class="kicker">📊 Real Results</span>
-  <h1>Real Screenshots, From a Real Run.</h1>
-  <p class="sub">No mockups, no illustrative demo data. Every image on this page is a direct screenshot taken from the JaviD Future Bot dashboard during an actual multi-week run.</p>
-  <p class="hero-note">Window shown: 2026-05-26 – 2026-06-14. This is a single account over a single period — it is one data point, not a promise of what any future run will do.</p>
+  <span class="kicker" data-i18n="hero_kicker">📊 Real Results</span>
+  <h1 data-i18n="hero_h1">Real Screenshots, From a Real Run.</h1>
+  <p class="sub" data-i18n="hero_sub">No mockups, no illustrative demo data. Every image on this page is a direct screenshot taken from the JaviD Future Bot dashboard during an actual multi-week run.</p>
+  <p class="hero-note" data-i18n="hero_note">Window shown: 2026-05-26 – 2026-06-14. This is a single account over a single period — it is one data point, not a promise of what any future run will do.</p>
   <img src="images/profit-maximize.webp" alt="Maximizing profit illustration with a rising bar chart" style="max-width:420px; width:100%; margin:28px auto 0; display:block; border-radius:14px; border:1px solid var(--line-2); box-shadow:0 30px 70px -30px rgba(0,0,0,.6);">
 </div></header>
 
 <div class="wrap">
   <section class="stats-section">
     <div class="stats-grid">
-      <div class="stat-card"><div class="stat-num up">+212.29</div><div class="stat-label">Cumulative P&amp;L (USDT)</div></div>
-      <div class="stat-card"><div class="stat-num grad">265</div><div class="stat-label">Total closed trades</div></div>
-      <div class="stat-card"><div class="stat-num up">93.2%</div><div class="stat-label">Win rate</div></div>
-      <div class="stat-card"><div class="stat-num grad">+12.02%</div><div class="stat-label">Average ROE per trade</div></div>
-      <div class="stat-card"><div class="stat-num up">+13.10</div><div class="stat-label">Best single trade (USDT)</div></div>
-      <div class="stat-card"><div class="stat-num down">-12.64</div><div class="stat-label">Worst single trade (USDT)</div></div>
+      <div class="stat-card"><div class="stat-num up">+212.29</div><div class="stat-label" data-i18n="stat_label_1">Cumulative P&amp;L (USDT)</div></div>
+      <div class="stat-card"><div class="stat-num grad">265</div><div class="stat-label" data-i18n="stat_label_2">Total closed trades</div></div>
+      <div class="stat-card"><div class="stat-num up">93.2%</div><div class="stat-label" data-i18n="stat_label_3">Win rate</div></div>
+      <div class="stat-card"><div class="stat-num grad">+12.02%</div><div class="stat-label" data-i18n="stat_label_4">Average ROE per trade</div></div>
+      <div class="stat-card"><div class="stat-num up">+13.10</div><div class="stat-label" data-i18n="stat_label_5">Best single trade (USDT)</div></div>
+      <div class="stat-card"><div class="stat-num down">-12.64</div><div class="stat-label" data-i18n="stat_label_6">Worst single trade (USDT)</div></div>
     </div>
-    <p class="window-note">Figures read directly from the Records tab shown below — nothing here is rounded up or cherry-picked from a shorter window.</p>
-    <p class="window-note" style="margin-top:10px;">Note: the live snapshot on the <a href="index.html#live-proof" style="color:var(--accent);font-weight:700;">main page</a> (81.4% win rate, +3.28%) is a <b>separate, ongoing Shadow Mode run</b> started later — different account, different period. The 93.2% figure on this page belongs to the 2026-05-26 – 2026-06-14 run shown in these screenshots only. Different runs produce different numbers; that's exactly why we publish both instead of quoting one.</p>
+    <p class="window-note" data-i18n="window_note_1">Figures read directly from the Records tab shown below — nothing here is rounded up or cherry-picked from a shorter window.</p>
+    <p class="window-note" style="margin-top:10px;" data-i18n="window_note_2">Note: the live snapshot on the <a href="index.html#live-proof" style="color:var(--accent);font-weight:700;">main page</a> (81.4% win rate, +3.28%) is a <b>separate, ongoing Shadow Mode run</b> started later — different account, different period. The 93.2% figure on this page belongs to the 2026-05-26 – 2026-06-14 run shown in these screenshots only. Different runs produce different numbers; that's exactly why we publish both instead of quoting one.</p>
   </section>
 </div>
 
 <section class="step" id="s1"><div class="wrap">
   <div class="step-num">1</div>
-  <h2>Daily Return Chart — Three Weeks, Day by Day</h2>
+  <h2 data-i18n="step1_h2">Daily Return Chart — Three Weeks, Day by Day</h2>
   <div class="shot-frame"><img src="results/daily-returns.png" alt="JaviD Future Bot daily return chart, 2026-05-26 to 2026-06-14"></div>
-  <div class="caption">Day-by-day change against the starting balance for the full window. Mostly green, one red day (06-13) — the kind of path a strategy that keeps running through drawdowns actually produces, not a straight line up.</div>
+  <div class="caption" data-i18n="step1_caption">Day-by-day change against the starting balance for the full window. Mostly green, one red day (06-13) — the kind of path a strategy that keeps running through drawdowns actually produces, not a straight line up.</div>
 </div></section>
 
 <section class="step" id="s2"><div class="wrap">
   <div class="step-num">2</div>
-  <h2>Dashboard — Cumulative Numbers</h2>
+  <h2 data-i18n="step2_h2">Dashboard — Cumulative Numbers</h2>
   <div class="shot-frame"><img src="results/dashboard-overview.png" alt="JaviD Future Bot dashboard showing cumulative P&L and win rate"></div>
-  <div class="caption">Cumulative P&amp;L of <b class="up">+$212.29</b> across <b>265 trades</b> at a <b class="up">93.2% win rate</b>, alongside the same market-trend and funding-rate panel the bot uses live to size and time entries.</div>
+  <div class="caption" data-i18n="step2_caption">Cumulative P&amp;L of <b class="up">+$212.29</b> across <b>265 trades</b> at a <b class="up">93.2% win rate</b>, alongside the same market-trend and funding-rate panel the bot uses live to size and time entries.</div>
 </div></section>
 
 <section class="step" id="s3"><div class="wrap">
   <div class="step-num">3</div>
-  <h2>Open Positions — Mid-Run Snapshot</h2>
+  <h2 data-i18n="step3_h2">Open Positions — Mid-Run Snapshot</h2>
   <div class="shot-frame"><img src="results/open-positions.png" alt="JaviD Future Bot open positions table with live entry price, PnL and ROE"></div>
-  <div class="caption">A snapshot of 4 positions open at once — this is the honest picture, not a highlight reel: one position up <b class="up">+461%</b> ROE, another down <b class="down">-367%</b> ROE, side by side, exactly as the bot's own exit logic was still managing them.</div>
+  <div class="caption" data-i18n="step3_caption">A snapshot of 4 positions open at once — this is the honest picture, not a highlight reel: one position up <b class="up">+461%</b> ROE, another down <b class="down">-367%</b> ROE, side by side, exactly as the bot's own exit logic was still managing them.</div>
 </div></section>
 
 <section class="step" id="s4"><div class="wrap">
   <div class="step-num">4</div>
-  <h2>Trade Records — Early in the Run</h2>
+  <h2 data-i18n="step4_h2">Trade Records — Early in the Run</h2>
   <div class="shot-frame"><img src="results/trade-records-1.png" alt="JaviD Future Bot trade records table, first days of the run"></div>
-  <div class="caption">Individual closed trades from the opening days (starting 2026-05-26), with symbol, strategy, entry/liquidation price, quantity, PnL and ROE recorded for every single close.</div>
+  <div class="caption" data-i18n="step4_caption">Individual closed trades from the opening days (starting 2026-05-26), with symbol, strategy, entry/liquidation price, quantity, PnL and ROE recorded for every single close.</div>
 </div></section>
 
 <section class="step" id="s5"><div class="wrap">
   <div class="step-num">5</div>
-  <h2>Trade Records — Mid-Run</h2>
+  <h2 data-i18n="step5_h2">Trade Records — Mid-Run</h2>
   <div class="shot-frame"><img src="results/trade-records-2.png" alt="JaviD Future Bot trade records table, mid-run"></div>
-  <div class="caption">Strategy-A and Strategy-C both active here, rotating across ESPORTSUSDT and PLAYUSDT — the kind of repetitive, small-edge, high-frequency trades that make up the bulk of the 265-trade total.</div>
+  <div class="caption" data-i18n="step5_caption">Strategy-A and Strategy-C both active here, rotating across ESPORTSUSDT and PLAYUSDT — the kind of repetitive, small-edge, high-frequency trades that make up the bulk of the 265-trade total.</div>
 </div></section>
 
 <section class="step" id="s6"><div class="wrap">
   <div class="step-num">6</div>
-  <h2>Trade Records — Including the Losses</h2>
+  <h2 data-i18n="step6_h2">Trade Records — Including the Losses</h2>
   <div class="shot-frame"><img src="results/trade-records-3.png" alt="JaviD Future Bot trade records table showing both wins and losses"></div>
-  <div class="caption">Losing trades are left in, unedited — including a <b class="down">-42.25%</b> and a <b class="down">-142.30%</b> ROE close on the same day. A 93% win rate still means losses happen; this is what they look like in the record.</div>
+  <div class="caption" data-i18n="step6_caption">Losing trades are left in, unedited — including a <b class="down">-42.25%</b> and a <b class="down">-142.30%</b> ROE close on the same day. A 93% win rate still means losses happen; this is what they look like in the record.</div>
 </div></section>
 
 <section class="step" id="s7"><div class="wrap">
   <div class="step-num">7</div>
-  <h2>Trade Records — Final Days</h2>
+  <h2 data-i18n="step7_h2">Trade Records — Final Days</h2>
   <div class="shot-frame"><img src="results/trade-records-4.png" alt="JaviD Future Bot trade records table, final days of the run"></div>
-  <div class="caption">The closing stretch of the window (through 2026-06-14), mixing wins and losses across HUDDT, PLAYUSDT and SPACEUSDT — the same three strategies still running, unattended, on the same rules as day one.</div>
+  <div class="caption" data-i18n="step7_caption">The closing stretch of the window (through 2026-06-14), mixing wins and losses across HUDDT, PLAYUSDT and SPACEUSDT — the same three strategies still running, unattended, on the same rules as day one.</div>
 </div></section>
 
 <section class="cta-band"><div class="wrap">
-  <h3>Want to see this running on your own account?</h3>
-  <p>Start in Shadow Mode with a virtual balance — same live data, same strategies, zero real risk.</p>
-  <a href="index.html#download" class="btn">⬇ Back to JaviD Future Bot</a>
+  <h3 data-i18n="cta_h3">Want to see this running on your own account?</h3>
+  <p data-i18n="cta_p">Start in Shadow Mode with a virtual balance — same live data, same strategies, zero real risk.</p>
+  <a href="index.html#download" class="btn" data-i18n="cta_btn">⬇ Back to JaviD Future Bot</a>
 
-  <div class="disclaimer">
+  <div class="disclaimer" data-i18n="disclaimer_text">
     These screenshots reflect the actual results of one account trading during the window shown above. Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. Past performance — including everything shown on this page — is not indicative of future results, and this run should not be read as a guarantee, projection, or typical outcome for any other account, symbol selection, market condition, or time period. JaviD Future Bot does not provide investment advice, does not custody funds, and does not execute trades on any server; every order shown here was placed directly from the account holder's own device using their own Binance API credentials, and all trading decisions and their outcomes remain the sole responsibility of the user.
   </div>
 </div></section>
 
 <footer><div class="wrap footer-row">
-  <span>© 2026 JaviD Future Bot · bn.javidtrading.com</span>
+  <span data-i18n="footer_copyright">© 2026 JaviD Future Bot · bn.javidtrading.com</span>
   <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="manual.html">User Manual</a>
-    <a href="binance-signup-api-guide.html">Binance Setup Guide</a>
+    <a href="index.html" data-i18n="footer_home">Home</a>
+    <a href="manual.html" data-i18n="nav_user_manual">User Manual</a>
+    <a href="binance-signup-api-guide.html" data-i18n="footer_binance_guide">Binance Setup Guide</a>
     <a href="https://github.com/olkdol/javid-future-bot" target="_blank" rel="noopener">GitHub</a>
-    <a href="board.html">Community Board</a>
-    <a href="mailto:javidfuturebot@javid-dol.uk">Contact</a>
+    <a href="board.html" data-i18n="nav_community_board">Community Board</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk" data-i18n="footer_contact">Contact</a>
   </div>
 </div></footer>
 
+
+<script>
+var I18N = {
+  en: {
+    "cta_btn": "⬇ Back to JaviD Future Bot",
+    "cta_h3": "Want to see this running on your own account?",
+    "cta_p": "Start in Shadow Mode with a virtual balance — same live data, same strategies, zero real risk.",
+    "disclaimer_text": "These screenshots reflect the actual results of one account trading during the window shown above. Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. Past performance — including everything shown on this page — is not indicative of future results, and this run should not be read as a guarantee, projection, or typical outcome for any other account, symbol selection, market condition, or time period. JaviD Future Bot does not provide investment advice, does not custody funds, and does not execute trades on any server; every order shown here was placed directly from the account holder's own device using their own Binance API credentials, and all trading decisions and their outcomes remain the sole responsibility of the user.",
+    "footer_binance_guide": "Binance Setup Guide",
+    "footer_contact": "Contact",
+    "footer_copyright": "© 2026 JaviD Future Bot · bn.javidtrading.com",
+    "footer_home": "Home",
+    "hero_h1": "Real Screenshots, From a Real Run.",
+    "hero_kicker": "📊 Real Results",
+    "hero_note": "Window shown: 2026-05-26 – 2026-06-14. This is a single account over a single period — it is one data point, not a promise of what any future run will do.",
+    "hero_sub": "No mockups, no illustrative demo data. Every image on this page is a direct screenshot taken from the JaviD Future Bot dashboard during an actual multi-week run.",
+    "nav_community_board": "Community Board",
+    "nav_cta_download": "Download Now",
+    "nav_features": "Features",
+    "nav_how_it_works": "How It Works",
+    "nav_new_to_binance": "New to Binance?",
+    "nav_real_results": "Real Results",
+    "nav_shadow_mode": "Shadow Mode",
+    "nav_user_manual": "User Manual",
+    "stat_label_1": "Cumulative P&amp;L (USDT)",
+    "stat_label_2": "Total closed trades",
+    "stat_label_3": "Win rate",
+    "stat_label_4": "Average ROE per trade",
+    "stat_label_5": "Best single trade (USDT)",
+    "stat_label_6": "Worst single trade (USDT)",
+    "step1_caption": "Day-by-day change against the starting balance for the full window. Mostly green, one red day (06-13) — the kind of path a strategy that keeps running through drawdowns actually produces, not a straight line up.",
+    "step1_h2": "Daily Return Chart — Three Weeks, Day by Day",
+    "step2_caption": "Cumulative P&amp;L of <b class=\"up\">+$212.29</b> across <b>265 trades</b> at a <b class=\"up\">93.2% win rate</b>, alongside the same market-trend and funding-rate panel the bot uses live to size and time entries.",
+    "step2_h2": "Dashboard — Cumulative Numbers",
+    "step3_caption": "A snapshot of 4 positions open at once — this is the honest picture, not a highlight reel: one position up <b class=\"up\">+461%</b> ROE, another down <b class=\"down\">-367%</b> ROE, side by side, exactly as the bot's own exit logic was still managing them.",
+    "step3_h2": "Open Positions — Mid-Run Snapshot",
+    "step4_caption": "Individual closed trades from the opening days (starting 2026-05-26), with symbol, strategy, entry/liquidation price, quantity, PnL and ROE recorded for every single close.",
+    "step4_h2": "Trade Records — Early in the Run",
+    "step5_caption": "Strategy-A and Strategy-C both active here, rotating across ESPORTSUSDT and PLAYUSDT — the kind of repetitive, small-edge, high-frequency trades that make up the bulk of the 265-trade total.",
+    "step5_h2": "Trade Records — Mid-Run",
+    "step6_caption": "Losing trades are left in, unedited — including a <b class=\"down\">-42.25%</b> and a <b class=\"down\">-142.30%</b> ROE close on the same day. A 93% win rate still means losses happen; this is what they look like in the record.",
+    "step6_h2": "Trade Records — Including the Losses",
+    "step7_caption": "The closing stretch of the window (through 2026-06-14), mixing wins and losses across HUDDT, PLAYUSDT and SPACEUSDT — the same three strategies still running, unattended, on the same rules as day one.",
+    "step7_h2": "Trade Records — Final Days",
+    "ticker_t1_text": "Let an AI-built strategy judge and execute for you, 24/7.",
+    "ticker_t1_title": "Still watching charts and trading through the night?",
+    "ticker_t2_small": "Tip: start live with 1000+ USDT — smaller balances may see very few entries.",
+    "ticker_t2_text": "Run Shadow Mode first — switch to live trading once you trust it.",
+    "ticker_t2_title": "Not sure you can trust an auto-trading program?",
+    "ticker_t3_text": "Check the real trading results on this site and judge for yourself.",
+    "ticker_t3_title": "Curious what the real win rate looks like?",
+    "ticker_t4_text": "Trade 500+ altcoin futures and stack consistent results, every day.",
+    "ticker_t4_title": "Only trading Bitcoin futures?",
+    "ticker_t5_small": "Ex. at 10x leverage, this can defend liquidation up to roughly a 30,000% move.",
+    "ticker_t5_text": "Defend against it with 1/300, 1/500, or 1/700 balance-based sizing.",
+    "ticker_t5_title": "Worried about liquidation on leveraged futures?",
+    "ticker_t6_text": "Entry size resizes daily off your live balance — feel what compounding does.",
+    "ticker_t6_title": "Think your starting amount is too small?",
+    "window_note_1": "Figures read directly from the Records tab shown below — nothing here is rounded up or cherry-picked from a shorter window.",
+    "window_note_2": "Note: the live snapshot on the <a href=\"index.html#live-proof\" style=\"color:var(--accent);font-weight:700;\">main page</a> (81.4% win rate, +3.28%) is a <b>separate, ongoing Shadow Mode run</b> started later — different account, different period. The 93.2% figure on this page belongs to the 2026-05-26 – 2026-06-14 run shown in these screenshots only. Different runs produce different numbers; that's exactly why we publish both instead of quoting one."
+  },
+  ko: {
+    "cta_btn": "⬇ JaviD Future Bot으로 돌아가기",
+    "cta_h3": "직접 자신의 계좌에서 운용해보고 싶으신가요?",
+    "cta_p": "가상 잔고로 Shadow Mode부터 시작하세요 — 동일한 실시간 데이터, 동일한 전략, 실제 위험은 전혀 없습니다.",
+    "disclaimer_text": "이 화면들은 위에 표시된 기간 동안 실제 계좌에서 거래한 결과를 그대로 보여줍니다. 암호화폐 선물 거래는 높은 수준의 위험을 수반하며 모든 투자자에게 적합하지 않을 수 있습니다. 이 페이지에 표시된 모든 내용을 포함한 과거 성과는 향후 결과를 나타내지 않으며, 이 운용 기록은 다른 어떤 계좌, 심볼 선택, 시장 상황, 기간에서도 보장, 예측, 전형적인 결과로 해석되어서는 안 됩니다. JaviD Future Bot은 투자 자문을 제공하지 않고, 자금을 수탁하지 않으며, 어떤 서버에서도 거래를 실행하지 않습니다 — 여기에 표시된 모든 주문은 계좌 소유자가 본인의 기기에서 본인의 바이낸스 API 자격 증명을 사용해 직접 실행했으며, 모든 거래 판단과 그 결과에 대한 책임은 전적으로 사용자에게 있습니다.",
+    "footer_binance_guide": "바이낸스 설정 가이드",
+    "footer_contact": "문의하기",
+    "footer_copyright": "© 2026 JaviD Future Bot · bn.javidtrading.com",
+    "footer_home": "홈",
+    "hero_h1": "실제 화면, 실제 운용 기록 그대로.",
+    "hero_kicker": "📊 실제 결과",
+    "hero_note": "표시 기간: 2026-05-26 – 2026-06-14. 이는 단일 계좌의 단일 기간 기록이며 — 하나의 데이터 포인트일 뿐, 향후 운용 결과를 보장하지 않습니다.",
+    "hero_sub": "목업도, 예시용 가상 데이터도 아닙니다. 이 페이지의 모든 이미지는 실제 여러 주간 운용 중 JaviD Future Bot 대시보드에서 직접 캡처한 화면입니다.",
+    "nav_community_board": "커뮤니티 게시판",
+    "nav_cta_download": "지금 다운로드",
+    "nav_features": "기능",
+    "nav_how_it_works": "이용 방법",
+    "nav_new_to_binance": "바이낸스가 처음이신가요?",
+    "nav_real_results": "실제 결과",
+    "nav_shadow_mode": "Shadow Mode",
+    "nav_user_manual": "사용 설명서",
+    "stat_label_1": "누적 손익 (USDT)",
+    "stat_label_2": "총 종료된 거래 수",
+    "stat_label_3": "승률",
+    "stat_label_4": "거래당 평균 ROE",
+    "stat_label_5": "최고 단일 거래 (USDT)",
+    "stat_label_6": "최저 단일 거래 (USDT)",
+    "step1_caption": "전체 기간 동안 시작 잔고 대비 하루하루의 변화입니다. 대부분 초록색이고 빨간 날은 하루(06-13)뿐입니다 — 드로다운 중에도 계속 운용을 이어가는 전략이 실제로 만들어내는 모습이지, 일직선 상승 그래프가 아닙니다.",
+    "step1_h2": "일별 수익 차트 — 3주간, 하루하루의 기록",
+    "step2_caption": "누적 손익 <b class=\"up\">+$212.29</b>, 총 <b>265건</b> 거래에서 <b class=\"up\">승률 93.2%</b>를 기록했으며, 봇이 실거래에서 진입 규모와 타이밍을 정할 때 실제로 사용하는 시장 추세·펀딩비 패널도 함께 보여드립니다.",
+    "step2_h2": "대시보드 — 누적 수치",
+    "step3_caption": "동시에 열려 있던 4개 포지션의 스냅샷입니다 — 하이라이트만 모은 게 아니라 있는 그대로입니다: 한 포지션은 <b class=\"up\">+461%</b> ROE로 상승 중이고, 다른 포지션은 <b class=\"down\">-367%</b> ROE로 하락 중인 상태를, 봇의 청산 로직이 여전히 관리하고 있던 그 순간 그대로 보여줍니다.",
+    "step3_h2": "오픈 포지션 — 운용 중간 스냅샷",
+    "step4_caption": "운용 초반(2026-05-26부터)의 개별 종료 거래로, 심볼, 전략, 진입가/청산가, 수량, 손익, ROE가 모든 종료 건마다 기록되어 있습니다.",
+    "step4_h2": "거래 기록 — 운용 초반",
+    "step5_caption": "Strategy-A와 Strategy-C가 모두 활성화되어 ESPORTSUSDT와 PLAYUSDT를 오가며 거래한 구간입니다 — 반복적이고 소폭의 우위를 가진 고빈도 거래가 265건 중 대부분을 차지하는 이유를 보여줍니다.",
+    "step5_h2": "거래 기록 — 운용 중반",
+    "step6_caption": "손실 거래도 편집 없이 그대로 남겨두었습니다 — 같은 날 <b class=\"down\">-42.25%</b>와 <b class=\"down\">-142.30%</b> ROE로 종료된 거래도 포함됩니다. 승률 93%라도 손실은 발생하며, 기록상 실제 모습은 이렇습니다.",
+    "step6_h2": "거래 기록 — 손실 포함",
+    "step7_caption": "기간의 마지막 구간(2026-06-14까지)으로, HUDDT, PLAYUSDT, SPACEUSDT에 걸쳐 승리와 손실이 섞여 있습니다 — 첫날과 같은 규칙으로, 사람 개입 없이 동일한 세 전략이 계속 운용되었습니다.",
+    "step7_h2": "거래 기록 — 운용 마지막 구간",
+    "ticker_t1_text": "AI가 설계한 전략이 24시간 대신 판단하고 실행하게 하세요.",
+    "ticker_t1_title": "아직도 밤새 차트를 보며 매매하시나요?",
+    "ticker_t2_small": "팁: 실거래는 1000 USDT 이상으로 시작하세요 — 잔고가 적으면 진입 기회가 매우 적을 수 있습니다.",
+    "ticker_t2_text": "먼저 Shadow Mode로 실행해 보고, 신뢰가 생기면 실거래로 전환하세요.",
+    "ticker_t2_title": "자동매매 프로그램을 믿을 수 있을지 확신이 안 서시나요?",
+    "ticker_t3_text": "이 사이트의 실제 거래 결과를 확인하고 직접 판단해보세요.",
+    "ticker_t3_title": "실제 승률이 궁금하신가요?",
+    "ticker_t4_text": "500개 이상의 알트코인 선물을 거래하며 매일 꾸준한 성과를 쌓아보세요.",
+    "ticker_t4_title": "비트코인 선물만 거래하고 계신가요?",
+    "ticker_t5_small": "예: 10배 레버리지 기준, 약 30,000% 변동까지 청산을 방어할 수 있습니다.",
+    "ticker_t5_text": "1/300, 1/500, 1/700 잔고 기반 사이징으로 청산 위험을 방어하세요.",
+    "ticker_t5_title": "레버리지 선물의 청산이 걱정되시나요?",
+    "ticker_t6_text": "진입 규모는 매일 실시간 잔고에 맞춰 재조정됩니다 — 복리 효과를 직접 느껴보세요.",
+    "ticker_t6_title": "시작 자금이 너무 적다고 생각하시나요?",
+    "window_note_1": "아래 보이는 Records 탭에서 직접 읽은 수치입니다 — 반올림하거나 짧은 구간만 골라낸 값이 아닙니다.",
+    "window_note_2": "참고: <a href=\"index.html#live-proof\" style=\"color:var(--accent);font-weight:700;\">메인 페이지</a>의 실시간 스냅샷(승률 81.4%, +3.28%)은 이후 별도로 시작된 <b>진행 중인 Shadow Mode 운용</b>입니다 — 계좌도, 기간도 다릅니다. 이 페이지의 93.2% 수치는 2026-05-26 – 2026-06-14 기간, 이 화면들에 나온 운용에만 해당합니다. 운용마다 수치는 달라지며, 그래서 하나만 골라 내세우지 않고 둘 다 공개합니다."
+  },
+  ja: {
+    "cta_btn": "⬇ JaviD Future Botに戻る",
+    "cta_h3": "ご自身のアカウントでこれを動かしてみませんか?",
+    "cta_p": "仮想残高でShadow Modeから始めましょう — 同じライブデータ、同じ戦略、実際のリスクはゼロです。",
+    "disclaimer_text": "これらのスクリーンショットは、上記の期間中に実際の口座で取引を行った結果をそのまま反映しています。暗号資産の先物取引は高いリスクを伴い、すべての投資家に適した商品ではありません。このページに示されているすべてを含む過去の実績は将来の結果を示すものではなく、この運用は他のいかなる口座、銘柄選択、市場状況、期間における保証、予測、典型的な結果として解釈されるべきではありません。JaviD Future Botは投資助言を提供せず、資金を保管せず、いかなるサーバー上でも取引を実行しません — ここに表示されたすべての注文は、口座保有者自身のデバイスから、本人のBinance API認証情報を用いて直接実行されたものであり、すべての取引判断とその結果に対する責任はユーザー本人に帰属します。",
+    "footer_binance_guide": "Binanceセットアップガイド",
+    "footer_contact": "お問い合わせ",
+    "footer_copyright": "© 2026 JaviD Future Bot · bn.javidtrading.com",
+    "footer_home": "ホーム",
+    "hero_h1": "実際のスクリーンショット、実際の運用記録。",
+    "hero_kicker": "📊 実績",
+    "hero_note": "表示期間:2026-05-26 – 2026-06-14。これは単一口座・単一期間の記録であり — あくまで1つのデータポイントであって、今後の運用成果を保証するものではありません。",
+    "hero_sub": "モックアップでも、説明用のデモデータでもありません。このページの画像はすべて、実際に数週間にわたる運用中にJaviD Future Botのダッシュボードから直接撮影したスクリーンショットです。",
+    "nav_community_board": "コミュニティ掲示板",
+    "nav_cta_download": "今すぐダウンロード",
+    "nav_features": "機能",
+    "nav_how_it_works": "使い方",
+    "nav_new_to_binance": "Binanceが初めての方へ",
+    "nav_real_results": "実績",
+    "nav_shadow_mode": "Shadow Mode",
+    "nav_user_manual": "取扱説明書",
+    "stat_label_1": "累積損益(USDT)",
+    "stat_label_2": "決済済み取引数",
+    "stat_label_3": "勝率",
+    "stat_label_4": "取引あたり平均ROE",
+    "stat_label_5": "最高単一取引(USDT)",
+    "stat_label_6": "最低単一取引(USDT)",
+    "step1_caption": "期間全体を通じた、開始時残高に対する日ごとの変化です。ほとんどが緑で、赤字の日は1日(06-13)のみ — ドローダウン中も運用を止めない戦略が実際に生み出す軌跡であり、一直線の右肩上がりではありません。",
+    "step1_h2": "日次リターンチャート — 3週間、日ごとの記録",
+    "step2_caption": "<b class=\"up\">+$212.29</b>の累積損益を<b>265件</b>の取引で達成し、<b class=\"up\">勝率93.2%</b>を記録。あわせて、ボットがエントリーのサイズとタイミングを決める際に実際に使用しているマーケットトレンド・ファンディングレートパネルも表示しています。",
+    "step2_h2": "ダッシュボード — 累積数値",
+    "step3_caption": "同時に保有していた4ポジションのスナップショットです — ハイライトだけを集めたものではなく、ありのままです:一方のポジションは<b class=\"up\">+461%</b>ROEで含み益、もう一方は<b class=\"down\">-367%</b>ROEで含み損という状態を、ボット自身の決済ロジックがまだ管理していたその瞬間のまま示しています。",
+    "step3_h2": "オープンポジション — 運用途中のスナップショット",
+    "step4_caption": "運用初期(2026-05-26開始)の個々の決済済み取引です。シンボル、戦略、エントリー/強制決済価格、数量、損益、ROEが決済ごとにすべて記録されています。",
+    "step4_h2": "取引記録 — 運用初期",
+    "step5_caption": "Strategy-AとStrategy-Cが同時に稼働し、ESPORTSUSDTとPLAYUSDTを行き来しています — このような反復的で小さなエッジを積み重ねる高頻度取引が、265件の大半を占めています。",
+    "step5_h2": "取引記録 — 運用中盤",
+    "step6_caption": "損失取引も編集せずそのまま掲載しています — 同じ日に<b class=\"down\">-42.25%</b>と<b class=\"down\">-142.30%</b>のROEで決済された取引も含まれます。勝率93%であっても損失は発生します。記録上ではこのような形です。",
+    "step6_h2": "取引記録 — 損失も含めて",
+    "step7_caption": "期間の最終盤(2026-06-14まで)で、HUDDT、PLAYUSDT、SPACEUSDTにまたがり勝敗が混在しています — 初日と同じルールのまま、無人で同じ3つの戦略が稼働し続けました。",
+    "step7_h2": "取引記録 — 運用最終盤",
+    "ticker_t1_text": "AIが設計した戦略に24時間365日、判断と執行を任せましょう。",
+    "ticker_t1_title": "まだ夜通しチャートを見ながら取引していませんか?",
+    "ticker_t2_small": "ヒント:実取引は1000USDT以上で始めてください — 残高が少ないとエントリー機会が非常に少なくなる場合があります。",
+    "ticker_t2_text": "まずShadow Modeで試し、信頼できたら実取引に切り替えましょう。",
+    "ticker_t2_title": "自動売買プログラムを信頼できるか不安ですか?",
+    "ticker_t3_text": "このサイトの実際の取引結果を確認して、ご自身で判断してください。",
+    "ticker_t3_title": "実際の勝率が気になりますか?",
+    "ticker_t4_text": "500種類以上のアルトコイン先物を取引して、毎日安定した成果を積み重ねましょう。",
+    "ticker_t4_title": "ビットコイン先物しか取引していませんか?",
+    "ticker_t5_small": "例:10倍レバレッジの場合、約30,000%の変動まで強制決済を防げます。",
+    "ticker_t5_text": "1/300、1/500、1/700の残高ベースサイジングで強制決済に備えましょう。",
+    "ticker_t5_title": "レバレッジ先物の強制決済が心配ですか?",
+    "ticker_t6_text": "エントリーサイズは毎日実際の残高に応じて調整されます — 複利の力を実感してください。",
+    "ticker_t6_title": "元手が少なすぎると思っていませんか?",
+    "window_note_1": "下記に表示されているRecordsタブから直接読み取った数値です — 切り上げや、短い期間だけを選んだ数値ではありません。",
+    "window_note_2": "注:<a href=\"index.html#live-proof\" style=\"color:var(--accent);font-weight:700;\">メインページ</a>のライブスナップショット(勝率81.4%、+3.28%)は、後から開始された<b>別の、現在進行中のShadow Mode運用</b>です — 口座も期間も異なります。このページの93.2%という数値は、2026-05-26 – 2026-06-14の期間、これらのスクリーンショットに写っている運用にのみ該当します。運用ごとに数値は変わるため、1つだけを取り上げるのではなく、両方を公開しています。"
+  },
+  zh: {
+    "cta_btn": "⬇ 返回 JaviD Future Bot",
+    "cta_h3": "想在自己的账户上运行看看吗?",
+    "cta_p": "先用虚拟余额从 Shadow Mode 开始 — 相同的实时数据,相同的策略,零真实风险。",
+    "disclaimer_text": "这些截图如实反映了一个账户在上述展示区间内的实际交易结果。加密货币合约交易伴随较高风险,并非适合所有投资者。包括本页展示的所有内容在内,过往表现并不代表未来结果,本次运行不应被解读为对任何其他账户、品种选择、市场状况或时间段的保证、预测或典型结果。JaviD Future Bot 不提供投资建议,不托管资金,也不在任何服务器上执行交易 — 此处展示的每一笔订单,均由账户持有人在其本人设备上,使用其本人的币安 API 凭证直接下达,所有交易决策及其结果均由用户本人承担全部责任。",
+    "footer_binance_guide": "币安设置指南",
+    "footer_contact": "联系我们",
+    "footer_copyright": "© 2026 JaviD Future Bot · bn.javidtrading.com",
+    "footer_home": "首页",
+    "hero_h1": "真实截图,来自真实运行。",
+    "hero_kicker": "📊 真实业绩",
+    "hero_note": "展示区间:2026-05-26 – 2026-06-14。这只是单个账户在单一时段的记录 — 是一个数据样本,并不代表对未来任何运行结果的承诺。",
+    "hero_sub": "没有模型图,也没有演示用的虚构数据。本页的每一张图片都是在实际运行数周期间,直接从 JaviD Future Bot 仪表盘截取的。",
+    "nav_community_board": "社区论坛",
+    "nav_cta_download": "立即下载",
+    "nav_features": "功能",
+    "nav_how_it_works": "使用方法",
+    "nav_new_to_binance": "第一次用币安?",
+    "nav_real_results": "真实业绩",
+    "nav_shadow_mode": "Shadow Mode",
+    "nav_user_manual": "使用手册",
+    "stat_label_1": "累计盈亏 (USDT)",
+    "stat_label_2": "已平仓交易总数",
+    "stat_label_3": "胜率",
+    "stat_label_4": "平均每笔 ROE",
+    "stat_label_5": "单笔最佳交易 (USDT)",
+    "stat_label_6": "单笔最差交易 (USDT)",
+    "step1_caption": "整个区间内相对起始余额的逐日变化。大部分是绿色,只有一个红色日(06-13)— 这正是持续穿越回撤、仍在运行的策略实际产生的走势,而不是一条直线上涨。",
+    "step1_h2": "每日收益图表 — 三周,逐日记录",
+    "step2_caption": "累计盈亏 <b class=\"up\">+$212.29</b>,来自 <b>265 笔</b>交易,胜率 <b class=\"up\">93.2%</b>,同时展示了机器人用来实时确定开仓规模和时机的同一个市场趋势与资金费率面板。",
+    "step2_h2": "仪表盘 — 累计数据",
+    "step3_caption": "这是同时持有的 4 个持仓快照 — 这是真实情况,不是精选集锦:一个持仓浮盈 <b class=\"up\">+461%</b> ROE,另一个浮亏 <b class=\"down\">-367%</b> ROE,两者并列展示,正是机器人自身平仓逻辑当时仍在管理的状态。",
+    "step3_h2": "持仓 — 运行中期快照",
+    "step4_caption": "运行初期(自 2026-05-26 起)的每笔平仓交易,每次平仓都记录了品种、策略、开仓/强平价格、数量、盈亏和 ROE。",
+    "step4_h2": "交易记录 — 运行初期",
+    "step5_caption": "Strategy-A 和 Strategy-C 在此期间同时运行,轮流交易 ESPORTSUSDT 和 PLAYUSDT — 这类重复性、小优势、高频次的交易,构成了 265 笔交易中的大部分。",
+    "step5_h2": "交易记录 — 运行中期",
+    "step6_caption": "亏损交易也原样保留,未做任何编辑 — 包括同一天平仓的 <b class=\"down\">-42.25%</b> 和 <b class=\"down\">-142.30%</b> ROE。93% 的胜率依然意味着会有亏损;记录中的实际样子就是这样。",
+    "step6_h2": "交易记录 — 包含亏损",
+    "step7_caption": "区间的最后阶段(截至 2026-06-14),盈亏交织在 HUDDT、PLAYUSDT 和 SPACEUSDT 之间 — 同样的三个策略仍在无人值守地按照第一天的规则运行。",
+    "step7_h2": "交易记录 — 最后几天",
+    "ticker_t1_text": "让 AI 构建的策略 24 小时替你判断和执行。",
+    "ticker_t1_title": "还在整夜盯盘手动交易吗?",
+    "ticker_t2_small": "提示:实盘建议以 1000 USDT 以上起步 — 余额过小可能导致进场机会非常有限。",
+    "ticker_t2_text": "先运行 Shadow Mode 试用,信任后再切换到实盘交易。",
+    "ticker_t2_title": "还不确定能否信任自动交易程序?",
+    "ticker_t3_text": "查看本站的真实交易结果,自行判断。",
+    "ticker_t3_title": "好奇真实胜率究竟如何?",
+    "ticker_t4_text": "交易 500 多个山寨币合约,每天积累稳定的成果。",
+    "ticker_t4_title": "只交易比特币合约吗?",
+    "ticker_t5_small": "例如:在 10 倍杠杆下,大约可抵御 30,000% 的波动而不被强平。",
+    "ticker_t5_text": "通过 1/300、1/500 或 1/700 的按余额分仓来防御爆仓风险。",
+    "ticker_t5_title": "担心杠杆合约爆仓?",
+    "ticker_t6_text": "开仓规模每天都会根据实时余额自动调整 — 亲身感受复利的力量。",
+    "ticker_t6_title": "觉得起始资金太少?",
+    "window_note_1": "以下数字直接来自下方展示的 Records 标签页 — 没有经过四舍五入,也没有截取短周期数据来美化。",
+    "window_note_2": "注意:<a href=\"index.html#live-proof\" style=\"color:var(--accent);font-weight:700;\">主页</a>上的实时快照(胜率 81.4%,+3.28%)是后来才开始的<b>另一个仍在进行中的 Shadow Mode 运行</b> — 账户不同,时段也不同。本页的 93.2% 这一数字,仅对应 2026-05-26 – 2026-06-14 这段时间、这些截图中展示的运行。不同运行会产生不同的数字,这正是我们两者都公开、而不是只挑一个来展示的原因。"
+  },
+  es: {
+    "cta_btn": "⬇ Volver a JaviD Future Bot",
+    "cta_h3": "¿Quieres ver esto funcionando en tu propia cuenta?",
+    "cta_p": "Empieza en Shadow Mode con un saldo virtual — mismos datos en vivo, mismas estrategias, cero riesgo real.",
+    "disclaimer_text": "Estas capturas reflejan los resultados reales de una cuenta operando durante el periodo mostrado arriba. El trading de futuros de criptomonedas conlleva un alto nivel de riesgo y no es adecuado para todos los inversores. El rendimiento pasado — incluido todo lo mostrado en esta página — no es indicativo de resultados futuros, y esta ejecución no debe interpretarse como una garantía, proyección o resultado típico para ninguna otra cuenta, selección de símbolos, condición de mercado o periodo de tiempo. JaviD Future Bot no ofrece asesoramiento de inversión, no custodia fondos y no ejecuta operaciones en ningún servidor; cada orden mostrada aquí se colocó directamente desde el propio dispositivo del titular de la cuenta usando sus propias credenciales de API de Binance, y todas las decisiones de trading y sus resultados son responsabilidad exclusiva del usuario.",
+    "footer_binance_guide": "Guía de configuración de Binance",
+    "footer_contact": "Contacto",
+    "footer_copyright": "© 2026 JaviD Future Bot · bn.javidtrading.com",
+    "footer_home": "Inicio",
+    "hero_h1": "Capturas reales, de una ejecución real.",
+    "hero_kicker": "📊 Resultados reales",
+    "hero_note": "Periodo mostrado: 2026-05-26 – 2026-06-14. Se trata de una sola cuenta durante un solo periodo — es un dato puntual, no una promesa de lo que hará cualquier ejecución futura.",
+    "hero_sub": "Nada de maquetas ni datos de demostración ilustrativos. Cada imagen de esta página es una captura directa del panel de JaviD Future Bot durante una ejecución real de varias semanas.",
+    "nav_community_board": "Foro de la comunidad",
+    "nav_cta_download": "Descargar ahora",
+    "nav_features": "Funciones",
+    "nav_how_it_works": "Cómo funciona",
+    "nav_new_to_binance": "¿Nuevo en Binance?",
+    "nav_real_results": "Resultados reales",
+    "nav_shadow_mode": "Shadow Mode",
+    "nav_user_manual": "Manual de usuario",
+    "stat_label_1": "P&amp;L acumulado (USDT)",
+    "stat_label_2": "Total de operaciones cerradas",
+    "stat_label_3": "Tasa de acierto",
+    "stat_label_4": "ROE promedio por operación",
+    "stat_label_5": "Mejor operación individual (USDT)",
+    "stat_label_6": "Peor operación individual (USDT)",
+    "step1_caption": "Cambio diario frente al saldo inicial durante toda la ventana. Mayormente en verde, con un solo día en rojo (06-13) — el tipo de trayectoria que realmente produce una estrategia que sigue operando durante las caídas, no una línea recta ascendente.",
+    "step1_h2": "Gráfico de rendimiento diario — Tres semanas, día a día",
+    "step2_caption": "P&amp;L acumulado de <b class=\"up\">+$212.29</b> en <b>265 operaciones</b> con una <b class=\"up\">tasa de acierto del 93.2%</b>, junto con el mismo panel de tendencia de mercado y tasa de financiación que el bot usa en vivo para dimensionar y sincronizar sus entradas.",
+    "step2_h2": "Panel — Cifras acumuladas",
+    "step3_caption": "Una instantánea de 4 posiciones abiertas a la vez — esta es la imagen honesta, no un resumen de lo mejor: una posición con <b class=\"up\">+461%</b> de ROE al alza, otra con <b class=\"down\">-367%</b> de ROE a la baja, una junto a la otra, tal como la propia lógica de salida del bot las seguía gestionando.",
+    "step3_h2": "Posiciones abiertas — Instantánea a mitad de ejecución",
+    "step4_caption": "Operaciones individuales cerradas en los primeros días (a partir del 2026-05-26), con símbolo, estrategia, precio de entrada/liquidación, cantidad, P&amp;L y ROE registrados en cada cierre.",
+    "step4_h2": "Registro de operaciones — Inicio de la ejecución",
+    "step5_caption": "Strategy-A y Strategy-C activas al mismo tiempo aquí, alternando entre ESPORTSUSDT y PLAYUSDT — el tipo de operaciones repetitivas, de margen pequeño y alta frecuencia que componen la mayor parte del total de 265 operaciones.",
+    "step5_h2": "Registro de operaciones — Mitad de la ejecución",
+    "step6_caption": "Las operaciones perdedoras se dejan tal cual, sin editar — incluido un cierre con ROE de <b class=\"down\">-42.25%</b> y otro de <b class=\"down\">-142.30%</b> el mismo día. Una tasa de acierto del 93% sigue implicando pérdidas; así es como se ven en el registro.",
+    "step6_h2": "Registro de operaciones — Incluyendo las pérdidas",
+    "step7_caption": "El tramo final de la ventana (hasta el 2026-06-14), mezclando ganancias y pérdidas en HUDDT, PLAYUSDT y SPACEUSDT — las mismas tres estrategias siguen funcionando, sin supervisión, con las mismas reglas que el primer día.",
+    "step7_h2": "Registro de operaciones — Días finales",
+    "ticker_t1_text": "Deja que una estrategia creada con IA decida y ejecute por ti, 24/7.",
+    "ticker_t1_title": "¿Sigues mirando gráficos y operando toda la noche?",
+    "ticker_t2_small": "Consejo: empieza en vivo con 1000+ USDT — con saldos más pequeños puede haber muy pocas entradas.",
+    "ticker_t2_text": "Prueba primero el Shadow Mode — cambia a trading en vivo cuando confíes en él.",
+    "ticker_t2_title": "¿No estás seguro de poder confiar en un programa de trading automático?",
+    "ticker_t3_text": "Consulta los resultados reales de trading en este sitio y júzgalo por ti mismo.",
+    "ticker_t3_title": "¿Tienes curiosidad por la tasa de acierto real?",
+    "ticker_t4_text": "Opera más de 500 futuros de altcoins y acumula resultados constantes, todos los días.",
+    "ticker_t4_title": "¿Solo operas futuros de Bitcoin?",
+    "ticker_t5_small": "Ej.: con 10x de apalancamiento, esto puede proteger frente a la liquidación hasta un movimiento de aproximadamente el 30,000%.",
+    "ticker_t5_text": "Protégete con un dimensionamiento basado en el saldo de 1/300, 1/500 o 1/700.",
+    "ticker_t5_title": "¿Te preocupa la liquidación en futuros apalancados?",
+    "ticker_t6_text": "El tamaño de entrada se recalcula cada día según tu saldo real — siente lo que hace el interés compuesto.",
+    "ticker_t6_title": "¿Crees que tu capital inicial es demasiado pequeño?",
+    "window_note_1": "Cifras leídas directamente de la pestaña Records mostrada abajo — nada aquí está redondeado ni elegido de una ventana más corta.",
+    "window_note_2": "Nota: la instantánea en vivo de la <a href=\"index.html#live-proof\" style=\"color:var(--accent);font-weight:700;\">página principal</a> (81.4% de tasa de acierto, +3.28%) corresponde a una <b>ejecución de Shadow Mode independiente y en curso</b>, iniciada más tarde — cuenta y periodo distintos. La cifra del 93.2% de esta página pertenece únicamente a la ejecución del 2026-05-26 al 2026-06-14 mostrada en estas capturas. Cada ejecución produce cifras distintas; por eso publicamos ambas en lugar de citar solo una."
+  },
+  fr: {
+    "cta_btn": "⬇ Retour à JaviD Future Bot",
+    "cta_h3": "Vous voulez voir cela fonctionner sur votre propre compte ?",
+    "cta_p": "Commencez en Shadow Mode avec un solde virtuel — mêmes données en direct, mêmes stratégies, aucun risque réel.",
+    "disclaimer_text": "Ces captures d'écran reflètent les résultats réels d'un compte ayant tradé pendant la période indiquée ci-dessus. Le trading de futures sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. Les performances passées — y compris tout ce qui est présenté sur cette page — ne préjugent pas des résultats futurs, et cette exécution ne doit pas être interprétée comme une garantie, une projection ou un résultat typique pour tout autre compte, sélection de symboles, condition de marché ou période. JaviD Future Bot ne fournit pas de conseils en investissement, ne conserve pas de fonds en dépôt et n'exécute aucun trade sur un quelconque serveur ; chaque ordre présenté ici a été passé directement depuis l'appareil du titulaire du compte, à l'aide de ses propres identifiants API Binance, et toutes les décisions de trading ainsi que leurs résultats relèvent de la seule responsabilité de l'utilisateur.",
+    "footer_binance_guide": "Guide de configuration Binance",
+    "footer_contact": "Contact",
+    "footer_copyright": "© 2026 JaviD Future Bot · bn.javidtrading.com",
+    "footer_home": "Accueil",
+    "hero_h1": "De vraies captures d'écran, d'une exécution réelle.",
+    "hero_kicker": "📊 Résultats réels",
+    "hero_note": "Période affichée : 2026-05-26 – 2026-06-14. Il s'agit d'un seul compte sur une seule période — c'est un point de données, pas une promesse de ce que fera une future exécution.",
+    "hero_sub": "Aucune maquette, aucune donnée de démonstration illustrative. Chaque image de cette page est une capture d'écran directe du tableau de bord JaviD Future Bot prise pendant une exécution réelle de plusieurs semaines.",
+    "nav_community_board": "Forum communautaire",
+    "nav_cta_download": "Télécharger maintenant",
+    "nav_features": "Fonctionnalités",
+    "nav_how_it_works": "Comment ça marche",
+    "nav_new_to_binance": "Nouveau sur Binance ?",
+    "nav_real_results": "Résultats réels",
+    "nav_shadow_mode": "Shadow Mode",
+    "nav_user_manual": "Manuel d'utilisation",
+    "stat_label_1": "P&amp;L cumulé (USDT)",
+    "stat_label_2": "Total des trades clôturés",
+    "stat_label_3": "Taux de réussite",
+    "stat_label_4": "ROE moyen par trade",
+    "stat_label_5": "Meilleur trade unique (USDT)",
+    "stat_label_6": "Pire trade unique (USDT)",
+    "step1_caption": "Évolution quotidienne par rapport au solde de départ sur toute la période. Majoritairement vert, avec un seul jour rouge (06-13) — le type de trajectoire que produit réellement une stratégie qui continue de fonctionner pendant les phases de repli, pas une ligne droite ascendante.",
+    "step1_h2": "Graphique de rendement quotidien — Trois semaines, jour par jour",
+    "step2_caption": "P&amp;L cumulé de <b class=\"up\">+$212.29</b> sur <b>265 trades</b> avec un <b class=\"up\">taux de réussite de 93.2%</b>, accompagné du même panneau de tendance de marché et de taux de financement que le bot utilise en direct pour dimensionner et synchroniser ses entrées.",
+    "step2_h2": "Tableau de bord — Chiffres cumulés",
+    "step3_caption": "Un instantané de 4 positions ouvertes simultanément — voici l'image honnête, pas un best-of : une position en hausse de <b class=\"up\">+461%</b> de ROE, une autre en baisse de <b class=\"down\">-367%</b> de ROE, côte à côte, exactement comme la logique de sortie du bot les gérait encore à ce moment-là.",
+    "step3_h2": "Positions ouvertes — Instantané en cours d'exécution",
+    "step4_caption": "Trades individuels clôturés durant les premiers jours (à partir du 2026-05-26), avec symbole, stratégie, prix d'entrée/de liquidation, quantité, P&amp;L et ROE enregistrés pour chaque clôture.",
+    "step4_h2": "Historique des trades — Début de l'exécution",
+    "step5_caption": "Strategy-A et Strategy-C actives en même temps ici, alternant entre ESPORTSUSDT et PLAYUSDT — le type de trades répétitifs, à faible marge et à haute fréquence qui constitue l'essentiel du total de 265 trades.",
+    "step5_h2": "Historique des trades — Milieu de l'exécution",
+    "step6_caption": "Les trades perdants sont laissés tels quels, sans modification — y compris une clôture à <b class=\"down\">-42.25%</b> et une autre à <b class=\"down\">-142.30%</b> de ROE le même jour. Un taux de réussite de 93% n'empêche pas les pertes ; voici à quoi elles ressemblent dans l'historique.",
+    "step6_h2": "Historique des trades — Pertes incluses",
+    "step7_caption": "La dernière ligne droite de la période (jusqu'au 2026-06-14), mêlant gains et pertes sur HUDDT, PLAYUSDT et SPACEUSDT — les trois mêmes stratégies continuent de fonctionner, sans surveillance, selon les mêmes règles qu'au premier jour.",
+    "step7_h2": "Historique des trades — Derniers jours",
+    "ticker_t1_text": "Laissez une stratégie conçue par IA juger et exécuter pour vous, 24 h/24 et 7 j/7.",
+    "ticker_t1_title": "Vous surveillez encore les graphiques et tradez toute la nuit ?",
+    "ticker_t2_small": "Astuce : démarrez en direct avec 1000 USDT ou plus — avec des soldes plus faibles, il peut y avoir très peu d'entrées.",
+    "ticker_t2_text": "Testez d'abord le Shadow Mode — passez au trading en direct une fois que vous lui faites confiance.",
+    "ticker_t2_title": "Pas sûr de pouvoir faire confiance à un programme de trading automatique ?",
+    "ticker_t3_text": "Consultez les résultats de trading réels de ce site et jugez par vous-même.",
+    "ticker_t3_title": "Curieux de connaître le vrai taux de réussite ?",
+    "ticker_t4_text": "Tradez plus de 500 futures d'altcoins et accumulez des résultats réguliers, chaque jour.",
+    "ticker_t4_title": "Vous ne tradez que les futures Bitcoin ?",
+    "ticker_t5_small": "Ex. : avec un effet de levier de 10x, cela peut protéger contre la liquidation jusqu'à un mouvement d'environ 30 000 %.",
+    "ticker_t5_text": "Protégez-vous avec un dimensionnement basé sur le solde de 1/300, 1/500 ou 1/700.",
+    "ticker_t5_title": "Inquiet à propos de la liquidation sur les futures à effet de levier ?",
+    "ticker_t6_text": "La taille d'entrée est recalculée chaque jour en fonction de votre solde réel — ressentez l'effet des intérêts composés.",
+    "ticker_t6_title": "Vous pensez que votre capital de départ est trop petit ?",
+    "window_note_1": "Chiffres lus directement dans l'onglet Records affiché ci-dessous — rien n'est arrondi ni sélectionné sur une fenêtre plus courte.",
+    "window_note_2": "Remarque : l'instantané en direct sur la <a href=\"index.html#live-proof\" style=\"color:var(--accent);font-weight:700;\">page principale</a> (taux de réussite de 81.4%, +3.28%) correspond à une <b>exécution Shadow Mode distincte et toujours en cours</b>, démarrée plus tard — compte et période différents. Le chiffre de 93.2% sur cette page appartient uniquement à l'exécution du 2026-05-26 au 2026-06-14 montrée dans ces captures d'écran. Chaque exécution produit des chiffres différents ; c'est exactement pour cela que nous publions les deux plutôt que de n'en citer qu'un."
+  }
+};
+var LANGS = [
+  {code:'en', label:'English'}, {code:'ko', label:'한국어'}, {code:'ja', label:'日本語'},
+  {code:'zh', label:'中文'}, {code:'es', label:'Español'}, {code:'fr', label:'Français'}
+];
+var STORAGE_KEY = 'javid_lang';
+window.CURRENT_LANG = 'en';
+function applyLang(lang){
+  if (!I18N[lang]) lang = 'en';
+  window.CURRENT_LANG = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    var val = (I18N[lang] && I18N[lang][key] != null) ? I18N[lang][key] : I18N.en[key];
+    if (val != null) el.innerHTML = val;
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+  document.querySelectorAll('.lang-menu button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+}
+(function(){
+  var menu = document.getElementById('langMenu');
+  var btn = document.getElementById('langBtn');
+  LANGS.forEach(function(l){
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('data-lang', l.code); b.setAttribute('role','menuitem');
+    b.textContent = l.label;
+    b.addEventListener('click', function(){ applyLang(l.code); menu.classList.remove('open'); });
+    menu.appendChild(b);
+  });
+  btn.addEventListener('click', function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+  document.addEventListener('click', function(){ menu.classList.remove('open'); });
+  var saved;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch(e){}
+  applyLang(saved || 'en');
+})();
+</script>
 </body>
 </html>
