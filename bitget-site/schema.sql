@@ -26,3 +26,12 @@ CREATE TABLE IF NOT EXISTS live_status (
   open_positions INTEGER,
   updated_at TEXT NOT NULL
 );
+
+-- One row per successful download. Read via
+-- GET /api/download-stats?key=<STATS_KEY> on bg.javidtrading.com.
+CREATE TABLE IF NOT EXISTS download_events (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  site TEXT NOT NULL,
+  platform TEXT NOT NULL,
+  downloaded_at TEXT NOT NULL
+);

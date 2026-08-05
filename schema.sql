@@ -27,3 +27,14 @@ CREATE TABLE IF NOT EXISTS live_status (
   open_positions INTEGER,
   updated_at TEXT NOT NULL
 );
+
+-- One row per successful download. `site` distinguishes which landing page
+-- it came from, since this database is shared by javid-dol.uk and
+-- bn.javidtrading.com. Read via GET /api/download-stats?key=<STATS_KEY> on
+-- the bn.javidtrading.com site.
+CREATE TABLE IF NOT EXISTS download_events (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  site TEXT NOT NULL,
+  platform TEXT NOT NULL,
+  downloaded_at TEXT NOT NULL
+);

@@ -9,11 +9,21 @@
 // keeps the 25 MB binaries out of git and means publishing a new release is
 // just replacing the R2 object, with no redeploy.
 //
-// Required binding on the Cloudflare project (Settings → Bindings):
-//   R2 bucket -> variable name: DOWNLOADS_BUCKET
+// Every successful download is also logged as one row in D1 (BOARD_DB ->
+// download_events), so counts can be checked later via
+// GET /api/download-stats?key=<STATS_KEY>. Logging never blocks or breaks
+// the actual download — it runs in the background via ctx.waitUntil and any
+// failure is swallowed.
+//
+// Required bindings on the Cloudflare project (Settings → Bindings):
+//   R2 bucket    -> variable name: DOWNLOADS_BUCKET
+//   D1 database  -> variable name: BOARD_DB (already bound — shared with the
+//                    community board / live status)
 //
 // (The DOWNLOAD_CODES KV namespace is no longer read by this endpoint. It can
 // stay bound harmlessly, or be unbound once nothing else uses it.)
+
+const SITE = "bn";
 
 const FILES = {
   windows: "JaviD_Future_Bot_Windows.zip",
@@ -24,6 +34,17 @@ function pickPlatform(value) {
   const v = String(value || "").toLowerCase();
   if (v === "mac" || v === "macos" || v === "osx" || v === "darwin") return "mac";
   return "windows";
+}
+
+function logDownload(env, ctx, platform) {
+  if (!env.BOARD_DB) return;
+  const task = env.BOARD_DB
+    .prepare(`INSERT INTO download_events (site, platform, downloaded_at) VALUES (?, ?, ?)`)
+    .bind(SITE, platform, new Date().toISOString())
+    .run()
+    .catch(() => {});
+  if (ctx && ctx.waitUntil) ctx.waitUntil(task);
+  else return task;
 }
 
 async function serve(env, platform) {
@@ -46,27 +67,33 @@ async function serve(env, platform) {
 }
 
 // Primary path: <a href="/api/download?platform=windows">
-export async function onRequestGet({ request, env }) {
+export async function onRequestGet({ request, env, ctx }) {
   const url = new URL(request.url);
-  return serve(env, pickPlatform(url.searchParams.get("platform")));
+  const platform = pickPlatform(url.searchParams.get("platform"));
+  logDownload(env, ctx, platform);
+  return serve(env, platform);
 }
 
-// HEAD, so a browser can probe size before downloading.
+// HEAD, so a browser can probe size before downloading. Not counted — it's
+// only a probe, not an actual download.
 export async function onRequestHead({ request, env }) {
-  const res = await onRequestGet({ request, env });
+  const url = new URL(request.url);
+  const res = await serve(env, pickPlatform(url.searchParams.get("platform")));
   return new Response(null, { status: res.status, headers: res.headers });
 }
 
 // Kept so any older cached copy of the page (which POSTed a JSON body) still
 // works instead of failing. The code field, if present, is ignored.
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, ctx }) {
   let body = {};
   try {
     body = await request.json();
   } catch (e) {
     body = {};
   }
-  return serve(env, pickPlatform(body.platform));
+  const platform = pickPlatform(body.platform);
+  logDownload(env, ctx, platform);
+  return serve(env, platform);
 }
 
 function json(data, status = 200) {
