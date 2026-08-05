@@ -22,6 +22,8 @@ import {
   onRequestPatch as boardItemPatch,
 } from "./functions/api/board/posts/[id].js";
 import { onRequestGet as statusGet, onRequestPost as statusPost } from "./functions/api/status.js";
+// 다운로드 카운터 조회 — functions/ 는 자동 라우팅되지 않으므로 여기 등록해야 살아난다
+import { onRequestGet as downloadStatsGet } from "./functions/api/download-stats.js";
 
 export default {
   async fetch(request, env, ctx) {
@@ -30,6 +32,10 @@ export default {
     const base = { request, env, ctx, params: {} };
 
     try {
+      if (pathname === "/api/download-stats") {
+        if (request.method === "GET") return await downloadStatsGet(base);
+      }
+
       if (pathname === "/api/download") {
         if (request.method === "POST") return await downloadPost(base);
         if (request.method === "HEAD") return await downloadHead(base);
