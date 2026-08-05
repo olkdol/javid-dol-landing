@@ -22,8 +22,14 @@ export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);
   const key = url.searchParams.get("key");
 
-  if (!env.STATS_KEY || !key || key !== env.STATS_KEY) {
-    return json({ error: "forbidden" }, 403);
+  // "시크릿 미설정"과 "키 불일치"를 구분한다. 둘 다 403 이면 원인을 알 수 없어
+  // 디버깅이 불가능하다. 키 값 자체는 어떤 경우에도 응답에 넣지 않는다.
+  if (!env.STATS_KEY) {
+    return json({ error: "stats_key_not_configured",
+                  hint: "Set STATS_KEY on this Worker: Settings -> Variables and Secrets" }, 503);
+  }
+  if (!key || key !== env.STATS_KEY) {
+    return json({ error: "forbidden", hint: "key mismatch" }, 403);
   }
   if (!env.BOARD_DB) return json({ error: "not_configured" }, 500);
 
