@@ -1,3 +1,5 @@
+// NOTE: 대시보드에서 변수(STATS_KEY 등)를 추가해도 **새 버전을 배포해야** 런타임에
+// 반영된다. 값이 대시보드에 보이는데 env 에서 undefined 라면 배포가 안 된 것이다.
 // Cloudflare Workers entry point for javid-dol-landing.
 //
 // This project deploys as a Worker with static assets (the current unified
