@@ -192,7 +192,7 @@
         </div>
         <i data-lucide="chevron-down" class="chev h-5 w-5 text-slate-400"></i>
       </summary>
-      <p class="mt-4 text-[13.5px] leading-relaxed text-slate-500" data-i18n="strat_b_desc">Watches CVD flow and volume-spike thresholds for overextended moves, then trades the snap-back with liquidation-avoidance sizing baked in.</p>
+      <p class="mt-4 text-[13.5px] leading-relaxed text-slate-500" data-i18n="strat_b_desc">Mean reversion is a classic trading concept — after a price move stretches too far from its average, it tends to snap back before continuing. This strategy was designed by JaviD's AI-driven quantitative analysis to trade exactly that pattern. Watches CVD flow and volume-spike thresholds for overextended moves, then trades the snap-back with liquidation-avoidance sizing baked in.</p>
     </details>
     <details class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm open:shadow-md open:border-indigo-300">
       <summary class="flex cursor-pointer list-none items-center justify-between gap-3">
@@ -202,7 +202,7 @@
         </div>
         <i data-lucide="chevron-down" class="chev h-5 w-5 text-slate-400"></i>
       </summary>
-      <p class="mt-4 text-[13.5px] leading-relaxed text-slate-500" data-i18n="strat_c_desc">Built for volatility expansion — ATR trailing stops and VWAP reversion protect the position once a breakout is confirmed and momentum is in play.</p>
+      <p class="mt-4 text-[13.5px] leading-relaxed text-slate-500" data-i18n="strat_c_desc">Breakout trading works on a different premise — once price finally breaks out of a tight consolidation range on rising volume, it tends to keep moving rather than reverse. This strategy was designed by JaviD's AI-driven quantitative analysis to capture exactly that move. Built for volatility expansion — ATR trailing stops and VWAP reversion protect the position once a breakout is confirmed and momentum is in play.</p>
     </details>
   </div>
 </div></section>
@@ -771,9 +771,9 @@ var I18N = {
     strat_sub: 'Bitget USDT-M Futures',
     strat_a_desc: 'JaviD\'s core adaptive-grid &amp; trend logic. Reads ATR bands and VWAP deviation to time entries, and manages exits with tick-level precision every 10 seconds.',
     strat_b_title: 'Strategy-B · Mean Reversion',
-    strat_b_desc: 'Watches CVD flow and volume-spike thresholds for overextended moves, then trades the snap-back with liquidation-avoidance sizing baked in.',
+    strat_b_desc: 'Mean reversion is a classic trading concept — after a price move stretches too far from its average, it tends to snap back before continuing. This strategy was designed by JaviD\'s AI-driven quantitative analysis to trade exactly that pattern. Watches CVD flow and volume-spike thresholds for overextended moves, then trades the snap-back with liquidation-avoidance sizing baked in.',
     strat_c_title: 'Strategy-C · Breakout',
-    strat_c_desc: 'Built for volatility expansion — ATR trailing stops and VWAP reversion protect the position once a breakout is confirmed and momentum is in play.',
+    strat_c_desc: 'Breakout trading works on a different premise — once price finally breaks out of a tight consolidation range on rising volume, it tends to keep moving rather than reverse. This strategy was designed by JaviD\'s AI-driven quantitative analysis to capture exactly that move. Built for volatility expansion — ATR trailing stops and VWAP reversion protect the position once a breakout is confirmed and momentum is in play.',
     lp_eyebrow: 'Live Proof',
     lp_h2: 'Before the Pitch, Here\'s an Account Running Right Now',
     lp_sub: 'A Shadow Mode account snapshot pulled straight from a live Telegram report — real Bitget market data, virtual USDT, zero real capital at risk.',
@@ -979,9 +979,9 @@ var I18N = {
     strat_sub: 'Bitget USDT-M Futures',
     strat_a_desc: 'JaviD의 핵심 적응형 그리드 &amp; 추세 로직입니다. ATR 밴드와 VWAP 이격도를 읽어 진입 시점을 잡고, 10초마다 틱 단위 정밀도로 청산을 관리합니다.',
     strat_b_title: 'Strategy-B · 평균 회귀',
-    strat_b_desc: 'CVD 흐름과 거래량 급증 임계값을 관찰해 과도하게 확장된 움직임을 포착한 뒤, 청산 회피 사이징을 내장한 상태로 되돌림을 노립니다.',
+    strat_b_desc: '평균 회귀(Mean Reversion)는 잘 알려진 트레이딩 개념입니다 — 가격이 평균에서 지나치게 벌어지면 다시 평균 쪽으로 되돌아오려는 경향이 있다는 것이죠. 이 전략은 JaviD의 AI 기반 정량 분석을 통해 바로 이 패턴을 거래하도록 설계되었습니다. CVD 흐름과 거래량 급증 임계값을 관찰해 과도하게 확장된 움직임을 포착한 뒤, 청산 회피 사이징을 내장한 상태로 되돌림을 노립니다.',
     strat_c_title: 'Strategy-C · 브레이크아웃',
-    strat_c_desc: '변동성 확장에 대응하도록 설계되었습니다 — 브레이크아웃이 확인되고 모멘텀이 살아있는 동안 ATR 트레일링 스탑과 VWAP 회귀가 포지션을 보호합니다.',
+    strat_c_desc: '브레이크아웃(Breakout) 전략은 다른 전제에서 출발합니다 — 가격이 좁은 박스권을 거래량 증가와 함께 돌파하면, 되돌아가기보다 그 방향으로 계속 움직이는 경향이 있다는 것이죠. 이 전략은 JaviD의 AI 기반 정량 분석을 통해 바로 이 움직임을 포착하도록 설계되었습니다. 변동성 확장에 대응하도록 설계되었습니다 — 브레이크아웃이 확인되고 모멘텀이 살아있는 동안 ATR 트레일링 스탑과 VWAP 회귀가 포지션을 보호합니다.',
     lp_eyebrow: '실시간 증거',
     lp_h2: '설명하기 전에, 지금 실제로 돌아가고 있는 계좌를 보여드립니다',
     lp_sub: '실시간 텔레그램 리포트에서 그대로 가져온 섀도우 모드 계좌 스냅샷입니다 — 실제 비트겟 시세 데이터, 가상 USDT, 실제 자본 위험 없음.',
@@ -1187,9 +1187,9 @@ var I18N = {
     strat_sub: 'Bitget USDT-M Futures',
     strat_a_desc: 'JaviDのコアとなるアダプティブグリッド &amp; トレンドロジック。ATRバンドとVWAP乖離を読み取ってエントリーのタイミングを計り、10秒ごとにティック単位の精度でイグジットを管理します。',
     strat_b_title: 'Strategy-B · 平均回帰',
-    strat_b_desc: 'CVDの流れと出来高急増のしきい値を監視して行き過ぎた値動きを検知し、清算回避サイジングを組み込んだ形で反発を狙います。',
+    strat_b_desc: '平均回帰（Mean Reversion）は、価格が平均から大きく乖離すると再び平均に戻ろうとする傾向がある、というよく知られたトレーディングの概念です。この戦略は、JaviDのAI駆動の定量分析によって、まさにこのパターンを狙うよう設計されています。 CVDの流れと出来高急増のしきい値を監視して行き過ぎた値動きを検知し、清算回避サイジングを組み込んだ形で反発を狙います。',
     strat_c_title: 'Strategy-C · ブレイクアウト',
-    strat_c_desc: 'ボラティリティ拡大に対応する設計 — ブレイクアウトが確認されモメンタムが続く間、ATRトレーリングストップとVWAP回帰がポジションを保護します。',
+    strat_c_desc: 'ブレイクアウト（Breakout）戦略は異なる前提に基づいています — 価格が出来高の増加を伴って狭いレンジを抜けると、反転せずにその方向へ動き続ける傾向がある、というものです。この戦略は、JaviDのAI駆動の定量分析によって、まさにこの動きを捉えるよう設計されています。 ボラティリティ拡大に対応する設計 — ブレイクアウトが確認されモメンタムが続く間、ATRトレーリングストップとVWAP回帰がポジションを保護します。',
     lp_eyebrow: 'ライブ実績',
     lp_h2: '説明の前に、今まさに稼働中のアカウントをご覧ください',
     lp_sub: 'ライブのTelegramレポートからそのまま取得したシャドーモードのアカウントスナップショットです — 実際のBitget市場データ、仮想USDT、実資金リスクはゼロ。',
@@ -1395,9 +1395,9 @@ var I18N = {
     strat_sub: 'Bitget USDT-M Futures',
     strat_a_desc: 'JaviD 的核心自适应网格 &amp; 趋势逻辑。通过读取 ATR 通道与 VWAP 偏离来把握入场时机，并以每 10 秒一次的逐笔级精度管理离场。',
     strat_b_title: 'Strategy-B · 均值回归',
-    strat_b_desc: '监测 CVD 资金流向和成交量异动阈值，捕捉过度延伸的行情，并在内置防爆仓仓位管理的前提下交易反弹回归。',
+    strat_b_desc: '均值回归（Mean Reversion）是一个经典的交易理念——当价格过度偏离其均值时，往往会出现回归均值的倾向。这套策略正是由 JaviD 的 AI 驱动量化分析专门设计，用来捕捉这种模式。 监测 CVD 资金流向和成交量异动阈值，捕捉过度延伸的行情，并在内置防爆仓仓位管理的前提下交易反弹回归。',
     strat_c_title: 'Strategy-C · 突破',
-    strat_c_desc: '专为波动率扩张而设计 — 一旦突破确认且动能延续，ATR 移动止损与 VWAP 回归将持续保护仓位。',
+    strat_c_desc: '突破（Breakout）交易的逻辑不同——一旦价格在成交量放大的情况下突破狭窄的盘整区间，往往会顺势延续而非反转。这套策略正是由 JaviD 的 AI 驱动量化分析专门设计，用来捕捉这种行情。 专为波动率扩张而设计 — 一旦突破确认且动能延续，ATR 移动止损与 VWAP 回归将持续保护仓位。',
     lp_eyebrow: '实盘验证',
     lp_h2: '在介绍之前，先看看这个正在实时运行的账户',
     lp_sub: '直接来自实时 Telegram 报告的影子模式账户快照 — 真实 Bitget 行情数据，虚拟 USDT，零真实资金风险。',
@@ -1603,9 +1603,9 @@ var I18N = {
     strat_sub: 'Bitget USDT-M Futures',
     strat_a_desc: 'La lógica central de grid adaptativo &amp; tendencia de JaviD. Analiza bandas ATR y la desviación del VWAP para calcular el momento de entrada, y gestiona las salidas con precisión a nivel de tick cada 10 segundos.',
     strat_b_title: 'Strategy-B · Reversión a la Media',
-    strat_b_desc: 'Vigila el flujo de CVD y los umbrales de picos de volumen para detectar movimientos sobreextendidos, y opera el rebote con un dimensionamiento que evita liquidaciones ya integrado.',
+    strat_b_desc: 'La reversión a la media es un concepto de trading clásico: cuando el precio se aleja demasiado de su promedio, tiende a regresar antes de continuar. Esta estrategia fue diseñada mediante el análisis cuantitativo impulsado por IA de JaviD para operar exactamente ese patrón. Vigila el flujo de CVD y los umbrales de picos de volumen para detectar movimientos sobreextendidos, y opera el rebote con un dimensionamiento que evita liquidaciones ya integrado.',
     strat_c_title: 'Strategy-C · Ruptura',
-    strat_c_desc: 'Diseñada para la expansión de volatilidad — los stops dinámicos ATR y la reversión al VWAP protegen la posición una vez confirmada la ruptura y mientras dure el impulso.',
+    strat_c_desc: 'El trading de ruptura parte de otra premisa: cuando el precio finalmente rompe un rango de consolidación estrecho con volumen creciente, tiende a seguir moviéndose en esa dirección en lugar de revertir. Esta estrategia fue diseñada mediante el análisis cuantitativo impulsado por IA de JaviD para capturar exactamente ese movimiento. Diseñada para la expansión de volatilidad — los stops dinámicos ATR y la reversión al VWAP protegen la posición una vez confirmada la ruptura y mientras dure el impulso.',
     lp_eyebrow: 'Prueba en Vivo',
     lp_h2: 'Antes de venderte nada, mira una cuenta que está operando ahora mismo',
     lp_sub: 'Una instantánea de una cuenta en Modo Shadow, tomada directamente de un informe en vivo de Telegram — datos reales del mercado de Bitget, USDT virtual, cero capital real en riesgo.',
@@ -1811,9 +1811,9 @@ var I18N = {
     strat_sub: 'Bitget USDT-M Futures',
     strat_a_desc: 'La logique cœur de grille adaptative &amp; de tendance de JaviD. Elle analyse les bandes ATR et l\'écart au VWAP pour calibrer les entrées, et gère les sorties avec une précision au tick près toutes les 10 secondes.',
     strat_b_title: 'Strategy-B · Retour à la Moyenne',
-    strat_b_desc: 'Surveille le flux CVD et les seuils de pics de volume pour repérer les mouvements excessifs, puis trade le retour de balancier avec un dimensionnement anti-liquidation intégré.',
+    strat_b_desc: 'Le retour à la moyenne est un concept de trading classique : lorsque le prix s\'éloigne trop de sa moyenne, il a tendance à y revenir avant de poursuivre sa route. Cette stratégie a été conçue par l\'analyse quantitative pilotée par IA de JaviD pour trader précisément ce schéma. Surveille le flux CVD et les seuils de pics de volume pour repérer les mouvements excessifs, puis trade le retour de balancier avec un dimensionnement anti-liquidation intégré.',
     strat_c_title: 'Strategy-C · Cassure',
-    strat_c_desc: 'Conçue pour l\'expansion de volatilité — les stops suiveurs ATR et la réversion au VWAP protègent la position dès que la cassure est confirmée et tant que le momentum se poursuit.',
+    strat_c_desc: 'Le trading de cassure repose sur un principe différent : une fois que le prix sort enfin d\'une zone de consolidation étroite avec un volume en hausse, il a tendance à poursuivre son mouvement plutôt qu\'à s\'inverser. Cette stratégie a été conçue par l\'analyse quantitative pilotée par IA de JaviD pour capturer précisément ce mouvement. Conçue pour l\'expansion de volatilité — les stops suiveurs ATR et la réversion au VWAP protègent la position dès que la cassure est confirmée et tant que le momentum se poursuit.',
     lp_eyebrow: 'Preuve en Direct',
     lp_h2: 'Avant le discours commercial, voici un compte qui tourne en ce moment même',
     lp_sub: 'Un instantané de compte en Mode Shadow, extrait directement d\'un rapport Telegram en direct — données de marché Bitget réelles, USDT virtuels, zéro capital réel en jeu.',
