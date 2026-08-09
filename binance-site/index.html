@@ -442,7 +442,7 @@
   <div class="grid items-center gap-8 rounded-2xl border border-indigo-200 bg-indigo-50/60 p-9 sm:grid-cols-[1fr_auto]">
     <div>
       <h3 class="flex items-center gap-2 text-[22px] font-bold text-slate-900"><i data-lucide="flask-conical" class="h-6 w-6 text-indigo-600"></i> <span data-i18n="shadow_h3">Try It Before You Risk a Single Dollar</span></h3>
-      <p class="mt-2.5 max-w-xl text-[14.5px] leading-relaxed text-slate-600" data-i18n="shadow_desc">Shadow Mode runs every strategy against live market data with a virtual balance — real signals, real timing, zero real orders. It uses the real exchange's live API, so the experience is nearly identical to trading with real money.</p>
+      <p class="mt-2.5 max-w-xl text-[14.5px] leading-relaxed text-slate-600" data-i18n="shadow_desc">Shadow Mode runs every strategy on the exchange's real-time live market data and live API — the exact same feed real trading uses — with a virtual balance standing in for real funds. That's a different thing from a testnet or a typical paper-trading simulator: a testnet is a separate sandbox exchange with its own fake, disconnected price data, and most mock-trading tools run on delayed or simulated prices. Shadow Mode's data is 100% real and live; only the money is virtual.</p>
     </div>
     <a href="#download" class="inline-flex shrink-0 items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-lg shadow-indigo-600/25 transition hover:bg-indigo-700" data-i18n="shadow_cta">Download &amp; Try Shadow Mode</a>
   </div>
@@ -557,7 +557,7 @@
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900"><span data-i18n="faq_q4">How close is Shadow Mode to real trading?</span><i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
-      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a4">Shadow Mode uses <b class="text-slate-800">the real exchange's live API</b> with <b class="text-slate-800">virtual USDT</b> — signals, timing, and data are identical to live trading; only the real orders are withheld.</div>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a4">Shadow Mode uses <b class="text-slate-800">the real exchange's live API</b> with <b class="text-slate-800">virtual USDT</b> — signals, timing, and data are identical to live trading; only the real orders are withheld. This is not a testnet and not a generic paper-trading simulator — those run on separate sandbox data that can lag or diverge from the real market. Shadow Mode trades against the same live order book everyone else sees.</div>
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900"><span data-i18n="faq_q5">What happens if my PC shuts down mid-trade?</span><i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
@@ -608,6 +608,10 @@
   <p class="mx-auto mt-4 max-w-xl text-[15px] text-slate-500" data-i18n="final_sub">Let JaviD take care of the tedious tasks — while you keep your keys, your funds, your control, on every single trade.</p>
 
   <div class="mx-auto mt-9 max-w-md rounded-2xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-900/5">
+    <div class="mb-4 flex items-center gap-2 rounded-xl px-4 py-3.5 text-left" style="border:2px solid #fcd34d;background-color:#fffbeb;">
+      <i data-lucide="triangle-alert" class="h-5 w-5 shrink-0 text-amber-600"></i>
+      <p class="text-[14px] font-extrabold leading-snug" style="color:#92400e;" data-i18n="hedge_mode_notice">In the Binance app, go to <span class="whitespace-nowrap">Futures → Position Mode</span> and set it to <span class="whitespace-nowrap" style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;">Hedge Mode</span> before you start.</p>
+    </div>
     <p class="mb-4 text-[12.5px] font-bold text-slate-500" data-i18n="dl_label">Free download — no access code required</p>
     <div class="flex flex-wrap justify-center gap-3">
       <a href="/api/download?platform=windows" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</a>
@@ -784,6 +788,7 @@ var I18N = {
   "cta_free_download": "Free Download",
   "dl_contact_note": "Questions? Email <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:javidfuturebot@javid-dol.uk\">javidfuturebot@javid-dol.uk</a> or ask on the <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">Community Board</a>.",
   "dl_flow_note": "Click your OS → unzip → run <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. It starts in your system tray; click the tray icon to open the dashboard. First time? Follow along with the <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">User Manual</a>.",
+  "hedge_mode_notice": "In the Binance app, go to <span class=\"whitespace-nowrap\">Futures → Position Mode</span> and set it to <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> before you start.",
   "dl_label": "Free download — no access code required",
   "dl_no_code_note": "Free forever, no sign-up. Want release news and support? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Join the Telegram community</a>.",
   "dl_perk_1": "No obligations",
@@ -800,7 +805,7 @@ var I18N = {
   "faq_a14": "New versions are announced on this page and in the <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Telegram channel</a>. Download and overwrite — settings are preserved.",
   "faq_a2": "Your API key is <b class=\"text-slate-800\">encrypted and stored locally on your own PC</b> — it is never transmitted anywhere, and withdrawal permission is never required.",
   "faq_a3": "<b class=\"text-slate-800\">No.</b> It's a tool that executes a defined strategy 24/7 without emotion. Crypto futures carry a serious risk of loss — validate in Shadow Mode before going live.",
-  "faq_a4": "Shadow Mode uses <b class=\"text-slate-800\">the real exchange's live API</b> with <b class=\"text-slate-800\">virtual USDT</b> — signals, timing, and data are identical to live trading; only the real orders are withheld.",
+  "faq_a4": "Shadow Mode uses <b class=\"text-slate-800\">the real exchange's live API</b> with <b class=\"text-slate-800\">virtual USDT</b> — signals, timing, and data are identical to live trading; only the real orders are withheld. This is not a testnet and not a generic paper-trading simulator — those run on separate sandbox data that can lag or diverge from the real market. Shadow Mode trades against the same live order book everyone else sees.",
   "faq_a5": "New entries and position management stop. Positions already open remain on the exchange, and the bot re-detects and resumes managing them on restart. An always-on mini PC or low-cost cloud VM is recommended.",
   "faq_a6": "We recommend <b class=\"text-slate-800\">1,000 USDT or more</b> so per-trade sizing (up to 1/300th of balance) stays above exchange minimum-notional limits.",
   "faq_a7": "Five layers of exit logic manage every position, but no system can fully eliminate the risk of violent moves in futures markets. Keep leverage conservative.",
@@ -916,7 +921,7 @@ var I18N = {
   "security_h2": "Secure by Design. Local. Verifiable.",
   "security_sub": "Instead of asking you to trust us — open your firewall or network monitor while the app runs. The only connection you'll see is Binance.",
   "shadow_cta": "Download &amp; Try Shadow Mode",
-  "shadow_desc": "Shadow Mode runs every strategy against live market data with a virtual balance — real signals, real timing, zero real orders. It uses the real exchange's live API, so the experience is nearly identical to trading with real money.",
+  "shadow_desc": "Shadow Mode runs every strategy on the exchange's real-time live market data and live API — the exact same feed real trading uses — with a virtual balance standing in for real funds. That's a different thing from a testnet or a typical paper-trading simulator: a testnet is a separate sandbox exchange with its own fake, disconnected price data, and most mock-trading tools run on delayed or simulated prices. Shadow Mode's data is 100% real and live; only the money is virtual.",
   "shadow_h3": "Try It Before You Risk a Single Dollar",
   "showcase_eyebrow": "See It Running",
   "showcase_h2": "Not Mockups. Actual Dashboard Screens.",
@@ -995,6 +1000,7 @@ var I18N = {
   "cta_free_download": "무료 다운로드",
   "dl_contact_note": "문의사항이 있으신가요? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:javidfuturebot@javid-dol.uk\">javidfuturebot@javid-dol.uk</a>로 이메일을 보내시거나 <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">커뮤니티 게시판</a>에 남겨주세요.",
   "dl_flow_note": "OS 선택 → 압축 해제 → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code> 실행. 작업 표시줄 트레이에서 시작되며, 트레이 아이콘을 클릭하면 대시보드가 열립니다. 처음이신가요? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">사용 설명서</a>를 따라 해보세요.",
+  "hedge_mode_notice": "시작하기 전에 바이낸스 앱에서 <span class=\"whitespace-nowrap\">Futures → Position Mode</span>로 이동해 <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span>(헷지 모드)로 설정하세요.",
   "dl_label": "무료 다운로드 — 액세스 코드가 필요 없습니다",
   "dl_no_code_note": "영구 무료이며 가입이 필요 없습니다. 새 버전 소식과 지원은 <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">텔레그램 커뮤니티</a>에서 안내됩니다.",
   "dl_perk_1": "의무 없음",
@@ -1011,7 +1017,7 @@ var I18N = {
   "faq_a14": "새 버전은 이 페이지와 <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">텔레그램 채널</a>에 공지됩니다. 다운로드 후 덮어쓰기만 하면 되며 — 설정은 그대로 유지됩니다.",
   "faq_a2": "API 키는 <b class=\"text-slate-800\">암호화되어 사용자의 PC에만 로컬로 저장</b>됩니다 — 어디로도 전송되지 않으며, 출금 권한은 절대 필요하지 않습니다.",
   "faq_a3": "<b class=\"text-slate-800\">아니요.</b> 정해진 전략을 감정 없이 24시간 실행하는 도구입니다. 크립토 선물 거래는 심각한 손실 위험을 수반하므로 — 실거래 전에 반드시 Shadow Mode로 검증하세요.",
-  "faq_a4": "Shadow Mode는 <b class=\"text-slate-800\">실제 거래소의 실시간 API</b>와 <b class=\"text-slate-800\">가상 USDT</b>를 사용합니다 — 신호, 타이밍, 데이터는 실거래와 동일하며, 실제 주문만 실행되지 않습니다.",
+  "faq_a4": "Shadow Mode는 <b class=\"text-slate-800\">실제 거래소의 실시간 API</b>와 <b class=\"text-slate-800\">가상 USDT</b>를 사용합니다 — 신호, 타이밍, 데이터는 실거래와 동일하며, 실제 주문만 실행되지 않습니다. 테스트넷도 아니고 일반적인 모의투자 시뮬레이터도 아닙니다 — 그런 툴들은 실제 시장과 어긋나거나 지연될 수 있는 별도의 샌드박스 데이터를 사용합니다. Shadow Mode는 모두가 보는 것과 동일한 실시간 호가창을 기준으로 거래합니다.",
   "faq_a5": "신규 진입과 포지션 관리가 중단됩니다. 이미 보유 중인 포지션은 거래소에 그대로 남아 있으며, 봇이 재시작 시 이를 다시 감지해 관리를 재개합니다. 상시 전원이 켜진 미니 PC나 저렴한 클라우드 VM 사용을 권장합니다.",
   "faq_a6": "<b class=\"text-slate-800\">1,000 USDT 이상</b>을 권장합니다. 거래당 사이징(잔고의 최대 1/300)이 거래소 최소 명목가 기준을 넘도록 유지하기 위함입니다.",
   "faq_a7": "5단계의 청산 로직이 모든 포지션을 관리하지만, 선물 시장의 급격한 움직임에 대한 위험을 완전히 없앨 수 있는 시스템은 없습니다. 레버리지는 보수적으로 유지하세요.",
@@ -1127,7 +1133,7 @@ var I18N = {
   "security_h2": "설계부터 안전하게. 로컬. 검증 가능.",
   "security_sub": "저희를 그냥 믿어달라고 하지 않습니다 — 앱이 실행되는 동안 방화벽이나 네트워크 모니터를 직접 열어 보세요. 확인되는 연결은 바이낸스뿐입니다.",
   "shadow_cta": "다운로드 &amp; Shadow Mode 체험하기",
-  "shadow_desc": "Shadow Mode는 가상 잔고로 실시간 시장 데이터에서 모든 전략을 실행합니다 — 실제 신호, 실제 타이밍, 실주문 없음. 실제 거래소의 실시간 API를 사용하므로 실제 자금 거래와 거의 동일한 경험을 제공합니다.",
+  "shadow_desc": "Shadow Mode는 실제 거래소의 실시간 시세 데이터와 라이브 API를 그대로 사용해 모든 전략을 실행합니다 — 실전과 완전히 동일한 데이터입니다 — 다만 실제 자금 대신 가상 잔고로 거래합니다. 이는 테스트넷이나 일반적인 모의투자 시뮬레이터와는 다른 개념입니다. 테스트넷은 실제 시장과 분리된 가짜 시세로 돌아가는 별도의 샌드박스 거래소이고, 대부분의 모의투자 툴은 지연되거나 시뮬레이션된 가격을 사용합니다. Shadow Mode의 데이터는 100% 실시간 실제 데이터이며, 오직 자금만 가상입니다.",
   "shadow_h3": "단 1달러도 걸기 전에 먼저 체험해 보세요",
   "showcase_eyebrow": "실제 작동 모습",
   "showcase_h2": "목업이 아닙니다. 실제 대시보드 화면입니다.",
@@ -1206,6 +1212,7 @@ var I18N = {
   "cta_free_download": "無料ダウンロード",
   "dl_contact_note": "ご質問がありますか?<a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:javidfuturebot@javid-dol.uk\">javidfuturebot@javid-dol.uk</a>までメールするか、<a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">コミュニティ掲示板</a>でお尋ねください。",
   "dl_flow_note": "OSをクリック → 解凍 → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>を実行。システムトレイで起動し、トレイアイコンをクリックするとダッシュボードが開きます。初めての方は<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">取扱説明書</a>を参考にしてください。",
+  "hedge_mode_notice": "開始前に、Binanceアプリで<span class=\"whitespace-nowrap\">Futures → Position Mode</span>に移動し、<span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span>(ヘッジモード)に設定してください。",
   "dl_label": "無料ダウンロード — アクセスコードは不要です",
   "dl_no_code_note": "永久無料、登録不要です。新バージョンの情報やサポートは<a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Telegramコミュニティ</a>でご案内しています。",
   "dl_perk_1": "義務なし",
@@ -1222,7 +1229,7 @@ var I18N = {
   "faq_a14": "新バージョンはこのページと<a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Telegramチャンネル</a>で告知されます。ダウンロードして上書きするだけで — 設定はそのまま保持されます。",
   "faq_a2": "APIキーは<b class=\"text-slate-800\">暗号化され、あなた自身のPCにローカル保存</b>されます — どこにも送信されず、出金権限は一切不要です。",
   "faq_a3": "<b class=\"text-slate-800\">いいえ。</b>定められた戦略を感情を挟まず24時間実行するツールです。暗号資産先物取引には深刻な損失リスクが伴うため — 実運用前にShadow Modeで必ず検証してください。",
-  "faq_a4": "Shadow Modeは<b class=\"text-slate-800\">実際の取引所のライブAPI</b>と<b class=\"text-slate-800\">仮想USDT</b>を使用します — シグナル、タイミング、データは実運用と同一で、実際の注文だけが見送られます。",
+  "faq_a4": "Shadow Modeは<b class=\"text-slate-800\">実際の取引所のライブAPI</b>と<b class=\"text-slate-800\">仮想USDT</b>を使用します — シグナル、タイミング、データは実運用と同一で、実際の注文だけが見送られます。テストネットでも、一般的な模擬売買シミュレーターでもありません — それらは実際の市場からずれたり遅延したりする別のサンドボックスデータを使用します。Shadow Modeは、誰もが見ているのと同じライブ板情報を基準に取引します。",
   "faq_a5": "新規エントリーとポジション管理が停止します。すでに保有中のポジションは取引所側にそのまま残り、再起動時にボットがそれを再検知して管理を再開します。常時電源が入ったミニPCや低コストのクラウドVMの利用を推奨します。",
   "faq_a6": "<b class=\"text-slate-800\">1,000 USDT以上</b>を推奨します。1取引あたりのサイジング(残高の最大1/300)を取引所の最小名目金額基準より上に保つためです。",
   "faq_a7": "5層のイグジットロジックがすべてのポジションを管理しますが、先物市場の急変動リスクを完全になくせるシステムはありません。レバレッジは控えめに保ってください。",
@@ -1338,7 +1345,7 @@ var I18N = {
   "security_h2": "設計段階から安全。ローカル。検証可能。",
   "security_sub": "私たちを信じてくださいとは言いません — アプリの実行中にファイアウォールやネットワークモニターを開いてみてください。見える通信はBinanceだけです。",
   "shadow_cta": "ダウンロードしてShadow Modeを試す",
-  "shadow_desc": "Shadow Modeはすべての戦略をライブ市場データ上で仮想残高で実行します — 実際のシグナル、実際のタイミング、実注文はゼロ。実際の取引所のライブAPIを使用するため、実資金取引とほぼ同じ体験が得られます。",
+  "shadow_desc": "Shadow Modeは、実際の取引所のリアルタイム相場データとライブAPIをそのまま使ってすべての戦略を実行します — 実取引とまったく同じデータです — 実資金の代わりに仮想残高で取引するだけです。これはテストネットや一般的な模擬売買シミュレーターとは異なる概念です。テストネットは実際の市場と切り離された偽の価格データで動く別のサンドボックス取引所であり、多くの模擬売買ツールは遅延データやシミュレーションされた価格を使用します。Shadow Modeのデータは100%リアルタイムの実データであり、仮想なのは資金だけです。",
   "shadow_h3": "1ドルもリスクにさらす前に、まず試してみてください",
   "showcase_eyebrow": "実際の稼働画面",
   "showcase_h2": "モックアップではありません。実際のダッシュボード画面です。",
@@ -1417,6 +1424,7 @@ var I18N = {
   "cta_free_download": "免费下载",
   "dl_contact_note": "有问题?发邮件至 <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:javidfuturebot@javid-dol.uk\">javidfuturebot@javid-dol.uk</a>,或前往<a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">社区论坛</a>提问。",
   "dl_flow_note": "选择系统 → 解压 → 运行 <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>。程序会在系统托盘启动,点击托盘图标即可打开面板。第一次使用?可以参考<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">使用手册</a>。",
+  "hedge_mode_notice": "开始前,请在币安 App 中进入<span class=\"whitespace-nowrap\">Futures → Position Mode</span>,将其设置为<span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span>(对冲模式)。",
   "dl_label": "免费下载 — 无需访问码",
   "dl_no_code_note": "永久免费,无需注册。想第一时间获知新版本与技术支持?<a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">加入 Telegram 社区</a>。",
   "dl_perk_1": "无任何义务",
@@ -1433,7 +1441,7 @@ var I18N = {
   "faq_a14": "新版本会在本页面和<a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Telegram 频道</a>公布。下载后覆盖安装即可 — 设置会保留。",
   "faq_a2": "你的 API 密钥会<b class=\"text-slate-800\">加密并仅保存在你自己的电脑上</b> — 从不会被发送到任何地方,也从不需要提现权限。",
   "faq_a3": "<b class=\"text-slate-800\">不能。</b>这是一个不带情绪、24 小时执行既定策略的工具。加密货币合约交易存在严重的亏损风险 — 请务必先在 Shadow Mode 中验证,再切换实盘。",
-  "faq_a4": "Shadow Mode 使用<b class=\"text-slate-800\">真实交易所的实时 API</b>和<b class=\"text-slate-800\">虚拟 USDT</b> — 信号、时机和数据都与实盘完全一致,只是不会真正下单。",
+  "faq_a4": "Shadow Mode 使用<b class=\"text-slate-800\">真实交易所的实时 API</b>和<b class=\"text-slate-800\">虚拟 USDT</b> — 信号、时机和数据都与实盘完全一致,只是不会真正下单。这既不是模拟盘(testnet),也不是普通的模拟交易工具 —— 那些工具使用的是可能滞后或偏离真实市场的沙盒数据。Shadow Mode 交易的是所有人看到的同一个实时盘口。",
   "faq_a5": "新开仓和持仓管理会停止。已经持有的仓位仍留在交易所,重启后机器人会重新识别并恢复管理。建议使用常开的迷你主机或低成本云主机。",
   "faq_a6": "我们建议<b class=\"text-slate-800\">1,000 USDT 或以上</b>,以确保单笔仓位规模(最高为余额的 1/300)高于交易所的最小名义价值限制。",
   "faq_a7": "五层离场逻辑会管理每一个仓位,但没有任何系统能完全消除合约市场剧烈波动带来的风险。请保持保守的杠杆倍数。",
@@ -1549,7 +1557,7 @@ var I18N = {
   "security_h2": "从设计之初就安全。本地运行。可验证。",
   "security_sub": "我们不要求你盲目信任 — 应用运行时,你可以打开防火墙或网络监控自行查看。你只会看到与币安的连接。",
   "shadow_cta": "下载并体验 Shadow Mode",
-  "shadow_desc": "Shadow Mode 用虚拟余额在真实市场数据上运行每一套策略 — 真实信号,真实时机,零真实下单。它使用交易所的真实实时 API,因此体验几乎与真实资金交易完全一致。",
+  "shadow_desc": "Shadow Mode 直接使用真实交易所的实时行情数据和实盘 API 来运行每一套策略 —— 与真实交易完全相同的数据源 —— 只是用虚拟余额代替真实资金。这与模拟盘(testnet)或普通模拟交易工具是完全不同的概念:模拟盘是一个与真实市场隔离的沙盒交易所,使用虚假、脱节的行情数据;而大多数模拟交易工具使用的是延迟或模拟的价格。Shadow Mode 的数据 100% 真实、实时,只有资金是虚拟的。",
   "shadow_h3": "在你冒一分钱风险之前,先试试看",
   "showcase_eyebrow": "实际运行画面",
   "showcase_h2": "不是效果图,是真实的仪表盘界面。",
@@ -1628,6 +1636,7 @@ var I18N = {
   "cta_free_download": "Descarga gratis",
   "dl_contact_note": "¿Preguntas? Escribe a <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:javidfuturebot@javid-dol.uk\">javidfuturebot@javid-dol.uk</a> o pregunta en el <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">foro de la comunidad</a>.",
   "dl_flow_note": "Elige tu sistema operativo → descomprime → ejecuta <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. Se inicia en la bandeja del sistema; haz clic en el icono para abrir el panel. ¿Primera vez? Sigue la guía del <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manual de usuario</a>.",
+  "hedge_mode_notice": "Antes de empezar, en la app de Binance ve a <span class=\"whitespace-nowrap\">Futures → Position Mode</span> y configúralo en <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> (modo cobertura).",
   "dl_label": "Descarga gratuita: no necesitas código de acceso",
   "dl_no_code_note": "Gratis para siempre, sin registro. ¿Quieres novedades y soporte? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Únete a la comunidad de Telegram</a>.",
   "dl_perk_1": "Sin compromisos",
@@ -1644,7 +1653,7 @@ var I18N = {
   "faq_a14": "Las nuevas versiones se anuncian en esta página y en el <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">canal de Telegram</a>. Descarga y sobrescribe — la configuración se conserva.",
   "faq_a2": "Tu clave API se <b class=\"text-slate-800\">cifra y se almacena localmente en tu propio PC</b> — nunca se transmite a ningún lugar, y nunca se requiere permiso de retiro.",
   "faq_a3": "<b class=\"text-slate-800\">No.</b> Es una herramienta que ejecuta una estrategia definida las 24 horas sin emociones. El trading de futuros de criptomonedas conlleva un riesgo serio de pérdida — valida en Shadow Mode antes de pasar a real.",
-  "faq_a4": "Shadow Mode usa <b class=\"text-slate-800\">la API en vivo del exchange real</b> con <b class=\"text-slate-800\">USDT virtual</b> — las señales, los tiempos y los datos son idénticos a operar en real; solo se retienen las órdenes reales.",
+  "faq_a4": "Shadow Mode usa <b class=\"text-slate-800\">la API en vivo del exchange real</b> con <b class=\"text-slate-800\">USDT virtual</b> — las señales, los tiempos y los datos son idénticos a operar en real; solo se retienen las órdenes reales. No es un testnet ni un simulador de trading de papel genérico — esas herramientas usan datos de un entorno aislado que pueden retrasarse o diferir del mercado real. Shadow Mode opera sobre el mismo libro de órdenes en vivo que ve todo el mundo.",
   "faq_a5": "Las nuevas entradas y la gestión de posiciones se detienen. Las posiciones ya abiertas permanecen en el exchange, y el bot las vuelve a detectar y retoma su gestión al reiniciar. Se recomienda un mini PC siempre encendido o una VM en la nube de bajo coste.",
   "faq_a6": "Recomendamos <b class=\"text-slate-800\">1.000 USDT o más</b> para que el dimensionado por operación (hasta 1/300 del saldo) se mantenga por encima de los límites de valor nocional mínimo del exchange.",
   "faq_a7": "Cinco capas de lógica de salida gestionan cada posición, pero ningún sistema puede eliminar por completo el riesgo de movimientos violentos en los mercados de futuros. Mantén el apalancamiento conservador.",
@@ -1760,7 +1769,7 @@ var I18N = {
   "security_h2": "Seguro por diseño. Local. Verificable.",
   "security_sub": "En lugar de pedirte que confíes en nosotros — abre tu firewall o monitor de red mientras se ejecuta la app. La única conexión que verás es con Binance.",
   "shadow_cta": "Descargar y probar Shadow Mode",
-  "shadow_desc": "Shadow Mode ejecuta cada estrategia contra datos de mercado en vivo con un saldo virtual — señales reales, tiempos reales, cero órdenes reales. Usa la API en vivo del exchange real, por lo que la experiencia es casi idéntica a operar con dinero real.",
+  "shadow_desc": "Shadow Mode ejecuta cada estrategia con los datos de mercado en tiempo real y la API en vivo del exchange real —el mismo feed que usa el trading real— con un saldo virtual en lugar de fondos reales. Esto es un concepto distinto de un testnet o un simulador de trading de papel habitual: el testnet es un exchange de prueba separado con datos de precios falsos y desconectados, y la mayoría de las herramientas de trading simulado usan precios retrasados o simulados. Los datos de Shadow Mode son 100% reales y en vivo; solo el dinero es virtual.",
   "shadow_h3": "Pruébalo antes de arriesgar un solo dólar",
   "showcase_eyebrow": "Míralo en acción",
   "showcase_h2": "No son maquetas. Son pantallas reales del panel.",
@@ -1839,6 +1848,7 @@ var I18N = {
   "cta_free_download": "Téléchargement gratuit",
   "dl_contact_note": "Des questions ? Écrivez à <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:javidfuturebot@javid-dol.uk\">javidfuturebot@javid-dol.uk</a> ou posez votre question sur le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">forum communautaire</a>.",
   "dl_flow_note": "Cliquez sur votre système → décompressez → exécutez <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. L'app démarre dans la barre d'état système ; cliquez sur l'icône pour ouvrir le tableau de bord. Première fois ? Suivez le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manuel d'utilisation</a>.",
+  "hedge_mode_notice": "Avant de commencer, dans l'application Binance, allez dans <span class=\"whitespace-nowrap\">Futures → Position Mode</span> et réglez-le sur <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> (mode couverture).",
   "dl_label": "Téléchargement gratuit — aucun code d'accès requis",
   "dl_no_code_note": "Gratuit pour toujours, sans inscription. Pour les nouveautés et le support, <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">rejoignez la communauté Telegram</a>.",
   "dl_perk_1": "Aucun engagement",
@@ -1855,7 +1865,7 @@ var I18N = {
   "faq_a14": "Les nouvelles versions sont annoncées sur cette page et sur le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">canal Telegram</a>. Téléchargez et écrasez l'ancienne version — les paramètres sont conservés.",
   "faq_a2": "Votre clé API est <b class=\"text-slate-800\">chiffrée et stockée localement sur votre propre PC</b> — elle n'est jamais transmise où que ce soit, et l'autorisation de retrait n'est jamais requise.",
   "faq_a3": "<b class=\"text-slate-800\">Non.</b> C'est un outil qui exécute une stratégie définie 24h/24 sans émotion. Le trading de contrats à terme crypto comporte un risque de perte sérieux — validez en Shadow Mode avant de passer en réel.",
-  "faq_a4": "Le Shadow Mode utilise <b class=\"text-slate-800\">l'API en direct de la plateforme réelle</b> avec de l'<b class=\"text-slate-800\">USDT virtuel</b> — les signaux, le timing et les données sont identiques au trading réel ; seuls les ordres réels ne sont pas passés.",
+  "faq_a4": "Le Shadow Mode utilise <b class=\"text-slate-800\">l'API en direct de la plateforme réelle</b> avec de l'<b class=\"text-slate-800\">USDT virtuel</b> — les signaux, le timing et les données sont identiques au trading réel ; seuls les ordres réels ne sont pas passés. Ce n'est ni un testnet, ni un simulateur de trading papier classique — ces outils utilisent des données d'un bac à sable séparé qui peuvent être décalées ou différer du marché réel. Le Shadow Mode trade sur le même carnet d'ordres en direct que tout le monde voit.",
   "faq_a5": "Les nouvelles entrées et la gestion des positions s'arrêtent. Les positions déjà ouvertes restent sur la plateforme, et le bot les redétecte et reprend leur gestion au redémarrage. Un mini PC toujours allumé ou une VM cloud à faible coût est recommandé.",
   "faq_a6": "Nous recommandons <b class=\"text-slate-800\">1 000 USDT ou plus</b> afin que le dimensionnement par trade (jusqu'à 1/300e du solde) reste au-dessus des limites de valeur notionnelle minimale de la plateforme.",
   "faq_a7": "Cinq couches de logique de sortie gèrent chaque position, mais aucun système ne peut éliminer totalement le risque de mouvements violents sur les marchés à terme. Gardez un effet de levier conservateur.",
@@ -1971,7 +1981,7 @@ var I18N = {
   "security_h2": "Sécurisé par conception. Local. Vérifiable.",
   "security_sub": "Plutôt que de vous demander de nous faire confiance — ouvrez votre pare-feu ou votre moniteur réseau pendant que l'application tourne. La seule connexion que vous verrez est celle vers Binance.",
   "shadow_cta": "Télécharger et essayer le Shadow Mode",
-  "shadow_desc": "Le Shadow Mode exécute chaque stratégie sur des données de marché en direct avec un solde virtuel — signaux réels, timing réel, zéro ordre réel. Il utilise l'API en direct de la plateforme réelle, donc l'expérience est presque identique au trading avec de l'argent réel.",
+  "shadow_desc": "Le Shadow Mode exécute chaque stratégie avec les données de marché en direct et l'API en direct de la plateforme réelle — exactement le même flux que le trading réel — mais avec un solde virtuel à la place de fonds réels. C'est un concept différent d'un testnet ou d'un simulateur de trading papier classique : le testnet est une plateforme de test séparée avec des données de prix factices et déconnectées, et la plupart des outils de trading simulé utilisent des prix retardés ou simulés. Les données du Shadow Mode sont 100 % réelles et en direct ; seul l'argent est virtuel.",
   "shadow_h3": "Testez-le avant de risquer le moindre dollar",
   "showcase_eyebrow": "Voyez-le fonctionner",
   "showcase_h2": "Ce ne sont pas des maquettes. Ce sont de vrais écrans du tableau de bord.",

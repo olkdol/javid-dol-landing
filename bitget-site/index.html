@@ -445,7 +445,7 @@
   <div class="grid items-center gap-8 rounded-2xl border border-indigo-200 bg-indigo-50/60 p-9 sm:grid-cols-[1fr_auto]">
     <div>
       <h3 class="flex items-center gap-2 text-[22px] font-bold text-slate-900" data-i18n="shadow_title"><i data-lucide="flask-conical" class="h-6 w-6 text-indigo-600"></i> Try It Before You Risk a Single Dollar</h3>
-      <p class="mt-2.5 max-w-xl text-[14.5px] leading-relaxed text-slate-600" data-i18n="shadow_desc">Shadow Mode runs every strategy against live market data with a virtual balance — real signals, real timing, zero real orders. It uses the real exchange's live API, so the experience is nearly identical to trading with real money.</p>
+      <p class="mt-2.5 max-w-xl text-[14.5px] leading-relaxed text-slate-600" data-i18n="shadow_desc">Shadow Mode runs every strategy on the exchange's real-time live market data and live API — the exact same feed real trading uses — with a virtual balance standing in for real funds. That's a different thing from a testnet or a typical paper-trading simulator: a testnet is a separate sandbox exchange with its own fake, disconnected price data, and most mock-trading tools run on delayed or simulated prices. Shadow Mode's data is 100% real and live; only the money is virtual.</p>
     </div>
     <a href="#download" class="inline-flex shrink-0 items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-lg shadow-indigo-600/25 transition hover:bg-indigo-700" data-i18n="shadow_cta">Download &amp; Try Shadow Mode</a>
   </div>
@@ -560,7 +560,7 @@
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900" data-i18n="faq_q4">How close is Shadow Mode to real trading?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
-      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a4">Shadow Mode uses <b class="text-slate-800">the real exchange's live API</b> with <b class="text-slate-800">virtual USDT</b> — signals, timing, and data are identical to live trading; only the real orders are withheld.</div>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a4">Shadow Mode uses <b class="text-slate-800">the real exchange's live API</b> with <b class="text-slate-800">virtual USDT</b> — signals, timing, and data are identical to live trading; only the real orders are withheld. This is not a testnet and not a generic paper-trading simulator — those run on separate sandbox data that can lag or diverge from the real market. Shadow Mode trades against the same live order book everyone else sees.</div>
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900" data-i18n="faq_q5">What happens if my PC shuts down mid-trade?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
@@ -845,7 +845,7 @@ var I18N = {
     exch_desc: 'One exchange, done properly — 500+ symbols, direct WebSocket connection, 0.1s latency. Sign up through our official partner link and pay Bitget the exact same fees; that referral rebate is what keeps JaviD free forever.',
     exch_cta: 'Create Bitget Account <i class="h-4 w-4" data-lucide="arrow-right"></i>',
     shadow_title: '<i class="h-6 w-6 text-indigo-600" data-lucide="flask-conical"></i> Try It Before You Risk a Single Dollar',
-    shadow_desc: 'Shadow Mode runs every strategy against live market data with a virtual balance — real signals, real timing, zero real orders. It uses the real exchange\'s live API, so the experience is nearly identical to trading with real money.',
+    shadow_desc: 'Shadow Mode runs every strategy on the exchange\'s real-time live market data and live API — the exact same feed real trading uses — with a virtual balance standing in for real funds. That\'s a different thing from a testnet or a typical paper-trading simulator: a testnet is a separate sandbox exchange with its own fake, disconnected price data, and most mock-trading tools run on delayed or simulated prices. Shadow Mode\'s data is 100% real and live; only the money is virtual.',
     shadow_cta: 'Download &amp; Try Shadow Mode',
     size_title: 'Why 1,000 USDT Minimum',
     size_desc: 'Each entry sizes at up to 1/300th of your balance per trade, spreading risk across dozens of positions. Below ~1,000 USDT, exchange minimum-notional limits and fees start cutting into the edge.',
@@ -901,7 +901,7 @@ var I18N = {
     faq_q3: 'Are profits guaranteed?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a3: '<b class="text-slate-800">No.</b> It\'s a tool that executes a defined strategy 24/7 without emotion. Crypto futures carry a serious risk of loss — validate in Shadow Mode before going live.',
     faq_q4: 'How close is Shadow Mode to real trading?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a4: 'Shadow Mode uses <b class="text-slate-800">the real exchange\'s live API</b> with <b class="text-slate-800">virtual USDT</b> — signals, timing, and data are identical to live trading; only the real orders are withheld.',
+    faq_a4: 'Shadow Mode uses <b class="text-slate-800">the real exchange\'s live API</b> with <b class="text-slate-800">virtual USDT</b> — signals, timing, and data are identical to live trading; only the real orders are withheld. This is not a testnet and not a generic paper-trading simulator — those run on separate sandbox data that can lag or diverge from the real market. Shadow Mode trades against the same live order book everyone else sees.',
     faq_q5: 'What happens if my PC shuts down mid-trade?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a5: 'New entries and position management stop. Positions already open remain on the exchange, and the bot re-detects and resumes managing them on restart. An always-on mini PC or low-cost cloud VM is recommended.',
     faq_q6: 'What\'s the minimum capital?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1053,7 +1053,7 @@ var I18N = {
     exch_desc: '하나의 거래소를 제대로 — 500개 이상 심볼, 직접 웹소켓 연결, 0.1초 지연 시간. 공식 파트너 링크로 가입해도 수수료는 동일하며, 그 리퍼럴 리베이트 덕분에 JaviD는 영구 무료로 운영됩니다.',
     exch_cta: '비트겟 계정 만들기 <i class="h-4 w-4" data-lucide="arrow-right"></i>',
     shadow_title: '<i class="h-6 w-6 text-indigo-600" data-lucide="flask-conical"></i> 단 1달러도 걸기 전에 먼저 체험해보세요',
-    shadow_desc: '섀도우 모드는 가상 잔고로 실시간 시세 데이터에 맞춰 모든 전략을 실행합니다 — 실제 신호, 실제 타이밍, 실제 주문은 0건. 실제 거래소의 라이브 API를 그대로 사용하므로 실제 자금으로 거래하는 것과 거의 동일한 경험을 제공합니다.',
+    shadow_desc: '섀도우 모드는 실제 거래소의 실시간 시세 데이터와 라이브 API를 그대로 사용해 모든 전략을 실행합니다 — 실전과 완전히 동일한 데이터입니다 — 다만 실제 자금 대신 가상 잔고로 거래합니다. 이는 테스트넷이나 일반적인 모의투자 시뮬레이터와는 다른 개념입니다. 테스트넷은 실제 시장과 분리된 가짜 시세로 돌아가는 별도의 샌드박스 거래소이고, 대부분의 모의투자 툴은 지연되거나 시뮬레이션된 가격을 사용합니다. 섀도우 모드의 데이터는 100% 실시간 실제 데이터이며, 오직 자금만 가상입니다.',
     shadow_cta: '다운로드 &amp; 섀도우 모드 체험하기',
     size_title: '왜 최소 1,000 USDT인가',
     size_desc: '각 진입은 거래당 잔고의 최대 1/300까지 사이징되어, 리스크를 수십 개 포지션에 분산시킵니다. 약 1,000 USDT 미만에서는 거래소 최소 명목가 제한과 수수료가 수익 우위를 갉아먹기 시작합니다.',
@@ -1109,7 +1109,7 @@ var I18N = {
     faq_q3: '수익이 보장되나요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a3: '<b class="text-slate-800">아니요.</b> 감정 개입 없이 정해진 전략을 24시간 실행하는 도구일 뿐입니다. 크립토 선물 거래에는 심각한 손실 위험이 따르므로, 실전 전 섀도우 모드에서 반드시 검증하세요.',
     faq_q4: '섀도우 모드는 실제 거래와 얼마나 비슷한가요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a4: '섀도우 모드는 <b class="text-slate-800">실제 거래소의 라이브 API</b>를 <b class="text-slate-800">가상 USDT</b>로 사용합니다 — 신호, 타이밍, 데이터는 실전과 동일하며 실제 주문만 보류됩니다.',
+    faq_a4: '섀도우 모드는 <b class="text-slate-800">실제 거래소의 라이브 API</b>를 <b class="text-slate-800">가상 USDT</b>로 사용합니다 — 신호, 타이밍, 데이터는 실전과 동일하며 실제 주문만 보류됩니다. 테스트넷도 아니고 일반적인 모의투자 시뮬레이터도 아닙니다 — 그런 툴들은 실제 시장과 어긋나거나 지연될 수 있는 별도의 샌드박스 데이터를 사용합니다. 섀도우 모드는 모두가 보는 것과 동일한 실시간 호가창을 기준으로 거래합니다.',
     faq_q5: 'PC가 매매 도중 꺼지면 어떻게 되나요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a5: '신규 진입과 포지션 관리가 중단됩니다. 이미 열린 포지션은 거래소에 그대로 남아 있으며, 재시작 시 봇이 이를 다시 인식해 관리를 재개합니다. 상시 켜져 있는 미니 PC나 저비용 클라우드 VM 사용을 권장합니다.',
     faq_q6: '최소 자본금은 얼마인가요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1261,7 +1261,7 @@ var I18N = {
     exch_desc: '1つの取引所を徹底的に — 500以上の銘柄、直接WebSocket接続、0.1秒のレイテンシー。公式パートナーリンクから登録しても手数料はまったく同じで、その紹介リベートがJaviDを永久無料にしています。',
     exch_cta: 'Bitgetアカウントを作成 <i class="h-4 w-4" data-lucide="arrow-right"></i>',
     shadow_title: '<i class="h-6 w-6 text-indigo-600" data-lucide="flask-conical"></i> 1ドルもリスクにさらす前にまず試す',
-    shadow_desc: 'シャドーモードは仮想残高でライブ市場データに対しすべての戦略を実行します — 実際のシグナル、実際のタイミング、実注文はゼロ。実際の取引所のライブAPIを使用するため、実資金での取引とほぼ同じ体験が得られます。',
+    shadow_desc: 'シャドーモードは、実際の取引所のリアルタイム相場データとライブAPIをそのまま使ってすべての戦略を実行します — 実取引とまったく同じデータです — 実資金の代わりに仮想残高で取引するだけです。これはテストネットや一般的な模擬売買シミュレーターとは異なる概念です。テストネットは実際の市場と切り離された偽の価格データで動く別のサンドボックス取引所であり、多くの模擬売買ツールは遅延データやシミュレーションされた価格を使用します。シャドーモードのデータは100%リアルタイムの実データであり、仮想なのは資金だけです。',
     shadow_cta: 'ダウンロード &amp; シャドーモードを試す',
     size_title: 'なぜ最低1,000 USDTが必要か',
     size_desc: '各エントリーは取引あたり残高の最大1/300までサイジングされ、リスクが数十のポジションに分散されます。約1,000 USDTを下回ると、取引所の最小想定元本の制限や手数料が優位性を削り始めます。',
@@ -1317,7 +1317,7 @@ var I18N = {
     faq_q3: '利益は保証されますか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a3: '<b class="text-slate-800">いいえ。</b>感情を挟まず、24時間365日決められた戦略を実行するツールです。仮想通貨先物取引には重大な損失リスクが伴うため、本番稼働の前にシャドーモードで必ず検証してください。',
     faq_q4: 'シャドーモードは実際の取引とどれくらい近いですか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a4: 'シャドーモードは<b class="text-slate-800">実際の取引所のライブAPI</b>を<b class="text-slate-800">仮想USDT</b>で使用します — シグナル、タイミング、データは実取引と同一で、実際の発注のみ行われません。',
+    faq_a4: 'シャドーモードは<b class="text-slate-800">実際の取引所のライブAPI</b>を<b class="text-slate-800">仮想USDT</b>で使用します — シグナル、タイミング、データは実取引と同一で、実際の発注のみ行われません。テストネットでも、一般的な模擬売買シミュレーターでもありません — それらは実際の市場からずれたり遅延したりする別のサンドボックスデータを使用します。シャドーモードは、誰もが見ているのと同じライブ板情報を基準に取引します。',
     faq_q5: '取引中にPCがシャットダウンしたらどうなりますか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a5: '新規エントリーとポジション管理が停止します。すでに保有中のポジションは取引所側にそのまま残り、再起動時にボットが自動で検知して管理を再開します。常時稼働のミニPCまたは低コストのクラウドVMの利用をおすすめします。',
     faq_q6: '最低必要資金はいくらですか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1469,7 +1469,7 @@ var I18N = {
     exch_desc: '专注一个交易所，做到极致 — 500 多个交易对，直连 WebSocket，0.1 秒延迟。通过我们的官方合作伙伴链接注册，手续费与直接注册完全相同；正是这笔推荐返佣让 JaviD 得以永久免费。',
     exch_cta: '创建 Bitget 账户 <i class="h-4 w-4" data-lucide="arrow-right"></i>',
     shadow_title: '<i class="h-6 w-6 text-indigo-600" data-lucide="flask-conical"></i> 在承担任何风险之前先试用',
-    shadow_desc: '影子模式以虚拟余额针对实时行情数据运行每一套策略 — 真实信号、真实时机、零真实订单。它使用真实交易所的实时 API，因此体验几乎与真实资金交易一致。',
+    shadow_desc: '影子模式直接使用真实交易所的实时行情数据和实盘 API 来运行每一套策略 —— 与真实交易完全相同的数据源 —— 只是用虚拟余额代替真实资金。这与模拟盘(testnet)或普通模拟交易工具是完全不同的概念：模拟盘是一个与真实市场隔离的沙盒交易所，使用虚假、脱节的行情数据；而大多数模拟交易工具使用的是延迟或模拟的价格。影子模式的数据 100% 真实、实时，只有资金是虚拟的。',
     shadow_cta: '下载 &amp; 体验影子模式',
     size_title: '为何建议最低 1,000 USDT',
     size_desc: '每笔入场最高按余额的 1/300 计算仓位，将风险分散到数十个持仓中。若余额低于约 1,000 USDT，交易所的最小名义价值限制和手续费将开始侵蚀策略优势。',
@@ -1525,7 +1525,7 @@ var I18N = {
     faq_q3: '能保证盈利吗？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a3: '<b class="text-slate-800">不能。</b>它只是一个 24/7 不受情绪影响、严格执行既定策略的工具。加密货币合约交易存在严重的亏损风险 — 请务必先在影子模式中验证，再切换实盘。',
     faq_q4: '影子模式与真实交易有多接近？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a4: '影子模式使用<b class="text-slate-800">真实交易所的实时 API</b>，配合<b class="text-slate-800">虚拟 USDT</b> — 信号、时机与数据均与实盘完全一致，只是不会真正下单。',
+    faq_a4: '影子模式使用<b class="text-slate-800">真实交易所的实时 API</b>，配合<b class="text-slate-800">虚拟 USDT</b> — 信号、时机与数据均与实盘完全一致，只是不会真正下单。这既不是模拟盘(testnet)，也不是普通的模拟交易工具 —— 那些工具使用的是可能滞后或偏离真实市场的沙盒数据。影子模式交易的是所有人看到的同一个实时盘口。',
     faq_q5: '如果我的电脑在交易过程中关机会怎样？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a5: '新的入场和仓位管理会停止。已持有的仓位仍保留在交易所，机器人重启后会自动检测并恢复对其管理。建议使用常开的迷你主机或低成本云端虚拟机。',
     faq_q6: '最低需要多少资金？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1677,7 +1677,7 @@ var I18N = {
     exch_desc: 'Un solo exchange, hecho bien — más de 500 símbolos, conexión directa por WebSocket, 0.1 s de latencia. Regístrate con nuestro enlace oficial de socio y paga a Bitget exactamente las mismas comisiones; ese reembolso por referido es lo que mantiene a JaviD gratis para siempre.',
     exch_cta: 'Crear cuenta en Bitget <i class="h-4 w-4" data-lucide="arrow-right"></i>',
     shadow_title: '<i class="h-6 w-6 text-indigo-600" data-lucide="flask-conical"></i> Pruébalo antes de arriesgar un solo dólar',
-    shadow_desc: 'El Modo Shadow ejecuta cada estrategia con datos de mercado en vivo y un saldo virtual — señales reales, tiempos reales, cero órdenes reales. Usa la API en vivo del exchange real, por lo que la experiencia es prácticamente idéntica a operar con dinero real.',
+    shadow_desc: 'El Modo Shadow ejecuta cada estrategia con los datos de mercado en tiempo real y la API en vivo del exchange real — el mismo feed que usa el trading real — con un saldo virtual en lugar de fondos reales. Esto es un concepto distinto de un testnet o un simulador de trading de papel habitual: el testnet es un exchange de prueba separado con datos de precios falsos y desconectados, y la mayoría de las herramientas de trading simulado usan precios retrasados o simulados. Los datos del Modo Shadow son 100% reales y en vivo; solo el dinero es virtual.',
     shadow_cta: 'Descarga &amp; prueba el Modo Shadow',
     size_title: 'Por qué recomendamos un mínimo de 1.000 USDT',
     size_desc: 'Cada entrada se dimensiona hasta 1/300 de tu saldo por operación, repartiendo el riesgo en decenas de posiciones. Por debajo de aproximadamente 1.000 USDT, los límites de nocional mínimo del exchange y las comisiones empiezan a reducir la ventaja.',
@@ -1733,7 +1733,7 @@ var I18N = {
     faq_q3: '¿Se garantizan las ganancias?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a3: '<b class="text-slate-800">No.</b> Es una herramienta que ejecuta una estrategia definida 24/7 sin emociones. Los futuros de criptomonedas conllevan un riesgo serio de pérdida — valida en Modo Shadow antes de pasar a real.',
     faq_q4: '¿Qué tan parecido es el Modo Shadow al trading real?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a4: 'El Modo Shadow usa <b class="text-slate-800">la API en vivo del exchange real</b> con <b class="text-slate-800">USDT virtual</b> — señales, tiempos y datos son idénticos al trading real; solo se retienen las órdenes reales.',
+    faq_a4: 'El Modo Shadow usa <b class="text-slate-800">la API en vivo del exchange real</b> con <b class="text-slate-800">USDT virtual</b> — señales, tiempos y datos son idénticos al trading real; solo se retienen las órdenes reales. No es un testnet ni un simulador de trading de papel genérico — esas herramientas usan datos de un entorno aislado que pueden retrasarse o diferir del mercado real. El Modo Shadow opera sobre el mismo libro de órdenes en vivo que ve todo el mundo.',
     faq_q5: '¿Qué pasa si mi PC se apaga en medio de una operación?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a5: 'Las nuevas entradas y la gestión de posiciones se detienen. Las posiciones ya abiertas permanecen en el exchange, y el bot las detecta de nuevo y retoma su gestión al reiniciar. Se recomienda un mini PC siempre encendido o una VM en la nube de bajo coste.',
     faq_q6: '¿Cuál es el capital mínimo?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1885,7 +1885,7 @@ var I18N = {
     exch_desc: 'Un seul exchange, mais fait correctement — plus de 500 symboles, connexion WebSocket directe, latence de 0,1 s. Inscrivez-vous via notre lien partenaire officiel et payez à Bitget exactement les mêmes frais ; c\'est ce reversement de parrainage qui permet à JaviD de rester gratuit à vie.',
     exch_cta: 'Créer un compte Bitget <i class="h-4 w-4" data-lucide="arrow-right"></i>',
     shadow_title: '<i class="h-6 w-6 text-indigo-600" data-lucide="flask-conical"></i> Essayez-le avant de risquer le moindre dollar',
-    shadow_desc: 'Le Mode Shadow exécute chaque stratégie sur des données de marché en direct avec un solde virtuel — signaux réels, timing réel, zéro ordre réel. Il utilise l\'API en direct du véritable exchange, ce qui rend l\'expérience quasiment identique au trading avec de l\'argent réel.',
+    shadow_desc: 'Le Mode Shadow exécute chaque stratégie avec les données de marché en direct et l\'API en direct du véritable exchange — exactement le même flux que le trading réel — mais avec un solde virtuel à la place de fonds réels. C\'est un concept différent d\'un testnet ou d\'un simulateur de trading papier classique : le testnet est une plateforme de test séparée avec des données de prix factices et déconnectées, et la plupart des outils de trading simulé utilisent des prix retardés ou simulés. Les données du Mode Shadow sont 100 % réelles et en direct ; seul l\'argent est virtuel.',
     shadow_cta: 'Télécharger &amp; essayer le Mode Shadow',
     size_title: 'Pourquoi un minimum de 1 000 USDT',
     size_desc: 'Chaque entrée est dimensionnée jusqu\'à 1/300ᵉ de votre solde par trade, répartissant le risque sur des dizaines de positions. En dessous d\'environ 1 000 USDT, les limites de notionnel minimum de l\'exchange et les frais commencent à entamer l\'avantage.',
@@ -1941,7 +1941,7 @@ var I18N = {
     faq_q3: 'Les profits sont-ils garantis ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a3: '<b class="text-slate-800">Non.</b> C\'est un outil qui exécute une stratégie définie 24h/24 et 7j/7 sans émotion. Les futures crypto comportent un risque de perte sérieux — validez en Mode Shadow avant de passer en réel.',
     faq_q4: 'Le Mode Shadow est-il proche du trading réel ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a4: 'Le Mode Shadow utilise <b class="text-slate-800">l\'API en direct du véritable exchange</b> avec des <b class="text-slate-800">USDT virtuels</b> — signaux, timing et données sont identiques au trading réel ; seuls les ordres réels sont retenus.',
+    faq_a4: 'Le Mode Shadow utilise <b class="text-slate-800">l\'API en direct du véritable exchange</b> avec des <b class="text-slate-800">USDT virtuels</b> — signaux, timing et données sont identiques au trading réel ; seuls les ordres réels sont retenus. Ce n\'est ni un testnet, ni un simulateur de trading papier classique — ces outils utilisent des données d\'un bac à sable séparé qui peuvent être décalées ou différer du marché réel. Le Mode Shadow trade sur le même carnet d\'ordres en direct que tout le monde voit.',
     faq_q5: 'Que se passe-t-il si mon PC s\'éteint en pleine opération ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a5: 'Les nouvelles entrées et la gestion des positions s\'arrêtent. Les positions déjà ouvertes restent sur l\'exchange, et le bot les redétecte et reprend leur gestion au redémarrage. Un mini PC toujours allumé ou une VM cloud à bas coût est recommandé.',
     faq_q6: 'Quel est le capital minimum ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
