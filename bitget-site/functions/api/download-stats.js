@@ -33,30 +33,72 @@ export async function onRequestGet({ request, env }) {
   }
   if (!env.BOARD_DB) return json({ error: "not_configured" }, 500);
 
-  const [byPlatform, totalRow, todayRow, last7Row] = await Promise.all([
-    env.BOARD_DB.prepare(
-      `SELECT platform, COUNT(*) AS count FROM download_events WHERE site = ? GROUP BY platform`
-    )
-      .bind(SITE)
-      .all(),
-    env.BOARD_DB.prepare(`SELECT COUNT(*) AS count FROM download_events WHERE site = ?`)
-      .bind(SITE)
-      .first(),
-    env.BOARD_DB.prepare(
-      `SELECT COUNT(*) AS count FROM download_events WHERE site = ? AND downloaded_at >= date('now')`
-    )
-      .bind(SITE)
-      .first(),
-    env.BOARD_DB.prepare(
-      `SELECT COUNT(*) AS count FROM download_events WHERE site = ? AND downloaded_at >= datetime('now', '-7 days')`
-    )
-      .bind(SITE)
-      .first(),
-  ]);
+  const [byPlatform, totalRow, todayRow, last7Row, bySource, byReferrer, byCampaign, byCountry] =
+    await Promise.all([
+      env.BOARD_DB.prepare(
+        `SELECT platform, COUNT(*) AS count FROM download_events WHERE site = ? GROUP BY platform`
+      )
+        .bind(SITE)
+        .all(),
+      env.BOARD_DB.prepare(`SELECT COUNT(*) AS count FROM download_events WHERE site = ?`)
+        .bind(SITE)
+        .first(),
+      env.BOARD_DB.prepare(
+        `SELECT COUNT(*) AS count FROM download_events WHERE site = ? AND downloaded_at >= date('now')`
+      )
+        .bind(SITE)
+        .first(),
+      env.BOARD_DB.prepare(
+        `SELECT COUNT(*) AS count FROM download_events WHERE site = ? AND downloaded_at >= datetime('now', '-7 days')`
+      )
+        .bind(SITE)
+        .first(),
+      // 아래 4개는 최근 30일 기준 분해 — utm_source/referrer_host/utm_campaign/country
+      // 컬럼이 없는 과거 행(NULL)은 각각 direct/(none)/제외/unknown 으로 처리한다.
+      env.BOARD_DB.prepare(
+        `SELECT COALESCE(utm_source, 'direct') AS k, COUNT(*) AS count
+           FROM download_events
+          WHERE site = ? AND downloaded_at >= datetime('now', '-30 days')
+          GROUP BY k`
+      )
+        .bind(SITE)
+        .all(),
+      env.BOARD_DB.prepare(
+        `SELECT COALESCE(referrer_host, '(none)') AS k, COUNT(*) AS count
+           FROM download_events
+          WHERE site = ? AND downloaded_at >= datetime('now', '-30 days')
+          GROUP BY k`
+      )
+        .bind(SITE)
+        .all(),
+      env.BOARD_DB.prepare(
+        `SELECT utm_campaign AS k, COUNT(*) AS count
+           FROM download_events
+          WHERE site = ? AND downloaded_at >= datetime('now', '-30 days')
+            AND utm_campaign IS NOT NULL
+          GROUP BY k`
+      )
+        .bind(SITE)
+        .all(),
+      env.BOARD_DB.prepare(
+        `SELECT COALESCE(country, 'unknown') AS k, COUNT(*) AS count
+           FROM download_events
+          WHERE site = ? AND downloaded_at >= datetime('now', '-30 days')
+          GROUP BY k`
+      )
+        .bind(SITE)
+        .all(),
+    ]);
 
   const platforms = { windows: 0, mac: 0 };
   for (const row of byPlatform.results || []) {
     platforms[row.platform] = row.count;
+  }
+
+  function toObject(result) {
+    const out = {};
+    for (const row of result.results || []) out[row.k] = row.count;
+    return out;
   }
 
   return json({
@@ -65,5 +107,9 @@ export async function onRequestGet({ request, env }) {
     today: todayRow ? todayRow.count : 0,
     last_7_days: last7Row ? last7Row.count : 0,
     by_platform: platforms,
+    by_source: toObject(bySource),
+    by_referrer: toObject(byReferrer),
+    by_campaign: toObject(byCampaign),
+    by_country: toObject(byCountry),
   });
 }

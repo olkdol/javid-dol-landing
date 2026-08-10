@@ -36,11 +36,29 @@ function pickPlatform(value) {
   return "windows";
 }
 
-function logDownload(env, ctx, platform) {
+// 값이 없으면 NULL, 있으면 64자로 잘라서 저장 (개인정보 아님 — IP/UA는 절대 저장하지 않는다).
+function clip(value) {
+  if (!value) return null;
+  const s = String(value).slice(0, 64);
+  return s.length ? s : null;
+}
+
+function logDownload(env, ctx, request, platform) {
   if (!env.BOARD_DB) return;
+  const url = new URL(request.url);
+  const referrerHost = clip(url.searchParams.get("r"));
+  const utmSource = clip(url.searchParams.get("us"));
+  const utmMedium = clip(url.searchParams.get("um"));
+  const utmCampaign = clip(url.searchParams.get("uc"));
+  const landingPath = clip(url.searchParams.get("lp"));
+  const country = clip(request.cf && request.cf.country);
   const task = env.BOARD_DB
-    .prepare(`INSERT INTO download_events (site, platform, downloaded_at) VALUES (?, ?, ?)`)
-    .bind(SITE, platform, new Date().toISOString())
+    .prepare(
+      `INSERT INTO download_events
+         (site, platform, downloaded_at, referrer_host, utm_source, utm_medium, utm_campaign, landing_path, country)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    )
+    .bind(SITE, platform, new Date().toISOString(), referrerHost, utmSource, utmMedium, utmCampaign, landingPath, country)
     .run()
     .catch(() => {});
   if (ctx && ctx.waitUntil) ctx.waitUntil(task);
@@ -70,7 +88,7 @@ async function serve(env, platform) {
 export async function onRequestGet({ request, env, ctx }) {
   const url = new URL(request.url);
   const platform = pickPlatform(url.searchParams.get("platform"));
-  logDownload(env, ctx, platform);
+  logDownload(env, ctx, request, platform);
   return serve(env, platform);
 }
 
@@ -92,7 +110,7 @@ export async function onRequestPost({ request, env, ctx }) {
     body = {};
   }
   const platform = pickPlatform(body.platform);
-  logDownload(env, ctx, platform);
+  logDownload(env, ctx, request, platform);
   return serve(env, platform);
 }
 

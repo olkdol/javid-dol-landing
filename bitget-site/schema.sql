@@ -29,9 +29,21 @@ CREATE TABLE IF NOT EXISTS live_status (
 
 -- One row per successful download. Read via
 -- GET /api/download-stats?key=<STATS_KEY> on bg.javidtrading.com.
+--
+-- referrer_host/utm_*/landing_path/country capture where the download came
+-- from — see REQUEST_landingagent_downloadattribution.md. On a DB that
+-- already has this table without these columns, run migration_download_source.sql
+-- instead (ALTER TABLE) — CREATE TABLE IF NOT EXISTS won't add columns to an
+-- existing table.
 CREATE TABLE IF NOT EXISTS download_events (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   site TEXT NOT NULL,
   platform TEXT NOT NULL,
-  downloaded_at TEXT NOT NULL
+  downloaded_at TEXT NOT NULL,
+  referrer_host TEXT,
+  utm_source TEXT,
+  utm_medium TEXT,
+  utm_campaign TEXT,
+  landing_path TEXT,
+  country TEXT
 );

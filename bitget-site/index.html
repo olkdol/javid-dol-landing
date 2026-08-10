@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+<script>
+// 다운로드 유입 출처 캡처 — 첫 진입 시 한 번만 기록, 이후 사이트 내 이동으로는 덮어쓰지 않는다.
+// (마케팅팀 REQUEST_landingagent_downloadattribution.md 참고)
+(function captureSource() {
+  try {
+    if (sessionStorage.getItem("jfb_src")) return;
+    var q = new URLSearchParams(location.search);
+    var refHost = "";
+    try { refHost = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) {}
+    if (refHost && refHost.endsWith("javidtrading.com")) refHost = ""; // 우리 사이트 내부 이동은 출처가 아니다
+    sessionStorage.setItem("jfb_src", JSON.stringify({
+      r: refHost,
+      us: q.get("utm_source") || "",
+      um: q.get("utm_medium") || "",
+      uc: q.get("utm_campaign") || "",
+      lp: location.pathname,
+    }));
+  } catch (e) {}
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JaviD Future Bot — Automated Bitget Futures Trading Bot, 24/7 | Free Crypto Auto Trading</title>
@@ -616,6 +636,28 @@
       <a href="/api/download?platform=windows" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</a>
       <a href="/api/download?platform=mac" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</a>
     </div>
+    <script>
+    // 다운로드 클릭 시 캡처해둔 유입 출처를 쿼리로 첨부. href는 그대로 두고
+    // 클릭 시점에 갱신하므로 브라우저 네이티브 다운로드 동작이 유지된다.
+    (function attachDownloadSource() {
+      document.querySelectorAll('a[href^="/api/download"]').forEach(function (a) {
+        a.addEventListener("click", function () {
+          try {
+            var raw = sessionStorage.getItem("jfb_src");
+            if (!raw) return;
+            var s = JSON.parse(raw);
+            var u = new URL(a.href, location.href);
+            if (s.r) u.searchParams.set("r", s.r);
+            if (s.us) u.searchParams.set("us", s.us);
+            if (s.um) u.searchParams.set("um", s.um);
+            if (s.uc) u.searchParams.set("uc", s.uc);
+            if (s.lp) u.searchParams.set("lp", s.lp);
+            a.href = u.pathname + u.search;
+          } catch (e) {}
+        });
+      });
+    })();
+    </script>
     <p class="mt-3.5 text-[12.5px] text-slate-400" data-i18n="dl_bitget_note">Don't have a Bitget account yet? <a href="https://partner.bitget.com/bg/javid003" target="_blank" rel="noopener" class="font-bold text-indigo-600 hover:underline">Sign up through our official partner link</a>.</p>
   </div>
 

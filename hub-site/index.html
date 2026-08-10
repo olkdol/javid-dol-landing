@@ -288,6 +288,25 @@
 <div id="toast"></div>
 
 <script>
+// 허브를 거쳐 bn/bg 로 이동할 때 UTM 유실 방지 — 현재 쿼리스트링을 bn/bg 로 가는 모든 링크
+// (거래소 카드, 퀵다운로드 버튼, 푸터 링크)에 그대로 이어붙인다.
+// (마케팅팀 REQUEST_landingagent_downloadattribution.md 참고: 이게 빠지면 허브 경유 유입이 전부 direct 로 잡힘)
+(function forwardQueryToExchangeLinks() {
+  try {
+    if (!location.search) return;
+    var params = new URLSearchParams(location.search);
+    document.querySelectorAll('a[href^="https://bn.javidtrading.com"], a[href^="https://bg.javidtrading.com"]').forEach(function (a) {
+      try {
+        var u = new URL(a.href);
+        params.forEach(function (v, k) { u.searchParams.set(k, v); });
+        a.href = u.toString();
+      } catch (e) {}
+    });
+  } catch (e) {}
+})();
+</script>
+
+<script>
 var I18N = {
   en: {
     kicker: "Multi-Exchange Auto Trading",
