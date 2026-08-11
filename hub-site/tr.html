@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ücretsiz Otomatik Alım Satım Programı — Kripto Vadeli İşlem Otomasyonu (Binance·Bitget) | JaviD Future Bot</title>
+<meta name="description" content="Ücretsiz otomatik alım satım programı JaviD Future Bot — Binance ve Bitget USDⓈ-M kripto vadeli işlemlerinde 7/24 otomatik alım satım yapar. BTC, ETH, XAU dahil 500'den fazla sembol arasından seçim yapın. API anahtarınız ve fonlarınız kendi borsa hesabınızda kalır, emirler kendi bilgisayarınızda çalıştırılır. Windows ve Mac desteklenir, abonelik ücreti yoktur. Kaldıraçlı vadeli işlemler anaparanın tamamının kaybedilmesi riski taşır.">
+<link rel="alternate" hreflang="en" href="https://www.javidtrading.com/">
+<link rel="alternate" hreflang="ko" href="https://www.javidtrading.com/ko">
+<link rel="alternate" hreflang="ja" href="https://www.javidtrading.com/ja">
+<link rel="alternate" hreflang="es" href="https://www.javidtrading.com/es">
+<link rel="alternate" hreflang="fr" href="https://www.javidtrading.com/fr">
+<link rel="alternate" hreflang="vi" href="https://www.javidtrading.com/vi">
+<link rel="alternate" hreflang="tr" href="https://www.javidtrading.com/tr">
+<link rel="alternate" hreflang="pt" href="https://www.javidtrading.com/pt">
+<link rel="alternate" hreflang="x-default" href="https://www.javidtrading.com/">
+<link rel="canonical" href="https://www.javidtrading.com/tr">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:title" content="Kripto Vadeli İşlem Otomatik Alım Satım Programı — Binance·Bitget Ücretsiz">
+<meta property="og:description" content="Fonlarınızı emanet almayan otomatik alım satım. API anahtarı size ait, emirler kendi bilgisayarınızda çalışır — abonelik ücreti veya sinyal ücreti yok.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.javidtrading.com/tr">
+<meta property="og:image" content="https://www.javidtrading.com/images/javid-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="images/javid-icon.png">
+<style>
+  :root{
+    --ink:#0f172a; --sub:#64748b; --faint:#94a3b8;
+    --line:#e2e8f0; --card:#ffffff;
+    --indigo:#4f46e5; --indigo-dark:#4338ca; --indigo-50:#eef2ff;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{-webkit-font-smoothing:antialiased;}
+  body{
+    font-family:var(--sans); color:var(--ink); line-height:1.6;
+    word-break:keep-all; overflow-wrap:break-word;
+    background:
+      radial-gradient(1100px 480px at 50% -10%, var(--indigo-50), transparent 65%),
+      #ffffff;
+    min-height:100vh;
+    display:flex; flex-direction:column;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px; width:100%;}
+
+  header{padding:28px 0 0;}
+  .bar{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand img{width:34px; height:34px; border-radius:50%; object-fit:cover;}
+  .brand span{font-size:15px; font-weight:700; letter-spacing:-0.01em;}
+  .langs{font-size:12.5px; font-weight:700; color:var(--sub);}
+  .langs a{text-decoration:none; padding:5px 9px; border-radius:8px;}
+  .langs a[aria-current="true"]{background:var(--indigo-50); color:var(--indigo);}
+
+  .hero{padding:52px 0 8px; text-align:center;}
+  .kicker{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:11.5px; font-weight:700; letter-spacing:.06em;
+    color:var(--indigo); background:var(--indigo-50); border:1px solid #e0e3fc;
+    padding:6px 14px; border-radius:100px; margin-bottom:22px;
+  }
+  h1{
+    font-size:clamp(26px,4.4vw,40px); font-weight:800; letter-spacing:-0.02em;
+    line-height:1.26; color:var(--ink); margin-bottom:15px; text-wrap:balance;
+  }
+  h1 em{color:var(--indigo); font-style:normal;}
+  .hero p{max-width:560px; margin:0 auto; font-size:15.5px; color:var(--sub);}
+
+  .grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:16px;
+    max-width:680px; margin:42px auto 0;
+  }
+  @media (min-width:680px){ .grid{grid-template-columns:repeat(4,1fr);} }
+
+  .card{
+    position:relative; display:flex; flex-direction:column; align-items:center;
+    background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:22px 14px 18px; text-decoration:none;
+    box-shadow:0 1px 2px rgba(15,23,42,.04);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    cursor:pointer;
+  }
+  .card:hover{transform:translateY(-3px); box-shadow:0 14px 28px -12px rgba(79,70,229,.28); border-color:#c7d2fe;}
+  .card .logo-plate{
+    width:100%; aspect-ratio:16/8.6; border-radius:12px; background:#0b0b0c;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+    margin-bottom:14px; padding:14px;
+  }
+  .card .logo-plate img{width:100%; height:100%; object-fit:contain;}
+  .card .name{font-size:13.5px; font-weight:700; color:var(--ink);}
+  .card .status{margin-top:5px; font-size:11.5px; font-weight:700;}
+  .card .status.live{color:#059669;}
+  .card .status.soon{color:var(--faint);}
+  .card.disabled{cursor:pointer;}
+  .card.disabled .logo-plate img{filter:grayscale(1); opacity:.38;}
+  .card.disabled .name{color:var(--faint);}
+  .card.disabled:hover{transform:none; border-color:var(--line); box-shadow:0 1px 2px rgba(15,23,42,.04);}
+  .badge-soon{
+    position:absolute; top:-8px; right:-8px;
+    background:#f1f5f9; color:var(--sub); border:1px solid var(--line);
+    font-size:10px; font-weight:800; padding:3px 8px; border-radius:100px;
+  }
+
+  .card .pairs{margin-top:3px; font-size:11px; font-weight:600; color:var(--sub);}
+  .card.disabled .pairs{color:var(--faint);}
+  .pairs-note{text-align:center; font-size:11px; color:var(--faint); max-width:560px; margin:14px auto 0;}
+
+  .trust{
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+    gap:20px; margin:38px 0 0; font-size:12.5px; font-weight:600; color:var(--sub);
+  }
+  .trust span{display:flex; align-items:center; gap:6px;}
+  .trust svg{width:14px; height:14px; color:#059669; flex:none;}
+
+  section.block{padding:52px 0 0;}
+  h2{font-size:clamp(20px,2.6vw,26px); font-weight:800; letter-spacing:-0.015em; margin-bottom:10px; text-wrap:balance;}
+  .lede{font-size:14.5px; color:var(--sub); max-width:640px; margin-bottom:24px;}
+  .cols{display:grid; grid-template-columns:1fr; gap:16px;}
+  @media (min-width:700px){ .cols{grid-template-columns:repeat(3,1fr);} }
+  .box{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px;}
+  .box h3{font-size:14.5px; font-weight:800; margin-bottom:7px;}
+  .box p{font-size:13.5px; color:var(--sub);}
+  .box .step{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:24px; height:24px; border-radius:7px; background:var(--indigo-50);
+    color:var(--indigo); font-size:12px; font-weight:800; margin-bottom:10px;
+  }
+
+  details{border:1px solid var(--line); border-radius:12px; background:var(--card); padding:15px 18px; margin-bottom:10px;}
+  details summary{
+    font-size:14px; font-weight:700; cursor:pointer; list-style:none;
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+  }
+  details summary::-webkit-details-marker{display:none;}
+  details summary::after{content:"+"; color:var(--indigo); font-weight:800; font-size:17px; flex:none;}
+  details[open] summary::after{content:"–";}
+  details p{font-size:13.5px; color:var(--sub); margin-top:11px;}
+
+  footer{margin-top:auto; padding:56px 0 30px; text-align:center;}
+  footer .links{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:18px;
+    font-size:12.5px; font-weight:600; color:var(--sub); margin-bottom:14px;
+  }
+  footer .links a:hover{color:var(--indigo);}
+  footer .copy{font-size:11.5px; color:var(--faint); margin-bottom:10px;}
+  footer .disclaimer{max-width:640px; margin:0 auto; font-size:11px; line-height:1.65; color:#b9c1cf;}
+
+  #toast{
+    position:fixed; left:50%; bottom:26px; transform:translate(-50%,20px);
+    background:var(--ink); color:#fff; font-size:13px; font-weight:600;
+    padding:12px 20px; border-radius:100px; box-shadow:0 12px 30px -10px rgba(15,23,42,.45);
+    opacity:0; pointer-events:none; transition:opacity .25s ease, transform .25s ease;
+    z-index:50; white-space:nowrap;
+  }
+  #toast.show{opacity:1; transform:translate(-50%,0);}
+  @media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="bar">
+    <div class="brand">
+      <img src="images/javid-icon.png" alt="JaviD Future Bot">
+      <span>JaviD Future Bot</span>
+    </div>
+    <nav class="langs" aria-label="Dil seçimi">
+      <a href="/">EN</a>
+      <a href="/ko">한국어</a>
+      <a href="/ja">日本語</a>
+      <a href="/es">Español</a>
+      <a href="/fr">Français</a>
+      <a href="/vi">Tiếng Việt</a>
+      <a href="/tr" aria-current="true">Türkçe</a>
+      <a href="/pt">Português</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="kicker">Çoklu Borsa Otomatik Alım Satımı</span>
+    <h1>Fonlarınızı emanet almayan<br><em>kripto vadeli işlem otomatik alım satım programı</em></h1>
+    <p>JaviD Future Bot, Binance ve Bitget USDⓈ-M vadeli işlemlerinde otomatik alım satım yapar. Kendi bilgisayarınızda kendi API anahtarınızla çalıştığı için fonlarınız borsa hesabınızın dışına çıkmaz. Kullandığınız borsayı seçin.</p>
+  </section>
+
+  <div class="grid">
+    <a class="card" href="https://bn.javidtrading.com" aria-label="Binance sürümüne git">
+      <div class="logo-plate"><img src="images/binance.webp" alt="Binance" width="160" height="86"></div>
+      <div class="name">Binance</div>
+      <div class="pairs">750+ vadeli işlem sembolü</div>
+      <div class="status live">Hemen git →</div>
+    </a>
+
+    <a class="card" href="https://bg.javidtrading.com" aria-label="Bitget sürümüne git">
+      <div class="logo-plate"><img src="images/bitget.png" alt="Bitget" width="160" height="86"></div>
+      <div class="name">Bitget</div>
+      <div class="pairs">730+ vadeli işlem sembolü</div>
+      <div class="status live">Hemen git →</div>
+    </a>
+
+    <div class="card disabled" data-exchange="Bybit" role="button" tabindex="0" aria-label="Bybit, hazırlanıyor">
+      <span class="badge-soon">Yakında</span>
+      <div class="logo-plate"><img src="images/bybit.png" alt="Bybit" width="160" height="86"></div>
+      <div class="name">Bybit</div>
+      <div class="pairs">760+ vadeli işlem sembolü</div>
+      <div class="status soon">Hazırlanıyor</div>
+    </div>
+
+    <div class="card disabled" data-exchange="OKX" role="button" tabindex="0" aria-label="OKX, hazırlanıyor">
+      <span class="badge-soon">Yakında</span>
+      <div class="logo-plate"><img src="images/okx.png" alt="OKX" width="160" height="86"></div>
+      <div class="name">OKX</div>
+      <div class="pairs">570+ vadeli işlem sembolü</div>
+      <div class="status soon">Hazırlanıyor</div>
+    </div>
+  </div>
+
+  <p class="pairs-note">* Vadeli işlem sembol sayıları ilgili borsaların kamuya açık istatistiklerine dayanmaktadır ve listeye alma/listeden çıkarma işlemlerine bağlı olarak zaman zaman değişebilir (Ağustos 2026 itibarıyla).</p>
+
+  <div class="trust">
+    <span><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>Ücretsiz kullanım</span>
+    <span><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>API anahtarı size ait</span>
+    <span><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>Fon emaneti yok</span>
+  </div>
+
+  <section class="block">
+    <h2>Otomatik alım satım şöyle çalışır</h2>
+    <p class="lede">Bize kaydolmanıza ya da herhangi bir yere para yatırmanıza gerek yok. Bu, kendi oluşturduğunuz API anahtarıyla borsayla iletişim kuran bir masaüstü programıdır.</p>
+    <div class="cols">
+      <div class="box">
+        <span class="step">1</span>
+        <h3>İşlem için API anahtarı oluşturun</h3>
+        <p>Binance veya Bitget'te <strong>para çekme yetkisini kapatıp</strong> yalnızca işlem yetkisini açtığınız bir API anahtarı oluşturun. Bu tek ayar sayesinde hiçbir program fonları hesabınızın dışına çıkaramaz.</p>
+      </div>
+      <div class="box">
+        <span class="step">2</span>
+        <h3>Önce gölge modda test edin</h3>
+        <p>Gerçek piyasa verileriyle sanal bir bakiye çalıştıran bir özelliktir. Fon yatırmadan önce stratejinin günler boyunca nasıl hareket ettiğini kendi gözlerinizle görebilirsiniz.</p>
+      </div>
+      <div class="box">
+        <span class="step">3</span>
+        <h3>Kendi koşullarınızla canlıya geçin</h3>
+        <p><strong>BTC, ETH ve XAU</strong> dahil 500'den fazla USDⓈ-M sembolü arasından yalnızca istediklerinizi seçip yönetin ve pozisyon büyüklüğünü kendiniz belirleyin. İşlem bildirimlerini Telegram üzerinden alabilirsiniz.</p>
+<p style="margin-top:8px;opacity:.78;font-size:.92em;">Şu anda mevcut 3 strateji, oynaklığı yüksek altcoin'lere göre optimize edilmiştir; büyük semboller için özel ön ayarlar henüz geliştirilme aşamasındadır.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Fonları emanet almamak ne anlama gelir</h2>
+    <p class="lede">Otomatik alım satım hizmetlerinin çoğu ya fon kabul eder ya da emirleri kendi sunucuları üzerinden yönlendirir. Bu program ikisini de yapmaz — aradaki fark, güvenlik yapısının tamamını oluşturur.</p>
+    <div class="cols">
+      <div class="box">
+        <h3>Fonlar borsada kalır</h3>
+        <p>Program fon saklamaz. Bakiyeniz her zaman kendi Binance veya Bitget hesabınızda kalır ve API anahtarınızı borsadan istediğiniz an anında iptal edebilirsiniz.</p>
+      </div>
+      <div class="box">
+        <h3>Emirler kendi bilgisayarınızda çalıştırılır</h3>
+        <p>Strateji hesaplamaları ve emir oluşturma işlemlerinin tamamı Windows veya macOS üzerinde yerel olarak gerçekleşir. Üçüncü taraf bir sunucudan geçmediği için, sizin adınıza işlem yapabilecek bir operatör yoktur.</p>
+      </div>
+      <div class="box">
+        <h3>Abonelik ücreti veya sinyal ücreti yok</h3>
+        <p>Program ücretsiz olarak indirilip kullanılabilir. Ücretli sinyal grupları, kopya alım satım veya kâr paylaşım komisyonu bulunmaz.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Sıkça Sorulan Sorular</h2>
+    <div>
+      <details>
+        <summary>Gerçekten ücretsiz mi?</summary>
+        <p>Evet, program ücretsiz olarak indirilip kullanılabilir; abonelik ücreti veya sinyal ücreti yoktur. Ancak borsanın uyguladığı standart işlem komisyonları geçerliliğini korur.</p>
+      </details>
+      <details>
+        <summary>Hangi borsaları destekliyor?</summary>
+        <p>Şu anda Binance ve Bitget USDⓈ-M vadeli işlemlerini destekliyor. Bybit ve OKX hazırlanma aşamasındadır. Programlar borsaya göre ayrıldığı için lütfen yukarıdan seçim yapın.</p>
+      </details>
+      <details>
+        <summary>Program fonlarımı çekebilir mi?</summary>
+        <p>Hayır, bu mümkün değildir. API anahtarınızı oluştururken para çekme yetkisini kapalı bırakırsanız, hangi program bağlı olursa olsun borsa çekim talebini doğrudan reddeder.</p>
+      </details>
+      <details>
+        <summary>Bilgisayarımı sürekli açık tutmam gerekir mi?</summary>
+        <p>Evet. Sunucuda değil kendi bilgisayarınızda çalışan bir yapı olduğundan, işlemler yalnızca program açıkken ve internete bağlıyken gerçekleşir.</p>
+      </details>
+      <details>
+        <summary>Para yatırmadan önce test edebilir miyim?</summary>
+        <p>Evet. Gölge modu, gerçek piyasa verileriyle sanal bir bakiye çalıştırdığı için fon yatırmadan önce performansı değerlendirebilirsiniz. Buradan başlamanızı öneririz.</p>
+      </details>
+      <details>
+        <summary>Otomatik alım satım kullanırsam zarar edebilir miyim?</summary>
+        <p>Evet, bunun mümkün olduğunu varsaymalısınız. Kripto vadeli işlemler kaldıraç kullandığından pozisyonlar tasfiye edilebilir ve anaparanın tamamı kaybedilebilir. Otomasyon yalnızca uygulamadan duyguyu çıkarır, piyasa riskini ortadan kaldırmaz; geçmiş performans gelecekteki sonuçların garantisi değildir.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="links">
+    <a href="https://bn.javidtrading.com">Binance Sürümü</a>
+    <a href="https://bg.javidtrading.com">Bitget Sürümü</a>
+    <a href="/">English</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk">İletişim</a>
+  </div>
+  <div class="copy">© 2026 JaviD Future Bot · javidtrading.com</div>
+  <p class="disclaimer">Kripto para vadeli işlem alım satımı yüksek risk içerir ve her yatırımcı için uygun olmayabilir. JaviD Future Bot bağımsız bir işlem yürütme aracıdır ve kâr garantisi vermez. Yatırım danışmanlığı sunmaz, fonları emanet almaz ve hiçbir sunucu üzerinden sizin adınıza emir yürütmez. Kaldıraç nedeniyle anaparanın tamamı kaybedilebilir. Tüm alım satım kararları ve bunların sonuçlarına ilişkin sorumluluk tamamen kullanıcıya aittir.</p>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "tr",
+  "mainEntity": [
+    {"@type":"Question","name":"Gerçekten ücretsiz mi?","acceptedAnswer":{"@type":"Answer","text":"Program ücretsiz olarak indirilip kullanılabilir; abonelik ücreti veya sinyal ücreti yoktur. Ancak borsanın uyguladığı standart işlem komisyonları geçerliliğini korur."}},
+    {"@type":"Question","name":"Hangi borsaları destekliyor?","acceptedAnswer":{"@type":"Answer","text":"Şu anda Binance ve Bitget USDⓈ-M vadeli işlemlerini destekliyor. Bybit ve OKX hazırlanma aşamasındadır."}},
+    {"@type":"Question","name":"Program fonlarımı çekebilir mi?","acceptedAnswer":{"@type":"Answer","text":"Hayır, bu mümkün değildir. API anahtarı oluşturulurken para çekme yetkisi kapalı bırakılırsa, borsa çekim talebini doğrudan reddeder."}},
+    {"@type":"Question","name":"Bilgisayarımı sürekli açık tutmam gerekir mi?","acceptedAnswer":{"@type":"Answer","text":"Evet. Kendi bilgisayarınızda çalışan bir yapı olduğundan, işlemler yalnızca program açıkken gerçekleşir."}},
+    {"@type":"Question","name":"Para yatırmadan önce test edebilir miyim?","acceptedAnswer":{"@type":"Answer","text":"Evet. Gölge modu, gerçek piyasa verileriyle sanal bir bakiye çalıştırdığı için fon yatırmadan önce performansı değerlendirebilirsiniz."}},
+    {"@type":"Question","name":"Otomatik alım satım kullanırsam zarar edebilir miyim?","acceptedAnswer":{"@type":"Answer","text":"Evet. Kripto vadeli işlemler kaldıraç kullandığından pozisyonlar tasfiye edilebilir ve anaparanın tamamı kaybedilebilir. Geçmiş performans gelecekteki sonuçların garantisi değildir."}}
+  ]
+}
+</script>
+
+<script>
+(function(){
+  var toast = document.getElementById('toast');
+  var timer = null;
+  function showToast(name){
+    toast.textContent = name + ' desteği hazırlanıyor. Lütfen kısa bir süre bekleyin!';
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(function(){ toast.classList.remove('show'); }, 2400);
+  }
+  document.querySelectorAll('.card.disabled').forEach(function(el){
+    el.addEventListener('click', function(){ showToast(el.getAttribute('data-exchange')); });
+    el.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showToast(el.getAttribute('data-exchange')); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -5,7 +5,8 @@
 -- download_events table. Existing rows get NULL in these columns —
 -- backward compatible, nothing else changes.
 --
--- Run once from the repo root:
+-- Run once from inside binance-site/ (wrangler.jsonc lives in this folder):
+--   cd binance-site
 --   npx wrangler d1 execute javid-board-db --remote --file=./migration_download_source.sql
 --
 -- (Local/dev DB: drop --remote to apply to the local shadow DB instead.)

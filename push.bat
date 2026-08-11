@@ -27,7 +27,7 @@ if errorlevel 1 (
 ) else (
   echo.
   echo [OK] Pushed. Cloudflare Pages will redeploy automatically in about a minute.
-  echo      Check: https://javid-dol.uk
+  echo      Check: https://www.javidtrading.com  ^(or bn / bg subdomains^)
 )
 echo.
 pause

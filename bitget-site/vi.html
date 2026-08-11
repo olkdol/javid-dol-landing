@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phần Mềm Giao Dịch Tự Động Miễn Phí — Bot Futures Bitget Giao Dịch 24/7 | JaviD Future Bot</title>
+<meta name="description" content="Phần mềm giao dịch tự động miễn phí JaviD Future Bot — giao dịch hợp đồng futures USDT-M trên Bitget tự động 24/7. Chọn từ hơn 500 mã như BTC, ETH, XAU. 3 chiến lược định lượng cùng cơ chế thoát lệnh theo từng tick, khóa API và tài sản luôn nằm trong tài khoản sàn của bạn, lệnh được thực thi ngay trên máy tính của bạn. Hỗ trợ Windows và macOS, không phí đăng ký. Giao dịch futures đòn bẩy tiềm ẩn rủi ro mất toàn bộ vốn.">
+<meta name="keywords" content="phần mềm giao dịch tự động miễn phí, giao dịch coin tự động, giao dịch futures coin tự động, giao dịch bitcoin tự động, giao dịch tự động bitget, bot giao dịch futures tự động, phần mềm giao dịch tự động miễn phí, bot trading crypto, giao dịch BTC tự động, giao dịch futures bitcoin tự động, giao dịch ethereum tự động, giao dịch XAU tự động, giao dịch vàng tự động, coinbot">
+<meta property="og:title" content="JaviD Future Bot — Phần Mềm Giao Dịch Futures Coin Tự Động (Miễn Phí, 24/7)">
+<meta property="og:description" content="Dừng giao dịch theo cảm tính. 3 chiến lược định lượng giao dịch thay bạn 24/7. Thoát lệnh theo từng tick, chạy 100% cục bộ, miễn phí vĩnh viễn.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bg.javidtrading.com/vi">
+<link rel="alternate" hreflang="en" href="https://bg.javidtrading.com/">
+<link rel="alternate" hreflang="ko" href="https://bg.javidtrading.com/ko">
+<link rel="alternate" hreflang="ja" href="https://bg.javidtrading.com/ja">
+<link rel="alternate" hreflang="es" href="https://bg.javidtrading.com/es">
+<link rel="alternate" hreflang="fr" href="https://bg.javidtrading.com/fr">
+<link rel="alternate" hreflang="vi" href="https://bg.javidtrading.com/vi">
+<link rel="alternate" hreflang="tr" href="https://bg.javidtrading.com/tr">
+<link rel="alternate" hreflang="pt" href="https://bg.javidtrading.com/pt">
+<link rel="alternate" hreflang="x-default" href="https://bg.javidtrading.com/">
+<link rel="canonical" href="https://bg.javidtrading.com/vi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08090b; --bg2:#0d0f12; --panel:#101317; --line:rgba(255,255,255,.08);
+    --text:#e9ebee; --faint:#8b909a; --accent:#00f0ff; --accent2:#e8b44c;
+    --serif:'Playfair Display',Georgia,serif; --sans:'Inter',-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; overflow-x:hidden;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .serif{font-family:var(--serif);}
+
+  /* ---------- NAV ---------- */
+  nav{position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(8,9,11,.75); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav-row{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:1180px; margin:0 auto;}
+  .nav-logo{font-family:var(--serif); font-size:18px; font-weight:600; letter-spacing:.02em;}
+  .nav-logo b{color:var(--accent); font-weight:600;}
+  .nav-links{display:flex; gap:32px; align-items:center;}
+  .nav-links a{font-size:13px; letter-spacing:.03em; color:var(--faint); transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{font-size:12px; letter-spacing:.08em; text-transform:uppercase; border:1px solid var(--line); padding:9px 18px; border-radius:100px; transition:border-color .2s, color .2s;}
+  .nav-cta:hover{border-color:var(--accent); color:var(--accent);}
+  .nav-highlight{position:relative; color:var(--accent) !important;}
+  @media (max-width:820px){ .nav-links{display:none;} }
+
+  /* ---------- HERO / MATRIX RAIN ---------- */
+  .hero{position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:140px 0 80px; overflow:hidden;}
+  #matrixCanvas{position:absolute; inset:0; width:100%; height:100%; opacity:.55;}
+  .hero::after{content:''; position:absolute; left:0; right:0; bottom:0; height:140px; background:linear-gradient(180deg, transparent, var(--bg)); pointer-events:none;}
+  .hero-inner{position:relative; z-index:2;}
+  .kicker{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:22px; font-weight:600;}
+  .hero h1{font-family:var(--serif); font-weight:600; font-size:clamp(36px,6vw,68px); line-height:1.1; max-width:820px; margin-bottom:24px;}
+  .hero p.lead{font-size:17px; color:var(--faint); max-width:600px; margin-bottom:32px;}
+  .badge-row{display:flex; flex-wrap:wrap; gap:10px 22px; margin-bottom:40px; font-size:13px; color:var(--faint);}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:100px; font-size:14px; font-weight:600; cursor:pointer; border:1px solid transparent; transition:all .2s;}
+  .btn-primary{background:var(--accent); color:#04211d;}
+  .btn-primary:hover{opacity:.88;}
+  .btn-ghost{border-color:var(--line); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* ---------- SECTION SHELL ---------- */
+  .section{padding:100px 0; border-top:1px solid var(--line);}
+  .section-label{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); margin-bottom:18px; font-weight:600;}
+  .section-title{font-family:var(--serif); font-weight:600; font-size:clamp(26px,3.4vw,40px); line-height:1.25; max-width:760px;}
+  .section-sub{color:var(--faint); font-size:15px; max-width:560px; margin-top:16px;}
+
+  /* ---------- CAPABILITIES (alternating) ---------- */
+  .cap-row{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; padding:60px 0; border-top:1px solid var(--line);}
+  .cap-row:first-of-type{border-top:none;}
+  .cap-row.reverse{direction:rtl;}
+  .cap-row.reverse > *{direction:ltr;}
+  .cap-text h3{font-family:var(--serif); font-weight:600; font-size:30px; margin-bottom:16px;}
+  .cap-text p{color:var(--faint); font-size:15px; max-width:440px;}
+  .cap-visual{aspect-ratio:4/3; border-radius:4px; overflow:hidden; position:relative; background:#0b0d10; border:1px solid var(--line);}
+  .cap-visual canvas{width:100%; height:100%; display:block;}
+  @media (max-width:760px){ .cap-row, .cap-row.reverse{grid-template-columns:1fr; direction:ltr;} }
+
+  /* ---------- ARCHITECTURE BANNER ---------- */
+  .arch-banner{aspect-ratio:21/6; border-radius:4px; overflow:hidden; margin-bottom:48px; border:1px solid var(--line); background:#0b0d10;}
+  .arch-banner canvas{width:100%; height:100%; display:block;}
+  .arch-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .arch-grid p{color:var(--faint); font-size:15px;}
+  @media (max-width:760px){ .arch-grid{grid-template-columns:1fr; gap:24px;} }
+
+  .diagram-cards{display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items:center; margin-top:56px;}
+  .diagram-card{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:26px;}
+  .diagram-card h4{font-family:var(--serif); font-size:18px; margin-bottom:14px; font-weight:600;}
+  .diagram-card ul{list-style:none; color:var(--faint); font-size:13px; line-height:2;}
+  .diagram-arrow{color:var(--accent); font-size:22px; text-align:center;}
+  @media (max-width:640px){ .diagram-cards{grid-template-columns:1fr;} .diagram-arrow{transform:rotate(90deg);} }
+
+  /* ---------- RESEARCH GRID ---------- */
+  .research-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:48px;}
+  .research-card{background:var(--bg2); padding:22px; min-height:180px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden;}
+  .research-card .rc-pattern{position:absolute; inset:0; opacity:.5; z-index:0;}
+  .research-card .rc-body{position:relative; z-index:1;}
+  .research-card h5{font-family:var(--serif); font-size:16px; font-weight:600; margin-bottom:6px; max-width:180px;}
+  .research-card span{font-size:11px; color:var(--faint); letter-spacing:.04em; text-transform:uppercase;}
+  @media (max-width:900px){ .research-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .research-grid{grid-template-columns:1fr;} }
+
+  /* ---------- LIVE PROOF ---------- */
+  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:40px;}
+  .stat-card{background:var(--bg2); padding:28px 22px;}
+  .stat-num{font-family:var(--serif); font-size:32px; font-weight:600; color:var(--accent); margin-bottom:8px;}
+  .stat-label{font-size:12px; color:var(--faint);}
+  .live-badge{display:none; margin-top:14px; font-size:13px; font-weight:600; color:#3ddc84;}
+  .sim-note{color:var(--faint); font-size:13px; margin-top:24px; max-width:760px;}
+  @media (max-width:760px){ .stats-grid{grid-template-columns:repeat(2,1fr);} }
+
+  /* ---------- DOWNLOAD GATE ---------- */
+  .dl-section{text-align:center;}
+  .dl-section .section-title{margin:0 auto 16px; }
+  .dl-section .section-sub{margin:0 auto 40px;}
+  .dl-gate{max-width:460px; margin:0 auto; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:32px;}
+  .dl-gate-label{display:block; font-size:13px; color:var(--faint); margin-bottom:12px;}
+  .dl-gate-input{width:100%; padding:14px 16px; border-radius:8px; border:1px solid var(--line); background:#0b0d10; color:var(--text); font-size:14px; margin-bottom:16px; text-align:center; letter-spacing:.05em;}
+  .dl-gate-input:focus{outline:none; border-color:var(--accent);}
+  .dl-gate-buttons{display:flex; flex-direction:column; gap:10px;}
+  .dl-gate-msg{font-size:13px; margin-top:14px; min-height:18px;}
+  .dl-gate-error{color:#ff6b6b;}
+  .dl-gate-ok{color:#3ddc84;}
+  .dl-gate-help{font-size:12px; color:var(--faint); margin-top:18px;}
+  .dl-gate-help a{color:var(--accent); font-weight:600;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:80px 0 40px; border-top:1px solid var(--line);}
+  .footer-headline{font-family:var(--serif); font-weight:600; font-size:clamp(28px,4vw,44px); margin-bottom:56px;}
+  .footer-cols{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-bottom:48px;}
+  .footer-col-label{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-bottom:16px;}
+  .footer-col a{display:block; font-size:14px; color:var(--text); margin-bottom:10px; opacity:.8;}
+  .footer-col a:hover{opacity:1; color:var(--accent);}
+  .footer-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:24px; border-top:1px solid var(--line); font-size:12px; color:var(--faint);}
+  @media (max-width:640px){ .footer-cols{grid-template-columns:1fr;} }
+
+  ::selection{background:var(--accent); color:#04211d;}
+
+  /* ---------- ADDED CONTENT-PARITY SECTIONS ---------- */
+  .stats-band{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:48px;}
+  .stats-band .stat{background:var(--bg2); padding:30px 22px; text-align:center;}
+  .stats-band .stat b{display:block; font-family:var(--serif); font-size:30px; color:var(--accent); margin-bottom:6px; font-weight:600;}
+  .stats-band .stat span{font-size:12px; color:var(--faint);}
+  @media (max-width:760px){ .stats-band{grid-template-columns:repeat(2,1fr);} }
+
+  .why-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:40px;}
+  .why-card{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:28px;}
+  .why-card .wc-icon{font-size:26px; margin-bottom:14px;}
+  .why-card h4{font-family:var(--serif); font-size:19px; margin-bottom:10px; font-weight:600;}
+  .why-card p{color:var(--faint); font-size:14px;}
+  .why-quote{margin-top:32px; padding:26px 30px; background:var(--panel); border-left:3px solid var(--accent2); border-radius:6px; font-size:15px; color:var(--text); line-height:1.7;}
+  .why-quote a{color:var(--accent);}
+  @media (max-width:760px){ .why-grid{grid-template-columns:1fr;} }
+
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:40px;}
+  .step-card{padding:26px 0; border-top:1px solid var(--line);}
+  .step-card .sc-num{font-family:var(--serif); font-size:13px; color:var(--accent); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px;}
+  .step-card h4{font-family:var(--serif); font-size:18px; margin-bottom:10px; font-weight:600;}
+  .step-card p{color:var(--faint); font-size:14px;}
+  @media (max-width:760px){ .steps{grid-template-columns:1fr;} }
+
+  .shadow-cta{margin-top:40px; padding:34px; background:linear-gradient(135deg, rgba(0,240,255,.06), rgba(232,180,76,.04)); border:1px solid var(--line); border-radius:10px; text-align:center;}
+  .shadow-cta h3{font-family:var(--serif); font-size:22px; margin-bottom:12px; font-weight:600;}
+  .shadow-cta p{color:var(--faint); font-size:14.5px; margin-bottom:20px; max-width:600px; margin-left:auto; margin-right:auto;}
+
+  .biz-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:40px;}
+  .biz-card{padding:26px; border-radius:8px; font-size:14px; line-height:1.7;}
+  .biz-card.no{background:rgba(255,107,107,.06); border:1px solid rgba(255,107,107,.25);}
+  .biz-card.yes{background:rgba(61,220,132,.06); border:1px solid rgba(61,220,132,.25);}
+  .biz-card h4{font-family:var(--serif); font-size:17px; margin-bottom:12px; font-weight:600;}
+  @media (max-width:760px){ .biz-grid{grid-template-columns:1fr;} }
+
+  .compare-table{width:100%; border-collapse:collapse; margin-top:40px; font-size:13.5px;}
+  .compare-table th,.compare-table td{border:1px solid var(--line); padding:12px 14px; text-align:left; vertical-align:top;}
+  .compare-table th{background:var(--panel); color:var(--faint); font-size:11px; text-transform:uppercase; letter-spacing:.06em; font-weight:600;}
+  .compare-table td{color:var(--faint);}
+  .compare-table td:first-child{color:var(--text); font-weight:600;}
+  .compare-table tr td:nth-child(2){color:var(--accent);}
+  .table-scroll{overflow-x:auto;}
+
+  .showcase-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:40px;}
+  .showcase-grid .shot{background:var(--panel); border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  .showcase-grid img{width:100%; display:block;}
+  .showcase-grid .shot-cap{padding:12px 14px; font-size:12.5px; color:var(--faint);}
+  @media (max-width:760px){ .showcase-grid{grid-template-columns:1fr;} }
+
+  .faq-list{margin-top:40px;}
+  .faq-item{border-top:1px solid var(--line); padding:20px 0;}
+  .faq-item:last-child{border-bottom:1px solid var(--line);}
+  .faq-item h4{font-family:var(--serif); font-size:16px; font-weight:600; margin-bottom:8px;}
+  .faq-item p{color:var(--faint); font-size:14px;}
+
+  .tg-cta{text-align:center; padding:20px 0 10px;}
+  .tg-cta h3{font-family:var(--serif); font-size:22px; margin-bottom:12px; font-weight:600;}
+  .tg-cta p{color:var(--faint); font-size:14.5px; margin-bottom:22px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="nav-logo" href="ko.html">JaviD <b>Future Bot</b></a>
+    <div class="nav-links">
+      <a href="#capabilities">Chiến lược</a>
+      <a href="#architecture">Kiến trúc</a>
+      <a href="#research">Nghiên cứu</a>
+      <a href="board.html" class="nav-highlight">Cộng đồng</a>
+      <a href="index.html">English</a>
+    </div>
+    <a href="#download" class="nav-cta">Tải miễn phí</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <canvas id="matrixCanvas"></canvas>
+  <div class="wrap hero-inner">
+    <div class="kicker">⚡ Futures Coin USDT-M · Công cụ thực thi giao dịch tự động</div>
+    <h1>Dừng giao dịch theo cảm tính.<br>Chiến lược giao dịch thay bạn 24/7.</h1>
+    <p class="lead">Không cảm xúc, không bỏ lỡ điểm vào lệnh, không phải thức trắng đêm. Phần mềm giao dịch tự động quét thị trường futures mỗi 10 giây và thoát lệnh theo từng tick — chạy 100% trên máy tính của chính bạn.</p>
+    <div class="badge-row">
+      <span>🧠 3 chiến lược được thiết kế bởi AI</span>
+      <span>⚡ Thoát lệnh theo từng tick</span>
+      <span>📲 Báo cáo qua Telegram</span>
+      <span>🔒 Không lưu ký · Chạy cục bộ</span>
+      <span>🕐 Hoạt động 24/7</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#download" class="btn btn-primary">⬇ Tải miễn phí</a>
+      <a href="#capabilities" class="btn btn-ghost">Khám phá chiến lược</a>
+    </div>
+    <div class="stats-band">
+      <div class="stat"><b>99.9%</b><span>Mục tiêu uptime, chạy cục bộ</span></div>
+      <div class="stat"><b>0.1초</b><span>Chu kỳ kiểm tra điều kiện thoát lệnh</span></div>
+      <div class="stat"><b>3</b><span>Chiến lược định lượng độc lập</span></div>
+      <div class="stat"><b>500+</b><span>Mã theo dõi</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= CAPABILITIES ================= -->
+<section class="section" id="capabilities"><div class="wrap">
+  <div class="section-label">Chiến lược</div>
+  <div class="section-title">3 chiến lược vận hành độc lập, như một bàn giao dịch định lượng thực thụ.</div>
+  <p class="section-sub">Mỗi chiến lược được thiết kế và kiểm chứng bằng phân tích định lượng dựa trên AI. Trước khi chốt bất kỳ quy tắc nào, chúng tôi đã phân tích dữ liệu giá, các giai đoạn biến động và dòng lệnh trong nhiều năm.</p>
+
+  <div class="cap-row">
+    <div class="cap-text">
+      <h3>Chiến lược A — JaviDAIS</h3>
+      <p>Logic theo xu hướng (trend-following) được xem xét và thiết kế bằng phân tích định lượng dựa trên AI. Được tinh chỉnh dựa trên dữ liệu giá, các giai đoạn biến động và dòng lệnh trong nhiều năm. Dù là chu kỳ thứ 1 hay chu kỳ thứ 100.000, hệ thống vẫn vào lệnh theo đúng một kỷ luật. Không ghi nhớ giao dịch trước đó, cũng không bị lung lay bởi cảm tính.</p>
+    </div>
+    <div class="cap-visual"><canvas class="netCanvas" data-seed="1"></canvas></div>
+  </div>
+
+  <div class="cap-row reverse">
+    <div class="cap-text">
+      <h3>Chiến lược B — Hồi quy trung bình (Mean Reversion)</h3>
+      <p>Đọc độ lệch VWAP và ngưỡng bùng nổ khối lượng giao dịch để phản ứng ngược chiều với các biến động bị kéo giãn quá mức. Kiên nhẫn, dựa trên quy tắc, không bị chi phối bởi sợ hãi hay FOMO. Chờ đến khi cấu trúc thị trường thực sự được xác nhận.</p>
+    </div>
+    <div class="cap-visual"><canvas class="netCanvas" data-seed="2"></canvas></div>
+  </div>
+
+  <div class="cap-row">
+    <div class="cap-text">
+      <h3>Chiến lược C — Phá vỡ (Breakout)</h3>
+      <p>Phát hiện sự mở rộng biến động thực sự bằng dải ATR và dòng chảy CVD. Chỉ vào lệnh khi khối lượng giao dịch và dòng lệnh cùng được xác nhận — không bị đánh lừa bởi một cây nến bóng dài đơn lẻ.</p>
+    </div>
+    <div class="cap-visual"><canvas class="netCanvas" data-seed="3"></canvas></div>
+  </div>
+</div></section>
+
+<!-- ================= WHY AUTOMATION WINS ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Vì sao chọn giao dịch tự động</div>
+  <div class="section-title">Trong mọi hệ thống giao dịch, mắt xích yếu nhất chính là con người.</div>
+  <p class="section-sub">Không phải vì thiếu kỹ năng. Mà vì bộ não con người vốn được lập trình để phản ứng theo sợ hãi và tham lam — và thị trường luôn khai thác đúng điểm yếu đó.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="wc-icon">🎯</div>
+      <h4>Độ chính xác như nhau ở mọi thời điểm</h4>
+      <p>Kiểm tra điều kiện thoát lệnh khoảng mỗi 0,1 giây. Không do dự trước lệnh cắt lỗ, cũng không tham lam vượt quá mục tiêu chốt lời. Cùng một quy tắc được áp dụng cho giao dịch thứ 1 lẫn giao dịch thứ 10.000.</p>
+    </div>
+    <div class="why-card">
+      <div class="wc-icon">🕐</div>
+      <h4>Lấy lại thời gian cho chính mình</h4>
+      <p>Không cần xem biểu đồ trong giờ ăn trưa, không cần thức dậy lúc 3 giờ sáng vì biến động thị trường, không cần kiểm tra điện thoại mỗi 10 phút. Dù bạn đang ngồi làm việc hay đang ngủ, chiến lược vẫn tiếp tục vận hành trên máy tính của bạn.</p>
+    </div>
+  </div>
+  <div class="why-quote">"Trong cuộc thi giữa các AI trading agent (Alpha Arena), điều phân định người chiến thắng không phải là khả năng dự đoán, mà là mức độ tuân thủ quy tắc một cách nhất quán." <span style="color:var(--faint);">— Đây cũng chính là lý do JaviD được thiết kế theo nguyên tắc đặt quy tắc lên hàng đầu.</span></div>
+</div></section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Cách bắt đầu</div>
+  <div class="section-title">Từ tải xuống đến giao dịch thực đầu tiên — chỉ 3 bước.</div>
+  <div class="steps">
+    <div class="step-card">
+      <div class="sc-num">Bước 1</div>
+      <h4>Kết nối API sàn giao dịch</h4>
+      <p>Tạo API key chỉ bật quyền giao dịch futures và <strong>bắt buộc tắt quyền rút tiền</strong>, sau đó dán vào JaviD. Key được mã hóa và lưu trữ cục bộ, không bao giờ được gửi đến máy chủ của JaviD.</p>
+    </div>
+    <div class="step-card">
+      <div class="sc-num">Bước 2</div>
+      <h4>Chạy thử với chế độ Shadow Mode trước</h4>
+      <p>Vận hành số dư ảo bằng dữ liệu thị trường thực. Hãy tự mình xác nhận cách mỗi chiến lược hoạt động trên từng mã trước khi bỏ ra một đồng vốn thực nào.</p>
+    </div>
+    <div class="step-card">
+      <div class="sc-num">Bước 3</div>
+      <h4>Chuyển sang giao dịch thực và để nó tự vận hành</h4>
+      <p>Khi tắt chế độ Shadow Mode và thiết lập số dư ban đầu, cùng một logic đó sẽ được thực thi bằng vốn thực. Hoạt động 24/7, kể cả khi bạn không ngồi trước bàn phím.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ================= ARCHITECTURE ================= -->
+<section class="section" id="architecture"><div class="wrap">
+  <div class="arch-banner"><canvas id="warpCanvas"></canvas></div>
+  <div class="arch-grid">
+    <div>
+      <div class="section-label">Kiến trúc</div>
+      <div class="section-title">Kiến trúc thực thi tích hợp cho giao dịch tự động hoàn toàn.</div>
+    </div>
+    <p>Mọi lệnh giao dịch được tạo ra ngay trên máy tính của bạn và gửi trực tiếp đến sàn giao dịch qua kết nối được mã hóa. Không tồn tại máy chủ trung gian nào thuộc sở hữu của JaviD — không có gì để bị tấn công, không có gì để bị sập, và không có bên thứ ba nào có thể nhìn vào key, số dư hay chiến lược của bạn. Nếu bạn mở trình theo dõi tường lửa khi chương trình đang chạy, bạn sẽ thấy chỉ có duy nhất một kết nối — đến sàn giao dịch.</p>
+  </div>
+  <div class="diagram-cards">
+    <div class="diagram-card">
+      <h4>🖥️ Máy tính của bạn</h4>
+      <ul>
+        <li>Chạy JaviD Future Bot</li>
+        <li>Tính toán chiến lược · Tạo lệnh</li>
+        <li>API key — Mã hóa và lưu trữ cục bộ</li>
+        <li>Bảng điều khiển (localhost:8002)</li>
+      </ul>
+    </div>
+    <div class="diagram-arrow">⇄</div>
+    <div class="diagram-card">
+      <h4>🟢 Sàn giao dịch</h4>
+      <ul>
+        <li>Tài khoản của bạn · Vốn của bạn</li>
+        <li>Khớp lệnh · Dữ liệu thị trường</li>
+        <li>Chỉ bạn mới có thể rút tiền</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- ================= SHADOW MODE CTA ================= -->
+<section class="section"><div class="wrap">
+  <div class="shadow-cta">
+    <h3>🔍 Vẫn chưa chắc chắn? Hãy thử trước với rủi ro bằng 0.</h3>
+    <p>Chế độ Shadow Mode giao dịch bằng dữ liệu thị trường thực nhưng sử dụng số dư USDT ảo. Chiến lược, logic thực thi và tín hiệu đều giống hệt, nhưng không có gì thực sự bị đặt cược. Hãy theo dõi kết quả, tắt những mã liên tục thua lỗ trong lịch sử, và chỉ chuyển sang giao dịch thực khi bạn thực sự hài lòng.</p>
+    <a href="#download" class="btn btn-primary">Dùng thử Shadow Mode miễn phí</a>
+  </div>
+</div></section>
+
+<!-- ================= RESEARCH GRID ================= -->
+<section class="section" id="research"><div class="wrap">
+  <div class="section-label">Nghiên cứu</div>
+  <div class="section-title">Được xây dựng trên logic, không phải may rủi. Bên trong có 12 hệ thống đang vận hành.</div>
+  <p class="section-sub">Đây không phải phòng chat bán tín hiệu. Đây là phần mềm bạn có thể tự mình mở ra và kiểm chứng.</p>
+  <div class="research-grid" id="researchGrid">
+    <!-- populated by JS: title, category, generated pattern -->
+  </div>
+</div></section>
+
+<!-- ================= RUNNING IT FOR REAL ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Vận hành thực tế</div>
+  <div class="section-title">Vì sao chúng tôi khuyến nghị bắt đầu từ tối thiểu 1.000 USDT.</div>
+  <p class="section-sub" style="max-width:760px;">Đây không phải số tiền tối thiểu để chúng tôi kiếm lợi nhuận — JaviD Future Bot hoàn toàn miễn phí. Đây là mức tối thiểu để bản thân chiến lược hoạt động đúng như thiết kế. Vì kích thước vị thế, biên độ cắt lỗ và phân bổ theo từng mã đều được tính theo tỷ lệ trên số dư, nên nếu vốn quá mỏng, lệnh sẽ bị từ chối do chạm mức đặt lệnh tối thiểu của sàn trước khi logic chiến lược kịp được thử nghiệm đầy đủ. Bạn cần bắt đầu từ 1.000 USDT trở lên để công cụ tính kích thước vị thế phát huy đúng vai trò của nó.</p>
+</div></section>
+
+<!-- ================= BUSINESS MODEL ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Mô hình doanh thu, minh bạch hoàn toàn</div>
+  <div class="section-title">Nếu bạn không thực sự giao dịch, chúng tôi cũng không có doanh thu — và dù thế nào, chúng tôi cũng không bao giờ chạm vào tài sản của bạn.</div>
+  <div class="biz-grid">
+    <div class="biz-card no">
+      <h4>✕ Những điều chúng tôi KHÔNG làm</h4>
+      Chúng tôi không bán phần mềm. Không thu phí đăng ký. Không thu phí hiệu suất (performance fee). Không quản lý hay giữ tài sản của bạn, và hoàn toàn không có quyền rút tiền.
+    </div>
+    <div class="biz-card yes">
+      <h4>✓ Cấu trúc doanh thu thực tế</h4>
+      JaviD Future Bot được đăng ký làm đối tác giới thiệu (referral partner) của sàn giao dịch. Khi bạn đăng ký và giao dịch qua liên kết của chúng tôi, sàn sẽ chia lại cho chúng tôi một phần trong phí giao dịch mà đằng nào bạn cũng phải trả — không phát sinh bất kỳ chi phí bổ sung nào. Đó là toàn bộ mô hình doanh thu của chúng tôi.
+    </div>
+  </div>
+</div></section>
+
+<!-- ================= WHY JAVID (COMPARISON) ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">So sánh</div>
+  <div class="section-title">So với những lựa chọn thay thế mà có lẽ bạn đã từng tìm hiểu.</div>
+  <div class="table-scroll">
+    <table class="compare-table">
+      <tr><th>Tiêu chí</th><th>JaviD Future Bot</th><th>Bot đám mây trả phí</th><th>Phòng chat tín hiệu Telegram</th></tr>
+      <tr><td>Chi phí</td><td>Miễn phí vĩnh viễn</td><td>30–300+ USD/tháng</td><td>Miễn phí đến đắt đỏ, chất lượng chênh lệch lớn</td></tr>
+      <tr><td>Lưu giữ tài sản</td><td>Không có — 100% không lưu ký, chạy cục bộ</td><td>Thường được giữ trên máy chủ nhà cung cấp hoặc tài khoản phụ trên sàn</td><td>Không áp dụng — thay vào đó bạn phải tin tưởng vào các tín hiệu (call)</td></tr>
+      <tr><td>Phương thức thực thi</td><td>Tự động, theo từng tick, 24/7</td><td>Tự động nhưng thực thi phía máy chủ (thêm độ trễ và rủi ro niềm tin)</td><td>Thủ công — bạn phải tự khớp từng lệnh</td></tr>
+      <tr><td>Minh bạch</td><td>Chạy trên máy tính của bạn, có thể kiểm chứng, thử nghiệm trước bằng Shadow Mode</td><td>Logic đám mây mã nguồn đóng, hộp đen</td><td>Không có thành tích (track record) có thể kiểm chứng</td></tr>
+      <tr><td>Rủi ro rò rỉ key</td><td>Không có — key không bao giờ rời khỏi máy tính của bạn</td><td>Key được lưu trên máy chủ nhà cung cấp</td><td>Không áp dụng</td></tr>
+    </table>
+  </div>
+</div></section>
+
+<!-- ================= LIVE PROOF ================= -->
+<section class="section" id="live-proof"><div class="wrap">
+  <div class="section-label">Số liệu thực tế</div>
+  <div class="section-title" id="liveProofTitle">Trước khi giải thích thêm, đây là lịch sử tài khoản đã thực sự vận hành.</div>
+  <p class="section-sub" id="liveProofSub">Bên dưới là ảnh chụp nhanh tài khoản <strong>Shadow Mode</strong> được lấy trực tiếp từ báo cáo Telegram — dữ liệu thị trường thực, USDT ảo, vốn thực bằng 0.</p>
+  <p id="liveBadge" class="live-badge">🟢 Live — updated <span id="liveUpdated"></span> ago</p>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num" id="lpBalance">1,032.77</div><div class="stat-label">Số dư (USDT) — Shadow Mode, vốn ảo</div></div>
+    <div class="stat-card"><div class="stat-num" id="lpPnl">+32.77</div><div class="stat-label" id="lpPnlLabel">Lãi/lỗ lũy kế (USDT), 97 giao dịch</div></div>
+    <div class="stat-card"><div class="stat-num" id="lpReturn">+3.28%</div><div class="stat-label">Tỷ suất lợi nhuận lũy kế kể từ khi bắt đầu Shadow Mode</div></div>
+    <div class="stat-card"><div class="stat-num" id="lpWinRate">81.4%</div><div class="stat-label">Tỷ lệ thắng trong cùng giai đoạn</div></div>
+  </div>
+  <p class="sim-note" id="lpNote">Ảnh chụp nhanh tính đến 05:04 KST ngày 05/07/2026 — tại thời điểm đó có 7 vị thế đang mở, với lãi/lỗ chưa thực hiện lẫn lộn giữa dương và âm (đúng lúc logic thoát lệnh vẫn đang quản lý các vị thế này). Shadow Mode giao dịch bằng dữ liệu thị trường thực nhưng trên số dư ảo, và <strong>đây không phải là lịch sử giao dịch bằng vốn thực.</strong> Hiệu suất trong quá khứ không đảm bảo lợi nhuận trong tương lai.</p>
+</div></section>
+
+<!-- ================= SHOWCASE ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Giao diện thực tế</div>
+  <div class="section-title">Đây không phải bản dựng mô phỏng, mà là bảng điều khiển thực tế.</div>
+  <p class="section-sub">Được chụp trực tiếp từ một phiên bản đang chạy thực tế — theo dõi vị thế, chọn mã giao dịch, lịch sử giao dịch.</p>
+  <div class="showcase-grid">
+    <div class="shot"><img src="/screenshots/shot1.png" alt="Bảng điều khiển JaviD Future Bot — Vị thế theo thời gian thực" loading="lazy"><div class="shot-cap">Vị thế &amp; số dư theo thời gian thực</div></div>
+    <div class="shot"><img src="/screenshots/shot3.png" alt="Bảng điều khiển JaviD Future Bot — Chọn mã giao dịch" loading="lazy"><div class="shot-cap">Chọn từng mã giao dịch &amp; bật/tắt chiến lược</div></div>
+  </div>
+</div></section>
+
+<!-- ================= FAQ ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Câu hỏi thường gặp</div>
+  <div class="section-title">Những câu hỏi thường gặp trước khi tải xuống.</div>
+  <div class="faq-list">
+    <div class="faq-item"><h4>Đây là phòng chat tín hiệu hay bot thực sự?</h4><p>Đây là phần mềm thực thi tự động thực sự. Nó đọc thị trường, đưa ra quyết định, và trực tiếp đặt lệnh cũng như quản lý lệnh trên tài khoản sàn của bạn — không phải kiểu bạn nhận tín hiệu từ ai đó rồi tự tay đặt lệnh theo.</p></div>
+    <div class="faq-item"><h4>Bot có thể truy cập vào tài sản của tôi không?</h4><p>Không. Bạn chỉ cần giới hạn API key kết nối ở chế độ <strong>chỉ giao dịch và tắt quyền rút tiền</strong>. Hơn nữa, mọi thao tác thực thi đều diễn ra cục bộ trên máy tính của bạn, nên JaviD không bao giờ giữ, đi qua hay chạm vào số dư của bạn.</p></div>
+    <div class="faq-item"><h4>Chi phí là bao nhiêu?</h4><p>Miễn phí. Miễn phí vĩnh viễn. Chúng tôi nhận một phần phí giao dịch mà đằng nào bạn cũng phải trả, dưới hình thức hoa hồng giới thiệu từ sàn, và không có bất kỳ khoản phí riêng nào bị trừ từ tài khoản của bạn.</p></div>
+    <div class="faq-item"><h4>Tôi có thể bị thua lỗ không?</h4><p>Có. Đây là giao dịch futures thực sự với rủi ro thị trường thực sự. Bạn có thể dùng Shadow Mode để xác nhận cách chiến lược thực sự vận hành trước khi đưa vốn thực vào, và bạn luôn có thể tự điều chỉnh kích thước vị thế cũng như các mã đang hoạt động bất kỳ lúc nào.</p></div>
+    <div class="faq-item"><h4>Tôi có cần biết lập trình không?</h4><p>Không. Chiến lược, lựa chọn mã giao dịch và cài đặt rủi ro đều được thiết lập ngay trên bảng điều khiển — bạn không cần viết bất kỳ dòng code nào.</p></div>
+    <div class="faq-item"><h4>Có hỗ trợ cả Windows và macOS không?</h4><p>Có, cả hai đều được hỗ trợ và bạn có thể tải miễn phí ngay bên dưới.</p></div>
+    <div class="faq-item"><h4>Tôi có cần được phê duyệt trước khi tải xuống không?</h4><p>Không. Hiện tại bạn có thể tải trực tiếp từ nút bên dưới mà không cần phê duyệt riêng. Nếu gặp khó khăn trong quá trình cài đặt hoặc thiết lập, bạn có thể nhận hỗ trợ từ cộng đồng Telegram.</p></div>
+    <div class="faq-item"><h4>Số vốn tối thiểu để bắt đầu là bao nhiêu?</h4><p>Chúng tôi khuyến nghị tối thiểu 1.000 USDT để việc tính kích thước vị thế và biên độ cắt lỗ hoạt động đúng như thiết kế — vui lòng tham khảo mục "Vận hành thực tế" ở trên.</p></div>
+    <div class="faq-item"><h4>Tôi có thể chạy nhiều coin cùng lúc không?</h4><p>Có, hệ thống theo dõi hơn 500 mã giao dịch, và bạn có thể tự chọn mã nào sẽ được kích hoạt ngay trên bảng điều khiển.</p></div>
+    <div class="faq-item"><h4>Bot có tiếp tục chạy khi tôi tắt máy tính không?</h4><p>Không — vì việc thực thi diễn ra trên máy tính của bạn, nên để tiếp tục giao dịch, máy tính cần được bật và kết nối internet.</p></div>
+    <div class="faq-item"><h4>API key có an toàn không?</h4><p>Key được mã hóa và lưu trữ cục bộ, không được gửi đến bất kỳ máy chủ nào thuộc sở hữu của JaviD — trong quá trình giao dịch, chỉ có duy nhất một kết nối ra bên ngoài, đó là đến sàn giao dịch.</p></div>
+    <div class="faq-item"><h4>Nếu một coin cụ thể liên tục thua lỗ thì sao?</h4><p>Bạn chỉ cần tắt mã đó. Bạn có thể xem hiệu suất theo từng mã trong lịch sử giao dịch Shadow Mode, vì vậy hãy bỏ chọn những coin không hiệu quả rồi lưu lại.</p></div>
+    <div class="faq-item"><h4>Nếu gặp khó khăn, tôi có thể nhận trợ giúp ở đâu?</h4><p>Có — cả cộng đồng Telegram và diễn đàn cộng đồng đều sẵn sàng giải đáp các câu hỏi về cài đặt và thiết lập.</p></div>
+  </div>
+</div></section>
+
+<!-- ================= TELEGRAM CTA ================= -->
+<section class="section" style="padding-bottom:60px;"><div class="wrap">
+  <div class="tg-cta">
+    <h3>📲 Hỗ trợ cài đặt, cập nhật và giải đáp thắc mắc tại đây.</h3>
+    <p>Cộng đồng Telegram hỗ trợ người dùng mới làm quen, giải đáp các câu hỏi về cài đặt, và chia sẻ kết quả Shadow Mode của những thành viên khác.</p>
+    <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" class="btn btn-primary">Tham gia cộng đồng Telegram</a>
+  </div>
+</div></section>
+
+<!-- ================= DOWNLOAD GATE ================= -->
+<section class="section dl-section" id="download"><div class="wrap">
+  <div class="section-label" style="justify-content:center;display:flex;">Tải xuống</div>
+  <div class="section-title">Phí đăng ký 0 đồng. Miễn phí vĩnh viễn.</div>
+  <p class="section-sub">Công cụ thực thi giao dịch futures USDT-M thực sự, chạy 100% trên máy tính của bạn — chính bạn giữ key, giữ vốn, giữ toàn quyền kiểm soát trong mọi giao dịch.</p>
+  <p class="section-sub" style="margin:12px auto 0;">Tự tay lựa chọn để vận hành từ hơn 500 mã futures USDⓈ-M, bao gồm BTC, ETH, XAU. Hiện tại, 3 chiến lược được tối ưu cho các altcoin có độ biến động cao, và bộ cấu hình sẵn (preset) dành riêng cho các mã vốn hóa lớn vẫn đang trong quá trình phát triển.</p>
+  <div class="dl-gate" id="dlGate">
+    <div class="dl-gate-buttons">
+      <a href="downloads/JaviD_Future_Bot_Bitget_Windows.zip" class="btn btn-primary" download>🪟 Tải cho Windows</a>
+      <a href="downloads/JaviD_Future_Bot_Bitget_macOS.zip" class="btn btn-ghost" download>🍎 Tải cho macOS</a>
+    </div>
+    <p class="dl-gate-help">Bạn có thắc mắc trong quá trình cài đặt? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">Hãy hỏi trong cộng đồng Telegram</a>.</p>
+  </div>
+</div></section>
+
+<!-- ================= REFERRAL ================= -->
+<section class="section" style="padding-top:0;"><div class="wrap" style="text-align:center;">
+  <p style="color:var(--faint);font-size:14px;">Bạn chưa có tài khoản sàn giao dịch? <a href="https://partner.bitget.com/bg/javid003" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">Đăng ký qua liên kết đối tác chính thức →</a></p>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="footer-headline">Cuộc sống vẫn tiếp diễn, giao dịch vẫn không ngừng.</div>
+  <div class="footer-cols">
+    <div class="footer-col">
+      <div class="footer-col-label">Nền tảng</div>
+      <a href="#capabilities">Chiến lược</a>
+      <a href="#architecture">Kiến trúc</a>
+      <a href="#research">Nghiên cứu</a>
+      <a href="#download">Tải xuống</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Khác</div>
+      <a href="board.html">Diễn đàn cộng đồng</a>
+      <a href="bitget-signup-api-guide.html">Hướng dẫn đăng ký · Thiết lập API</a>
+      <a href="index.html">English</a>
+      <a href="https://www.javidtrading.com/ko">Chọn sàn giao dịch (trang tổng hợp)</a>
+      <a href="https://bn.javidtrading.com/ko">Phiên bản Binance</a>
+      <a href="mailto:javidfuturebot@javid-dol.uk">Liên hệ</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 JaviD Future Bot · bg.javidtrading.com</span>
+    <span>Giao dịch futures tiền mã hóa tiềm ẩn rủi ro rất cao. Do sử dụng đòn bẩy, bạn có thể mất toàn bộ vốn (bị thanh lý). JaviD Future Bot chỉ là một công cụ thực thi độc lập, không đảm bảo lợi nhuận và không cung cấp tư vấn đầu tư. Mọi quyết định đầu tư và hậu quả của nó hoàn toàn thuộc trách nhiệm của bạn.</span>
+  </div>
+</div></footer>
+
+
+<script>
+/* ---------- Matrix rain (hero background) ---------- */
+(function(){
+  var c = document.getElementById('matrixCanvas');
+  var ctx = c.getContext('2d');
+  var hero = c.parentElement;
+  var cols, drops;
+  var chars = '01アイウエオカキクケコ$€¥₿ABCDEFGHIJK'.split('');
+
+  function resize(){
+    c.width = hero.offsetWidth;
+    c.height = hero.offsetHeight;
+    cols = Math.floor(c.width / 16);
+    drops = new Array(cols).fill(0).map(function(){ return Math.random() * -50; });
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function draw(){
+    ctx.fillStyle = 'rgba(8,9,11,0.08)';
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.font = '14px monospace';
+    for (var i = 0; i < cols; i++){
+      var text = chars[Math.floor(Math.random() * chars.length)];
+      var isAccent = Math.random() > 0.985;
+      ctx.fillStyle = isAccent ? '#e8b44c' : 'rgba(0,240,255,0.55)';
+      ctx.fillText(text, i * 16, drops[i] * 16);
+      if (drops[i] * 16 > c.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ---------- Particle network (capability visuals) ---------- */
+document.querySelectorAll('.netCanvas').forEach(function(canvas){
+  var ctx = canvas.getContext('2d');
+  var seed = Number(canvas.dataset.seed) || 1;
+  var w, h, points;
+
+  function resize(){
+    var rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width; canvas.height = rect.height;
+    w = canvas.width; h = canvas.height;
+    var n = 26;
+    points = new Array(n).fill(0).map(function(_, i){
+      return {
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.3 * seed * 0.4,
+        vy: (Math.random() - 0.5) * 0.3 * seed * 0.4,
+      };
+    });
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function draw(){
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = '#0b0d10';
+    ctx.fillRect(0, 0, w, h);
+    points.forEach(function(p){
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+    });
+    for (var i = 0; i < points.length; i++){
+      for (var j = i + 1; j < points.length; j++){
+        var dx = points[i].x - points[j].x, dy = points[i].y - points[j].y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 120){
+          ctx.strokeStyle = 'rgba(0,240,255,' + (1 - dist/120) * 0.35 + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(points[i].x, points[i].y); ctx.lineTo(points[j].x, points[j].y); ctx.stroke();
+        }
+      }
+    }
+    points.forEach(function(p){
+      ctx.fillStyle = '#e8b44c';
+      ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI*2); ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+});
+
+/* ---------- Warp / light-trail canvas (architecture banner) ---------- */
+(function(){
+  var c = document.getElementById('warpCanvas');
+  var ctx = c.getContext('2d');
+  var w, h, lines;
+  function resize(){
+    var rect = c.parentElement.getBoundingClientRect();
+    c.width = rect.width; c.height = rect.height;
+    w = c.width; h = c.height;
+    var n = 60;
+    lines = new Array(n).fill(0).map(function(){
+      return { angle: Math.random() * Math.PI * 2, dist: Math.random() * 200, speed: 1 + Math.random() * 3, len: 20 + Math.random() * 60 };
+    });
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  function draw(){
+    ctx.fillStyle = 'rgba(11,13,16,0.25)';
+    ctx.fillRect(0, 0, w, h);
+    var cx = w/2, cy = h/2;
+    lines.forEach(function(l){
+      l.dist += l.speed;
+      if (l.dist > Math.max(w,h)) l.dist = 0;
+      var x1 = cx + Math.cos(l.angle) * l.dist;
+      var y1 = cy + Math.sin(l.angle) * l.dist;
+      var x2 = cx + Math.cos(l.angle) * (l.dist + l.len);
+      var y2 = cy + Math.sin(l.angle) * (l.dist + l.len);
+      var alpha = 1 - (l.dist / Math.max(w,h));
+      ctx.strokeStyle = 'rgba(0,240,255,' + Math.max(0,alpha*0.5) + ')';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ---------- Research grid (generated, no fake dates) ---------- */
+(function(){
+  var items = [
+    ['ATR Trailing Stop', 'Hệ thống biến động'],
+    ['Hồi quy độ lệch VWAP', 'Tín hiệu hồi quy trung bình'],
+    ['Phát hiện phân kỳ CVD', 'Phân tích dòng lệnh'],
+    ['Tính kích thước vị thế tránh thanh lý', 'Kỹ thuật quản trị rủi ro'],
+    ['Phát hiện bùng nổ khối lượng', 'Vi cấu trúc thị trường'],
+    ['Theo dõi hơn 500 mã', 'Bao phủ đa tài sản'],
+    ['Kiểm chứng bằng Shadow Mode', 'Kiểm chứng bằng vốn ảo'],
+    ['Hệ thống báo cáo Telegram', 'Giám sát theo thời gian thực'],
+    ['Mã hóa & lưu trữ key cục bộ', 'Kiến trúc bảo mật'],
+    ['Chọn mã giao dịch chỉ với một cú nhấp', 'Cấu hình danh mục'],
+    ['Tái tính kích thước theo số dư hằng ngày', 'Cơ chế lãi kép'],
+    ['Thực thi không lưu ký', 'Kiến trúc tin cậy'],
+  ];
+  var grid = document.getElementById('researchGrid');
+  items.forEach(function(item, i){
+    var card = document.createElement('div');
+    card.className = 'research-card';
+    var hue = (i * 37) % 360;
+    card.innerHTML =
+      '<div class="rc-pattern" style="background:radial-gradient(circle at ' + (20+ (i*13)%60) + '% ' + (20+(i*29)%60) + '%, rgba(0,240,255,.18), transparent 55%), repeating-conic-gradient(from ' + (i*30) + 'deg, rgba(232,180,76,.05) 0deg 8deg, transparent 8deg 16deg);"></div>' +
+      '<div class="rc-body"><h5>' + item[0] + '</h5><span>' + item[1] + '</span></div>';
+    grid.appendChild(card);
+  });
+})();
+
+/* ---------- Live Proof fetch ---------- */
+(function(){
+  function timeAgo(iso){
+    var diffMs = Date.now() - new Date(iso).getTime();
+    var mins = Math.max(0, Math.round(diffMs / 60000));
+    if (mins < 1) return 'vừa xong';
+    if (mins < 60) return mins + ' phút';
+    var hrs = Math.round(mins / 60);
+    if (hrs < 24) return hrs + ' giờ';
+    return Math.round(hrs / 24) + ' ngày';
+  }
+  function fmtNum(n, decimals){
+    var sign = n > 0 ? '+' : '';
+    return sign + n.toFixed(decimals);
+  }
+  fetch('/api/status').then(function(r){ return r.json(); }).then(function(data){
+    if (!data || !data.live) return;
+    document.getElementById('lpBalance').textContent = Number(data.balance).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+    document.getElementById('lpPnl').textContent = fmtNum(Number(data.cumulative_pnl), 2);
+    if (data.trade_count) document.getElementById('lpPnlLabel').textContent = 'Lãi/lỗ lũy kế (USDT), ' + data.trade_count + ' giao dịch';
+    document.getElementById('lpReturn').textContent = fmtNum(Number(data.cumulative_return_pct), 2) + '%';
+    document.getElementById('lpWinRate').textContent = Number(data.win_rate).toFixed(1) + '%';
+    document.getElementById('liveUpdated').textContent = timeAgo(data.updated_at);
+    document.getElementById('liveBadge').style.display = 'block';
+    document.getElementById('liveProofSub').textContent = 'Ảnh chụp nhanh tài khoản theo thời gian thực được lấy trực tiếp từ bot đang chạy — dữ liệu thị trường thực, USDT ảo, rủi ro vốn thực bằng 0.';
+    var openTxt = data.open_positions != null ? data.open_positions + ' vị thế đang mở, ' : '';
+    document.getElementById('lpNote').innerHTML = 'Dữ liệu thời gian thực, tự động cập nhật — ' + openTxt + 'lãi/lỗ chưa thực hiện đang lẫn lộn giữa dương và âm do logic thoát lệnh vẫn đang quản lý theo thời gian thực. Hiệu suất trong quá khứ không đảm bảo lợi nhuận trong tương lai.';
+  }).catch(function(){});
+})();
+
+/* ---------- Download gate: temporarily disabled — direct links used instead (see #download section) ---------- */
+</script>
+</body>
+</html>

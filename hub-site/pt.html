@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa de Negociação Automática Grátis — Bot de Futuros Cripto (Binance·Bitget) | JaviD Future Bot</title>
+<meta name="description" content="JaviD Future Bot é um programa de negociação automática gratuito que opera futuros de criptomoedas USDⓈ-M na Binance e na Bitget 24 horas por dia. Escolha entre mais de 500 símbolos, incluindo BTC, ETH e XAU. Sua chave de API e seus fundos permanecem na sua própria conta da corretora, e as ordens são executadas no seu PC. Compatível com Windows e Mac, sem taxa de assinatura. Futuros alavancados envolvem risco de perda total do capital.">
+<link rel="alternate" hreflang="en" href="https://www.javidtrading.com/">
+<link rel="alternate" hreflang="ko" href="https://www.javidtrading.com/ko">
+<link rel="alternate" hreflang="ja" href="https://www.javidtrading.com/ja">
+<link rel="alternate" hreflang="es" href="https://www.javidtrading.com/es">
+<link rel="alternate" hreflang="fr" href="https://www.javidtrading.com/fr">
+<link rel="alternate" hreflang="vi" href="https://www.javidtrading.com/vi">
+<link rel="alternate" hreflang="tr" href="https://www.javidtrading.com/tr">
+<link rel="alternate" hreflang="pt" href="https://www.javidtrading.com/pt">
+<link rel="alternate" hreflang="x-default" href="https://www.javidtrading.com/">
+<link rel="canonical" href="https://www.javidtrading.com/pt">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:title" content="Programa de Negociação Automática de Futuros Cripto — Binance·Bitget Grátis">
+<meta property="og:description" content="Negociação automática sem custódia de fundos. A chave de API é sua, as ordens são executadas no seu PC — sem taxa de assinatura, sem taxa de sinal.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.javidtrading.com/pt">
+<meta property="og:image" content="https://www.javidtrading.com/images/javid-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="images/javid-icon.png">
+<style>
+  :root{
+    --ink:#0f172a; --sub:#64748b; --faint:#94a3b8;
+    --line:#e2e8f0; --card:#ffffff;
+    --indigo:#4f46e5; --indigo-dark:#4338ca; --indigo-50:#eef2ff;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{-webkit-font-smoothing:antialiased;}
+  body{
+    font-family:var(--sans); color:var(--ink); line-height:1.6;
+    word-break:keep-all; overflow-wrap:break-word;
+    background:
+      radial-gradient(1100px 480px at 50% -10%, var(--indigo-50), transparent 65%),
+      #ffffff;
+    min-height:100vh;
+    display:flex; flex-direction:column;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px; width:100%;}
+
+  header{padding:28px 0 0;}
+  .bar{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand img{width:34px; height:34px; border-radius:50%; object-fit:cover;}
+  .brand span{font-size:15px; font-weight:700; letter-spacing:-0.01em;}
+  .langs{font-size:12.5px; font-weight:700; color:var(--sub);}
+  .langs a{text-decoration:none; padding:5px 9px; border-radius:8px;}
+  .langs a[aria-current="true"]{background:var(--indigo-50); color:var(--indigo);}
+
+  .hero{padding:52px 0 8px; text-align:center;}
+  .kicker{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:11.5px; font-weight:700; letter-spacing:.06em;
+    color:var(--indigo); background:var(--indigo-50); border:1px solid #e0e3fc;
+    padding:6px 14px; border-radius:100px; margin-bottom:22px;
+  }
+  h1{
+    font-size:clamp(26px,4.4vw,40px); font-weight:800; letter-spacing:-0.02em;
+    line-height:1.26; color:var(--ink); margin-bottom:15px; text-wrap:balance;
+  }
+  h1 em{color:var(--indigo); font-style:normal;}
+  .hero p{max-width:560px; margin:0 auto; font-size:15.5px; color:var(--sub);}
+
+  .grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:16px;
+    max-width:680px; margin:42px auto 0;
+  }
+  @media (min-width:680px){ .grid{grid-template-columns:repeat(4,1fr);} }
+
+  .card{
+    position:relative; display:flex; flex-direction:column; align-items:center;
+    background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:22px 14px 18px; text-decoration:none;
+    box-shadow:0 1px 2px rgba(15,23,42,.04);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    cursor:pointer;
+  }
+  .card:hover{transform:translateY(-3px); box-shadow:0 14px 28px -12px rgba(79,70,229,.28); border-color:#c7d2fe;}
+  .card .logo-plate{
+    width:100%; aspect-ratio:16/8.6; border-radius:12px; background:#0b0b0c;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+    margin-bottom:14px; padding:14px;
+  }
+  .card .logo-plate img{width:100%; height:100%; object-fit:contain;}
+  .card .name{font-size:13.5px; font-weight:700; color:var(--ink);}
+  .card .status{margin-top:5px; font-size:11.5px; font-weight:700;}
+  .card .status.live{color:#059669;}
+  .card .status.soon{color:var(--faint);}
+  .card.disabled{cursor:pointer;}
+  .card.disabled .logo-plate img{filter:grayscale(1); opacity:.38;}
+  .card.disabled .name{color:var(--faint);}
+  .card.disabled:hover{transform:none; border-color:var(--line); box-shadow:0 1px 2px rgba(15,23,42,.04);}
+  .badge-soon{
+    position:absolute; top:-8px; right:-8px;
+    background:#f1f5f9; color:var(--sub); border:1px solid var(--line);
+    font-size:10px; font-weight:800; padding:3px 8px; border-radius:100px;
+  }
+
+  .card .pairs{margin-top:3px; font-size:11px; font-weight:600; color:var(--sub);}
+  .card.disabled .pairs{color:var(--faint);}
+  .pairs-note{text-align:center; font-size:11px; color:var(--faint); max-width:560px; margin:14px auto 0;}
+
+  .trust{
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+    gap:20px; margin:38px 0 0; font-size:12.5px; font-weight:600; color:var(--sub);
+  }
+  .trust span{display:flex; align-items:center; gap:6px;}
+  .trust svg{width:14px; height:14px; color:#059669; flex:none;}
+
+  section.block{padding:52px 0 0;}
+  h2{font-size:clamp(20px,2.6vw,26px); font-weight:800; letter-spacing:-0.015em; margin-bottom:10px; text-wrap:balance;}
+  .lede{font-size:14.5px; color:var(--sub); max-width:640px; margin-bottom:24px;}
+  .cols{display:grid; grid-template-columns:1fr; gap:16px;}
+  @media (min-width:700px){ .cols{grid-template-columns:repeat(3,1fr);} }
+  .box{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px;}
+  .box h3{font-size:14.5px; font-weight:800; margin-bottom:7px;}
+  .box p{font-size:13.5px; color:var(--sub);}
+  .box .step{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:24px; height:24px; border-radius:7px; background:var(--indigo-50);
+    color:var(--indigo); font-size:12px; font-weight:800; margin-bottom:10px;
+  }
+
+  details{border:1px solid var(--line); border-radius:12px; background:var(--card); padding:15px 18px; margin-bottom:10px;}
+  details summary{
+    font-size:14px; font-weight:700; cursor:pointer; list-style:none;
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+  }
+  details summary::-webkit-details-marker{display:none;}
+  details summary::after{content:"+"; color:var(--indigo); font-weight:800; font-size:17px; flex:none;}
+  details[open] summary::after{content:"–";}
+  details p{font-size:13.5px; color:var(--sub); margin-top:11px;}
+
+  footer{margin-top:auto; padding:56px 0 30px; text-align:center;}
+  footer .links{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:18px;
+    font-size:12.5px; font-weight:600; color:var(--sub); margin-bottom:14px;
+  }
+  footer .links a:hover{color:var(--indigo);}
+  footer .copy{font-size:11.5px; color:var(--faint); margin-bottom:10px;}
+  footer .disclaimer{max-width:640px; margin:0 auto; font-size:11px; line-height:1.65; color:#b9c1cf;}
+
+  #toast{
+    position:fixed; left:50%; bottom:26px; transform:translate(-50%,20px);
+    background:var(--ink); color:#fff; font-size:13px; font-weight:600;
+    padding:12px 20px; border-radius:100px; box-shadow:0 12px 30px -10px rgba(15,23,42,.45);
+    opacity:0; pointer-events:none; transition:opacity .25s ease, transform .25s ease;
+    z-index:50; white-space:nowrap;
+  }
+  #toast.show{opacity:1; transform:translate(-50%,0);}
+  @media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="bar">
+    <div class="brand">
+      <img src="images/javid-icon.png" alt="JaviD Future Bot">
+      <span>JaviD Future Bot</span>
+    </div>
+    <nav class="langs" aria-label="Seleção de idioma">
+      <a href="/">EN</a>
+      <a href="/ko">한국어</a>
+      <a href="/ja">日本語</a>
+      <a href="/es">Español</a>
+      <a href="/fr">Français</a>
+      <a href="/vi">Tiếng Việt</a>
+      <a href="/tr">Türkçe</a>
+      <a href="/pt" aria-current="true">Português</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="kicker">Negociação automática multi-corretora</span>
+    <h1>Sem custódia de fundos<br><em>Programa de negociação automática de futuros cripto</em></h1>
+    <p>O JaviD Future Bot negocia automaticamente futuros USDⓈ-M na Binance e na Bitget. Como ele roda no seu PC com sua própria chave de API, os fundos nunca saem da sua conta na corretora. Escolha a corretora que você utiliza.</p>
+  </section>
+
+  <div class="grid">
+    <a class="card" href="https://bn.javidtrading.com" aria-label="Ir para a versão Binance">
+      <div class="logo-plate"><img src="images/binance.webp" alt="Binance" width="160" height="86"></div>
+      <div class="name">Binance</div>
+      <div class="pairs">750+ símbolos de futuros</div>
+      <div class="status live">Acessar →</div>
+    </a>
+
+    <a class="card" href="https://bg.javidtrading.com" aria-label="Ir para a versão Bitget">
+      <div class="logo-plate"><img src="images/bitget.png" alt="Bitget" width="160" height="86"></div>
+      <div class="name">Bitget</div>
+      <div class="pairs">730+ símbolos de futuros</div>
+      <div class="status live">Acessar →</div>
+    </a>
+
+    <div class="card disabled" data-exchange="Bybit" role="button" tabindex="0" aria-label="Bybit, em breve">
+      <span class="badge-soon">Em breve</span>
+      <div class="logo-plate"><img src="images/bybit.png" alt="Bybit" width="160" height="86"></div>
+      <div class="name">Bybit</div>
+      <div class="pairs">760+ símbolos de futuros</div>
+      <div class="status soon">Em breve</div>
+    </div>
+
+    <div class="card disabled" data-exchange="OKX" role="button" tabindex="0" aria-label="OKX, em breve">
+      <span class="badge-soon">Em breve</span>
+      <div class="logo-plate"><img src="images/okx.png" alt="OKX" width="160" height="86"></div>
+      <div class="name">OKX</div>
+      <div class="pairs">570+ símbolos de futuros</div>
+      <div class="status soon">Em breve</div>
+    </div>
+  </div>
+
+  <p class="pairs-note">* O número de símbolos de futuros é baseado nas estatísticas públicas de cada corretora e pode variar a qualquer momento conforme listagens/exclusões (dados de agosto de 2026).</p>
+
+  <div class="trust">
+    <span><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>Uso gratuito</span>
+    <span><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>Chave de API é sua</span>
+    <span><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>Sem custódia de fundos</span>
+  </div>
+
+  <section class="block">
+    <h2>Veja como funciona a negociação automática</h2>
+    <p class="lede">Você não precisa se cadastrar conosco nem depositar fundos em lugar nenhum. É um programa de desktop que se comunica com a corretora usando uma chave de API emitida por você mesmo.</p>
+    <div class="cols">
+      <div class="box">
+        <span class="step">1</span>
+        <h3>Gere uma chave de API para negociação</h3>
+        <p>Crie uma chave de API na Binance ou na Bitget com a <strong>permissão de saque desativada</strong> e apenas a permissão de negociação ativada. Só essa configuração já impede que qualquer programa transfira fundos para fora da sua conta.</p>
+      </div>
+      <div class="box">
+        <span class="step">2</span>
+        <h3>Confira antes no modo shadow</h3>
+        <p>É um recurso que simula um saldo virtual usando dados reais de mercado. Antes de investir seus fundos, você pode observar por alguns dias como a estratégia se comporta.</p>
+      </div>
+      <div class="box">
+        <span class="step">3</span>
+        <h3>Passe para o modo real nas suas condições</h3>
+        <p>Escolha entre mais de 500 símbolos USDⓈ-M, incluindo <strong>BTC, ETH e XAU</strong>, e opere apenas os que quiser, definindo você mesmo o tamanho das posições. É possível receber alertas de negociação pelo Telegram.</p>
+<p style="margin-top:8px;opacity:.78;font-size:.92em;">Atualmente, as 3 estratégias são voltadas para altcoins de alta volatilidade; presets exclusivos para ativos de grande capitalização ainda estão em desenvolvimento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>O que significa não custodiar fundos</h2>
+    <p class="lede">A maioria dos serviços de negociação automática recebe depósitos de fundos ou roteia as ordens pelos próprios servidores. Este programa não faz nenhuma das duas coisas — essa diferença é toda a base da sua segurança.</p>
+    <div class="cols">
+      <div class="box">
+        <h3>Os fundos permanecem na corretora</h3>
+        <p>O programa não armazena fundos. O saldo permanece o tempo todo na sua conta Binance ou Bitget, e você pode revogar a chave de API na corretora a qualquer momento.</p>
+      </div>
+      <div class="box">
+        <h3>As ordens são executadas no seu PC</h3>
+        <p>Tanto o cálculo da estratégia quanto a geração das ordens acontecem localmente no Windows ou macOS. Como não passa por servidores de terceiros, não existe um operador que possa negociar em seu lugar.</p>
+      </div>
+      <div class="box">
+        <h3>Sem taxa de assinatura, sem taxa de sinal</h3>
+        <p>Você pode baixar e usar o programa gratuitamente. Não há salas de sinais pagas, copy trading nem taxas de compartilhamento de lucros.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Perguntas frequentes</h2>
+    <div>
+      <details>
+        <summary>É realmente grátis?</summary>
+        <p>Sim, o programa pode ser baixado e usado gratuitamente, sem taxa de assinatura ou de sinal. No entanto, as taxas normais de negociação cobradas pela corretora continuam se aplicando.</p>
+      </details>
+      <details>
+        <summary>Quais corretoras são suportadas?</summary>
+        <p>Atualmente, oferecemos suporte a futuros USDⓈ-M na Binance e na Bitget. Bybit e OKX estão em desenvolvimento. O programa é separado por corretora, então escolha a sua acima.</p>
+      </details>
+      <details>
+        <summary>O programa pode sacar meus fundos?</summary>
+        <p>Não é possível. Se você desativar a permissão de saque ao gerar sua chave de API, a corretora rejeitará qualquer solicitação de saque, independentemente do programa conectado.</p>
+      </details>
+      <details>
+        <summary>Preciso deixar o computador ligado o tempo todo?</summary>
+        <p>Sim. Como o programa roda no seu PC, e não em um servidor, a negociação só ocorre enquanto ele estiver aberto e conectado à internet.</p>
+      </details>
+      <details>
+        <summary>Posso testar antes de depositar dinheiro?</summary>
+        <p>Sim. O modo shadow simula um saldo virtual com dados reais de mercado, permitindo avaliar o funcionamento antes de investir seus fundos. Recomendamos começar por aí.</p>
+      </details>
+      <details>
+        <summary>Posso ter prejuízo ao usar a negociação automática?</summary>
+        <p>Sim, você deve partir do princípio de que isso é possível. Os futuros de criptomoedas usam alavancagem, então uma posição pode ser liquidada e você pode perder todo o capital investido. A automação apenas remove a emoção da execução, mas não elimina o risco de mercado, e nenhum desempenho passado garante resultados futuros.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="links">
+    <a href="https://bn.javidtrading.com">Versão Binance</a>
+    <a href="https://bg.javidtrading.com">Versão Bitget</a>
+    <a href="/">English</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk">Contato</a>
+  </div>
+  <div class="copy">© 2026 JaviD Future Bot · javidtrading.com</div>
+  <p class="disclaimer">A negociação de futuros de criptomoedas envolve alto risco e pode não ser adequada para todos os investidores. O JaviD Future Bot é uma ferramenta de execução de negociação independente e não garante lucros. Não oferece aconselhamento de investimento, não custodia fundos e não executa ordens em nome do usuário em nenhum servidor. A alavancagem pode resultar na perda total do capital investido. Toda decisão de negociação e suas consequências são de responsabilidade exclusiva do usuário.</p>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "pt",
+  "mainEntity": [
+    {"@type":"Question","name":"É realmente grátis?","acceptedAnswer":{"@type":"Answer","text":"O programa pode ser baixado e usado gratuitamente, sem taxa de assinatura ou de sinal. No entanto, as taxas normais de negociação cobradas pela corretora continuam se aplicando."}},
+    {"@type":"Question","name":"Quais corretoras são suportadas?","acceptedAnswer":{"@type":"Answer","text":"Atualmente, oferecemos suporte a futuros USDⓈ-M na Binance e na Bitget. Bybit e OKX estão em desenvolvimento."}},
+    {"@type":"Question","name":"O programa pode sacar meus fundos?","acceptedAnswer":{"@type":"Answer","text":"Não é possível. Ao desativar a permissão de saque na geração da chave de API, a corretora rejeita qualquer solicitação de saque."}},
+    {"@type":"Question","name":"Preciso deixar o computador ligado o tempo todo?","acceptedAnswer":{"@type":"Answer","text":"Sim. Como o programa roda no seu PC, a negociação só ocorre enquanto ele estiver aberto."}},
+    {"@type":"Question","name":"Posso testar antes de depositar dinheiro?","acceptedAnswer":{"@type":"Answer","text":"Sim. O modo shadow simula um saldo virtual com dados reais de mercado, permitindo avaliar o funcionamento antes de investir seus fundos."}},
+    {"@type":"Question","name":"Posso ter prejuízo ao usar a negociação automática?","acceptedAnswer":{"@type":"Answer","text":"Sim. Os futuros de criptomoedas usam alavancagem, então uma posição pode ser liquidada e você pode perder todo o capital investido. O desempenho passado não garante resultados futuros."}}
+  ]
+}
+</script>
+
+<script>
+(function(){
+  var toast = document.getElementById('toast');
+  var timer = null;
+  function showToast(name){
+    toast.textContent = name + ' está em desenvolvimento. Aguarde um pouco mais!';
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(function(){ toast.classList.remove('show'); }, 2400);
+  }
+  document.querySelectorAll('.card.disabled').forEach(function(el){
+    el.addEventListener('click', function(){ showToast(el.getAttribute('data-exchange')); });
+    el.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showToast(el.getAttribute('data-exchange')); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
