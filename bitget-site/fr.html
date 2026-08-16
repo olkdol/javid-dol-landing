@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
-<meta name="google-site-verification" content="7FxauwzJ7YvdeXB4U3lsWA8_8nBDaU8lQ57PFjdz0y0">
 <script>
 // 다운로드 유입 출처 캡처 — 첫 진입 시 한 번만 기록, 이후 사이트 내 이동으로는 덮어쓰지 않는다.
 // (마케팅팀 REQUEST_landingagent_downloadattribution.md 참고)
@@ -664,6 +663,39 @@
       });
     })();
     </script>
+<script>
+document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
+  var modal = document.getElementById('jfb-dlgate');
+  if (!modal) return;
+  var GATE_KEY = 'jfb_dl_gate_ok';
+  var pendingAnchor = null;
+  function openModal(a){ pendingAnchor = a; modal.classList.remove('hidden'); modal.classList.add('flex'); }
+  function closeModal(){ modal.classList.add('hidden'); modal.classList.remove('flex'); pendingAnchor = null; }
+  document.querySelectorAll('a[download]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var already;
+      try { already = sessionStorage.getItem(GATE_KEY); } catch (e2) {}
+      if (a.dataset.gateOk === '1' || already === '1') return;
+      e.preventDefault();
+      openModal(a);
+    });
+  });
+  var confirmBtn = document.getElementById('jfb-dlgate-confirm');
+  if (confirmBtn) confirmBtn.addEventListener('click', function () {
+    try { sessionStorage.setItem(GATE_KEY, '1'); } catch (e2) {}
+    var a = pendingAnchor;
+    closeModal();
+    if (a) { a.dataset.gateOk = '1'; a.click(); }
+  });
+  var cancelBtn = document.getElementById('jfb-dlgate-cancel');
+  if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+  var xBtn = document.getElementById('jfb-dlgate-x');
+  if (xBtn) xBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+});
+</script>
+
     <p class="mt-3.5 text-[12.5px] text-slate-400" data-i18n="dl_bitget_note">Pas encore de compte Bitget ? <a class="font-bold text-indigo-600 hover:underline" href="https://partner.bitget.com/bg/javid003" rel="noopener" target="_blank">Inscrivez-vous via notre lien partenaire officiel</a>.</p>
   </div>
 
@@ -677,6 +709,19 @@
 
   <p class="mx-auto mt-12 max-w-2xl border-t border-slate-200 pt-6 text-[11.5px] leading-relaxed text-slate-400" data-i18n="dl_disclaimer">Le trading de futures sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. JaviD Future Bot est un outil d'exécution autonome — il ne garantit pas de profits. Les chiffres de performance présentés sur cette page proviennent de données du Mode Shadow (solde virtuel) et de captures d'écran du tableau de bord réel sur des périodes spécifiques ; ils ne garantissent ni ne préjugent des résultats futurs. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne détient aucun fonds en dépôt, et n'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API Bitget.</p>
 </div></section>
+
+
+<div id="jfb-dlgate" class="fixed inset-0 z-[999] hidden items-center justify-center bg-slate-900/60 px-4">
+  <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 text-center shadow-2xl">
+    <button type="button" id="jfb-dlgate-x" aria-label="Close" class="absolute right-3.5 top-3.5 text-slate-400 hover:text-slate-600"><i data-lucide="x" class="h-4.5 w-4.5"></i></button>
+    <div class="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-amber-100"><i data-lucide="key-round" class="h-5 w-5 text-amber-600"></i></div>
+    <h3 class="text-[17px] font-extrabold text-slate-900">Avant de télécharger</h3>
+    <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500">JaviD Future Bot fonctionne avec votre propre compte Bitget — vous aurez besoin d'un compte Bitget et d'une clé API connectée avant de pouvoir commencer à trader. Vous n'en avez pas encore ? L'inscription ne prend qu'environ 5 minutes.</p>
+    <a id="jfb-dlgate-signup" href="bitget-signup-api-guide.html" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-3 text-[13.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><span>S'inscrire sur Bitget et obtenir une API →</span></a>
+    <button type="button" id="jfb-dlgate-confirm" class="mt-2.5 w-full rounded-lg border border-slate-300 px-5 py-3 text-[13.5px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600">J'ai déjà un compte Bitget</button>
+    <button type="button" id="jfb-dlgate-cancel" class="mt-2 w-full text-[12.5px] font-semibold text-slate-400 hover:text-slate-600">Plus tard</button>
+  </div>
+</div>
 
 <!-- ============ FOOTER ============ -->
 <footer class="border-t border-slate-200 bg-slate-50 py-14"><div class="mx-auto max-w-6xl px-6">

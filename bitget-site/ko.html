@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta name="google-site-verification" content="7FxauwzJ7YvdeXB4U3lsWA8_8nBDaU8lQ57PFjdz0y0">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>무료 자동매매 프로그램 — 비트겟 코인 선물 24시간 자동매매 | JaviD Future Bot</title>
@@ -486,6 +485,19 @@
   <p style="color:var(--faint);font-size:14px;">아직 거래소 계정이 없으신가요? <a href="https://partner.bitget.com/bg/javid003" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">공식 파트너 링크로 가입하기 →</a></p>
 </div></section>
 
+
+<div id="jfb-dlgate" style="position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:0 20px;">
+  <div style="position:relative;width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:34px 30px;text-align:center;">
+    <button type="button" id="jfb-dlgate-x" aria-label="Close" style="position:absolute;top:12px;right:14px;background:none;border:none;color:var(--faint);font-size:22px;cursor:pointer;line-height:1;">&times;</button>
+    <div style="font-size:28px;margin-bottom:14px;">🔑</div>
+    <h3 style="font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:10px;color:var(--text);">다운로드 전에 확인해주세요</h3>
+    <p style="font-size:13.5px;line-height:1.7;color:var(--faint);margin-bottom:22px;">JaviD Future Bot은 회원님의 비트겟 계좌와 연동되어 작동합니다. 매매를 시작하려면 비트겟 계좌와 API 키가 먼저 필요합니다. 아직 계좌가 없으신가요? 가입은 약 5분이면 완료됩니다.</p>
+    <a id="jfb-dlgate-signup" href="bitget-signup-api-guide.html" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;">비트겟 가입 및 API 받으러 가기 →</a>
+    <button type="button" id="jfb-dlgate-confirm" class="btn btn-ghost" style="width:100%;justify-content:center;margin-bottom:10px;">비트겟 계좌 있음</button>
+    <button type="button" id="jfb-dlgate-cancel" style="background:none;border:none;color:var(--faint);font-size:12.5px;cursor:pointer;text-decoration:underline;">나중에 하기</button>
+  </div>
+</div>
+
 <footer><div class="wrap">
   <div class="footer-headline">일상은 그대로, 거래는 계속.</div>
   <div class="footer-cols">
@@ -695,6 +707,38 @@ document.querySelectorAll('.netCanvas').forEach(function(canvas){
 })();
 
 /* ---------- Download gate: temporarily disabled — direct links used instead (see #download section) ---------- */
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
+  var modal = document.getElementById('jfb-dlgate');
+  if (!modal) return;
+  var GATE_KEY = 'jfb_dl_gate_ok';
+  var pendingAnchor = null;
+  function openModal(a){ pendingAnchor = a; modal.style.display = 'flex'; }
+  function closeModal(){ modal.style.display = 'none'; pendingAnchor = null; }
+  document.querySelectorAll('a[download]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var already;
+      try { already = sessionStorage.getItem(GATE_KEY); } catch (e2) {}
+      if (a.dataset.gateOk === '1' || already === '1') return;
+      e.preventDefault();
+      openModal(a);
+    });
+  });
+  var confirmBtn = document.getElementById('jfb-dlgate-confirm');
+  if (confirmBtn) confirmBtn.addEventListener('click', function () {
+    try { sessionStorage.setItem(GATE_KEY, '1'); } catch (e2) {}
+    var a = pendingAnchor;
+    closeModal();
+    if (a) { a.dataset.gateOk = '1'; a.click(); }
+  });
+  var cancelBtn = document.getElementById('jfb-dlgate-cancel');
+  if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+  var xBtn = document.getElementById('jfb-dlgate-x');
+  if (xBtn) xBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+});
 </script>
 </body>
 </html>

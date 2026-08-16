@@ -485,6 +485,19 @@
   <p style="color:var(--faint);font-size:14px;">Bạn chưa có tài khoản sàn giao dịch? <a href="https://partner.bitget.com/bg/javid003" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">Đăng ký qua liên kết đối tác chính thức →</a></p>
 </div></section>
 
+
+<div id="jfb-dlgate" style="position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:0 20px;">
+  <div style="position:relative;width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:34px 30px;text-align:center;">
+    <button type="button" id="jfb-dlgate-x" aria-label="Close" style="position:absolute;top:12px;right:14px;background:none;border:none;color:var(--faint);font-size:22px;cursor:pointer;line-height:1;">&times;</button>
+    <div style="font-size:28px;margin-bottom:14px;">🔑</div>
+    <h3 style="font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:10px;color:var(--text);">Trước Khi Tải Về</h3>
+    <p style="font-size:13.5px;line-height:1.7;color:var(--faint);margin-bottom:22px;">JaviD Future Bot hoạt động cùng với tài khoản Bitget của riêng bạn — bạn cần có tài khoản Bitget và khóa API được kết nối trước khi có thể bắt đầu giao dịch. Chưa có tài khoản? Đăng ký chỉ mất khoảng 5 phút.</p>
+    <a id="jfb-dlgate-signup" href="bitget-signup-api-guide.html" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;">Đăng Ký Bitget & Lấy API →</a>
+    <button type="button" id="jfb-dlgate-confirm" class="btn btn-ghost" style="width:100%;justify-content:center;margin-bottom:10px;">Tôi Đã Có Tài Khoản Bitget</button>
+    <button type="button" id="jfb-dlgate-cancel" style="background:none;border:none;color:var(--faint);font-size:12.5px;cursor:pointer;text-decoration:underline;">Để Sau</button>
+  </div>
+</div>
+
 <footer><div class="wrap">
   <div class="footer-headline">Cuộc sống vẫn tiếp diễn, giao dịch vẫn không ngừng.</div>
   <div class="footer-cols">
@@ -694,6 +707,38 @@ document.querySelectorAll('.netCanvas').forEach(function(canvas){
 })();
 
 /* ---------- Download gate: temporarily disabled — direct links used instead (see #download section) ---------- */
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
+  var modal = document.getElementById('jfb-dlgate');
+  if (!modal) return;
+  var GATE_KEY = 'jfb_dl_gate_ok';
+  var pendingAnchor = null;
+  function openModal(a){ pendingAnchor = a; modal.style.display = 'flex'; }
+  function closeModal(){ modal.style.display = 'none'; pendingAnchor = null; }
+  document.querySelectorAll('a[download]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var already;
+      try { already = sessionStorage.getItem(GATE_KEY); } catch (e2) {}
+      if (a.dataset.gateOk === '1' || already === '1') return;
+      e.preventDefault();
+      openModal(a);
+    });
+  });
+  var confirmBtn = document.getElementById('jfb-dlgate-confirm');
+  if (confirmBtn) confirmBtn.addEventListener('click', function () {
+    try { sessionStorage.setItem(GATE_KEY, '1'); } catch (e2) {}
+    var a = pendingAnchor;
+    closeModal();
+    if (a) { a.dataset.gateOk = '1'; a.click(); }
+  });
+  var cancelBtn = document.getElementById('jfb-dlgate-cancel');
+  if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+  var xBtn = document.getElementById('jfb-dlgate-x');
+  if (xBtn) xBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+});
 </script>
 </body>
 </html>

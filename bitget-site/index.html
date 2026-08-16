@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-<meta name="google-site-verification" content="7FxauwzJ7YvdeXB4U3lsWA8_8nBDaU8lQ57PFjdz0y0">
 <script>
 // 다운로드 유입 출처 캡처 — 첫 진입 시 한 번만 기록, 이후 사이트 내 이동으로는 덮어쓰지 않는다.
 // (마케팅팀 REQUEST_landingagent_downloadattribution.md 참고)
@@ -666,6 +665,39 @@
       });
     })();
     </script>
+<script>
+document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
+  var modal = document.getElementById('jfb-dlgate');
+  if (!modal) return;
+  var GATE_KEY = 'jfb_dl_gate_ok';
+  var pendingAnchor = null;
+  function openModal(a){ pendingAnchor = a; modal.classList.remove('hidden'); modal.classList.add('flex'); }
+  function closeModal(){ modal.classList.add('hidden'); modal.classList.remove('flex'); pendingAnchor = null; }
+  document.querySelectorAll('a[href^="/api/download"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var already;
+      try { already = sessionStorage.getItem(GATE_KEY); } catch (e2) {}
+      if (a.dataset.gateOk === '1' || already === '1') return;
+      e.preventDefault();
+      openModal(a);
+    });
+  });
+  var confirmBtn = document.getElementById('jfb-dlgate-confirm');
+  if (confirmBtn) confirmBtn.addEventListener('click', function () {
+    try { sessionStorage.setItem(GATE_KEY, '1'); } catch (e2) {}
+    var a = pendingAnchor;
+    closeModal();
+    if (a) { a.dataset.gateOk = '1'; a.click(); }
+  });
+  var cancelBtn = document.getElementById('jfb-dlgate-cancel');
+  if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+  var xBtn = document.getElementById('jfb-dlgate-x');
+  if (xBtn) xBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+});
+</script>
+
     <p class="mt-3.5 text-[12.5px] text-slate-400" data-i18n="dl_bitget_note">Don't have a Bitget account yet? <a href="https://partner.bitget.com/bg/javid003" target="_blank" rel="noopener" class="font-bold text-indigo-600 hover:underline">Sign up through our official partner link</a>.</p>
   </div>
 
@@ -679,6 +711,19 @@
 
   <p class="mx-auto mt-12 max-w-2xl border-t border-slate-200 pt-6 text-[11.5px] leading-relaxed text-slate-400" data-i18n="dl_disclaimer">Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. JaviD Future Bot is a standalone execution tool — it does not guarantee profits. Performance figures on this page are Shadow Mode (virtual balance) data and snapshots of real dashboard records from specific periods; they do not guarantee or imply future results. All trading decisions and their outcomes are the sole responsibility of the user. JaviD Future Bot does not provide investment advice, does not custody funds, and does not execute trades on any server — every order is placed directly from your own device using your own Bitget API credentials.</p>
 </div></section>
+
+
+<div id="jfb-dlgate" class="fixed inset-0 z-[999] hidden items-center justify-center bg-slate-900/60 px-4">
+  <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 text-center shadow-2xl">
+    <button type="button" id="jfb-dlgate-x" aria-label="Close" class="absolute right-3.5 top-3.5 text-slate-400 hover:text-slate-600"><i data-lucide="x" class="h-4.5 w-4.5"></i></button>
+    <div class="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-amber-100"><i data-lucide="key-round" class="h-5 w-5 text-amber-600"></i></div>
+    <h3 class="text-[17px] font-extrabold text-slate-900" data-i18n="dlgate_title">Before You Download</h3>
+    <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500" data-i18n="dlgate_body">JaviD Future Bot works with your own Bitget account — you'll need a Bitget account and API key connected before you can start trading with it. Don't have one yet? It only takes about 5 minutes to set up.</p>
+    <a id="jfb-dlgate-signup" href="bitget-signup-api-guide.html" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-3 text-[13.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><span data-i18n="dlgate_signup_btn">Sign Up for Bitget &amp; Get API →</span></a>
+    <button type="button" id="jfb-dlgate-confirm" class="mt-2.5 w-full rounded-lg border border-slate-300 px-5 py-3 text-[13.5px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600" data-i18n="dlgate_have_btn">I Already Have a Bitget Account</button>
+    <button type="button" id="jfb-dlgate-cancel" class="mt-2 w-full text-[12.5px] font-semibold text-slate-400 hover:text-slate-600" data-i18n="dlgate_cancel">Maybe Later</button>
+  </div>
+</div>
 
 <!-- ============ FOOTER ============ -->
 <footer class="border-t border-slate-200 bg-slate-50 py-14"><div class="mx-auto max-w-6xl px-6">
@@ -808,6 +853,11 @@ var I18N = {
     nav_new_to_bitget: 'New to Bitget?',
     nav_community: 'Community<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">NEW</span>',
     cta_free_download: 'Free Download',
+  "dlgate_title": "Before You Download",
+  "dlgate_body": "JaviD Future Bot works with your own Bitget account — you'll need a Bitget account and API key connected before you can start trading with it. Don't have one yet? It only takes about 5 minutes to set up.",
+  "dlgate_signup_btn": "Sign Up for Bitget & Get API →",
+  "dlgate_have_btn": "I Already Have a Bitget Account",
+  "dlgate_cancel": "Maybe Later",
     nav_community_board: 'Community Board',
     hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> Bitget USDT-M Futures Automation\n    ',
     hero_h1: 'Crypto Trading Bot for Bitget Futures, Built to Run 24/7',
@@ -1017,6 +1067,11 @@ var I18N = {
     nav_new_to_bitget: '비트겟이 처음이신가요?',
     nav_community: '커뮤니티<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">신규</span>',
     cta_free_download: '무료 다운로드',
+  "dlgate_title": "다운로드 전에 확인해주세요",
+  "dlgate_body": "JaviD Future Bot은 회원님의 비트겟 계좌와 연동되어 작동합니다. 매매를 시작하려면 비트겟 계좌와 API 키가 먼저 필요합니다. 아직 계좌가 없으신가요? 가입은 약 5분이면 완료됩니다.",
+  "dlgate_signup_btn": "비트겟 가입 및 API 받으러 가기 →",
+  "dlgate_have_btn": "비트겟 계좌 있음",
+  "dlgate_cancel": "나중에 하기",
     nav_community_board: '커뮤니티 게시판',
     hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> 비트겟 USDT-M 선물 자동매매\n    ',
     hero_h1: '24시간 쉬지 않고 작동하는 비트겟 선물 자동매매 봇',
@@ -1226,6 +1281,11 @@ var I18N = {
     nav_new_to_bitget: 'Bitgetが初めての方へ',
     nav_community: 'コミュニティ<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">新着</span>',
     cta_free_download: '無料ダウンロード',
+  "dlgate_title": "ダウンロード前にご確認ください",
+  "dlgate_body": "JaviD Future Botはお客様ご自身のBitgetアカウントと連携して動作します。取引を開始するには、事前にBitgetアカウントとAPIキーが必要です。まだお持ちでない方は、登録はわずか5分ほどで完了します。",
+  "dlgate_signup_btn": "Bitgetに登録してAPIを取得する →",
+  "dlgate_have_btn": "Bitgetアカウントを既に持っています",
+  "dlgate_cancel": "後で",
     nav_community_board: 'コミュニティ掲示板',
     hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> Bitget USDT-M先物 自動売買\n    ',
     hero_h1: '24時間365日稼働する、Bitget先物自動売買ボット',
@@ -1435,6 +1495,11 @@ var I18N = {
     nav_new_to_bitget: '初次使用 Bitget？',
     nav_community: '社区<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">新</span>',
     cta_free_download: '免费下载',
+  "dlgate_title": "下载前请确认",
+  "dlgate_body": "JaviD Future Bot 需要连接您自己的 Bitget 账户才能运行。开始交易前，您需要先拥有一个 Bitget 账户和 API 密钥。还没有账户？注册大约只需 5 分钟。",
+  "dlgate_signup_btn": "前往注册 Bitget 并获取 API →",
+  "dlgate_have_btn": "我已有 Bitget 账户",
+  "dlgate_cancel": "以后再说",
     nav_community_board: '社区版块',
     hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> Bitget USDT-M 合约自动化交易\n    ',
     hero_h1: '为 Bitget 合约打造，全天候 24/7 运行的加密货币交易机器人',
@@ -1644,6 +1709,11 @@ var I18N = {
     nav_new_to_bitget: '¿Nuevo en Bitget?',
     nav_community: 'Comunidad<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">NUEVO</span>',
     cta_free_download: 'Descarga gratuita',
+  "dlgate_title": "Antes de descargar",
+  "dlgate_body": "JaviD Future Bot funciona con tu propia cuenta de Bitget — necesitarás una cuenta de Bitget y una clave API conectada antes de poder empezar a operar. ¿Aún no tienes una? Crearla lleva solo unos 5 minutos.",
+  "dlgate_signup_btn": "Regístrate en Bitget y obtén tu API →",
+  "dlgate_have_btn": "Ya tengo una cuenta de Bitget",
+  "dlgate_cancel": "Más tarde",
     nav_community_board: 'Foro de la Comunidad',
     hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> Automatización de Futuros USDT-M en Bitget\n    ',
     hero_h1: 'Bot de trading de criptomonedas para futuros de Bitget, diseñado para operar 24/7',
@@ -1853,6 +1923,11 @@ var I18N = {
     nav_new_to_bitget: 'Nouveau sur Bitget ?',
     nav_community: 'Communauté<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">NOUVEAU</span>',
     cta_free_download: 'Téléchargement gratuit',
+  "dlgate_title": "Avant de télécharger",
+  "dlgate_body": "JaviD Future Bot fonctionne avec votre propre compte Bitget — vous aurez besoin d'un compte Bitget et d'une clé API connectée avant de pouvoir commencer à trader. Vous n'en avez pas encore ? L'inscription ne prend qu'environ 5 minutes.",
+  "dlgate_signup_btn": "S'inscrire sur Bitget et obtenir une API →",
+  "dlgate_have_btn": "J'ai déjà un compte Bitget",
+  "dlgate_cancel": "Plus tard",
     nav_community_board: 'Forum Communautaire',
     hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> Automatisation des Futures USDT-M sur Bitget\n    ',
     hero_h1: 'Bot de trading crypto pour les futures Bitget, conçu pour tourner 24h/24 et 7j/7',
@@ -2062,6 +2137,11 @@ vi: {
     nav_new_to_bitget: 'Mới với Bitget?',
     nav_community: 'Cộng đồng<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">MỚI</span>',
     cta_free_download: 'Tải miễn phí',
+  "dlgate_title": "Trước Khi Tải Về",
+  "dlgate_body": "JaviD Future Bot hoạt động cùng với tài khoản Bitget của riêng bạn — bạn cần có tài khoản Bitget và khóa API được kết nối trước khi có thể bắt đầu giao dịch. Chưa có tài khoản? Đăng ký chỉ mất khoảng 5 phút.",
+  "dlgate_signup_btn": "Đăng Ký Bitget & Lấy API →",
+  "dlgate_have_btn": "Tôi Đã Có Tài Khoản Bitget",
+  "dlgate_cancel": "Để Sau",
     nav_community_board: 'Bảng cộng đồng',
     hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> Tự động hóa hợp đồng tương lai USDT-M trên Bitget\n    ',
     hero_h1: 'Bot Giao Dịch Tiền Điện Tử Cho Hợp Đồng Tương Lai Bitget, Được Xây Dựng Để Chạy 24/7',
@@ -2271,6 +2351,11 @@ tr: {
     nav_new_to_bitget: 'Bitget\'e mi Yenisiniz?',
     nav_community: 'Topluluk<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">YENİ</span>',
     cta_free_download: 'Ücretsiz İndir',
+  "dlgate_title": "İndirmeden Önce",
+  "dlgate_body": "JaviD Future Bot, kendi Bitget hesabınızla çalışır — işlem yapmaya başlamadan önce bağlı bir Bitget hesabına ve API anahtarına ihtiyacınız var. Henüz hesabınız yok mu? Kayıt olmak yalnızca yaklaşık 5 dakika sürer.",
+  "dlgate_signup_btn": "Bitget'e Kaydol ve API Al →",
+  "dlgate_have_btn": "Zaten Bir Bitget Hesabım Var",
+  "dlgate_cancel": "Daha Sonra",
     nav_community_board: 'Topluluk Panosu',
     hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> Bitget USDT-M Vadeli İşlem Otomasyonu\n    ',
     hero_h1: '7/24 Çalışmak Üzere Tasarlanmış Bitget Vadeli İşlemleri İçin Kripto Ticaret Botu',
@@ -2480,6 +2565,11 @@ pt: {
     nav_new_to_bitget: 'Novo na Bitget?',
     nav_community: 'Comunidade<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">NOVO</span>',
     cta_free_download: 'Download Gratuito',
+  "dlgate_title": "Antes de Baixar",
+  "dlgate_body": "O JaviD Future Bot funciona com sua própria conta Bitget — você precisará de uma conta Bitget e uma chave de API conectada antes de poder começar a operar. Ainda não tem uma conta? O cadastro leva cerca de 5 minutos.",
+  "dlgate_signup_btn": "Criar Conta na Bitget e Obter API →",
+  "dlgate_have_btn": "Já Tenho uma Conta Bitget",
+  "dlgate_cancel": "Depois",
     nav_community_board: 'Fórum da Comunidade',
     hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> Automação de Futuros USDT-M na Bitget\n    ',
     hero_h1: 'Bot de Trading de Criptomoedas para Futuros na Bitget, Feito para Rodar 24/7',

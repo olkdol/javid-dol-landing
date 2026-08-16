@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
-<meta name="google-site-verification" content="7FxauwzJ7YvdeXB4U3lsWA8_8nBDaU8lQ57PFjdz0y0">
 <script>
 // 다운로드 유입 출처 캡처 — 첫 진입 시 한 번만 기록, 이후 사이트 내 이동으로는 덮어쓰지 않는다.
 // (마케팅팀 REQUEST_landingagent_downloadattribution.md 참고)
@@ -668,6 +667,39 @@
       });
     })();
     </script>
+<script>
+document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
+  var modal = document.getElementById('jfb-dlgate');
+  if (!modal) return;
+  var GATE_KEY = 'jfb_dl_gate_ok';
+  var pendingAnchor = null;
+  function openModal(a){ pendingAnchor = a; modal.classList.remove('hidden'); modal.classList.add('flex'); }
+  function closeModal(){ modal.classList.add('hidden'); modal.classList.remove('flex'); pendingAnchor = null; }
+  document.querySelectorAll('a[download]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var already;
+      try { already = sessionStorage.getItem(GATE_KEY); } catch (e2) {}
+      if (a.dataset.gateOk === '1' || already === '1') return;
+      e.preventDefault();
+      openModal(a);
+    });
+  });
+  var confirmBtn = document.getElementById('jfb-dlgate-confirm');
+  if (confirmBtn) confirmBtn.addEventListener('click', function () {
+    try { sessionStorage.setItem(GATE_KEY, '1'); } catch (e2) {}
+    var a = pendingAnchor;
+    closeModal();
+    if (a) { a.dataset.gateOk = '1'; a.click(); }
+  });
+  var cancelBtn = document.getElementById('jfb-dlgate-cancel');
+  if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+  var xBtn = document.getElementById('jfb-dlgate-x');
+  if (xBtn) xBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+});
+</script>
+
     <p class="mt-4 text-[12.5px] text-slate-400" data-i18n="dl_no_code_note">永久無料、登録不要です。新バージョンの情報やサポートは<a class="font-bold text-indigo-600 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">Telegramコミュニティ</a>でご案内しています。</p>
   </div>
 
@@ -681,6 +713,19 @@
 
   <p class="mx-auto mt-12 max-w-2xl border-t border-slate-200 pt-6 text-[11.5px] leading-relaxed text-slate-400" data-i18n="final_disclaimer">暗号資産先物取引には高いリスクが伴い、すべての投資家に適しているわけではありません。JaviD Future Botはスタンドアロンの実行ツールであり — 利益を保証するものではありません。このページの実績数値はShadow Mode(仮想残高)のデータ、および特定期間の実口座ダッシュボード記録のスナップショットであり、将来の結果を保証または示唆するものではありません。すべての取引判断とその結果に対する責任はユーザー本人にあります。JaviD Future Botは投資助言を提供せず、資金を管理せず、いかなるサーバー上でも取引を実行しません — すべての注文はユーザー自身のデバイスから、ユーザー自身のBinance API認証情報を使って直接発注されます。</p>
 </div></section>
+
+
+<div id="jfb-dlgate" class="fixed inset-0 z-[999] hidden items-center justify-center bg-slate-900/60 px-4">
+  <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 text-center shadow-2xl">
+    <button type="button" id="jfb-dlgate-x" aria-label="Close" class="absolute right-3.5 top-3.5 text-slate-400 hover:text-slate-600"><i data-lucide="x" class="h-4.5 w-4.5"></i></button>
+    <div class="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-amber-100"><i data-lucide="key-round" class="h-5 w-5 text-amber-600"></i></div>
+    <h3 class="text-[17px] font-extrabold text-slate-900">ダウンロード前にご確認ください</h3>
+    <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500">JaviD Future Botはお客様ご自身のBinanceアカウントと連携して動作します。取引を開始するには、事前にBinanceアカウントとAPIキーが必要です。まだお持ちでない方は、登録はわずか5分ほどで完了します。</p>
+    <a id="jfb-dlgate-signup" href="binance-signup-api-guide.html" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-3 text-[13.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><span>Binanceに登録してAPIを取得する →</span></a>
+    <button type="button" id="jfb-dlgate-confirm" class="mt-2.5 w-full rounded-lg border border-slate-300 px-5 py-3 text-[13.5px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600">Binanceアカウントを既に持っています</button>
+    <button type="button" id="jfb-dlgate-cancel" class="mt-2 w-full text-[12.5px] font-semibold text-slate-400 hover:text-slate-600">後で</button>
+  </div>
+</div>
 
 <!-- ============ FOOTER ============ -->
 <footer class="border-t border-slate-200 bg-slate-50 py-14"><div class="mx-auto max-w-6xl px-6">
