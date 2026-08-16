@@ -347,5 +347,23 @@
   });
 })();
 </script>
+
+<style id="jfb-live-badge-css">
+#jfb-live-badge-link{position:fixed;right:16px;bottom:16px;z-index:2147483000;display:flex;align-items:center;
+gap:10px;padding:10px 16px 10px 13px;border-radius:999px;text-decoration:none;
+background:rgba(12,14,18,.94);border:1px solid rgba(255,255,255,.14);
+box-shadow:0 6px 24px rgba(0,0,0,.35);backdrop-filter:blur(6px);
+font-family:-apple-system,"Segoe UI",Roboto,"Malgun Gothic",sans-serif;color:#e9ebee;
+transition:transform .15s ease,border-color .15s ease}
+#jfb-live-badge-link:hover{transform:translateY(-2px);border-color:rgba(255,64,64,.6)}
+#jfb-live-badge-link .d{width:9px;height:9px;border-radius:50%;background:#ff3b30;flex:0 0 auto;
+box-shadow:0 0 0 0 rgba(255,59,48,.7);animation:jfbpulse 1.8s infinite}
+@keyframes jfbpulse{70%{box-shadow:0 0 0 9px rgba(255,59,48,0)}100%{box-shadow:0 0 0 0 rgba(255,59,48,0)}}
+#jfb-live-badge-link b{font-size:13px;font-weight:800;letter-spacing:.06em;color:#ff5b52}
+#jfb-live-badge-link span{font-size:12.5px;color:#c2c8d0;font-weight:600}
+@media (max-width:640px){#jfb-live-badge-link span{display:none}#jfb-live-badge-link{right:12px;bottom:12px;padding:9px 14px}}
+@media (prefers-reduced-motion:reduce){#jfb-live-badge-link .d{animation:none}}
+</style>
+<a id="jfb-live-badge-link" href="https://www.youtube.com/@JaviDFuture/live" target="_blank" rel="noopener" aria-label="CANLI — Gerçek hesap paneli, 7/24"><i class="d"></i><b>CANLI</b><span>Gerçek hesap paneli, 7/24</span></a>
 </body>
 </html>
