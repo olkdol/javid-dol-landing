@@ -701,6 +701,35 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function jfbUpdatePopup(){
+  var modal = document.getElementById('jfb-update-popup');
+  if (!modal) return;
+  var VERSION_KEY = 'jfb_seen_update_v18.2.10';
+  function openModal(){ modal.classList.remove('hidden'); modal.classList.add('flex'); }
+  function closeModal(){
+    modal.classList.add('hidden'); modal.classList.remove('flex');
+    try { localStorage.setItem(VERSION_KEY, '1'); } catch (e) {}
+  }
+  var already;
+  try { already = localStorage.getItem(VERSION_KEY); } catch (e) {}
+  if (!already) { setTimeout(openModal, 500); }
+  var ctaBtn = document.getElementById('jfb-update-cta');
+  if (ctaBtn) ctaBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    closeModal();
+    var target = document.getElementById('download');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  var dismissBtn = document.getElementById('jfb-update-dismiss');
+  if (dismissBtn) dismissBtn.addEventListener('click', closeModal);
+  var xBtn = document.getElementById('jfb-update-x');
+  if (xBtn) xBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
+});
+</script>
+
 
     <p class="mt-4 text-[12.5px] text-slate-400" data-i18n="dl_no_code_note">Free forever, no sign-up. Want release news and support? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" class="font-bold text-indigo-600 hover:underline">Join the Telegram community</a>.</p>
   </div>
@@ -726,6 +755,23 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
     <a id="jfb-dlgate-signup" href="binance-signup-api-guide.html" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-3 text-[13.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><span data-i18n="dlgate_signup_btn">Sign Up for Binance &amp; Get API →</span></a>
     <button type="button" id="jfb-dlgate-confirm" class="mt-2.5 w-full rounded-lg border border-slate-300 px-5 py-3 text-[13.5px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600" data-i18n="dlgate_have_btn">I Already Have a Binance Account</button>
     <button type="button" id="jfb-dlgate-cancel" class="mt-2 w-full text-[12.5px] font-semibold text-slate-400 hover:text-slate-600" data-i18n="dlgate_cancel">Maybe Later</button>
+  </div>
+</div>
+
+
+<div id="jfb-update-popup" class="fixed inset-0 z-[1000] hidden items-center justify-center bg-slate-900/70 px-4">
+  <div class="relative w-full max-w-md overflow-hidden rounded-2xl bg-white text-center shadow-2xl">
+    <button type="button" id="jfb-update-x" aria-label="Close" class="absolute right-3.5 top-3.5 z-10 text-white/80 hover:text-white"><i data-lucide="x" class="h-5 w-5"></i></button>
+    <div class="bg-gradient-to-br from-indigo-600 to-indigo-700 px-6 pb-7 pt-9">
+      <div class="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-white/15 text-3xl">🚀</div>
+      <div class="inline-block rounded-full bg-amber-400 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-slate-900">V18.2.10</div>
+      <h3 class="mt-3 text-[23px] font-extrabold leading-tight text-white" data-i18n="updatepopup_title">V18.2.10 Update Is Live!</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-indigo-100" data-i18n="updatepopup_sub">Download the latest version now and get the newest features.</p>
+    </div>
+    <div class="p-6">
+      <a href="#download" id="jfb-update-cta" class="flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><i data-lucide="download" class="h-4.5 w-4.5"></i><span data-i18n="updatepopup_cta">Download Now →</span></a>
+      <button type="button" id="jfb-update-dismiss" class="mt-2.5 w-full text-[12.5px] font-semibold text-slate-400 hover:text-slate-600" data-i18n="updatepopup_dismiss">Maybe Later</button>
+    </div>
   </div>
 </div>
 
@@ -891,6 +937,10 @@ var I18N = {
   "dl_flow_note": "Click your OS → unzip → run <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. It starts in your system tray; click the tray icon to open the dashboard. First time? Follow along with the <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">User Manual</a>.",
   "hedge_mode_notice": "In the Binance app, go to <span class=\"whitespace-nowrap\">Futures → Position Mode</span> and set it to <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> before you start.",
   "dl_label": "Free download — no access code required",
+  "updatepopup_title": "V18.2.10 Update Is Live!",
+  "updatepopup_sub": "Download the latest version now and get the newest features.",
+  "updatepopup_cta": "Download Now →",
+  "updatepopup_dismiss": "Maybe Later",
   "dlgate_title": "Before You Download",
   "dlgate_body": "JaviD Future Bot works with your own Binance account — you'll need a Binance account and API key connected before you can start trading with it. Don't have one yet? It only takes about 5 minutes to set up.",
   "dlgate_signup_btn": "Sign Up for Binance & Get API →",
@@ -1109,6 +1159,10 @@ var I18N = {
   "dl_flow_note": "OS 선택 → 압축 해제 → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code> 실행. 작업 표시줄 트레이에서 시작되며, 트레이 아이콘을 클릭하면 대시보드가 열립니다. 처음이신가요? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">사용 설명서</a>를 따라 해보세요.",
   "hedge_mode_notice": "시작하기 전에 바이낸스 앱에서 <span class=\"whitespace-nowrap\">Futures → Position Mode</span>로 이동해 <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span>(헷지 모드)로 설정하세요.",
   "dl_label": "무료 다운로드 — 액세스 코드가 필요 없습니다",
+  "updatepopup_title": "V18.2.10 업그레이드 완료!",
+  "updatepopup_sub": "지금 다운로드하고 최신 기능을 만나보세요.",
+  "updatepopup_cta": "지금 다운로드 →",
+  "updatepopup_dismiss": "나중에 하기",
   "dlgate_title": "다운로드 전에 확인해주세요",
   "dlgate_body": "JaviD Future Bot은 회원님의 바이낸스 계좌와 연동되어 작동합니다. 매매를 시작하려면 바이낸스 계좌와 API 키가 먼저 필요합니다. 아직 계좌가 없으신가요? 가입은 약 5분이면 완료됩니다.",
   "dlgate_signup_btn": "바이낸스 가입 및 API 받으러 가기 →",
@@ -1327,6 +1381,10 @@ var I18N = {
   "dl_flow_note": "OSをクリック → 解凍 → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>を実行。システムトレイで起動し、トレイアイコンをクリックするとダッシュボードが開きます。初めての方は<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">取扱説明書</a>を参考にしてください。",
   "hedge_mode_notice": "開始前に、Binanceアプリで<span class=\"whitespace-nowrap\">Futures → Position Mode</span>に移動し、<span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span>(ヘッジモード)に設定してください。",
   "dl_label": "無料ダウンロード — アクセスコードは不要です",
+  "updatepopup_title": "V18.2.10 アップデート完了！",
+  "updatepopup_sub": "今すぐダウンロードして最新機能をお試しください。",
+  "updatepopup_cta": "今すぐダウンロード →",
+  "updatepopup_dismiss": "後で",
   "dlgate_title": "ダウンロード前にご確認ください",
   "dlgate_body": "JaviD Future Botはお客様ご自身のBinanceアカウントと連携して動作します。取引を開始するには、事前にBinanceアカウントとAPIキーが必要です。まだお持ちでない方は、登録はわずか5分ほどで完了します。",
   "dlgate_signup_btn": "Binanceに登録してAPIを取得する →",
@@ -1545,6 +1603,10 @@ var I18N = {
   "dl_flow_note": "选择系统 → 解压 → 运行 <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>。程序会在系统托盘启动,点击托盘图标即可打开面板。第一次使用?可以参考<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">使用手册</a>。",
   "hedge_mode_notice": "开始前,请在币安 App 中进入<span class=\"whitespace-nowrap\">Futures → Position Mode</span>,将其设置为<span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span>(对冲模式)。",
   "dl_label": "免费下载 — 无需访问码",
+  "updatepopup_title": "V18.2.10 更新已完成！",
+  "updatepopup_sub": "立即下载，体验最新功能。",
+  "updatepopup_cta": "立即下载 →",
+  "updatepopup_dismiss": "以后再说",
   "dlgate_title": "下载前请确认",
   "dlgate_body": "JaviD Future Bot 需要连接您自己的币安账户才能运行。开始交易前，您需要先拥有一个币安账户和 API 密钥。还没有账户？注册大约只需 5 分钟。",
   "dlgate_signup_btn": "前往注册币安并获取 API →",
@@ -1763,6 +1825,10 @@ var I18N = {
   "dl_flow_note": "Elige tu sistema operativo → descomprime → ejecuta <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. Se inicia en la bandeja del sistema; haz clic en el icono para abrir el panel. ¿Primera vez? Sigue la guía del <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manual de usuario</a>.",
   "hedge_mode_notice": "Antes de empezar, en la app de Binance ve a <span class=\"whitespace-nowrap\">Futures → Position Mode</span> y configúralo en <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> (modo cobertura).",
   "dl_label": "Descarga gratuita: no necesitas código de acceso",
+  "updatepopup_title": "¡Actualización V18.2.10 disponible!",
+  "updatepopup_sub": "Descarga la última versión ahora y prueba las nuevas funciones.",
+  "updatepopup_cta": "Descargar ahora →",
+  "updatepopup_dismiss": "Más tarde",
   "dlgate_title": "Antes de descargar",
   "dlgate_body": "JaviD Future Bot funciona con tu propia cuenta de Binance — necesitarás una cuenta de Binance y una clave API conectada antes de poder empezar a operar. ¿Aún no tienes una? Crearla lleva solo unos 5 minutos.",
   "dlgate_signup_btn": "Regístrate en Binance y obtén tu API →",
@@ -1981,6 +2047,10 @@ var I18N = {
   "dl_flow_note": "Cliquez sur votre système → décompressez → exécutez <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. L'app démarre dans la barre d'état système ; cliquez sur l'icône pour ouvrir le tableau de bord. Première fois ? Suivez le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manuel d'utilisation</a>.",
   "hedge_mode_notice": "Avant de commencer, dans l'application Binance, allez dans <span class=\"whitespace-nowrap\">Futures → Position Mode</span> et réglez-le sur <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> (mode couverture).",
   "dl_label": "Téléchargement gratuit — aucun code d'accès requis",
+  "updatepopup_title": "Mise à jour V18.2.10 disponible !",
+  "updatepopup_sub": "Téléchargez la dernière version dès maintenant et découvrez les nouveautés.",
+  "updatepopup_cta": "Télécharger maintenant →",
+  "updatepopup_dismiss": "Plus tard",
   "dlgate_title": "Avant de télécharger",
   "dlgate_body": "JaviD Future Bot fonctionne avec votre propre compte Binance — vous aurez besoin d'un compte Binance et d'une clé API connectée avant de pouvoir commencer à trader. Vous n'en avez pas encore ? L'inscription ne prend qu'environ 5 minutes.",
   "dlgate_signup_btn": "S'inscrire sur Binance et obtenir une API →",
@@ -2199,6 +2269,10 @@ vi: {
   "dl_flow_note": "Nhấp vào hệ điều hành của bạn → giải nén → chạy <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. Ứng dụng khởi động trong khay hệ thống; nhấp vào biểu tượng khay để mở bảng điều khiển. Lần đầu sử dụng? Hãy làm theo <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">Sổ Tay Hướng Dẫn Sử Dụng</a>.",
   "hedge_mode_notice": "Trong ứng dụng Binance, vào <span class=\"whitespace-nowrap\">Futures → Position Mode</span> và đặt thành <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> trước khi bắt đầu.",
   "dl_label": "Tải miễn phí — không cần mã truy cập",
+  "updatepopup_title": "Đã Cập Nhật V18.2.10!",
+  "updatepopup_sub": "Tải phiên bản mới nhất ngay bây giờ để trải nghiệm các tính năng mới.",
+  "updatepopup_cta": "Tải Về Ngay →",
+  "updatepopup_dismiss": "Để Sau",
   "dlgate_title": "Trước Khi Tải Về",
   "dlgate_body": "JaviD Future Bot hoạt động cùng với tài khoản Binance của riêng bạn — bạn cần có tài khoản Binance và khóa API được kết nối trước khi có thể bắt đầu giao dịch. Chưa có tài khoản? Đăng ký chỉ mất khoảng 5 phút.",
   "dlgate_signup_btn": "Đăng Ký Binance & Lấy API →",
@@ -2417,6 +2491,10 @@ tr: {
   "dl_flow_note": "İşletim sisteminize tıklayın → zip dosyasını açın → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code> uygulamasını çalıştırın. Sistem tepsinizde başlar; kontrol panelini açmak için tepsi simgesine tıklayın. İlk kez mi? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">Kullanıcı Kılavuzu</a>'nu takip edin.",
   "hedge_mode_notice": "Binance uygulamasında, <span class=\"whitespace-nowrap\">Futures → Position Mode</span> bölümüne gidin ve başlamadan önce <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> olarak ayarlayın.",
   "dl_label": "Ücretsiz indirme — erişim kodu gerekmez",
+  "updatepopup_title": "V18.2.10 Güncellemesi Yayında!",
+  "updatepopup_sub": "En son sürümü şimdi indirin ve yeni özellikleri keşfedin.",
+  "updatepopup_cta": "Şimdi İndir →",
+  "updatepopup_dismiss": "Daha Sonra",
   "dlgate_title": "İndirmeden Önce",
   "dlgate_body": "JaviD Future Bot, kendi Binance hesabınızla çalışır — işlem yapmaya başlamadan önce bağlı bir Binance hesabına ve API anahtarına ihtiyacınız var. Henüz hesabınız yok mu? Kayıt olmak yalnızca yaklaşık 5 dakika sürer.",
   "dlgate_signup_btn": "Binance'e Kaydol ve API Al →",
@@ -2635,6 +2713,10 @@ pt: {
   "dl_flow_note": "Clique no seu sistema operacional → descompacte → execute <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. Ele inicia na bandeja do sistema; clique no ícone da bandeja para abrir o painel. Primeira vez? Siga o <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">Manual do Usuário</a>.",
   "hedge_mode_notice": "No app da Binance, vá em <span class=\"whitespace-nowrap\">Futures → Position Mode</span> e defina para <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> antes de começar.",
   "dl_label": "Download gratuito — nenhum código de acesso necessário",
+  "updatepopup_title": "Atualização V18.2.10 Disponível!",
+  "updatepopup_sub": "Baixe a versão mais recente agora e conheça os novos recursos.",
+  "updatepopup_cta": "Baixar Agora →",
+  "updatepopup_dismiss": "Depois",
   "dlgate_title": "Antes de Baixar",
   "dlgate_body": "O JaviD Future Bot funciona com sua própria conta Binance — você precisará de uma conta Binance e uma chave de API conectada antes de poder começar a operar. Ainda não tem uma conta? O cadastro leva cerca de 5 minutos.",
   "dlgate_signup_btn": "Criar Conta na Binance e Obter API →",
@@ -2843,23 +2925,5 @@ function applyLang(lang){
   applyLang(saved || 'en');
 })();
 </script>
-
-<style id="jfb-live-badge-css">
-#jfb-live-badge-link{position:fixed;right:16px;bottom:16px;z-index:2147483000;display:flex;align-items:center;
-gap:10px;padding:10px 16px 10px 13px;border-radius:999px;text-decoration:none;
-background:rgba(12,14,18,.94);border:1px solid rgba(255,255,255,.14);
-box-shadow:0 6px 24px rgba(0,0,0,.35);backdrop-filter:blur(6px);
-font-family:-apple-system,"Segoe UI",Roboto,"Malgun Gothic",sans-serif;color:#e9ebee;
-transition:transform .15s ease,border-color .15s ease}
-#jfb-live-badge-link:hover{transform:translateY(-2px);border-color:rgba(255,64,64,.6)}
-#jfb-live-badge-link .d{width:9px;height:9px;border-radius:50%;background:#ff3b30;flex:0 0 auto;
-box-shadow:0 0 0 0 rgba(255,59,48,.7);animation:jfbpulse 1.8s infinite}
-@keyframes jfbpulse{70%{box-shadow:0 0 0 9px rgba(255,59,48,0)}100%{box-shadow:0 0 0 0 rgba(255,59,48,0)}}
-#jfb-live-badge-link b{font-size:13px;font-weight:800;letter-spacing:.06em;color:#ff5b52}
-#jfb-live-badge-link span{font-size:12.5px;color:#c2c8d0;font-weight:600}
-@media (max-width:640px){#jfb-live-badge-link span{display:none}#jfb-live-badge-link{right:12px;bottom:12px;padding:9px 14px}}
-@media (prefers-reduced-motion:reduce){#jfb-live-badge-link .d{animation:none}}
-</style>
-<a id="jfb-live-badge-link" href="https://www.youtube.com/@JaviDFuture/live" target="_blank" rel="noopener" aria-label="LIVE — Real account dashboard, 24/7"><i class="d"></i><b>LIVE</b><span>Real account dashboard, 24/7</span></a>
 </body>
 </html>
