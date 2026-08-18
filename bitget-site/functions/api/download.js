@@ -1,21 +1,32 @@
 // Cloudflare Pages Function — serves /api/download
 //
-// Downloads are free and open, no access code. A GET request proxies the
-// installer straight out of this project's own static assets
-// (bitget-site/downloads/*.zip, served via the ASSETS binding) so the
-// browser gets a normal file download — while every successful download is
-// logged as one row in D1 (BOARD_DB -> download_events), so counts can be
-// checked later via GET /api/download-stats?key=<STATS_KEY>. Logging never
-// blocks or breaks the actual download — it runs in the background via
-// ctx.waitUntil and any failure is swallowed.
+// Downloads are free and open, no access code. A GET request now serves the
+// installer straight out of the R2 bucket (DOWNLOADS_BUCKET) first — so a new
+// release can be published just by replacing the object in the Cloudflare
+// dashboard (Storage & Databases -> R2 -> javid-downloads-bitget), no git
+// push / redeploy needed, same as the bn.javidtrading.com site.
 //
-// The front-end previously linked straight to downloads/<file>.zip, which
-// works but can't be counted (static assets never touch a Function). Routing
-// through /api/download is what makes counting possible.
+// If the R2 object isn't found (e.g. bucket not filled in yet), it falls
+// back to this project's own static assets (bitget-site/downloads/*.zip,
+// served via the ASSETS binding) so downloads never break during the
+// R2 migration.
 //
-// Required bindings on the Cloudflare project (already configured):
-//   Assets binding -> ASSETS  (wrangler.jsonc "assets")
-//   D1 database    -> BOARD_DB (javid-board-db-bitget)
+// Every successful download is also logged as one row in D1 (BOARD_DB ->
+// download_events), so counts can be checked later via
+// GET /api/download-stats?key=<STATS_KEY>. Logging never blocks or breaks
+// the actual download — it runs in the background via ctx.waitUntil and any
+// failure is swallowed.
+//
+// Required bindings on the Cloudflare project:
+//   R2 bucket    -> variable name: DOWNLOADS_BUCKET (bucket_name: javid-downloads-bitget)
+//   Assets binding -> ASSETS  (wrangler.jsonc "assets") — fallback only
+//   D1 database  -> BOARD_DB (javid-board-db-bitget)
+//
+// To publish a new build: Cloudflare dashboard -> R2 -> javid-downloads-bitget
+// -> upload/overwrite an object with EXACTLY the key name below (case
+// sensitive, no version number in the filename):
+//   JaviD_Future_Bot_Bitget_Windows.zip
+//   JaviD_Future_Bot_Bitget_macOS.zip
 //
 // (The DOWNLOAD_CODES KV namespace is no longer read by this endpoint. It can
 // stay bound harmlessly, or be unbound once nothing else uses it.)
@@ -23,8 +34,14 @@
 const SITE = "bg";
 
 const FILES = {
-  windows: "downloads/JaviD_Future_Bot_Bitget_Windows.zip",
-  mac: "downloads/JaviD_Future_Bot_Bitget_macOS.zip",
+  windows: {
+    r2Key: "JaviD_Future_Bot_Bitget_Windows.zip",
+    assetPath: "downloads/JaviD_Future_Bot_Bitget_Windows.zip",
+  },
+  mac: {
+    r2Key: "JaviD_Future_Bot_Bitget_macOS.zip",
+    assetPath: "downloads/JaviD_Future_Bot_Bitget_macOS.zip",
+  },
 };
 
 function pickPlatform(value) {
@@ -62,25 +79,56 @@ function logDownload(env, ctx, request, platform) {
   else return task;
 }
 
-async function serve(request, env, platform) {
-  if (!env.ASSETS) return json({ error: "not_configured" }, 500);
+// Try R2 first (new way to publish a release: just replace the object).
+async function serveFromR2(env, platform) {
+  if (!env.DOWNLOADS_BUCKET) return null;
+  const fileKey = FILES[platform].r2Key;
+  const object = await env.DOWNLOADS_BUCKET.get(fileKey);
+  if (!object) return null;
 
-  const relPath = FILES[platform];
+  const headers = new Headers();
+  headers.set("Content-Type", "application/zip");
+  headers.set("Content-Disposition", `attachment; filename="${fileKey}"`);
+  // Don't let an edge cache pin an old build after the R2 object is replaced.
+  headers.set("Cache-Control", "no-store");
+  headers.set("Accept-Ranges", "bytes");
+  if (object.size != null) headers.set("Content-Length", String(object.size));
+  if (object.httpEtag) headers.set("ETag", object.httpEtag);
+
+  return new Response(object.body, { status: 200, headers });
+}
+
+// Fallback: serve straight from this project's own static assets, exactly
+// like before the R2 migration. Keeps downloads working even if the R2
+// bucket hasn't been filled in yet.
+async function serveFromAssets(request, env, platform) {
+  if (!env.ASSETS) return null;
+
+  const relPath = FILES[platform].assetPath;
   const assetUrl = new URL(request.url);
   assetUrl.pathname = "/" + relPath;
   assetUrl.search = "";
 
   const assetRes = await env.ASSETS.fetch(assetUrl.toString());
-  if (!assetRes.ok) return json({ error: "file_not_found", file: relPath }, 404);
+  if (!assetRes.ok) return null;
 
   const filename = relPath.split("/").pop();
   const headers = new Headers(assetRes.headers);
   headers.set("Content-Type", "application/zip");
   headers.set("Content-Disposition", `attachment; filename="${filename}"`);
-  // Don't let an edge cache pin an old build after the asset is replaced.
   headers.set("Cache-Control", "no-store");
 
   return new Response(assetRes.body, { status: 200, headers });
+}
+
+async function serve(request, env, platform) {
+  const fromR2 = await serveFromR2(env, platform);
+  if (fromR2) return fromR2;
+
+  const fromAssets = await serveFromAssets(request, env, platform);
+  if (fromAssets) return fromAssets;
+
+  return json({ error: "file_not_found", file: FILES[platform].r2Key }, 404);
 }
 
 // Primary path: <a href="/api/download?platform=windows">
