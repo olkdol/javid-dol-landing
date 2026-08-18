@@ -80,6 +80,10 @@ async function serve(env, platform) {
   headers.set("Accept-Ranges", "bytes");
   if (object.size != null) headers.set("Content-Length", String(object.size));
   if (object.httpEtag) headers.set("ETag", object.httpEtag);
+  // Debug aid: check this header (browser DevTools -> Network -> click the
+  // download -> Response Headers) to confirm the exact object being served
+  // and its byte size.
+  headers.set("X-Served-From", "r2");
 
   return new Response(object.body, { status: 200, headers });
 }

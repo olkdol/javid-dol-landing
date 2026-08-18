@@ -94,6 +94,10 @@ async function serveFromR2(env, platform) {
   headers.set("Accept-Ranges", "bytes");
   if (object.size != null) headers.set("Content-Length", String(object.size));
   if (object.httpEtag) headers.set("ETag", object.httpEtag);
+  // Debug aid: check this header (browser DevTools -> Network -> click the
+  // download -> Response Headers) to see whether R2 or the fallback served
+  // the file, and to see the exact byte size being sent.
+  headers.set("X-Served-From", "r2");
 
   return new Response(object.body, { status: 200, headers });
 }
@@ -117,6 +121,7 @@ async function serveFromAssets(request, env, platform) {
   headers.set("Content-Type", "application/zip");
   headers.set("Content-Disposition", `attachment; filename="${filename}"`);
   headers.set("Cache-Control", "no-store");
+  headers.set("X-Served-From", "assets");
 
   return new Response(assetRes.body, { status: 200, headers });
 }
