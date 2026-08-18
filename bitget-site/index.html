@@ -671,8 +671,8 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
   if (!modal) return;
   var GATE_KEY = 'jfb_dl_gate_ok';
   var pendingAnchor = null;
-  function openModal(a){ pendingAnchor = a; modal.classList.remove('hidden'); modal.classList.add('flex'); }
-  function closeModal(){ modal.classList.add('hidden'); modal.classList.remove('flex'); pendingAnchor = null; }
+  function openModal(a){ pendingAnchor = a; modal.classList.add('jfb-open'); }
+  function closeModal(){ modal.classList.remove('jfb-open'); pendingAnchor = null; }
   document.querySelectorAll('a[href^="/api/download"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var already;
@@ -702,9 +702,9 @@ document.addEventListener('DOMContentLoaded', function jfbUpdatePopup(){
   var modal = document.getElementById('jfb-update-popup');
   if (!modal) return;
   var VERSION_KEY = 'jfb_seen_update_v19.3.0';
-  function openModal(){ modal.classList.remove('hidden'); modal.classList.add('flex'); }
+  function openModal(){ modal.classList.add('jfb-open'); }
   function closeModal(){
-    modal.classList.add('hidden'); modal.classList.remove('flex');
+    modal.classList.remove('jfb-open');
     try { localStorage.setItem(VERSION_KEY, '1'); } catch (e) {}
   }
   var already;
@@ -722,7 +722,7 @@ document.addEventListener('DOMContentLoaded', function jfbUpdatePopup(){
   var xBtn = document.getElementById('jfb-update-x');
   if (xBtn) xBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('jfb-open')) closeModal(); });
 });
 </script>
 
@@ -742,47 +742,83 @@ document.addEventListener('DOMContentLoaded', function jfbUpdatePopup(){
 </div></section>
 
 
-<div id="jfb-dlgate" class="fixed inset-0 z-[999] hidden items-center justify-center bg-slate-900/60 px-4">
-  <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 text-center shadow-2xl">
-    <button type="button" id="jfb-dlgate-x" aria-label="Close" class="absolute right-3.5 top-3.5 text-slate-400 hover:text-slate-600"><i data-lucide="x" class="h-4.5 w-4.5"></i></button>
-    <div class="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-amber-100"><i data-lucide="key-round" class="h-5 w-5 text-amber-600"></i></div>
-    <h3 class="text-[17px] font-extrabold text-slate-900" data-i18n="dlgate_title">Before You Download</h3>
-    <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500" data-i18n="dlgate_body">JaviD Future Bot works with your own Bitget account — you'll need a Bitget account and API key connected before you can start trading with it. Don't have one yet? It only takes about 5 minutes to set up.</p>
-    <a id="jfb-dlgate-signup" href="bitget-signup-api-guide.html" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-3 text-[13.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><span data-i18n="dlgate_signup_btn">Sign Up for Bitget &amp; Get API →</span></a>
-    <button type="button" id="jfb-dlgate-confirm" class="mt-2.5 w-full rounded-lg border border-slate-300 px-5 py-3 text-[13.5px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600" data-i18n="dlgate_have_btn">I Already Have a Bitget Account</button>
-    <button type="button" id="jfb-dlgate-cancel" class="mt-2 w-full text-[12.5px] font-semibold text-slate-400 hover:text-slate-600" data-i18n="dlgate_cancel">Maybe Later</button>
+<style>
+.jfb-modal-overlay{position:fixed;top:0;right:0;bottom:0;left:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.6);padding:0 16px;}
+.jfb-modal-overlay.jfb-open{display:flex;}
+.jfb-modal-card{position:relative;width:100%;max-width:380px;background:#fff;border-radius:16px;padding:24px;text-align:center;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);font-family:inherit;}
+.jfb-modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:#94a3b8;cursor:pointer;padding:4px;line-height:0;}
+.jfb-modal-close:hover{color:#475569;}
+.jfb-modal-icon-wrap{margin:0 auto 12px;width:44px;height:44px;border-radius:9999px;background:#fef3c7;display:flex;align-items:center;justify-content:center;}
+.jfb-modal-title{font-size:17px;font-weight:800;color:#0f172a;margin:0;}
+.jfb-modal-body{margin-top:8px;font-size:13.5px;line-height:1.6;color:#64748b;}
+.jfb-modal-btn-primary{margin-top:20px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px;background:#4f46e5;color:#fff;font-weight:800;font-size:13.5px;padding:12px 20px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.05);}
+.jfb-modal-btn-primary:hover{background:#4338ca;}
+.jfb-modal-btn-secondary{margin-top:10px;width:100%;border-radius:8px;border:1px solid #cbd5e1;background:#fff;color:#334155;font-weight:700;font-size:13.5px;padding:12px 20px;cursor:pointer;}
+.jfb-modal-btn-secondary:hover{border-color:#a5b4fc;color:#4f46e5;}
+.jfb-modal-dismiss{margin-top:8px;width:100%;background:none;border:none;color:#94a3b8;font-weight:600;font-size:12.5px;cursor:pointer;}
+.jfb-modal-dismiss:hover{color:#475569;}
+.jfb-popup-overlay{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.7);padding:0 16px;}
+.jfb-popup-overlay.jfb-open{display:flex;}
+.jfb-popup-card{position:relative;width:100%;max-width:420px;background:#fff;border-radius:16px;overflow:hidden;text-align:center;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);font-family:inherit;}
+.jfb-popup-close{position:absolute;top:14px;right:14px;z-index:10;background:none;border:none;color:rgba(255,255,255,.85);cursor:pointer;padding:4px;line-height:0;}
+.jfb-popup-close:hover{color:#fff;}
+.jfb-popup-header{background:linear-gradient(135deg,#4f46e5,#4338ca);padding:36px 24px 28px;}
+.jfb-popup-icon{margin:0 auto 12px;width:56px;height:56px;border-radius:9999px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:28px;}
+.jfb-popup-badge{display:inline-block;border-radius:9999px;background:#fbbf24;color:#0f172a;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:4px 12px;}
+.jfb-popup-title{margin-top:12px;font-size:22px;font-weight:800;line-height:1.25;color:#fff;}
+.jfb-popup-sub{margin-top:8px;font-size:13.5px;line-height:1.6;color:#c7d2fe;}
+.jfb-popup-features{padding:20px 24px 0;text-align:left;}
+.jfb-popup-feature{display:flex;align-items:flex-start;gap:10px;background:#f8fafc;border-radius:8px;padding:12px;margin-bottom:12px;}
+.jfb-popup-feature-icon{font-size:15px;margin-top:2px;}
+.jfb-popup-feature-label{font-size:13px;font-weight:800;color:#0f172a;}
+.jfb-popup-feature-desc{margin-top:2px;font-size:12.5px;line-height:1.6;color:#64748b;}
+.jfb-popup-actions{padding:24px;}
+.jfb-popup-cta{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px;background:#4f46e5;color:#fff;font-weight:800;font-size:14.5px;padding:14px 20px;text-decoration:none;box-shadow:0 1px 2px rgba(0,0,0,.05);}
+.jfb-popup-cta:hover{background:#4338ca;}
+.jfb-popup-dismiss{margin-top:10px;width:100%;background:none;border:none;color:#94a3b8;font-weight:600;font-size:12.5px;cursor:pointer;}
+.jfb-popup-dismiss:hover{color:#475569;}
+</style>
+<div id="jfb-dlgate" class="jfb-modal-overlay">
+  <div class="jfb-modal-card">
+    <button type="button" id="jfb-dlgate-x" aria-label="Close" class="jfb-modal-close"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+    <div class="jfb-modal-icon-wrap"><i data-lucide="key-round" style="width:20px;height:20px;color:#d97706"></i></div>
+    <h3 class="jfb-modal-title" data-i18n="dlgate_title">Before You Download</h3>
+    <p class="jfb-modal-body" data-i18n="dlgate_body">JaviD Future Bot works with your own Bitget account — you'll need a Bitget account and API key connected before you can start trading with it. Don't have one yet? It only takes about 5 minutes to set up.</p>
+    <a id="jfb-dlgate-signup" href="bitget-signup-api-guide.html" target="_blank" rel="noopener" class="jfb-modal-btn-primary"><span data-i18n="dlgate_signup_btn">Sign Up for Bitget &amp; Get API →</span></a>
+    <button type="button" id="jfb-dlgate-confirm" class="jfb-modal-btn-secondary" data-i18n="dlgate_have_btn">I Already Have a Bitget Account</button>
+    <button type="button" id="jfb-dlgate-cancel" class="jfb-modal-dismiss" data-i18n="dlgate_cancel">Maybe Later</button>
   </div>
 </div>
 
 
-<div id="jfb-update-popup" class="fixed inset-0 z-[1000] hidden items-center justify-center bg-slate-900/70 px-4">
-  <div class="relative w-full max-w-md overflow-hidden rounded-2xl bg-white text-center shadow-2xl">
-    <button type="button" id="jfb-update-x" aria-label="Close" class="absolute right-3.5 top-3.5 z-10 text-white/80 hover:text-white"><i data-lucide="x" class="h-5 w-5"></i></button>
-    <div class="bg-gradient-to-br from-indigo-600 to-indigo-700 px-6 pb-7 pt-9">
-      <div class="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-white/15 text-3xl">🚀</div>
-      <div class="inline-block rounded-full bg-amber-400 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-slate-900">V19.3.0</div>
-      <h3 class="mt-3 text-[23px] font-extrabold leading-tight text-white" data-i18n="updatepopup_title">V19.3.0 Update Is Live!</h3>
-      <p class="mt-2 text-[13.5px] leading-relaxed text-indigo-100" data-i18n="updatepopup_sub">Download now and try the improved strategy logic.</p>
+<div id="jfb-update-popup" class="jfb-popup-overlay">
+  <div class="jfb-popup-card">
+    <button type="button" id="jfb-update-x" aria-label="Close" class="jfb-popup-close"><i data-lucide="x" style="width:18px;height:18px"></i></button>
+    <div class="jfb-popup-header">
+      <div class="jfb-popup-icon">🚀</div>
+      <div class="jfb-popup-badge">V19.3.0</div>
+      <h3 class="jfb-popup-title" data-i18n="updatepopup_title">V19.3.0 Update Is Live!</h3>
+      <p class="jfb-popup-sub" data-i18n="updatepopup_sub">Download now and try the improved strategy logic.</p>
     </div>
-    <div class="space-y-3 px-6 pt-5 text-left">
-      <div class="flex items-start gap-2.5 rounded-lg bg-slate-50 p-3">
-        <span class="mt-0.5 text-[15px]">🎯</span>
+    <div class="jfb-popup-features">
+      <div class="jfb-popup-feature">
+        <span class="jfb-popup-feature-icon">🎯</span>
         <div>
-          <div class="text-[13px] font-extrabold text-slate-900" data-i18n="updatepopup_f1_label">Win Rate Boost</div>
-          <div class="mt-0.5 text-[12.5px] leading-relaxed text-slate-500" data-i18n="updatepopup_f1_desc">New exit logic now closes previously-losing short positions — even ones that had drifted as far as -1960% — in profit, lifting the overall win rate.</div>
+          <div class="jfb-popup-feature-label" data-i18n="updatepopup_f1_label">Win Rate Boost</div>
+          <div class="jfb-popup-feature-desc" data-i18n="updatepopup_f1_desc">New exit logic now closes previously-losing short positions — even ones that had drifted as far as -1960% — in profit, lifting the overall win rate.</div>
         </div>
       </div>
-      <div class="flex items-start gap-2.5 rounded-lg bg-slate-50 p-3">
-        <span class="mt-0.5 text-[15px]">💰</span>
+      <div class="jfb-popup-feature">
+        <span class="jfb-popup-feature-icon">💰</span>
         <div>
-          <div class="text-[13px] font-extrabold text-slate-900" data-i18n="updatepopup_f2_label">New Position Sizes</div>
-          <div class="mt-0.5 text-[12.5px] leading-relaxed text-slate-500" data-i18n="updatepopup_f2_desc">Added 1/100 and 1/200 of your initial capital as new position-sizing options.</div>
+          <div class="jfb-popup-feature-label" data-i18n="updatepopup_f2_label">New Position Sizes</div>
+          <div class="jfb-popup-feature-desc" data-i18n="updatepopup_f2_desc">Added 1/100 and 1/200 of your initial capital as new position-sizing options.</div>
         </div>
       </div>
     </div>
-    <div class="p-6">
-      <a href="#download" id="jfb-update-cta" class="flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><i data-lucide="download" class="h-4.5 w-4.5"></i><span data-i18n="updatepopup_cta">Download Now →</span></a>
-      <button type="button" id="jfb-update-dismiss" class="mt-2.5 w-full text-[12.5px] font-semibold text-slate-400 hover:text-slate-600" data-i18n="updatepopup_dismiss">Maybe Later</button>
+    <div class="jfb-popup-actions">
+      <a href="#download" id="jfb-update-cta" class="jfb-popup-cta"><i data-lucide="download" style="width:16px;height:16px"></i><span data-i18n="updatepopup_cta">Download Now →</span></a>
+      <button type="button" id="jfb-update-dismiss" class="jfb-popup-dismiss" data-i18n="updatepopup_dismiss">Maybe Later</button>
     </div>
   </div>
 </div>

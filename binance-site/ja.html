@@ -460,7 +460,7 @@
       <h3 class="text-[18px] font-bold text-slate-900" data-i18n="exchange_h3">Binance USDⓈ-M先物専用に公式設計</h3>
       <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500" data-i18n="exchange_desc">1つの取引所を徹底的に — 500以上の銘柄、直接WebSocket接続、0.1秒のレイテンシー。公式パートナーリンクから登録しても手数料はBinanceと全く同じで、そのリファラルリベートがJaviDを永久無料に保っています。</p>
     </div>
-    <a href="https://www.binance.com/register?ref=PKNNLUSL" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-[#F0B90B] px-6 py-3.5 text-[14px] font-extrabold text-black shadow-sm transition hover:brightness-105"><span data-i18n="exchange_cta">Binanceアカウントを作成</span> <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
+    <a href="https://www.binance.com/register" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-[#F0B90B] px-6 py-3.5 text-[14px] font-extrabold text-black shadow-sm transition hover:brightness-105"><span data-i18n="exchange_cta">Binanceアカウントを作成</span> <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
   </div>
 </div></section>
 
@@ -673,8 +673,8 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
   if (!modal) return;
   var GATE_KEY = 'jfb_dl_gate_ok';
   var pendingAnchor = null;
-  function openModal(a){ pendingAnchor = a; modal.classList.remove('hidden'); modal.classList.add('flex'); }
-  function closeModal(){ modal.classList.add('hidden'); modal.classList.remove('flex'); pendingAnchor = null; }
+  function openModal(a){ pendingAnchor = a; modal.classList.add('jfb-open'); }
+  function closeModal(){ modal.classList.remove('jfb-open'); pendingAnchor = null; }
   document.querySelectorAll('a[download]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var already;
@@ -715,15 +715,51 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
 </div></section>
 
 
-<div id="jfb-dlgate" class="fixed inset-0 z-[999] hidden items-center justify-center bg-slate-900/60 px-4">
-  <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 text-center shadow-2xl">
-    <button type="button" id="jfb-dlgate-x" aria-label="Close" class="absolute right-3.5 top-3.5 text-slate-400 hover:text-slate-600"><i data-lucide="x" class="h-4.5 w-4.5"></i></button>
-    <div class="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-amber-100"><i data-lucide="key-round" class="h-5 w-5 text-amber-600"></i></div>
-    <h3 class="text-[17px] font-extrabold text-slate-900">ダウンロード前にご確認ください</h3>
-    <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500">JaviD Future Botはお客様ご自身のBinanceアカウントと連携して動作します。取引を開始するには、事前にBinanceアカウントとAPIキーが必要です。まだお持ちでない方は、登録はわずか5分ほどで完了します。</p>
-    <a id="jfb-dlgate-signup" href="binance-signup-api-guide.html" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-3 text-[13.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><span>Binanceに登録してAPIを取得する →</span></a>
-    <button type="button" id="jfb-dlgate-confirm" class="mt-2.5 w-full rounded-lg border border-slate-300 px-5 py-3 text-[13.5px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600">Binanceアカウントを既に持っています</button>
-    <button type="button" id="jfb-dlgate-cancel" class="mt-2 w-full text-[12.5px] font-semibold text-slate-400 hover:text-slate-600">後で</button>
+<style>
+.jfb-modal-overlay{position:fixed;top:0;right:0;bottom:0;left:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.6);padding:0 16px;}
+.jfb-modal-overlay.jfb-open{display:flex;}
+.jfb-modal-card{position:relative;width:100%;max-width:380px;background:#fff;border-radius:16px;padding:24px;text-align:center;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);font-family:inherit;}
+.jfb-modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:#94a3b8;cursor:pointer;padding:4px;line-height:0;}
+.jfb-modal-close:hover{color:#475569;}
+.jfb-modal-icon-wrap{margin:0 auto 12px;width:44px;height:44px;border-radius:9999px;background:#fef3c7;display:flex;align-items:center;justify-content:center;}
+.jfb-modal-title{font-size:17px;font-weight:800;color:#0f172a;margin:0;}
+.jfb-modal-body{margin-top:8px;font-size:13.5px;line-height:1.6;color:#64748b;}
+.jfb-modal-btn-primary{margin-top:20px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px;background:#4f46e5;color:#fff;font-weight:800;font-size:13.5px;padding:12px 20px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.05);}
+.jfb-modal-btn-primary:hover{background:#4338ca;}
+.jfb-modal-btn-secondary{margin-top:10px;width:100%;border-radius:8px;border:1px solid #cbd5e1;background:#fff;color:#334155;font-weight:700;font-size:13.5px;padding:12px 20px;cursor:pointer;}
+.jfb-modal-btn-secondary:hover{border-color:#a5b4fc;color:#4f46e5;}
+.jfb-modal-dismiss{margin-top:8px;width:100%;background:none;border:none;color:#94a3b8;font-weight:600;font-size:12.5px;cursor:pointer;}
+.jfb-modal-dismiss:hover{color:#475569;}
+.jfb-popup-overlay{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.7);padding:0 16px;}
+.jfb-popup-overlay.jfb-open{display:flex;}
+.jfb-popup-card{position:relative;width:100%;max-width:420px;background:#fff;border-radius:16px;overflow:hidden;text-align:center;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);font-family:inherit;}
+.jfb-popup-close{position:absolute;top:14px;right:14px;z-index:10;background:none;border:none;color:rgba(255,255,255,.85);cursor:pointer;padding:4px;line-height:0;}
+.jfb-popup-close:hover{color:#fff;}
+.jfb-popup-header{background:linear-gradient(135deg,#4f46e5,#4338ca);padding:36px 24px 28px;}
+.jfb-popup-icon{margin:0 auto 12px;width:56px;height:56px;border-radius:9999px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:28px;}
+.jfb-popup-badge{display:inline-block;border-radius:9999px;background:#fbbf24;color:#0f172a;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:4px 12px;}
+.jfb-popup-title{margin-top:12px;font-size:22px;font-weight:800;line-height:1.25;color:#fff;}
+.jfb-popup-sub{margin-top:8px;font-size:13.5px;line-height:1.6;color:#c7d2fe;}
+.jfb-popup-features{padding:20px 24px 0;text-align:left;}
+.jfb-popup-feature{display:flex;align-items:flex-start;gap:10px;background:#f8fafc;border-radius:8px;padding:12px;margin-bottom:12px;}
+.jfb-popup-feature-icon{font-size:15px;margin-top:2px;}
+.jfb-popup-feature-label{font-size:13px;font-weight:800;color:#0f172a;}
+.jfb-popup-feature-desc{margin-top:2px;font-size:12.5px;line-height:1.6;color:#64748b;}
+.jfb-popup-actions{padding:24px;}
+.jfb-popup-cta{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px;background:#4f46e5;color:#fff;font-weight:800;font-size:14.5px;padding:14px 20px;text-decoration:none;box-shadow:0 1px 2px rgba(0,0,0,.05);}
+.jfb-popup-cta:hover{background:#4338ca;}
+.jfb-popup-dismiss{margin-top:10px;width:100%;background:none;border:none;color:#94a3b8;font-weight:600;font-size:12.5px;cursor:pointer;}
+.jfb-popup-dismiss:hover{color:#475569;}
+</style>
+<div id="jfb-dlgate" class="jfb-modal-overlay">
+  <div class="jfb-modal-card">
+    <button type="button" id="jfb-dlgate-x" aria-label="Close" class="jfb-modal-close"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+    <div class="jfb-modal-icon-wrap"><i data-lucide="key-round" style="width:20px;height:20px;color:#d97706"></i></div>
+    <h3 class="jfb-modal-title">ダウンロード前にご確認ください</h3>
+    <p class="jfb-modal-body">JaviD Future Botはお客様ご自身のBinanceアカウントと連携して動作します。取引を開始するには、事前にBinanceアカウントとAPIキーが必要です。まだお持ちでない方は、登録はわずか5分ほどで完了します。</p>
+    <a id="jfb-dlgate-signup" href="binance-signup-api-guide.html" target="_blank" rel="noopener" class="jfb-modal-btn-primary"><span>Binanceに登録してAPIを取得する →</span></a>
+    <button type="button" id="jfb-dlgate-confirm" class="jfb-modal-btn-secondary">Binanceアカウントを既に持っています</button>
+    <button type="button" id="jfb-dlgate-cancel" class="jfb-modal-dismiss">後で</button>
   </div>
 </div>
 
@@ -2157,23 +2193,5 @@ function applyLang(lang){
   applyLang(saved || 'ja');
 })();
 </script>
-
-<style id="jfb-live-badge-css">
-#jfb-live-badge-link{position:fixed;right:16px;bottom:16px;z-index:2147483000;display:flex;align-items:center;
-gap:10px;padding:10px 16px 10px 13px;border-radius:999px;text-decoration:none;
-background:rgba(12,14,18,.94);border:1px solid rgba(255,255,255,.14);
-box-shadow:0 6px 24px rgba(0,0,0,.35);backdrop-filter:blur(6px);
-font-family:-apple-system,"Segoe UI",Roboto,"Malgun Gothic",sans-serif;color:#e9ebee;
-transition:transform .15s ease,border-color .15s ease}
-#jfb-live-badge-link:hover{transform:translateY(-2px);border-color:rgba(255,64,64,.6)}
-#jfb-live-badge-link .d{width:9px;height:9px;border-radius:50%;background:#ff3b30;flex:0 0 auto;
-box-shadow:0 0 0 0 rgba(255,59,48,.7);animation:jfbpulse 1.8s infinite}
-@keyframes jfbpulse{70%{box-shadow:0 0 0 9px rgba(255,59,48,0)}100%{box-shadow:0 0 0 0 rgba(255,59,48,0)}}
-#jfb-live-badge-link b{font-size:13px;font-weight:800;letter-spacing:.06em;color:#ff5b52}
-#jfb-live-badge-link span{font-size:12.5px;color:#c2c8d0;font-weight:600}
-@media (max-width:640px){#jfb-live-badge-link span{display:none}#jfb-live-badge-link{right:12px;bottom:12px;padding:9px 14px}}
-@media (prefers-reduced-motion:reduce){#jfb-live-badge-link .d{animation:none}}
-</style>
-<a id="jfb-live-badge-link" href="https://www.youtube.com/@JaviDFuture/live" target="_blank" rel="noopener" aria-label="LIVE — リアル口座ダッシュボードを24時間配信"><i class="d"></i><b>LIVE</b><span>リアル口座ダッシュボードを24時間配信</span></a>
 </body>
 </html>
