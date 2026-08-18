@@ -4,3 +4,8 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# Installer zips now live in R2 (javid-downloads-bitget), not in git —
+# Cloudflare Workers static assets reject any file over 25 MiB, and these
+# installers regularly exceed that.
+downloads/*.zip
