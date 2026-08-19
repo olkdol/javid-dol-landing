@@ -36,7 +36,6 @@
 <link rel="alternate" hreflang="pt" href="https://bn.javidtrading.com/pt">
 <link rel="alternate" hreflang="x-default" href="https://bn.javidtrading.com/">
 <link rel="canonical" href="https://bn.javidtrading.com/fr">
-  <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" type="image/png" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -636,15 +635,19 @@
   <p class="mx-auto mt-4 max-w-xl text-[15px] text-slate-500" data-i18n="final_sub">Laissez JaviD s'occuper des tâches fastidieuses — pendant que vous gardez vos clés, vos fonds, votre contrôle, sur chaque trade.</p>
   <p class="mx-auto mt-3 max-w-xl text-[13.5px] leading-relaxed text-slate-500" data-i18n="symbols_coverage">Choisissez parmi BTC, ETH, XAU et plus de 500 symboles de futures USDⓈ-M : vous décidez lesquels tournent. Les trois stratégies sont actuellement calibrées pour les altcoins très volatils ; un préréglage grandes capitalisations est encore en développement.</p>
 
-  <div class="mx-auto mt-9 max-w-md rounded-2xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-900/5">
-    <div class="mb-4 flex items-center gap-2 rounded-xl px-4 py-3.5 text-left" style="border:2px solid #fcd34d;background-color:#fffbeb;">
-      <i data-lucide="triangle-alert" class="h-5 w-5 shrink-0 text-amber-600"></i>
-      <p class="text-[14px] font-extrabold leading-snug" style="color:#92400e;" data-i18n="hedge_mode_notice">Avant de commencer, dans l'application Binance, allez dans <span class="whitespace-nowrap">Futures → Position Mode</span> et réglez-le sur <span class="whitespace-nowrap" style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;">Hedge Mode</span> (mode couverture).</p>
-    </div>
+    <div class="jfb-steps">
+    <div class="jfb-step"><div class="jfb-step-num">1</div><div class="jfb-step-label">Download</div></div>
+    <div class="jfb-step-line"></div>
+    <div class="jfb-step"><div class="jfb-step-num">2</div><div class="jfb-step-label">Unzip &amp; Run</div></div>
+    <div class="jfb-step-line"></div>
+    <div class="jfb-step"><div class="jfb-step-num">3</div><div class="jfb-step-label">Connect API</div></div>
+  </div>
+
+<div class="mx-auto mt-9 max-w-md rounded-2xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-900/5">
     <p class="mb-4 text-[12.5px] font-bold text-slate-500" data-i18n="dl_label">Téléchargement gratuit — aucun code d'accès requis</p>
     <div class="flex flex-wrap justify-center gap-3">
-      <a href="/api/download?platform=windows" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</a>
-      <a href="/api/download?platform=mac" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</a>
+      <a href="/api/download?platform=windows" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 jfb-dl-btn"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</a>
+      <a href="/api/download?platform=mac" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 jfb-dl-btn"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</a>
     </div>
     <script>
     // 다운로드 클릭 시 캡처해둔 유입 출처를 쿼리로 첨부. href는 그대로 두고
@@ -704,6 +707,10 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
     <p class="mt-4 text-[12.5px] text-slate-400" data-i18n="dl_no_code_note">Gratuit pour toujours, sans inscription. Pour les nouveautés et le support, <a class="font-bold text-indigo-600 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">rejoignez la communauté Telegram</a>.</p>
   </div>
 
+    <div class="mt-5 flex items-center gap-2 rounded-lg border border-amber-100 bg-amber-50/70 px-4 py-3 text-left">
+      <i data-lucide="triangle-alert" class="h-4 w-4 shrink-0 text-amber-500"></i>
+      <p class="text-[12.5px] font-semibold leading-snug text-amber-800" data-i18n="hedge_mode_notice">Avant de commencer, dans l'application Binance, allez dans <span class="whitespace-nowrap">Futures → Position Mode</span> et réglez-le sur <span class="whitespace-nowrap" style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;">Hedge Mode</span> (mode couverture).</p>
+    </div>
   <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12.5px] font-semibold text-slate-500">
     <span class="flex items-center gap-1.5"><i data-lucide="check" class="h-4 w-4 text-emerald-500"></i><span data-i18n="dl_perk_1">Aucun engagement</span></span>
     <span class="flex items-center gap-1.5"><i data-lucide="check" class="h-4 w-4 text-emerald-500"></i><span data-i18n="dl_perk_2">Aucuns frais cachés</span></span>
@@ -717,6 +724,13 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
 
 
 <style>
+.jfb-steps{display:flex;align-items:flex-start;justify-content:center;gap:0;margin:0 auto 24px;max-width:400px;}
+.jfb-step{display:flex;flex-direction:column;align-items:center;gap:8px;width:88px;}
+.jfb-step-num{width:30px;height:30px;border-radius:9999px;background:#eef2ff;color:#4f46e5;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;border:2px solid #e0e7ff;}
+.jfb-step-label{font-size:11.5px;font-weight:700;color:#475569;line-height:1.3;}
+.jfb-step-line{flex:1 1 auto;height:2px;background:#e2e8f0;margin:14px -8px 0;}
+.jfb-dl-btn{transition:transform .15s ease,box-shadow .15s ease;}
+.jfb-dl-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px -6px rgba(79,70,229,.4);}
 .jfb-modal-overlay{position:fixed;top:0;right:0;bottom:0;left:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.6);padding:0 16px;}
 .jfb-modal-overlay.jfb-open{display:flex;}
 .jfb-modal-card{position:relative;width:100%;max-width:380px;background:#fff;border-radius:16px;padding:24px;text-align:center;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);font-family:inherit;}

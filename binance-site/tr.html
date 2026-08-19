@@ -36,7 +36,6 @@
 <link rel="alternate" hreflang="pt" href="https://bn.javidtrading.com/pt">
 <link rel="alternate" hreflang="x-default" href="https://bn.javidtrading.com/">
 <link rel="canonical" href="https://bn.javidtrading.com/tr">
-  <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -78,10 +77,16 @@
   .badge-row{display:flex; flex-wrap:wrap; gap:10px 22px; margin-bottom:40px; font-size:13px; color:var(--faint);}
   .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
   .btn{display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:100px; font-size:14px; font-weight:600; cursor:pointer; border:1px solid transparent; transition:all .2s;}
+  .btn:hover{transform:translateY(-2px);}
   .btn-primary{background:var(--accent); color:#04211d;}
   .btn-primary:hover{opacity:.88;}
   .btn-ghost{border-color:var(--line); color:var(--text);}
   .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+  .jfb-steps{display:flex;align-items:flex-start;justify-content:center;gap:0;margin:0 auto 28px;max-width:400px;}
+  .jfb-step{display:flex;flex-direction:column;align-items:center;gap:8px;width:88px;}
+  .jfb-step-num{width:30px;height:30px;border-radius:9999px;background:rgba(0,240,255,.1);color:var(--accent);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(0,240,255,.35);font-family:var(--sans);}
+  .jfb-step-label{font-size:11.5px;font-weight:600;color:var(--faint);line-height:1.3;font-family:var(--sans);}
+  .jfb-step-line{flex:1 1 auto;height:1px;background:var(--line);margin:14px -8px 0;}
 
   /* ---------- SECTION SHELL ---------- */
   .section{padding:100px 0; border-top:1px solid var(--line);}
@@ -141,7 +146,7 @@
   .dl-gate-label{display:block; font-size:13px; color:var(--faint); margin-bottom:12px;}
   .dl-gate-input{width:100%; padding:14px 16px; border-radius:8px; border:1px solid var(--line); background:#0b0d10; color:var(--text); font-size:14px; margin-bottom:16px; text-align:center; letter-spacing:.05em;}
   .dl-gate-input:focus{outline:none; border-color:var(--accent);}
-  .dl-gate-buttons{display:flex; flex-direction:column; gap:10px;}
+  .dl-gate-buttons{display:flex; flex-direction:row; flex-wrap:wrap; justify-content:center; gap:12px;}
   .dl-gate-msg{font-size:13px; margin-top:14px; min-height:18px;}
   .dl-gate-error{color:#ff6b6b;}
   .dl-gate-ok{color:#3ddc84;}
@@ -500,9 +505,16 @@
   <p class="section-sub">%100 kendi bilgisayarınızda çalışan gerçek bir USDⓈ-M vadeli işlem yürütme motoru — her işlemde anahtar sizde, fon sizde, kontrol sizde.</p>
   <p class="section-sub" style="margin:12px auto 0;">BTC, ETH, XAU dahil 500'den fazla USDⓈ-M vadeli işlem sembolü arasından kendiniz seçim yaparak çalıştırırsınız. Şu anda 3 strateji, volatilitesi yüksek altcoinlere göre ayarlanmıştır; büyük piyasa değerli sembollere özel bir ön ayar ise henüz geliştirme aşamasındadır.</p>
   <div class="dl-gate" id="dlGate">
+  <div class="jfb-steps">
+    <div class="jfb-step"><div class="jfb-step-num">1</div><div class="jfb-step-label">Download</div></div>
+    <div class="jfb-step-line"></div>
+    <div class="jfb-step"><div class="jfb-step-num">2</div><div class="jfb-step-label">Unzip &amp; Run</div></div>
+    <div class="jfb-step-line"></div>
+    <div class="jfb-step"><div class="jfb-step-num">3</div><div class="jfb-step-label">Connect API</div></div>
+  </div>
     <div class="dl-gate-buttons">
       <a href="/api/download?platform=windows" class="btn btn-primary" download>🪟 Windows için İndir</a>
-      <a href="/api/download?platform=mac" class="btn btn-ghost" download>🍎 macOS için İndir</a>
+      <a href="/api/download?platform=mac" class="btn btn-primary" download>🍎 macOS için İndir</a>
     </div>
     <p class="dl-gate-help">Kurulum sırasında bir sorunuz mu var? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">Telegram topluluğunda sorun</a>.</p>
   </div>
@@ -510,7 +522,7 @@
 
 <!-- ================= REFERRAL ================= -->
 <section class="section" style="padding-top:0;"><div class="wrap" style="text-align:center;">
-  <p style="color:var(--faint);font-size:14px;">Henüz bir borsa hesabınız yok mu? <a href="https://www.binance.com/register?ref=PKNNLUSL" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">Binance hesabı oluştur →</a></p>
+  <p style="color:var(--faint);font-size:14px;">Henüz bir borsa hesabınız yok mu? <a href="https://www.binance.com/register" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">Binance hesabı oluştur →</a></p>
 </div></section>
 
 
@@ -784,23 +796,5 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
 });
 </script>
-
-<style id="jfb-live-badge-css">
-#jfb-live-badge-link{position:fixed;right:16px;bottom:16px;z-index:2147483000;display:flex;align-items:center;
-gap:10px;padding:10px 16px 10px 13px;border-radius:999px;text-decoration:none;
-background:rgba(12,14,18,.94);border:1px solid rgba(255,255,255,.14);
-box-shadow:0 6px 24px rgba(0,0,0,.35);backdrop-filter:blur(6px);
-font-family:-apple-system,"Segoe UI",Roboto,"Malgun Gothic",sans-serif;color:#e9ebee;
-transition:transform .15s ease,border-color .15s ease}
-#jfb-live-badge-link:hover{transform:translateY(-2px);border-color:rgba(255,64,64,.6)}
-#jfb-live-badge-link .d{width:9px;height:9px;border-radius:50%;background:#ff3b30;flex:0 0 auto;
-box-shadow:0 0 0 0 rgba(255,59,48,.7);animation:jfbpulse 1.8s infinite}
-@keyframes jfbpulse{70%{box-shadow:0 0 0 9px rgba(255,59,48,0)}100%{box-shadow:0 0 0 0 rgba(255,59,48,0)}}
-#jfb-live-badge-link b{font-size:13px;font-weight:800;letter-spacing:.06em;color:#ff5b52}
-#jfb-live-badge-link span{font-size:12.5px;color:#c2c8d0;font-weight:600}
-@media (max-width:640px){#jfb-live-badge-link span{display:none}#jfb-live-badge-link{right:12px;bottom:12px;padding:9px 14px}}
-@media (prefers-reduced-motion:reduce){#jfb-live-badge-link .d{animation:none}}
-</style>
-<a id="jfb-live-badge-link" href="https://www.youtube.com/@JaviDFuture/live" target="_blank" rel="noopener" aria-label="CANLI — Gerçek hesap paneli, 7/24"><i class="d"></i><b>CANLI</b><span>Gerçek hesap paneli, 7/24</span></a>
 </body>
 </html>
