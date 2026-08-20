@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OKX Account &amp; API Key Setup Guide | JaviD Future Bot</title>
+<meta name="description" content="Everything to set up before your first automated trade on OKX — account signup, identity verification, enabling Futures, a correctly-permissioned API key, and running the bot 24/7.">
+<meta name="keywords" content="okx api key setup, okx futures api setup, okx account signup guide">
+<link rel="canonical" href="https://okx.javidtrading.com/okx-signup-api-guide.html">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OKX Account &amp; API Key Setup Guide — JaviD Future Bot">
+<meta property="og:description" content="From account creation to API key permissions and a 24/7 runtime setup — every step needed to run the bot on OKX.">
+<meta property="og:url" content="https://okx.javidtrading.com/okx-signup-api-guide.html">
+<style>
+:root {
+  --bg: #08090b; --surface:#0d0f12; --panel:#101317; --panel-2:#131920; --inset:#0b0d10;
+  --line:#1c2530; --line-2:#27303f; --text:#dbe4f0; --muted:#7d8aa0; --faint:#5f6b7d;
+  --accent:#00f0ff; --accent-dim:#0a4f57; --accent-bg:#082a2e; --gold:#e8b44c;
+  --up:#3ddc84; --down:#ff6b6b; --warn:#e8b44c;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'Segoe UI', system-ui, -apple-system, sans-serif; letter-spacing:-0.01em; line-height:1.6; }
+a { color:var(--accent); }
+.wrap { max-width: 860px; margin:0 auto; padding:0 24px; }
+code { background:var(--inset); border:1px solid var(--line); padding:2px 7px; border-radius:5px; font-size:.92em; color:var(--accent); }
+
+.nav { position:sticky; top:0; z-index:50; display:flex; padding:16px 24px; background:rgba(8,9,11,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.nav-inner { max-width:1180px; margin:0 auto; width:100%; display:flex; align-items:center; justify-content:space-between; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:16px; font-family:Georgia,serif; }
+.brand em { font-style:normal; color:var(--accent); font-size:12px; font-weight:700; margin-left:2px; }
+.nav-links { display:flex; align-items:center; gap:24px; font-size:13.5px; color:var(--muted); font-weight:600; }
+.nav-links a:hover { color:var(--text); }
+.nav-cta { background:var(--accent); color:#04211d; padding:9px 18px; border-radius:999px; font-weight:800; font-size:13px; }
+@media (max-width:820px) { .nav-links { display:none; } }
+
+.hero { padding:64px 0 20px; text-align:center; }
+.kicker { display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); background:var(--accent-bg); border:1px solid var(--accent-dim); padding:6px 14px; border-radius:999px; margin-bottom:20px; }
+h1 { font-size:36px; font-weight:800; letter-spacing:-0.02em; margin-bottom:16px; font-family:Georgia,serif; }
+.hero p.sub { color:var(--muted); font-size:16px; max-width:600px; margin:0 auto 8px; }
+.updated { font-size:12px; color:var(--faint); margin-top:14px; }
+
+.toc { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px 26px; margin:40px 0; }
+.toc h4 { font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-bottom:12px; }
+.toc ol { padding-left:20px; color:var(--text); font-size:14.5px; }
+.toc li { margin-bottom:6px; }
+.toc a { color:var(--text); }
+.toc a:hover { color:var(--accent); }
+
+.part { padding:44px 0; border-top:1px solid var(--line); }
+.part-num { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:9px; background:var(--accent-bg); color:var(--accent); font-weight:800; font-size:15px; margin-bottom:16px; }
+.part h2 { font-size:24px; margin-bottom:14px; font-family:Georgia,serif; }
+.part p { color:var(--muted); margin-bottom:16px; font-size:15px; }
+.steplist { list-style:none; counter-reset: step; margin:20px 0; }
+.steplist li { counter-increment: step; position:relative; padding-left:38px; margin-bottom:16px; font-size:14.5px; color:var(--text); }
+.steplist li::before { content: counter(step); position:absolute; left:0; top:0; width:24px; height:24px; border-radius:7px; background:var(--panel); border:1px solid var(--line-2); color:var(--accent); font-weight:800; font-size:12px; display:flex; align-items:center; justify-content:center; }
+.steplist li b { color:var(--text); }
+.steplist li small { display:block; color:var(--faint); margin-top:2px; }
+
+.callout { border-radius:12px; padding:18px 22px; margin:22px 0; font-size:14px; line-height:1.65; }
+.callout.warn { background:rgba(232,180,76,.08); border:1px solid rgba(232,180,76,.35); color:#f4d99b; }
+.callout.danger { background:rgba(255,107,107,.08); border:1px solid rgba(255,107,107,.35); color:#f6b9c4; }
+.callout.tip { background:rgba(0,240,255,.06); border:1px solid var(--accent-dim); color:#a9ece3; }
+.callout b { color:#fff; }
+
+table.faq { width:100%; border-collapse:collapse; margin:18px 0; font-size:13.5px; }
+table.faq th, table.faq td { border:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top; }
+table.faq th { background:var(--panel); color:var(--muted); font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; }
+table.faq td { color:var(--muted); }
+table.faq td:first-child { color:var(--text); font-weight:600; white-space:nowrap; }
+
+.cta-band { text-align:center; padding:60px 0; }
+.cta-band h3 { font-size:24px; margin-bottom:12px; font-family:Georgia,serif; }
+.cta-band p { color:var(--muted); margin-bottom:24px; }
+.btn { display:inline-flex; align-items:center; gap:9px; padding:14px 28px; border-radius:100px; font-weight:800; font-size:14.5px; background:var(--accent); color:#04211d; }
+
+footer { border-top:1px solid var(--line); padding:34px 0; }
+.footer-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:12.5px; color:var(--faint); }
+.footer-links { display:flex; gap:20px; flex-wrap:wrap; }
+.footer-links a { color:var(--faint); }
+.footer-links a:hover { color:var(--accent); }
+
+@media (max-width:640px){ h1{font-size:28px;} .part h2{font-size:20px;} }
+
+.lang-switch{position:relative;}
+.lang-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border:1px solid var(--line);background:transparent;color:var(--text);padding:7px 12px;border-radius:100px;cursor:pointer;}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent);}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:60;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);min-width:150px;padding:6px;display:none;}
+.lang-menu.open{display:block;}
+.lang-menu button{display:flex;width:100%;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:none;background:none;font-size:13px;font-weight:600;text-align:left;cursor:pointer;color:var(--text);}
+.lang-menu button:hover{background:rgba(255,255,255,.06);}
+.lang-menu button.active{color:var(--accent);background:rgba(0,240,255,.08);}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="brand">JaviD Future Bot <em>OKX</em></a>
+  <div class="nav-links">
+    <a href="index.html#capabilities" data-i18n="nav_cap">Capabilities</a>
+    <a href="index.html#architecture" data-i18n="nav_arch">Architecture</a>
+    <a href="index.html#research" data-i18n="nav_research">Research</a>
+    <a href="okx-signup-api-guide.html" style="color:var(--accent);" data-i18n="nav_new">New to OKX?</a>
+    <a href="board.html" data-i18n="nav_board">Community Board</a>
+  </div>
+  <div class="lang-switch">
+    <button type="button" id="langBtn" class="lang-btn" aria-haspopup="true" aria-expanded="false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" style="width:14px;height:14px"><circle cx="10" cy="10" r="7.25"/><path d="M2.75 10h14.5M10 2.75c2.4 2.4 2.4 12.1 0 14.5M10 2.75c-2.4 2.4-2.4 12.1 0 14.5"/></svg>
+      Language
+    </button>
+    <div id="langMenu" class="lang-menu" role="menu"></div>
+  </div>
+  <a href="index.html#download" class="nav-cta" data-i18n="nav_cta">Download Now</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <span class="kicker" data-i18n="kicker">🧭 Setup Guide</span>
+  <h1 data-i18n="h1">How to Create a OKX Account &amp; Futures API Key</h1>
+  <p class="sub" data-i18n="hero_sub">Everything you need before your first trade with JaviD Future Bot on OKX — account signup, identity verification, enabling Futures, and generating an API key with the correct permissions.</p>
+  <p class="updated" data-i18n="updated">Written for the current OKX web flow · Last checked July 2026</p>
+</div></header>
+
+<div class="wrap">
+  <div class="toc">
+    <h4 data-i18n="toc_title">On this page</h4>
+    <ol>
+      <li><a href="#part1" data-i18n="toc_1">Create your OKX account</a></li>
+      <li><a href="#part2" data-i18n="toc_2">Complete identity verification (KYC)</a></li>
+      <li><a href="#part3" data-i18n="toc_3">Enable your USDT-M Futures account</a></li>
+      <li><a href="#part4" data-i18n="toc_4">Create your API key</a></li>
+      <li><a href="#part5" data-i18n="toc_5">Set the correct permissions (the step people miss)</a></li>
+      <li><a href="#part6" data-i18n="toc_6">Connect it to JaviD Future Bot</a></li>
+      <li><a href="#part7" data-i18n="toc_7">Keep it running 24/7 (cloud VM or mini PC)</a></li>
+      <li><a href="#faq" data-i18n="toc_8">Troubleshooting &amp; FAQ</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- PART 1 -->
+<section class="part" id="part1"><div class="wrap">
+  <div class="part-num">1</div>
+  <h2 data-i18n="p1_h2">Create Your OKX Account</h2>
+  <p data-i18n="p1_p">Registration takes about 5 minutes. Use our official partner signup link below — it's the same OKX registration flow, at zero extra cost to you, and it's how JaviD Future Bot stays free with no subscription fee.</p>
+  <div class="callout tip" style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;">
+    <span data-i18n="p1_tip1"><b>Don't have an account yet?</b> Sign up through our partner link — same official OKX flow, no extra cost.</span>
+    <a href="https://okx.com/join/40752336" target="_blank" rel="noopener" class="btn" style="white-space:nowrap;" data-i18n="p1_btn">Create Account →</a>
+  </div>
+  <ul class="steplist">
+    <li data-i18n="p1_li1"><b>Open the partner link above and click Sign Up.</b><small>You can register with an email address, a phone number, or continue with your Google/Apple account.</small></li>
+    <li data-i18n="p1_li2"><b>Set your password.</b><small>Use a strong, unique password — we'd recommend a password manager and adding a symbol for a stronger key.</small></li>
+    <li data-i18n="p1_li3"><b>Enter the verification code</b> sent to your email or phone.<small>The code is time-limited, so check your inbox/spam folder right away.</small></li>
+    <li data-i18n="p1_li4"><b>Turn on Two-Factor Authentication (2FA) immediately</b> from your account security settings, and set a security/API passphrase you'll remember.<small>Google Authenticator or a Passkey both work. You'll need 2FA active later to create an API key, and OKX requires a separate Passphrase for every API key.</small></li>
+  </ul>
+  <div class="callout tip" data-i18n="p1_tip2"><b>Tip:</b> Use a password manager and a dedicated email for exchange accounts — it's the single easiest way to avoid account-takeover phishing.</div>
+</div></section>
+
+<!-- PART 2 -->
+<section class="part" id="part2"><div class="wrap">
+  <div class="part-num">2</div>
+  <h2 data-i18n="p2_h2">Complete Identity Verification (KYC)</h2>
+  <p data-i18n="p2_p">Registering alone doesn't unlock trading. You need identity verification before you can deposit meaningfully or trade Futures.</p>
+  <ul class="steplist">
+    <li data-i18n="p2_li1"><b>Open your profile menu → Identity Verification.</b><small>Select your country/region of residence and the ID document type (national ID card, driver's license, or passport).</small></li>
+    <li data-i18n="p2_li2"><b>Upload photos of your ID</b>, then complete the facial verification (a quick selfie/liveness check).</li>
+    <li data-i18n="p2_li3"><b>Wait for approval</b> — this usually clears in a few minutes to a few hours. Your profile status changes to <i>Verified</i> once approved.</li>
+  </ul>
+  <div class="callout warn" data-i18n="p2_warn"><b>Note:</b> Some regions require an extra address/proof-of-residence step for higher trading or withdrawal limits. Check your account's verification level if you hit a limit later.</div>
+</div></section>
+
+<!-- PART 3 -->
+<section class="part" id="part3"><div class="wrap">
+  <div class="part-num">3</div>
+  <h2 data-i18n="p3_h2">Enable Your USDT-M Futures Account — Before You Create an API Key</h2>
+  <p data-i18n="p3_p">This step is easy to do out of order, and doing it out of order is the single most common setup mistake.</p>
+  <ul class="steplist">
+    <li data-i18n="p3_li1"><b>Open the [Futures] menu</b> from the top navigation.</li>
+    <li data-i18n="p3_li2"><b>Complete the futures risk questionnaire</b> if this is your first time — a short quiz confirming you understand leveraged trading risk.</li>
+    <li data-i18n="p3_li3"><b>Activate your USDT-M Futures account.</b><small>Once active, you'll see a Futures wallet alongside your Spot wallet, and you'll need to transfer some USDT into it to trade.</small></li>
+  </ul>
+  <div class="callout danger" data-i18n="p3_danger"><b>Do this before Part 4:</b> enable Futures first, API key second, so the key can be granted futures permission from the start.</div>
+</div></section>
+
+<!-- PART 4 -->
+<section class="part" id="part4"><div class="wrap">
+  <div class="part-num">4</div>
+  <h2 data-i18n="p4_h2">Create Your API Key</h2>
+  <p data-i18n="p4_p">Before you can create a key, OKX requires 2FA (or phone verification) enabled and completed identity verification — both covered in Parts 1–2.</p>
+  <ul class="steplist">
+    <li data-i18n="p4_li1"><b>Profile icon → API Management.</b></li>
+    <li data-i18n="p4_li2"><b>Click Create API Key</b>, then choose <b>System-generated</b>.<small>This gives you an API Key + Secret Key + <b>Passphrase</b> — OKX is one of the exchanges that requires all three, unlike some others that only use a Key/Secret pair.</small></li>
+    <li data-i18n="p4_li3"><b>Give it a name</b>, e.g. <code>JaviD-Bot</code>, so you can recognize it later.</li>
+    <li data-i18n="p4_li4"><b>Set your own Passphrase</b> and write it down — you choose this yourself, and JaviD Future Bot will need it alongside the Key and Secret.</li>
+    <li data-i18n="p4_li5"><b>Verify with 2FA</b> (authenticator code or email confirmation) to finish creating the key.</li>
+  </ul>
+</div></section>
+
+<!-- PART 5 -->
+<section class="part" id="part5"><div class="wrap">
+  <div class="part-num">5</div>
+  <h2 data-i18n="p5_h2">Set the Correct Permissions</h2>
+  <p data-i18n="p5_p">When configuring the key, grant only what JaviD Future Bot actually needs to trade — nothing more.</p>
+  <div class="callout tip" data-i18n="p5_tip">
+    <b>✅ Check exactly these, nothing else:</b>
+    <ul style="margin:10px 0 0; padding-left:22px; line-height:1.9;">
+      <li>Read (usually on by default)</li>
+      <li>Spot Trade / Orders</li>
+      <li>Futures Trade / Futures-Holdings</li>
+    </ul>
+  </div>
+  <div class="callout danger" data-i18n="p5_danger">
+    <b>❌ Leave withdrawal permission unchecked:</b> a trading bot never needs it. Leaving it off means that even in a worst-case scenario where your API key was ever exposed, no one could move funds off the exchange — your assets stay yours.
+  </div>
+  <ul class="steplist">
+    <li data-i18n="p5_li1"><b>Add an IP restriction if the option is offered on your account.</b><small>Choose "Restrict access to trusted IPs only" and enter the public IPv4 address of the machine that will run the bot (search "what is my ip", or use JaviD's built-in "Run Connection Diagnostics" button once the OKX build supports it).</small></li>
+    <li data-i18n="p5_li2"><b>Leave withdrawal permission OFF.</b><small>If anything you're configuring asks you to turn this on, stop and reconsider.</small></li>
+    <li data-i18n="p5_li3"><b>Save</b>, then allow a few minutes for any IP whitelist change to propagate before testing the connection.</li>
+  </ul>
+  <div class="callout warn" data-i18n="p5_warn"><b>Copy your Secret Key and Passphrase now:</b> the Secret Key is shown exactly once. If you navigate away without saving it, you'll need to delete the key and generate a new one.</div>
+</div></section>
+
+<!-- PART 6 -->
+<section class="part" id="part6"><div class="wrap">
+  <div class="part-num">6</div>
+  <h2 data-i18n="p6_h2">Connect It to JaviD Future Bot</h2>
+  <ul class="steplist">
+    <li data-i18n="p6_li1"><b>Launch JaviD Future Bot</b> (<code>start.bat</code>) — your browser opens automatically to the dashboard.</li>
+    <li data-i18n="p6_li2"><b>Go to the Settings tab</b> and select OKX, then paste your API Key, Secret Key, <b>and Passphrase</b>.<small>Watch for accidental leading/trailing spaces when pasting — this is the most common connection error with OKX specifically, since it needs all three fields correct.</small></li>
+    <li data-i18n="p6_li3"><b>Click Save, then Test Connection.</b> A green checkmark means you're ready to go.</li>
+    <li data-i18n="p6_li4"><b>Turn on Shadow Mode</b> and verify the bot's behavior for a few days before ever switching to live trading.</li>
+  </ul>
+</div></section>
+
+<!-- PART 7 -->
+<section class="part" id="part7"><div class="wrap">
+  <div class="part-num">7</div>
+  <h2 data-i18n="p7_h2">Keep It Running 24/7</h2>
+  <p data-i18n="p7_p">JaviD Future Bot only trades while it's actually running — the futures market never closes, so the machine running the bot needs to stay powered on and connected 24 hours a day, 365 days a year. Your everyday laptop works for a first test, but most users move to one of these two setups once they go live:</p>
+  <ul class="steplist">
+    <li data-i18n="p7_li1"><b>A cloud virtual machine</b> (Amazon AWS EC2, or any comparable VPS provider).<small>Rented by the month, always on, remotely accessible from anywhere. A small/low-tier instance is enough — the bot itself is lightweight.</small></li>
+    <li data-i18n="p7_li2"><b>A dedicated mini PC or spare desktop, left on at home.</b><small>An Intel NUC-class mini PC (or any always-on machine you don't otherwise need) draws very little power and can be plugged into a UPS to survive short outages. Make sure Windows sleep/hibernate is disabled and the internet connection is stable.</small></li>
+  </ul>
+  <div class="callout tip" data-i18n="p7_tip"><b>Either option works equally well.</b> The only requirements are: the machine stays powered on, stays connected to the internet, and (per Part 5) has its IP address whitelisted if you set that restriction. If you move the bot to a new machine or your IP changes, update the IP restriction on the key.</div>
+  <div class="callout warn" data-i18n="p7_warn"><b>Reminder:</b> if the machine restarts or loses power while a position is open, close that position manually from the OKX app under Futures before restarting the bot.</div>
+</div></section>
+
+<!-- FAQ -->
+<section class="part" id="faq"><div class="wrap">
+  <div class="part-num">?</div>
+  <h2 data-i18n="faq_h2">Troubleshooting &amp; FAQ</h2>
+  <table class="faq">
+    <tr><th data-i18n="faq_th1">Symptom</th><th data-i18n="faq_th2">Cause / Fix</th></tr>
+    <tr><td data-i18n="faq_td1a">Signature/auth error</td><td data-i18n="faq_td1b">Almost always a Secret Key or Passphrase copy/paste issue — re-copy both, watching for hidden line breaks or spaces.</td></tr>
+    <tr><td data-i18n="faq_td2a">Timestamp error</td><td data-i18n="faq_td2b">Your PC's clock has drifted. Turn on automatic time sync in Windows settings.</td></tr>
+    <tr><td data-i18n="faq_td3a">Can't enable Futures permission on the key</td><td data-i18n="faq_td3b">The key was created before your Futures account was activated (see Part 3). Delete it and create a new one, in the right order.</td></tr>
+    <tr><td data-i18n="faq_td4a">Orders rejected / insufficient balance</td><td data-i18n="faq_td4b">Make sure USDT has been transferred from your Spot wallet into your Futures wallet — they're separate balances.</td></tr>
+  </table>
+</div></section>
+
+<section class="cta-band"><div class="wrap">
+  <h3 data-i18n="cta_h3">Ready to connect your key?</h3>
+  <p data-i18n="cta_p">Head back to the dashboard and finish setup in under a minute.</p>
+  <a href="index.html#download" class="btn" data-i18n="cta_btn">⬇ Back to JaviD Future Bot</a>
+</div></section>
+
+<footer><div class="wrap footer-row">
+  <span>© 2026 JaviD Future Bot · okx.javidtrading.com</span>
+  <div class="footer-links">
+    <a href="index.html" data-i18n="footer_home">Home</a>
+    <a href="board.html" data-i18n="footer_board">Community Board</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk" data-i18n="footer_contact">Contact</a>
+  </div>
+</div></footer>
+
+<script>
+var I18N = {
+  "en": {
+    "nav_cap": "Capabilities",
+    "nav_arch": "Architecture",
+    "nav_research": "Research",
+    "nav_new": "New to OKX?",
+    "nav_board": "Community Board",
+    "nav_cta": "Download Now",
+    "kicker": "🧭 Setup Guide",
+    "h1": "How to Create a OKX Account &amp; Futures API Key",
+    "hero_sub": "Everything you need before your first trade with JaviD Future Bot on OKX — account signup, identity verification, enabling Futures, and generating an API key with the correct permissions.",
+    "updated": "Written for the current OKX web flow · Last checked July 2026",
+    "toc_title": "On this page",
+    "toc_1": "Create your OKX account",
+    "toc_2": "Complete identity verification (KYC)",
+    "toc_3": "Enable your USDT-M Futures account",
+    "toc_4": "Create your API key",
+    "toc_5": "Set the correct permissions (the step people miss)",
+    "toc_6": "Connect it to JaviD Future Bot",
+    "toc_7": "Keep it running 24/7 (cloud VM or mini PC)",
+    "toc_8": "Troubleshooting &amp; FAQ",
+    "p1_h2": "Create Your OKX Account",
+    "p1_p": "Registration takes about 5 minutes. Use our official partner signup link below — it's the same OKX registration flow, at zero extra cost to you, and it's how JaviD Future Bot stays free with no subscription fee.",
+    "p1_tip1": "<b>Don't have an account yet?</b> Sign up through our partner link — same official OKX flow, no extra cost.",
+    "p1_btn": "Create Account →",
+    "p1_li1": "<b>Open the partner link above and click Sign Up.</b><small>You can register with an email address, a phone number, or continue with your Google/Apple account.</small>",
+    "p1_li2": "<b>Set your password.</b><small>Use a strong, unique password — we'd recommend a password manager and adding a symbol for a stronger key.</small>",
+    "p1_li3": "<b>Enter the verification code</b> sent to your email or phone.<small>The code is time-limited, so check your inbox/spam folder right away.</small>",
+    "p1_li4": "<b>Turn on Two-Factor Authentication (2FA) immediately</b> from your account security settings, and set a security/API passphrase you'll remember.<small>Google Authenticator or a Passkey both work. You'll need 2FA active later to create an API key, and OKX requires a separate Passphrase for every API key.</small>",
+    "p1_tip2": "<b>Tip:</b> Use a password manager and a dedicated email for exchange accounts — it's the single easiest way to avoid account-takeover phishing.",
+    "p2_h2": "Complete Identity Verification (KYC)",
+    "p2_p": "Registering alone doesn't unlock trading. You need identity verification before you can deposit meaningfully or trade Futures.",
+    "p2_li1": "<b>Open your profile menu → Identity Verification.</b><small>Select your country/region of residence and the ID document type (national ID card, driver's license, or passport).</small>",
+    "p2_li2": "<b>Upload photos of your ID</b>, then complete the facial verification (a quick selfie/liveness check).",
+    "p2_li3": "<b>Wait for approval</b> — this usually clears in a few minutes to a few hours. Your profile status changes to <i>Verified</i> once approved.",
+    "p2_warn": "<b>Note:</b> Some regions require an extra address/proof-of-residence step for higher trading or withdrawal limits. Check your account's verification level if you hit a limit later.",
+    "p3_h2": "Enable Your USDT-M Futures Account — Before You Create an API Key",
+    "p3_p": "This step is easy to do out of order, and doing it out of order is the single most common setup mistake.",
+    "p3_li1": "<b>Open the [Futures] menu</b> from the top navigation.",
+    "p3_li2": "<b>Complete the futures risk questionnaire</b> if this is your first time — a short quiz confirming you understand leveraged trading risk.",
+    "p3_li3": "<b>Activate your USDT-M Futures account.</b><small>Once active, you'll see a Futures wallet alongside your Spot wallet, and you'll need to transfer some USDT into it to trade.</small>",
+    "p3_danger": "<b>Do this before Part 4:</b> enable Futures first, API key second, so the key can be granted futures permission from the start.",
+    "p4_h2": "Create Your API Key",
+    "p4_p": "Before you can create a key, OKX requires 2FA (or phone verification) enabled and completed identity verification — both covered in Parts 1–2.",
+    "p4_li1": "<b>Profile icon → API Management.</b>",
+    "p4_li2": "<b>Click Create API Key</b>, then choose <b>System-generated</b>.<small>This gives you an API Key + Secret Key + <b>Passphrase</b> — OKX is one of the exchanges that requires all three, unlike some others that only use a Key/Secret pair.</small>",
+    "p4_li3": "<b>Give it a name</b>, e.g. <code>JaviD-Bot</code>, so you can recognize it later.",
+    "p4_li4": "<b>Set your own Passphrase</b> and write it down — you choose this yourself, and JaviD Future Bot will need it alongside the Key and Secret.",
+    "p4_li5": "<b>Verify with 2FA</b> (authenticator code or email confirmation) to finish creating the key.",
+    "p5_h2": "Set the Correct Permissions",
+    "p5_p": "When configuring the key, grant only what JaviD Future Bot actually needs to trade — nothing more.",
+    "p5_tip": "<b>✅ Check exactly these, nothing else:</b><ul style=\"margin:10px 0 0; padding-left:22px; line-height:1.9;\"><li>Read (usually on by default)</li><li>Spot Trade / Orders</li><li>Futures Trade / Futures-Holdings</li></ul>",
+    "p5_danger": "<b>❌ Leave withdrawal permission unchecked:</b> a trading bot never needs it. Leaving it off means that even in a worst-case scenario where your API key was ever exposed, no one could move funds off the exchange — your assets stay yours.",
+    "p5_li1": "<b>Add an IP restriction if the option is offered on your account.</b><small>Choose \"Restrict access to trusted IPs only\" and enter the public IPv4 address of the machine that will run the bot (search \"what is my ip\", or use JaviD's built-in \"Run Connection Diagnostics\" button once the OKX build supports it).</small>",
+    "p5_li2": "<b>Leave withdrawal permission OFF.</b><small>If anything you're configuring asks you to turn this on, stop and reconsider.</small>",
+    "p5_li3": "<b>Save</b>, then allow a few minutes for any IP whitelist change to propagate before testing the connection.",
+    "p5_warn": "<b>Copy your Secret Key and Passphrase now:</b> the Secret Key is shown exactly once. If you navigate away without saving it, you'll need to delete the key and generate a new one.",
+    "p6_h2": "Connect It to JaviD Future Bot",
+    "p6_li1": "<b>Launch JaviD Future Bot</b> (<code>start.bat</code>) — your browser opens automatically to the dashboard.",
+    "p6_li2": "<b>Go to the Settings tab</b> and select OKX, then paste your API Key, Secret Key, <b>and Passphrase</b>.<small>Watch for accidental leading/trailing spaces when pasting — this is the most common connection error with OKX specifically, since it needs all three fields correct.</small>",
+    "p6_li3": "<b>Click Save, then Test Connection.</b> A green checkmark means you're ready to go.",
+    "p6_li4": "<b>Turn on Shadow Mode</b> and verify the bot's behavior for a few days before ever switching to live trading.",
+    "p7_h2": "Keep It Running 24/7",
+    "p7_p": "JaviD Future Bot only trades while it's actually running — the futures market never closes, so the machine running the bot needs to stay powered on and connected 24 hours a day, 365 days a year. Your everyday laptop works for a first test, but most users move to one of these two setups once they go live:",
+    "p7_li1": "<b>A cloud virtual machine</b> (Amazon AWS EC2, or any comparable VPS provider).<small>Rented by the month, always on, remotely accessible from anywhere. A small/low-tier instance is enough — the bot itself is lightweight.</small>",
+    "p7_li2": "<b>A dedicated mini PC or spare desktop, left on at home.</b><small>An Intel NUC-class mini PC (or any always-on machine you don't otherwise need) draws very little power and can be plugged into a UPS to survive short outages. Make sure Windows sleep/hibernate is disabled and the internet connection is stable.</small>",
+    "p7_tip": "<b>Either option works equally well.</b> The only requirements are: the machine stays powered on, stays connected to the internet, and (per Part 5) has its IP address whitelisted if you set that restriction. If you move the bot to a new machine or your IP changes, update the IP restriction on the key.",
+    "p7_warn": "<b>Reminder:</b> if the machine restarts or loses power while a position is open, close that position manually from the OKX app under Futures before restarting the bot.",
+    "faq_h2": "Troubleshooting &amp; FAQ",
+    "faq_th1": "Symptom",
+    "faq_th2": "Cause / Fix",
+    "faq_td1a": "Signature/auth error",
+    "faq_td1b": "Almost always a Secret Key or Passphrase copy/paste issue — re-copy both, watching for hidden line breaks or spaces.",
+    "faq_td2a": "Timestamp error",
+    "faq_td2b": "Your PC's clock has drifted. Turn on automatic time sync in Windows settings.",
+    "faq_td3a": "Can't enable Futures permission on the key",
+    "faq_td3b": "The key was created before your Futures account was activated (see Part 3). Delete it and create a new one, in the right order.",
+    "faq_td4a": "Orders rejected / insufficient balance",
+    "faq_td4b": "Make sure USDT has been transferred from your Spot wallet into your Futures wallet — they're separate balances.",
+    "cta_h3": "Ready to connect your key?",
+    "cta_p": "Head back to the dashboard and finish setup in under a minute.",
+    "cta_btn": "⬇ Back to JaviD Future Bot",
+    "footer_home": "Home",
+    "footer_board": "Community Board",
+    "footer_contact": "Contact"
+  },
+  "ko": {
+    "nav_cap": "기능",
+    "nav_arch": "아키텍처",
+    "nav_research": "리서치",
+    "nav_new": "OKX이 처음이신가요?",
+    "nav_board": "커뮤니티 게시판",
+    "nav_cta": "지금 다운로드",
+    "kicker": "🧭 설정 가이드",
+    "h1": "OKX 계정과 선물(Futures) API 키를 만드는 방법",
+    "hero_sub": "OKX에서 JaviD Future Bot으로 첫 거래를 하기 전에 필요한 모든 것 — 계정 가입, 신원 인증, 선물(Futures) 활성화, 그리고 올바른 권한으로 API 키 생성까지.",
+    "updated": "현재 OKX 웹 플로우 기준으로 작성됨 · 2026년 7월 최종 확인",
+    "toc_title": "이 페이지의 내용",
+    "toc_1": "OKX 계정 만들기",
+    "toc_2": "신원 인증(KYC) 완료하기",
+    "toc_3": "USDT-M 선물 계정 활성화하기",
+    "toc_4": "API 키 만들기",
+    "toc_5": "올바른 권한 설정하기(사람들이 놓치는 단계)",
+    "toc_6": "JaviD Future Bot에 연결하기",
+    "toc_7": "24시간 계속 실행하기(클라우드 VM 또는 미니 PC)",
+    "toc_8": "문제 해결 및 FAQ",
+    "p1_h2": "OKX 계정 만들기",
+    "p1_p": "가입에는 약 5분이 걸립니다. 아래의 공식 파트너 가입 링크를 이용하세요 — OKX의 일반 가입 절차와 동일하며 추가 비용은 전혀 없습니다. 이 링크 덕분에 JaviD Future Bot이 구독료 없이 무료로 유지될 수 있습니다.",
+    "p1_tip1": "<b>아직 계정이 없으신가요?</b> 저희 파트너 링크로 가입하세요 — 공식 OKX 절차와 동일하며 추가 비용은 없습니다.",
+    "p1_btn": "계정 만들기 →",
+    "p1_li1": "<b>위 파트너 링크를 열고 'Sign Up'(가입하기) 버튼을 클릭하세요.</b><small>이메일 주소, 전화번호로 가입하거나 Google/Apple 계정으로 계속할 수 있습니다.</small>",
+    "p1_li2": "<b>비밀번호를 설정하세요.</b><small>강력하고 고유한 비밀번호를 사용하세요 — 비밀번호 관리자를 사용하고 특수문자를 추가하면 더 안전합니다.</small>",
+    "p1_li3": "<b>이메일이나 전화로 전송된 인증 코드를 입력하세요.</b><small>코드는 유효 시간이 정해져 있으므로 받은 편지함/스팸 폴더를 즉시 확인하세요.</small>",
+    "p1_li4": "<b>계정 보안 설정에서 즉시 2단계 인증(2FA)을 켜고</b>, 기억할 수 있는 보안/API 암호(Passphrase)를 설정하세요.<small>Google Authenticator나 패스키(Passkey) 모두 사용 가능합니다. 이후 API 키를 만들려면 2FA가 활성화되어 있어야 하며, OKX은 API 키마다 별도의 Passphrase를 요구합니다.</small>",
+    "p1_tip2": "<b>팁:</b> 거래소 계정에는 비밀번호 관리자와 전용 이메일 주소를 사용하세요 — 계정 탈취 피싱을 막는 가장 쉬운 방법입니다.",
+    "p2_h2": "신원 인증(KYC) 완료하기",
+    "p2_p": "가입만으로는 거래가 가능해지지 않습니다. 의미 있는 금액을 입금하거나 선물(Futures)을 거래하려면 신원 인증이 필요합니다.",
+    "p2_li1": "<b>프로필 메뉴 → Identity Verification(신원 인증)으로 이동하세요.</b><small>거주 국가/지역과 신분증 종류(주민등록증, 운전면허증, 여권)를 선택합니다.</small>",
+    "p2_li2": "<b>신분증 사진을 업로드한 뒤</b>, 안면 인증(짧은 셀피/실물 확인)을 완료하세요.",
+    "p2_li3": "<b>승인을 기다리세요</b> — 보통 몇 분에서 몇 시간 이내에 처리됩니다. 승인되면 프로필 상태가 <i>Verified</i>(인증됨)로 바뀝니다.",
+    "p2_warn": "<b>참고:</b> 일부 지역에서는 더 높은 거래/출금 한도를 위해 주소/거주 증명 절차가 추가로 필요할 수 있습니다. 나중에 한도에 도달하면 계정의 인증 등급을 확인하세요.",
+    "p3_h2": "USDT-M 선물 계정 활성화하기 — API 키를 만들기 전에",
+    "p3_p": "이 단계는 순서를 놓치기 쉬우며, 순서를 지키지 않는 것이 설정 과정에서 가장 흔한 실수입니다.",
+    "p3_li1": "<b>상단 내비게이션에서 [Futures] 메뉴를 여세요.</b>",
+    "p3_li2": "<b>처음이라면 선물 위험 고지 설문을 완료하세요</b> — 레버리지 거래 위험을 이해했는지 확인하는 짧은 퀴즈입니다.",
+    "p3_li3": "<b>USDT-M 선물 계정을 활성화하세요.</b><small>활성화되면 Spot(현물) 지갑과 함께 Futures(선물) 지갑이 나타나며, 거래하려면 그 지갑으로 USDT를 이체해야 합니다.</small>",
+    "p3_danger": "<b>Part 4 이전에 반드시 수행하세요:</b> 선물(Futures)을 먼저 활성화하고 API 키는 그다음에 만드세요. 그래야 키를 만들 때부터 선물 권한을 부여할 수 있습니다.",
+    "p4_h2": "API 키 만들기",
+    "p4_p": "키를 만들기 전에 OKX은 2FA(또는 전화 인증) 활성화와 신원 인증 완료를 요구합니다 — 두 가지 모두 Part 1~2에서 다뤘습니다.",
+    "p4_li1": "<b>프로필 아이콘 → API Management(API 관리)로 이동하세요.</b>",
+    "p4_li2": "<b>'Create API Key'(API 키 생성)를 클릭한 뒤</b>, <b>'System-generated'(시스템 생성)</b>를 선택하세요.<small>이렇게 하면 API Key + Secret Key + <b>Passphrase</b>를 받게 됩니다 — OKX은 Key/Secret 쌍만 사용하는 다른 거래소들과 달리 이 세 가지 모두를 요구하는 거래소 중 하나입니다.</small>",
+    "p4_li3": "<b>이름을 지정하세요</b>, 예: <code>JaviD-Bot</code>, 나중에 알아볼 수 있도록 합니다.",
+    "p4_li4": "<b>직접 Passphrase를 설정하고</b> 반드시 기록해 두세요 — 이는 본인이 직접 정하는 값이며, JaviD Future Bot은 Key, Secret과 함께 이 값이 필요합니다.",
+    "p4_li5": "<b>2FA로 인증하여</b>(인증 앱 코드 또는 이메일 확인) 키 생성을 완료하세요.",
+    "p5_h2": "올바른 권한 설정하기",
+    "p5_p": "키를 설정할 때는 JaviD Future Bot이 거래에 실제로 필요한 권한만 부여하세요 — 그 이상은 필요 없습니다.",
+    "p5_tip": "<b>✅ 정확히 이 항목들만 체크하세요, 그 외엔 아무것도:</b><ul style=\"margin:10px 0 0; padding-left:22px; line-height:1.9;\"><li>Read(읽기) — 보통 기본으로 켜져 있음</li><li>Spot Trade / Orders(현물 거래/주문)</li><li>Futures Trade / Futures-Holdings(선물 거래/선물 보유)</li></ul>",
+    "p5_danger": "<b>❌ 출금(Withdrawal) 권한은 절대 체크하지 마세요:</b> 트레이딩 봇은 이 권한이 전혀 필요하지 않습니다. 이 권한을 꺼두면 최악의 경우 API 키가 유출되더라도 누구도 거래소에서 자금을 인출할 수 없습니다 — 당신의 자산은 그대로 당신의 것으로 남습니다.",
+    "p5_li1": "<b>계정에서 옵션이 제공된다면 IP 제한을 추가하세요.</b><small>\"Restrict access to trusted IPs only\"(신뢰할 수 있는 IP만 허용)를 선택하고, 봇을 실행할 컴퓨터의 공인 IPv4 주소를 입력하세요(\"what is my ip\"로 검색하거나, OKX 빌드가 지원하게 되면 JaviD 내장 \"Run Connection Diagnostics\"(연결 진단 실행) 버튼을 사용하세요).</small>",
+    "p5_li2": "<b>출금(Withdrawal) 권한은 반드시 꺼두세요(OFF).</b><small>설정 중 무언가가 이 권한을 켜라고 요구한다면, 즉시 멈추고 다시 생각해 보세요.</small>",
+    "p5_li3": "<b>저장(Save)한 뒤</b>, IP 화이트리스트 변경 사항이 적용되기까지 몇 분 정도 기다린 후 연결을 테스트하세요.",
+    "p5_warn": "<b>지금 바로 Secret Key와 Passphrase를 복사해 두세요:</b> Secret Key는 딱 한 번만 표시됩니다. 저장하지 않고 페이지를 벗어나면 키를 삭제하고 새로 생성해야 합니다.",
+    "p6_h2": "JaviD Future Bot에 연결하기",
+    "p6_li1": "<b>JaviD Future Bot을 실행하세요</b>(<code>start.bat</code>) — 브라우저가 자동으로 열리며 대시보드로 이동합니다.",
+    "p6_li2": "<b>Settings(설정) 탭으로 이동해</b> OKX을 선택한 뒤, API Key, Secret Key, <b>그리고 Passphrase</b>를 붙여넣으세요.<small>붙여넣을 때 앞뒤에 실수로 공백이 들어가지 않도록 주의하세요 — 세 필드 모두 정확해야 하는 OKX 특성상 이것이 가장 흔한 연결 오류 원인입니다.</small>",
+    "p6_li3": "<b>Save(저장)를 클릭한 뒤 Test Connection(연결 테스트)을 클릭하세요.</b> 녹색 체크 표시가 뜨면 준비가 완료된 것입니다.",
+    "p6_li4": "<b>Shadow Mode(섀도우 모드)를 켜고</b> 실거래로 전환하기 전에 며칠간 봇의 동작을 확인하세요.",
+    "p7_h2": "24시간 계속 실행하기",
+    "p7_p": "JaviD Future Bot은 실제로 실행 중일 때만 거래합니다 — 선물 시장은 결코 문을 닫지 않으므로, 봇을 실행하는 컴퓨터는 하루 24시간, 1년 365일 전원과 인터넷 연결을 유지해야 합니다. 일반적인 노트북으로도 첫 테스트는 가능하지만, 대부분의 사용자는 실거래로 전환하면 다음 두 가지 방식 중 하나로 옮겨갑니다.",
+    "p7_li1": "<b>클라우드 가상 머신</b>(Amazon AWS EC2 또는 이와 비슷한 VPS 제공업체).<small>월 단위로 임대하며 항상 켜져 있고 어디서든 원격으로 접속할 수 있습니다. 봇 자체가 가볍기 때문에 소형/저사양 인스턴스로도 충분합니다.</small>",
+    "p7_li2": "<b>집에 두고 항상 켜두는 전용 미니 PC나 여분의 데스크톱.</b><small>Intel NUC급 미니 PC(또는 달리 쓸 일 없는 상시 가동 기기)는 전력 소모가 매우 적고, UPS에 연결해 두면 짧은 정전도 견딜 수 있습니다. Windows의 절전/최대 절전 모드를 반드시 비활성화하고 인터넷 연결이 안정적인지 확인하세요.</small>",
+    "p7_tip": "<b>둘 중 어느 방법이든 똑같이 잘 작동합니다.</b> 유일한 요건은 기기가 계속 전원이 켜져 있고 인터넷에 연결되어 있으며, (Part 5에서 다룬 대로) IP 제한을 설정했다면 해당 IP가 화이트리스트에 등록되어 있는 것입니다. 봇을 다른 기기로 옮기거나 IP가 바뀌면 키의 IP 제한을 업데이트하세요.",
+    "p7_warn": "<b>알림:</b> 포지션이 열려 있는 상태에서 기기가 재부팅되거나 전원이 끊기면, 봇을 다시 시작하기 전에 OKX 앱의 Futures에서 해당 포지션을 수동으로 종료하세요.",
+    "faq_h2": "문제 해결 및 FAQ",
+    "faq_th1": "증상",
+    "faq_th2": "원인 / 해결 방법",
+    "faq_td1a": "서명/인증 오류",
+    "faq_td1b": "거의 항상 Secret Key나 Passphrase를 복사/붙여넣는 과정에서 생긴 문제입니다 — 숨겨진 줄바꿈이나 공백이 없는지 주의하며 두 값을 다시 복사하세요.",
+    "faq_td2a": "타임스탬프 오류",
+    "faq_td2b": "PC의 시계가 어긋났습니다. Windows 설정에서 자동 시간 동기화를 켜세요.",
+    "faq_td3a": "키에서 선물(Futures) 권한을 활성화할 수 없음",
+    "faq_td3b": "선물 계정이 활성화되기 전에 키가 생성되었습니다(Part 3 참고). 해당 키를 삭제하고 올바른 순서로 새 키를 만드세요.",
+    "faq_td4a": "주문 거부 / 잔액 부족",
+    "faq_td4b": "Spot(현물) 지갑에서 Futures(선물) 지갑으로 USDT가 이체되었는지 확인하세요 — 두 지갑의 잔액은 서로 별개입니다.",
+    "cta_h3": "키를 연결할 준비가 되셨나요?",
+    "cta_p": "대시보드로 돌아가 1분 안에 설정을 마무리하세요.",
+    "cta_btn": "⬇ JaviD Future Bot으로 돌아가기",
+    "footer_home": "홈",
+    "footer_board": "커뮤니티 게시판",
+    "footer_contact": "문의하기"
+  },
+  "ja": {
+    "nav_cap": "機能",
+    "nav_arch": "アーキテクチャ",
+    "nav_research": "リサーチ",
+    "nav_new": "OKXは初めてですか?",
+    "nav_board": "コミュニティ掲示板",
+    "nav_cta": "今すぐダウンロード",
+    "kicker": "🧭 セットアップガイド",
+    "h1": "OKXアカウントと先物(Futures) APIキーの作成方法",
+    "hero_sub": "OKXでJaviD Future Botによる最初の取引を行う前に必要なすべて——アカウント登録、本人確認、Futuresの有効化、そして正しい権限でのAPIキー生成まで。",
+    "updated": "現在のOKXウェブフローに基づいて作成 · 2026年7月最終確認",
+    "toc_title": "このページの内容",
+    "toc_1": "OKXアカウントを作成する",
+    "toc_2": "本人確認(KYC)を完了する",
+    "toc_3": "USDT-M先物口座を有効化する",
+    "toc_4": "APIキーを作成する",
+    "toc_5": "正しい権限を設定する(見落とされがちなステップ)",
+    "toc_6": "JaviD Future Botに接続する",
+    "toc_7": "24時間365日稼働させ続ける(クラウドVMまたはミニPC)",
+    "toc_8": "トラブルシューティングとFAQ",
+    "p1_h2": "OKXアカウントを作成する",
+    "p1_p": "登録には約5分かかります。以下の公式パートナー登録リンクをご利用ください——通常のOKX登録フローと全く同じで、追加費用は一切かかりません。このリンクのおかげでJaviD Future Botはサブスクリプション料金なしで無料のまま提供できています。",
+    "p1_tip1": "<b>まだアカウントをお持ちでない方へ</b> パートナーリンクから登録してください——公式のOKXフローと同じで、追加費用はかかりません。",
+    "p1_btn": "アカウントを作成 →",
+    "p1_li1": "<b>上のパートナーリンクを開き、「Sign Up」(登録)をクリックしてください。</b><small>メールアドレス、電話番号での登録のほか、Google/Appleアカウントでの続行も可能です。</small>",
+    "p1_li2": "<b>パスワードを設定してください。</b><small>強力でユニークなパスワードを使用しましょう——パスワードマネージャーの利用と、記号を加えるとより強固になります。</small>",
+    "p1_li3": "<b>メールまたは電話に送信された認証コードを入力してください。</b><small>コードには有効期限があるため、すぐに受信トレイ/迷惑メールフォルダを確認しましょう。</small>",
+    "p1_li4": "<b>アカウントのセキュリティ設定からすぐに二段階認証(2FA)を有効にし</b>、覚えておけるセキュリティ/API用パスフレーズを設定してください。<small>Google AuthenticatorまたはPasskeyのどちらでも使用できます。後でAPIキーを作成する際に2FAの有効化が必要となり、OKXはAPIキーごとに個別のPassphraseを要求します。</small>",
+    "p1_tip2": "<b>ヒント:</b> 取引所アカウントにはパスワードマネージャーと専用のメールアドレスを使いましょう——アカウント乗っ取りフィッシングを防ぐ最も簡単な方法です。",
+    "p2_h2": "本人確認(KYC)を完了する",
+    "p2_p": "登録だけでは取引が可能になりません。まとまった額を入金したり、Futuresを取引したりするには本人確認が必要です。",
+    "p2_li1": "<b>プロフィールメニュー → Identity Verification(本人確認)を開きます。</b><small>居住国・地域と本人確認書類の種類(国民ID、運転免許証、パスポート)を選択します。</small>",
+    "p2_li2": "<b>本人確認書類の写真をアップロードし</b>、続けて顔認証(簡単なセルフィー/なりすまし防止チェック)を完了させます。",
+    "p2_li3": "<b>承認をお待ちください</b>——通常は数分から数時間で完了します。承認されるとプロフィールのステータスが<i>Verified</i>(認証済み)に変わります。",
+    "p2_warn": "<b>注意:</b> 地域によっては、より高い取引/出金限度額のために追加の住所・居住証明ステップが必要な場合があります。後で限度額に達した場合は、アカウントの認証レベルを確認してください。",
+    "p3_h2": "USDT-M先物口座を有効化する——APIキーを作成する前に",
+    "p3_p": "このステップは順序を間違えやすく、順序を誤ることがセットアップにおける最も多いミスです。",
+    "p3_li1": "<b>上部ナビゲーションから[Futures]メニューを開きます。</b>",
+    "p3_li2": "<b>初めての場合は先物リスク質問票に回答してください</b>——レバレッジ取引のリスクを理解しているか確認する簡単な質問です。",
+    "p3_li3": "<b>USDT-M先物口座を有効化してください。</b><small>有効化するとSpot(現物)ウォレットと並んでFutures(先物)ウォレットが表示されます。取引にはそこへUSDTを送金する必要があります。</small>",
+    "p3_danger": "<b>パート4の前に必ず行ってください:</b> まずFuturesを有効化し、その後でAPIキーを作成します。そうすることで最初からキーに先物権限を付与できます。",
+    "p4_h2": "APIキーを作成する",
+    "p4_p": "キーを作成する前に、OKXは2FA(または電話認証)の有効化と本人確認の完了を求めます——どちらもパート1~2で説明済みです。",
+    "p4_li1": "<b>プロフィールアイコン → API Management(API管理)を開きます。</b>",
+    "p4_li2": "<b>「Create API Key」(APIキーを作成)をクリックし</b>、<b>「System-generated」(システム生成)</b>を選択します。<small>これによりAPI Key + Secret Key + <b>Passphrase</b>が発行されます——OKXはKey/Secretのペアのみを使う一部の取引所と異なり、この3つすべてを要求する取引所の一つです。</small>",
+    "p4_li3": "<b>名前を付けます</b>(例:<code>JaviD-Bot</code>)。後で見分けやすくするためです。",
+    "p4_li4": "<b>ご自身でPassphraseを設定し</b>、必ず書き留めてください——これはご自身で決める値で、JaviD Future BotはKeyとSecretに加えてこの値も必要とします。",
+    "p4_li5": "<b>2FAで認証し</b>(認証アプリのコードまたはメール確認)、キーの作成を完了させます。",
+    "p5_h2": "正しい権限を設定する",
+    "p5_p": "キーを設定する際は、JaviD Future Botが取引に実際に必要とする権限だけを付与してください——それ以上は不要です。",
+    "p5_tip": "<b>✅ 必ずこれらだけをチェックし、それ以外は付けないでください:</b><ul style=\"margin:10px 0 0; padding-left:22px; line-height:1.9;\"><li>Read(読み取り) — 通常デフォルトでオン</li><li>Spot Trade / Orders(現物取引/注文)</li><li>Futures Trade / Futures-Holdings(先物取引/先物保有)</li></ul>",
+    "p5_danger": "<b>❌ 出金(Withdrawal)権限は絶対にチェックしないでください:</b> トレーディングボットにこの権限は一切必要ありません。オフのままにしておけば、最悪のシナリオでAPIキーが漏洩したとしても、誰も取引所から資金を引き出すことはできません——あなたの資産はあなたのものとして守られます。",
+    "p5_li1": "<b>アカウントでオプションが提供されている場合はIP制限を追加してください。</b><small>「Restrict access to trusted IPs only」(信頼できるIPのみアクセスを許可)を選択し、ボットを実行するマシンのパブリックIPv4アドレスを入力します(「what is my ip」で検索するか、OKXのビルドが対応次第JaviD内蔵の「Run Connection Diagnostics」(接続診断の実行)ボタンを使用してください)。</small>",
+    "p5_li2": "<b>出金(Withdrawal)権限は必ずOFFのままにしてください。</b><small>設定中に何かがこれをオンにするよう求めてきた場合は、いったん立ち止まって考え直してください。</small>",
+    "p5_li3": "<b>保存(Save)し</b>、IPホワイトリストの変更が反映されるまで数分待ってから接続をテストしてください。",
+    "p5_warn": "<b>今すぐSecret KeyとPassphraseをコピーしてください:</b> Secret Keyは一度だけ表示されます。保存せずにページを離れると、キーを削除して新しく作り直す必要があります。",
+    "p6_h2": "JaviD Future Botに接続する",
+    "p6_li1": "<b>JaviD Future Botを起動します</b>(<code>start.bat</code>)——ブラウザが自動的に開き、ダッシュボードが表示されます。",
+    "p6_li2": "<b>Settings(設定)タブに移動し</b>、OKXを選択したうえで、API Key、Secret Key、<b>そしてPassphrase</b>を貼り付けます。<small>貼り付け時に前後に余分なスペースが入っていないか注意してください——3つのフィールドすべてが正しくある必要があるため、これがOKX特有の最も多い接続エラーの原因です。</small>",
+    "p6_li3": "<b>Save(保存)をクリックし、続けてTest Connection(接続テスト)をクリックしてください。</b> 緑色のチェックマークが表示されれば準備完了です。",
+    "p6_li4": "<b>Shadow Mode(シャドーモード)をオンにし</b>、実際の取引に切り替える前に数日間ボットの動作を確認してください。",
+    "p7_h2": "24時間365日稼働させ続ける",
+    "p7_p": "JaviD Future Botは実際に稼働している間しか取引しません——先物市場は決して閉まらないため、ボットを実行するマシンは24時間365日、電源と接続を維持し続ける必要があります。普段使いのノートPCでも最初のテストには使えますが、実運用に移行するとほとんどのユーザーは次の2つの構成のいずれかに移行します。",
+    "p7_li1": "<b>クラウド仮想マシン</b>(Amazon AWS EC2、または同等のVPSプロバイダー)。<small>月単位でレンタルし、常時稼働、どこからでもリモートアクセス可能です。ボット自体は軽量なので、小型/低スペックのインスタンスで十分です。</small>",
+    "p7_li2": "<b>自宅に常時電源を入れておく専用のミニPCや余っているデスクトップ。</b><small>Intel NUCクラスのミニPC(またはほかに使い道のない常時稼働マシン)は消費電力が非常に少なく、UPSに接続しておけば短時間の停電にも耐えられます。Windowsのスリープ/休止状態が無効になっていること、インターネット接続が安定していることを確認してください。</small>",
+    "p7_tip": "<b>どちらの方法でも同じようにうまく機能します。</b> 唯一の要件は、マシンの電源が入り続けていること、インターネットに接続され続けていること、そして(パート5の通り)IP制限を設定している場合はそのIPアドレスがホワイトリストに登録されていることです。ボットを新しいマシンに移した場合やIPが変わった場合は、キーのIP制限を更新してください。",
+    "p7_warn": "<b>リマインダー:</b> ポジションを保有している間にマシンが再起動したり電源を失ったりした場合は、ボットを再起動する前にOKXアプリのFuturesから手動でそのポジションを閉じてください。",
+    "faq_h2": "トラブルシューティングとFAQ",
+    "faq_th1": "症状",
+    "faq_th2": "原因 / 対処法",
+    "faq_td1a": "署名/認証エラー",
+    "faq_td1b": "ほとんどの場合、Secret KeyまたはPassphraseのコピー/貼り付けの問題です——隠れた改行やスペースがないか注意しながら、両方をもう一度コピーし直してください。",
+    "faq_td2a": "タイムスタンプエラー",
+    "faq_td2b": "PCの時計がずれています。Windowsの設定で自動時刻同期をオンにしてください。",
+    "faq_td3a": "キーでFutures権限を有効化できない",
+    "faq_td3b": "Futures口座が有効化される前にキーが作成されています(パート3参照)。そのキーを削除し、正しい順序で新しく作成してください。",
+    "faq_td4a": "注文拒否 / 残高不足",
+    "faq_td4b": "Spot(現物)ウォレットからFutures(先物)ウォレットへUSDTが送金されているか確認してください——それぞれ別の残高です。",
+    "cta_h3": "キーを接続する準備はできましたか?",
+    "cta_p": "ダッシュボードに戻り、1分足らずでセットアップを完了させましょう。",
+    "cta_btn": "⬇ JaviD Future Botに戻る",
+    "footer_home": "ホーム",
+    "footer_board": "コミュニティ掲示板",
+    "footer_contact": "お問い合わせ"
+  },
+  "zh": {
+    "nav_cap": "功能",
+    "nav_arch": "架构",
+    "nav_research": "研究",
+    "nav_new": "初次使用 OKX?",
+    "nav_board": "社区版块",
+    "nav_cta": "立即下载",
+    "kicker": "🧭 设置指南",
+    "h1": "如何创建 OKX 账户和合约(Futures) API 密钥",
+    "hero_sub": "在 OKX 上使用 JaviD Future Bot 完成第一笔交易之前你需要做的一切——注册账户、完成身份验证、开通合约(Futures),以及生成具有正确权限的 API 密钥。",
+    "updated": "根据当前 OKX 网页流程编写 · 最后核对时间:2026 年 7 月",
+    "toc_title": "本页内容",
+    "toc_1": "创建 OKX 账户",
+    "toc_2": "完成身份验证(KYC)",
+    "toc_3": "开通 USDT-M 合约账户",
+    "toc_4": "创建 API 密钥",
+    "toc_5": "设置正确的权限(大家最容易忽略的一步)",
+    "toc_6": "将其连接到 JaviD Future Bot",
+    "toc_7": "让它 24/7 持续运行(云虚拟机或迷你主机)",
+    "toc_8": "故障排查与常见问题",
+    "p1_h2": "创建您的 OKX 账户",
+    "p1_p": "注册大约需要 5 分钟。请使用下方我们的官方合作伙伴注册链接——这与常规的 OKX 注册流程完全相同,不会产生任何额外费用,也正是因为这个链接,JaviD Future Bot 才能持续免费提供,不收取任何订阅费。",
+    "p1_tip1": "<b>还没有账户?</b> 通过我们的合作伙伴链接注册——与官方 OKX 流程完全相同,不产生额外费用。",
+    "p1_btn": "创建账户 →",
+    "p1_li1": "<b>打开上方的合作伙伴链接,点击「Sign Up」(注册)。</b><small>您可以使用电子邮箱、手机号码注册,或使用 Google/Apple 账户继续。</small>",
+    "p1_li2": "<b>设置密码。</b><small>请使用强度高且唯一的密码——建议使用密码管理器,并加入符号以增强安全性。</small>",
+    "p1_li3": "<b>输入发送到您邮箱或手机的验证码。</b><small>验证码有时效限制,请立即查看收件箱/垃圾邮件文件夹。</small>",
+    "p1_li4": "<b>请立即在账户安全设置中开启双重验证(2FA)</b>,并设置一个您能记住的安全/API 密码短语(Passphrase)。<small>Google Authenticator 或 Passkey 均可使用。之后创建 API 密钥时需要 2FA 处于开启状态,而且 OKX 要求每个 API 密钥都设置独立的 Passphrase。</small>",
+    "p1_tip2": "<b>提示:</b> 为交易所账户使用密码管理器和专用邮箱——这是避免账户被钓鱼盗取的最简单方法。",
+    "p2_h2": "完成身份验证(KYC)",
+    "p2_p": "仅完成注册并不能解锁交易。您需要先完成身份验证,才能进行有意义的入金或交易合约(Futures)。",
+    "p2_li1": "<b>打开个人资料菜单 → Identity Verification(身份验证)。</b><small>选择您的居住国家/地区,以及证件类型(身份证、驾照或护照)。</small>",
+    "p2_li2": "<b>上传证件照片</b>,然后完成人脸验证(快速自拍/活体检测)。",
+    "p2_li3": "<b>等待审核通过</b>——通常几分钟到几小时内即可完成。审核通过后,您的资料状态会变为 <i>Verified</i>(已验证)。",
+    "p2_warn": "<b>提示:</b> 部分地区需要额外提供地址/居住证明才能获得更高的交易或提现限额。如果日后遇到限额问题,请检查您账户的验证等级。",
+    "p3_h2": "开通 USDT-M 合约账户——在创建 API 密钥之前",
+    "p3_p": "这一步很容易被打乱顺序,而顺序错误正是设置过程中最常见的失误。",
+    "p3_li1": "<b>从顶部导航栏打开 [Futures] 菜单。</b>",
+    "p3_li2": "<b>如果是首次使用,请完成合约风险问卷</b>——一个确认您理解杠杆交易风险的简短测验。",
+    "p3_li3": "<b>开通您的 USDT-M 合约账户。</b><small>开通后,您会在 Spot(现货)钱包旁看到 Futures(合约)钱包,需要将部分 USDT 划转到该钱包才能进行交易。</small>",
+    "p3_danger": "<b>请务必在第 4 部分之前完成此步骤:</b> 先开通合约(Futures),再创建 API 密钥,这样密钥从一开始就能被授予合约权限。",
+    "p4_h2": "创建您的 API 密钥",
+    "p4_p": "在创建密钥之前,OKX 要求您已开启 2FA(或手机验证)并完成身份验证——这两项在第 1~2 部分中均已介绍。",
+    "p4_li1": "<b>点击头像图标 → API Management(API 管理)。</b>",
+    "p4_li2": "<b>点击「Create API Key」(创建 API 密钥)</b>,然后选择<b>「System-generated」(系统生成)</b>。<small>这样您会获得 API Key(密钥)+ Secret Key(密钥密码)+ <b>Passphrase</b>(密码短语)——OKX 是要求同时提供这三项的交易所之一,不同于一些只使用 Key/Secret 组合的交易所。</small>",
+    "p4_li3": "<b>为密钥命名</b>,例如 <code>JaviD-Bot</code>,方便您日后识别。",
+    "p4_li4": "<b>自行设置 Passphrase 并记录下来</b>——这是您自己设定的值,JaviD Future Bot 除了 Key 和 Secret 之外还需要这个值。",
+    "p4_li5": "<b>通过 2FA 验证</b>(验证器代码或邮箱确认)以完成密钥的创建。",
+    "p5_h2": "设置正确的权限",
+    "p5_p": "配置密钥时,只授予 JaviD Future Bot 交易实际所需的权限——不要多给。",
+    "p5_tip": "<b>✅ 只勾选以下这些,其余一律不勾:</b><ul style=\"margin:10px 0 0; padding-left:22px; line-height:1.9;\"><li>Read(读取)——通常默认开启</li><li>Spot Trade / Orders(现货交易/订单)</li><li>Futures Trade / Futures-Holdings(合约交易/合约持仓)</li></ul>",
+    "p5_danger": "<b>❌ 切勿勾选提现(Withdrawal)权限:</b> 交易机器人从来不需要这个权限。让它保持关闭意味着,即使在最坏的情况下您的 API 密钥被泄露,任何人也无法将资金转出交易所——您的资产依然属于您。",
+    "p5_li1": "<b>如果您的账户提供该选项,请添加 IP 限制。</b><small>选择「Restrict access to trusted IPs only」(仅允许受信任的 IP 访问),并输入运行机器人的机器的公网 IPv4 地址(可以搜索「what is my ip」查询,或者在 OKX 版本支持后使用 JaviD 内置的「Run Connection Diagnostics」(运行连接诊断)按钮)。</small>",
+    "p5_li2": "<b>务必将提现(Withdrawal)权限保持关闭(OFF)。</b><small>如果您在配置过程中被要求打开该权限,请立即停止并重新考虑。</small>",
+    "p5_li3": "<b>点击保存(Save)</b>,然后等待几分钟,让 IP 白名单变更生效后再测试连接。",
+    "p5_warn": "<b>请立即复制您的 Secret Key 和 Passphrase:</b> Secret Key 只会显示一次。如果您没有保存就离开页面,将需要删除该密钥并重新生成一个新的。",
+    "p6_h2": "将其连接到 JaviD Future Bot",
+    "p6_li1": "<b>启动 JaviD Future Bot</b>(<code>start.bat</code>)——浏览器会自动打开并跳转到仪表盘。",
+    "p6_li2": "<b>进入 Settings(设置)标签页</b>并选择 OKX,然后粘贴您的 API Key、Secret Key,<b>以及 Passphrase</b>。<small>粘贴时请留意开头/结尾是否意外带有空格——由于 OKX 需要三项字段都正确无误,这是它最常见的连接错误原因。</small>",
+    "p6_li3": "<b>点击 Save(保存),然后点击 Test Connection(测试连接)。</b> 出现绿色勾选标记即表示一切就绪。",
+    "p6_li4": "<b>开启 Shadow Mode(影子模式)</b>,在切换到实盘交易之前先观察机器人的行为几天。",
+    "p7_h2": "让它 24/7 持续运行",
+    "p7_p": "JaviD Future Bot 只有在实际运行时才会交易——合约市场从不休市,因此运行机器人的机器需要一年 365 天、一天 24 小时保持开机和联网状态。日常使用的笔记本电脑足以完成初步测试,但大多数用户在切换到实盘后会转向以下两种方案之一:",
+    "p7_li1": "<b>云虚拟机</b>(Amazon AWS EC2,或其他类似的 VPS 服务商)。<small>按月租用,始终在线,可从任何地方远程访问。由于机器人本身很轻量,一个低配置的小型实例就足够了。</small>",
+    "p7_li2": "<b>放在家中常开的专用迷你主机或闲置台式机。</b><small>Intel NUC 级别的迷你主机(或任何您没有其他用途、可常年开机的设备)耗电量很低,并可接上 UPS 不间断电源以应对短暂断电。请确保关闭 Windows 的睡眠/休眠模式,并保持网络连接稳定。</small>",
+    "p7_tip": "<b>两种方案效果同样好。</b> 唯一的要求是:机器保持开机、保持联网,并且(按第 5 部分所述)如果您设置了 IP 限制,该 IP 需要在白名单中。如果您把机器人迁移到新机器,或您的 IP 发生变化,请及时更新密钥的 IP 限制设置。",
+    "p7_warn": "<b>提醒:</b> 如果在持仓期间机器重启或断电,请务必先在 OKX 应用的 Futures 中手动平掉该仓位,然后再重新启动机器人。",
+    "faq_h2": "故障排查与常见问题",
+    "faq_th1": "症状",
+    "faq_th2": "原因 / 解决方法",
+    "faq_td1a": "签名/身份验证错误",
+    "faq_td1b": "几乎总是 Secret Key 或 Passphrase 复制粘贴出了问题——请重新复制这两项,注意是否夹带了隐藏的换行符或空格。",
+    "faq_td2a": "时间戳错误",
+    "faq_td2b": "您电脑的系统时钟出现了偏差。请在 Windows 设置中打开自动时间同步。",
+    "faq_td3a": "无法在密钥上启用合约(Futures)权限",
+    "faq_td3b": "该密钥是在您的合约账户开通之前创建的(参见第 3 部分)。请删除该密钥,并按正确顺序重新创建一个。",
+    "faq_td4a": "订单被拒绝 / 余额不足",
+    "faq_td4b": "请确认 USDT 已经从 Spot(现货)钱包划转到 Futures(合约)钱包——两者的余额是各自独立的。",
+    "cta_h3": "准备好连接您的密钥了吗?",
+    "cta_p": "返回仪表盘,不到一分钟即可完成设置。",
+    "cta_btn": "⬇ 返回 JaviD Future Bot",
+    "footer_home": "首页",
+    "footer_board": "社区版块",
+    "footer_contact": "联系我们"
+  },
+  "es": {
+    "nav_cap": "Funciones",
+    "nav_arch": "Arquitectura",
+    "nav_research": "Investigación",
+    "nav_new": "¿Nuevo en OKX?",
+    "nav_board": "Tablón de la comunidad",
+    "nav_cta": "Descargar ahora",
+    "kicker": "🧭 Guía de configuración",
+    "h1": "Cómo crear una cuenta de OKX y una clave API de Futuros",
+    "hero_sub": "Todo lo que necesitas antes de tu primera operación con JaviD Future Bot en OKX: registro de cuenta, verificación de identidad, activación de Futuros y generación de una clave API con los permisos correctos.",
+    "updated": "Escrito según el flujo web actual de OKX · Última revisión en julio de 2026",
+    "toc_title": "En esta página",
+    "toc_1": "Crea tu cuenta de OKX",
+    "toc_2": "Completa la verificación de identidad (KYC)",
+    "toc_3": "Activa tu cuenta de Futuros USDT-M",
+    "toc_4": "Crea tu clave API",
+    "toc_5": "Configura los permisos correctos (el paso que la gente pasa por alto)",
+    "toc_6": "Conéctala a JaviD Future Bot",
+    "toc_7": "Mantenlo en funcionamiento 24/7 (VM en la nube o mini PC)",
+    "toc_8": "Solución de problemas y preguntas frecuentes",
+    "p1_h2": "Crea tu cuenta de OKX",
+    "p1_p": "El registro tarda unos 5 minutos. Usa nuestro enlace oficial de registro de socio a continuación: es el mismo proceso de registro de OKX, sin ningún coste adicional para ti, y es lo que permite que JaviD Future Bot siga siendo gratuito, sin cuota de suscripción.",
+    "p1_tip1": "<b>¿Todavía no tienes cuenta?</b> Regístrate a través de nuestro enlace de socio: el mismo proceso oficial de OKX, sin coste adicional.",
+    "p1_btn": "Crear cuenta →",
+    "p1_li1": "<b>Abre el enlace de socio de arriba y haz clic en «Sign Up» (Registrarse).</b><small>Puedes registrarte con un correo electrónico, un número de teléfono, o continuar con tu cuenta de Google/Apple.</small>",
+    "p1_li2": "<b>Establece tu contraseña.</b><small>Usa una contraseña fuerte y única; te recomendamos un gestor de contraseñas y añadir un símbolo para reforzarla.</small>",
+    "p1_li3": "<b>Introduce el código de verificación</b> enviado a tu correo o teléfono.<small>El código tiene un tiempo limitado, así que revisa tu bandeja de entrada o carpeta de spam de inmediato.</small>",
+    "p1_li4": "<b>Activa la autenticación de dos factores (2FA) de inmediato</b> desde la configuración de seguridad de tu cuenta, y establece una frase de seguridad/API (Passphrase) que puedas recordar.<small>Funcionan tanto Google Authenticator como una Passkey. Más adelante necesitarás el 2FA activo para crear una clave API, y OKX exige una Passphrase distinta para cada clave API.</small>",
+    "p1_tip2": "<b>Consejo:</b> Usa un gestor de contraseñas y un correo electrónico dedicado para las cuentas de exchange; es la forma más sencilla de evitar el phishing de robo de cuenta.",
+    "p2_h2": "Completa la verificación de identidad (KYC)",
+    "p2_p": "Registrarte por sí solo no habilita el trading. Necesitas la verificación de identidad antes de poder depositar cantidades significativas u operar Futuros.",
+    "p2_li1": "<b>Abre tu menú de perfil → Identity Verification (Verificación de identidad).</b><small>Selecciona tu país/región de residencia y el tipo de documento de identidad (DNI, carné de conducir o pasaporte).</small>",
+    "p2_li2": "<b>Sube fotos de tu documento de identidad</b>, y después completa la verificación facial (una selfie rápida con comprobación de vida).",
+    "p2_li3": "<b>Espera la aprobación</b>: normalmente se resuelve en unos minutos a unas horas. El estado de tu perfil cambiará a <i>Verified</i> (Verificado) una vez aprobado.",
+    "p2_warn": "<b>Nota:</b> Algunas regiones requieren un paso adicional de comprobante de domicilio/residencia para límites más altos de trading o retiro. Si más adelante alcanzas un límite, revisa el nivel de verificación de tu cuenta.",
+    "p3_h2": "Activa tu cuenta de Futuros USDT-M — antes de crear una clave API",
+    "p3_p": "Es fácil hacer este paso fuera de orden, y hacerlo fuera de orden es, con diferencia, el error de configuración más común.",
+    "p3_li1": "<b>Abre el menú [Futures]</b> desde la navegación superior.",
+    "p3_li2": "<b>Completa el cuestionario de riesgo de futuros</b> si es tu primera vez: un breve test que confirma que entiendes el riesgo del trading apalancado.",
+    "p3_li3": "<b>Activa tu cuenta de Futuros USDT-M.</b><small>Una vez activa, verás una billetera de Futuros junto a tu billetera Spot, y tendrás que transferir algo de USDT a ella para poder operar.</small>",
+    "p3_danger": "<b>Haz esto antes de la Parte 4:</b> activa primero Futuros y crea la clave API después, para que la clave pueda recibir permiso de futuros desde el principio.",
+    "p4_h2": "Crea tu clave API",
+    "p4_p": "Antes de poder crear una clave, OKX exige tener el 2FA (o la verificación telefónica) activado y la verificación de identidad completada; ambos se explicaron en las Partes 1 y 2.",
+    "p4_li1": "<b>Icono de perfil → API Management (Gestión de API).</b>",
+    "p4_li2": "<b>Haz clic en «Create API Key» (Crear clave API)</b> y luego elige <b>«System-generated» (Generada por el sistema)</b>.<small>Esto te da una API Key + Secret Key + <b>Passphrase</b>: OKX es uno de los exchanges que exige las tres, a diferencia de otros que solo usan un par Key/Secret.</small>",
+    "p4_li3": "<b>Ponle un nombre</b>, por ejemplo <code>JaviD-Bot</code>, para que puedas reconocerla más adelante.",
+    "p4_li4": "<b>Establece tu propia Passphrase</b> y anótala; la eliges tú mismo, y JaviD Future Bot la necesitará junto con la Key y el Secret.",
+    "p4_li5": "<b>Verifica con 2FA</b> (código del autenticador o confirmación por correo) para terminar de crear la clave.",
+    "p5_h2": "Configura los permisos correctos",
+    "p5_p": "Al configurar la clave, concede solo lo que JaviD Future Bot realmente necesita para operar, nada más.",
+    "p5_tip": "<b>✅ Marca exactamente esto, nada más:</b><ul style=\"margin:10px 0 0; padding-left:22px; line-height:1.9;\"><li>Read (Lectura) — normalmente activada por defecto</li><li>Spot Trade / Orders (Trading Spot / Órdenes)</li><li>Futures Trade / Futures-Holdings (Trading de Futuros / Posiciones de Futuros)</li></ul>",
+    "p5_danger": "<b>❌ Deja sin marcar el permiso de retiro:</b> un bot de trading nunca lo necesita. Dejarlo desactivado significa que, incluso en el peor escenario en el que tu clave API fuera expuesta, nadie podría mover fondos fuera del exchange: tus activos siguen siendo tuyos.",
+    "p5_li1": "<b>Añade una restricción de IP si tu cuenta ofrece esa opción.</b><small>Elige «Restrict access to trusted IPs only» (Restringir acceso solo a IPs de confianza) e introduce la dirección IPv4 pública de la máquina que ejecutará el bot (busca «what is my ip», o usa el botón integrado de JaviD «Run Connection Diagnostics» (Ejecutar diagnóstico de conexión) cuando la versión de OKX lo admita).</small>",
+    "p5_li2": "<b>Deja el permiso de retiro DESACTIVADO.</b><small>Si algo que estás configurando te pide activarlo, detente y reconsidéralo.</small>",
+    "p5_li3": "<b>Guarda (Save)</b> y espera unos minutos a que se propague cualquier cambio en la lista blanca de IPs antes de probar la conexión.",
+    "p5_warn": "<b>Copia ahora tu Secret Key y tu Passphrase:</b> la Secret Key se muestra solo una vez. Si sales de la página sin guardarla, tendrás que eliminar la clave y generar una nueva.",
+    "p6_h2": "Conéctala a JaviD Future Bot",
+    "p6_li1": "<b>Inicia JaviD Future Bot</b> (<code>start.bat</code>): tu navegador se abrirá automáticamente en el panel de control.",
+    "p6_li2": "<b>Ve a la pestaña Settings (Configuración)</b> y selecciona OKX, luego pega tu API Key, Secret Key <b>y la Passphrase</b>.<small>Ten cuidado con espacios accidentales al principio o al final al pegar; este es el error de conexión más común específicamente con OKX, ya que requiere que los tres campos sean correctos.</small>",
+    "p6_li3": "<b>Haz clic en Save (Guardar) y luego en Test Connection (Probar conexión).</b> Una marca verde significa que ya estás listo.",
+    "p6_li4": "<b>Activa el Shadow Mode (Modo sombra)</b> y verifica el comportamiento del bot durante unos días antes de pasar al trading en vivo.",
+    "p7_h2": "Mantenlo en funcionamiento 24/7",
+    "p7_p": "JaviD Future Bot solo opera mientras está realmente en ejecución; el mercado de futuros nunca cierra, así que la máquina que ejecuta el bot debe permanecer encendida y conectada 24 horas al día, 365 días al año. Tu portátil de uso diario sirve para una primera prueba, pero la mayoría de los usuarios pasa a una de estas dos configuraciones una vez que operan en vivo:",
+    "p7_li1": "<b>Una máquina virtual en la nube</b> (Amazon AWS EC2, o cualquier proveedor de VPS comparable).<small>Se alquila por mes, siempre encendida, accesible de forma remota desde cualquier lugar. Basta con una instancia pequeña/de gama baja, ya que el bot en sí es ligero.</small>",
+    "p7_li2": "<b>Un mini PC dedicado o un escritorio de repuesto, encendido en casa.</b><small>Un mini PC de la clase Intel NUC (o cualquier máquina siempre encendida que no necesites para otra cosa) consume muy poca energía y puede conectarse a un SAI para sobrevivir a cortes breves. Asegúrate de desactivar la suspensión/hibernación de Windows y de que la conexión a internet sea estable.</small>",
+    "p7_tip": "<b>Cualquiera de las dos opciones funciona igual de bien.</b> Los únicos requisitos son: que la máquina permanezca encendida, que siga conectada a internet y (según la Parte 5) que su dirección IP esté en la lista blanca si activaste esa restricción. Si trasladas el bot a una máquina nueva o cambia tu IP, actualiza la restricción de IP en la clave.",
+    "p7_warn": "<b>Recordatorio:</b> si la máquina se reinicia o pierde alimentación mientras hay una posición abierta, cierra esa posición manualmente desde la app de OKX, en Futures, antes de reiniciar el bot.",
+    "faq_h2": "Solución de problemas y preguntas frecuentes",
+    "faq_th1": "Síntoma",
+    "faq_th2": "Causa / Solución",
+    "faq_td1a": "Error de firma/autenticación",
+    "faq_td1b": "Casi siempre es un problema de copiar/pegar la Secret Key o la Passphrase; vuelve a copiar ambas, prestando atención a saltos de línea o espacios ocultos.",
+    "faq_td2a": "Error de marca de tiempo",
+    "faq_td2b": "El reloj de tu PC se ha desincronizado. Activa la sincronización automática de hora en la configuración de Windows.",
+    "faq_td3a": "No se puede activar el permiso de Futuros en la clave",
+    "faq_td3b": "La clave se creó antes de que se activara tu cuenta de Futuros (consulta la Parte 3). Elimínala y crea una nueva, en el orden correcto.",
+    "faq_td4a": "Órdenes rechazadas / saldo insuficiente",
+    "faq_td4b": "Asegúrate de haber transferido USDT desde tu billetera Spot a tu billetera de Futuros; son saldos independientes.",
+    "cta_h3": "¿Listo para conectar tu clave?",
+    "cta_p": "Vuelve al panel de control y termina la configuración en menos de un minuto.",
+    "cta_btn": "⬇ Volver a JaviD Future Bot",
+    "footer_home": "Inicio",
+    "footer_board": "Tablón de la comunidad",
+    "footer_contact": "Contacto"
+  },
+  "fr": {
+    "nav_cap": "Fonctionnalités",
+    "nav_arch": "Architecture",
+    "nav_research": "Recherche",
+    "nav_new": "Nouveau sur OKX ?",
+    "nav_board": "Forum communautaire",
+    "nav_cta": "Télécharger maintenant",
+    "kicker": "🧭 Guide de configuration",
+    "h1": "Comment créer un compte OKX et une clé API Futures",
+    "hero_sub": "Tout ce dont vous avez besoin avant votre premier trade avec JaviD Future Bot sur OKX — inscription du compte, vérification d'identité, activation des Futures et génération d'une clé API avec les bonnes permissions.",
+    "updated": "Rédigé selon le parcours web actuel de OKX · Dernière vérification en juillet 2026",
+    "toc_title": "Sur cette page",
+    "toc_1": "Créer votre compte OKX",
+    "toc_2": "Finaliser la vérification d'identité (KYC)",
+    "toc_3": "Activer votre compte Futures USDT-M",
+    "toc_4": "Créer votre clé API",
+    "toc_5": "Définir les bonnes permissions (l'étape que beaucoup oublient)",
+    "toc_6": "La connecter à JaviD Future Bot",
+    "toc_7": "Le faire tourner 24 h/24, 7 j/7 (VM cloud ou mini PC)",
+    "toc_8": "Dépannage et FAQ",
+    "p1_h2": "Créez votre compte OKX",
+    "p1_p": "L'inscription prend environ 5 minutes. Utilisez notre lien d'inscription partenaire officiel ci-dessous — c'est exactement le même parcours d'inscription OKX, sans aucun coût supplémentaire pour vous, et c'est ce qui permet à JaviD Future Bot de rester gratuit, sans frais d'abonnement.",
+    "p1_tip1": "<b>Vous n'avez pas encore de compte ?</b> Inscrivez-vous via notre lien partenaire — le même parcours OKX officiel, sans coût supplémentaire.",
+    "p1_btn": "Créer un compte →",
+    "p1_li1": "<b>Ouvrez le lien partenaire ci-dessus et cliquez sur « Sign Up » (S'inscrire).</b><small>Vous pouvez vous inscrire avec une adresse e-mail, un numéro de téléphone, ou continuer avec votre compte Google/Apple.</small>",
+    "p1_li2": "<b>Définissez votre mot de passe.</b><small>Utilisez un mot de passe fort et unique — nous recommandons un gestionnaire de mots de passe et l'ajout d'un symbole pour le renforcer.</small>",
+    "p1_li3": "<b>Saisissez le code de vérification</b> envoyé par e-mail ou par SMS.<small>Le code est valable un temps limité, vérifiez donc immédiatement votre boîte de réception ou vos courriers indésirables.</small>",
+    "p1_li4": "<b>Activez immédiatement l'authentification à deux facteurs (2FA)</b> depuis les paramètres de sécurité de votre compte, et définissez une phrase secrète de sécurité/API (Passphrase) dont vous vous souviendrez.<small>Google Authenticator ou une clé d'accès (Passkey) fonctionnent tous les deux. Vous aurez besoin du 2FA activé plus tard pour créer une clé API, et OKX exige une Passphrase distincte pour chaque clé API.</small>",
+    "p1_tip2": "<b>Astuce :</b> utilisez un gestionnaire de mots de passe et un e-mail dédié pour vos comptes d'échange — c'est le moyen le plus simple d'éviter le phishing de prise de contrôle de compte.",
+    "p2_h2": "Finalisez la vérification d'identité (KYC)",
+    "p2_p": "L'inscription seule ne débloque pas le trading. Vous devez compléter la vérification d'identité avant de pouvoir déposer des montants significatifs ou trader les Futures.",
+    "p2_li1": "<b>Ouvrez votre menu de profil → Identity Verification (Vérification d'identité).</b><small>Sélectionnez votre pays/région de résidence et le type de pièce d'identité (carte nationale d'identité, permis de conduire ou passeport).</small>",
+    "p2_li2": "<b>Téléversez des photos de votre pièce d'identité</b>, puis effectuez la vérification faciale (un selfie rapide avec contrôle de vivacité).",
+    "p2_li3": "<b>Attendez l'approbation</b> — cela se règle généralement en quelques minutes à quelques heures. Le statut de votre profil passera à <i>Verified</i> (Vérifié) une fois approuvé.",
+    "p2_warn": "<b>Remarque :</b> certaines régions exigent une étape supplémentaire de justificatif de domicile pour des limites de trading ou de retrait plus élevées. Si vous atteignez une limite plus tard, vérifiez le niveau de vérification de votre compte.",
+    "p3_h2": "Activez votre compte Futures USDT-M — avant de créer une clé API",
+    "p3_p": "Cette étape est facile à faire dans le mauvais ordre, et c'est l'erreur de configuration la plus courante.",
+    "p3_li1": "<b>Ouvrez le menu [Futures]</b> depuis la barre de navigation supérieure.",
+    "p3_li2": "<b>Complétez le questionnaire de risque sur les Futures</b> si c'est votre première fois — un court quiz confirmant que vous comprenez le risque du trading à effet de levier.",
+    "p3_li3": "<b>Activez votre compte Futures USDT-M.</b><small>Une fois activé, vous verrez un portefeuille Futures à côté de votre portefeuille Spot, et vous devrez y transférer des USDT pour pouvoir trader.</small>",
+    "p3_danger": "<b>Faites ceci avant la Partie 4 :</b> activez d'abord les Futures, puis créez la clé API, afin que la clé puisse recevoir la permission Futures dès le départ.",
+    "p4_h2": "Créez votre clé API",
+    "p4_p": "Avant de pouvoir créer une clé, OKX exige que la 2FA (ou la vérification par téléphone) soit activée et que la vérification d'identité soit terminée — les deux sont couvertes dans les Parties 1 et 2.",
+    "p4_li1": "<b>Icône de profil → API Management (Gestion des API).</b>",
+    "p4_li2": "<b>Cliquez sur « Create API Key » (Créer une clé API)</b>, puis choisissez <b>« System-generated » (générée par le système)</b>.<small>Vous obtenez ainsi une API Key + Secret Key + <b>Passphrase</b> — OKX fait partie des plateformes qui exigent les trois, contrairement à d'autres qui n'utilisent qu'une paire Key/Secret.</small>",
+    "p4_li3": "<b>Donnez-lui un nom</b>, par exemple <code>JaviD-Bot</code>, afin de pouvoir la reconnaître plus tard.",
+    "p4_li4": "<b>Définissez votre propre Passphrase</b> et notez-la — c'est vous qui la choisissez, et JaviD Future Bot en aura besoin en plus de la Key et du Secret.",
+    "p4_li5": "<b>Vérifiez avec la 2FA</b> (code de l'application d'authentification ou confirmation par e-mail) pour finaliser la création de la clé.",
+    "p5_h2": "Définissez les bonnes permissions",
+    "p5_p": "Lors de la configuration de la clé, n'accordez que ce dont JaviD Future Bot a réellement besoin pour trader — rien de plus.",
+    "p5_tip": "<b>✅ Cochez exactement ceci, rien d'autre :</b><ul style=\"margin:10px 0 0; padding-left:22px; line-height:1.9;\"><li>Read (Lecture) — généralement activé par défaut</li><li>Spot Trade / Orders (Trading Spot / Ordres)</li><li>Futures Trade / Futures-Holdings (Trading Futures / Positions Futures)</li></ul>",
+    "p5_danger": "<b>❌ Laissez la permission de retrait décochée :</b> un bot de trading n'en a jamais besoin. La laisser désactivée signifie que même dans le pire des scénarios, si votre clé API venait à être exposée, personne ne pourrait faire sortir de fonds de la plateforme — vos actifs restent les vôtres.",
+    "p5_li1": "<b>Ajoutez une restriction d'IP si l'option est proposée sur votre compte.</b><small>Choisissez « Restrict access to trusted IPs only » (Restreindre l'accès aux IP de confiance uniquement) et saisissez l'adresse IPv4 publique de la machine qui exécutera le bot (recherchez « what is my ip », ou utilisez le bouton intégré de JaviD « Run Connection Diagnostics » (Exécuter le diagnostic de connexion) une fois que la version de OKX le prendra en charge).</small>",
+    "p5_li2": "<b>Laissez la permission de retrait DÉSACTIVÉE.</b><small>Si quelque chose dans votre configuration vous demande de l'activer, arrêtez-vous et reconsidérez la situation.</small>",
+    "p5_li3": "<b>Enregistrez (Save)</b>, puis laissez quelques minutes pour que tout changement de la liste blanche d'IP se propage avant de tester la connexion.",
+    "p5_warn": "<b>Copiez dès maintenant votre Secret Key et votre Passphrase :</b> la Secret Key ne s'affiche qu'une seule fois. Si vous quittez la page sans l'avoir enregistrée, vous devrez supprimer la clé et en générer une nouvelle.",
+    "p6_h2": "Connectez-la à JaviD Future Bot",
+    "p6_li1": "<b>Lancez JaviD Future Bot</b> (<code>start.bat</code>) — votre navigateur s'ouvre automatiquement sur le tableau de bord.",
+    "p6_li2": "<b>Allez dans l'onglet Settings (Paramètres)</b> et sélectionnez OKX, puis collez votre API Key, votre Secret Key <b>et votre Passphrase</b>.<small>Faites attention aux espaces accidentels en début ou fin lors du collage — c'est l'erreur de connexion la plus courante avec OKX en particulier, car les trois champs doivent être corrects.</small>",
+    "p6_li3": "<b>Cliquez sur Save (Enregistrer), puis sur Test Connection (Tester la connexion).</b> Une coche verte signifie que vous êtes prêt.",
+    "p6_li4": "<b>Activez le Shadow Mode (Mode fantôme)</b> et vérifiez le comportement du bot pendant quelques jours avant de passer au trading en direct.",
+    "p7_h2": "Faites-le tourner 24 h/24, 7 j/7",
+    "p7_p": "JaviD Future Bot ne trade que lorsqu'il est réellement en cours d'exécution — le marché des futures ne ferme jamais, donc la machine qui exécute le bot doit rester allumée et connectée 24 heures sur 24, 365 jours par an. Votre ordinateur portable habituel convient pour un premier test, mais la plupart des utilisateurs passent à l'une de ces deux configurations une fois en trading réel :",
+    "p7_li1": "<b>Une machine virtuelle dans le cloud</b> (Amazon AWS EC2, ou tout fournisseur de VPS comparable).<small>Louée au mois, toujours active, accessible à distance depuis n'importe où. Une petite instance d'entrée de gamme suffit — le bot lui-même est léger.</small>",
+    "p7_li2": "<b>Un mini PC dédié ou un ordinateur de bureau de rechange, laissé allumé à la maison.</b><small>Un mini PC de classe Intel NUC (ou toute machine toujours allumée dont vous n'avez pas besoin par ailleurs) consomme très peu d'énergie et peut être branché sur un onduleur pour survivre aux courtes coupures. Assurez-vous que la mise en veille/hibernation de Windows est désactivée et que la connexion internet est stable.</small>",
+    "p7_tip": "<b>Les deux options fonctionnent tout aussi bien.</b> Les seules exigences sont : que la machine reste allumée, reste connectée à internet et (selon la Partie 5) que son adresse IP soit en liste blanche si vous avez activé cette restriction. Si vous déplacez le bot vers une nouvelle machine ou si votre IP change, mettez à jour la restriction d'IP sur la clé.",
+    "p7_warn": "<b>Rappel :</b> si la machine redémarre ou perd l'alimentation alors qu'une position est ouverte, fermez cette position manuellement depuis l'application OKX, dans Futures, avant de redémarrer le bot.",
+    "faq_h2": "Dépannage et FAQ",
+    "faq_th1": "Symptôme",
+    "faq_th2": "Cause / Solution",
+    "faq_td1a": "Erreur de signature/authentification",
+    "faq_td1b": "Il s'agit presque toujours d'un problème de copier/coller de la Secret Key ou de la Passphrase — recopiez les deux en faisant attention aux sauts de ligne ou espaces cachés.",
+    "faq_td2a": "Erreur d'horodatage",
+    "faq_td2b": "L'horloge de votre PC a dérivé. Activez la synchronisation automatique de l'heure dans les paramètres Windows.",
+    "faq_td3a": "Impossible d'activer la permission Futures sur la clé",
+    "faq_td3b": "La clé a été créée avant que votre compte Futures ne soit activé (voir la Partie 3). Supprimez-la et créez-en une nouvelle, dans le bon ordre.",
+    "faq_td4a": "Ordres rejetés / solde insuffisant",
+    "faq_td4b": "Assurez-vous que des USDT ont bien été transférés de votre portefeuille Spot vers votre portefeuille Futures — ce sont des soldes séparés.",
+    "cta_h3": "Prêt à connecter votre clé ?",
+    "cta_p": "Retournez au tableau de bord et terminez la configuration en moins d'une minute.",
+    "cta_btn": "⬇ Retour à JaviD Future Bot",
+    "footer_home": "Accueil",
+    "footer_board": "Forum communautaire",
+    "footer_contact": "Contact"
+  },
+"vi": {
+  "nav_cap": "Tính năng",
+  "nav_arch": "Kiến trúc",
+  "nav_research": "Nghiên cứu",
+  "nav_new": "Mới với OKX?",
+  "nav_board": "Bảng cộng đồng",
+  "nav_cta": "Tải xuống ngay",
+  "kicker": "🧭 Hướng dẫn thiết lập",
+  "h1": "Cách tạo tài khoản OKX &amp; khóa API Futures",
+  "hero_sub": "Mọi thứ bạn cần trước khi giao dịch lần đầu với JaviD Future Bot trên OKX — đăng ký tài khoản, xác minh danh tính, kích hoạt Futures và tạo khóa API với đúng quyền hạn.",
+  "updated": "Được viết theo quy trình web hiện tại của OKX · Kiểm tra lần cuối vào tháng 7/2026",
+  "toc_title": "Trong trang này",
+  "toc_1": "Tạo tài khoản OKX của bạn",
+  "toc_2": "Hoàn tất xác minh danh tính (KYC)",
+  "toc_3": "Kích hoạt tài khoản Futures USDT-M",
+  "toc_4": "Tạo khóa API của bạn",
+  "toc_5": "Thiết lập đúng quyền hạn (bước mà nhiều người bỏ lỡ)",
+  "toc_6": "Kết nối với JaviD Future Bot",
+  "toc_7": "Duy trì hoạt động 24/7 (máy chủ ảo đám mây hoặc mini PC)",
+  "toc_8": "Khắc phục sự cố &amp; Câu hỏi thường gặp",
+  "p1_h2": "Tạo tài khoản OKX của bạn",
+  "p1_p": "Đăng ký mất khoảng 5 phút. Hãy sử dụng liên kết đăng ký đối tác chính thức của chúng tôi bên dưới — đây là quy trình đăng ký OKX giống hệt, không tốn thêm chi phí, và đây cũng là cách JaviD Future Bot tiếp tục miễn phí, không thu phí đăng ký.",
+  "p1_tip1": "<b>Chưa có tài khoản?</b> Đăng ký qua liên kết đối tác của chúng tôi — cùng quy trình OKX chính thức, không tốn thêm chi phí.",
+  "p1_btn": "Tạo tài khoản →",
+  "p1_li1": "<b>Mở liên kết đối tác ở trên và nhấp Đăng ký.</b><small>Bạn có thể đăng ký bằng địa chỉ email, số điện thoại, hoặc tiếp tục bằng tài khoản Google/Apple.</small>",
+  "p1_li2": "<b>Đặt mật khẩu của bạn.</b><small>Sử dụng mật khẩu mạnh và duy nhất — chúng tôi khuyên bạn nên dùng trình quản lý mật khẩu và thêm ký tự đặc biệt để tăng độ bảo mật.</small>",
+  "p1_li3": "<b>Nhập mã xác minh</b> được gửi đến email hoặc điện thoại của bạn.<small>Mã này có thời hạn, vì vậy hãy kiểm tra hộp thư đến/thư rác ngay lập tức.</small>",
+  "p1_li4": "<b>Bật xác thực hai yếu tố (2FA) ngay lập tức</b> từ cài đặt bảo mật tài khoản, và đặt một mật khẩu bảo mật/API mà bạn sẽ ghi nhớ.<small>Google Authenticator hoặc Passkey đều có thể sử dụng được. Bạn sẽ cần kích hoạt 2FA sau này để tạo khóa API, và OKX yêu cầu một Passphrase riêng cho mỗi khóa API.</small>",
+  "p1_tip2": "<b>Mẹo:</b> Sử dụng trình quản lý mật khẩu và một email riêng cho các tài khoản sàn giao dịch — đây là cách đơn giản nhất để tránh bị lừa đảo chiếm đoạt tài khoản.",
+  "p2_h2": "Hoàn tất xác minh danh tính (KYC)",
+  "p2_p": "Chỉ đăng ký thôi thì chưa đủ để mở khóa giao dịch. Bạn cần xác minh danh tính trước khi có thể nạp tiền với số lượng đáng kể hoặc giao dịch Futures.",
+  "p2_li1": "<b>Mở menu hồ sơ → Xác minh danh tính.</b><small>Chọn quốc gia/khu vực cư trú của bạn và loại giấy tờ tùy thân (chứng minh thư/căn cước công dân, bằng lái xe, hoặc hộ chiếu).</small>",
+  "p2_li2": "<b>Tải lên ảnh chụp giấy tờ tùy thân</b>, sau đó hoàn tất xác minh khuôn mặt (một bước chụp selfie/kiểm tra sự sống nhanh).",
+  "p2_li3": "<b>Chờ phê duyệt</b> — quá trình này thường mất từ vài phút đến vài giờ. Trạng thái hồ sơ của bạn sẽ chuyển sang <i>Đã xác minh</i> khi được phê duyệt.",
+  "p2_warn": "<b>Lưu ý:</b> Một số khu vực yêu cầu thêm bước xác minh địa chỉ/chứng minh nơi cư trú để nâng hạn mức giao dịch hoặc rút tiền. Hãy kiểm tra mức xác minh của tài khoản nếu sau này bạn gặp giới hạn.",
+  "p3_h2": "Kích hoạt tài khoản Futures USDT-M — Trước khi tạo khóa API",
+  "p3_p": "Bước này rất dễ bị làm sai thứ tự, và làm sai thứ tự chính là lỗi thiết lập phổ biến nhất.",
+  "p3_li1": "<b>Mở menu [Futures]</b> trên thanh điều hướng phía trên.",
+  "p3_li2": "<b>Hoàn thành bảng câu hỏi đánh giá rủi ro futures</b> nếu đây là lần đầu tiên bạn thực hiện — một bài kiểm tra ngắn xác nhận bạn hiểu rủi ro của giao dịch đòn bẩy.",
+  "p3_li3": "<b>Kích hoạt tài khoản Futures USDT-M của bạn.</b><small>Sau khi kích hoạt, bạn sẽ thấy ví Futures bên cạnh ví Spot, và bạn cần chuyển một khoản USDT vào đó để giao dịch.</small>",
+  "p3_danger": "<b>Hãy làm điều này trước Phần 4:</b> kích hoạt Futures trước, tạo khóa API sau, để khóa có thể được cấp quyền futures ngay từ đầu.",
+  "p4_h2": "Tạo khóa API của bạn",
+  "p4_p": "Trước khi có thể tạo khóa, OKX yêu cầu bạn đã bật 2FA (hoặc xác minh điện thoại) và hoàn tất xác minh danh tính — cả hai đã được đề cập trong Phần 1–2.",
+  "p4_li1": "<b>Biểu tượng hồ sơ → Quản lý API.</b>",
+  "p4_li2": "<b>Nhấp Tạo khóa API</b>, sau đó chọn <b>Hệ thống tự tạo</b>.<small>Thao tác này sẽ cấp cho bạn API Key + Secret Key + <b>Passphrase</b> — OKX là một trong những sàn giao dịch yêu cầu cả ba, khác với một số sàn khác chỉ dùng cặp Key/Secret.</small>",
+  "p4_li3": "<b>Đặt tên cho khóa</b>, ví dụ <code>JaviD-Bot</code>, để bạn có thể nhận ra nó sau này.",
+  "p4_li4": "<b>Đặt Passphrase của riêng bạn</b> và ghi lại — bạn tự chọn passphrase này, và JaviD Future Bot sẽ cần nó cùng với Key và Secret.",
+  "p4_li5": "<b>Xác minh bằng 2FA</b> (mã xác thực hoặc xác nhận qua email) để hoàn tất việc tạo khóa.",
+  "p5_h2": "Thiết lập đúng quyền hạn",
+  "p5_p": "Khi cấu hình khóa, chỉ cấp những quyền mà JaviD Future Bot thực sự cần để giao dịch — không hơn không kém.",
+  "p5_tip": "<b>✅ Chỉ chọn đúng những mục này, không gì khác:</b><ul style=\"margin:10px 0 0; padding-left:22px; line-height:1.9;\"><li>Đọc (thường được bật mặc định)</li><li>Giao dịch Spot / Đặt lệnh</li><li>Giao dịch Futures / Futures-Holdings</li></ul>",
+  "p5_danger": "<b>❌ Không chọn quyền rút tiền:</b> một bot giao dịch không bao giờ cần đến quyền này. Việc không bật quyền này có nghĩa là ngay cả trong trường hợp xấu nhất khi khóa API của bạn bị lộ, không ai có thể chuyển tiền ra khỏi sàn giao dịch — tài sản của bạn vẫn thuộc về bạn.",
+  "p5_li1": "<b>Thêm giới hạn IP nếu tài khoản của bạn có tùy chọn này.</b><small>Chọn \"Chỉ cho phép truy cập từ các IP đáng tin cậy\" và nhập địa chỉ IPv4 công khai của máy sẽ chạy bot (tìm kiếm \"what is my ip\", hoặc dùng nút \"Run Connection Diagnostics\" tích hợp sẵn của JaviD một khi bản build OKX hỗ trợ tính năng này).</small>",
+  "p5_li2": "<b>Giữ quyền rút tiền ở trạng thái TẮT.</b><small>Nếu bất kỳ bước cấu hình nào yêu cầu bạn bật quyền này, hãy dừng lại và cân nhắc kỹ.</small>",
+  "p5_li3": "<b>Lưu</b>, sau đó chờ vài phút để mọi thay đổi về danh sách IP được cho phép có hiệu lực trước khi kiểm tra kết nối.",
+  "p5_warn": "<b>Hãy sao chép Secret Key và Passphrase ngay bây giờ:</b> Secret Key chỉ được hiển thị đúng một lần. Nếu bạn rời khỏi trang mà chưa lưu lại, bạn sẽ phải xóa khóa đó và tạo một khóa mới.",
+  "p6_h2": "Kết nối với JaviD Future Bot",
+  "p6_li1": "<b>Khởi chạy JaviD Future Bot</b> (<code>start.bat</code>) — trình duyệt của bạn sẽ tự động mở bảng điều khiển.",
+  "p6_li2": "<b>Vào tab Cài đặt</b> và chọn OKX, sau đó dán API Key, Secret Key <b>và Passphrase</b> của bạn.<small>Chú ý khoảng trắng thừa ở đầu/cuối khi dán — đây là lỗi kết nối phổ biến nhất với OKX cụ thể, vì nó cần cả ba trường đều chính xác.</small>",
+  "p6_li3": "<b>Nhấp Lưu, sau đó Kiểm tra kết nối.</b> Dấu tích màu xanh có nghĩa là bạn đã sẵn sàng.",
+  "p6_li4": "<b>Bật Chế độ Shadow</b> và theo dõi hoạt động của bot trong vài ngày trước khi chuyển sang giao dịch thực.",
+  "p7_h2": "Duy trì hoạt động 24/7",
+  "p7_p": "JaviD Future Bot chỉ giao dịch khi nó thực sự đang chạy — thị trường futures không bao giờ đóng cửa, vì vậy máy chạy bot cần được bật nguồn và kết nối liên tục 24 giờ một ngày, 365 ngày một năm. Máy tính xách tay hàng ngày của bạn phù hợp cho lần thử nghiệm đầu tiên, nhưng hầu hết người dùng chuyển sang một trong hai cách thiết lập sau khi bắt đầu giao dịch thực:",
+  "p7_li1": "<b>Máy chủ ảo đám mây</b> (Amazon AWS EC2, hoặc bất kỳ nhà cung cấp VPS tương đương nào).<small>Thuê theo tháng, luôn hoạt động, truy cập từ xa từ bất cứ đâu. Một instance cấp thấp/nhỏ là đủ — bản thân bot rất nhẹ.</small>",
+  "p7_li2": "<b>Một mini PC chuyên dụng hoặc máy tính để bàn dư, để bật liên tục tại nhà.</b><small>Một mini PC loại Intel NUC (hoặc bất kỳ máy nào luôn bật mà bạn không cần dùng cho việc khác) tiêu thụ rất ít điện và có thể cắm vào UPS để chịu được mất điện ngắn hạn. Đảm bảo chế độ ngủ/ngủ đông của Windows đã bị tắt và kết nối internet ổn định.</small>",
+  "p7_tip": "<b>Cả hai lựa chọn đều hoạt động tốt như nhau.</b> Yêu cầu duy nhất là: máy luôn được bật nguồn, luôn kết nối internet, và (theo Phần 5) có địa chỉ IP nằm trong danh sách trắng nếu bạn đã thiết lập giới hạn đó. Nếu bạn chuyển bot sang máy mới hoặc IP của bạn thay đổi, hãy cập nhật giới hạn IP trên khóa.",
+  "p7_warn": "<b>Lưu ý:</b> nếu máy khởi động lại hoặc mất điện trong khi có vị thế đang mở, hãy đóng vị thế đó thủ công từ ứng dụng OKX trong mục Futures trước khi khởi động lại bot.",
+  "faq_h2": "Khắc phục sự cố &amp; Câu hỏi thường gặp",
+  "faq_th1": "Triệu chứng",
+  "faq_th2": "Nguyên nhân / Cách khắc phục",
+  "faq_td1a": "Lỗi chữ ký/xác thực",
+  "faq_td1b": "Hầu như luôn là vấn đề sao chép/dán Secret Key hoặc Passphrase — hãy sao chép lại cả hai, chú ý các ký tự xuống dòng hoặc khoảng trắng ẩn.",
+  "faq_td2a": "Lỗi dấu thời gian",
+  "faq_td2b": "Đồng hồ máy tính của bạn bị lệch. Bật đồng bộ hóa thời gian tự động trong cài đặt Windows.",
+  "faq_td3a": "Không thể bật quyền Futures trên khóa",
+  "faq_td3b": "Khóa đã được tạo trước khi tài khoản Futures của bạn được kích hoạt (xem Phần 3). Xóa khóa đó và tạo một khóa mới, theo đúng thứ tự.",
+  "faq_td4a": "Lệnh bị từ chối / không đủ số dư",
+  "faq_td4b": "Đảm bảo USDT đã được chuyển từ ví Spot sang ví Futures của bạn — đây là hai số dư riêng biệt.",
+  "cta_h3": "Sẵn sàng kết nối khóa của bạn?",
+  "cta_p": "Quay lại bảng điều khiển và hoàn tất thiết lập trong chưa đầy một phút.",
+  "cta_btn": "⬇ Quay lại JaviD Future Bot",
+  "footer_home": "Trang chủ",
+  "footer_board": "Bảng cộng đồng",
+  "footer_contact": "Liên hệ"
+},
+"tr": {
+  "nav_cap": "Özellikler",
+  "nav_arch": "Mimari",
+  "nav_research": "Araştırma",
+  "nav_new": "OKX'te Yeni misiniz?",
+  "nav_board": "Topluluk Panosu",
+  "nav_cta": "Şimdi İndir",
+  "kicker": "🧭 Kurulum Kılavuzu",
+  "h1": "OKX Hesabı ve Futures API Anahtarı Nasıl Oluşturulur",
+  "hero_sub": "OKX üzerinde JaviD Future Bot ile ilk işleminizden önce ihtiyacınız olan her şey — hesap kaydı, kimlik doğrulama, Futures'ı etkinleştirme ve doğru izinlerle bir API anahtarı oluşturma.",
+  "updated": "Güncel OKX web akışı için yazılmıştır · Son kontrol Temmuz 2026",
+  "toc_title": "Bu sayfada",
+  "toc_1": "OKX hesabınızı oluşturun",
+  "toc_2": "Kimlik doğrulamasını (KYC) tamamlayın",
+  "toc_3": "USDT-M Futures hesabınızı etkinleştirin",
+  "toc_4": "API anahtarınızı oluşturun",
+  "toc_5": "Doğru izinleri ayarlayın (insanların kaçırdığı adım)",
+  "toc_6": "JaviD Future Bot'a bağlayın",
+  "toc_7": "7/24 çalışır durumda tutun (bulut sanal makine veya mini PC)",
+  "toc_8": "Sorun Giderme &amp; SSS",
+  "p1_h2": "OKX Hesabınızı Oluşturun",
+  "p1_p": "Kayıt işlemi yaklaşık 5 dakika sürer. Aşağıdaki resmi ortak kayıt bağlantımızı kullanın — bu, size hiçbir ek maliyet getirmeyen, aynı OKX kayıt akışıdır ve JaviD Future Bot'un abonelik ücreti olmadan ücretsiz kalmasını sağlayan yöntemdir.",
+  "p1_tip1": "<b>Henüz hesabınız yok mu?</b> Ortak bağlantımız üzerinden kaydolun — aynı resmi OKX akışı, ek maliyet yok.",
+  "p1_btn": "Hesap Oluştur →",
+  "p1_li1": "<b>Yukarıdaki ortak bağlantıyı açın ve Kaydol'a tıklayın.</b><small>Bir e-posta adresi, telefon numarası ile kaydolabilir veya Google/Apple hesabınızla devam edebilirsiniz.</small>",
+  "p1_li2": "<b>Şifrenizi belirleyin.</b><small>Güçlü ve benzersiz bir şifre kullanın — daha güçlü bir anahtar için bir şifre yöneticisi kullanmanızı ve bir sembol eklemenizi öneririz.</small>",
+  "p1_li3": "<b>E-postanıza veya telefonunuza gönderilen doğrulama kodunu girin.</b><small>Kodun süresi sınırlıdır, bu yüzden gelen kutunuzu/spam klasörünüzü hemen kontrol edin.</small>",
+  "p1_li4": "<b>Hesap güvenliği ayarlarınızdan İki Faktörlü Kimlik Doğrulamayı (2FA) hemen etkinleştirin</b> ve hatırlayacağınız bir güvenlik/API parolası belirleyin.<small>Google Authenticator veya bir Passkey ikisi de çalışır. Daha sonra bir API anahtarı oluşturmak için 2FA'nın etkin olması gerekecek ve OKX her API anahtarı için ayrı bir Parola (Passphrase) ister.</small>",
+  "p1_tip2": "<b>İpucu:</b> Borsa hesapları için bir şifre yöneticisi ve ayrı bir e-posta kullanın — hesap ele geçirme saldırılarından kaçınmanın en kolay yolu budur.",
+  "p2_h2": "Kimlik Doğrulamasını (KYC) Tamamlayın",
+  "p2_p": "Yalnızca kayıt olmak işlem yapmanızı sağlamaz. Anlamlı bir miktarda para yatırmadan veya Futures işlemi yapmadan önce kimlik doğrulaması yapmanız gerekir.",
+  "p2_li1": "<b>Profil menünüzü açın → Kimlik Doğrulama.</b><small>İkamet ettiğiniz ülke/bölgeyi ve kimlik belgesi türünü (nüfus cüzdanı, ehliyet veya pasaport) seçin.</small>",
+  "p2_li2": "<b>Kimliğinizin fotoğraflarını yükleyin</b>, ardından yüz doğrulamasını (hızlı bir selfie/canlılık kontrolü) tamamlayın.",
+  "p2_li3": "<b>Onay için bekleyin</b> — bu genellikle birkaç dakika ile birkaç saat içinde tamamlanır. Onaylandığında profil durumunuz <i>Doğrulandı</i> olarak değişir.",
+  "p2_warn": "<b>Not:</b> Bazı bölgeler, daha yüksek işlem veya çekim limitleri için ek bir adres/ikametgah kanıtı adımı gerektirir. Daha sonra bir limitle karşılaşırsanız hesabınızın doğrulama seviyesini kontrol edin.",
+  "p3_h2": "USDT-M Futures Hesabınızı Etkinleştirin — API Anahtarı Oluşturmadan Önce",
+  "p3_p": "Bu adım sırayla yapılmamaya çok müsaittir ve sırayla yapmamak, en yaygın kurulum hatasıdır.",
+  "p3_li1": "<b>Üst gezinme çubuğundan [Futures] menüsünü açın.</b>",
+  "p3_li2": "<b>İlk kez yapıyorsanız futures risk anketini tamamlayın</b> — kaldıraçlı işlem riskini anladığınızı doğrulayan kısa bir test.",
+  "p3_li3": "<b>USDT-M Futures hesabınızı etkinleştirin.</b><small>Etkinleştirildikten sonra, Spot cüzdanınızın yanında bir Futures cüzdanı göreceksiniz ve işlem yapmak için içine biraz USDT aktarmanız gerekecek.</small>",
+  "p3_danger": "<b>Bunu Bölüm 4'ten önce yapın:</b> önce Futures'ı etkinleştirin, sonra API anahtarını oluşturun; böylece anahtara baştan itibaren futures izni verilebilir.",
+  "p4_h2": "API Anahtarınızı Oluşturun",
+  "p4_p": "Bir anahtar oluşturabilmeniz için OKX, 2FA'nın (veya telefon doğrulamasının) etkin olmasını ve kimlik doğrulamasının tamamlanmış olmasını gerektirir — her ikisi de Bölüm 1-2'de ele alınmıştır.",
+  "p4_li1": "<b>Profil simgesi → API Yönetimi.</b>",
+  "p4_li2": "<b>API Anahtarı Oluştur'a tıklayın</b>, ardından <b>Sistem tarafından oluşturulan</b> seçeneğini seçin.<small>Bu size bir API Key + Secret Key + <b>Parola (Passphrase)</b> verir — OKX, yalnızca bir Key/Secret çifti kullanan diğer bazı borsaların aksine, üçünü de gerektiren borsalardan biridir.</small>",
+  "p4_li3": "<b>Daha sonra tanıyabilmeniz için ona bir isim verin</b>, örneğin <code>JaviD-Bot</code>.",
+  "p4_li4": "<b>Kendi Parolanızı (Passphrase) belirleyin</b> ve yazın — bunu siz kendiniz seçersiniz ve JaviD Future Bot bunu Key ve Secret ile birlikte ihtiyaç duyacaktır.",
+  "p4_li5": "<b>Anahtarı oluşturmayı bitirmek için 2FA ile doğrulayın</b> (kimlik doğrulayıcı kodu veya e-posta onayı).",
+  "p5_h2": "Doğru İzinleri Ayarlayın",
+  "p5_p": "Anahtarı yapılandırırken, JaviD Future Bot'un işlem yapmak için gerçekten ihtiyaç duyduğu izinleri verin — fazlasını değil.",
+  "p5_tip": "<b>✅ Yalnızca tam olarak bunları işaretleyin, başka hiçbir şeyi değil:</b><ul style=\"margin:10px 0 0; padding-left:22px; line-height:1.9;\"><li>Okuma (genellikle varsayılan olarak açıktır)</li><li>Spot İşlem / Emirler</li><li>Futures İşlem / Futures-Holdings</li></ul>",
+  "p5_danger": "<b>❌ Para çekme iznini işaretlemeden bırakın:</b> bir işlem botunun buna asla ihtiyacı yoktur. Bunu kapalı bırakmak, API anahtarınızın en kötü senaryoda ifşa olması durumunda bile kimsenin borsadan para transfer edemeyeceği anlamına gelir — varlıklarınız sizin kalır.",
+  "p5_li1": "<b>Hesabınızda bu seçenek sunuluyorsa bir IP kısıtlaması ekleyin.</b><small>\"Erişimi yalnızca güvenilir IP'lerle sınırla\" seçeneğini seçin ve botu çalıştıracak makinenin genel IPv4 adresini girin (\"what is my ip\" araması yapın veya OKX sürümü desteklediğinde JaviD'nin yerleşik \"Run Connection Diagnostics\" düğmesini kullanın).</small>",
+  "p5_li2": "<b>Para çekme iznini KAPALI bırakın.</b><small>Yapılandırdığınız herhangi bir şey bunu açmanızı isterse durun ve yeniden düşünün.</small>",
+  "p5_li3": "<b>Kaydedin</b>, ardından bağlantıyı test etmeden önce IP beyaz listesi değişikliğinin yayılması için birkaç dakika bekleyin.",
+  "p5_warn": "<b>Secret Key ve Parolanızı şimdi kopyalayın:</b> Secret Key yalnızca bir kez gösterilir. Kaydetmeden sayfadan ayrılırsanız, anahtarı silip yenisini oluşturmanız gerekir.",
+  "p6_h2": "JaviD Future Bot'a Bağlayın",
+  "p6_li1": "<b>JaviD Future Bot'u başlatın</b> (<code>start.bat</code>) — tarayıcınız otomatik olarak kontrol paneline açılır.",
+  "p6_li2": "<b>Ayarlar sekmesine gidin</b> ve OKX'i seçin, ardından API Key, Secret Key <b>ve Parolanızı</b> yapıştırın.<small>Yapıştırırken başta/sonda yanlışlıkla boşluk olup olmadığına dikkat edin — bu, özellikle OKX'te en yaygın bağlantı hatasıdır, çünkü üç alanın da doğru olması gerekir.</small>",
+  "p6_li3": "<b>Kaydet'e, ardından Bağlantıyı Test Et'e tıklayın.</b> Yeşil bir onay işareti hazır olduğunuz anlamına gelir.",
+  "p6_li4": "<b>Shadow Modu'nu açın</b> ve canlı işleme geçmeden önce botun davranışını birkaç gün doğrulayın.",
+  "p7_h2": "7/24 Çalışır Durumda Tutun",
+  "p7_p": "JaviD Future Bot yalnızca fiilen çalışırken işlem yapar — futures piyasası asla kapanmaz, bu yüzden botu çalıştıran makinenin günde 24 saat, yılda 365 gün açık ve bağlı kalması gerekir. Günlük dizüstü bilgisayarınız ilk test için işe yarar, ancak çoğu kullanıcı canlıya geçtiklerinde şu iki kurulumdan birine geçer:",
+  "p7_li1": "<b>Bir bulut sanal makine</b> (Amazon AWS EC2 veya benzer herhangi bir VPS sağlayıcısı).<small>Aylık olarak kiralanır, her zaman açıktır, her yerden uzaktan erişilebilir. Küçük/düşük seviyeli bir örnek yeterlidir — botun kendisi hafiftir.</small>",
+  "p7_li2": "<b>Evde açık bırakılan özel bir mini PC veya yedek masaüstü bilgisayar.</b><small>Bir Intel NUC sınıfı mini PC (veya başka bir amaç için ihtiyaç duymadığınız her zaman açık herhangi bir makine) çok az güç çeker ve kısa kesintilerden kurtulmak için bir UPS'e bağlanabilir. Windows uyku/hazırda bekletme modunun devre dışı bırakıldığından ve internet bağlantısının kararlı olduğundan emin olun.</small>",
+  "p7_tip": "<b>Her iki seçenek de eşit derecede iyi çalışır.</b> Tek gereksinim şudur: makinenin açık kalması, internete bağlı kalması ve (Bölüm 5'e göre) bu kısıtlamayı ayarladıysanız IP adresinin beyaz listede olmasıdır. Botu yeni bir makineye taşırsanız veya IP'niz değişirse, anahtardaki IP kısıtlamasını güncelleyin.",
+  "p7_warn": "<b>Hatırlatma:</b> açık bir pozisyon varken makine yeniden başlarsa veya elektrik kesilirse, botu yeniden başlatmadan önce o pozisyonu OKX uygulamasında Futures altından manuel olarak kapatın.",
+  "faq_h2": "Sorun Giderme &amp; SSS",
+  "faq_th1": "Belirti",
+  "faq_th2": "Neden / Çözüm",
+  "faq_td1a": "İmza/kimlik doğrulama hatası",
+  "faq_td1b": "Neredeyse her zaman bir Secret Key veya Parola kopyala/yapıştır sorunudur — her ikisini de gizli satır sonlarına veya boşluklara dikkat ederek yeniden kopyalayın.",
+  "faq_td2a": "Zaman damgası hatası",
+  "faq_td2b": "Bilgisayarınızın saati kaymış. Windows ayarlarında otomatik zaman senkronizasyonunu açın.",
+  "faq_td3a": "Anahtarda Futures izni etkinleştirilemiyor",
+  "faq_td3b": "Anahtar, Futures hesabınız etkinleştirilmeden önce oluşturulmuş (bkz. Bölüm 3). Silin ve doğru sırayla yenisini oluşturun.",
+  "faq_td4a": "Emirler reddediliyor / yetersiz bakiye",
+  "faq_td4b": "USDT'nin Spot cüzdanınızdan Futures cüzdanınıza aktarıldığından emin olun — bunlar ayrı bakiyelerdir.",
+  "cta_h3": "Anahtarınızı bağlamaya hazır mısınız?",
+  "cta_p": "Kontrol paneline geri dönün ve kurulumu bir dakikadan kısa sürede tamamlayın.",
+  "cta_btn": "⬇ JaviD Future Bot'a Geri Dön",
+  "footer_home": "Ana Sayfa",
+  "footer_board": "Topluluk Panosu",
+  "footer_contact": "İletişim"
+},
+"pt": {
+  "nav_cap": "Funcionalidades",
+  "nav_arch": "Arquitetura",
+  "nav_research": "Pesquisa",
+  "nav_new": "Novo na OKX?",
+  "nav_board": "Fórum da Comunidade",
+  "nav_cta": "Baixar Agora",
+  "kicker": "🧭 Guia de Configuração",
+  "h1": "Como Criar uma Conta OKX e uma Chave de API de Futures",
+  "hero_sub": "Tudo o que você precisa antes da sua primeira operação com o JaviD Future Bot na OKX — cadastro de conta, verificação de identidade, ativação de Futures e geração de uma chave de API com as permissões corretas.",
+  "updated": "Escrito para o fluxo atual do site da OKX · Última verificação em julho de 2026",
+  "toc_title": "Nesta página",
+  "toc_1": "Criar sua conta OKX",
+  "toc_2": "Concluir a verificação de identidade (KYC)",
+  "toc_3": "Ativar sua conta de Futures USDT-M",
+  "toc_4": "Criar sua chave de API",
+  "toc_5": "Definir as permissões corretas (a etapa que as pessoas costumam perder)",
+  "toc_6": "Conectar ao JaviD Future Bot",
+  "toc_7": "Mantê-lo funcionando 24/7 (VM em nuvem ou mini PC)",
+  "toc_8": "Solução de Problemas &amp; Perguntas Frequentes",
+  "p1_h2": "Crie Sua Conta OKX",
+  "p1_p": "O cadastro leva cerca de 5 minutos. Use nosso link oficial de cadastro de parceiro abaixo — é o mesmo fluxo de cadastro da OKX, sem nenhum custo extra para você, e é assim que o JaviD Future Bot continua gratuito, sem taxa de assinatura.",
+  "p1_tip1": "<b>Ainda não tem uma conta?</b> Cadastre-se através do nosso link de parceiro — o mesmo fluxo oficial da OKX, sem custo extra.",
+  "p1_btn": "Criar Conta →",
+  "p1_li1": "<b>Abra o link de parceiro acima e clique em Cadastrar-se.</b><small>Você pode se cadastrar com um endereço de e-mail, um número de telefone, ou continuar com sua conta Google/Apple.</small>",
+  "p1_li2": "<b>Defina sua senha.</b><small>Use uma senha forte e exclusiva — recomendamos um gerenciador de senhas e a adição de um símbolo para uma chave mais forte.</small>",
+  "p1_li3": "<b>Digite o código de verificação</b> enviado para seu e-mail ou telefone.<small>O código tem tempo limitado, então verifique sua caixa de entrada/pasta de spam imediatamente.</small>",
+  "p1_li4": "<b>Ative a Autenticação de Dois Fatores (2FA) imediatamente</b> nas configurações de segurança da sua conta, e defina uma senha de segurança/API que você lembrará.<small>O Google Authenticator ou uma Passkey funcionam. Você precisará do 2FA ativo mais tarde para criar uma chave de API, e a OKX exige uma Passphrase separada para cada chave de API.</small>",
+  "p1_tip2": "<b>Dica:</b> Use um gerenciador de senhas e um e-mail dedicado para contas de exchange — é a maneira mais simples de evitar phishing e sequestro de conta.",
+  "p2_h2": "Conclua a Verificação de Identidade (KYC)",
+  "p2_p": "Apenas se cadastrar não libera as operações. Você precisa da verificação de identidade antes de poder depositar valores significativos ou operar Futures.",
+  "p2_li1": "<b>Abra o menu do seu perfil → Verificação de Identidade.</b><small>Selecione seu país/região de residência e o tipo de documento de identidade (carteira de identidade nacional, carteira de motorista ou passaporte).</small>",
+  "p2_li2": "<b>Envie fotos do seu documento de identidade</b>, depois conclua a verificação facial (uma rápida selfie/verificação de vivacidade).",
+  "p2_li3": "<b>Aguarde a aprovação</b> — isso geralmente é concluído em alguns minutos a algumas horas. O status do seu perfil muda para <i>Verificado</i> assim que aprovado.",
+  "p2_warn": "<b>Nota:</b> Algumas regiões exigem uma etapa extra de comprovante de endereço/residência para limites maiores de operação ou saque. Verifique o nível de verificação da sua conta caso encontre um limite mais tarde.",
+  "p3_h2": "Ative Sua Conta de Futures USDT-M — Antes de Criar uma Chave de API",
+  "p3_p": "É fácil fazer essa etapa fora de ordem, e fazê-la fora de ordem é o erro de configuração mais comum.",
+  "p3_li1": "<b>Abra o menu [Futures]</b> na navegação superior.",
+  "p3_li2": "<b>Complete o questionário de risco de futures</b> se for a sua primeira vez — um breve teste confirmando que você entende o risco das operações alavancadas.",
+  "p3_li3": "<b>Ative sua conta de Futures USDT-M.</b><small>Uma vez ativada, você verá uma carteira de Futures ao lado da sua carteira Spot, e precisará transferir USDT para ela para operar.</small>",
+  "p3_danger": "<b>Faça isso antes da Parte 4:</b> ative o Futures primeiro, a chave de API depois, para que a chave possa receber permissão de futures desde o início.",
+  "p4_h2": "Crie Sua Chave de API",
+  "p4_p": "Antes de poder criar uma chave, a OKX exige que o 2FA (ou verificação por telefone) esteja ativado e a verificação de identidade concluída — ambos abordados nas Partes 1–2.",
+  "p4_li1": "<b>Ícone de perfil → Gerenciamento de API.</b>",
+  "p4_li2": "<b>Clique em Criar Chave de API</b>, depois escolha <b>Gerado pelo sistema</b>.<small>Isso lhe dá uma API Key + Secret Key + <b>Passphrase</b> — a OKX é uma das exchanges que exige as três, diferentemente de outras que usam apenas um par Key/Secret.</small>",
+  "p4_li3": "<b>Dê um nome a ela</b>, por exemplo <code>JaviD-Bot</code>, para que você possa reconhecê-la depois.",
+  "p4_li4": "<b>Defina sua própria Passphrase</b> e anote-a — você mesmo a escolhe, e o JaviD Future Bot precisará dela junto com a Key e a Secret.",
+  "p4_li5": "<b>Verifique com 2FA</b> (código do autenticador ou confirmação por e-mail) para concluir a criação da chave.",
+  "p5_h2": "Defina as Permissões Corretas",
+  "p5_p": "Ao configurar a chave, conceda apenas o que o JaviD Future Bot realmente precisa para operar — nada além disso.",
+  "p5_tip": "<b>✅ Marque exatamente estas, nada mais:</b><ul style=\"margin:10px 0 0; padding-left:22px; line-height:1.9;\"><li>Leitura (geralmente ativada por padrão)</li><li>Operações Spot / Ordens</li><li>Operações Futures / Futures-Holdings</li></ul>",
+  "p5_danger": "<b>❌ Deixe a permissão de saque desmarcada:</b> um bot de operações nunca precisa dela. Deixá-la desativada significa que, mesmo no pior cenário em que sua chave de API fosse exposta, ninguém poderia retirar fundos da exchange — seus ativos permanecem seus.",
+  "p5_li1": "<b>Adicione uma restrição de IP se a opção estiver disponível na sua conta.</b><small>Escolha \"Restringir acesso apenas a IPs confiáveis\" e insira o endereço IPv4 público da máquina que executará o bot (pesquise \"what is my ip\", ou use o botão integrado \"Run Connection Diagnostics\" do JaviD assim que a versão da OKX o suportar).</small>",
+  "p5_li2": "<b>Deixe a permissão de saque DESATIVADA.</b><small>Se qualquer coisa que você estiver configurando pedir para ativar isso, pare e reconsidere.</small>",
+  "p5_li3": "<b>Salve</b>, depois aguarde alguns minutos para que qualquer alteração na lista de IPs autorizados se propague antes de testar a conexão.",
+  "p5_warn": "<b>Copie sua Secret Key e Passphrase agora:</b> a Secret Key é exibida apenas uma vez. Se você sair da página sem salvá-la, precisará excluir a chave e gerar uma nova.",
+  "p6_h2": "Conecte ao JaviD Future Bot",
+  "p6_li1": "<b>Inicie o JaviD Future Bot</b> (<code>start.bat</code>) — seu navegador abrirá automaticamente o painel.",
+  "p6_li2": "<b>Vá para a aba Configurações</b> e selecione OKX, depois cole sua API Key, Secret Key <b>e Passphrase</b>.<small>Fique atento a espaços acidentais no início/fim ao colar — este é o erro de conexão mais comum especificamente com a OKX, já que ela exige que os três campos estejam corretos.</small>",
+  "p6_li3": "<b>Clique em Salvar, depois em Testar Conexão.</b> Um sinal de verificação verde significa que você está pronto para começar.",
+  "p6_li4": "<b>Ative o Modo Shadow</b> e verifique o comportamento do bot por alguns dias antes de mudar para operações ao vivo.",
+  "p7_h2": "Mantenha-o Funcionando 24/7",
+  "p7_p": "O JaviD Future Bot só opera enquanto está realmente em execução — o mercado de futures nunca fecha, então a máquina que executa o bot precisa permanecer ligada e conectada 24 horas por dia, 365 dias por ano. Seu notebook do dia a dia funciona para um primeiro teste, mas a maioria dos usuários migra para uma destas duas configurações ao passar para operações ao vivo:",
+  "p7_li1": "<b>Uma máquina virtual em nuvem</b> (Amazon AWS EC2, ou qualquer provedor de VPS comparável).<small>Alugada mensalmente, sempre ligada, acessível remotamente de qualquer lugar. Uma instância pequena/de nível básico é suficiente — o bot em si é leve.</small>",
+  "p7_li2": "<b>Um mini PC dedicado ou desktop reserva, deixado ligado em casa.</b><small>Um mini PC classe Intel NUC (ou qualquer máquina sempre ligada que você não precise para outra finalidade) consome muito pouca energia e pode ser conectado a um nobreak (UPS) para suportar quedas de energia curtas. Certifique-se de que o modo de suspensão/hibernação do Windows esteja desativado e que a conexão com a internet seja estável.</small>",
+  "p7_tip": "<b>Ambas as opções funcionam igualmente bem.</b> Os únicos requisitos são: a máquina permanecer ligada, permanecer conectada à internet e (conforme a Parte 5) ter seu endereço IP na lista de permitidos, caso você tenha configurado essa restrição. Se você mover o bot para uma nova máquina ou seu IP mudar, atualize a restrição de IP na chave.",
+  "p7_warn": "<b>Lembrete:</b> se a máquina reiniciar ou perder energia enquanto uma posição estiver aberta, feche essa posição manualmente no aplicativo da OKX, em Futures, antes de reiniciar o bot.",
+  "faq_h2": "Solução de Problemas &amp; Perguntas Frequentes",
+  "faq_th1": "Sintoma",
+  "faq_th2": "Causa / Solução",
+  "faq_td1a": "Erro de assinatura/autenticação",
+  "faq_td1b": "Quase sempre é um problema de cópia/cola da Secret Key ou da Passphrase — copie ambas novamente, atento a quebras de linha ou espaços ocultos.",
+  "faq_td2a": "Erro de timestamp",
+  "faq_td2b": "O relógio do seu computador está dessincronizado. Ative a sincronização automática de horário nas configurações do Windows.",
+  "faq_td3a": "Não é possível ativar a permissão de Futures na chave",
+  "faq_td3b": "A chave foi criada antes que sua conta de Futures fosse ativada (veja a Parte 3). Exclua-a e crie uma nova, na ordem correta.",
+  "faq_td4a": "Ordens rejeitadas / saldo insuficiente",
+  "faq_td4b": "Certifique-se de que o USDT foi transferido da sua carteira Spot para a carteira Futures — são saldos separados.",
+  "cta_h3": "Pronto para conectar sua chave?",
+  "cta_p": "Volte ao painel e conclua a configuração em menos de um minuto.",
+  "cta_btn": "⬇ Voltar ao JaviD Future Bot",
+  "footer_home": "Início",
+  "footer_board": "Fórum da Comunidade",
+  "footer_contact": "Contato"
+},
+};
+var LANGS = [
+  {code:'en', label:'English'}, {code:'ko', label:'한국어'}, {code:'ja', label:'日本語'},
+  {code:'zh', label:'中文'}, {code:'es', label:'Español'}, {code:'fr', label:'Français'}, {code:'vi', label:'Tiếng Việt'}, {code:'tr', label:'Türkçe'}, {code:'pt', label:'Português'}
+];
+var STORAGE_KEY = 'javid_lang';
+window.CURRENT_LANG = 'en';
+function applyLang(lang){
+  if (!I18N[lang]) lang = 'en';
+  window.CURRENT_LANG = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    var val = (I18N[lang] && I18N[lang][key] != null) ? I18N[lang][key] : I18N.en[key];
+    if (val != null) el.innerHTML = val;
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+  document.querySelectorAll('.lang-menu button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+}
+(function(){
+  var menu = document.getElementById('langMenu');
+  var btn = document.getElementById('langBtn');
+  LANGS.forEach(function(l){
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('data-lang', l.code); b.setAttribute('role','menuitem');
+    b.textContent = l.label;
+    b.addEventListener('click', function(){ applyLang(l.code); menu.classList.remove('open'); });
+    menu.appendChild(b);
+  });
+  btn.addEventListener('click', function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+  document.addEventListener('click', function(){ menu.classList.remove('open'); });
+  var saved;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch(e){}
+  applyLang(saved || 'en');
+})();
+</script>
+</body>
+</html>

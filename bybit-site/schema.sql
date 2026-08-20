@@ -1,0 +1,49 @@
+-- JaviD Future Bot (Bybit edition) community board + live status — D1 schema
+-- Run this once in the D1 database's Console tab (Cloudflare dashboard),
+-- or via: wrangler d1 execute <DB_NAME> --file=schema.sql
+
+CREATE TABLE IF NOT EXISTS posts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  content TEXT NOT NULL,
+  is_secret INTEGER NOT NULL DEFAULT 0,
+  salt TEXT,
+  password_hash TEXT,
+  reply TEXT,
+  replied_at TEXT,
+  created_at TEXT NOT NULL
+);
+
+-- Single-row table holding the operator's live account snapshot, pushed
+-- periodically by the local bot. Only one row (id = 1) ever exists.
+CREATE TABLE IF NOT EXISTS live_status (
+  id INTEGER PRIMARY KEY CHECK (id = 1),
+  balance REAL,
+  cumulative_pnl REAL,
+  cumulative_return_pct REAL,
+  win_rate REAL,
+  trade_count INTEGER,
+  open_positions INTEGER,
+  updated_at TEXT NOT NULL
+);
+
+-- One row per successful download. Read via
+-- GET /api/download-stats?key=<STATS_KEY> on bb.javidtrading.com.
+--
+-- referrer_host/utm_*/landing_path/country capture where the download came
+-- from — see REQUEST_landingagent_downloadattribution.md. On a DB that
+-- already has this table without these columns, run migration_download_source.sql
+-- instead (ALTER TABLE) — CREATE TABLE IF NOT EXISTS won't add columns to an
+-- existing table.
+CREATE TABLE IF NOT EXISTS download_events (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  site TEXT NOT NULL,
+  platform TEXT NOT NULL,
+  downloaded_at TEXT NOT NULL,
+  referrer_host TEXT,
+  utm_source TEXT,
+  utm_medium TEXT,
+  utm_campaign TEXT,
+  landing_path TEXT,
+  country TEXT
+);

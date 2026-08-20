@@ -1,0 +1,46 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "javid-bybit-landing",
+  "compatibility_date": "2026-07-13",
+  "main": "worker.js",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "compatibility_flags": ["nodejs_compat"],
+
+  // --- Fill these in from the Cloudflare dashboard after creating this
+  // project, then commit + push. Same pattern as the main javid-dol-landing
+  // project, but with SEPARATE resources so Binance/Bybit data never mixes. ---
+
+  // D1 (community board + live status). Storage & Databases -> D1 SQL Database
+  // -> create a new database (e.g. "javid-board-db-bybit") -> copy "Database ID".
+  "d1_databases": [
+    {
+      "binding": "BOARD_DB",
+      "database_name": "javid-board-db-bybit",
+      "database_id": "c90a2e66-d8f3-45fc-a72f-79aba1b23cae"
+    }
+  ],
+
+  // KV (download access codes). Storage & Databases -> KV -> create a new
+  // namespace (e.g. "DOWNLOAD_CODES_BYBIT") -> copy "Namespace ID".
+  "kv_namespaces": [
+    {
+      "binding": "DOWNLOAD_CODES",
+      "id": "e754c00acf134290bcb65be3cbaf4c0e"
+    }
+  ],
+
+  // R2 (installer zip files). Storage & Databases -> R2 -> create a new
+  // bucket (e.g. "javid-downloads-bybit") -> bucket_name is its name.
+  "r2_buckets": [
+    {
+      "binding": "DOWNLOADS_BUCKET",
+      "bucket_name": "javid-downloads-bybit"
+    }
+  ]
+}

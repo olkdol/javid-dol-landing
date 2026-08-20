@@ -1,0 +1,46 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "javid-okx-landing",
+  "compatibility_date": "2026-07-13",
+  "main": "worker.js",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "compatibility_flags": ["nodejs_compat"],
+
+  // --- Fill these in from the Cloudflare dashboard after creating this
+  // project, then commit + push. Same pattern as the main javid-dol-landing
+  // project, but with SEPARATE resources so Binance/OKX data never mixes. ---
+
+  // D1 (community board + live status). Storage & Databases -> D1 SQL Database
+  // -> create a new database (e.g. "javid-board-db-okx") -> copy "Database ID".
+  "d1_databases": [
+    {
+      "binding": "BOARD_DB",
+      "database_name": "javid-board-db-okx",
+      "database_id": "d5e5bd28-809e-4562-a9e4-dca2b7524705"
+    }
+  ],
+
+  // KV (download access codes). Storage & Databases -> KV -> create a new
+  // namespace (e.g. "DOWNLOAD_CODES_OKX") -> copy "Namespace ID".
+  "kv_namespaces": [
+    {
+      "binding": "DOWNLOAD_CODES",
+      "id": "d03b7801c4964280a30c17e4af85ce83"
+    }
+  ],
+
+  // R2 (installer zip files). Storage & Databases -> R2 -> create a new
+  // bucket (e.g. "javid-downloads-okx") -> bucket_name is its name.
+  "r2_buckets": [
+    {
+      "binding": "DOWNLOADS_BUCKET",
+      "bucket_name": "javid-downloads-okx"
+    }
+  ]
+}

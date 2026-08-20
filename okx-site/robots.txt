@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://okx.javidtrading.com/sitemap.xml

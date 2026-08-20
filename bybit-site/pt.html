@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa de Negociação Automática Gratuito — Bybit Futuros de Cripto 24 Horas | JaviD Future Bot</title>
+<meta name="description" content="JaviD Future Bot, o programa de negociação automática gratuito — negocia futuros de cripto USDT-M da Bybit automaticamente, 24 horas por dia. Escolha entre mais de 500 símbolos, incluindo BTC, ETH e XAU. 3 estratégias quantitativas com liquidação em nível de tick; suas chaves de API e fundos permanecem na sua própria conta da corretora, e as ordens são executadas no seu computador. Compatível com Windows e Mac, sem taxa de assinatura. Futuros alavancados envolvem risco de perda total do capital.">
+<meta name="keywords" content="programa de negociação automática gratuito, negociação automática de criptomoedas, negociação automática de futuros de cripto, negociação automática de bitcoin, negociação automática Bybit, bot de negociação automática de futuros, programa de negociação automática grátis, bot de trading cripto, negociação automática BTC, negociação automática de futuros de bitcoin, negociação automática de ethereum, negociação automática XAU, negociação automática de ouro, bot de cripto">
+<meta property="og:title" content="JaviD Future Bot — Programa de Negociação Automática de Futuros de Cripto (Grátis, 24 Horas)">
+<meta property="og:description" content="Chega de negociação por impulso. 3 estratégias quantitativas negociam por você, 24 horas por dia. Liquidação em nível de tick, execução 100% local, gratuito para sempre.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bb.javidtrading.com/pt">
+<link rel="alternate" hreflang="en" href="https://bb.javidtrading.com/">
+<link rel="alternate" hreflang="ko" href="https://bb.javidtrading.com/ko">
+<link rel="alternate" hreflang="ja" href="https://bb.javidtrading.com/ja">
+<link rel="alternate" hreflang="es" href="https://bb.javidtrading.com/es">
+<link rel="alternate" hreflang="fr" href="https://bb.javidtrading.com/fr">
+<link rel="alternate" hreflang="vi" href="https://bb.javidtrading.com/vi">
+<link rel="alternate" hreflang="tr" href="https://bb.javidtrading.com/tr">
+<link rel="alternate" hreflang="pt" href="https://bb.javidtrading.com/pt">
+<link rel="alternate" hreflang="x-default" href="https://bb.javidtrading.com/">
+<link rel="canonical" href="https://bb.javidtrading.com/pt">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08090b; --bg2:#0d0f12; --panel:#101317; --line:rgba(255,255,255,.08);
+    --text:#e9ebee; --faint:#8b909a; --accent:#00f0ff; --accent2:#e8b44c;
+    --serif:'Playfair Display',Georgia,serif; --sans:'Inter',-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; overflow-x:hidden;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .serif{font-family:var(--serif);}
+
+  /* ---------- NAV ---------- */
+  nav{position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(8,9,11,.75); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav-row{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:1180px; margin:0 auto;}
+  .nav-logo{font-family:var(--serif); font-size:18px; font-weight:600; letter-spacing:.02em;}
+  .nav-logo b{color:var(--accent); font-weight:600;}
+  .nav-links{display:flex; gap:32px; align-items:center;}
+  .nav-links a{font-size:13px; letter-spacing:.03em; color:var(--faint); transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{font-size:12px; letter-spacing:.08em; text-transform:uppercase; border:1px solid var(--line); padding:9px 18px; border-radius:100px; transition:border-color .2s, color .2s;}
+  .nav-cta:hover{border-color:var(--accent); color:var(--accent);}
+  .nav-highlight{position:relative; color:var(--accent) !important;}
+  @media (max-width:820px){ .nav-links{display:none;} }
+
+  /* ---------- HERO / MATRIX RAIN ---------- */
+  .hero{position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:140px 0 80px; overflow:hidden;}
+  #matrixCanvas{position:absolute; inset:0; width:100%; height:100%; opacity:.55;}
+  .hero::after{content:''; position:absolute; left:0; right:0; bottom:0; height:140px; background:linear-gradient(180deg, transparent, var(--bg)); pointer-events:none;}
+  .hero-inner{position:relative; z-index:2;}
+  .kicker{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:22px; font-weight:600;}
+  .hero h1{font-family:var(--serif); font-weight:600; font-size:clamp(36px,6vw,68px); line-height:1.1; max-width:820px; margin-bottom:24px;}
+  .hero p.lead{font-size:17px; color:var(--faint); max-width:600px; margin-bottom:32px;}
+  .badge-row{display:flex; flex-wrap:wrap; gap:10px 22px; margin-bottom:40px; font-size:13px; color:var(--faint);}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:100px; font-size:14px; font-weight:600; cursor:pointer; border:1px solid transparent; transition:all .2s;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--accent); color:#04211d;}
+  .btn-primary:hover{opacity:.88;}
+  .btn-ghost{border-color:var(--line); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+  .jfb-steps{display:flex;align-items:flex-start;justify-content:center;gap:0;margin:0 auto 28px;max-width:400px;}
+  .jfb-step{display:flex;flex-direction:column;align-items:center;gap:8px;width:88px;}
+  .jfb-step-num{width:30px;height:30px;border-radius:9999px;background:rgba(0,240,255,.1);color:var(--accent);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(0,240,255,.35);font-family:var(--sans);}
+  .jfb-step-label{font-size:11.5px;font-weight:600;color:var(--faint);line-height:1.3;font-family:var(--sans);}
+  .jfb-step-line{flex:1 1 auto;height:1px;background:var(--line);margin:14px -8px 0;}
+
+  /* ---------- SECTION SHELL ---------- */
+  .section{padding:100px 0; border-top:1px solid var(--line);}
+  .section-label{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); margin-bottom:18px; font-weight:600;}
+  .section-title{font-family:var(--serif); font-weight:600; font-size:clamp(26px,3.4vw,40px); line-height:1.25; max-width:760px;}
+  .section-sub{color:var(--faint); font-size:15px; max-width:560px; margin-top:16px;}
+
+  /* ---------- CAPABILITIES (alternating) ---------- */
+  .cap-row{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; padding:60px 0; border-top:1px solid var(--line);}
+  .cap-row:first-of-type{border-top:none;}
+  .cap-row.reverse{direction:rtl;}
+  .cap-row.reverse > *{direction:ltr;}
+  .cap-text h3{font-family:var(--serif); font-weight:600; font-size:30px; margin-bottom:16px;}
+  .cap-text p{color:var(--faint); font-size:15px; max-width:440px;}
+  .cap-visual{aspect-ratio:4/3; border-radius:4px; overflow:hidden; position:relative; background:#0b0d10; border:1px solid var(--line);}
+  .cap-visual canvas{width:100%; height:100%; display:block;}
+  @media (max-width:760px){ .cap-row, .cap-row.reverse{grid-template-columns:1fr; direction:ltr;} }
+
+  /* ---------- ARCHITECTURE BANNER ---------- */
+  .arch-banner{aspect-ratio:21/6; border-radius:4px; overflow:hidden; margin-bottom:48px; border:1px solid var(--line); background:#0b0d10;}
+  .arch-banner canvas{width:100%; height:100%; display:block;}
+  .arch-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .arch-grid p{color:var(--faint); font-size:15px;}
+  @media (max-width:760px){ .arch-grid{grid-template-columns:1fr; gap:24px;} }
+
+  .diagram-cards{display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items:center; margin-top:56px;}
+  .diagram-card{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:26px;}
+  .diagram-card h4{font-family:var(--serif); font-size:18px; margin-bottom:14px; font-weight:600;}
+  .diagram-card ul{list-style:none; color:var(--faint); font-size:13px; line-height:2;}
+  .diagram-arrow{color:var(--accent); font-size:22px; text-align:center;}
+  @media (max-width:640px){ .diagram-cards{grid-template-columns:1fr;} .diagram-arrow{transform:rotate(90deg);} }
+
+  /* ---------- RESEARCH GRID ---------- */
+  .research-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:48px;}
+  .research-card{background:var(--bg2); padding:22px; min-height:180px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden;}
+  .research-card .rc-pattern{position:absolute; inset:0; opacity:.5; z-index:0;}
+  .research-card .rc-body{position:relative; z-index:1;}
+  .research-card h5{font-family:var(--serif); font-size:16px; font-weight:600; margin-bottom:6px; max-width:180px;}
+  .research-card span{font-size:11px; color:var(--faint); letter-spacing:.04em; text-transform:uppercase;}
+  @media (max-width:900px){ .research-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .research-grid{grid-template-columns:1fr;} }
+
+  /* ---------- LIVE PROOF ---------- */
+  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:40px;}
+  .stat-card{background:var(--bg2); padding:28px 22px;}
+  .stat-num{font-family:var(--serif); font-size:32px; font-weight:600; color:var(--accent); margin-bottom:8px;}
+  .stat-label{font-size:12px; color:var(--faint);}
+  .live-badge{display:none; margin-top:14px; font-size:13px; font-weight:600; color:#3ddc84;}
+  .sim-note{color:var(--faint); font-size:13px; margin-top:24px; max-width:760px;}
+  @media (max-width:760px){ .stats-grid{grid-template-columns:repeat(2,1fr);} }
+
+  /* ---------- DOWNLOAD GATE ---------- */
+  .dl-section{text-align:center;}
+  .dl-section .section-title{margin:0 auto 16px; }
+  .dl-section .section-sub{margin:0 auto 40px;}
+  .dl-gate{max-width:460px; margin:0 auto; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:32px;}
+  .dl-gate-label{display:block; font-size:13px; color:var(--faint); margin-bottom:12px;}
+  .dl-gate-input{width:100%; padding:14px 16px; border-radius:8px; border:1px solid var(--line); background:#0b0d10; color:var(--text); font-size:14px; margin-bottom:16px; text-align:center; letter-spacing:.05em;}
+  .dl-gate-input:focus{outline:none; border-color:var(--accent);}
+  .dl-gate-buttons{display:flex; flex-direction:row; flex-wrap:wrap; justify-content:center; gap:12px;}
+  .jfb-dl-disabled{opacity:.5;pointer-events:none;filter:grayscale(.3);}
+  .dl-gate-msg{font-size:13px; margin-top:14px; min-height:18px;}
+  .dl-gate-error{color:#ff6b6b;}
+  .dl-gate-ok{color:#3ddc84;}
+  .dl-gate-help{font-size:12px; color:var(--faint); margin-top:18px;}
+  .dl-gate-help a{color:var(--accent); font-weight:600;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:80px 0 40px; border-top:1px solid var(--line);}
+  .footer-headline{font-family:var(--serif); font-weight:600; font-size:clamp(28px,4vw,44px); margin-bottom:56px;}
+  .footer-cols{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-bottom:48px;}
+  .footer-col-label{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-bottom:16px;}
+  .footer-col a{display:block; font-size:14px; color:var(--text); margin-bottom:10px; opacity:.8;}
+  .footer-col a:hover{opacity:1; color:var(--accent);}
+  .footer-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:24px; border-top:1px solid var(--line); font-size:12px; color:var(--faint);}
+  @media (max-width:640px){ .footer-cols{grid-template-columns:1fr;} }
+
+  ::selection{background:var(--accent); color:#04211d;}
+
+  /* ---------- ADDED CONTENT-PARITY SECTIONS ---------- */
+  .stats-band{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:48px;}
+  .stats-band .stat{background:var(--bg2); padding:30px 22px; text-align:center;}
+  .stats-band .stat b{display:block; font-family:var(--serif); font-size:30px; color:var(--accent); margin-bottom:6px; font-weight:600;}
+  .stats-band .stat span{font-size:12px; color:var(--faint);}
+  @media (max-width:760px){ .stats-band{grid-template-columns:repeat(2,1fr);} }
+
+  .why-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:40px;}
+  .why-card{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:28px;}
+  .why-card .wc-icon{font-size:26px; margin-bottom:14px;}
+  .why-card h4{font-family:var(--serif); font-size:19px; margin-bottom:10px; font-weight:600;}
+  .why-card p{color:var(--faint); font-size:14px;}
+  .why-quote{margin-top:32px; padding:26px 30px; background:var(--panel); border-left:3px solid var(--accent2); border-radius:6px; font-size:15px; color:var(--text); line-height:1.7;}
+  .why-quote a{color:var(--accent);}
+  @media (max-width:760px){ .why-grid{grid-template-columns:1fr;} }
+
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:40px;}
+  .step-card{padding:26px 0; border-top:1px solid var(--line);}
+  .step-card .sc-num{font-family:var(--serif); font-size:13px; color:var(--accent); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px;}
+  .step-card h4{font-family:var(--serif); font-size:18px; margin-bottom:10px; font-weight:600;}
+  .step-card p{color:var(--faint); font-size:14px;}
+  @media (max-width:760px){ .steps{grid-template-columns:1fr;} }
+
+  .shadow-cta{margin-top:40px; padding:34px; background:linear-gradient(135deg, rgba(0,240,255,.06), rgba(232,180,76,.04)); border:1px solid var(--line); border-radius:10px; text-align:center;}
+  .shadow-cta h3{font-family:var(--serif); font-size:22px; margin-bottom:12px; font-weight:600;}
+  .shadow-cta p{color:var(--faint); font-size:14.5px; margin-bottom:20px; max-width:600px; margin-left:auto; margin-right:auto;}
+
+  .biz-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:40px;}
+  .biz-card{padding:26px; border-radius:8px; font-size:14px; line-height:1.7;}
+  .biz-card.no{background:rgba(255,107,107,.06); border:1px solid rgba(255,107,107,.25);}
+  .biz-card.yes{background:rgba(61,220,132,.06); border:1px solid rgba(61,220,132,.25);}
+  .biz-card h4{font-family:var(--serif); font-size:17px; margin-bottom:12px; font-weight:600;}
+  @media (max-width:760px){ .biz-grid{grid-template-columns:1fr;} }
+
+  .compare-table{width:100%; border-collapse:collapse; margin-top:40px; font-size:13.5px;}
+  .compare-table th,.compare-table td{border:1px solid var(--line); padding:12px 14px; text-align:left; vertical-align:top;}
+  .compare-table th{background:var(--panel); color:var(--faint); font-size:11px; text-transform:uppercase; letter-spacing:.06em; font-weight:600;}
+  .compare-table td{color:var(--faint);}
+  .compare-table td:first-child{color:var(--text); font-weight:600;}
+  .compare-table tr td:nth-child(2){color:var(--accent);}
+  .table-scroll{overflow-x:auto;}
+
+  .showcase-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:40px;}
+  .showcase-grid .shot{background:var(--panel); border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  .showcase-grid img{width:100%; display:block;}
+  .showcase-grid .shot-cap{padding:12px 14px; font-size:12.5px; color:var(--faint);}
+  @media (max-width:760px){ .showcase-grid{grid-template-columns:1fr;} }
+
+  .faq-list{margin-top:40px;}
+  .faq-item{border-top:1px solid var(--line); padding:20px 0;}
+  .faq-item:last-child{border-bottom:1px solid var(--line);}
+  .faq-item h4{font-family:var(--serif); font-size:16px; font-weight:600; margin-bottom:8px;}
+  .faq-item p{color:var(--faint); font-size:14px;}
+
+  .tg-cta{text-align:center; padding:20px 0 10px;}
+  .tg-cta h3{font-family:var(--serif); font-size:22px; margin-bottom:12px; font-weight:600;}
+  .tg-cta p{color:var(--faint); font-size:14.5px; margin-bottom:22px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="nav-logo" href="ko.html">JaviD <b>Future Bot</b></a>
+    <div class="nav-links">
+      <a href="#capabilities">Estratégias</a>
+      <a href="#architecture">Arquitetura</a>
+      <a href="#research">Pesquisa</a>
+      <a href="board.html" class="nav-highlight">Comunidade</a>
+      <a href="index.html">English</a>
+    </div>
+    <a href="#download" class="nav-cta">Download Grátis</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <canvas id="matrixCanvas"></canvas>
+  <div class="wrap hero-inner">
+    <div class="kicker">⚡ Futuros de Cripto USDT-M · Motor de Execução Automática</div>
+    <h1>Chega de negociação por impulso.<br>A estratégia negocia por você, 24 horas por dia.</h1>
+    <p class="lead">Sem emoção, sem entradas perdidas, sem noites em claro. Um programa de negociação automática que escaneia o mercado de futuros a cada 10 segundos e liquida em nível de tick — rodando 100% no seu próprio computador.</p>
+    <div class="badge-row">
+      <span>🧠 3 Estratégias Desenvolvidas por IA</span>
+      <span>⚡ Liquidação em Nível de Tick</span>
+      <span>📲 Relatórios via Telegram</span>
+      <span>🔒 Não Custodial · Execução Local</span>
+      <span>🕐 24 Horas</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#download" class="btn btn-primary">⬇ Download Grátis</a>
+      <a href="#capabilities" class="btn btn-ghost">Ver Estratégias</a>
+    </div>
+    <div class="stats-band">
+      <div class="stat"><b>99.9%</b><span>Meta de disponibilidade, execução local</span></div>
+      <div class="stat"><b>0.1s</b><span>Intervalo de verificação de liquidação</span></div>
+      <div class="stat"><b>3</b><span>Estratégias quantitativas independentes</span></div>
+      <div class="stat"><b>500+</b><span>Símbolos monitorados</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= CAPABILITIES ================= -->
+<section class="section" id="capabilities"><div class="wrap">
+  <div class="section-label">Estratégias</div>
+  <div class="section-title">Três estratégias independentes, como uma mesa quantitativa.</div>
+  <p class="section-sub">Cada estratégia foi projetada e validada com análise quantitativa baseada em IA. Antes de fixar uma única regra, foram analisados anos de dados de preço, regimes de volatilidade e fluxo de ordens.</p>
+
+  <div class="cap-row">
+    <div class="cap-text">
+      <h3>Estratégia A — JaviDAIS</h3>
+      <p>Uma lógica de seguimento de tendência revisada e projetada com análise quantitativa baseada em IA. Refinada a partir de anos de dados de preço, regimes de volatilidade e fluxo de ordens. Entra com a mesma disciplina no 1º ciclo ou no ciclo número 100.000. Não guarda memória da última operação nem se deixa abalar por instinto.</p>
+    </div>
+    <div class="cap-visual"><canvas class="netCanvas" data-seed="1"></canvas></div>
+  </div>
+
+  <div class="cap-row reverse">
+    <div class="cap-text">
+      <h3>Estratégia B — Reversão à Média</h3>
+      <p>Lê o desvio do VWAP e limites de picos de volume para reagir na direção oposta a movimentos excessivamente esticados. Paciente, baseada em regras, e imune a medo ou FOMO. Espera até que a estrutura seja de fato confirmada.</p>
+    </div>
+    <div class="cap-visual"><canvas class="netCanvas" data-seed="2"></canvas></div>
+  </div>
+
+  <div class="cap-row">
+    <div class="cap-text">
+      <h3>Estratégia C — Rompimento</h3>
+      <p>Detecta expansões reais de volatilidade usando bandas de ATR e fluxo de CVD. Só entra quando volume e fluxo de ordens confirmam juntos — não se deixa enganar por um único pavio.</p>
+    </div>
+    <div class="cap-visual"><canvas class="netCanvas" data-seed="3"></canvas></div>
+  </div>
+</div></section>
+
+<!-- ================= WHY AUTOMATION WINS ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Por que a automação vence</div>
+  <div class="section-title">Em todo sistema de negociação, o elo mais fraco é o ser humano.</div>
+  <p class="section-sub">Não é por falta de habilidade. O cérebro humano é programado para reagir ao medo e à ganância, e o mercado explora exatamente esse ponto.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="wc-icon">🎯</div>
+      <h4>Precisão idêntica, sempre</h4>
+      <p>Verifica as condições de liquidação a cada cerca de 0,1 segundo. Não hesita diante de um stop loss nem se torna ganancioso além do preço-alvo. A mesma regra se aplica à 1ª operação e à operação número 10.000.</p>
+    </div>
+    <div class="why-card">
+      <div class="wc-icon">🕐</div>
+      <h4>Tempo de volta para você</h4>
+      <p>Não é preciso olhar gráficos na hora do almoço, acordar às 3h por causa de um movimento de mercado, nem checar o celular a cada 10 minutos. Esteja você sentado à mesa ou dormindo, a estratégia continua rodando no seu computador.</p>
+    </div>
+  </div>
+  <div class="why-quote">"Em uma competição entre agentes de negociação de IA (Alpha Arena), o que decidiu o vencedor não foi a capacidade de previsão, mas a adesão consistente às regras." <span style="color:var(--faint);">— também é por isso que o JaviD foi projetado priorizando regras.</span></div>
+</div></section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Como começar</div>
+  <div class="section-title">Do download à primeira operação real — em 3 etapas.</div>
+  <div class="steps">
+    <div class="step-card">
+      <div class="sc-num">Etapa 1</div>
+      <h4>Conecte a API da corretora</h4>
+      <p>Crie uma chave de API com permissão apenas para negociação de futuros, <strong>com a permissão de saque obrigatoriamente desativada</strong>, e cole-a no JaviD. A chave é armazenada localmente de forma criptografada e nunca é enviada a servidores do JaviD.</p>
+    </div>
+    <div class="step-card">
+      <div class="sc-num">Etapa 2</div>
+      <h4>Comece pelo modo sombra</h4>
+      <p>Opere um saldo virtual com dados reais de mercado. Antes de colocar um único centavo em risco, veja com seus próprios olhos como cada estratégia se comporta em cada símbolo.</p>
+    </div>
+    <div class="step-card">
+      <div class="sc-num">Etapa 3</div>
+      <h4>Ative o modo real e deixe rodando</h4>
+      <p>Desative o modo sombra, defina o saldo inicial, e a mesma lógica passa a operar com fundos reais. 24 horas por dia, mesmo sem você em frente ao teclado.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ================= ARCHITECTURE ================= -->
+<section class="section" id="architecture"><div class="wrap">
+  <div class="arch-banner"><canvas id="warpCanvas"></canvas></div>
+  <div class="arch-grid">
+    <div>
+      <div class="section-label">Arquitetura</div>
+      <div class="section-title">Uma arquitetura de execução integrada para negociação autônoma.</div>
+    </div>
+    <p>Toda ordem é gerada no seu computador e enviada diretamente à corretora por uma conexão criptografada. Não existe nenhum servidor pertencente ao JaviD no meio do caminho — nada para ser invadido, nada para cair, ninguém para espiar suas chaves, saldo ou estratégia. Se você abrir o monitor de firewall enquanto o programa está rodando, verá que a única conexão é com a corretora.</p>
+  </div>
+  <div class="diagram-cards">
+    <div class="diagram-card">
+      <h4>🖥️ Seu Computador</h4>
+      <ul>
+        <li>Executa o JaviD Future Bot</li>
+        <li>Cálculo de estratégia · geração de ordens</li>
+        <li>Chave de API — armazenada localmente, criptografada</li>
+        <li>Painel (localhost:8002)</li>
+      </ul>
+    </div>
+    <div class="diagram-arrow">⇄</div>
+    <div class="diagram-card">
+      <h4>🟢 Corretora</h4>
+      <ul>
+        <li>Sua conta · seus fundos</li>
+        <li>Execução de ordens · dados de mercado</li>
+        <li>Somente você pode fazer saques</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- ================= SHADOW MODE CTA ================= -->
+<section class="section"><div class="wrap">
+  <div class="shadow-cta">
+    <h3>🔍 Ainda não tem certeza? Teste primeiro com risco zero.</h3>
+    <p>O modo sombra negocia com dados reais de mercado usando um saldo virtual em USDT. A estratégia, a lógica de execução e os sinais são exatamente os mesmos, mas nada real está em jogo. Observe os resultados, desative as moedas que continuarem gerando prejuízo no histórico e só passe para o modo real quando estiver satisfeito.</p>
+    <a href="#download" class="btn btn-primary">Experimente o modo sombra gratuitamente</a>
+  </div>
+</div></section>
+
+<!-- ================= RESEARCH GRID ================= -->
+<section class="section" id="research"><div class="wrap">
+  <div class="section-label">Pesquisa</div>
+  <div class="section-title">Construído sobre lógica, não sorte. 12 sistemas funcionando por baixo do capô.</div>
+  <p class="section-sub">Não é um grupo vendendo sinais. É um software que você pode abrir e verificar por conta própria.</p>
+  <div class="research-grid" id="researchGrid">
+    <!-- populated by JS: title, category, generated pattern -->
+  </div>
+</div></section>
+
+<!-- ================= RUNNING IT FOR REAL ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Operação real</div>
+  <div class="section-title">Por que recomendamos começar com no mínimo 1.000 USDT.</div>
+  <p class="section-sub" style="max-width:760px;">Não é um valor mínimo para gerarmos receita — o JaviD Future Bot é gratuito. É o mínimo necessário para que a própria estratégia funcione como projetada. O tamanho da posição, a distância do stop loss e a alocação por símbolo são todos calculados como proporção do saldo; se o capital for pequeno demais, as ordens são rejeitadas por caírem abaixo do valor mínimo de ordem da corretora antes mesmo que a lógica da estratégia tenha uma chance real. É necessário começar com 1.000 USDT ou mais para que o motor de dimensionamento de posições funcione corretamente.</p>
+</div></section>
+
+<!-- ================= BUSINESS MODEL ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Nosso modelo de receita, sem segredos</div>
+  <div class="section-title">Se você não negociar de verdade, nós não ganhamos nada — e, de qualquer forma, nunca tocamos no seu dinheiro.</div>
+  <div class="biz-grid">
+    <div class="biz-card no">
+      <h4>✕ O que não fazemos</h4>
+      Não vendemos software. Não cobramos assinatura. Não retemos taxas de performance. Não administramos nem custodiamos fundos, e não temos nenhuma permissão de saque.
+    </div>
+    <div class="biz-card yes">
+      <h4>✓ Como funciona de fato</h4>
+      O JaviD Future Bot é registrado como parceiro de indicação (referral) da corretora. Se você se cadastrar e negociar pelo nosso link, a corretora nos repassa uma parte da taxa de negociação que você já pagaria de qualquer forma — sem nenhum custo adicional para você. É assim que geramos toda a nossa receita.
+    </div>
+  </div>
+</div></section>
+
+<!-- ================= WHY JAVID (COMPARISON) ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Comparação</div>
+  <div class="section-title">Comparado às alternativas que você provavelmente já pesquisou.</div>
+  <div class="table-scroll">
+    <table class="compare-table">
+      <tr><th>Item</th><th>JaviD Future Bot</th><th>Bot em nuvem por assinatura</th><th>Grupo de sinais no Telegram</th></tr>
+      <tr><td>Custo</td><td>Grátis para sempre</td><td>US$ 30–300+ por mês</td><td>De grátis a caro, qualidade muito variável</td></tr>
+      <tr><td>Custódia de fundos</td><td>Nenhuma — 100% não custodial, execução local</td><td>Frequentemente mantidos em servidores do provedor ou subcontas da corretora</td><td>Não aplicável — em vez disso, você precisa confiar nas indicações</td></tr>
+      <tr><td>Modo de execução</td><td>Automático, em nível de tick, 24 horas</td><td>Automático, mas executado no servidor (adiciona latência e exige mais confiança)</td><td>Manual — você executa cada operação pessoalmente</td></tr>
+      <tr><td>Transparência</td><td>Executa no seu computador, verificável, testável antes com o modo sombra</td><td>Lógica em nuvem de código fechado, caixa-preta</td><td>Sem histórico verificável</td></tr>
+      <tr><td>Risco de vazamento de chave</td><td>Nenhum — a chave nunca sai do seu computador</td><td>Chave armazenada em servidores do provedor</td><td>Não aplicável</td></tr>
+    </table>
+  </div>
+</div></section>
+
+<!-- ================= LIVE PROOF ================= -->
+<section class="section" id="live-proof"><div class="wrap">
+  <div class="section-label">Histórico real</div>
+  <div class="section-title" id="liveProofTitle">Antes de qualquer explicação, aqui está o histórico real de uma conta em operação.</div>
+  <p class="section-sub" id="liveProofSub">Abaixo está um snapshot da conta em <strong>modo sombra</strong>, retirado diretamente dos relatórios do Telegram — dados reais de mercado, USDT virtual, zero fundos reais em risco.</p>
+  <p id="liveBadge" class="live-badge">🟢 Live — updated <span id="liveUpdated"></span> ago</p>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num" id="lpBalance">1,032.77</div><div class="stat-label">Saldo (USDT) — modo sombra, fundos virtuais</div></div>
+    <div class="stat-card"><div class="stat-num" id="lpPnl">+32.77</div><div class="stat-label" id="lpPnlLabel">Lucro/prejuízo acumulado (USDT), 97 operações</div></div>
+    <div class="stat-card"><div class="stat-num" id="lpReturn">+3.28%</div><div class="stat-label">Retorno acumulado desde o início do modo sombra</div></div>
+    <div class="stat-card"><div class="stat-num" id="lpWinRate">81.4%</div><div class="stat-label">Taxa de acerto no mesmo período</div></div>
+  </div>
+  <p class="sim-note" id="lpNote">Snapshot com base em 2026-07-05 05:04 (KST) — no momento, havia 7 posições abertas, com lucros e perdas não realizados mistos (a lógica de liquidação ainda estava gerenciando ativamente essas posições). O modo sombra negocia dados reais de mercado usando um saldo virtual e <strong>não é um histórico de negociação com fundos reais.</strong> Desempenho passado não garante retornos futuros.</p>
+</div></section>
+
+<!-- ================= SHOWCASE ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Tela em execução</div>
+  <div class="section-title">Não é um mockup — é o painel real.</div>
+  <p class="section-sub">Capturas de tela retiradas diretamente de uma instância em execução real — acompanhamento de posições, seleção de símbolos, histórico de operações.</p>
+  <div class="showcase-grid">
+    <div class="shot"><img src="/screenshots/shot1.png" alt="Painel do JaviD Future Bot — posições em tempo real" loading="lazy"><div class="shot-cap">Posições e saldo em tempo real</div></div>
+    <div class="shot"><img src="/screenshots/shot3.png" alt="Painel do JaviD Future Bot — seleção de símbolos" loading="lazy"><div class="shot-cap">Seleção de símbolos e alternância de estratégias</div></div>
+  </div>
+</div></section>
+
+<!-- ================= FAQ ================= -->
+<section class="section"><div class="wrap">
+  <div class="section-label">Perguntas frequentes</div>
+  <div class="section-title">As perguntas mais comuns antes de baixar.</div>
+  <div class="faq-list">
+    <div class="faq-item"><h4>É um grupo de sinais ou um bot de verdade?</h4><p>É um programa de execução automática real. Ele lê o mercado, toma decisões e coloca e gerencia ordens diretamente na sua conta da corretora — não é um sistema em que alguém envia sinais para você seguir.</p></div>
+    <div class="faq-item"><h4>Vocês têm acesso aos meus fundos?</h4><p>Não. Basta <strong>restringir a chave de API que você conecta apenas à negociação e manter a permissão de saque desativada</strong>. Além disso, como toda a execução ocorre localmente no seu computador, o JaviD nunca armazena, intermedia ou toca no seu saldo.</p></div>
+    <div class="faq-item"><h4>Quanto custa?</h4><p>É gratuito. Gratuito para sempre. A estrutura é baseada em uma comissão de indicação que recebemos da corretora sobre a taxa de negociação que você já pagaria de qualquer forma — não há nenhuma cobrança adicional da sua conta.</p></div>
+    <div class="faq-item"><h4>É possível ter prejuízo?</h4><p>Sim. É uma negociação de futuros real, com risco de mercado real. Você pode verificar primeiro como a estratégia se comporta usando o modo sombra antes de colocar fundos reais, e pode ajustar o tamanho das posições e os símbolos ativos a qualquer momento.</p></div>
+    <div class="faq-item"><h4>Preciso saber programar?</h4><p>Não. A estratégia, a seleção de símbolos e as configurações de risco são todas ajustadas pelo painel — você não precisa escrever nenhum código.</p></div>
+    <div class="faq-item"><h4>Funciona no Windows e no Mac?</h4><p>Sim, ambos são suportados, e você pode baixar gratuitamente logo abaixo.</p></div>
+    <div class="faq-item"><h4>É preciso passar por um processo de aprovação para baixar?</h4><p>Não. No momento, você pode baixar diretamente pelo botão abaixo, sem aprovação separada. Se tiver dificuldades durante a instalação ou configuração, pode pedir ajuda na comunidade do Telegram.</p></div>
+    <div class="faq-item"><h4>Qual é o valor mínimo para começar?</h4><p>Recomendamos um mínimo de 1.000 USDT para que o dimensionamento de posições e a distância do stop loss funcionem como projetado — consulte a seção "Operação real" acima.</p></div>
+    <div class="faq-item"><h4>Posso operar várias moedas ao mesmo tempo?</h4><p>Sim, mais de 500 símbolos são monitorados, e você escolhe diretamente no painel quais deles ativar.</p></div>
+    <div class="faq-item"><h4>Funciona mesmo se eu desligar o computador?</h4><p>Não — como a execução ocorre no seu computador, ele precisa estar ligado e conectado à internet para que a negociação continue.</p></div>
+    <div class="faq-item"><h4>Minha chave de API está segura?</h4><p>A chave é armazenada localmente de forma criptografada e nunca é enviada a servidores do JaviD — durante a negociação, a única conexão externa é com a corretora.</p></div>
+    <div class="faq-item"><h4>E se uma moeda específica continuar dando prejuízo?</h4><p>Basta desativá-la. Você pode ver o desempenho por símbolo no histórico de negociação do modo sombra — desmarque as moedas com desempenho ruim e salve.</p></div>
+    <div class="faq-item"><h4>Há algum lugar para pedir ajuda se eu tiver dificuldades?</h4><p>Sim — tanto a comunidade do Telegram quanto o fórum da comunidade recebem perguntas sobre instalação e configuração.</p></div>
+  </div>
+</div></section>
+
+<!-- ================= TELEGRAM CTA ================= -->
+<section class="section" style="padding-bottom:60px;"><div class="wrap">
+  <div class="tg-cta">
+    <h3>📲 Ajuda com instalação, atualizações e dúvidas, tudo aqui.</h3>
+    <p>Na comunidade do Telegram, ajudamos novos usuários a começar, respondemos dúvidas de instalação e compartilhamos os resultados do modo sombra de outros membros.</p>
+    <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" class="btn btn-primary">Entrar na comunidade do Telegram</a>
+  </div>
+</div></section>
+
+<!-- ================= DOWNLOAD GATE ================= -->
+<section class="section dl-section" id="download"><div class="wrap">
+  <div class="section-label" style="justify-content:center;display:flex;">Download</div>
+  <div class="section-title">Zero taxa de assinatura. Grátis para sempre.</div>
+  <p class="section-sub">Um motor de execução real de futuros USDT-M que roda 100% no seu computador — suas chaves, seus fundos, seu controle, em cada operação.</p>
+  <p class="section-sub" style="margin:12px auto 0;">Escolha e opere diretamente entre mais de 500 símbolos de futuros USDⓈ-M, incluindo BTC, ETH e XAU. As 3 estratégias atuais são otimizadas para altcoins de alta volatilidade; presets dedicados para ativos de grande capitalização ainda estão em desenvolvimento.</p>
+  <div class="dl-gate" id="dlGate">
+  <div class="jfb-steps">
+    <div class="jfb-step"><div class="jfb-step-num">1</div><div class="jfb-step-label">Download</div></div>
+    <div class="jfb-step-line"></div>
+    <div class="jfb-step"><div class="jfb-step-num">2</div><div class="jfb-step-label">Unzip &amp; Run</div></div>
+    <div class="jfb-step-line"></div>
+    <div class="jfb-step"><div class="jfb-step-num">3</div><div class="jfb-step-label">Connect API</div></div>
+  </div>
+    <p class="dl-gate-help" style="color:var(--warn);font-weight:700;margin-bottom:6px;">🔜 Em breve — os arquivos de instalação serão adicionados em breve.</p>
+    <div class="dl-gate-buttons">
+      <a href="#" onclick="return false;" aria-disabled="true" tabindex="-1" class="btn btn-primary jfb-dl-disabled">🪟 Download para Windows</a>
+      <a href="#" onclick="return false;" aria-disabled="true" tabindex="-1" class="btn btn-primary jfb-dl-disabled">🍎 Download para macOS</a>
+    </div>
+    <p class="dl-gate-help">Tem dúvidas durante a instalação? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">Pergunte na comunidade do Telegram</a>.</p>
+  </div>
+</div></section>
+
+<!-- ================= REFERRAL ================= -->
+<section class="section" style="padding-top:0;"><div class="wrap" style="text-align:center;">
+  <p style="color:var(--faint);font-size:14px;">Ainda não tem uma conta na corretora? <a href="https://www.bybit.com/invite?ref=JNY4XP&medium=referral&utm_campaign=evergreen&share_to=post" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">Cadastre-se pelo link oficial de parceiro →</a></p>
+</div></section>
+
+
+<div id="jfb-dlgate" style="position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:0 20px;">
+  <div style="position:relative;width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:34px 30px;text-align:center;">
+    <button type="button" id="jfb-dlgate-x" aria-label="Close" style="position:absolute;top:12px;right:14px;background:none;border:none;color:var(--faint);font-size:22px;cursor:pointer;line-height:1;">&times;</button>
+    <div style="font-size:28px;margin-bottom:14px;">🔑</div>
+    <h3 style="font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:10px;color:var(--text);">Antes de Baixar</h3>
+    <p style="font-size:13.5px;line-height:1.7;color:var(--faint);margin-bottom:22px;">O JaviD Future Bot funciona com sua própria conta Bybit — você precisará de uma conta Bybit e uma chave de API conectada antes de poder começar a operar. Ainda não tem uma conta? O cadastro leva cerca de 5 minutos.</p>
+    <a id="jfb-dlgate-signup" href="bybit-signup-api-guide.html" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;">Criar Conta na Bybit e Obter API →</a>
+    <button type="button" id="jfb-dlgate-confirm" class="btn btn-ghost" style="width:100%;justify-content:center;margin-bottom:10px;">Já Tenho uma Conta Bybit</button>
+    <button type="button" id="jfb-dlgate-cancel" style="background:none;border:none;color:var(--faint);font-size:12.5px;cursor:pointer;text-decoration:underline;">Depois</button>
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <div class="footer-headline">Sua rotina continua a mesma. A negociação, também.</div>
+  <div class="footer-cols">
+    <div class="footer-col">
+      <div class="footer-col-label">Plataforma</div>
+      <a href="#capabilities">Estratégias</a>
+      <a href="#architecture">Arquitetura</a>
+      <a href="#research">Pesquisa</a>
+      <a href="#download">Download</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Outros</div>
+      <a href="board.html">Fórum da comunidade</a>
+      <a href="bybit-signup-api-guide.html">Guia de cadastro e configuração de API</a>
+      <a href="index.html">English</a>
+      <a href="https://www.javidtrading.com/ko">Escolher corretora (hub)</a>
+      <a href="https://bn.javidtrading.com/ko">Versão Binance</a>
+      <a href="mailto:javidfuturebot@javid-dol.uk">Contato</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 JaviD Future Bot · bb.javidtrading.com</span>
+    <span>A negociação de futuros de criptomoedas envolve risco muito elevado. A alavancagem pode resultar na perda total do capital (liquidação). O JaviD Future Bot é apenas uma ferramenta de execução independente; ele não garante lucros nem oferece aconselhamento de investimento. Todas as decisões de investimento e suas consequências são de exclusiva responsabilidade do usuário.</span>
+  </div>
+</div></footer>
+
+
+<script>
+/* ---------- Matrix rain (hero background) ---------- */
+(function(){
+  var c = document.getElementById('matrixCanvas');
+  var ctx = c.getContext('2d');
+  var hero = c.parentElement;
+  var cols, drops;
+  var chars = '01アイウエオカキクケコ$€¥₿ABCDEFGHIJK'.split('');
+
+  function resize(){
+    c.width = hero.offsetWidth;
+    c.height = hero.offsetHeight;
+    cols = Math.floor(c.width / 16);
+    drops = new Array(cols).fill(0).map(function(){ return Math.random() * -50; });
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function draw(){
+    ctx.fillStyle = 'rgba(8,9,11,0.08)';
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.font = '14px monospace';
+    for (var i = 0; i < cols; i++){
+      var text = chars[Math.floor(Math.random() * chars.length)];
+      var isAccent = Math.random() > 0.985;
+      ctx.fillStyle = isAccent ? '#e8b44c' : 'rgba(0,240,255,0.55)';
+      ctx.fillText(text, i * 16, drops[i] * 16);
+      if (drops[i] * 16 > c.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ---------- Particle network (capability visuals) ---------- */
+document.querySelectorAll('.netCanvas').forEach(function(canvas){
+  var ctx = canvas.getContext('2d');
+  var seed = Number(canvas.dataset.seed) || 1;
+  var w, h, points;
+
+  function resize(){
+    var rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width; canvas.height = rect.height;
+    w = canvas.width; h = canvas.height;
+    var n = 26;
+    points = new Array(n).fill(0).map(function(_, i){
+      return {
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.3 * seed * 0.4,
+        vy: (Math.random() - 0.5) * 0.3 * seed * 0.4,
+      };
+    });
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function draw(){
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = '#0b0d10';
+    ctx.fillRect(0, 0, w, h);
+    points.forEach(function(p){
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+    });
+    for (var i = 0; i < points.length; i++){
+      for (var j = i + 1; j < points.length; j++){
+        var dx = points[i].x - points[j].x, dy = points[i].y - points[j].y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 120){
+          ctx.strokeStyle = 'rgba(0,240,255,' + (1 - dist/120) * 0.35 + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(points[i].x, points[i].y); ctx.lineTo(points[j].x, points[j].y); ctx.stroke();
+        }
+      }
+    }
+    points.forEach(function(p){
+      ctx.fillStyle = '#e8b44c';
+      ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI*2); ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+});
+
+/* ---------- Warp / light-trail canvas (architecture banner) ---------- */
+(function(){
+  var c = document.getElementById('warpCanvas');
+  var ctx = c.getContext('2d');
+  var w, h, lines;
+  function resize(){
+    var rect = c.parentElement.getBoundingClientRect();
+    c.width = rect.width; c.height = rect.height;
+    w = c.width; h = c.height;
+    var n = 60;
+    lines = new Array(n).fill(0).map(function(){
+      return { angle: Math.random() * Math.PI * 2, dist: Math.random() * 200, speed: 1 + Math.random() * 3, len: 20 + Math.random() * 60 };
+    });
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  function draw(){
+    ctx.fillStyle = 'rgba(11,13,16,0.25)';
+    ctx.fillRect(0, 0, w, h);
+    var cx = w/2, cy = h/2;
+    lines.forEach(function(l){
+      l.dist += l.speed;
+      if (l.dist > Math.max(w,h)) l.dist = 0;
+      var x1 = cx + Math.cos(l.angle) * l.dist;
+      var y1 = cy + Math.sin(l.angle) * l.dist;
+      var x2 = cx + Math.cos(l.angle) * (l.dist + l.len);
+      var y2 = cy + Math.sin(l.angle) * (l.dist + l.len);
+      var alpha = 1 - (l.dist / Math.max(w,h));
+      ctx.strokeStyle = 'rgba(0,240,255,' + Math.max(0,alpha*0.5) + ')';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ---------- Research grid (generated, no fake dates) ---------- */
+(function(){
+  var items = [
+    ['Stop Móvel por ATR', 'Sistema de volatilidade'],
+    ['Reversão por Desvio do VWAP', 'Sinal de reversão à média'],
+    ['Detecção de Divergência de CVD', 'Análise de fluxo de ordens'],
+    ['Dimensionamento de Posição Anti-Liquidação', 'Engenharia de risco'],
+    ['Detecção de Pico de Volume', 'Microestrutura de mercado'],
+    ['Monitoramento de 500+ Símbolos', 'Cobertura multiativos'],
+    ['Validação em Modo Sombra', 'Validação com fundos virtuais'],
+    ['Motor de Relatórios via Telegram', 'Monitoramento em tempo real'],
+    ['Armazenamento Local de Chaves Criptografadas', 'Arquitetura de segurança'],
+    ['Seleção de Símbolos em Um Clique', 'Composição de portfólio'],
+    ['Reajuste Diário de Saldo', 'Motor de juros compostos'],
+    ['Execução Não Custodial', 'Arquitetura de confiança'],
+  ];
+  var grid = document.getElementById('researchGrid');
+  items.forEach(function(item, i){
+    var card = document.createElement('div');
+    card.className = 'research-card';
+    var hue = (i * 37) % 360;
+    card.innerHTML =
+      '<div class="rc-pattern" style="background:radial-gradient(circle at ' + (20+ (i*13)%60) + '% ' + (20+(i*29)%60) + '%, rgba(0,240,255,.18), transparent 55%), repeating-conic-gradient(from ' + (i*30) + 'deg, rgba(232,180,76,.05) 0deg 8deg, transparent 8deg 16deg);"></div>' +
+      '<div class="rc-body"><h5>' + item[0] + '</h5><span>' + item[1] + '</span></div>';
+    grid.appendChild(card);
+  });
+})();
+
+/* ---------- Live Proof fetch ---------- */
+(function(){
+  function timeAgo(iso){
+    var diffMs = Date.now() - new Date(iso).getTime();
+    var mins = Math.max(0, Math.round(diffMs / 60000));
+    if (mins < 1) return 'agora mesmo';
+    if (mins < 60) return mins + ' min';
+    var hrs = Math.round(mins / 60);
+    if (hrs < 24) return hrs + ' h';
+    return Math.round(hrs / 24) + ' d';
+  }
+  function fmtNum(n, decimals){
+    var sign = n > 0 ? '+' : '';
+    return sign + n.toFixed(decimals);
+  }
+  fetch('/api/status').then(function(r){ return r.json(); }).then(function(data){
+    if (!data || !data.live) return;
+    document.getElementById('lpBalance').textContent = Number(data.balance).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+    document.getElementById('lpPnl').textContent = fmtNum(Number(data.cumulative_pnl), 2);
+    if (data.trade_count) document.getElementById('lpPnlLabel').textContent = 'Lucro/prejuízo acumulado (USDT), ' + data.trade_count + ' operações';
+    document.getElementById('lpReturn').textContent = fmtNum(Number(data.cumulative_return_pct), 2) + '%';
+    document.getElementById('lpWinRate').textContent = Number(data.win_rate).toFixed(1) + '%';
+    document.getElementById('liveUpdated').textContent = timeAgo(data.updated_at);
+    document.getElementById('liveBadge').style.display = 'block';
+    document.getElementById('liveProofSub').textContent = 'Snapshot da conta em tempo real, obtido diretamente do bot em execução — dados reais de mercado, USDT virtual, zero risco de fundos reais.';
+    var openTxt = data.open_positions != null ? data.open_positions + ' posições abertas, ' : '';
+    document.getElementById('lpNote').innerHTML = 'Dados em tempo real, atualização automática — ' + openTxt + 'como a lógica de liquidação está gerenciando ativamente as posições, os lucros e perdas não realizados aparecem mistos. Desempenho passado não garante retornos futuros.';
+  }).catch(function(){});
+})();
+
+/* ---------- Download gate: temporarily disabled — direct links used instead (see #download section) ---------- */
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
+  var modal = document.getElementById('jfb-dlgate');
+  if (!modal) return;
+  var GATE_KEY = 'jfb_dl_gate_ok';
+  var pendingAnchor = null;
+  function openModal(a){ pendingAnchor = a; modal.style.display = 'flex'; }
+  function closeModal(){ modal.style.display = 'none'; pendingAnchor = null; }
+  document.querySelectorAll('a[download]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var already;
+      try { already = sessionStorage.getItem(GATE_KEY); } catch (e2) {}
+      if (a.dataset.gateOk === '1' || already === '1') return;
+      e.preventDefault();
+      openModal(a);
+    });
+  });
+  var confirmBtn = document.getElementById('jfb-dlgate-confirm');
+  if (confirmBtn) confirmBtn.addEventListener('click', function () {
+    try { sessionStorage.setItem(GATE_KEY, '1'); } catch (e2) {}
+    var a = pendingAnchor;
+    closeModal();
+    if (a) { a.dataset.gateOk = '1'; a.click(); }
+  });
+  var cancelBtn = document.getElementById('jfb-dlgate-cancel');
+  if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+  var xBtn = document.getElementById('jfb-dlgate-x');
+  if (xBtn) xBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+});
+</script>
+</body>
+</html>

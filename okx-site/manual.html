@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Manual | JaviD Future Bot</title>
+<meta name="description" content="A screen-by-screen walkthrough of JaviD Future Bot — onboarding, API setup, coin selection, and Shadow Mode running live.">
+<link rel="canonical" href="https://okx.javidtrading.com/manual.html">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{ --bg:#08090b; --bg2:#0d0f12; --panel:#101317; --line:rgba(255,255,255,.08); --text:#e9ebee; --faint:#8b909a; --accent:#00f0ff; --serif:'Playfair Display',Georgia,serif; --sans:'Inter',-apple-system,sans-serif; }
+*{box-sizing:border-box; margin:0; padding:0;}
+body{background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6;}
+.wrap{max-width:1000px; margin:0 auto; padding:0 24px;}
+a{color:var(--accent); text-decoration:none;}
+nav{position:sticky; top:0; z-index:50; background:rgba(8,9,11,.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+.nav-row{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:1180px; margin:0 auto;}
+.nav-logo{font-family:var(--serif); font-size:18px; font-weight:600;}
+.nav-logo b{color:var(--accent);}
+.nav-links{display:flex; gap:28px;}
+.nav-links a{font-size:13px; color:var(--faint);}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{font-size:12px; letter-spacing:.06em; text-transform:uppercase; border:1px solid var(--line); padding:9px 18px; border-radius:100px;}
+@media (max-width:820px){ .nav-links{display:none;} }
+.hero{padding:70px 0 40px; text-align:center;}
+.kicker{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:16px;}
+h1{font-family:var(--serif); font-size:clamp(28px,4vw,44px); font-weight:600; margin-bottom:18px;}
+.hero p{color:var(--faint); font-size:15px; max-width:620px; margin:0 auto;}
+.note{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px 22px; margin:40px 0; font-size:13.5px; color:var(--faint); line-height:1.7;}
+.note b{color:var(--text);}
+.step{display:grid; grid-template-columns:1fr 1.2fr; gap:40px; align-items:center; padding:50px 0; border-top:1px solid var(--line);}
+.step:first-of-type{border-top:none;}
+.step-num{font-family:var(--serif); font-size:14px; color:var(--accent); letter-spacing:.1em; text-transform:uppercase; margin-bottom:10px;}
+.step h3{font-family:var(--serif); font-size:22px; font-weight:600; margin-bottom:12px;}
+.step p{color:var(--faint); font-size:14.5px;}
+.shot{border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--panel);}
+.shot img{width:100%; display:block;}
+@media (max-width:760px){ .step{grid-template-columns:1fr;} }
+footer{border-top:1px solid var(--line); padding:34px 0;}
+.footer-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:12.5px; color:var(--faint);}
+.footer-links{display:flex; gap:20px; flex-wrap:wrap;}
+.footer-links a{color:var(--faint);}
+.footer-links a:hover{color:var(--accent);}
+.lang-switch{position:relative;}
+.lang-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border:1px solid var(--line);background:transparent;color:var(--text);padding:7px 12px;border-radius:100px;cursor:pointer;}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent);}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:60;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);min-width:150px;padding:6px;display:none;}
+.lang-menu.open{display:block;}
+.lang-menu button{display:flex;width:100%;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:none;background:none;font-size:13px;font-weight:600;text-align:left;cursor:pointer;color:var(--text);}
+.lang-menu button:hover{background:rgba(255,255,255,.06);}
+.lang-menu button.active{color:var(--accent);background:rgba(0,240,255,.08);}
+</style>
+</head>
+<body>
+<nav><div class="nav-row">
+  <a href="index.html" class="nav-logo">JaviD <b>Future Bot</b></a>
+  <div class="nav-links">
+    <a href="index.html#capabilities" data-i18n="nav_capabilities">Capabilities</a>
+    <a href="results.html" data-i18n="nav_results">Real Results</a>
+    <a href="board.html" data-i18n="nav_board">Community Board</a>
+    <a href="okx-signup-api-guide.html" data-i18n="nav_okx">New to OKX?</a>
+  </div>
+  <div class="lang-switch">
+    <button type="button" id="langBtn" class="lang-btn" aria-haspopup="true" aria-expanded="false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" style="width:14px;height:14px"><circle cx="10" cy="10" r="7.25"/><path d="M2.75 10h14.5M10 2.75c2.4 2.4 2.4 12.1 0 14.5M10 2.75c-2.4 2.4-2.4 12.1 0 14.5"/></svg>
+      Language
+    </button>
+    <div id="langMenu" class="lang-menu" role="menu"></div>
+  </div>
+  <a href="index.html#download" class="nav-cta" data-i18n="nav_cta">Get Access</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker" data-i18n="kicker">User Manual</div>
+  <h1 data-i18n="h1">From Download to Live Trading, Screen by Screen</h1>
+  <p data-i18n="hero_p">A real walkthrough — onboarding, coin selection, and Shadow Mode running live. Not mockups.</p>
+</div></header>
+
+<div class="wrap">
+  <div class="note" data-i18n="note"><b>Note:</b> the dashboard shown below is the same software used across all exchange editions. For the OKX-specific API key fields (Key, Secret, and Passphrase), see the <a href="okx-signup-api-guide.html">OKX Setup Guide</a>.</div>
+
+  <div class="step">
+    <div>
+      <div class="step-num" data-i18n="step1_num">Step 1</div>
+      <h3 data-i18n="step1_title">First-Launch Onboarding</h3>
+      <p data-i18n="step1_desc">Double-click <code>start.bat</code>. Dependencies install automatically on first run, then your dashboard opens in the browser, ready to configure. No coding knowledge required.</p>
+    </div>
+    <div class="shot"><img src="screenshots/shot1.png" alt="JaviD Future Bot first-launch onboarding modal" loading="lazy"></div>
+  </div>
+
+  <div class="step">
+    <div>
+      <div class="step-num" data-i18n="step2_num">Step 2</div>
+      <h3 data-i18n="step2_title">Main Dashboard</h3>
+      <p data-i18n="step2_desc">Balance, cumulative P&amp;L, win rate, and open positions — all visible at a glance, updating live as the bot runs.</p>
+    </div>
+    <div class="shot"><img src="screenshots/shot3.png" alt="JaviD Future Bot main dashboard, idle state" loading="lazy"></div>
+  </div>
+
+  <div class="step">
+    <div>
+      <div class="step-num" data-i18n="step3_num">Step 3</div>
+      <h3 data-i18n="step3_title">Investment Mode</h3>
+      <p data-i18n="step3_desc">Aggressive, Normal, or Stable — pick how much of your balance each entry risks. The bot adapts to you, not the other way around.</p>
+    </div>
+    <div class="shot"><img src="images/optimized-path.webp" alt="Investment mode risk sizing illustration" loading="lazy"></div>
+  </div>
+
+  <div class="step">
+    <div>
+      <div class="step-num" data-i18n="step4_num">Step 4</div>
+      <h3 data-i18n="step4_title">Symbol Selection</h3>
+      <p data-i18n="step4_desc">Pick your own coins, or hit "Top 20 by Turnover" once and you're done. Track positions across dozens of pairs simultaneously.</p>
+    </div>
+    <div class="shot"><img src="screenshots/shot7.png" alt="JaviD Future Bot Symbol Selection tab" loading="lazy"></div>
+  </div>
+
+  <div class="step">
+    <div>
+      <div class="step-num" data-i18n="step5_num">Step 5</div>
+      <h3 data-i18n="step5_title">Shadow Mode, Running Live</h3>
+      <p data-i18n="step5_desc">Every strategy trades against live market data with a virtual balance — real signals, real timing, zero real orders. Watch it work for as long as you need before a single real dollar is on the line.</p>
+    </div>
+    <div class="shot"><img src="screenshots/shot8.png" alt="JaviD Future Bot dashboard running in Shadow Mode" loading="lazy"></div>
+  </div>
+</div>
+
+<footer><div class="wrap footer-row">
+  <span data-i18n="footer_copy">© 2026 JaviD Future Bot · okx.javidtrading.com</span>
+  <div class="footer-links">
+    <a href="index.html" data-i18n="footer_home">Home</a>
+    <a href="results.html" data-i18n="footer_results">Real Results</a>
+    <a href="okx-signup-api-guide.html" data-i18n="footer_okx">OKX Setup Guide</a>
+    <a href="board.html" data-i18n="footer_board">Community Board</a>
+    <a href="mailto:javidfuturebot@javid-dol.uk" data-i18n="footer_contact">Contact</a>
+  </div>
+</div></footer>
+
+<script>
+var I18N = {
+  en: {
+    nav_capabilities: `Capabilities`,
+    nav_results: `Real Results`,
+    nav_board: `Community Board`,
+    nav_okx: `New to OKX?`,
+    nav_cta: `Get Access`,
+    kicker: `User Manual`,
+    h1: `From Download to Live Trading, Screen by Screen`,
+    hero_p: `A real walkthrough — onboarding, coin selection, and Shadow Mode running live. Not mockups.`,
+    note: `<b>Note:</b> the dashboard shown below is the same software used across all exchange editions. For the OKX-specific API key fields (Key, Secret, and Passphrase), see the <a href="okx-signup-api-guide.html">OKX Setup Guide</a>.`,
+    step1_num: `Step 1`,
+    step1_title: `First-Launch Onboarding`,
+    step1_desc: `Double-click <code>start.bat</code>. Dependencies install automatically on first run, then your dashboard opens in the browser, ready to configure. No coding knowledge required.`,
+    step2_num: `Step 2`,
+    step2_title: `Main Dashboard`,
+    step2_desc: `Balance, cumulative P&amp;L, win rate, and open positions — all visible at a glance, updating live as the bot runs.`,
+    step3_num: `Step 3`,
+    step3_title: `Investment Mode`,
+    step3_desc: `Aggressive, Normal, or Stable — pick how much of your balance each entry risks. The bot adapts to you, not the other way around.`,
+    step4_num: `Step 4`,
+    step4_title: `Symbol Selection`,
+    step4_desc: `Pick your own coins, or hit "Top 20 by Turnover" once and you're done. Track positions across dozens of pairs simultaneously.`,
+    step5_num: `Step 5`,
+    step5_title: `Shadow Mode, Running Live`,
+    step5_desc: `Every strategy trades against live market data with a virtual balance — real signals, real timing, zero real orders. Watch it work for as long as you need before a single real dollar is on the line.`,
+    footer_copy: `© 2026 JaviD Future Bot · okx.javidtrading.com`,
+    footer_home: `Home`,
+    footer_results: `Real Results`,
+    footer_okx: `OKX Setup Guide`,
+    footer_board: `Community Board`,
+    footer_contact: `Contact`
+  },
+  ko: {
+    nav_capabilities: `기능`,
+    nav_results: `실제 수익 결과`,
+    nav_board: `커뮤니티 게시판`,
+    nav_okx: `OKX이 처음이신가요?`,
+    nav_cta: `지금 시작하기`,
+    kicker: `사용 설명서`,
+    h1: `다운로드부터 실전 매매까지, 화면 단계별 안내`,
+    hero_p: `실제 화면으로 보는 사용법 — 온보딩, 코인 선택, 그리고 실시간으로 작동하는 섀도우 모드까지. 목업이 아닙니다.`,
+    note: `<b>참고:</b> 아래에 보이는 대시보드는 모든 거래소 버전에서 동일하게 사용되는 소프트웨어입니다. OKX 전용 API 키 입력란(Key, Secret, Passphrase)에 대해서는 <a href="okx-signup-api-guide.html">OKX 설정 가이드</a>를 참고하세요.`,
+    step1_num: `1단계`,
+    step1_title: `최초 실행 온보딩`,
+    step1_desc: `<code>start.bat</code> 파일을 더블클릭하세요. 처음 실행 시 필요한 구성 요소가 자동으로 설치된 후, 브라우저에서 대시보드가 열리며 바로 설정할 수 있습니다. 코딩 지식은 필요하지 않습니다.`,
+    step2_num: `2단계`,
+    step2_title: `메인 대시보드`,
+    step2_desc: `잔고, 누적 손익, 승률, 보유 포지션까지 — 봇이 작동하는 동안 실시간으로 업데이트되며 한눈에 확인할 수 있습니다.`,
+    step3_num: `3단계`,
+    step3_title: `투자 모드`,
+    step3_desc: `공격적, 보통, 안정 — 매 진입마다 잔고의 얼마를 리스크로 사용할지 선택하세요. 봇이 당신에게 맞춰 조정됩니다.`,
+    step4_num: `4단계`,
+    step4_title: `종목 선택`,
+    step4_desc: `원하는 코인을 직접 선택하거나, "Top 20 by Turnover" 버튼을 한 번만 클릭하면 끝입니다. 수십 개의 페어에 걸쳐 동시에 포지션을 추적할 수 있습니다.`,
+    step5_num: `5단계`,
+    step5_title: `섀도우 모드, 실시간 작동`,
+    step5_desc: `모든 전략은 가상 잔고로 실제 시장 데이터에 맞춰 거래됩니다 — 실제 신호, 실제 타이밍, 하지만 실제 주문은 전혀 없습니다. 단 1달러라도 실제 자금이 투입되기 전까지 원하는 만큼 지켜보세요.`,
+    footer_copy: `© 2026 JaviD Future Bot · okx.javidtrading.com`,
+    footer_home: `홈`,
+    footer_results: `실제 수익 결과`,
+    footer_okx: `OKX 설정 가이드`,
+    footer_board: `커뮤니티 게시판`,
+    footer_contact: `문의하기`
+  },
+  ja: {
+    nav_capabilities: `機能`,
+    nav_results: `実績結果`,
+    nav_board: `コミュニティ掲示板`,
+    nav_okx: `OKXが初めての方へ`,
+    nav_cta: `今すぐ始める`,
+    kicker: `取扱説明書`,
+    h1: `ダウンロードから実運用まで、画面ごとに解説`,
+    hero_p: `実際の画面によるウォークスルー — オンボーディング、コイン選択、そしてリアルタイムで動くシャドウモードまで。モックアップではありません。`,
+    note: `<b>注意：</b>以下に表示されているダッシュボードは、すべての取引所版で共通して使用されているソフトウェアです。OKX固有のAPIキー項目（Key、Secret、Passphrase）については、<a href="okx-signup-api-guide.html">OKXセットアップガイド</a>をご覧ください。`,
+    step1_num: `ステップ1`,
+    step1_title: `初回起動オンボーディング`,
+    step1_desc: `<code>start.bat</code>をダブルクリックしてください。初回起動時に依存関係が自動的にインストールされた後、ブラウザでダッシュボードが開き、すぐに設定できます。プログラミングの知識は不要です。`,
+    step2_num: `ステップ2`,
+    step2_title: `メインダッシュボード`,
+    step2_desc: `残高、累積損益、勝率、保有ポジションが — ボットの稼働中にリアルタイムで更新され、一目で確認できます。`,
+    step3_num: `ステップ3`,
+    step3_title: `投資モード`,
+    step3_desc: `アグレッシブ、ノーマル、ステーブル — 各エントリーで残高のどれだけをリスクにさらすかを選択します。ボットがあなたに合わせて調整されます。`,
+    step4_num: `ステップ4`,
+    step4_title: `銘柄選択`,
+    step4_desc: `自分でコインを選ぶことも、「Top 20 by Turnover」を一度クリックするだけで完了することもできます。数十のペアにわたって同時にポジションを追跡できます。`,
+    step5_num: `ステップ5`,
+    step5_title: `シャドウモード、リアルタイム稼働`,
+    step5_desc: `すべての戦略は仮想残高を使って実際の市場データに対して取引されます — 実際のシグナル、実際のタイミング、しかし実際の注文はゼロです。実際の資金が1ドルでも投入される前に、必要なだけ動作を確認してください。`,
+    footer_copy: `© 2026 JaviD Future Bot · okx.javidtrading.com`,
+    footer_home: `ホーム`,
+    footer_results: `実績結果`,
+    footer_okx: `OKXセットアップガイド`,
+    footer_board: `コミュニティ掲示板`,
+    footer_contact: `お問い合わせ`
+  },
+  zh: {
+    nav_capabilities: `功能`,
+    nav_results: `真实业绩`,
+    nav_board: `社区论坛`,
+    nav_okx: `初次使用 OKX？`,
+    nav_cta: `立即获取`,
+    kicker: `使用手册`,
+    h1: `从下载到实盘交易，逐屏详解`,
+    hero_p: `真实操作演示 — 引导设置、币种选择，以及实时运行的影子模式。并非效果图。`,
+    note: `<b>提示：</b>下方展示的仪表盘是所有交易所版本通用的同一款软件。有关 OKX 专属的 API 密钥字段（Key、Secret、Passphrase），请参阅<a href="okx-signup-api-guide.html">OKX 设置指南</a>。`,
+    step1_num: `第 1 步`,
+    step1_title: `首次启动引导`,
+    step1_desc: `双击 <code>start.bat</code>。首次运行时会自动安装依赖项，随后仪表盘将在浏览器中打开，随时可供配置。无需任何编程知识。`,
+    step2_num: `第 2 步`,
+    step2_title: `主仪表盘`,
+    step2_desc: `余额、累计盈亏、胜率和持仓情况 — 机器人运行时一目了然、实时更新。`,
+    step3_num: `第 3 步`,
+    step3_title: `投资模式`,
+    step3_desc: `激进、普通或稳健 — 选择每次进场愿意承担的仓位风险比例。机器人会适应你，而不是反过来。`,
+    step4_num: `第 4 步`,
+    step4_title: `交易对选择`,
+    step4_desc: `自行挑选币种，或点击一次"Top 20 by Turnover"即可完成设置。可同时追踪数十个交易对的持仓。`,
+    step5_num: `第 5 步`,
+    step5_title: `影子模式，实时运行`,
+    step5_desc: `每个策略都会使用虚拟余额对照实时市场数据进行交易 — 真实信号、真实时机，但零真实下单。在投入哪怕一美元真实资金之前，你可以尽情观察它的表现。`,
+    footer_copy: `© 2026 JaviD Future Bot · okx.javidtrading.com`,
+    footer_home: `首页`,
+    footer_results: `真实业绩`,
+    footer_okx: `OKX 设置指南`,
+    footer_board: `社区论坛`,
+    footer_contact: `联系我们`
+  },
+  es: {
+    nav_capabilities: `Funciones`,
+    nav_results: `Resultados reales`,
+    nav_board: `Foro de la comunidad`,
+    nav_okx: `¿Nuevo en OKX?`,
+    nav_cta: `Obtener acceso`,
+    kicker: `Manual de usuario`,
+    h1: `De la descarga al trading en vivo, pantalla por pantalla`,
+    hero_p: `Un recorrido real — incorporación, selección de monedas y el Modo Sombra funcionando en vivo. No son maquetas.`,
+    note: `<b>Nota:</b> el panel que se muestra a continuación es el mismo software utilizado en todas las versiones para distintos exchanges. Para conocer los campos de clave API específicos de OKX (Key, Secret y Passphrase), consulta la <a href="okx-signup-api-guide.html">Guía de configuración de OKX</a>.`,
+    step1_num: `Paso 1`,
+    step1_title: `Incorporación en el primer inicio`,
+    step1_desc: `Haz doble clic en <code>start.bat</code>. Las dependencias se instalan automáticamente la primera vez, y luego tu panel se abre en el navegador, listo para configurar. No se necesitan conocimientos de programación.`,
+    step2_num: `Paso 2`,
+    step2_title: `Panel principal`,
+    step2_desc: `Saldo, ganancias y pérdidas acumuladas, tasa de acierto y posiciones abiertas — todo visible de un vistazo, actualizándose en vivo mientras el bot opera.`,
+    step3_num: `Paso 3`,
+    step3_title: `Modo de inversión`,
+    step3_desc: `Agresivo, Normal o Estable — elige cuánto de tu saldo arriesga cada entrada. El bot se adapta a ti, no al revés.`,
+    step4_num: `Paso 4`,
+    step4_title: `Selección de símbolos`,
+    step4_desc: `Elige tus propias monedas, o pulsa una vez "Top 20 by Turnover" y listo. Sigue posiciones en decenas de pares simultáneamente.`,
+    step5_num: `Paso 5`,
+    step5_title: `Modo Sombra, funcionando en vivo`,
+    step5_desc: `Cada estrategia opera contra datos de mercado en vivo con un saldo virtual — señales reales, tiempos reales, cero órdenes reales. Obsérvalo funcionar durante el tiempo que necesites antes de arriesgar un solo dólar real.`,
+    footer_copy: `© 2026 JaviD Future Bot · okx.javidtrading.com`,
+    footer_home: `Inicio`,
+    footer_results: `Resultados reales`,
+    footer_okx: `Guía de configuración de OKX`,
+    footer_board: `Foro de la comunidad`,
+    footer_contact: `Contacto`
+  },
+  fr: {
+    nav_capabilities: `Fonctionnalités`,
+    nav_results: `Résultats réels`,
+    nav_board: `Forum communautaire`,
+    nav_okx: `Nouveau sur OKX ?`,
+    nav_cta: `Obtenir l'accès`,
+    kicker: `Manuel de l'utilisateur`,
+    h1: `Du téléchargement au trading en direct, écran par écran`,
+    hero_p: `Une démonstration réelle — intégration, sélection des cryptos et le Mode Fantôme fonctionnant en direct. Ce ne sont pas des maquettes.`,
+    note: `<b>Remarque :</b> le tableau de bord présenté ci-dessous est le même logiciel utilisé pour toutes les versions d'exchanges. Pour les champs de clé API propres à OKX (Key, Secret et Passphrase), consultez le <a href="okx-signup-api-guide.html">Guide de configuration OKX</a>.`,
+    step1_num: `Étape 1`,
+    step1_title: `Intégration au premier lancement`,
+    step1_desc: `Double-cliquez sur <code>start.bat</code>. Les dépendances s'installent automatiquement au premier lancement, puis votre tableau de bord s'ouvre dans le navigateur, prêt à être configuré. Aucune connaissance en programmation requise.`,
+    step2_num: `Étape 2`,
+    step2_title: `Tableau de bord principal`,
+    step2_desc: `Solde, profits et pertes cumulés, taux de réussite et positions ouvertes — tout est visible d'un coup d'œil, mis à jour en direct pendant que le bot fonctionne.`,
+    step3_num: `Étape 3`,
+    step3_title: `Mode d'investissement`,
+    step3_desc: `Agressif, Normal ou Stable — choisissez la part de votre solde que chaque entrée met en jeu. Le bot s'adapte à vous, et non l'inverse.`,
+    step4_num: `Étape 4`,
+    step4_title: `Sélection des symboles`,
+    step4_desc: `Choisissez vos propres cryptos, ou cliquez une fois sur « Top 20 by Turnover » et c'est terminé. Suivez des positions sur des dizaines de paires simultanément.`,
+    step5_num: `Étape 5`,
+    step5_title: `Mode Fantôme, fonctionnant en direct`,
+    step5_desc: `Chaque stratégie négocie face aux données de marché en direct avec un solde virtuel — signaux réels, timing réel, zéro ordre réel. Observez-le fonctionner aussi longtemps que nécessaire avant qu'un seul dollar réel ne soit engagé.`,
+    footer_copy: `© 2026 JaviD Future Bot · okx.javidtrading.com`,
+    footer_home: `Accueil`,
+    footer_results: `Résultats réels`,
+    footer_okx: `Guide de configuration OKX`,
+    footer_board: `Forum communautaire`,
+    footer_contact: `Contact`
+  },
+vi: {
+  nav_capabilities: `Tính năng`,
+  nav_results: `Kết quả thực tế`,
+  nav_board: `Bảng cộng đồng`,
+  nav_okx: `Mới dùng OKX?`,
+  nav_cta: `Nhận quyền truy cập`,
+  kicker: `Hướng dẫn sử dụng`,
+  h1: `Từ khi tải xuống đến giao dịch thực, từng màn hình một`,
+  hero_p: `Hướng dẫn thực tế — thiết lập ban đầu, chọn coin, và chế độ Shadow Mode chạy trực tiếp. Không phải bản dựng mô phỏng.`,
+  note: `<b>Lưu ý:</b> bảng điều khiển hiển thị bên dưới là phần mềm giống nhau được sử dụng trên tất cả các phiên bản sàn giao dịch. Để biết các trường khóa API dành riêng cho OKX (Key, Secret và Passphrase), xem <a href="okx-signup-api-guide.html">Hướng dẫn Thiết lập OKX</a>.`,
+  step1_num: `Bước 1`,
+  step1_title: `Thiết lập lần đầu khởi chạy`,
+  step1_desc: `Nhấp đúp vào <code>start.bat</code>. Các thành phần phụ thuộc sẽ tự động cài đặt trong lần chạy đầu tiên, sau đó bảng điều khiển của bạn sẽ mở trong trình duyệt, sẵn sàng để cấu hình. Không cần kiến thức lập trình.`,
+  step2_num: `Bước 2`,
+  step2_title: `Bảng điều khiển chính`,
+  step2_desc: `Số dư, lãi/lỗ tích lũy, tỷ lệ thắng và các vị thế đang mở — tất cả đều hiển thị rõ ràng, cập nhật trực tiếp khi bot hoạt động.`,
+  step3_num: `Bước 3`,
+  step3_title: `Chế độ đầu tư`,
+  step3_desc: `Mạnh, Bình thường, hoặc Ổn định — chọn mức rủi ro cho mỗi lệnh vào từ số dư của bạn. Bot sẽ thích ứng với bạn, chứ không phải ngược lại.`,
+  step4_num: `Bước 4`,
+  step4_title: `Chọn cặp giao dịch`,
+  step4_desc: `Chọn coin theo ý bạn, hoặc chỉ cần nhấn "Top 20 by Turnover" một lần là xong. Theo dõi vị thế trên hàng chục cặp cùng lúc.`,
+  step5_num: `Bước 5`,
+  step5_title: `Chế độ Shadow Mode, chạy trực tiếp`,
+  step5_desc: `Mỗi chiến lược giao dịch với dữ liệu thị trường thực bằng số dư ảo — tín hiệu thật, thời điểm thật, không có lệnh thật nào được đặt. Theo dõi hoạt động của nó trong bao lâu tùy thích trước khi đặt một đô la thật nào vào cuộc.`,
+  footer_copy: `© 2026 JaviD Future Bot · okx.javidtrading.com`,
+  footer_home: `Trang chủ`,
+  footer_results: `Kết quả thực tế`,
+  footer_okx: `Hướng dẫn Thiết lập OKX`,
+  footer_board: `Bảng cộng đồng`,
+  footer_contact: `Liên hệ`
+},
+tr: {
+  nav_capabilities: `Özellikler`,
+  nav_results: `Gerçek Sonuçlar`,
+  nav_board: `Topluluk Panosu`,
+  nav_okx: `OKX'e Yeni misiniz?`,
+  nav_cta: `Erişim Al`,
+  kicker: `Kullanım Kılavuzu`,
+  h1: `İndirmeden Canlı İşleme, Ekran Ekran`,
+  hero_p: `Gerçek bir anlatım — kurulum, coin seçimi ve canlı çalışan Shadow Mode. Kurgu değil.`,
+  note: `<b>Not:</b> aşağıda gösterilen kontrol paneli, tüm borsa sürümlerinde kullanılan aynı yazılımdır. OKX'e özel API anahtar alanları (Key, Secret ve Passphrase) için <a href="okx-signup-api-guide.html">OKX Kurulum Kılavuzu</a>'na bakın.`,
+  step1_num: `Adım 1`,
+  step1_title: `İlk Başlatma Kurulumu`,
+  step1_desc: `<code>start.bat</code> dosyasına çift tıklayın. Bağımlılıklar ilk çalıştırmada otomatik olarak yüklenir, ardından kontrol paneliniz tarayıcıda açılır ve yapılandırmaya hazır olur. Kodlama bilgisi gerekmez.`,
+  step2_num: `Adım 2`,
+  step2_title: `Ana Kontrol Paneli`,
+  step2_desc: `Bakiye, kümülatif kâr/zarar, kazanma oranı ve açık pozisyonlar — bot çalışırken canlı olarak güncellenerek tek bakışta görülür.`,
+  step3_num: `Adım 3`,
+  step3_title: `Yatırım Modu`,
+  step3_desc: `Agresif, Normal veya Stabil — bakiyenizin her girişte ne kadarının riske atılacağını seçin. Bot size uyum sağlar, tersi değil.`,
+  step4_num: `Adım 4`,
+  step4_title: `Sembol Seçimi`,
+  step4_desc: `Kendi coinlerinizi seçin veya bir kez "Top 20 by Turnover"a tıklayın, işiniz biter. Onlarca çift üzerindeki pozisyonları eş zamanlı olarak takip edin.`,
+  step5_num: `Adım 5`,
+  step5_title: `Shadow Mode, Canlı Çalışıyor`,
+  step5_desc: `Her strateji, sanal bir bakiyeyle canlı piyasa verilerine karşı işlem yapar — gerçek sinyaller, gerçek zamanlama, sıfır gerçek emir. Tek bir gerçek dolar riske girmeden önce, istediğiniz kadar çalışmasını izleyin.`,
+  footer_copy: `© 2026 JaviD Future Bot · okx.javidtrading.com`,
+  footer_home: `Ana Sayfa`,
+  footer_results: `Gerçek Sonuçlar`,
+  footer_okx: `OKX Kurulum Kılavuzu`,
+  footer_board: `Topluluk Panosu`,
+  footer_contact: `İletişim`
+},
+pt: {
+  nav_capabilities: `Recursos`,
+  nav_results: `Resultados Reais`,
+  nav_board: `Fórum da Comunidade`,
+  nav_okx: `Novo na OKX?`,
+  nav_cta: `Obter Acesso`,
+  kicker: `Manual do Usuário`,
+  h1: `Do Download à Negociação Ao Vivo, Tela por Tela`,
+  hero_p: `Um tutorial real — configuração inicial, seleção de moedas e o Shadow Mode em execução ao vivo. Nada de simulações.`,
+  note: `<b>Observação:</b> o painel exibido abaixo é o mesmo software usado em todas as edições de corretoras. Para os campos de chave de API específicos da OKX (Key, Secret e Passphrase), consulte o <a href="okx-signup-api-guide.html">Guia de Configuração da OKX</a>.`,
+  step1_num: `Etapa 1`,
+  step1_title: `Configuração na Primeira Inicialização`,
+  step1_desc: `Dê um clique duplo em <code>start.bat</code>. As dependências são instaladas automaticamente na primeira execução e, em seguida, seu painel é aberto no navegador, pronto para ser configurado. Não é necessário conhecimento em programação.`,
+  step2_num: `Etapa 2`,
+  step2_title: `Painel Principal`,
+  step2_desc: `Saldo, lucro e prejuízo acumulados, taxa de acerto e posições abertas — tudo visível em um relance, atualizando em tempo real conforme o bot opera.`,
+  step3_num: `Etapa 3`,
+  step3_title: `Modo de Investimento`,
+  step3_desc: `Agressivo, Normal ou Estável — escolha quanto do seu saldo cada entrada arrisca. O bot se adapta a você, não o contrário.`,
+  step4_num: `Etapa 4`,
+  step4_title: `Seleção de Símbolos`,
+  step4_desc: `Escolha suas próprias moedas ou clique em "Top 20 by Turnover" uma vez e pronto. Acompanhe posições em dezenas de pares simultaneamente.`,
+  step5_num: `Etapa 5`,
+  step5_title: `Shadow Mode, em Execução ao Vivo`,
+  step5_desc: `Cada estratégia opera contra dados de mercado reais com um saldo virtual — sinais reais, timing real, zero ordens reais. Observe funcionando pelo tempo que precisar antes de colocar um único dólar real em jogo.`,
+  footer_copy: `© 2026 JaviD Future Bot · okx.javidtrading.com`,
+  footer_home: `Início`,
+  footer_results: `Resultados Reais`,
+  footer_okx: `Guia de Configuração da OKX`,
+  footer_board: `Fórum da Comunidade`,
+  footer_contact: `Contato`
+},
+};
+var LANGS = [
+  {code:'en', label:'English'}, {code:'ko', label:'한국어'}, {code:'ja', label:'日本語'},
+  {code:'zh', label:'中文'}, {code:'es', label:'Español'}, {code:'fr', label:'Français'}, {code:'vi', label:'Tiếng Việt'}, {code:'tr', label:'Türkçe'}, {code:'pt', label:'Português'}
+];
+var STORAGE_KEY = 'javid_lang';
+window.CURRENT_LANG = 'en';
+function applyLang(lang){
+  if (!I18N[lang]) lang = 'en';
+  window.CURRENT_LANG = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    var val = (I18N[lang] && I18N[lang][key] != null) ? I18N[lang][key] : I18N.en[key];
+    if (val != null) el.innerHTML = val;
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+  document.querySelectorAll('.lang-menu button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+}
+(function(){
+  var menu = document.getElementById('langMenu');
+  var btn = document.getElementById('langBtn');
+  LANGS.forEach(function(l){
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('data-lang', l.code); b.setAttribute('role','menuitem');
+    b.textContent = l.label;
+    b.addEventListener('click', function(){ applyLang(l.code); menu.classList.remove('open'); });
+    menu.appendChild(b);
+  });
+  btn.addEventListener('click', function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+  document.addEventListener('click', function(){ menu.classList.remove('open'); });
+  var saved;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch(e){}
+  applyLang(saved || 'en');
+})();
+</script>
+</body>
+</html>
