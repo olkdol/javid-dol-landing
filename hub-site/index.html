@@ -274,21 +274,19 @@
       <div class="status live" data-i18n="status_live">Go →</div>
     </a>
 
-    <div class="card disabled" data-exchange="Bybit" role="button" tabindex="0" aria-label="Bybit, coming soon">
-      <span class="badge-soon" data-i18n="status_soon">Coming soon</span>
+    <a class="card" href="https://bb.javidtrading.com" aria-label="Go to Bybit">
       <div class="logo-plate"><img src="images/bybit.png" alt="Bybit"></div>
       <div class="name">Bybit</div>
       <div class="pairs" data-i18n="pairs_bybit">540+ Futures</div>
-      <div class="status soon" data-i18n="status_soon">Coming soon</div>
-    </div>
+      <div class="status live" data-i18n="status_live">Go →</div>
+    </a>
 
-    <div class="card disabled" data-exchange="OKX" role="button" tabindex="0" aria-label="OKX, coming soon">
-      <span class="badge-soon" data-i18n="status_soon">Coming soon</span>
+    <a class="card" href="https://okx.javidtrading.com" aria-label="Go to OKX">
       <div class="logo-plate"><img src="images/okx.png" alt="OKX"></div>
       <div class="name">OKX</div>
       <div class="pairs" data-i18n="pairs_okx">270+ Futures</div>
-      <div class="status soon" data-i18n="status_soon">Coming soon</div>
-    </div>
+      <div class="status live" data-i18n="status_live">Go →</div>
+    </a>
   </div>
   <p class="pairs-note" data-i18n="pairs_note">* Futures counts reflect what JaviD Future Bot currently integrates with and may change as listings change (as of August 2026).</p>
 
@@ -302,6 +300,14 @@
       <a href="https://bg.javidtrading.com/#download">
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2a1 1 0 011 1v7.6l2.3-2.3a1 1 0 111.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L9 10.6V3a1 1 0 011-1z"/><path d="M3 15a1 1 0 011 1v1h12v-1a1 1 0 112 0v1a2 2 0 01-2 2H4a2 2 0 01-2-2v-1a1 1 0 011-1z"/></svg>
         <span data-i18n="quickdl_bg">Download · Bitget</span>
+      </a>
+      <a href="https://bb.javidtrading.com/#download">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2a1 1 0 011 1v7.6l2.3-2.3a1 1 0 111.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L9 10.6V3a1 1 0 011-1z"/><path d="M3 15a1 1 0 011 1v1h12v-1a1 1 0 112 0v1a2 2 0 01-2 2H4a2 2 0 01-2-2v-1a1 1 0 011-1z"/></svg>
+        <span data-i18n="quickdl_bybit">Download · Bybit</span>
+      </a>
+      <a href="https://okx.javidtrading.com/#download">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2a1 1 0 011 1v7.6l2.3-2.3a1 1 0 111.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L9 10.6V3a1 1 0 011-1z"/><path d="M3 15a1 1 0 011 1v1h12v-1a1 1 0 112 0v1a2 2 0 01-2 2H4a2 2 0 01-2-2v-1a1 1 0 011-1z"/></svg>
+        <span data-i18n="quickdl_okx">Download · OKX</span>
       </a>
     </div>
   </div>
@@ -384,6 +390,8 @@
   <div class="links">
     <a href="https://bn.javidtrading.com" data-i18n="footer_link_bn">Binance page</a>
     <a href="https://bg.javidtrading.com" data-i18n="footer_link_bg">Bitget page</a>
+    <a href="https://bb.javidtrading.com" data-i18n="footer_link_bb">Bybit page</a>
+    <a href="https://okx.javidtrading.com" data-i18n="footer_link_okx">OKX page</a>
     <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener" data-i18n="footer_telegram">Telegram community</a>
     <a href="mailto:javidfuturebot@javid-dol.uk" data-i18n="footer_contact">Contact</a>
   </div>
@@ -401,7 +409,7 @@
   try {
     if (!location.search) return;
     var params = new URLSearchParams(location.search);
-    document.querySelectorAll('a[href^="https://bn.javidtrading.com"], a[href^="https://bg.javidtrading.com"]').forEach(function (a) {
+    document.querySelectorAll('a[href^="https://bn.javidtrading.com"], a[href^="https://bg.javidtrading.com"], a[href^="https://bb.javidtrading.com"], a[href^="https://okx.javidtrading.com"]').forEach(function (a) {
       try {
         var u = new URL(a.href);
         params.forEach(function (v, k) { u.searchParams.set(k, v); });
@@ -431,9 +439,13 @@ var I18N = {
     trust3: "No custody of funds",
     footer_link_bn: "Binance page",
     footer_link_bg: "Bitget page",
+    footer_link_bb: "Bybit page",
+    footer_link_okx: "OKX page",
     quickdl_label: "Already know your exchange? Go straight to the download.",
     quickdl_bn: "Download · Binance",
     quickdl_bg: "Download · Bitget",
+    quickdl_bybit: "Download · Bybit",
+    quickdl_okx: "Download · OKX",
     footer_telegram: "Telegram community",
     footer_contact: "Contact",
     disclaimer: "Cryptocurrency futures trading carries a high level of risk and may not be suitable for all investors. JaviD Future Bot is a standalone execution tool and does not guarantee profits. It does not provide investment advice, does not custody funds, and does not execute orders on any server on your behalf. All trading decisions and their outcomes are the sole responsibility of the user.",
@@ -456,9 +468,13 @@ var I18N = {
     trust3: "자금 위탁 없음",
     footer_link_bn: "Binance 페이지",
     footer_link_bg: "Bitget 페이지",
+    footer_link_bb: "Bybit 페이지",
+    footer_link_okx: "OKX 페이지",
     quickdl_label: "사용하시는 거래소를 아신다면 바로 다운로드로 가세요.",
     quickdl_bn: "다운로드 · 바이낸스",
     quickdl_bg: "다운로드 · 비트겟",
+    quickdl_bybit: "다운로드 · 바이비트",
+    quickdl_okx: "다운로드 · OKX",
     footer_telegram: "텔레그램 커뮤니티",
     footer_contact: "문의하기",
     disclaimer: "암호화폐 선물 거래는 높은 위험을 수반하며 모든 투자자에게 적합하지 않을 수 있습니다. JaviD Future Bot은 독립 실행형 매매 실행 도구이며 수익을 보장하지 않습니다. 투자자문을 제공하지 않고, 자금을 수탁하지 않으며, 어떠한 서버에서도 대신 주문을 실행하지 않습니다. 모든 거래 판단과 그 결과에 대한 책임은 사용자 본인에게 있습니다.",
@@ -481,9 +497,13 @@ var I18N = {
     trust3: "資金の預託なし",
     footer_link_bn: "Binanceページ",
     footer_link_bg: "Bitgetページ",
+    footer_link_bb: "Bybitページ",
+    footer_link_okx: "OKXページ",
     quickdl_label: "使っている取引所が決まっていれば、そのままダウンロードへ。",
     quickdl_bn: "ダウンロード · Binance",
     quickdl_bg: "ダウンロード · Bitget",
+    quickdl_bybit: "ダウンロード · Bybit",
+    quickdl_okx: "ダウンロード · OKX",
     footer_telegram: "Telegram コミュニティ",
     footer_contact: "お問い合わせ",
     disclaimer: "暗号資産の先物取引は高いリスクを伴い、すべての投資家に適しているとは限りません。JaviD Future Botは独立した実行ツールであり、利益を保証するものではありません。投資助言の提供、資金の預託、いかなるサーバー上での代理注文執行も行いません。すべての取引判断とその結果に対する責任はユーザー本人に帰属します。",
@@ -506,9 +526,13 @@ var I18N = {
     trust3: "不托管资金",
     footer_link_bn: "币安页面",
     footer_link_bg: "Bitget页面",
+    footer_link_bb: "Bybit页面",
+    footer_link_okx: "OKX页面",
     quickdl_label: "已经知道要用哪家交易所？直接前往下载。",
     quickdl_bn: "下载 · 币安",
     quickdl_bg: "下载 · Bitget",
+    quickdl_bybit: "下载 · Bybit",
+    quickdl_okx: "下载 · OKX",
     footer_telegram: "Telegram 社区",
     footer_contact: "联系我们",
     disclaimer: "加密货币期货交易具有高风险，可能并不适合所有投资者。JaviD Future Bot 是一款独立的执行工具，不保证盈利。它不提供投资建议、不托管资金、也不在任何服务器上代替用户执行订单。所有交易决策及其后果由用户自行承担。",
@@ -531,9 +555,13 @@ var I18N = {
     trust3: "Sin custodia de fondos",
     footer_link_bn: "Página de Binance",
     footer_link_bg: "Página de Bitget",
+    footer_link_bb: "Página de Bybit",
+    footer_link_okx: "Página de OKX",
     quickdl_label: "¿Ya sabes qué exchange usas? Ve directo a la descarga.",
     quickdl_bn: "Descargar · Binance",
     quickdl_bg: "Descargar · Bitget",
+    quickdl_bybit: "Descargar · Bybit",
+    quickdl_okx: "Descargar · OKX",
     footer_telegram: "Comunidad de Telegram",
     footer_contact: "Contacto",
     disclaimer: "El trading de futuros de criptomonedas conlleva un alto nivel de riesgo y puede no ser adecuado para todos los inversores. JaviD Future Bot es una herramienta de ejecución independiente y no garantiza ganancias. No ofrece asesoramiento de inversión, no custodia fondos y no ejecuta órdenes en ningún servidor en su nombre. Todas las decisiones de trading y sus resultados son responsabilidad exclusiva del usuario.",
@@ -556,9 +584,13 @@ var I18N = {
     trust3: "Aucune garde de fonds",
     footer_link_bn: "Page Binance",
     footer_link_bg: "Page Bitget",
+    footer_link_bb: "Page Bybit",
+    footer_link_okx: "Page OKX",
     quickdl_label: "Vous savez déjà quelle plateforme ? Allez directement au téléchargement.",
     quickdl_bn: "Télécharger · Binance",
     quickdl_bg: "Télécharger · Bitget",
+    quickdl_bybit: "Télécharger · Bybit",
+    quickdl_okx: "Télécharger · OKX",
     footer_telegram: "Communauté Telegram",
     footer_contact: "Contact",
     disclaimer: "Le trading de contrats à terme sur cryptomonnaies comporte un niveau de risque élevé et peut ne pas convenir à tous les investisseurs. JaviD Future Bot est un outil d'exécution autonome et ne garantit aucun profit. Il ne fournit pas de conseils en investissement, ne conserve pas de fonds et n'exécute aucun ordre sur un serveur en votre nom. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l'utilisateur.",
@@ -581,9 +613,13 @@ vi: {
   trust3: "Không giữ hộ tài sản",
   footer_link_bn: "Trang Binance",
   footer_link_bg: "Trang Bitget",
+  footer_link_bb: "Trang Bybit",
+  footer_link_okx: "Trang OKX",
   quickdl_label: "Đã biết mình dùng sàn nào? Tải xuống ngay.",
   quickdl_bn: "Tải xuống · Binance",
   quickdl_bg: "Tải xuống · Bitget",
+  quickdl_bybit: "Tải xuống · Bybit",
+  quickdl_okx: "Tải xuống · OKX",
   footer_telegram: "Cộng đồng Telegram",
   footer_contact: "Liên hệ",
   disclaimer: "Giao dịch hợp đồng tương lai tiền mã hóa tiềm ẩn rủi ro cao và có thể không phù hợp với tất cả nhà đầu tư. JaviD Future Bot là công cụ thực thi giao dịch độc lập và không đảm bảo lợi nhuận. Công cụ này không cung cấp tư vấn đầu tư, không giữ hộ tài sản và không thực thi lệnh trên bất kỳ máy chủ nào thay cho người dùng. Mọi quyết định giao dịch và kết quả của chúng là trách nhiệm hoàn toàn của người dùng.",
@@ -606,9 +642,13 @@ tr: {
   trust3: "Varlık saklama yok",
   footer_link_bn: "Binance sayfası",
   footer_link_bg: "Bitget sayfası",
+  footer_link_bb: "Bybit sayfası",
+  footer_link_okx: "OKX sayfası",
   quickdl_label: "Hangi borsayı kullandığınızı zaten biliyor musunuz? Doğrudan indirmeye gidin.",
   quickdl_bn: "İndir · Binance",
   quickdl_bg: "İndir · Bitget",
+  quickdl_bybit: "İndir · Bybit",
+  quickdl_okx: "İndir · OKX",
   footer_telegram: "Telegram topluluğu",
   footer_contact: "İletişim",
   disclaimer: "Kripto para vadeli işlem ticareti yüksek düzeyde risk taşır ve her yatırımcı için uygun olmayabilir. JaviD Future Bot bağımsız bir işlem yürütme aracıdır ve kâr garantisi vermez. Yatırım tavsiyesi sunmaz, varlıkları saklamaz ve hiçbir sunucuda kullanıcı adına emir yürütmez. Tüm alım satım kararları ve sonuçları tamamen kullanıcının sorumluluğundadır.",
@@ -631,9 +671,13 @@ pt: {
   trust3: "Sem custódia de fundos",
   footer_link_bn: "Página da Binance",
   footer_link_bg: "Página da Bitget",
+  footer_link_bb: "Página da Bybit",
+  footer_link_okx: "Página da OKX",
   quickdl_label: "Já sabe qual exchange você usa? Vá direto para o download.",
   quickdl_bn: "Baixar · Binance",
   quickdl_bg: "Baixar · Bitget",
+  quickdl_bybit: "Baixar · Bybit",
+  quickdl_okx: "Baixar · OKX",
   footer_telegram: "Comunidade no Telegram",
   footer_contact: "Contato",
   disclaimer: "A negociação de futuros de criptomoedas envolve alto nível de risco e pode não ser adequada para todos os investidores. O JaviD Future Bot é uma ferramenta de execução independente e não garante lucros. Ele não oferece consultoria de investimento, não custodia fundos e não executa ordens em nenhum servidor em nome do usuário. Todas as decisões de negociação e seus resultados são de responsabilidade exclusiva do usuário.",
