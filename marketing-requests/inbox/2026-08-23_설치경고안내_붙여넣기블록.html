@@ -1,0 +1,165 @@
+<!--
+  랜딩 다운로드 섹션 바로 아래에 넣을 "설치 경고" 안내 블록 (2026-08-23 작성)
+
+  왜 필요한가 (사용자 지적):
+    개인이 배포한 실행파일은 .exe 든 .app 든 **거의 예외 없이** OS 가 실행을 막는다.
+    지금은 그 경고를 만난 사람이 혼자 판단하다가 그만둔다. 다운로드까지 온 가장 비싼
+    트래픽이 여기서 죽는다. 미리 알려주면 경고는 이탈 트리거가 아니라 예상된 절차가 된다.
+
+  ⚠️ 설계 원칙 — "그냥 눌러서 넘기세요"라고만 쓰면 안 된다.
+     그건 사용자에게 나쁜 습관을 가르치는 것이고, 우리 브랜드("믿지 말고 확인하세요")와도
+     정면으로 어긋난다. 그래서 순서를 **① 왜 뜨는가 → ② 믿기 전에 확인하는 법 → ③ 진행하는 법**
+     으로 잡았다. 확인 방법(VirusTotal / 리소스 모니터)은 우리 프로그램만이 아니라
+     앞으로 받을 어떤 파일에도 쓰는 기술이라, 이 블록 자체가 시청자에게 남는 값이 된다.
+
+  ⚠️ macOS 절차 주의 (2026-08-23 확인):
+     macOS Sequoia(15.0+)부터 **Control-클릭 → 열기 우회가 제거**됐다.
+     지금은 "한 번 실행 시도 → 실패 → 시스템 설정 → 개인정보 보호 및 보안 → '무시하고 열기'" 다.
+     (15.1 에서는 이마저 잠시 깨졌다가 15.2 에서 복구됐다.)
+     macOS 14 이하에서는 우클릭 → 열기가 여전히 동작하므로 둘 다 안내한다.
+
+  적용 위치: 다운로드 버튼 바로 아래 + 다운로드 모달(jfb-dlgate) 안.
+  스타일은 인라인이라 어느 페이지에 붙여도 깨지지 않는다.
+-->
+<section id="jfb-install-warning" style="max-width:860px;margin:32px auto;padding:24px 26px;
+         border:1px solid rgba(45,212,191,.35);border-radius:14px;background:rgba(13,20,28,.55);
+         color:#dbe6f0;font-size:15.5px;line-height:1.68;">
+
+  <h3 style="margin:0 0 6px;font-size:21px;font-weight:800;color:#fff;">
+    Your computer will warn you about this file. Here's why, and what to do.
+  </h3>
+  <p style="margin:0 0 18px;color:#9fb3c8;font-size:14.5px;">
+    This is not specific to JaviD Future Bot — it happens to almost every program built by an
+    individual rather than a company.
+  </p>
+
+  <!-- ① 왜 뜨는가 -->
+  <p style="margin:0 0 14px;">
+    <strong style="color:#2DD4BF;">Why it happens.</strong>
+    Windows and macOS only skip this warning for software signed with a paid code-signing
+    certificate, renewed every year and issued to a registered company. I'm one person and I
+    haven't bought one. So your computer tells you the truth: <em>it cannot verify who published
+    this</em>. That message is accurate. It is not a virus scan result, and it is not a judgement
+    about what the program does.
+  </p>
+
+  <!-- ② 믿기 전에 확인하는 법 -->
+  <p style="margin:0 0 8px;">
+    <strong style="color:#2DD4BF;">Don't take my word for it — check it yourself.</strong>
+    Both of these work on any file you ever download, not just mine:
+  </p>
+  <ul style="margin:0 0 18px;padding-left:20px;">
+    <li style="margin-bottom:6px;"><strong>Before running:</strong> upload the file to
+      <a href="https://www.virustotal.com/" target="_blank" rel="noopener"
+         style="color:#2DD4BF;">VirusTotal</a> (free) and read the scan from ~70 engines.</li>
+    <li><strong>After running:</strong> open <strong>Resource Monitor</strong> (Windows) or run
+      <code style="background:rgba(255,255,255,.08);padding:1px 5px;border-radius:4px;">lsof -i -P</code>
+      (macOS) and read the list of hosts the program connects to. You should find two —
+      your exchange, and a CDN. Nothing of mine.</li>
+  </ul>
+
+  <!-- ③ 진행하는 법 -->
+  <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+    <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.04);">
+      <div style="font-weight:800;color:#fff;margin-bottom:6px;">Windows</div>
+      <div style="color:#9fb3c8;font-size:14px;margin-bottom:8px;">
+        “Windows protected your PC”
+      </div>
+      Click <strong>More info</strong>, then <strong>Run anyway</strong>.
+    </div>
+    <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.04);">
+      <div style="font-weight:800;color:#fff;margin-bottom:6px;">macOS 15 (Sequoia) and newer</div>
+      <div style="color:#9fb3c8;font-size:14px;margin-bottom:8px;">
+        “Apple could not verify … is free of malware”
+      </div>
+      Try to open it once and let it fail. Then go to
+      <strong>System Settings → Privacy &amp; Security</strong>, scroll down, and click
+      <strong>Open Anyway</strong>.
+      <div style="color:#9fb3c8;font-size:13.5px;margin-top:8px;">
+        Control-clicking the app no longer works on Sequoia — Apple removed that shortcut.
+      </div>
+    </div>
+    <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.04);">
+      <div style="font-weight:800;color:#fff;margin-bottom:6px;">macOS 14 and earlier</div>
+      <div style="color:#9fb3c8;font-size:14px;margin-bottom:8px;">
+        “cannot be opened because it is from an unidentified developer”
+      </div>
+      <strong>Right-click</strong> the app, choose <strong>Open</strong>, then
+      <strong>Open</strong> again in the dialog.
+    </div>
+  </div>
+
+  <p style="margin:18px 0 0;color:#9fb3c8;font-size:14px;">
+    If none of that is good enough for you, that's a reasonable place to stop — and you can still
+    watch the account dashboard without installing anything.
+  </p>
+</section>
+
+
+<!-- ================= 한국어판 (ko.html 용) ================= -->
+<section id="jfb-install-warning" style="max-width:860px;margin:32px auto;padding:24px 26px;
+         border:1px solid rgba(45,212,191,.35);border-radius:14px;background:rgba(13,20,28,.55);
+         color:#dbe6f0;font-size:15.5px;line-height:1.72;">
+
+  <h3 style="margin:0 0 6px;font-size:21px;font-weight:800;color:#fff;">
+    실행하면 컴퓨터가 경고를 띄웁니다. 왜 그런지, 어떻게 하면 되는지 알려드립니다.
+  </h3>
+  <p style="margin:0 0 18px;color:#9fb3c8;font-size:14.5px;">
+    JaviD Future Bot 만의 문제가 아닙니다 — 회사가 아니라 개인이 만든 프로그램은 거의 다 이 경고가 뜹니다.
+  </p>
+
+  <p style="margin:0 0 14px;">
+    <strong style="color:#2DD4BF;">왜 뜨나요.</strong>
+    윈도우와 macOS 는 <strong>유료 코드 서명 인증서</strong>로 서명된 프로그램에만 이 경고를
+    생략합니다. 매년 갱신해야 하고 사업자 등록이 있어야 발급됩니다. 저는 개인이고 그걸 사지
+    않았습니다. 그래서 컴퓨터는 사실을 말하고 있는 겁니다 —
+    <em>“누가 배포했는지 확인할 수 없다.”</em>
+    이건 바이러스 검사 결과가 아니고, 프로그램이 무슨 일을 하는지에 대한 판단도 아닙니다.
+  </p>
+
+  <p style="margin:0 0 8px;">
+    <strong style="color:#2DD4BF;">제 말을 믿지 마시고 직접 확인하세요.</strong>
+    아래 두 가지는 제 프로그램만이 아니라 앞으로 받으실 어떤 파일에도 그대로 쓰는 방법입니다:
+  </p>
+  <ul style="margin:0 0 18px;padding-left:20px;">
+    <li style="margin-bottom:6px;"><strong>실행 전:</strong> 파일을
+      <a href="https://www.virustotal.com/" target="_blank" rel="noopener"
+         style="color:#2DD4BF;">바이러스토탈</a>(무료)에 올려 약 70개 백신 엔진의 검사 결과를 보세요.</li>
+    <li><strong>실행 후:</strong> <strong>리소스 모니터</strong>(윈도우) 또는
+      <code style="background:rgba(255,255,255,.08);padding:1px 5px;border-radius:4px;">lsof -i -P</code>
+      (맥)로 이 프로그램이 접속하는 호스트를 읽어보세요. 두 곳이 나옵니다 —
+      거래소, 그리고 CDN. 제 서버는 없습니다.</li>
+  </ul>
+
+  <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+    <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.04);">
+      <div style="font-weight:800;color:#fff;margin-bottom:6px;">윈도우</div>
+      <div style="color:#9fb3c8;font-size:14px;margin-bottom:8px;">“Windows의 PC 보호” 창</div>
+      <strong>추가 정보</strong> → <strong>실행</strong> 을 누르시면 됩니다.
+    </div>
+    <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.04);">
+      <div style="font-weight:800;color:#fff;margin-bottom:6px;">macOS 15(세쿼이아) 이상</div>
+      <div style="color:#9fb3c8;font-size:14px;margin-bottom:8px;">
+        “악성 소프트웨어가 없는지 확인할 수 없습니다”
+      </div>
+      일단 한 번 열어보고 실패하게 두세요. 그다음
+      <strong>시스템 설정 → 개인정보 보호 및 보안</strong> 으로 가서 아래로 내리면
+      <strong>“무시하고 열기”</strong> 가 있습니다.
+      <div style="color:#9fb3c8;font-size:13.5px;margin-top:8px;">
+        세쿼이아부터는 우클릭 → 열기가 막혔습니다. 애플이 그 단축 경로를 없앴습니다.
+      </div>
+    </div>
+    <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.04);">
+      <div style="font-weight:800;color:#fff;margin-bottom:6px;">macOS 14 이하</div>
+      <div style="color:#9fb3c8;font-size:14px;margin-bottom:8px;">
+        “확인되지 않은 개발자” 안내
+      </div>
+      앱을 <strong>우클릭</strong> → <strong>열기</strong> → 다시 <strong>열기</strong>.
+    </div>
+  </div>
+
+  <p style="margin:18px 0 0;color:#9fb3c8;font-size:14px;">
+    여기까지 읽고도 미덥지 않으시면 그만두시는 게 맞습니다 — 아무것도 설치하지 않고
+    계좌 대시보드만 지켜보셔도 됩니다.
+  </p>
+</section>

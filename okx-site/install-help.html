@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Why your computer warns about this app — JaviD Future Bot</title>
+<meta name="description" content="Windows SmartScreen and macOS Gatekeeper block apps from individual developers. Here is why it happens, how to verify the file yourself, and how to run it.">
+<meta name="robots" content="index,follow">
+<style>
+/*  랜딩 설치 도움말 페이지 (2026-08-23)
+    ⚠️ 스크린샷을 쓰지 않고 CSS 로 재현했다. 이유:
+       ① 사용자 화면은 윈도우 버전·언어마다 달라서 특정 스크린샷 하나는 오히려 혼란을 준다
+       ② 여기서 가장 중요한 정보는 **"추가 정보"를 눌러야 실행 버튼이 나타난다**는 것인데,
+          정지된 스크린샷으로는 그 순서를 보여줄 수 없다. 재현본은 클릭 전/후를 나란히 놓을 수 있다
+       ③ 언어 전환 시 다이얼로그 문구도 같이 번역된다                                        */
+:root{--bg:#0b1118;--card:#111a24;--fg:#e6eef7;--mut:#9fb3c8;--acc:#2dd4bf;--line:rgba(255,255,255,.09)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans KR",sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:40px 22px 72px}
+h1{font-size:clamp(24px,4vw,34px);line-height:1.28;margin:0 0 10px}
+.sub{color:var(--mut);margin:0 0 26px}
+h2{font-size:20px;margin:34px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:16px 0}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+code{background:rgba(255,255,255,.08);padding:1px 6px;border-radius:5px;font-size:.93em}
+a{color:var(--acc)}
+.langs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.langs button{background:transparent;border:1px solid var(--line);color:var(--mut);
+  border-radius:999px;padding:5px 13px;font:inherit;font-size:14px;cursor:pointer}
+.langs button[aria-current="true"]{border-color:var(--acc);color:var(--acc)}
+/* --- SmartScreen 다이얼로그 재현 --- */
+.dlg{background:#0a5aa8;color:#fff;border-radius:8px;padding:20px 22px 16px;font-size:14.5px;line-height:1.6;position:relative}
+.dlg h3{margin:0 0 14px;font-size:21px;font-weight:400}
+.dlg .link{text-decoration:underline;cursor:default}
+.dlg .btns{display:flex;gap:9px;justify-content:flex-end;margin-top:26px}
+.dlg .btn{background:#e9e9e9;color:#111;border-radius:3px;padding:6px 18px;font-size:13.5px}
+.dlg .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.55);color:#fff}
+.mark{outline:2px solid #ffd166;outline-offset:3px;border-radius:3px}
+.step{color:var(--mut);font-size:13.5px;margin-top:9px}
+/* --- macOS 다이얼로그 재현 --- */
+.mac{background:#ecebeb;color:#1a1a1a;border-radius:12px;padding:20px 22px 16px;text-align:center;font-size:14px}
+.mac .t{font-weight:700;margin-bottom:6px}
+.mac .btns{display:flex;gap:8px;justify-content:center;margin-top:18px}
+.mac .btn{background:#fff;border:1px solid #c9c9c9;border-radius:6px;padding:5px 16px;font-size:13px}
+.mac .btn.pri{background:#2f6fed;color:#fff;border-color:#2f6fed}
+.note{border-left:3px solid var(--acc);padding-left:14px;color:var(--mut);margin:18px 0}
+footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:var(--mut);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="langs" id="langs" aria-label="Language"></nav>
+
+  <h1 data-t="h1"></h1>
+  <p class="sub" data-t="sub"></p>
+
+  <!-- 개인 개발자 고지 — 사용자 지시(2026-08-23)로 전 언어 랜딩에 명시 -->
+  <div class="card">
+    <strong data-t="whoT"></strong>
+    <p style="margin:8px 0 0" data-t="whoB"></p>
+  </div>
+
+  <h2 data-t="whyT"></h2>
+  <p data-t="whyB"></p>
+
+  <h2 data-t="winT"></h2>
+
+  <div class="grid">
+    <div class="card">
+      <div class="step" data-t="winStep1"></div>
+      <div class="dlg" style="margin-top:10px">
+        <h3 data-t="ssTitle"></h3>
+        <div data-t="ssBody"></div>
+        <div class="link mark" style="display:inline-block;margin-top:10px" data-t="ssMore"></div>
+        <div class="btns"><span class="btn" data-t="ssDont"></span></div>
+      </div>
+      <div class="step" data-t="winHint"></div>
+    </div>
+    <div class="card">
+      <div class="step" data-t="winStep2"></div>
+      <div class="dlg" style="margin-top:10px">
+        <h3 data-t="ssTitle"></h3>
+        <div data-t="ssBody"></div>
+        <div class="step" style="color:#cfe6ff;margin-top:10px" data-t="ssPub"></div>
+        <div class="btns">
+          <span class="btn mark" data-t="ssRun"></span>
+          <span class="btn ghost" data-t="ssDont"></span>
+        </div>
+      </div>
+      <div class="step" data-t="winDone"></div>
+    </div>
+  </div>
+
+  <h2 data-t="macT"></h2>
+  <div class="grid">
+    <div class="card">
+      <div class="step"><strong>macOS 15 (Sequoia)+</strong></div>
+      <div class="mac" style="margin-top:10px">
+        <div class="t" data-t="gk15T"></div>
+        <div data-t="gk15B"></div>
+        <div class="btns"><span class="btn" data-t="gkTrash"></span><span class="btn pri" data-t="gkOk"></span></div>
+      </div>
+      <p class="step" data-t="mac15"></p>
+    </div>
+    <div class="card">
+      <div class="step"><strong>macOS 14</strong></div>
+      <div class="mac" style="margin-top:10px">
+        <div class="t" data-t="gk14T"></div>
+        <div data-t="gk14B"></div>
+        <div class="btns"><span class="btn" data-t="gkCancel"></span><span class="btn pri" data-t="gkOpen"></span></div>
+      </div>
+      <p class="step" data-t="mac14"></p>
+    </div>
+  </div>
+
+  <h2 data-t="verT"></h2>
+  <p data-t="verB"></p>
+  <ul>
+    <li data-t="ver1"></li>
+    <li data-t="ver2"></li>
+  </ul>
+
+  <p class="note" data-t="stop"></p>
+
+  <footer><span data-t="foot"></span> · <a href="/" data-t="back"></a></footer>
+</div>
+
+<script>
+/* 문구 테이블. 랜딩 언어 페이지(en/ko/ja/es/fr/vi/tr/pt)와 같은 코드를 쓴다.
+   ?lang=ko 또는 브라우저 언어로 자동 선택되고, 상단 버튼으로 바꿀 수 있다. */
+const T = {
+en:{_n:"English",
+h1:"Your computer will block this app the first time. Here is why, and how to run it.",
+sub:"This is not specific to JaviD Future Bot. It happens to almost every program made by an individual rather than a company.",
+whoT:"Who made this", whoB:"JaviD Future Bot is written and distributed by one person — an individual developer, not a company. That is exactly why your operating system cannot verify the publisher: the check it runs looks for a paid certificate issued to a registered business.",
+whyT:"Why the warning appears",
+whyB:"Windows and macOS skip this warning only for software signed with a code-signing certificate — a paid item, renewed yearly, issued to a registered company. I have not bought one. So your computer is telling you the truth: it cannot verify who published this file. That message is not a virus scan result, and it is not a judgement about what the program does.",
+winT:"Windows — the Run button is hidden until you click More info",
+winStep1:"1. What you see first", winStep2:"2. After clicking More info",
+ssTitle:"Windows protected your PC",
+ssBody:"Microsoft Defender SmartScreen prevented an unrecognised app from starting. Running this app might put your PC at risk.",
+ssMore:"More info", ssDont:"Don't run", ssRun:"Run anyway",
+ssPub:"App: JaviD_Future_Bot.exe   Publisher: Unknown publisher",
+winHint:"There is only a “Don't run” button at this point. The Run option does not exist yet — this is where most people give up.",
+winDone:"Clicking “More info” reveals “Run anyway”. Click it and the app starts normally. Wording varies between Windows versions.",
+macT:"macOS — Gatekeeper does the same thing",
+gk15T:"“JaviD Future Bot” Not Opened", gk15B:"Apple could not verify “JaviD Future Bot” is free of malware that may harm your Mac or compromise your privacy.",
+gkTrash:"Move to Trash", gkOk:"Done",
+gk14T:"“JaviD Future Bot” cannot be opened", gk14B:"because it is from an unidentified developer.",
+gkCancel:"Cancel", gkOpen:"Open",
+mac15:"Try to open it once and let it fail. Then open System Settings → Privacy & Security, scroll down, and click “Open Anyway”. Control-clicking the app no longer works on Sequoia — Apple removed that shortcut.",
+mac14:"Right-click (or Control-click) the app, choose Open, then Open again in the dialog.",
+verT:"Don't take my word for it — check the file yourself",
+verB:"Both of these work on any file you ever download, not just mine:",
+ver1:"Before running: upload the file to VirusTotal (free) and read the scan from around 70 antivirus engines.",
+ver2:"After running: open Resource Monitor on Windows, or run lsof -i -P on macOS, and read the list of hosts the program connects to. You should find two — your exchange, and a CDN.",
+stop:"If none of that is good enough for you, stopping here is a reasonable decision. You can watch the published account dashboard without installing anything at all.",
+foot:"JaviD Future Bot — free, runs on your own PC.", back:"Back to the main page"},
+
+ko:{_n:"한국어",
+h1:"처음 실행하면 컴퓨터가 앱을 차단합니다. 이유와 실행 방법을 알려드립니다.",
+sub:"JaviD Future Bot 만의 문제가 아닙니다. 회사가 아니라 개인이 만든 프로그램은 거의 다 이렇습니다.",
+whoT:"누가 만들었나", whoB:"JaviD Future Bot 은 회사가 아니라 **개인 개발자 한 사람**이 직접 만들고 배포합니다. 운영체제가 게시자를 확인할 수 없다고 하는 이유가 정확히 이것입니다 — 그 검사는 사업자에게 발급되는 유료 인증서를 찾기 때문입니다.",
+whyT:"왜 이 경고가 뜨나요",
+whyB:"윈도우와 macOS 는 코드 서명 인증서로 서명된 프로그램에만 이 경고를 생략합니다. 매년 갱신하는 유료 항목이고 사업자 등록이 있어야 발급됩니다. 저는 그걸 사지 않았습니다. 그래서 컴퓨터는 사실을 말하고 있는 겁니다 — 누가 배포했는지 확인할 수 없다는 것. 이건 바이러스 검사 결과가 아니고, 프로그램이 무슨 일을 하는지에 대한 판단도 아닙니다.",
+winT:"윈도우 — “추가 정보”를 눌러야 실행 버튼이 나타납니다",
+winStep1:"1. 처음 보이는 화면", winStep2:"2. “추가 정보”를 누른 뒤",
+ssTitle:"Windows의 PC 보호",
+ssBody:"Microsoft Defender SmartScreen에서 인식할 수 없는 앱의 시작을 차단했습니다. 이 앱을 실행하면 PC가 위험에 노출될 수 있습니다.",
+ssMore:"추가 정보", ssDont:"실행 안 함", ssRun:"실행",
+ssPub:"앱: JaviD_Future_Bot.exe   게시자: 알 수 없는 게시자",
+winHint:"이 화면에는 “실행 안 함” 버튼밖에 없습니다. 실행 버튼은 아직 존재하지 않습니다 — 대부분이 여기서 포기합니다.",
+winDone:"“추가 정보”를 누르면 “실행”이 나타납니다. 그걸 누르면 정상적으로 실행됩니다. 문구는 윈도우 버전에 따라 조금씩 다릅니다.",
+macT:"macOS — 게이트키퍼도 같은 일을 합니다",
+gk15T:"“JaviD Future Bot”이(가) 열리지 않았습니다", gk15B:"Mac에 손상을 주거나 개인정보를 침해할 수 있는 악성 소프트웨어가 없는지 Apple이 확인할 수 없습니다.",
+gkTrash:"휴지통으로 이동", gkOk:"완료",
+gk14T:"“JaviD Future Bot”을(를) 열 수 없습니다", gk14B:"확인되지 않은 개발자가 배포했기 때문입니다.",
+gkCancel:"취소", gkOpen:"열기",
+mac15:"일단 한 번 열어보고 실패하게 두세요. 그다음 시스템 설정 → 개인정보 보호 및 보안 으로 가서 아래로 내리면 “무시하고 열기”가 있습니다. 세쿼이아부터는 우클릭 → 열기가 막혔습니다. 애플이 그 경로를 없앴습니다.",
+mac14:"앱을 우클릭(또는 Control-클릭) → 열기 → 다시 열기 를 누르시면 됩니다.",
+verT:"제 말을 믿지 마시고 직접 확인하세요",
+verB:"아래 두 가지는 제 프로그램만이 아니라 앞으로 받으실 어떤 파일에도 그대로 씁니다:",
+ver1:"실행 전: 파일을 바이러스토탈(무료)에 올려 약 70개 백신 엔진의 검사 결과를 보세요.",
+ver2:"실행 후: 윈도우는 리소스 모니터, 맥은 lsof -i -P 로 이 프로그램이 접속하는 호스트를 읽어보세요. 두 곳이 나옵니다 — 거래소, 그리고 CDN.",
+stop:"여기까지 읽고도 미덥지 않으시면 그만두시는 게 맞습니다. 아무것도 설치하지 않고 공개된 계좌 대시보드만 지켜보셔도 됩니다.",
+foot:"JaviD Future Bot — 무료, 본인 PC에서 실행됩니다.", back:"메인으로 돌아가기"},
+
+ja:{_n:"日本語",
+h1:"初回起動時にパソコンがこのアプリをブロックします。理由と実行方法を説明します。",
+sub:"JaviD Future Bot だけの問題ではありません。会社ではなく個人が作ったプログラムはほとんどこうなります。",
+whoT:"誰が作ったのか", whoB:"JaviD Future Bot は会社ではなく、個人開発者一人が作って配布しています。OSが発行元を確認できないと言う理由がまさにこれです — その検査は、法人に発行される有料の証明書を探しているからです。",
+whyT:"なぜ警告が出るのか",
+whyB:"WindowsとmacOSは、コード署名証明書で署名されたソフトだけこの警告を省きます。毎年更新の有料項目で、法人登録が必要です。私はそれを買っていません。ですからパソコンは事実を言っています — 誰が配布したか確認できない、と。これはウイルス検査の結果ではなく、プログラムの動作に対する判断でもありません。",
+winT:"Windows —「詳細情報」を押すまで実行ボタンは現れません",
+winStep1:"1. 最初に表示される画面", winStep2:"2.「詳細情報」を押した後",
+ssTitle:"Windows によって PC が保護されました",
+ssBody:"Microsoft Defender SmartScreen は認識されないアプリの起動を停止しました。このアプリを実行すると PC に問題が起きる可能性があります。",
+ssMore:"詳細情報", ssDont:"実行しない", ssRun:"実行",
+ssPub:"アプリ: JaviD_Future_Bot.exe   発行元: 不明な発行元",
+winHint:"この画面には「実行しない」しかありません。実行ボタンはまだ存在しません — ほとんどの人がここで諦めます。",
+winDone:"「詳細情報」を押すと「実行」が現れます。それを押せば正常に起動します。文言は Windows のバージョンによって多少異なります。",
+macT:"macOS — Gatekeeper も同じことをします",
+gk15T:"「JaviD Future Bot」は開けませんでした", gk15B:"Mac に損害を与えたりプライバシーを侵害する可能性のあるマルウェアが含まれていないことを Apple は確認できません。",
+gkTrash:"ゴミ箱に入れる", gkOk:"完了",
+gk14T:"「JaviD Future Bot」は開けません", gk14B:"開発元を確認できないためです。",
+gkCancel:"キャンセル", gkOpen:"開く",
+mac15:"まず一度開いて失敗させてください。その後、システム設定 → プライバシーとセキュリティ を開いて下にスクロールすると「このまま開く」があります。Sequoia からは Control-クリックによる回避が削除されました。",
+mac14:"アプリを右クリック（または Control-クリック）→ 開く → もう一度「開く」を押します。",
+verT:"私の言葉を信じず、ご自身で確認してください",
+verB:"次の二つは私のプログラムに限らず、今後ダウンロードするどんなファイルにも使えます:",
+ver1:"実行前: ファイルを VirusTotal（無料）にアップロードし、約70のウイルス対策エンジンの結果を見てください。",
+ver2:"実行後: Windows はリソースモニター、Mac は lsof -i -P で接続先ホストを読んでください。二つ出ます — 取引所と CDN です。",
+stop:"それでも納得できなければ、ここでやめるのが妥当な判断です。何もインストールせずに公開中の口座ダッシュボードを見るだけでも構いません。",
+foot:"JaviD Future Bot — 無料、ご自身の PC で動作します。", back:"メインページに戻る"},
+
+es:{_n:"Español",
+h1:"Tu ordenador bloqueará esta app la primera vez. Aquí está el porqué y cómo ejecutarla.",
+sub:"No es algo propio de JaviD Future Bot. Le ocurre a casi todo programa hecho por una persona y no por una empresa.",
+whoT:"Quién lo hizo", whoB:"JaviD Future Bot está escrito y distribuido por una sola persona — un desarrollador individual, no una empresa. Por eso exactamente tu sistema operativo no puede verificar al editor: la comprobación busca un certificado de pago emitido a una empresa registrada.",
+whyT:"Por qué aparece el aviso",
+whyB:"Windows y macOS solo omiten este aviso para software firmado con un certificado de firma de código: un producto de pago, renovado cada año, emitido a una empresa registrada. Yo no lo he comprado. Así que tu ordenador te dice la verdad: no puede verificar quién publicó este archivo. Ese mensaje no es el resultado de un antivirus ni un juicio sobre lo que hace el programa.",
+winT:"Windows — el botón Ejecutar está oculto hasta pulsar Más información",
+winStep1:"1. Lo que ves primero", winStep2:"2. Tras pulsar Más información",
+ssTitle:"Windows protegió tu PC",
+ssBody:"Microsoft Defender SmartScreen impidió el inicio de una aplicación no reconocida. Ejecutarla podría poner en riesgo tu PC.",
+ssMore:"Más información", ssDont:"No ejecutar", ssRun:"Ejecutar de todas formas",
+ssPub:"App: JaviD_Future_Bot.exe   Editor: Editor desconocido",
+winHint:"En este punto solo hay un botón “No ejecutar”. La opción de ejecutar todavía no existe — aquí es donde la mayoría abandona.",
+winDone:"Al pulsar “Más información” aparece “Ejecutar de todas formas”. Púlsalo y la app arranca con normalidad. El texto varía según la versión de Windows.",
+macT:"macOS — Gatekeeper hace lo mismo",
+gk15T:"No se abrió “JaviD Future Bot”", gk15B:"Apple no pudo verificar que “JaviD Future Bot” esté libre de malware que pueda dañar tu Mac o comprometer tu privacidad.",
+gkTrash:"Mover a la papelera", gkOk:"Listo",
+gk14T:"No se puede abrir “JaviD Future Bot”", gk14B:"porque proviene de un desarrollador no identificado.",
+gkCancel:"Cancelar", gkOpen:"Abrir",
+mac15:"Intenta abrirla una vez y deja que falle. Luego ve a Ajustes del Sistema → Privacidad y seguridad, baja del todo y pulsa “Abrir igualmente”. En Sequoia ya no funciona pulsar Control y hacer clic — Apple eliminó ese atajo.",
+mac14:"Haz clic derecho (o Control-clic) en la app, elige Abrir y vuelve a pulsar Abrir en el diálogo.",
+verT:"No me creas — comprueba el archivo tú mismo",
+verB:"Ambas cosas sirven para cualquier archivo que descargues, no solo el mío:",
+ver1:"Antes de ejecutar: sube el archivo a VirusTotal (gratis) y lee el análisis de unos 70 motores antivirus.",
+ver2:"Después de ejecutar: abre el Monitor de recursos en Windows, o ejecuta lsof -i -P en macOS, y lee los hosts a los que se conecta. Deberías encontrar dos — tu exchange y una CDN.",
+stop:"Si aun así no te convence, parar aquí es una decisión razonable. Puedes seguir el panel de la cuenta publicado sin instalar nada.",
+foot:"JaviD Future Bot — gratis, se ejecuta en tu propio PC.", back:"Volver a la página principal"},
+
+fr:{_n:"Français",
+h1:"Votre ordinateur bloquera cette application au premier lancement. Voici pourquoi et comment l'exécuter.",
+sub:"Ce n'est pas propre à JaviD Future Bot. Cela arrive à presque tout programme réalisé par un particulier plutôt que par une entreprise.",
+whoT:"Qui l'a fait", whoB:"JaviD Future Bot est écrit et distribué par une seule personne — un développeur indépendant, pas une entreprise. C'est exactement pour cela que votre système ne peut pas vérifier l'éditeur : le contrôle cherche un certificat payant délivré à une société enregistrée.",
+whyT:"Pourquoi cet avertissement apparaît",
+whyB:"Windows et macOS n'omettent cet avertissement que pour les logiciels signés avec un certificat de signature de code — un produit payant, renouvelé chaque année, délivré à une société enregistrée. Je n'en ai pas acheté. Votre ordinateur dit donc la vérité : il ne peut pas vérifier qui a publié ce fichier. Ce message n'est pas un résultat d'antivirus, ni un jugement sur ce que fait le programme.",
+winT:"Windows — le bouton Exécuter reste caché jusqu'à « Informations complémentaires »",
+winStep1:"1. Ce que vous voyez d'abord", winStep2:"2. Après avoir cliqué sur Informations complémentaires",
+ssTitle:"Windows a protégé votre ordinateur",
+ssBody:"Microsoft Defender SmartScreen a empêché le démarrage d'une application non reconnue. L'exécuter pourrait mettre votre PC en danger.",
+ssMore:"Informations complémentaires", ssDont:"Ne pas exécuter", ssRun:"Exécuter quand même",
+ssPub:"Application : JaviD_Future_Bot.exe   Éditeur : Éditeur inconnu",
+winHint:"À ce stade il n'y a qu'un bouton « Ne pas exécuter ». L'option d'exécution n'existe pas encore — c'est ici que la plupart abandonnent.",
+winDone:"Cliquer sur « Informations complémentaires » fait apparaître « Exécuter quand même ». Cliquez dessus et l'application démarre normalement. Le texte varie selon la version de Windows.",
+macT:"macOS — Gatekeeper fait la même chose",
+gk15T:"« JaviD Future Bot » n'a pas été ouvert", gk15B:"Apple n'a pas pu vérifier que « JaviD Future Bot » est exempt de logiciels malveillants susceptibles d'endommager votre Mac ou de compromettre votre vie privée.",
+gkTrash:"Placer dans la corbeille", gkOk:"Terminé",
+gk14T:"Impossible d'ouvrir « JaviD Future Bot »", gk14B:"car il provient d'un développeur non identifié.",
+gkCancel:"Annuler", gkOpen:"Ouvrir",
+mac15:"Essayez de l'ouvrir une fois et laissez échouer. Allez ensuite dans Réglages Système → Confidentialité et sécurité, faites défiler vers le bas et cliquez sur « Ouvrir quand même ». Sur Sequoia, le Control-clic ne fonctionne plus — Apple a supprimé ce raccourci.",
+mac14:"Faites un clic droit (ou Control-clic) sur l'app, choisissez Ouvrir, puis Ouvrir à nouveau dans la boîte de dialogue.",
+verT:"Ne me croyez pas sur parole — vérifiez le fichier vous-même",
+verB:"Ces deux méthodes valent pour n'importe quel fichier téléchargé, pas seulement le mien :",
+ver1:"Avant l'exécution : envoyez le fichier sur VirusTotal (gratuit) et lisez l'analyse d'environ 70 moteurs antivirus.",
+ver2:"Après l'exécution : ouvrez le Moniteur de ressources sous Windows, ou lancez lsof -i -P sous macOS, et lisez les hôtes auxquels le programme se connecte. Vous devriez en trouver deux — votre plateforme et un CDN.",
+stop:"Si cela ne vous suffit pas, s'arrêter ici est une décision raisonnable. Vous pouvez suivre le tableau de bord publié sans rien installer.",
+foot:"JaviD Future Bot — gratuit, fonctionne sur votre propre PC.", back:"Retour à la page principale"},
+
+vi:{_n:"Tiếng Việt",
+h1:"Máy tính sẽ chặn ứng dụng này ở lần chạy đầu. Đây là lý do và cách chạy nó.",
+sub:"Đây không phải vấn đề riêng của JaviD Future Bot. Hầu hết chương trình do một cá nhân làm ra, thay vì một công ty, đều gặp điều này.",
+whoT:"Ai đã làm ra nó", whoB:"JaviD Future Bot do một người viết và phát hành — một nhà phát triển cá nhân, không phải công ty. Đó chính xác là lý do hệ điều hành không xác minh được nhà phát hành: nó tìm một chứng chỉ trả phí cấp cho doanh nghiệp đã đăng ký.",
+whyT:"Vì sao cảnh báo xuất hiện",
+whyB:"Windows và macOS chỉ bỏ qua cảnh báo này với phần mềm được ký bằng chứng chỉ ký mã — một khoản trả phí, gia hạn hằng năm, cấp cho doanh nghiệp đã đăng ký. Tôi chưa mua. Vậy nên máy tính đang nói sự thật: nó không xác minh được ai phát hành tệp này. Thông báo đó không phải kết quả quét virus, cũng không phải đánh giá về việc chương trình làm gì.",
+winT:"Windows — nút Chạy bị ẩn cho tới khi bấm Thông tin thêm",
+winStep1:"1. Những gì bạn thấy trước tiên", winStep2:"2. Sau khi bấm Thông tin thêm",
+ssTitle:"Windows đã bảo vệ PC của bạn",
+ssBody:"Microsoft Defender SmartScreen đã ngăn một ứng dụng không nhận dạng được khởi chạy. Chạy ứng dụng này có thể khiến PC gặp rủi ro.",
+ssMore:"Thông tin thêm", ssDont:"Không chạy", ssRun:"Vẫn chạy",
+ssPub:"Ứng dụng: JaviD_Future_Bot.exe   Nhà phát hành: Không xác định",
+winHint:"Ở bước này chỉ có nút “Không chạy”. Tùy chọn chạy chưa xuất hiện — phần lớn mọi người bỏ cuộc ở đây.",
+winDone:"Bấm “Thông tin thêm” sẽ hiện “Vẫn chạy”. Bấm vào đó và ứng dụng khởi động bình thường. Câu chữ khác nhau tùy phiên bản Windows.",
+macT:"macOS — Gatekeeper làm điều tương tự",
+gk15T:"Không mở được “JaviD Future Bot”", gk15B:"Apple không thể xác minh “JaviD Future Bot” không chứa phần mềm độc hại có thể gây hại cho máy Mac hoặc xâm phạm quyền riêng tư của bạn.",
+gkTrash:"Chuyển vào Thùng rác", gkOk:"Xong",
+gk14T:"Không thể mở “JaviD Future Bot”", gk14B:"vì nó đến từ một nhà phát triển không xác định.",
+gkCancel:"Hủy", gkOpen:"Mở",
+mac15:"Hãy thử mở một lần và để nó thất bại. Sau đó vào Cài đặt Hệ thống → Quyền riêng tư & Bảo mật, cuộn xuống và bấm “Vẫn mở”. Từ Sequoia, cách Control-click không còn dùng được — Apple đã bỏ lối tắt đó.",
+mac14:"Nhấp chuột phải (hoặc Control-click) vào ứng dụng, chọn Mở, rồi bấm Mở lần nữa trong hộp thoại.",
+verT:"Đừng tin lời tôi — hãy tự kiểm tra tệp",
+verB:"Cả hai cách này dùng được cho bất kỳ tệp nào bạn tải về, không chỉ tệp của tôi:",
+ver1:"Trước khi chạy: tải tệp lên VirusTotal (miễn phí) và đọc kết quả từ khoảng 70 công cụ diệt virus.",
+ver2:"Sau khi chạy: mở Resource Monitor trên Windows, hoặc chạy lsof -i -P trên macOS, rồi đọc danh sách host mà chương trình kết nối. Bạn sẽ thấy hai — sàn của bạn và một CDN.",
+stop:"Nếu vẫn chưa đủ với bạn, dừng lại ở đây là quyết định hợp lý. Bạn có thể theo dõi bảng điều khiển tài khoản được công bố mà không cần cài gì cả.",
+foot:"JaviD Future Bot — miễn phí, chạy trên máy tính của chính bạn.", back:"Quay lại trang chính"},
+
+tr:{_n:"Türkçe",
+h1:"Bilgisayarınız bu uygulamayı ilk açılışta engelleyecek. Nedeni ve nasıl çalıştıracağınız burada.",
+sub:"Bu, JaviD Future Bot'a özgü değil. Şirket yerine tek bir kişinin yaptığı neredeyse her programda olur.",
+whoT:"Bunu kim yaptı", whoB:"JaviD Future Bot tek bir kişi tarafından yazılıp dağıtılıyor — bir şirket değil, bireysel bir geliştirici. İşletim sisteminizin yayıncıyı doğrulayamamasının sebebi tam olarak bu: yaptığı kontrol, kayıtlı bir şirkete verilen ücretli bir sertifika arıyor.",
+whyT:"Uyarı neden çıkıyor",
+whyB:"Windows ve macOS bu uyarıyı yalnızca kod imzalama sertifikasıyla imzalanmış yazılımlarda atlar — ücretli, her yıl yenilenen ve kayıtlı bir şirkete verilen bir üründür. Ben satın almadım. Yani bilgisayarınız doğruyu söylüyor: bu dosyayı kimin yayınladığını doğrulayamıyor. Bu mesaj bir virüs tarama sonucu değildir ve programın ne yaptığına dair bir yargı da değildir.",
+winT:"Windows — Çalıştır düğmesi “Ek bilgi”ye basana kadar gizli",
+winStep1:"1. İlk gördüğünüz ekran", winStep2:"2. “Ek bilgi”ye bastıktan sonra",
+ssTitle:"Windows bilgisayarınızı korudu",
+ssBody:"Microsoft Defender SmartScreen tanınmayan bir uygulamanın başlatılmasını engelledi. Bu uygulamayı çalıştırmak bilgisayarınızı riske atabilir.",
+ssMore:"Ek bilgi", ssDont:"Çalıştırma", ssRun:"Yine de çalıştır",
+ssPub:"Uygulama: JaviD_Future_Bot.exe   Yayıncı: Bilinmeyen yayıncı",
+winHint:"Bu aşamada yalnızca “Çalıştırma” düğmesi var. Çalıştırma seçeneği henüz yok — çoğu kişi tam burada vazgeçiyor.",
+winDone:"“Ek bilgi”ye basınca “Yine de çalıştır” görünür. Ona basın, uygulama normal şekilde açılır. Metin Windows sürümüne göre değişebilir.",
+macT:"macOS — Gatekeeper de aynısını yapar",
+gk15T:"“JaviD Future Bot” açılmadı", gk15B:"Apple, “JaviD Future Bot” içinde Mac'inize zarar verebilecek veya gizliliğinizi tehlikeye atabilecek kötü amaçlı yazılım olmadığını doğrulayamadı.",
+gkTrash:"Çöp Kutusuna Taşı", gkOk:"Tamam",
+gk14T:"“JaviD Future Bot” açılamıyor", gk14B:"çünkü kimliği doğrulanmamış bir geliştiriciden geliyor.",
+gkCancel:"İptal", gkOpen:"Aç",
+mac15:"Önce bir kez açmayı deneyin ve başarısız olmasına izin verin. Sonra Sistem Ayarları → Gizlilik ve Güvenlik bölümüne gidip aşağı kaydırın ve “Yine de Aç”a tıklayın. Sequoia'da Control-tıklama artık çalışmıyor — Apple bu kısayolu kaldırdı.",
+mac14:"Uygulamaya sağ tıklayın (veya Control-tıklayın), Aç'ı seçin, ardından iletişim kutusunda tekrar Aç'a basın.",
+verT:"Sözüme güvenmeyin — dosyayı kendiniz kontrol edin",
+verB:"Bu iki yöntem yalnızca benim dosyam için değil, indireceğiniz her dosya için geçerlidir:",
+ver1:"Çalıştırmadan önce: dosyayı VirusTotal'a (ücretsiz) yükleyin ve yaklaşık 70 antivirüs motorunun sonucunu okuyun.",
+ver2:"Çalıştırdıktan sonra: Windows'ta Kaynak İzleyicisi'ni açın veya macOS'ta lsof -i -P çalıştırın ve programın bağlandığı host listesini okuyun. İki tane bulmalısınız — borsanız ve bir CDN.",
+stop:"Bunlar da size yetmiyorsa burada durmak makul bir karardır. Hiçbir şey kurmadan yayınlanan hesap panelini izleyebilirsiniz.",
+foot:"JaviD Future Bot — ücretsiz, kendi bilgisayarınızda çalışır.", back:"Ana sayfaya dön"},
+
+pt:{_n:"Português",
+h1:"Seu computador vai bloquear este app na primeira vez. Aqui está o porquê e como executá-lo.",
+sub:"Isso não é específico do JaviD Future Bot. Acontece com quase todo programa feito por uma pessoa, e não por uma empresa.",
+whoT:"Quem fez isto", whoB:"O JaviD Future Bot é escrito e distribuído por uma única pessoa — um desenvolvedor individual, não uma empresa. É exatamente por isso que seu sistema não consegue verificar o editor: a checagem procura um certificado pago emitido para uma empresa registrada.",
+whyT:"Por que o aviso aparece",
+whyB:"Windows e macOS só dispensam esse aviso para software assinado com um certificado de assinatura de código — um item pago, renovado todo ano, emitido para uma empresa registrada. Eu não comprei um. Então seu computador está dizendo a verdade: ele não consegue verificar quem publicou este arquivo. Essa mensagem não é resultado de antivírus, nem um julgamento sobre o que o programa faz.",
+winT:"Windows — o botão Executar fica escondido até clicar em Mais informações",
+winStep1:"1. O que você vê primeiro", winStep2:"2. Depois de clicar em Mais informações",
+ssTitle:"O Windows protegeu seu PC",
+ssBody:"O Microsoft Defender SmartScreen impediu a inicialização de um aplicativo não reconhecido. Executá-lo pode colocar seu PC em risco.",
+ssMore:"Mais informações", ssDont:"Não executar", ssRun:"Executar assim mesmo",
+ssPub:"Aplicativo: JaviD_Future_Bot.exe   Editor: Editor desconhecido",
+winHint:"Nesse ponto só existe o botão “Não executar”. A opção de executar ainda não existe — é aqui que a maioria desiste.",
+winDone:"Clicar em “Mais informações” revela “Executar assim mesmo”. Clique nele e o app abre normalmente. O texto varia conforme a versão do Windows.",
+macT:"macOS — o Gatekeeper faz a mesma coisa",
+gk15T:"“JaviD Future Bot” não foi aberto", gk15B:"A Apple não conseguiu verificar se o “JaviD Future Bot” está livre de malware que possa danificar seu Mac ou comprometer sua privacidade.",
+gkTrash:"Mover para o Lixo", gkOk:"Concluído",
+gk14T:"“JaviD Future Bot” não pode ser aberto", gk14B:"porque é de um desenvolvedor não identificado.",
+gkCancel:"Cancelar", gkOpen:"Abrir",
+mac15:"Tente abrir uma vez e deixe falhar. Depois vá em Ajustes do Sistema → Privacidade e Segurança, role até o fim e clique em “Abrir Mesmo Assim”. No Sequoia, o Control-clique não funciona mais — a Apple removeu esse atalho.",
+mac14:"Clique com o botão direito (ou Control-clique) no app, escolha Abrir e clique em Abrir novamente na caixa de diálogo.",
+verT:"Não acredite em mim — verifique o arquivo você mesmo",
+verB:"Os dois métodos servem para qualquer arquivo que você baixe, não só o meu:",
+ver1:"Antes de executar: envie o arquivo ao VirusTotal (grátis) e leia a análise de cerca de 70 motores antivírus.",
+ver2:"Depois de executar: abra o Monitor de Recursos no Windows, ou rode lsof -i -P no macOS, e leia os hosts aos quais o programa se conecta. Você deve encontrar dois — sua corretora e uma CDN.",
+stop:"Se nada disso for suficiente para você, parar aqui é uma decisão razoável. Você pode acompanhar o painel da conta publicado sem instalar nada.",
+foot:"JaviD Future Bot — grátis, roda no seu próprio PC.", back:"Voltar à página principal"}
+};
+
+const ORDER = ["en","ko","ja","es","fr","vi","tr","pt"];
+function apply(l){
+  const t = T[l] || T.en;
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-t]").forEach(el=>{
+    const v = t[el.dataset.t]; if (v !== undefined) el.textContent = v;
+  });
+  document.querySelectorAll("#langs button").forEach(b=>
+    b.setAttribute("aria-current", String(b.dataset.l === l)));
+  try{ history.replaceState(null,"","?lang="+l); }catch(e){}
+}
+const nav = document.getElementById("langs");
+ORDER.forEach(l=>{
+  const b=document.createElement("button"); b.textContent=T[l]._n; b.dataset.l=l;
+  b.onclick=()=>apply(l); nav.appendChild(b);
+});
+const q = new URLSearchParams(location.search).get("lang");
+apply(T[q] ? q : (ORDER.find(l => (navigator.language||"en").toLowerCase().startsWith(l)) || "en"));
+</script>
+</body>
+</html>
