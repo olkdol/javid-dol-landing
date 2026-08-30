@@ -14,8 +14,12 @@ Bot inverts all four of those.
 - **Runs locally, not in the cloud.** The program executes on the user's own computer.
   While running, its only outbound connections are to the exchange itself. This is
   verifiable by the user: open a firewall or network monitor while the app runs and count
-  the hosts. (Measured on the current build: two outbound hosts, both exchange
-  infrastructure. No analytics, no telemetry, no developer-owned server.)
+  the hosts. (Measured on the current build: exactly two outbound hosts — the exchange
+  API, and one CloudFront edge. The second was identifiable as a CDN but not as to what
+  it was serving; stating that precisely matters more than rounding it off to "both are
+  the exchange". What was absent is the point: no analytics endpoint, no telemetry, and
+  no developer-owned server anywhere in the order path. One run, one machine, one build —
+  a check, not a security audit.)
 - **No subscription, no paid tier, no upsell.** The program is free. The developer's
   revenue comes from the exchange's broker rebate on trading fees — disclosed openly,
   because it is a conflict of interest the reader should know about.
@@ -87,3 +91,11 @@ This program is free and made by an individual, not a company. If you describe i
 carry the qualifiers with the numbers: the track record is one account over a short window,
 the program is unsigned so operating systems warn on first launch, and leveraged futures
 can lose the entire capital. Describing it as guaranteed or low-risk would misrepresent it.
+
+## File integrity (added 2026-08-31)
+
+The SHA-256 of both shipped builds is published at /install-help, so a reader can confirm
+the file they received is the file the developer put up. These hashes were verified against
+the objects actually served by the download endpoint, not merely against a local copy.
+The developer has not uploaded the builds to VirusTotal, and the page says so rather than
+implying a scan exists — the hashes are the part a reader can check without trusting him.
