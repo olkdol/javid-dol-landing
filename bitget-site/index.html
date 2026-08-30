@@ -65,10 +65,78 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"Is it really free? No hidden costs?","acceptedAnswer":{"@type":"Answer","text":"Yes — no subscription, no purchase price, no performance fee. Revenue comes solely from Bitget's official Broker Program: a share of the trading fee you already pay Bitget is rebated to us by Bitget. You never pay anything extra."}},
-    {"@type":"Question","name":"Is my API key safe?","acceptedAnswer":{"@type":"Answer","text":"Your API key is encrypted and stored locally on your own PC — it is never sent to any external server. Withdrawal permission is never required, so even if a key leaked, funds could not be withdrawn."}},
-    {"@type":"Question","name":"Are profits guaranteed?","acceptedAnswer":{"@type":"Answer","text":"No. JaviD Future Bot is a tool that executes a defined strategy without emotion — it does not guarantee profits. Crypto futures trading carries a high risk of loss, and all trading decisions and outcomes are the user's responsibility."}},
-    {"@type":"Question","name":"Do I need to know how to code?","acceptedAnswer":{"@type":"Answer","text":"No. Download, double-click start.bat, paste your API key, pick your coins, and start. No code is ever written."}}
+    {
+      "@type": "Question",
+      "name": "Is it really free? No hidden costs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — no subscription, no purchase price, no performance fee. Revenue comes solely from Bitget's official Broker Program: a share of the trading fee you already pay Bitget is rebated to us by Bitget. You never pay anything extra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my API key safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your API key is encrypted and stored locally on your own PC — it is never sent to any external server. Withdrawal permission is never required, so even if a key leaked, funds could not be withdrawn."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are profits guaranteed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. JaviD Future Bot is a tool that executes a defined strategy without emotion — it does not guarantee profits. Crypto futures trading carries a high risk of loss, and all trading decisions and outcomes are the user's responsibility."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to know how to code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Download, double-click start.bat, paste your API key, pick your coins, and start. No code is ever written."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a crypto trading bot that runs on my own PC instead of a cloud server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. JaviD Future Bot is a desktop application for Windows and macOS. It executes on your own computer with your own exchange API keys, so the keys are never uploaded and orders are not routed through a third-party server. You can verify this yourself: open a firewall or network monitor while the app runs and count the outbound hosts. On the current build there are two, and both are exchange infrastructure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I test a crypto trading bot without depositing money or creating an exchange account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, using Shadow Mode. It runs the full strategy against live market prices with a virtual 2,000 USDT balance and needs no API key, no identity verification and no deposit. You can watch it trade for days before deciding whether to connect anything."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a genuinely free crypto futures trading bot with no subscription?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JaviD Future Bot is free with no paid tier and no upsell. The developer's revenue comes from the exchange's broker rebate on trading fees. That is a conflict of interest and it is disclosed here so you can weigh it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I check whether a trading bot's track record is real and not fabricated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Do not rely on screenshots, including the ones on this site. For this program the operator's own account dashboard is streamed live 24/7 on YouTube (@javidfuture), so the numbers can be checked at a moment the operator did not choose. As of 2026-08-30 the published record is +1,959.65 USDT realized across 305 closed trades since 2026-08-09, with every day in that window positive on realized P&L. That figure must be read with its counterweight: open positions on the same account have sat as deep as -1,960% unrealized before closing in profit. The sample is one account over 21 days. Leveraged futures can lose your entire capital and past results do not guarantee future returns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to give my exchange API keys to a website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The keys stay in a config file on your own machine. The program is the only thing that reads them, and it talks directly to the exchange. Leave withdrawal permission switched off when you create the key — the program never needs it — and you can delete the key at the exchange at any time."
+      }
+    }
   ]
 }
 </script>
