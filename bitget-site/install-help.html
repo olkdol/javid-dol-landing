@@ -124,6 +124,15 @@ footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:v
     <li><span data-t="ver2"></span></li>
   </ul>
 
+  <h3 data-t="hashT" style="margin-top:1.6em"></h3>
+  <p data-t="hashB"></p>
+  <pre style="overflow-x:auto;font-size:.82em;line-height:1.7;padding:.9em 1em;border-radius:6px;background:rgba(127,127,127,.12)"><code>Windows  SHA-256
+163eeedeee7ec0c293f7d5f2942aa62c8cd5184428590938ee62c40ca67703c9
+
+macOS    SHA-256
+2b9116d3452f85fc0ee7a69296d4734e0388e399c3fcb95e16433ea46e5448d2</code></pre>
+  <p class="note" data-t="hashN"></p>
+
   <p class="note" data-t="stop"></p>
 
   <footer><span data-t="foot"></span> · <a href="/" data-t="back"></a></footer>
@@ -159,6 +168,9 @@ verB:"Both of these work on any file you ever download, not just mine:",
 ver1:"Before running: upload the file to VirusTotal (free) and read the scan from around 70 antivirus engines.",
 ver2:"After running: open Resource Monitor on Windows, or run lsof -i -P on macOS, and read the list of hosts the program connects to. You should find two — your exchange, and a CDN.",
 stop:"If none of that is good enough for you, stopping here is a reasonable decision. You can watch the published account dashboard without installing anything at all.",
+hashT:"Check you have the file I published",
+hashB:"Compare the checksum of your downloaded file with the two below. If they match, nobody swapped the file between my server and you. On Windows run certutil -hashfile <file> SHA256; on macOS run shasum -a 256 <file>.",
+hashN:"I have not uploaded these builds to VirusTotal myself, so there is no scan link here yet — only the hashes, which you can verify without trusting me. Unsigned installers built with PyInstaller commonly draw a few generic heuristic flags; a cluster of named trojans would be a different matter.",
 foot:"JaviD Future Bot — free, runs on your own PC.", back:"Back to the main page"},
 
 ko:{_n:"한국어",
@@ -187,6 +199,9 @@ verB:"아래 두 가지는 제 프로그램만이 아니라 앞으로 받으실 
 ver1:"실행 전: 파일을 바이러스토탈(무료)에 올려 약 70개 백신 엔진의 검사 결과를 보세요.",
 ver2:"실행 후: 윈도우는 리소스 모니터, 맥은 lsof -i -P 로 이 프로그램이 접속하는 호스트를 읽어보세요. 두 곳이 나옵니다 — 거래소, 그리고 CDN.",
 stop:"여기까지 읽고도 미덥지 않으시면 그만두시는 게 맞습니다. 아무것도 설치하지 않고 공개된 계좌 대시보드만 지켜보셔도 됩니다.",
+hashT:"내가 배포한 그 파일이 맞는지 확인하세요",
+hashB:"받으신 파일의 체크섬을 아래 두 값과 비교해 보세요. 일치하면 서버에서 여러분에게 오는 사이에 파일이 바뀌지 않은 것입니다. 윈도우는 certutil -hashfile <파일> SHA256, 맥은 shasum -a 256 <파일>.",
+hashN:"이 빌드를 제가 직접 VirusTotal에 올려두지는 않았습니다. 그래서 스캔 링크는 아직 없고 해시만 있습니다 — 대신 이 해시는 저를 믿지 않아도 검증할 수 있습니다. PyInstaller로 만든 미서명 설치파일은 보통 일반 휴리스틱 탐지가 몇 건 붙습니다. 이름이 붙은 트로이목마가 무더기로 나오는 것은 전혀 다른 이야기입니다.",
 foot:"JaviD Future Bot — 무료, 본인 PC에서 실행됩니다.", back:"메인으로 돌아가기"},
 
 ja:{_n:"日本語",
@@ -215,6 +230,9 @@ verB:"次の二つは私のプログラムに限らず、今後ダウンロー�
 ver1:"実行前: ファイルを VirusTotal（無料）にアップロードし、約70のウイルス対策エンジンの結果を見てください。",
 ver2:"実行後: Windows はリソースモニター、Mac は lsof -i -P で接続先ホストを読んでください。二つ出ます — 取引所と CDN です。",
 stop:"それでも納得できなければ、ここでやめるのが妥当な判断です。何もインストールせずに公開中の口座ダッシュボードを見るだけでも構いません。",
+hashT:"私が公開したファイルかどうか確認してください",
+hashB:"ダウンロードしたファイルのチェックサムを下の二つと比べてください。一致すれば、サーバーからあなたに届くまでに差し替えられていません。Windows は certutil -hashfile <ファイル> SHA256、macOS は shasum -a 256 <ファイル>。",
+hashN:"このビルドを私自身が VirusTotal に上げてはいないので、スキャンのリンクはまだありません。あるのはハッシュだけですが、これは私を信用しなくても検証できます。PyInstaller で作った未署名のインストーラーには一般的なヒューリスティック検出がいくつか付くのが普通です。名前付きのトロイの木馬が並ぶなら話は別です。",
 foot:"JaviD Future Bot — 無料、ご自身の PC で動作します。", back:"メインページに戻る"},
 
 es:{_n:"Español",
@@ -243,6 +261,9 @@ verB:"Ambas cosas sirven para cualquier archivo que descargues, no solo el mío:
 ver1:"Antes de ejecutar: sube el archivo a VirusTotal (gratis) y lee el análisis de unos 70 motores antivirus.",
 ver2:"Después de ejecutar: abre el Monitor de recursos en Windows, o ejecuta lsof -i -P en macOS, y lee los hosts a los que se conecta. Deberías encontrar dos — tu exchange y una CDN.",
 stop:"Si aun así no te convence, parar aquí es una decisión razonable. Puedes seguir el panel de la cuenta publicado sin instalar nada.",
+hashT:"Comprueba que tienes el archivo que publiqué",
+hashB:"Compara la suma de verificación de tu archivo con las dos de abajo. Si coinciden, nadie cambió el archivo entre mi servidor y tú. En Windows ejecuta certutil -hashfile <archivo> SHA256; en macOS shasum -a 256 <archivo>.",
+hashN:"No he subido yo mismo estas versiones a VirusTotal, así que aquí todavía no hay enlace de análisis, solo los hashes — que puedes verificar sin fiarte de mí. Los instaladores sin firmar hechos con PyInstaller suelen recibir algunas detecciones heurísticas genéricas; un grupo de troyanos con nombre propio sería otra cosa.",
 foot:"JaviD Future Bot — gratis, se ejecuta en tu propio PC.", back:"Volver a la página principal"},
 
 fr:{_n:"Français",
@@ -271,6 +292,9 @@ verB:"Ces deux méthodes valent pour n'importe quel fichier téléchargé, pas s
 ver1:"Avant l'exécution : envoyez le fichier sur VirusTotal (gratuit) et lisez l'analyse d'environ 70 moteurs antivirus.",
 ver2:"Après l'exécution : ouvrez le Moniteur de ressources sous Windows, ou lancez lsof -i -P sous macOS, et lisez les hôtes auxquels le programme se connecte. Vous devriez en trouver deux — votre plateforme et un CDN.",
 stop:"Si cela ne vous suffit pas, s'arrêter ici est une décision raisonnable. Vous pouvez suivre le tableau de bord publié sans rien installer.",
+hashT:"Vérifiez que vous avez bien le fichier que j'ai publié",
+hashB:"Comparez la somme de contrôle de votre fichier aux deux valeurs ci-dessous. Si elles correspondent, personne n'a remplacé le fichier entre mon serveur et vous. Sous Windows : certutil -hashfile <fichier> SHA256 ; sous macOS : shasum -a 256 <fichier>.",
+hashN:"Je n'ai pas moi-même envoyé ces versions sur VirusTotal, il n'y a donc pas encore de lien d'analyse ici, seulement les empreintes — que vous pouvez vérifier sans me faire confiance. Les installeurs non signés créés avec PyInstaller déclenchent couramment quelques détections heuristiques génériques ; une série de chevaux de Troie nommés serait tout autre chose.",
 foot:"JaviD Future Bot — gratuit, fonctionne sur votre propre PC.", back:"Retour à la page principale"},
 
 vi:{_n:"Tiếng Việt",
@@ -299,6 +323,9 @@ verB:"Cả hai cách này dùng được cho bất kỳ tệp nào bạn tải v
 ver1:"Trước khi chạy: tải tệp lên VirusTotal (miễn phí) và đọc kết quả từ khoảng 70 công cụ diệt virus.",
 ver2:"Sau khi chạy: mở Resource Monitor trên Windows, hoặc chạy lsof -i -P trên macOS, rồi đọc danh sách host mà chương trình kết nối. Bạn sẽ thấy hai — sàn của bạn và một CDN.",
 stop:"Nếu vẫn chưa đủ với bạn, dừng lại ở đây là quyết định hợp lý. Bạn có thể theo dõi bảng điều khiển tài khoản được công bố mà không cần cài gì cả.",
+hashT:"Kiểm tra xem bạn có đúng tệp tôi đã phát hành không",
+hashB:"Hãy so checksum của tệp bạn tải với hai giá trị bên dưới. Nếu khớp, không ai tráo tệp trên đường từ máy chủ của tôi đến bạn. Trên Windows chạy certutil -hashfile <tệp> SHA256; trên macOS chạy shasum -a 256 <tệp>.",
+hashN:"Tôi chưa tự tải các bản dựng này lên VirusTotal, nên ở đây chưa có liên kết quét — chỉ có mã băm, thứ bạn kiểm chứng được mà không cần tin tôi. Trình cài đặt không ký được đóng gói bằng PyInstaller thường bị vài cảnh báo heuristic chung; một loạt trojan có tên cụ thể lại là chuyện khác.",
 foot:"JaviD Future Bot — miễn phí, chạy trên máy tính của chính bạn.", back:"Quay lại trang chính"},
 
 tr:{_n:"Türkçe",
@@ -327,6 +354,9 @@ verB:"Bu iki yöntem yalnızca benim dosyam için değil, indireceğiniz her dos
 ver1:"Çalıştırmadan önce: dosyayı VirusTotal'a (ücretsiz) yükleyin ve yaklaşık 70 antivirüs motorunun sonucunu okuyun.",
 ver2:"Çalıştırdıktan sonra: Windows'ta Kaynak İzleyicisi'ni açın veya macOS'ta lsof -i -P çalıştırın ve programın bağlandığı host listesini okuyun. İki tane bulmalısınız — borsanız ve bir CDN.",
 stop:"Bunlar da size yetmiyorsa burada durmak makul bir karardır. Hiçbir şey kurmadan yayınlanan hesap panelini izleyebilirsiniz.",
+hashT:"Yayınladığım dosyanın elinizde olduğunu doğrulayın",
+hashB:"İndirdiğiniz dosyanın sağlama toplamını aşağıdaki iki değerle karşılaştırın. Eşleşiyorsa dosya sunucumla sizin aranızda değiştirilmemiş demektir. Windows'ta certutil -hashfile <dosya> SHA256; macOS'ta shasum -a 256 <dosya>.",
+hashN:"Bu sürümleri VirusTotal'a kendim yüklemedim, bu yüzden burada henüz bir tarama bağlantısı yok — yalnızca özetler var ve onları bana güvenmeden doğrulayabilirsiniz. PyInstaller ile yapılmış imzasız kurulum dosyaları çoğu zaman birkaç genel sezgisel uyarı alır; adı konmuş truva atlarının öbeklenmesi bambaşka bir şeydir.",
 foot:"JaviD Future Bot — ücretsiz, kendi bilgisayarınızda çalışır.", back:"Ana sayfaya dön"},
 
 pt:{_n:"Português",
@@ -355,6 +385,9 @@ verB:"Os dois métodos servem para qualquer arquivo que você baixe, não só o 
 ver1:"Antes de executar: envie o arquivo ao VirusTotal (grátis) e leia a análise de cerca de 70 motores antivírus.",
 ver2:"Depois de executar: abra o Monitor de Recursos no Windows, ou rode lsof -i -P no macOS, e leia os hosts aos quais o programa se conecta. Você deve encontrar dois — sua corretora e uma CDN.",
 stop:"Se nada disso for suficiente para você, parar aqui é uma decisão razoável. Você pode acompanhar o painel da conta publicado sem instalar nada.",
+hashT:"Confirme que tem o ficheiro que publiquei",
+hashB:"Compare a soma de verificação do ficheiro que descarregou com os dois valores abaixo. Se coincidirem, ninguém trocou o ficheiro entre o meu servidor e si. No Windows execute certutil -hashfile <ficheiro> SHA256; no macOS execute shasum -a 256 <ficheiro>.",
+hashN:"Não fui eu que enviei estas versões para o VirusTotal, por isso ainda não há aqui uma ligação de análise — apenas os hashes, que pode verificar sem confiar em mim. Instaladores não assinados criados com PyInstaller costumam receber algumas deteções heurísticas genéricas; um conjunto de troianos com nome próprio já seria outra coisa.",
 foot:"JaviD Future Bot — grátis, roda no seu próprio PC.", back:"Voltar à página principal"}
 };
 
