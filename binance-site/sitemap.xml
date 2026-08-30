@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://bn.javidtrading.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://bn.javidtrading.com/ko</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://bn.javidtrading.com/ja</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://bn.javidtrading.com/es</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://bn.javidtrading.com/fr</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://bn.javidtrading.com/vi</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://bn.javidtrading.com/tr</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://bn.javidtrading.com/pt</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://bn.javidtrading.com/results</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://bn.javidtrading.com/manual</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://bn.javidtrading.com/binance-signup-api-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://bn.javidtrading.com/board</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://bn.javidtrading.com/</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://bn.javidtrading.com/ko</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bn.javidtrading.com/ja</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bn.javidtrading.com/es</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bn.javidtrading.com/fr</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bn.javidtrading.com/vi</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bn.javidtrading.com/tr</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bn.javidtrading.com/pt</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bn.javidtrading.com/results</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://bn.javidtrading.com/manual</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://bn.javidtrading.com/binance-signup-api-guide</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://bn.javidtrading.com/board</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>
