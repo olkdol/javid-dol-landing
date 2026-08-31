@@ -65,8 +65,22 @@ export default {
     // 팀 방침(CLAUDE.md): 구도메인은 **301로만** 살려둔다.
     //
     // 이미지·스크린샷은 예전 블로그 글에서 핫링크될 수 있어 그대로 서빙한다.
+    //
+    // ⚠️ 2026-08-31: 이 워커에는 **세 개의 호스트**가 붙어 있다(실측 — 셋 다 같은 바이트를
+    //    서빙했다). 전부 bn 으로 보내면 안 된다. 호스트별로 맞는 곳으로 나눈다:
+    //      · javidfuturebot.javid-dol.uk → bn  (실제로 구 바이낸스 랜딩이므로 주제가 맞는다)
+    //      · javid-dol.uk               → www (거래소 중립 허브)
+    //      · bb.javidtrading.com        → bg  (바이비트 제품이 아직 없다. 잘못 붙어 있던
+    //                                          것이라 주력인 비트겟으로 보낸다.)
+    //    기본값은 bg — 주력 거래소이고, 모르는 호스트를 레거시 바이낸스로 보낼 이유가 없다.
     if (!pathname.startsWith("/images/") && !pathname.startsWith("/screenshots/")) {
-      return Response.redirect("https://bn.javidtrading.com/", 301);
+      const host = url.hostname.toLowerCase();
+      let target = "https://bg.javidtrading.com";
+      if (host === "javidfuturebot.javid-dol.uk") target = "https://bn.javidtrading.com";
+      else if (host === "javid-dol.uk" || host === "www.javid-dol.uk") target = "https://www.javidtrading.com";
+      // 경로는 버린다 — 구 사이트의 파일명 구조가 신규 사이트와 다르다.
+      // (경로를 이어붙이면 대부분 404 가 되어 301 의 랭크 전달이 오히려 끊긴다.)
+      return Response.redirect(target + "/", 301);
     }
 
     // No API route matched — serve the static file.
