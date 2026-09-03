@@ -275,7 +275,7 @@
     var badge = document.getElementById('liveBadge'); badge.classList.remove('hidden'); badge.classList.add('flex');
     document.getElementById('liveProofSub').textContent = 'Live account snapshot, pulled directly from the running bot — real Bitget market data, virtual USDT, zero real capital at risk.';
     var openTxt = data.open_positions != null ? data.open_positions + ' positions open right now, ' : '';
-    document.getElementById('lpNote').innerHTML = 'Live data, refreshed automatically — ' + openTxt + 'a mix of floating gains and losses as the bot\'s exit logic manages them in real time. Shadow Mode trades live Bitget market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.';
+    document.getElementById('lpNote').innerHTML = 'Live data, refreshed automatically — ' + openTxt + 'a mix of floating gains and losses as the bot\'s exit logic manages them in real time. Shadow Mode trades live Bitget market data against a virtual balance; this is not a record of real-money trading. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.';
   }).catch(function(){});
 })();
 </script>
@@ -930,7 +930,7 @@ var I18N = {
     lp_pnl_label: 'Cumulative P&amp;L (USDT) across 97 trades',
     lp_return_label: 'Cumulative return since Shadow Mode start',
     lp_winrate_label: 'Win rate over the same run',
-    lp_note: 'Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live Bitget market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a class="font-bold text-indigo-400 hover:underline" href="results.html">Real Results</a> page.',
+    lp_note: 'Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live Bitget market data against a virtual balance; this is not a record of real-money trading. A separate real-dashboard record is published screenshot-by-screenshot on the <a class="font-bold text-indigo-400 hover:underline" href="results.html">Real Results</a> page.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'Three Reasons Traders Switch to JaviD',
     why1_title: 'Zero servers in the middle',
@@ -1139,7 +1139,7 @@ var I18N = {
     lp_pnl_label: '누적 손익(P&amp;L, USDT) — 97건 거래 기준',
     lp_return_label: '섀도우 모드 시작 이후 누적 수익률',
     lp_winrate_label: '같은 기간 승률',
-    lp_note: '2026-07-05 05:04(KST) 기준 스냅샷 — 해당 시점 7개 포지션 보유 중이며 평가 이익과 손실이 혼재되어 있습니다. 섀도우 모드는 실제 비트겟 시세 데이터를 가상 잔고로 거래하는 것으로, 실제 자금 거래 기록이 아니며 과거 성과가 미래 결과를 보장하지 않습니다. 실제 대시보드 기록은 <a class="font-bold text-indigo-400 hover:underline" href="results.html">실제 결과</a> 페이지에 스크린샷 단위로 별도 게시되어 있습니다.',
+    lp_note: '2026-07-05 05:04(KST) 기준 스냅샷 — 해당 시점 7개 포지션 보유 중이며 평가 이익과 손실이 혼재되어 있습니다. 섀도우 모드는 실제 비트겟 시세 데이터를 가상 잔고로 거래하는 것으로, 실제 자금 거래 기록이 아닙니다. 실제 대시보드 기록은 <a class="font-bold text-indigo-400 hover:underline" href="results.html">실제 결과</a> 페이지에 스크린샷 단위로 별도 게시되어 있습니다.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: '트레이더들이 JaviD로 갈아타는 세 가지 이유',
     why1_title: '중간 서버가 전혀 없습니다',
@@ -1766,7 +1766,7 @@ var I18N = {
     lp_pnl_label: 'P&amp;L acumulado (USDT) en 97 operaciones',
     lp_return_label: 'Rendimiento acumulado desde el inicio del Modo Shadow',
     lp_winrate_label: 'Tasa de acierto durante el mismo periodo',
-    lp_note: 'Instantánea tomada el 2026-07-05, 05:04 (KST) — 7 posiciones abiertas en ese momento, con una mezcla de ganancias y pérdidas flotantes. El Modo Shadow opera con datos reales del mercado de Bitget sobre un saldo virtual; no es un registro de trading con dinero real, y el rendimiento pasado no garantiza resultados futuros. Un registro independiente del dashboard real se publica captura por captura en la página de <a class="font-bold text-indigo-400 hover:underline" href="results.html">Resultados Reales</a>.',
+    lp_note: 'Instantánea tomada el 2026-07-05, 05:04 (KST) — 7 posiciones abiertas en ese momento, con una mezcla de ganancias y pérdidas flotantes. El Modo Shadow opera con datos reales del mercado de Bitget sobre un saldo virtual; no es un registro de trading con dinero real. Un registro independiente del dashboard real se publica captura por captura en la página de <a class="font-bold text-indigo-400 hover:underline" href="results.html">Resultados Reales</a>.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'Tres razones por las que los traders cambian a JaviD',
     why1_title: 'Cero servidores en el medio',
@@ -1915,7 +1915,7 @@ var I18N = {
     dl_badge3: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>Sin tarjeta de crédito',
     dl_howto: 'Haz clic en tu sistema operativo → descomprime → ejecuta <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. ¿Primera vez? Sigue el <a class="font-bold text-indigo-600 hover:underline" href="manual.html">Manual de Usuario</a>.',
     dl_contact: '¿Preguntas? Escribe a <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a> o pregunta en el <a class="font-bold text-indigo-600 hover:underline" href="board.html">Foro de la Comunidad</a>.',
-    dl_disclaimer: 'El trading de futuros de criptomonedas conlleva un alto nivel de riesgo y no es adecuado para todos los inversores. JaviD Future Bot es una herramienta de ejecución independiente — no garantiza beneficios. Las cifras de rendimiento en esta página corresponden a datos del Modo Shadow (saldo virtual) y a capturas de registros reales del dashboard de periodos específicos; no garantizan ni implican resultados futuros. Todas las decisiones de trading y sus resultados son responsabilidad exclusiva del usuario. JaviD Future Bot no ofrece asesoramiento de inversión, no custodia fondos y no ejecuta operaciones en ningún servidor — cada orden se envía directamente desde tu propio dispositivo, usando tus propias credenciales de API de Bitget.',
+    dl_disclaimer: 'El trading de futuros de criptomonedas conlleva un alto nivel de riesgo y no es adecuado para todos los inversores. JaviD Future Bot es una herramienta de ejecución independiente — no garantiza beneficios. Las cifras de rendimiento en esta página corresponden a datos del Modo Shadow (saldo virtual) y a capturas de registros reales del dashboard de periodos específicos. Todas las decisiones de trading y sus resultados son responsabilidad exclusiva del usuario. JaviD Future Bot no ofrece asesoramiento de inversión, no custodia fondos y no ejecuta operaciones en ningún servidor — cada orden se envía directamente desde tu propio dispositivo, usando tus propias credenciales de API de Bitget.',
     footer_tagline: 'Ejecución automatizada de Futuros USDT-M en Bitget — 100% local, sin custodia, gratis para siempre.',
     footer_product_h: 'Producto',
     footer_link_shadow: 'Modo Shadow',
@@ -1975,7 +1975,7 @@ var I18N = {
     lp_pnl_label: 'P&amp;L cumulé (USDT) sur 97 trades',
     lp_return_label: 'Rendement cumulé depuis le début du Mode Shadow',
     lp_winrate_label: 'Taux de réussite sur la même période',
-    lp_note: 'Instantané pris le 2026-07-05 à 05:04 (KST) — 7 positions ouvertes à ce moment-là, avec un mélange de gains et pertes latents. Le Mode Shadow trade sur des données de marché Bitget réelles avec un solde virtuel ; ce n\'est pas un historique de trading en argent réel, et les performances passées ne garantissent pas les résultats futurs. Un historique distinct du tableau de bord réel est publié capture par capture sur la page <a class="font-bold text-indigo-400 hover:underline" href="results.html">Résultats Réels</a>.',
+    lp_note: 'Instantané pris le 2026-07-05 à 05:04 (KST) — 7 positions ouvertes à ce moment-là, avec un mélange de gains et pertes latents. Le Mode Shadow trade sur des données de marché Bitget réelles avec un solde virtuel ; ce n\'est pas un historique de trading en argent réel. Un historique distinct du tableau de bord réel est publié capture par capture sur la page <a class="font-bold text-indigo-400 hover:underline" href="results.html">Résultats Réels</a>.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'Trois raisons qui poussent les traders à passer à JaviD',
     why1_title: 'Zéro serveur intermédiaire',
@@ -2124,7 +2124,7 @@ var I18N = {
     dl_badge3: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>Sans carte bancaire',
     dl_howto: 'Cliquez sur votre OS → décompressez → lancez <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. Première fois ? Suivez le <a class="font-bold text-indigo-600 hover:underline" href="manual.html">Manuel Utilisateur</a>.',
     dl_contact: 'Des questions ? Écrivez à <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a> ou posez-les sur le <a class="font-bold text-indigo-600 hover:underline" href="board.html">Forum Communautaire</a>.',
-    dl_disclaimer: 'Le trading de futures sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. JaviD Future Bot est un outil d\'exécution autonome — il ne garantit pas de profits. Les chiffres de performance présentés sur cette page proviennent de données du Mode Shadow (solde virtuel) et de captures d\'écran du tableau de bord réel sur des périodes spécifiques ; ils ne garantissent ni ne préjugent des résultats futurs. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l\'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne détient aucun fonds en dépôt, et n\'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API Bitget.',
+    dl_disclaimer: 'Le trading de futures sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. JaviD Future Bot est un outil d\'exécution autonome — il ne garantit pas de profits. Les chiffres de performance présentés sur cette page proviennent de données du Mode Shadow (solde virtuel) et de captures d\'écran du tableau de bord réel sur des périodes spécifiques. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l\'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne détient aucun fonds en dépôt, et n\'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API Bitget.',
     footer_tagline: 'Exécution automatisée des Futures USDT-M sur Bitget — 100% locale, non custodiale, gratuite à vie.',
     footer_product_h: 'Produit',
     footer_link_shadow: 'Mode Shadow',

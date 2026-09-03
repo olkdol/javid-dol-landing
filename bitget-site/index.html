@@ -310,8 +310,112 @@
     <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"><div class="text-[28px] font-extrabold text-emerald-400" id="lpReturn">+3.28%</div><div class="mt-1.5 text-[12px] leading-snug text-slate-400" data-i18n="lp_return_label">Cumulative return since Shadow Mode start</div></div>
     <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"><div class="text-[28px] font-extrabold text-indigo-400" id="lpWinRate">81.4%</div><div class="mt-1.5 text-[12px] leading-snug text-slate-400" data-i18n="lp_winrate_label">Win rate over the same run</div></div>
   </div>
-  <p class="mx-auto mt-6 max-w-3xl text-center text-[12px] leading-relaxed text-slate-500" id="lpNote" data-i18n="lp_note">Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live Bitget market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.</p>
+  <p class="mx-auto mt-6 max-w-3xl text-center text-[12px] leading-relaxed text-slate-500" id="lpNote" data-i18n="lp_note">Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live Bitget market data against a virtual balance; this is not a record of real-money trading. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.</p>
 </div></section>
+
+<!-- ============ REAL ACCOUNT CURVE (closed trades only) ============ -->
+<section id="real-curve" class="border-t border-slate-100 bg-white py-16"><div class="mx-auto max-w-5xl px-6">
+  <div class="mx-auto mb-8 max-w-2xl text-center">
+    <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-600" data-i18n="curve_eyebrow">Real Account Record</div>
+    <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl" data-i18n="curve_h2">Cumulative Realized P&amp;L, Day by Day</h2>
+    <p class="mt-3 text-[15px] text-slate-500" data-i18n="curve_sub">One real account. Every point is that day's cumulative realized P&amp;L — closed trades only, nothing floating counted.</p>
+  </div>
+
+  <div class="rounded-2xl border border-slate-200 bg-slate-50/60 p-5 sm:p-7">
+    <div class="mb-4 flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <div class="text-[12px] font-bold uppercase tracking-wider text-slate-400" data-i18n="curve_kpi_label">Cumulative realized P&amp;L · USDT</div>
+        <div class="mt-1 text-[30px] font-extrabold leading-none text-slate-900 sm:text-[36px]"><span id="curveTotal">0</span></div>
+      </div>
+      <div class="text-right text-[12px] leading-relaxed text-slate-500">
+        <div><span id="curveRange" class="font-bold text-slate-700"></span></div>
+        <div><span id="curveDays" class="font-bold text-slate-700"></span> <span data-i18n="curve_days_word">days</span></div>
+      </div>
+    </div>
+
+    <div class="relative w-full overflow-hidden rounded-xl border border-slate-200 bg-white">
+      <svg id="curveSvg" viewBox="0 0 760 260" preserveAspectRatio="none" class="block h-[220px] w-full sm:h-[260px]" role="img" aria-label="Cumulative realized profit and loss by day">
+        <defs>
+          <linearGradient id="curveFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#14b8a6" stop-opacity=".22"/>
+            <stop offset="100%" stop-color="#14b8a6" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <g id="curveGrid" stroke="#e2e8f0" stroke-width="1"></g>
+        <path id="curveArea" fill="url(#curveFill)" d=""></path>
+        <path id="curveLine" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d=""></path>
+        <g id="curveDots"></g>
+      </svg>
+    </div>
+
+    <p class="mt-4 text-[12px] leading-relaxed text-slate-500" data-i18n="curve_origin">Running since late May 2026. The day-by-day record starts Aug 9 because the earlier logs were lost in a program update — I only show what I can still prove.</p>
+    <p class="mt-2 text-[12px] leading-relaxed text-slate-600" data-i18n="curve_verify">Check it against the dashboard screenshots on <a href="results.html" class="font-bold text-indigo-600 hover:underline">Real Results</a> — or run it yourself in Shadow Mode first: no API key, no deposit, virtual balance.</p>
+    <p class="mt-4 text-[12px] leading-relaxed text-slate-500" data-i18n="curve_note">Closed trades only — open positions are not counted, so this line only moves when a trade is closed. One account over this window is the entire sample; it is a record, not a promise. Leveraged futures can lose your entire principal.</p>
+  </div>
+</div></section>
+<script>
+(function(){
+  var svg=document.getElementById('curveSvg'); if(!svg) return;
+  var W=760,H=260,PADL=8,PADR=8,PADT=18,PADB=18;
+  function draw(pts){
+    var xs=pts.map(function(_,i){return i;}), ys=pts.map(function(p){return p.c;});
+    var minY=Math.min(0, Math.min.apply(null,ys)), maxY=Math.max.apply(null,ys);
+    if(maxY===minY) maxY=minY+1;
+    var innerW=W-PADL-PADR, innerH=H-PADT-PADB;
+    function X(i){ return PADL + (pts.length<2?0:(i/(pts.length-1))*innerW); }
+    function Y(v){ return PADT + innerH - ((v-minY)/(maxY-minY))*innerH; }
+    var grid=document.getElementById('curveGrid'), g='';
+    for(var k=0;k<=3;k++){ var gy=PADT+(innerH/3)*k; g+='<line x1="'+PADL+'" y1="'+gy+'" x2="'+(W-PADR)+'" y2="'+gy+'"/>'; }
+    grid.innerHTML=g;
+    var d='',a='';
+    pts.forEach(function(p,i){ var cmd=(i===0?'M':'L'); d+=cmd+X(i).toFixed(1)+' '+Y(p.c).toFixed(1)+' '; });
+    a='M'+X(0).toFixed(1)+' '+(H-PADB)+' L'+d.slice(1).replace(/^M/,'')+'L'+X(pts.length-1).toFixed(1)+' '+(H-PADB)+' Z';
+    var line=document.getElementById('curveLine'), area=document.getElementById('curveArea');
+    line.setAttribute('d',d.trim()); area.setAttribute('d',a);
+    var dots='';
+    pts.forEach(function(p,i){ dots+='<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(p.c).toFixed(1)+'" r="2.6" fill="#0d9488" opacity="0"><animate attributeName="opacity" to="1" dur="0.25s" begin="'+(0.9+i*0.05)+'s" fill="freeze"/></circle>'; });
+    document.getElementById('curveDots').innerHTML=dots;
+    // stroke draw-on animation
+    try{
+      var len=line.getTotalLength();
+      line.style.strokeDasharray=len; line.style.strokeDashoffset=len;
+      area.style.opacity='0';
+      var started=false;
+      function run(){
+        if(started) return; started=true;
+        line.style.transition='stroke-dashoffset 1.6s cubic-bezier(.25,.6,.25,1)';
+        line.style.strokeDashoffset='0';
+        area.style.transition='opacity .9s ease .5s'; area.style.opacity='1';
+        countUp(pts[pts.length-1].c);
+      }
+      if('IntersectionObserver' in window && !(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){
+        var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ run(); io.disconnect(); } }); },{threshold:.25});
+        io.observe(svg);
+        setTimeout(run,4000); // safety
+      } else { line.style.strokeDashoffset='0'; area.style.opacity='1'; setTotal(pts[pts.length-1].c); }
+    }catch(e){ line.style.strokeDashoffset='0'; area.style.opacity='1'; setTotal(pts[pts.length-1].c); }
+  }
+  function fmt(n){ return (n>=0?'+':'') + n.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+  function setTotal(v){ var el=document.getElementById('curveTotal'); if(el) el.textContent=fmt(v); }
+  function countUp(target){
+    var el=document.getElementById('curveTotal'); if(!el) return;
+    var t0=null, dur=1500;
+    function step(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/dur); el.textContent=fmt(target*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  fetch('data/account-series.json').then(function(r){return r.json();}).then(function(j){
+    if(!j||!j.series||!j.series.length) return;
+    var rangeEl=document.getElementById('curveRange'), daysEl=document.getElementById('curveDays');
+    if(rangeEl) rangeEl.textContent=j.from+' → '+j.to;
+    if(daysEl) daysEl.textContent=j.days;
+    setTotal(0);
+    draw(j.series);
+  }).catch(function(){
+    var s=document.getElementById('real-curve'); if(s) s.style.display='none'; // fail quietly rather than show an empty chart
+  });
+})();
+</script>
+
 
 <script>
 (function(){
@@ -339,7 +443,7 @@
     var badge = document.getElementById('liveBadge'); badge.classList.remove('hidden'); badge.classList.add('flex');
     document.getElementById('liveProofSub').textContent = 'Live account snapshot, pulled directly from the running bot — real Bitget market data, virtual USDT, zero real capital at risk.';
     var openTxt = data.open_positions != null ? data.open_positions + ' positions open right now, ' : '';
-    document.getElementById('lpNote').innerHTML = 'Live data, refreshed automatically — ' + openTxt + 'a mix of floating gains and losses as the bot\'s exit logic manages them in real time. Shadow Mode trades live Bitget market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.';
+    document.getElementById('lpNote').innerHTML = 'Live data, refreshed automatically — ' + openTxt + 'a mix of floating gains and losses as the bot\'s exit logic manages them in real time. Shadow Mode trades live Bitget market data against a virtual balance; this is not a record of real-money trading. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.';
   }).catch(function(){});
 })();
 </script>
@@ -1063,12 +1167,20 @@ var I18N = {
     lp_eyebrow: 'Live Proof',
     lp_h2: 'Before the Pitch, Here\'s an Account Running Right Now',
     lp_sub: 'A Shadow Mode account snapshot pulled straight from a live Telegram report — real Bitget market data, virtual USDT, zero real capital at risk.',
+    curve_origin: "Running since late May 2026. The day-by-day record starts Aug 9 because the earlier logs were lost in a program update — I only show what I can still prove.",
+    curve_verify: "Check it against the dashboard screenshots on <a href='results.html' class='font-bold text-indigo-600 hover:underline'>Real Results</a> — or run it yourself in Shadow Mode first: no API key, no deposit, virtual balance.",
+    curve_eyebrow: 'Real Account Record',
+    curve_h2: 'Cumulative Realized P&amp;L, Day by Day',
+    curve_sub: 'One real account. Every point is the cumulative realized P&amp;L up to that day — closed trades only, nothing floating counted.',
+    curve_kpi_label: 'Cumulative realized P&amp;L · USDT',
+    curve_days_word: 'days with closed trades',
+    curve_note: 'Closed trades only — unrealized positions are not included. One account over this window is the entire sample; it is a record, not a promise. Leveraged futures can lose your entire principal.',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>Live — updated <span id="liveUpdated"></span> ago',
     lp_balance_label: 'Balance (USDT) — Shadow Mode, virtual funds',
     lp_pnl_label: 'Cumulative P&amp;L (USDT) across 97 trades',
     lp_return_label: 'Cumulative return since Shadow Mode start',
     lp_winrate_label: 'Win rate over the same run',
-    lp_note: 'Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live Bitget market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a class="font-bold text-indigo-400 hover:underline" href="results.html">Real Results</a> page.',
+    lp_note: 'Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live Bitget market data against a virtual balance; this is not a record of real-money trading. A separate real-dashboard record is published screenshot-by-screenshot on the <a class="font-bold text-indigo-400 hover:underline" href="results.html">Real Results</a> page.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'Three Reasons Traders Switch to JaviD',
     why1_title: 'Zero servers in the middle',
@@ -1284,12 +1396,20 @@ var I18N = {
     lp_eyebrow: '실시간 증거',
     lp_h2: '설명하기 전에, 지금 실제로 돌아가고 있는 계좌를 보여드립니다',
     lp_sub: '실시간 텔레그램 리포트에서 그대로 가져온 섀도우 모드 계좌 스냅샷입니다 — 실제 비트겟 시세 데이터, 가상 USDT, 실제 자본 위험 없음.',
+    curve_origin: "2026년 5월 말부터 돌리고 있습니다. 날짜별 기록이 8월 9일부터인 건 그 이전 로그가 프로그램 업데이트 과정에서 남지 않았기 때문입니다. 지금 증명할 수 있는 것만 올립니다.",
+    curve_verify: "같은 계좌의 대시보드 스크린샷은 <a href='results.html' class='font-bold text-indigo-600 hover:underline'>실제 결과</a> 페이지에서 하나씩 확인하실 수 있습니다 — 아니면 쉐도우 모드로 먼저 며칠 돌려 보세요. API 키도, 입금도 필요 없습니다.",
+    curve_eyebrow: '실계좌 기록',
+    curve_h2: '날짜별 누적 실현손익',
+    curve_sub: '실계좌 1개입니다. 점 하나가 그날까지의 누적 실현손익입니다 — 청산된 거래만 집계했고, 미실현은 넣지 않았습니다.',
+    curve_kpi_label: '누적 실현손익 · USDT',
+    curve_days_word: '일 (청산 거래 발생일)',
+    curve_note: '청산된 거래 기준입니다 — 미실현 포지션은 포함하지 않았고, 그래서 이 선은 거래를 닫을 때만 움직입니다. 이 구간의 계좌 1개가 표본의 전부이며, 이것은 기록이지 약속이 아닙니다. 레버리지 선물은 원금 전액 손실이 가능합니다.',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>실시간 — <span id="liveUpdated"></span> 전 업데이트',
     lp_balance_label: '잔고(USDT) — 섀도우 모드, 가상 자금',
     lp_pnl_label: '누적 손익(P&amp;L, USDT) — 97건 거래 기준',
     lp_return_label: '섀도우 모드 시작 이후 누적 수익률',
     lp_winrate_label: '같은 기간 승률',
-    lp_note: '2026-07-05 05:04(KST) 기준 스냅샷 — 해당 시점 7개 포지션 보유 중이며 평가 이익과 손실이 혼재되어 있습니다. 섀도우 모드는 실제 비트겟 시세 데이터를 가상 잔고로 거래하는 것으로, 실제 자금 거래 기록이 아니며 과거 성과가 미래 결과를 보장하지 않습니다. 실제 대시보드 기록은 <a class="font-bold text-indigo-400 hover:underline" href="results.html">실제 결과</a> 페이지에 스크린샷 단위로 별도 게시되어 있습니다.',
+    lp_note: '2026-07-05 05:04(KST) 기준 스냅샷 — 해당 시점 7개 포지션 보유 중이며 평가 이익과 손실이 혼재되어 있습니다. 섀도우 모드는 실제 비트겟 시세 데이터를 가상 잔고로 거래하는 것으로, 실제 자금 거래 기록이 아닙니다. 실제 대시보드 기록은 <a class="font-bold text-indigo-400 hover:underline" href="results.html">실제 결과</a> 페이지에 스크린샷 단위로 별도 게시되어 있습니다.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: '트레이더들이 JaviD로 갈아타는 세 가지 이유',
     why1_title: '중간 서버가 전혀 없습니다',
@@ -1505,6 +1625,14 @@ var I18N = {
     lp_eyebrow: 'ライブ実績',
     lp_h2: '説明の前に、今まさに稼働中のアカウントをご覧ください',
     lp_sub: 'ライブのTelegramレポートからそのまま取得したシャドーモードのアカウントスナップショットです — 実際のBitget市場データ、仮想USDT、実資金リスクはゼロ。',
+    curve_origin: "2026年5月末から稼働しています。日ごとの記録が8月9日からなのは、それ以前のログがプログラム更新の過程で残らなかったためです。今証明できるものだけを載せています。",
+    curve_verify: "同じ口座のダッシュボードのスクリーンショットは<a href='results.html' class='font-bold text-indigo-600 hover:underline'>実際の結果</a>ページで一枚ずつ確認できます — あるいはまずシャドーモードで数日動かしてみてください。APIキーも入金も不要です。",
+    curve_eyebrow: '実口座の記録',
+    curve_h2: '日ごとの累積実現損益',
+    curve_sub: '実口座1つです。点はその日までの累積実現損益 — 決済済みの取引のみで、含み損益は含みません。',
+    curve_kpi_label: '累積実現損益 · USDT',
+    curve_days_word: '日間 (決済のあった日)',
+    curve_note: '決済済みの取引のみ — 含み益・含み損は含まないため、この線は取引を決済したときだけ動きます。この期間の1口座がサンプルのすべてであり、これは記録であって約束ではありません。レバレッジ先物は元本を全て失う可能性があります。',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>ライブ — <span id="liveUpdated"></span>前に更新',
     lp_balance_label: '残高（USDT）— シャドーモード、仮想資金',
     lp_pnl_label: '累計損益（P&amp;L、USDT）— 97件の取引',
@@ -1726,6 +1854,14 @@ var I18N = {
     lp_eyebrow: '实盘验证',
     lp_h2: '在介绍之前，先看看这个正在实时运行的账户',
     lp_sub: '直接来自实时 Telegram 报告的影子模式账户快照 — 真实 Bitget 行情数据，虚拟 USDT，零真实资金风险。',
+    curve_origin: "自 2026 年 5 月底開始運行。逐日記錄從 8 月 9 日開始，是因為更早的日誌在程式更新過程中沒有保留下來。我只公開現在還能證明的部分。",
+    curve_verify: "同一帳戶的儀表板截圖可在<a href='results.html' class='font-bold text-indigo-600 hover:underline'>真實結果</a>頁面逐張查看 — 或者先用影子模式跑幾天。不需要 API 金鑰，也不需要入金。",
+    curve_eyebrow: '真實帳戶記錄',
+    curve_h2: '逐日累積已實現盈虧',
+    curve_sub: '1 個真實帳戶。每個點是當日的累積已實現盈虧 — 僅計算已平倉交易，不含浮動盈虧。',
+    curve_kpi_label: '累積已實現盈虧 · USDT',
+    curve_days_word: '天 (有平倉交易的日子)',
+    curve_note: '僅計算已平倉交易 — 不包含未平倉部位，所以這條線只在平倉時才會變動。此區間的一個帳戶就是全部樣本；這是記錄，不是承諾。槓桿期貨可能損失全部本金。',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>实时 — <span id="liveUpdated"></span>前更新',
     lp_balance_label: '余额（USDT）— 影子模式，虚拟资金',
     lp_pnl_label: '累计盈亏（P&amp;L，USDT）— 共 97 笔交易',
@@ -1947,12 +2083,20 @@ var I18N = {
     lp_eyebrow: 'Prueba en Vivo',
     lp_h2: 'Antes de venderte nada, mira una cuenta que está operando ahora mismo',
     lp_sub: 'Una instantánea de una cuenta en Modo Shadow, tomada directamente de un informe en vivo de Telegram — datos reales del mercado de Bitget, USDT virtual, cero capital real en riesgo.',
+    curve_origin: "En funcionamiento desde finales de mayo de 2026. El registro diario empieza el 9 de agosto porque los registros anteriores se perdieron en una actualización del programa — solo muestro lo que aún puedo demostrar.",
+    curve_verify: "Compruébalo con las capturas del dashboard en <a href='results.html' class='font-bold text-indigo-600 hover:underline'>Resultados Reales</a> — o pruébalo tú mismo primero en Modo Shadow: sin clave API, sin depósito, saldo virtual.",
+    curve_eyebrow: 'Registro de cuenta real',
+    curve_h2: 'P&amp;L realizado acumulado, día a día',
+    curve_sub: 'Una cuenta real. Cada punto es el P&amp;L realizado acumulado de ese día — solo operaciones cerradas, sin contar lo flotante.',
+    curve_kpi_label: 'P&amp;L realizado acumulado · USDT',
+    curve_days_word: 'días con operaciones cerradas',
+    curve_note: 'Solo operaciones cerradas — las posiciones abiertas no se cuentan, por lo que esta línea solo se mueve al cerrar una operación. Una cuenta en esta ventana es toda la muestra; es un registro, no una promesa. Los futuros apalancados pueden perder todo tu capital.',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>En vivo — actualizado hace <span id="liveUpdated"></span>',
     lp_balance_label: 'Saldo (USDT) — Modo Shadow, fondos virtuales',
     lp_pnl_label: 'P&amp;L acumulado (USDT) en 97 operaciones',
     lp_return_label: 'Rendimiento acumulado desde el inicio del Modo Shadow',
     lp_winrate_label: 'Tasa de acierto durante el mismo periodo',
-    lp_note: 'Instantánea tomada el 2026-07-05, 05:04 (KST) — 7 posiciones abiertas en ese momento, con una mezcla de ganancias y pérdidas flotantes. El Modo Shadow opera con datos reales del mercado de Bitget sobre un saldo virtual; no es un registro de trading con dinero real, y el rendimiento pasado no garantiza resultados futuros. Un registro independiente del dashboard real se publica captura por captura en la página de <a class="font-bold text-indigo-400 hover:underline" href="results.html">Resultados Reales</a>.',
+    lp_note: 'Instantánea tomada el 2026-07-05, 05:04 (KST) — 7 posiciones abiertas en ese momento, con una mezcla de ganancias y pérdidas flotantes. El Modo Shadow opera con datos reales del mercado de Bitget sobre un saldo virtual; no es un registro de trading con dinero real. Un registro independiente del dashboard real se publica captura por captura en la página de <a class="font-bold text-indigo-400 hover:underline" href="results.html">Resultados Reales</a>.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'Tres razones por las que los traders cambian a JaviD',
     why1_title: 'Cero servidores en el medio',
@@ -2101,7 +2245,7 @@ var I18N = {
     dl_badge3: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>Sin tarjeta de crédito',
     dl_howto: 'Haz clic en tu sistema operativo → descomprime → ejecuta <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. ¿Primera vez? Sigue el <a class="font-bold text-indigo-600 hover:underline" href="manual.html">Manual de Usuario</a>.',
     dl_contact: '¿Preguntas? Escribe a <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a> o pregunta en el <a class="font-bold text-indigo-600 hover:underline" href="board.html">Foro de la Comunidad</a>.',
-    dl_disclaimer: 'El trading de futuros de criptomonedas conlleva un alto nivel de riesgo y no es adecuado para todos los inversores. JaviD Future Bot es una herramienta de ejecución independiente — no garantiza beneficios. Las cifras de rendimiento en esta página corresponden a datos del Modo Shadow (saldo virtual) y a capturas de registros reales del dashboard de periodos específicos; no garantizan ni implican resultados futuros. Todas las decisiones de trading y sus resultados son responsabilidad exclusiva del usuario. JaviD Future Bot no ofrece asesoramiento de inversión, no custodia fondos y no ejecuta operaciones en ningún servidor — cada orden se envía directamente desde tu propio dispositivo, usando tus propias credenciales de API de Bitget.',
+    dl_disclaimer: 'El trading de futuros de criptomonedas conlleva un alto nivel de riesgo y no es adecuado para todos los inversores. JaviD Future Bot es una herramienta de ejecución independiente — no garantiza beneficios. Las cifras de rendimiento en esta página corresponden a datos del Modo Shadow (saldo virtual) y a capturas de registros reales del dashboard de periodos específicos. Todas las decisiones de trading y sus resultados son responsabilidad exclusiva del usuario. JaviD Future Bot no ofrece asesoramiento de inversión, no custodia fondos y no ejecuta operaciones en ningún servidor — cada orden se envía directamente desde tu propio dispositivo, usando tus propias credenciales de API de Bitget.',
     footer_tagline: 'Ejecución automatizada de Futuros USDT-M en Bitget — 100% local, sin custodia, gratis para siempre.',
     footer_product_h: 'Producto',
     footer_link_shadow: 'Modo Shadow',
@@ -2168,12 +2312,20 @@ var I18N = {
     lp_eyebrow: 'Preuve en Direct',
     lp_h2: 'Avant le discours commercial, voici un compte qui tourne en ce moment même',
     lp_sub: 'Un instantané de compte en Mode Shadow, extrait directement d\'un rapport Telegram en direct — données de marché Bitget réelles, USDT virtuels, zéro capital réel en jeu.',
+    curve_origin: "En fonctionnement depuis fin mai 2026. Le relevé jour par jour commence le 9 août car les journaux antérieurs ont été perdus lors d une mise à jour du programme — je ne montre que ce que je peux encore prouver.",
+    curve_verify: "Vérifiez avec les captures du tableau de bord sur <a href='results.html' class='font-bold text-indigo-600 hover:underline'>Résultats Réels</a> — ou testez vous-même en Mode Ombre : sans clé API, sans dépôt, solde virtuel.",
+    curve_eyebrow: 'Relevé de compte réel',
+    curve_h2: 'P&amp;L réalisé cumulé, jour par jour',
+    curve_sub: 'Un compte réel. Chaque point correspond au P&amp;L réalisé cumulé du jour — uniquement les positions clôturées, rien de latent.',
+    curve_kpi_label: 'P&amp;L réalisé cumulé · USDT',
+    curve_days_word: 'jours avec positions clôturées',
+    curve_note: "Positions clôturées uniquement — le latent n'est pas compté, donc cette courbe ne bouge que lorsqu'une position est fermée. Un seul compte sur cette période constitue tout l'échantillon ; il s'agit d'un relevé, pas d'une promesse. Les futures à effet de levier peuvent faire perdre la totalité du capital.",
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>En direct — mis à jour il y a <span id="liveUpdated"></span>',
     lp_balance_label: 'Solde (USDT) — Mode Shadow, fonds virtuels',
     lp_pnl_label: 'P&amp;L cumulé (USDT) sur 97 trades',
     lp_return_label: 'Rendement cumulé depuis le début du Mode Shadow',
     lp_winrate_label: 'Taux de réussite sur la même période',
-    lp_note: 'Instantané pris le 2026-07-05 à 05:04 (KST) — 7 positions ouvertes à ce moment-là, avec un mélange de gains et pertes latents. Le Mode Shadow trade sur des données de marché Bitget réelles avec un solde virtuel ; ce n\'est pas un historique de trading en argent réel, et les performances passées ne garantissent pas les résultats futurs. Un historique distinct du tableau de bord réel est publié capture par capture sur la page <a class="font-bold text-indigo-400 hover:underline" href="results.html">Résultats Réels</a>.',
+    lp_note: 'Instantané pris le 2026-07-05 à 05:04 (KST) — 7 positions ouvertes à ce moment-là, avec un mélange de gains et pertes latents. Le Mode Shadow trade sur des données de marché Bitget réelles avec un solde virtuel ; ce n\'est pas un historique de trading en argent réel. Un historique distinct du tableau de bord réel est publié capture par capture sur la page <a class="font-bold text-indigo-400 hover:underline" href="results.html">Résultats Réels</a>.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'Trois raisons qui poussent les traders à passer à JaviD',
     why1_title: 'Zéro serveur intermédiaire',
@@ -2322,7 +2474,7 @@ var I18N = {
     dl_badge3: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>Sans carte bancaire',
     dl_howto: 'Cliquez sur votre OS → décompressez → lancez <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. Première fois ? Suivez le <a class="font-bold text-indigo-600 hover:underline" href="manual.html">Manuel Utilisateur</a>.',
     dl_contact: 'Des questions ? Écrivez à <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a> ou posez-les sur le <a class="font-bold text-indigo-600 hover:underline" href="board.html">Forum Communautaire</a>.',
-    dl_disclaimer: 'Le trading de futures sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. JaviD Future Bot est un outil d\'exécution autonome — il ne garantit pas de profits. Les chiffres de performance présentés sur cette page proviennent de données du Mode Shadow (solde virtuel) et de captures d\'écran du tableau de bord réel sur des périodes spécifiques ; ils ne garantissent ni ne préjugent des résultats futurs. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l\'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne détient aucun fonds en dépôt, et n\'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API Bitget.',
+    dl_disclaimer: 'Le trading de futures sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. JaviD Future Bot est un outil d\'exécution autonome — il ne garantit pas de profits. Les chiffres de performance présentés sur cette page proviennent de données du Mode Shadow (solde virtuel) et de captures d\'écran du tableau de bord réel sur des périodes spécifiques. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l\'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne détient aucun fonds en dépôt, et n\'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API Bitget.',
     footer_tagline: 'Exécution automatisée des Futures USDT-M sur Bitget — 100% locale, non custodiale, gratuite à vie.',
     footer_product_h: 'Produit',
     footer_link_shadow: 'Mode Shadow',
@@ -2389,12 +2541,20 @@ vi: {
     lp_eyebrow: 'Bằng Chứng Trực Tiếp',
     lp_h2: 'Trước Khi Vào Phần Giới Thiệu, Đây Là Một Tài Khoản Đang Chạy Ngay Bây Giờ',
     lp_sub: 'Ảnh chụp nhanh tài khoản Shadow Mode được lấy trực tiếp từ báo cáo Telegram trực tiếp — dữ liệu thị trường Bitget thực, USDT ảo, không có rủi ro vốn thực.',
+    curve_origin: "Đã chạy từ cuối tháng 5 năm 2026. Bản ghi theo ngày bắt đầu từ 9/8 vì các log trước đó đã mất trong một lần cập nhật chương trình — tôi chỉ đưa ra những gì còn chứng minh được.",
+    curve_verify: "Đối chiếu với ảnh chụp bảng điều khiển ở trang <a href='results.html' class='font-bold text-indigo-600 hover:underline'>Kết Quả Thật</a> — hoặc tự chạy thử ở Chế độ Bóng trước: không cần khóa API, không cần nạp tiền, số dư ảo.",
+    curve_eyebrow: 'Bản ghi tài khoản thật',
+    curve_h2: 'Lãi/lỗ đã chốt lũy kế theo ngày',
+    curve_sub: 'Một tài khoản thật. Mỗi điểm là lãi/lỗ đã chốt lũy kế của ngày đó — chỉ tính lệnh đã đóng, không tính lãi/lỗ trôi nổi.',
+    curve_kpi_label: 'Lãi/lỗ đã chốt lũy kế · USDT',
+    curve_days_word: 'ngày có lệnh đã đóng',
+    curve_note: 'Chỉ tính lệnh đã đóng — vị thế đang mở không được tính, nên đường này chỉ thay đổi khi một lệnh được đóng. Một tài khoản trong khoảng thời gian này là toàn bộ mẫu; đây là bản ghi, không phải lời hứa. Futures đòn bẩy có thể mất toàn bộ vốn.',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>Trực tiếp — cập nhật <span id="liveUpdated"></span> trước',
     lp_balance_label: 'Số dư (USDT) — Shadow Mode, quỹ ảo',
     lp_pnl_label: 'Lãi/lỗ lũy kế (USDT) qua 97 giao dịch',
     lp_return_label: 'Lợi nhuận lũy kế kể từ khi bắt đầu Shadow Mode',
     lp_winrate_label: 'Tỷ lệ thắng trong cùng kỳ chạy',
-    lp_note: 'Ảnh chụp nhanh được lấy vào 05/07/2026, 05:04 giờ KST — 7 vị thế đang mở tại thời điểm đó, kết hợp giữa lãi và lỗ tạm tính. Shadow Mode giao dịch trên dữ liệu thị trường Bitget trực tiếp so với số dư ảo; đây không phải là bản ghi giao dịch bằng tiền thật, và hiệu suất trong quá khứ không đảm bảo kết quả trong tương lai. Một bản ghi bảng điều khiển thực riêng biệt được công bố từng ảnh chụp màn hình trên trang <a class="font-bold text-indigo-400 hover:underline" href="results.html">Kết Quả Thực Tế</a>.',
+    lp_note: 'Ảnh chụp nhanh được lấy vào 05/07/2026, 05:04 giờ KST — 7 vị thế đang mở tại thời điểm đó, kết hợp giữa lãi và lỗ tạm tính. Shadow Mode giao dịch trên dữ liệu thị trường Bitget trực tiếp so với số dư ảo; đây không phải là bản ghi giao dịch bằng tiền thật, và. Một bản ghi bảng điều khiển thực riêng biệt được công bố từng ảnh chụp màn hình trên trang <a class="font-bold text-indigo-400 hover:underline" href="results.html">Kết Quả Thực Tế</a>.',
     eyebrow_why_javid: 'Tại Sao Chọn JaviD',
     why_h2: 'Ba Lý Do Nhà Giao Dịch Chuyển Sang JaviD',
     why1_title: 'Không máy chủ trung gian',
@@ -2610,12 +2770,20 @@ tr: {
     lp_eyebrow: 'Canlı Kanıt',
     lp_h2: 'Sunuma Başlamadan Önce, İşte Şu Anda Çalışan Bir Hesap',
     lp_sub: 'Canlı bir Telegram raporundan doğrudan alınan bir Shadow Mode hesap anlık görüntüsü — gerçek Bitget piyasa verisi, sanal USDT, sıfır gerçek sermaye riski.',
+    curve_origin: "2026 Mayıs sonundan beri çalışıyor. Gün gün kayıt 9 Ağustos ta başlıyor çünkü daha eski loglar bir program güncellemesinde kayboldu — yalnızca hâlâ kanıtlayabildiğimi gösteriyorum.",
+    curve_verify: "<a href='results.html' class='font-bold text-indigo-600 hover:underline'>Gerçek Sonuçlar</a> sayfasındaki panel ekran görüntüleriyle karşılaştırın — ya da önce Gölge Modda kendiniz çalıştırın: API anahtarı yok, para yatırma yok, sanal bakiye.",
+    curve_eyebrow: 'Gerçek hesap kaydı',
+    curve_h2: 'Gün gün kümülatif gerçekleşmiş K/Z',
+    curve_sub: 'Tek bir gerçek hesap. Her nokta o günün kümülatif gerçekleşmiş kâr/zararı — yalnızca kapatılmış işlemler, açık pozisyonlar sayılmadı.',
+    curve_kpi_label: 'Kümülatif gerçekleşmiş K/Z · USDT',
+    curve_days_word: 'gün (kapatılmış işlem olan)',
+    curve_note: 'Yalnızca kapatılmış işlemler — açık pozisyonlar sayılmaz, bu yüzden bu çizgi ancak bir işlem kapatıldığında hareket eder. Bu aralıktaki tek hesap örneklemin tamamıdır; bu bir kayıttır, vaat değil. Kaldıraçlı vadeli işlemler ana paranızın tamamını kaybettirebilir.',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>Canlı — <span id="liveUpdated"></span> önce güncellendi',
     lp_balance_label: 'Bakiye (USDT) — Shadow Mode, sanal fonlar',
     lp_pnl_label: '97 işlem boyunca kümülatif K/Z (USDT)',
     lp_return_label: 'Shadow Mode başlangıcından bu yana kümülatif getiri',
     lp_winrate_label: 'Aynı çalıştırma boyunca kazanma oranı',
-    lp_note: 'Anlık görüntü 05.07.2026, 05:04 KST\'de alındı — o anda 7 pozisyon açıktı, değişken kazanç ve kayıpların bir karışımı. Shadow Mode, sanal bir bakiyeye karşı canlı Bitget piyasa verisiyle işlem yapar; bu, gerçek parayla yapılan ticaretin bir kaydı değildir ve geçmiş performans gelecekteki sonuçları garanti etmez. Ayrı bir gerçek panel kaydı, <a class="font-bold text-indigo-400 hover:underline" href="results.html">Gerçek Sonuçlar</a> sayfasında ekran görüntüsü ekran görüntüsü yayınlanmaktadır.',
+    lp_note: 'Anlık görüntü 05.07.2026, 05:04 KST\'de alındı — o anda 7 pozisyon açıktı, değişken kazanç ve kayıpların bir karışımı. Shadow Mode, sanal bir bakiyeye karşı canlı Bitget piyasa verisiyle işlem yapar; bu, gerçek parayla yapılan ticaretin bir kaydı değildir ve. Ayrı bir gerçek panel kaydı, <a class="font-bold text-indigo-400 hover:underline" href="results.html">Gerçek Sonuçlar</a> sayfasında ekran görüntüsü ekran görüntüsü yayınlanmaktadır.',
     eyebrow_why_javid: 'Neden JaviD',
     why_h2: 'Tüccarların JaviD\'e Geçmesinin Üç Nedeni',
     why1_title: 'Arada sıfır sunucu',
@@ -2831,6 +2999,14 @@ pt: {
     lp_eyebrow: 'Prova ao Vivo',
     lp_h2: 'Antes da Apresentação, Aqui Está uma Conta Rodando Agora Mesmo',
     lp_sub: 'Um instantâneo de conta em Shadow Mode retirado diretamente de um relatório ao vivo no Telegram — dados reais de mercado da Bitget, USDT virtual, zero capital real em risco.',
+    curve_origin: "Em funcionamento desde o fim de maio de 2026. O registro diário começa em 9 de agosto porque os logs anteriores se perderam em uma atualização do programa — mostro apenas o que ainda consigo provar.",
+    curve_verify: "Confira com as capturas do dashboard em <a href='results.html' class='font-bold text-indigo-600 hover:underline'>Resultados Reais</a> — ou rode você mesmo primeiro no Modo Shadow: sem chave API, sem depósito, saldo virtual.",
+    curve_eyebrow: 'Registro de conta real',
+    curve_h2: 'P&amp;L realizado acumulado, dia a dia',
+    curve_sub: 'Uma conta real. Cada ponto é o P&amp;L realizado acumulado daquele dia — apenas operações encerradas, nada flutuante contado.',
+    curve_kpi_label: 'P&amp;L realizado acumulado · USDT',
+    curve_days_word: 'dias com operações encerradas',
+    curve_note: 'Apenas operações encerradas — posições abertas não são contadas, então esta linha só se move quando uma operação é encerrada. Uma conta nesta janela é toda a amostra; é um registro, não uma promessa. Futuros alavancados podem perder todo o seu capital.',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>Ao vivo — atualizado há <span id="liveUpdated"></span>',
     lp_balance_label: 'Saldo (USDT) — Shadow Mode, fundos virtuais',
     lp_pnl_label: 'Lucro/prejuízo acumulado (USDT) em 97 operações',
