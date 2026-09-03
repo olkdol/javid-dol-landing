@@ -207,6 +207,26 @@
   .tg-cta{text-align:center; padding:20px 0 10px;}
   .tg-cta h3{font-family:var(--serif); font-size:22px; margin-bottom:12px; font-weight:600;}
   .tg-cta p{color:var(--faint); font-size:14.5px; margin-bottom:22px;}
+.jfb-popup-overlay{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.7);padding:0 16px;}
+.jfb-popup-overlay.jfb-open{display:flex;}
+.jfb-popup-card{position:relative;width:100%;max-width:420px;background:#fff;border-radius:16px;overflow:hidden;text-align:center;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);font-family:inherit;}
+.jfb-popup-close{position:absolute;top:14px;right:14px;z-index:10;background:none;border:none;color:rgba(255,255,255,.85);cursor:pointer;padding:4px;line-height:0;}
+.jfb-popup-close:hover{color:#fff;}
+.jfb-popup-header{background:linear-gradient(135deg,#4f46e5,#4338ca);padding:36px 24px 28px;}
+.jfb-popup-icon{margin:0 auto 12px;width:56px;height:56px;border-radius:9999px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:28px;}
+.jfb-popup-badge{display:inline-block;border-radius:9999px;background:#fbbf24;color:#0f172a;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:4px 12px;}
+.jfb-popup-title{margin-top:12px;font-size:22px;font-weight:800;line-height:1.25;color:#fff;}
+.jfb-popup-sub{margin-top:8px;font-size:13.5px;line-height:1.6;color:#c7d2fe;}
+.jfb-popup-features{padding:20px 24px 0;text-align:left;}
+.jfb-popup-feature{display:flex;align-items:flex-start;gap:10px;background:#f8fafc;border-radius:8px;padding:12px;margin-bottom:12px;}
+.jfb-popup-feature-icon{font-size:15px;margin-top:2px;}
+.jfb-popup-feature-label{font-size:13px;font-weight:800;color:#0f172a;}
+.jfb-popup-feature-desc{margin-top:2px;font-size:12.5px;line-height:1.6;color:#64748b;}
+.jfb-popup-actions{padding:24px;}
+.jfb-popup-cta{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px;background:#4f46e5;color:#fff;font-weight:800;font-size:14.5px;padding:14px 20px;text-decoration:none;box-shadow:0 1px 2px rgba(0,0,0,.05);}
+.jfb-popup-cta:hover{background:#4338ca;}
+.jfb-popup-dismiss{margin-top:10px;width:100%;background:none;border:none;color:#94a3b8;font-weight:600;font-size:12.5px;cursor:pointer;}
+.jfb-popup-dismiss:hover{color:#475569;}
 </style>
 </head>
 <body>
@@ -752,6 +772,56 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
   if (xBtn) xBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+});
+</script>
+
+<!-- JaviD update popup (V19.3.1) -->
+<div id="jfb-update-popup" class="jfb-popup-overlay">
+  <div class="jfb-popup-card">
+    <button type="button" id="jfb-update-x" aria-label="Đóng" class="jfb-popup-close" style="font-size:20px;font-weight:700;line-height:1;">&#10005;</button>
+    <div class="jfb-popup-header">
+      <div class="jfb-popup-icon">🚀</div>
+      <div class="jfb-popup-badge">V19.3.1</div>
+      <h3 class="jfb-popup-title">Đã Cập Nhật V19.3.1!</h3>
+      <p class="jfb-popup-sub">Một bản sửa lỗi ổn định. Tải về và ghi đè — cài đặt của bạn được giữ nguyên.</p>
+    </div>
+    <div class="jfb-popup-features">
+      <div class="jfb-popup-feature">
+        <span class="jfb-popup-feature-icon">🛡️</span>
+        <div>
+          <div class="jfb-popup-feature-label">Sửa Lỗi Ổn Định</div>
+          <div class="jfb-popup-feature-desc">Đã sửa một lỗi deadlock có thể khiến bot bị treo khi đang chạy và không vào lệnh được. Sự cố treo cụ thể này đã được khắc phục.</div>
+        </div>
+      </div>
+      <div class="jfb-popup-feature">
+        <span class="jfb-popup-feature-icon">🎯</span>
+        <div>
+          <div class="jfb-popup-feature-label">Cải Thiện Tỷ Lệ Thắng</div>
+          <div class="jfb-popup-feature-desc">Logic thoát lệnh mới hiện có thể chốt lời các vị thế Short từng bị âm tới -1960%, giúp nâng cao tỷ lệ thắng tổng thể.</div>
+        </div>
+      </div>
+    </div>
+    <div class="jfb-popup-actions">
+      <a href="#download" id="jfb-update-cta" class="jfb-popup-cta">⬇️&nbsp;Tải Về Ngay →</a>
+      <button type="button" id="jfb-update-dismiss" class="jfb-popup-dismiss">Để Sau</button>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
+  var modal = document.getElementById("jfb-update-popup");
+  if (!modal) return;
+  var VERSION_KEY = "jfb_seen_update_v19.3.1";
+  function openModal(){ modal.classList.add("jfb-open"); }
+  function closeModal(){ modal.classList.remove("jfb-open"); try { localStorage.setItem(VERSION_KEY,"1"); } catch(e){} }
+  var already; try { already = localStorage.getItem(VERSION_KEY); } catch(e){}
+  if (!already) setTimeout(openModal, 500);
+  var cta = document.getElementById("jfb-update-cta");
+  if (cta) cta.addEventListener("click", function(e){ e.preventDefault(); closeModal(); var t=document.getElementById("download"); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); });
+  var dm = document.getElementById("jfb-update-dismiss"); if (dm) dm.addEventListener("click", closeModal);
+  var xb = document.getElementById("jfb-update-x"); if (xb) xb.addEventListener("click", closeModal);
+  modal.addEventListener("click", function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape" && modal.classList.contains("jfb-open")) closeModal(); });
 });
 </script>
 </body>

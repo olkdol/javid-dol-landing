@@ -772,7 +772,7 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
 document.addEventListener('DOMContentLoaded', function jfbUpdatePopup(){
   var modal = document.getElementById('jfb-update-popup');
   if (!modal) return;
-  var VERSION_KEY = 'jfb_seen_update_v19.3.0';
+  var VERSION_KEY = 'jfb_seen_update_v19.3.1';
   function openModal(){ modal.classList.add('jfb-open'); }
   function closeModal(){
     modal.classList.remove('jfb-open');
@@ -874,23 +874,23 @@ document.addEventListener('DOMContentLoaded', function jfbUpdatePopup(){
     <button type="button" id="jfb-update-x" aria-label="Close" class="jfb-popup-close"><i data-lucide="x" style="width:18px;height:18px"></i></button>
     <div class="jfb-popup-header">
       <div class="jfb-popup-icon">🚀</div>
-      <div class="jfb-popup-badge">V19.3.0</div>
-      <h3 class="jfb-popup-title" data-i18n="updatepopup_title">V19.3.0 Update Is Live!</h3>
-      <p class="jfb-popup-sub" data-i18n="updatepopup_sub">Download now and try the improved strategy logic.</p>
+      <div class="jfb-popup-badge">V19.3.1</div>
+      <h3 class="jfb-popup-title" data-i18n="updatepopup_title">V19.3.1 Update Is Live!</h3>
+      <p class="jfb-popup-sub" data-i18n="updatepopup_sub">A stability fix. Download and overwrite — your settings are kept.</p>
     </div>
     <div class="jfb-popup-features">
       <div class="jfb-popup-feature">
-        <span class="jfb-popup-feature-icon">🎯</span>
+        <span class="jfb-popup-feature-icon">🛡️</span>
         <div>
-          <div class="jfb-popup-feature-label" data-i18n="updatepopup_f1_label">Win Rate Boost</div>
-          <div class="jfb-popup-feature-desc" data-i18n="updatepopup_f1_desc">New exit logic now closes previously-losing short positions — even ones that had drifted as far as -1960% — in profit, lifting the overall win rate.</div>
+          <div class="jfb-popup-feature-label" data-i18n="updatepopup_f1_label">Stability Fix</div>
+          <div class="jfb-popup-feature-desc" data-i18n="updatepopup_f1_desc">Fixed a deadlock that could freeze the bot mid-run and stop it from placing trades. That specific hang is now resolved.</div>
         </div>
       </div>
       <div class="jfb-popup-feature">
-        <span class="jfb-popup-feature-icon">💰</span>
+        <span class="jfb-popup-feature-icon">🎯</span>
         <div>
-          <div class="jfb-popup-feature-label" data-i18n="updatepopup_f2_label">New Position Sizes</div>
-          <div class="jfb-popup-feature-desc" data-i18n="updatepopup_f2_desc">Added 1/100 and 1/200 of your initial capital as new position-sizing options.</div>
+          <div class="jfb-popup-feature-label" data-i18n="updatepopup_f2_label">Win Rate Boost</div>
+          <div class="jfb-popup-feature-desc" data-i18n="updatepopup_f2_desc">New exit logic now closes previously-losing short positions — even ones that had drifted as far as -1960% — in profit, lifting the overall win rate.</div>
         </div>
       </div>
     </div>
@@ -1027,12 +1027,12 @@ var I18N = {
     nav_user_manual: 'User Manual',
     nav_new_to_bitget: 'New to Bitget?',
     nav_community: 'Community<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">NEW</span>',
-    "updatepopup_title": "V19.3.0 Update Is Live!",
-    "updatepopup_sub": "Download now and try the improved strategy logic.",
-    "updatepopup_f1_label": "Win Rate Boost",
-    "updatepopup_f1_desc": "New exit logic now closes previously-losing short positions — even ones that had drifted as far as -1960% — in profit, lifting the overall win rate.",
-    "updatepopup_f2_label": "New Position Sizes",
-    "updatepopup_f2_desc": "Added 1/100 and 1/200 of your initial capital as new position-sizing options.",
+    "updatepopup_title": "V19.3.1 Update Is Live!",
+    "updatepopup_sub": "A stability fix. Download and overwrite — your settings are kept.",
+    "updatepopup_f1_label": "Stability Fix",
+    "updatepopup_f1_desc": "Fixed a deadlock that could freeze the bot mid-run and stop it from placing trades. That specific hang is now resolved.",
+    "updatepopup_f2_label": "Win Rate Boost",
+    "updatepopup_f2_desc": "New exit logic now closes previously-losing short positions — even ones that had drifted as far as -1960% — in profit, lifting the overall win rate.",
     "updatepopup_cta": "Download Now →",
     "updatepopup_dismiss": "Maybe Later",
     cta_free_download: 'Free Download',
@@ -1248,12 +1248,12 @@ var I18N = {
     nav_user_manual: '사용 설명서',
     nav_new_to_bitget: '비트겟이 처음이신가요?',
     nav_community: '커뮤니티<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">신규</span>',
-    "updatepopup_title": "V19.3.0 업데이트 완료!",
-    "updatepopup_sub": "지금 다운로드하고 개선된 전략 로직을 만나보세요.",
-    "updatepopup_f1_label": "승률 개선",
-    "updatepopup_f1_desc": "Short 진입 후 -1960%까지 밀렸던 코인도 새로운 청산 로직으로 +익절 처리되어, 전체 승률이 올라갔습니다.",
-    "updatepopup_f2_label": "포지션 사이즈 옵션 추가",
-    "updatepopup_f2_desc": "초기 투자금의 1/100, 1/200 사이즈 옵션이 새로 추가되었습니다.",
+    "updatepopup_title": "V19.3.1 업데이트 완료!",
+    "updatepopup_sub": "안정성 개선 업데이트입니다. 다운로드 후 덮어쓰기 하세요 — 설정은 그대로 유지됩니다.",
+    "updatepopup_f1_label": "안정성 개선",
+    "updatepopup_f1_desc": "운영 중 프로그램이 멈춰 매매가 중단될 수 있던 데드락 버그를 수정했습니다. 이 멈춤 현상은 더 이상 발생하지 않습니다.",
+    "updatepopup_f2_label": "승률 개선",
+    "updatepopup_f2_desc": "Short 진입 후 -1960%까지 밀렸던 코인도 새로운 청산 로직으로 +익절 처리되어, 전체 승률이 올라갔습니다.",
     "updatepopup_cta": "지금 다운로드 →",
     "updatepopup_dismiss": "나중에 하기",
     cta_free_download: '무료 다운로드',
@@ -1469,12 +1469,12 @@ var I18N = {
     nav_user_manual: 'ユーザーマニュアル',
     nav_new_to_bitget: 'Bitgetが初めての方へ',
     nav_community: 'コミュニティ<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">新着</span>',
-    "updatepopup_title": "V19.3.0 アップデート完了！",
-    "updatepopup_sub": "今すぐダウンロードして、改善された戦略ロジックをお試しください。",
-    "updatepopup_f1_label": "勝率の向上",
-    "updatepopup_f1_desc": "ショートエントリー後に-1960%まで含み損が拡大していたポジションも、新しい決済ロジックによりプラスで利確できるようになり、全体の勝率が向上しました。",
-    "updatepopup_f2_label": "新しいポジションサイズ",
-    "updatepopup_f2_desc": "初期投資額の1/100、1/200のポジションサイズオプションが新たに追加されました。",
+    "updatepopup_title": "V19.3.1 アップデート完了！",
+    "updatepopup_sub": "安定性の修正です。ダウンロードして上書きしてください — 設定はそのまま保持されます。",
+    "updatepopup_f1_label": "安定性の修正",
+    "updatepopup_f1_desc": "稼働中にボットが停止して発注できなくなることがあったデッドロックを修正しました。この停止現象は解消されています。",
+    "updatepopup_f2_label": "勝率の向上",
+    "updatepopup_f2_desc": "ショートエントリー後に-1960%まで含み損が拡大していたポジションも、新しい決済ロジックによりプラスで利確できるようになり、全体の勝率が向上しました。",
     "updatepopup_cta": "今すぐダウンロード →",
     "updatepopup_dismiss": "後で",
     cta_free_download: '無料ダウンロード',
@@ -1690,12 +1690,12 @@ var I18N = {
     nav_user_manual: '使用手册',
     nav_new_to_bitget: '初次使用 Bitget？',
     nav_community: '社区<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">新</span>',
-    "updatepopup_title": "V19.3.0 更新已完成！",
-    "updatepopup_sub": "立即下载，体验改进后的策略逻辑。",
-    "updatepopup_f1_label": "胜率提升",
-    "updatepopup_f1_desc": "做空后一度浮亏达 -1960% 的仓位，现在通过新的平仓逻辑可以以盈利方式平仓，整体胜率因此提升。",
-    "updatepopup_f2_label": "新增仓位规模选项",
-    "updatepopup_f2_desc": "新增初始本金的 1/100、1/200 仓位规模选项。",
+    "updatepopup_title": "V19.3.1 更新已完成！",
+    "updatepopup_sub": "一次稳定性修复。下载后覆盖安装即可 — 您的设置会保留。",
+    "updatepopup_f1_label": "稳定性修复",
+    "updatepopup_f1_desc": "修复了一个可能导致机器人在运行中卡死、无法下单的死锁问题。该卡死现象现已解决。",
+    "updatepopup_f2_label": "胜率提升",
+    "updatepopup_f2_desc": "做空后一度浮亏达 -1960% 的仓位，现在通过新的平仓逻辑可以以盈利方式平仓，整体胜率因此提升。",
     "updatepopup_cta": "立即下载 →",
     "updatepopup_dismiss": "以后再说",
     cta_free_download: '免费下载',
@@ -1911,12 +1911,12 @@ var I18N = {
     nav_user_manual: 'Manual de usuario',
     nav_new_to_bitget: '¿Nuevo en Bitget?',
     nav_community: 'Comunidad<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">NUEVO</span>',
-    "updatepopup_title": "¡Actualización V19.3.0 disponible!",
-    "updatepopup_sub": "Descárgala ahora y prueba la lógica de estrategia mejorada.",
-    "updatepopup_f1_label": "Mejora en la tasa de acierto",
-    "updatepopup_f1_desc": "La nueva lógica de salida ahora cierra en ganancia posiciones cortas que habían llegado a un -1960% en contra, elevando la tasa de acierto general.",
-    "updatepopup_f2_label": "Nuevos tamaños de posición",
-    "updatepopup_f2_desc": "Se agregaron opciones de tamaño de posición de 1/100 y 1/200 de tu capital inicial.",
+    "updatepopup_title": "¡Actualización V19.3.1 disponible!",
+    "updatepopup_sub": "Una corrección de estabilidad. Descárgala y sobrescribe — se conservan tus ajustes.",
+    "updatepopup_f1_label": "Corrección de estabilidad",
+    "updatepopup_f1_desc": "Se corrigió un bloqueo (deadlock) que podía congelar el bot en pleno funcionamiento e impedir que abriera operaciones. Ese bloqueo concreto ya está resuelto.",
+    "updatepopup_f2_label": "Mejora en la tasa de acierto",
+    "updatepopup_f2_desc": "La nueva lógica de salida ahora cierra en ganancia posiciones cortas que habían llegado a un -1960% en contra, elevando la tasa de acierto general.",
     "updatepopup_cta": "Descargar ahora →",
     "updatepopup_dismiss": "Más tarde",
     cta_free_download: 'Descarga gratuita',
@@ -2132,12 +2132,12 @@ var I18N = {
     nav_user_manual: 'Manuel utilisateur',
     nav_new_to_bitget: 'Nouveau sur Bitget ?',
     nav_community: 'Communauté<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">NOUVEAU</span>',
-    "updatepopup_title": "Mise à jour V19.3.0 disponible !",
-    "updatepopup_sub": "Téléchargez-la maintenant et testez la logique de stratégie améliorée.",
-    "updatepopup_f1_label": "Amélioration du taux de réussite",
-    "updatepopup_f1_desc": "La nouvelle logique de sortie permet désormais de clôturer en profit des positions courtes ayant atteint jusqu'à -1960 %, améliorant le taux de réussite global.",
-    "updatepopup_f2_label": "Nouvelles tailles de position",
-    "updatepopup_f2_desc": "Ajout d'options de taille de position de 1/100 et 1/200 de votre capital initial.",
+    "updatepopup_title": "Mise à jour V19.3.1 disponible !",
+    "updatepopup_sub": "Une correction de stabilité. Téléchargez et écrasez — vos réglages sont conservés.",
+    "updatepopup_f1_label": "Correction de stabilité",
+    "updatepopup_f1_desc": "Correction d'un interblocage (deadlock) qui pouvait figer le bot en cours d'exécution et l'empêcher de passer des ordres. Ce blocage précis est désormais résolu.",
+    "updatepopup_f2_label": "Amélioration du taux de réussite",
+    "updatepopup_f2_desc": "La nouvelle logique de sortie permet désormais de clôturer en profit des positions courtes ayant atteint jusqu'à -1960 %, améliorant le taux de réussite global.",
     "updatepopup_cta": "Télécharger maintenant →",
     "updatepopup_dismiss": "Plus tard",
     cta_free_download: 'Téléchargement gratuit',
@@ -2353,12 +2353,12 @@ vi: {
     nav_user_manual: 'Hướng dẫn sử dụng',
     nav_new_to_bitget: 'Mới với Bitget?',
     nav_community: 'Cộng đồng<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">MỚI</span>',
-    "updatepopup_title": "Đã Cập Nhật V19.3.0!",
-    "updatepopup_sub": "Tải về ngay để trải nghiệm logic chiến lược đã được cải tiến.",
-    "updatepopup_f1_label": "Cải Thiện Tỷ Lệ Thắng",
-    "updatepopup_f1_desc": "Logic thoát lệnh mới hiện có thể chốt lời các vị thế Short từng bị âm tới -1960%, giúp nâng cao tỷ lệ thắng tổng thể.",
-    "updatepopup_f2_label": "Thêm Tùy Chọn Kích Thước Vị Thế",
-    "updatepopup_f2_desc": "Đã thêm các tùy chọn kích thước vị thế bằng 1/100 và 1/200 vốn đầu tư ban đầu.",
+    "updatepopup_title": "Đã Cập Nhật V19.3.1!",
+    "updatepopup_sub": "Một bản sửa lỗi ổn định. Tải về và ghi đè — cài đặt của bạn được giữ nguyên.",
+    "updatepopup_f1_label": "Sửa Lỗi Ổn Định",
+    "updatepopup_f1_desc": "Đã sửa một lỗi deadlock có thể khiến bot bị treo khi đang chạy và không vào lệnh được. Sự cố treo cụ thể này đã được khắc phục.",
+    "updatepopup_f2_label": "Cải Thiện Tỷ Lệ Thắng",
+    "updatepopup_f2_desc": "Logic thoát lệnh mới hiện có thể chốt lời các vị thế Short từng bị âm tới -1960%, giúp nâng cao tỷ lệ thắng tổng thể.",
     "updatepopup_cta": "Tải Về Ngay →",
     "updatepopup_dismiss": "Để Sau",
     cta_free_download: 'Tải miễn phí',
@@ -2574,12 +2574,12 @@ tr: {
     nav_user_manual: 'Kullanım Kılavuzu',
     nav_new_to_bitget: 'Bitget\'e mi Yenisiniz?',
     nav_community: 'Topluluk<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">YENİ</span>',
-    "updatepopup_title": "V19.3.0 Güncellemesi Yayında!",
-    "updatepopup_sub": "Şimdi indirin ve geliştirilmiş strateji mantığını deneyin.",
-    "updatepopup_f1_label": "Kazanma Oranında İyileşme",
-    "updatepopup_f1_desc": "Yeni çıkış mantığı, -1960%'a kadar zarara giden short pozisyonları artık kârla kapatabiliyor — bu da genel kazanma oranını yükseltti.",
-    "updatepopup_f2_label": "Yeni Pozisyon Boyutu Seçenekleri",
-    "updatepopup_f2_desc": "Başlangıç sermayenizin 1/100 ve 1/200'ü büyüklüğünde yeni pozisyon boyutu seçenekleri eklendi.",
+    "updatepopup_title": "V19.3.1 Güncellemesi Yayında!",
+    "updatepopup_sub": "Bir kararlılık düzeltmesi. İndirip üzerine yazın — ayarlarınız korunur.",
+    "updatepopup_f1_label": "Kararlılık Düzeltmesi",
+    "updatepopup_f1_desc": "Botu çalışırken donduran ve işlem açmasını engelleyebilen bir kilitlenme (deadlock) giderildi. Bu belirli donma sorunu artık çözüldü.",
+    "updatepopup_f2_label": "Kazanma Oranında İyileşme",
+    "updatepopup_f2_desc": "Yeni çıkış mantığı, -1960%'a kadar zarara giden short pozisyonları artık kârla kapatabiliyor — bu da genel kazanma oranını yükseltti.",
     "updatepopup_cta": "Şimdi İndir →",
     "updatepopup_dismiss": "Daha Sonra",
     cta_free_download: 'Ücretsiz İndir',
@@ -2795,12 +2795,12 @@ pt: {
     nav_user_manual: 'Manual do Usuário',
     nav_new_to_bitget: 'Novo na Bitget?',
     nav_community: 'Comunidade<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">NOVO</span>',
-    "updatepopup_title": "Atualização V19.3.0 Disponível!",
-    "updatepopup_sub": "Baixe agora e experimente a lógica de estratégia aprimorada.",
-    "updatepopup_f1_label": "Melhoria na Taxa de Acerto",
-    "updatepopup_f1_desc": "A nova lógica de saída agora consegue encerrar com lucro posições short que haviam chegado a -1960%, elevando a taxa de acerto geral.",
-    "updatepopup_f2_label": "Novas Opções de Tamanho de Posição",
-    "updatepopup_f2_desc": "Foram adicionadas opções de tamanho de posição de 1/100 e 1/200 do capital inicial.",
+    "updatepopup_title": "Atualização V19.3.1 Disponível!",
+    "updatepopup_sub": "Uma correção de estabilidade. Baixe e sobrescreva — suas configurações são mantidas.",
+    "updatepopup_f1_label": "Correção de estabilidade",
+    "updatepopup_f1_desc": "Corrigimos um deadlock que podia travar o bot em pleno funcionamento e impedir a abertura de operações. Esse travamento específico foi resolvido.",
+    "updatepopup_f2_label": "Melhoria na Taxa de Acerto",
+    "updatepopup_f2_desc": "A nova lógica de saída agora consegue encerrar com lucro posições short que haviam chegado a -1960%, elevando a taxa de acerto geral.",
     "updatepopup_cta": "Baixar Agora →",
     "updatepopup_dismiss": "Depois",
     cta_free_download: 'Download Gratuito',

@@ -5,7 +5,7 @@
 // by importing the Pages-Functions-style handlers directly; everything else
 // falls through to the static assets binding.
 
-import { onRequestPost as downloadPost, onRequestGet as downloadGet } from "./functions/api/download.js";
+import { onRequestPost as downloadPost, onRequestGet as downloadGet, onRequestHead as downloadHead } from "./functions/api/download.js";
 import { onRequestGet as boardListGet, onRequestPost as boardListPost } from "./functions/api/board/posts.js";
 import {
   onRequestGet as boardItemGet,
@@ -28,6 +28,9 @@ export default {
       }
 
       if (pathname === "/api/download") {
+        // HEAD 는 집계하지 않는 프로브 (downloadHead 는 logDownload 를 호출하지 않음).
+        // POST 는 레거시 호환, 그 외(GET)만 실다운로드로 집계된다.
+        if (request.method === "HEAD") return await downloadHead(base);
         return request.method === "POST" ? await downloadPost(base) : await downloadGet(base);
       }
 

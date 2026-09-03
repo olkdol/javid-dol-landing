@@ -2186,5 +2186,55 @@ function applyLang(lang){
   applyLang(saved || 'fr');
 })();
 </script>
+
+<!-- JaviD update popup (V19.3.1) -->
+<div id="jfb-update-popup" class="jfb-popup-overlay">
+  <div class="jfb-popup-card">
+    <button type="button" id="jfb-update-x" aria-label="Fermer" class="jfb-popup-close" style="font-size:20px;font-weight:700;line-height:1;">&#10005;</button>
+    <div class="jfb-popup-header">
+      <div class="jfb-popup-icon">🚀</div>
+      <div class="jfb-popup-badge">V19.3.1</div>
+      <h3 class="jfb-popup-title">Mise à jour V19.3.1 disponible !</h3>
+      <p class="jfb-popup-sub">Une correction de stabilité. Téléchargez et écrasez — vos réglages sont conservés.</p>
+    </div>
+    <div class="jfb-popup-features">
+      <div class="jfb-popup-feature">
+        <span class="jfb-popup-feature-icon">🛡️</span>
+        <div>
+          <div class="jfb-popup-feature-label">Correction de stabilité</div>
+          <div class="jfb-popup-feature-desc">Correction d'un interblocage (deadlock) qui pouvait figer le bot en cours d'exécution et l'empêcher de passer des ordres. Ce blocage précis est désormais résolu.</div>
+        </div>
+      </div>
+      <div class="jfb-popup-feature">
+        <span class="jfb-popup-feature-icon">🎯</span>
+        <div>
+          <div class="jfb-popup-feature-label">Amélioration du taux de réussite</div>
+          <div class="jfb-popup-feature-desc">La nouvelle logique de sortie permet désormais de clôturer en profit des positions courtes ayant atteint jusqu'à -1960 %, améliorant le taux de réussite global.</div>
+        </div>
+      </div>
+    </div>
+    <div class="jfb-popup-actions">
+      <a href="#download" id="jfb-update-cta" class="jfb-popup-cta">⬇️&nbsp;Télécharger maintenant →</a>
+      <button type="button" id="jfb-update-dismiss" class="jfb-popup-dismiss">Plus tard</button>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
+  var modal = document.getElementById("jfb-update-popup");
+  if (!modal) return;
+  var VERSION_KEY = "jfb_seen_update_v19.3.1";
+  function openModal(){ modal.classList.add("jfb-open"); }
+  function closeModal(){ modal.classList.remove("jfb-open"); try { localStorage.setItem(VERSION_KEY,"1"); } catch(e){} }
+  var already; try { already = localStorage.getItem(VERSION_KEY); } catch(e){}
+  if (!already) setTimeout(openModal, 500);
+  var cta = document.getElementById("jfb-update-cta");
+  if (cta) cta.addEventListener("click", function(e){ e.preventDefault(); closeModal(); var t=document.getElementById("download"); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); });
+  var dm = document.getElementById("jfb-update-dismiss"); if (dm) dm.addEventListener("click", closeModal);
+  var xb = document.getElementById("jfb-update-x"); if (xb) xb.addEventListener("click", closeModal);
+  modal.addEventListener("click", function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape" && modal.classList.contains("jfb-open")) closeModal(); });
+});
+</script>
 </body>
 </html>
