@@ -3047,5 +3047,41 @@ function applyLang(lang){
   applyLang(saved || 'en');
 })();
 </script>
+<!-- JaviD scroll-reveal (progressive enhancement: content stays visible if JS/observer/reduced-motion) -->
+<style>
+@media (prefers-reduced-motion: no-preference){
+  .jr{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1);will-change:opacity,transform;}
+  .jr.jr-in{opacity:1;transform:none;}
+}
+</style>
+<script>
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.addEventListener('DOMContentLoaded', function(){
+    var sel = 'section h2, section h3, section > p, section img, section [class*="grid"] > *, section [class*="flex"] > *';
+    var raw = Array.prototype.slice.call(document.querySelectorAll(sel));
+    var seen = [], tagged = [];
+    raw.forEach(function(el){
+      if (seen.indexOf(el) !== -1) return; seen.push(el);
+      if (el.closest && el.closest('#jfb-update-popup')) return;      // leave the popup alone
+      for (var i=0;i<tagged.length;i++){ if (tagged[i].contains(el)) return; } // skip nested-in-already-tagged
+      tagged.push(el);
+    });
+    tagged.forEach(function(el){
+      el.classList.add('jr');
+      var sibs = el.parentNode ? Array.prototype.filter.call(el.parentNode.children, function(c){ return c.classList && c.classList.contains('jr'); }) : [];
+      var idx = sibs.indexOf(el);
+      if (idx > 0) el.style.transitionDelay = Math.min(idx*80, 400) + 'ms';
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('jr-in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    tagged.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ tagged.forEach(function(el){ el.classList.add('jr-in'); }); }, 3000); // safety: never leave hidden
+  });
+})();
+</script>
+
 </body>
 </html>
