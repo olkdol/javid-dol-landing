@@ -191,7 +191,7 @@
       <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl" data-i18n="strat_h2">Three Quant-Built Strategies, Scanning in Parallel</h2>
       <p class="mt-3 text-[15px] text-slate-500" data-i18n="strat_intro">Each strategy was designed and refined through AI-driven quantitative analysis before a single rule was locked in. Run one, or run all three together.</p>
     </div>
-    <img src="images/ai-strategy.webp" alt="AI-designed trading strategy — a digital AI figure analyzing a rising price chart" class="w-full rounded-2xl border border-slate-200 shadow-sm">
+    <img src="images/strategy-parallel.webp" alt="AI-designed trading strategy — a digital AI figure analyzing a rising price chart" class="w-full rounded-2xl border border-slate-200 shadow-sm">
   </div>
   <div class="grid gap-4 md:grid-cols-3">
     <details class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm open:shadow-md open:border-indigo-300" open>
@@ -241,7 +241,7 @@
     <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"><div class="text-[28px] font-extrabold text-emerald-400" id="lpReturn">+3.28%</div><div class="mt-1.5 text-[12px] leading-snug text-slate-400" data-i18n="lp_return_label">Cumulative return since Shadow Mode start</div></div>
     <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"><div class="text-[28px] font-extrabold text-indigo-400" id="lpWinRate">81.4%</div><div class="mt-1.5 text-[12px] leading-snug text-slate-400" data-i18n="lp_winrate_label">Win rate over the same run</div></div>
   </div>
-  <p class="mx-auto mt-6 max-w-3xl text-center text-[12px] leading-relaxed text-slate-500" id="lpNote" data-i18n="lp_note">Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live Bybit market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.</p>
+  <p class="mx-auto mt-6 max-w-3xl text-center text-[12px] leading-relaxed text-slate-500" id="lpNote" data-i18n="lp_note">Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live Bybit market data against a virtual balance; this is not a record of real-money trading. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.</p>
 </div></section>
 
 <script>
@@ -270,7 +270,7 @@
     var badge = document.getElementById('liveBadge'); badge.classList.remove('hidden'); badge.classList.add('flex');
     document.getElementById('liveProofSub').textContent = 'Live account snapshot, pulled directly from the running bot — real Bybit market data, virtual USDT, zero real capital at risk.';
     var openTxt = data.open_positions != null ? data.open_positions + ' positions open right now, ' : '';
-    document.getElementById('lpNote').innerHTML = 'Live data, refreshed automatically — ' + openTxt + 'a mix of floating gains and losses as the bot\'s exit logic manages them in real time. Shadow Mode trades live Bybit market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.';
+    document.getElementById('lpNote').innerHTML = 'Live data, refreshed automatically — ' + openTxt + 'a mix of floating gains and losses as the bot\'s exit logic manages them in real time. Shadow Mode trades live Bybit market data against a virtual balance; this is not a record of real-money trading. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.';
   }).catch(function(){});
 })();
 </script>
@@ -373,49 +373,49 @@
   </div>
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
-      <img src="images/secure-trading.webp" alt="Secure, non-custodial trading illustration" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <img src="images/local-noncustodial.webp" alt="Secure, non-custodial trading illustration" class="mb-4 h-40 w-full rounded-xl border border-slate-200 object-cover">
       <span class="mb-3 inline-block rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-emerald-600" data-i18n="tag_everyone">For Everyone</span>
       <h3 class="text-[16px] font-bold text-slate-900" data-i18n="feat1_title">100% Local &amp; Non-Custodial</h3>
       <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500" data-i18n="feat1_desc">Your API keys never leave your PC. Encrypted locally, executed locally.</p>
     </div>
     <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
-      <img src="images/data-analysis.webp" alt="Automated data analysis illustration across multiple charts" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <img src="images/data-engine.webp" alt="Automated data analysis illustration across multiple charts" class="mb-4 h-40 w-full rounded-xl border border-slate-200 object-cover">
       <span class="mb-3 inline-block rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-emerald-600" data-i18n="tag_everyone">For Everyone</span>
       <h3 class="text-[16px] font-bold text-slate-900" data-i18n="feat2_title">One-Click Coin Selection</h3>
       <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500" data-i18n="feat2_desc">Pick your own coins, or hit "Top 20 by Turnover" once and you're done.</p>
     </div>
     <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
-      <img src="images/monitoring-247.webp" alt="24/7 automated monitoring illustration" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <img src="images/telegram-reports.webp" alt="24/7 automated monitoring illustration" class="mb-4 h-40 w-full rounded-xl border border-slate-200 object-cover">
       <span class="mb-3 inline-block rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-emerald-600" data-i18n="tag_everyone">For Everyone</span>
       <h3 class="text-[16px] font-bold text-slate-900" data-i18n="feat3_title">Reports, Sent to Telegram</h3>
       <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500" data-i18n="feat3_desc">Balance, P&amp;L, ROI, win rate and open positions — on request or on schedule.</p>
     </div>
     <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
-      <img src="images/predictive-ai.webp" alt="Predictive AI signal illustration for buy and sell decisions" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <img src="images/strategy-parallel.webp" alt="Predictive AI signal illustration for buy and sell decisions" class="mb-4 h-40 w-full rounded-xl border border-slate-200 object-cover">
       <span class="mb-3 inline-block rounded-full bg-indigo-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-indigo-600" data-i18n="tag_pro">Pro Engine</span>
       <h3 class="text-[16px] font-bold text-slate-900" data-i18n="feat4_title">Three Independent Strategies</h3>
       <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500" data-i18n="feat4_desc">Run one at a time, or run all three together across your selected coins.</p>
     </div>
     <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
-      <img src="images/smart-order-execution.webp" alt="Smart order execution illustration" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <img src="images/execution.webp" alt="Smart order execution illustration" class="mb-4 h-40 w-full rounded-xl border border-slate-200 object-cover">
       <span class="mb-3 inline-block rounded-full bg-indigo-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-indigo-600" data-i18n="tag_pro">Pro Engine</span>
       <h3 class="text-[16px] font-bold text-slate-900" data-i18n="feat5_title">Exits Built for Volatility</h3>
       <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500" data-i18n="feat5_desc">Five signal layers guarding every open position, not just a stop-loss line.</p>
     </div>
     <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
-      <img src="images/optimized-path.webp" alt="Optimized risk-adjusted growth path illustration" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <img src="images/risk-sizing.webp" alt="Optimized risk-adjusted growth path illustration" class="mb-4 h-40 w-full rounded-xl border border-slate-200 object-cover">
       <span class="mb-3 inline-block rounded-full bg-indigo-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-indigo-600" data-i18n="tag_pro">Pro Engine</span>
       <h3 class="text-[16px] font-bold text-slate-900" data-i18n="feat6_title">Sized to Your Risk Tolerance</h3>
       <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500" data-i18n="feat6_desc">Aggressive, Normal, or Stable modes size every entry as a fraction of balance.</p>
     </div>
     <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
-      <img src="images/future-contract.webp" alt="Futures contract illustration — a signed agreement representing perpetual futures trading" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <img src="images/futures-native.webp" alt="Futures contract illustration — a signed agreement representing perpetual futures trading" class="mb-4 h-40 w-full rounded-xl border border-slate-200 object-cover">
       <span class="mb-3 inline-block rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-emerald-600" data-i18n="tag_everyone">For Everyone</span>
       <h3 class="text-[16px] font-bold text-slate-900" data-i18n="feat7_title">Built for USDT-M Futures, Not Adapted</h3>
       <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500" data-i18n="feat7_desc">Every strategy, exit rule, and risk model is engineered for perpetual futures from the ground up — not retrofitted from a spot bot.</p>
     </div>
     <div class="rounded-2xl border border-slate-200 bg-white p-6 transition hover:shadow-md">
-      <img src="images/profit-maximize.webp" alt="Profit tracking illustration — rising bar chart with balance and percentage return" class="mb-4 h-28 w-full rounded-xl border border-slate-200 object-cover">
+      <img src="images/trade-ledger.webp" alt="Profit tracking illustration — rising bar chart with balance and percentage return" class="mb-4 h-40 w-full rounded-xl border border-slate-200 object-cover">
       <span class="mb-3 inline-block rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wide text-emerald-600" data-i18n="tag_everyone">For Everyone</span>
       <h3 class="text-[16px] font-bold text-slate-900" data-i18n="feat8_title">Every Trade Logged, P&amp;L Tracked</h3>
       <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500" data-i18n="feat8_desc">Balance, cumulative P&amp;L, ROI and win rate are calculated automatically from your real trade history — nothing rounded in your favor.</p>
@@ -968,7 +968,7 @@ var I18N = {
     lp_pnl_label: 'Cumulative P&amp;L (USDT) across 97 trades',
     lp_return_label: 'Cumulative return since Shadow Mode start',
     lp_winrate_label: 'Win rate over the same run',
-    lp_note: 'Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live Bybit market data against a virtual balance; this is not a record of real-money trading, and past performance does not guarantee future results. A separate real-dashboard record is published screenshot-by-screenshot on the <a class="font-bold text-indigo-400 hover:underline" href="results.html">Real Results</a> page.',
+    lp_note: 'Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live Bybit market data against a virtual balance; this is not a record of real-money trading. A separate real-dashboard record is published screenshot-by-screenshot on the <a class="font-bold text-indigo-400 hover:underline" href="results.html">Real Results</a> page.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'Three Reasons Traders Switch to JaviD',
     why1_title: 'Zero servers in the middle',
@@ -1189,7 +1189,7 @@ var I18N = {
     lp_pnl_label: '누적 손익(P&amp;L, USDT) — 97건 거래 기준',
     lp_return_label: '섀도우 모드 시작 이후 누적 수익률',
     lp_winrate_label: '같은 기간 승률',
-    lp_note: '2026-07-05 05:04(KST) 기준 스냅샷 — 해당 시점 7개 포지션 보유 중이며 평가 이익과 손실이 혼재되어 있습니다. 섀도우 모드는 실제 바이비트 시세 데이터를 가상 잔고로 거래하는 것으로, 실제 자금 거래 기록이 아니며 과거 성과가 미래 결과를 보장하지 않습니다. 실제 대시보드 기록은 <a class="font-bold text-indigo-400 hover:underline" href="results.html">실제 결과</a> 페이지에 스크린샷 단위로 별도 게시되어 있습니다.',
+    lp_note: '2026-07-05 05:04(KST) 기준 스냅샷 — 해당 시점 7개 포지션 보유 중이며 평가 이익과 손실이 혼재되어 있습니다. 섀도우 모드는 실제 바이비트 시세 데이터를 가상 잔고로 거래하는 것으로, 실제 자금 거래 기록이 아닙니다. 실제 대시보드 기록은 <a class="font-bold text-indigo-400 hover:underline" href="results.html">실제 결과</a> 페이지에 스크린샷 단위로 별도 게시되어 있습니다.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: '트레이더들이 JaviD로 갈아타는 세 가지 이유',
     why1_title: '중간 서버가 전혀 없습니다',
@@ -1852,7 +1852,7 @@ var I18N = {
     lp_pnl_label: 'P&amp;L acumulado (USDT) en 97 operaciones',
     lp_return_label: 'Rendimiento acumulado desde el inicio del Modo Shadow',
     lp_winrate_label: 'Tasa de acierto durante el mismo periodo',
-    lp_note: 'Instantánea tomada el 2026-07-05, 05:04 (KST) — 7 posiciones abiertas en ese momento, con una mezcla de ganancias y pérdidas flotantes. El Modo Shadow opera con datos reales del mercado de Bybit sobre un saldo virtual; no es un registro de trading con dinero real, y el rendimiento pasado no garantiza resultados futuros. Un registro independiente del dashboard real se publica captura por captura en la página de <a class="font-bold text-indigo-400 hover:underline" href="results.html">Resultados Reales</a>.',
+    lp_note: 'Instantánea tomada el 2026-07-05, 05:04 (KST) — 7 posiciones abiertas en ese momento, con una mezcla de ganancias y pérdidas flotantes. El Modo Shadow opera con datos reales del mercado de Bybit sobre un saldo virtual; no es un registro de trading con dinero real. Un registro independiente del dashboard real se publica captura por captura en la página de <a class="font-bold text-indigo-400 hover:underline" href="results.html">Resultados Reales</a>.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'Tres razones por las que los traders cambian a JaviD',
     why1_title: 'Cero servidores en el medio',
@@ -2001,7 +2001,7 @@ var I18N = {
     dl_badge3: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>Sin tarjeta de crédito',
     dl_howto: 'Haz clic en tu sistema operativo → descomprime → ejecuta <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. ¿Primera vez? Sigue el <a class="font-bold text-indigo-600 hover:underline" href="manual.html">Manual de Usuario</a>.',
     dl_contact: '¿Preguntas? Escribe a <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a> o pregunta en el <a class="font-bold text-indigo-600 hover:underline" href="board.html">Foro de la Comunidad</a>.',
-    dl_disclaimer: 'El trading de futuros de criptomonedas conlleva un alto nivel de riesgo y no es adecuado para todos los inversores. JaviD Future Bot es una herramienta de ejecución independiente — no garantiza beneficios. Las cifras de rendimiento en esta página corresponden a datos del Modo Shadow (saldo virtual) y a capturas de registros reales del dashboard de periodos específicos; no garantizan ni implican resultados futuros. Todas las decisiones de trading y sus resultados son responsabilidad exclusiva del usuario. JaviD Future Bot no ofrece asesoramiento de inversión, no custodia fondos y no ejecuta operaciones en ningún servidor — cada orden se envía directamente desde tu propio dispositivo, usando tus propias credenciales de API de Bybit.',
+    dl_disclaimer: 'El trading de futuros de criptomonedas conlleva un alto nivel de riesgo y no es adecuado para todos los inversores. JaviD Future Bot es una herramienta de ejecución independiente — no garantiza beneficios. Las cifras de rendimiento en esta página corresponden a datos del Modo Shadow (saldo virtual) y a capturas de registros reales del dashboard de periodos específicos. Todas las decisiones de trading y sus resultados son responsabilidad exclusiva del usuario. JaviD Future Bot no ofrece asesoramiento de inversión, no custodia fondos y no ejecuta operaciones en ningún servidor — cada orden se envía directamente desde tu propio dispositivo, usando tus propias credenciales de API de Bybit.',
     footer_tagline: 'Ejecución automatizada de Futuros USDT-M en Bybit — 100% local, sin custodia, gratis para siempre.',
     footer_product_h: 'Producto',
     footer_link_shadow: 'Modo Shadow',
@@ -2073,7 +2073,7 @@ var I18N = {
     lp_pnl_label: 'P&amp;L cumulé (USDT) sur 97 trades',
     lp_return_label: 'Rendement cumulé depuis le début du Mode Shadow',
     lp_winrate_label: 'Taux de réussite sur la même période',
-    lp_note: 'Instantané pris le 2026-07-05 à 05:04 (KST) — 7 positions ouvertes à ce moment-là, avec un mélange de gains et pertes latents. Le Mode Shadow trade sur des données de marché Bybit réelles avec un solde virtuel ; ce n\'est pas un historique de trading en argent réel, et les performances passées ne garantissent pas les résultats futurs. Un historique distinct du tableau de bord réel est publié capture par capture sur la page <a class="font-bold text-indigo-400 hover:underline" href="results.html">Résultats Réels</a>.',
+    lp_note: 'Instantané pris le 2026-07-05 à 05:04 (KST) — 7 positions ouvertes à ce moment-là, avec un mélange de gains et pertes latents. Le Mode Shadow trade sur des données de marché Bybit réelles avec un solde virtuel ; ce n\'est pas un historique de trading en argent réel. Un historique distinct du tableau de bord réel est publié capture par capture sur la page <a class="font-bold text-indigo-400 hover:underline" href="results.html">Résultats Réels</a>.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'Trois raisons qui poussent les traders à passer à JaviD',
     why1_title: 'Zéro serveur intermédiaire',
@@ -2222,7 +2222,7 @@ var I18N = {
     dl_badge3: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>Sans carte bancaire',
     dl_howto: 'Cliquez sur votre OS → décompressez → lancez <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. Première fois ? Suivez le <a class="font-bold text-indigo-600 hover:underline" href="manual.html">Manuel Utilisateur</a>.',
     dl_contact: 'Des questions ? Écrivez à <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a> ou posez-les sur le <a class="font-bold text-indigo-600 hover:underline" href="board.html">Forum Communautaire</a>.',
-    dl_disclaimer: 'Le trading de futures sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. JaviD Future Bot est un outil d\'exécution autonome — il ne garantit pas de profits. Les chiffres de performance présentés sur cette page proviennent de données du Mode Shadow (solde virtuel) et de captures d\'écran du tableau de bord réel sur des périodes spécifiques ; ils ne garantissent ni ne préjugent des résultats futurs. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l\'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne détient aucun fonds en dépôt, et n\'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API Bybit.',
+    dl_disclaimer: 'Le trading de futures sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. JaviD Future Bot est un outil d\'exécution autonome — il ne garantit pas de profits. Les chiffres de performance présentés sur cette page proviennent de données du Mode Shadow (solde virtuel) et de captures d\'écran du tableau de bord réel sur des périodes spécifiques. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l\'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne détient aucun fonds en dépôt, et n\'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API Bybit.',
     footer_tagline: 'Exécution automatisée des Futures USDT-M sur Bybit — 100% locale, non custodiale, gratuite à vie.',
     footer_product_h: 'Produit',
     footer_link_shadow: 'Mode Shadow',
@@ -2294,7 +2294,7 @@ vi: {
     lp_pnl_label: 'Lãi/lỗ lũy kế (USDT) qua 97 giao dịch',
     lp_return_label: 'Lợi nhuận lũy kế kể từ khi bắt đầu Shadow Mode',
     lp_winrate_label: 'Tỷ lệ thắng trong cùng kỳ chạy',
-    lp_note: 'Ảnh chụp nhanh được lấy vào 05/07/2026, 05:04 giờ KST — 7 vị thế đang mở tại thời điểm đó, kết hợp giữa lãi và lỗ tạm tính. Shadow Mode giao dịch trên dữ liệu thị trường Bybit trực tiếp so với số dư ảo; đây không phải là bản ghi giao dịch bằng tiền thật, và hiệu suất trong quá khứ không đảm bảo kết quả trong tương lai. Một bản ghi bảng điều khiển thực riêng biệt được công bố từng ảnh chụp màn hình trên trang <a class="font-bold text-indigo-400 hover:underline" href="results.html">Kết Quả Thực Tế</a>.',
+    lp_note: 'Ảnh chụp nhanh được lấy vào 05/07/2026, 05:04 giờ KST — 7 vị thế đang mở tại thời điểm đó, kết hợp giữa lãi và lỗ tạm tính. Shadow Mode giao dịch trên dữ liệu thị trường Bybit trực tiếp so với số dư ảo; đây không phải là bản ghi giao dịch bằng tiền thật, và. Một bản ghi bảng điều khiển thực riêng biệt được công bố từng ảnh chụp màn hình trên trang <a class="font-bold text-indigo-400 hover:underline" href="results.html">Kết Quả Thực Tế</a>.',
     eyebrow_why_javid: 'Tại Sao Chọn JaviD',
     why_h2: 'Ba Lý Do Nhà Giao Dịch Chuyển Sang JaviD',
     why1_title: 'Không máy chủ trung gian',
@@ -2515,7 +2515,7 @@ tr: {
     lp_pnl_label: '97 işlem boyunca kümülatif K/Z (USDT)',
     lp_return_label: 'Shadow Mode başlangıcından bu yana kümülatif getiri',
     lp_winrate_label: 'Aynı çalıştırma boyunca kazanma oranı',
-    lp_note: 'Anlık görüntü 05.07.2026, 05:04 KST\'de alındı — o anda 7 pozisyon açıktı, değişken kazanç ve kayıpların bir karışımı. Shadow Mode, sanal bir bakiyeye karşı canlı Bybit piyasa verisiyle işlem yapar; bu, gerçek parayla yapılan ticaretin bir kaydı değildir ve geçmiş performans gelecekteki sonuçları garanti etmez. Ayrı bir gerçek panel kaydı, <a class="font-bold text-indigo-400 hover:underline" href="results.html">Gerçek Sonuçlar</a> sayfasında ekran görüntüsü ekran görüntüsü yayınlanmaktadır.',
+    lp_note: 'Anlık görüntü 05.07.2026, 05:04 KST\'de alındı — o anda 7 pozisyon açıktı, değişken kazanç ve kayıpların bir karışımı. Shadow Mode, sanal bir bakiyeye karşı canlı Bybit piyasa verisiyle işlem yapar; bu, gerçek parayla yapılan ticaretin bir kaydı değildir ve. Ayrı bir gerçek panel kaydı, <a class="font-bold text-indigo-400 hover:underline" href="results.html">Gerçek Sonuçlar</a> sayfasında ekran görüntüsü ekran görüntüsü yayınlanmaktadır.',
     eyebrow_why_javid: 'Neden JaviD',
     why_h2: 'Tüccarların JaviD\'e Geçmesinin Üç Nedeni',
     why1_title: 'Arada sıfır sunucu',
@@ -2947,5 +2947,41 @@ function applyLang(lang){
   applyLang(saved || 'en');
 })();
 </script>
+<!-- JaviD scroll-reveal (progressive enhancement: content stays visible if JS/observer/reduced-motion) -->
+<style>
+@media (prefers-reduced-motion: no-preference){
+  .jr{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1);will-change:opacity,transform;}
+  .jr.jr-in{opacity:1;transform:none;}
+}
+</style>
+<script>
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.addEventListener('DOMContentLoaded', function(){
+    var sel = 'section h2, section h3, section > p, section img, section [class*="grid"] > *, section [class*="flex"] > *';
+    var raw = Array.prototype.slice.call(document.querySelectorAll(sel));
+    var seen = [], tagged = [];
+    raw.forEach(function(el){
+      if (seen.indexOf(el) !== -1) return; seen.push(el);
+      if (el.closest && el.closest('#jfb-update-popup')) return;      // leave the popup alone
+      for (var i=0;i<tagged.length;i++){ if (tagged[i].contains(el)) return; } // skip nested-in-already-tagged
+      tagged.push(el);
+    });
+    tagged.forEach(function(el){
+      el.classList.add('jr');
+      var sibs = el.parentNode ? Array.prototype.filter.call(el.parentNode.children, function(c){ return c.classList && c.classList.contains('jr'); }) : [];
+      var idx = sibs.indexOf(el);
+      if (idx > 0) el.style.transitionDelay = Math.min(idx*80, 400) + 'ms';
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('jr-in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    tagged.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ tagged.forEach(function(el){ el.classList.add('jr-in'); }); }, 3000); // safety: never leave hidden
+  });
+})();
+</script>
+
 </body>
 </html>
