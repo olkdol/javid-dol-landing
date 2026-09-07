@@ -750,22 +750,6 @@ document.querySelectorAll('.netCanvas').forEach(function(canvas){
 /* ---------- Download gate: temporarily disabled — direct links used instead (see #download section) ---------- */
 </script>
 <script>
-document.querySelectorAll('a[href^="/api/download"]').forEach(function (a) {
-  a.addEventListener("click", function () {
-    try {
-      var s = JSON.parse(sessionStorage.getItem("jfb_src") || "{}");
-      var u = new URL(a.href, location.origin);
-      if (s.r) u.searchParams.set("ref_host", s.r);
-      if (s.us) u.searchParams.set("utm_source", s.us);
-      if (s.um) u.searchParams.set("utm_medium", s.um);
-      if (s.uc) u.searchParams.set("utm_campaign", s.uc);
-      if (s.lp) u.searchParams.set("lp", s.lp);
-      a.href = u.pathname + u.search;
-    } catch (e) {}
-  });
-});
-</script>
-<script>
 document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
   var modal = document.getElementById('jfb-dlgate');
   if (!modal) return;
@@ -833,5 +817,27 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
 })();
 </script>
 
+<script>
+    // 다운로드 클릭 시 캡처해둔 유입 출처를 쿼리로 첨부. href는 그대로 두고
+    // 클릭 시점에 갱신하므로 브라우저 네이티브 다운로드 동작이 유지된다.
+    (function attachDownloadSource() {
+      document.querySelectorAll('a[href^="/api/download"]').forEach(function (a) {
+        a.addEventListener("click", function () {
+          try {
+            var raw = sessionStorage.getItem("jfb_src");
+            if (!raw) return;
+            var s = JSON.parse(raw);
+            var u = new URL(a.href, location.href);
+            if (s.r) u.searchParams.set("r", s.r);
+            if (s.us) u.searchParams.set("us", s.us);
+            if (s.um) u.searchParams.set("um", s.um);
+            if (s.uc) u.searchParams.set("uc", s.uc);
+            if (s.lp) u.searchParams.set("lp", s.lp);
+            a.href = u.pathname + u.search;
+          } catch (e) {}
+        });
+      });
+    })();
+    </script>
 </body>
 </html>
