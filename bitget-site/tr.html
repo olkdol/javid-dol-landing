@@ -1,6 +1,26 @@
 <!doctype html>
 <html lang="tr">
 <head>
+<script>
+// 다운로드 유입 출처 캡처 — 첫 진입 시 한 번만 기록, 이후 사이트 내 이동으로는 덮어쓰지 않는다.
+// (마케팅팀 REQUEST_landingagent_downloadattribution.md 참고)
+(function captureSource() {
+  try {
+    if (sessionStorage.getItem("jfb_src")) return;
+    var q = new URLSearchParams(location.search);
+    var refHost = "";
+    try { refHost = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) {}
+    if (refHost && refHost.endsWith("javidtrading.com")) refHost = ""; // 우리 사이트 내부 이동은 출처가 아니다
+    sessionStorage.setItem("jfb_src", JSON.stringify({
+      r: refHost,
+      us: q.get("utm_source") || "",
+      um: q.get("utm_medium") || "",
+      uc: q.get("utm_campaign") || "",
+      lp: location.pathname,
+    }));
+  } catch (e) {}
+})();
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ücretsiz Otomatik Alım Satım Programı — Bitget Kripto Vadeli İşlemlerde 7/24 Otomatik Trading | JaviD Future Bot</title>
@@ -860,5 +880,27 @@ document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
 })();
 </script>
 
+<script>
+    // 다운로드 클릭 시 캡처해둔 유입 출처를 쿼리로 첨부. href는 그대로 두고
+    // 클릭 시점에 갱신하므로 브라우저 네이티브 다운로드 동작이 유지된다.
+    (function attachDownloadSource() {
+      document.querySelectorAll('a[href^="/api/download"]').forEach(function (a) {
+        a.addEventListener("click", function () {
+          try {
+            var raw = sessionStorage.getItem("jfb_src");
+            if (!raw) return;
+            var s = JSON.parse(raw);
+            var u = new URL(a.href, location.href);
+            if (s.r) u.searchParams.set("r", s.r);
+            if (s.us) u.searchParams.set("us", s.us);
+            if (s.um) u.searchParams.set("um", s.um);
+            if (s.uc) u.searchParams.set("uc", s.uc);
+            if (s.lp) u.searchParams.set("lp", s.lp);
+            a.href = u.pathname + u.search;
+          } catch (e) {}
+        });
+      });
+    })();
+    </script>
 </body>
 </html>
