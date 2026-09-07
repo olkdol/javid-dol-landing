@@ -1,0 +1,11 @@
+# 이 폴더는 Workers Builds 가 워커 `javid-dol-landing` 을 빌드하는 실제 루트다
+# (2026-09-07 실측 — 라이브 javid-dol.uk 의 title 이 이 폴더 index.html 과 정확히 일치했다).
+# worker.js 가 없으므로 301 은 정적 규칙으로만 걸 수 있다.
+#
+# 순서가 곧 우선순위다. 핫링크되는 자산을 먼저 통과시키고, 나머지를 301 로 보낸다.
+/images/*        /images/:splat        200
+/screenshots/*   /screenshots/:splat   200
+
+https://javidfuturebot.javid-dol.uk/*  https://bn.javidtrading.com/   301
+https://javid-dol.uk/*                 https://www.javidtrading.com/  301
+https://www.javid-dol.uk/*             https://www.javidtrading.com/  301
