@@ -28,11 +28,21 @@ const SITE = "bn";
 const FILES = {
   windows: "JaviD_Future_Bot_Windows.zip",
   mac: "JaviD_Future_Bot_macOS.zip",
+  // 안드로이드 APK. 이게 없으면 ?platform=android 가 pickPlatform 의 기본값인
+  // windows 로 떨어져서, 폰 사용자에게 윈도우 zip 이 내려간다.
+  android: "JaviD_Future_Bot_Android.apk",
+};
+
+// APK 를 application/zip 으로 주면 일부 안드로이드 브라우저가 설치 화면 대신
+// 파일로만 저장한다.
+const CONTENT_TYPES = {
+  android: "application/vnd.android.package-archive",
 };
 
 function pickPlatform(value) {
   const v = String(value || "").toLowerCase();
   if (v === "mac" || v === "macos" || v === "osx" || v === "darwin") return "mac";
+  if (v === "android" || v === "apk") return "android";
   return "windows";
 }
 
@@ -73,7 +83,7 @@ async function serve(env, platform) {
   if (!object) return json({ error: "file_not_found", file: fileKey }, 404);
 
   const headers = new Headers();
-  headers.set("Content-Type", "application/zip");
+  headers.set("Content-Type", CONTENT_TYPES[platform] || "application/zip");
   headers.set("Content-Disposition", `attachment; filename="${fileKey}"`);
   // Don't let an edge cache pin an old build after the R2 object is replaced.
   headers.set("Cache-Control", "no-store");
