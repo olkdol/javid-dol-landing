@@ -42,11 +42,21 @@ const FILES = {
     r2Key: "JaviD_Future_Bot_Bybit_macOS.zip",
     assetPath: "downloads/JaviD_Future_Bot_Bybit_macOS.zip",
   },
+  // 이 사이트엔 아직 안드로이드 버튼이 없다. 그래도 넣어 두는 이유는, 없으면
+  // ?platform=android 가 pickPlatform 의 기본값인 windows 로 조용히 떨어져서
+  // 폰 사용자에게 윈도우 zip 이 내려가기 때문이다(비트겟·바이낸스에서 실제로
+  // 그 상태였다). APK 가 없으면 404 가 나고, 그게 잘못된 파일보다 낫다.
+  android: {
+    r2Key: "JaviD_Future_Bot_Bybit_Android.apk",
+    assetPath: "downloads/JaviD_Future_Bot_Bybit_Android.apk",
+    contentType: "application/vnd.android.package-archive",
+  },
 };
 
 function pickPlatform(value) {
   const v = String(value || "").toLowerCase();
   if (v === "mac" || v === "macos" || v === "osx" || v === "darwin") return "mac";
+  if (v === "android" || v === "apk") return "android";
   return "windows";
 }
 
@@ -87,7 +97,7 @@ async function serveFromR2(env, platform) {
   if (!object) return null;
 
   const headers = new Headers();
-  headers.set("Content-Type", "application/zip");
+  headers.set("Content-Type", FILES[platform].contentType || "application/zip");
   headers.set("Content-Disposition", `attachment; filename="${fileKey}"`);
   // Don't let an edge cache pin an old build after the R2 object is replaced.
   headers.set("Cache-Control", "no-store");
@@ -118,7 +128,7 @@ async function serveFromAssets(request, env, platform) {
 
   const filename = relPath.split("/").pop();
   const headers = new Headers(assetRes.headers);
-  headers.set("Content-Type", "application/zip");
+  headers.set("Content-Type", FILES[platform].contentType || "application/zip");
   headers.set("Content-Disposition", `attachment; filename="${filename}"`);
   headers.set("Cache-Control", "no-store");
   headers.set("X-Served-From", "assets");

@@ -90,7 +90,7 @@ export async function onRequestGet({ request, env }) {
         .all(),
     ]);
 
-  const platforms = { windows: 0, mac: 0 };
+  const platforms = { windows: 0, mac: 0, android: 0 };
   for (const row of byPlatform.results || []) {
     platforms[row.platform] = row.count;
   }
