@@ -528,7 +528,10 @@
   </div>
     <div class="dl-gate-buttons">
       <a href="/api/download?platform=windows" class="btn btn-primary" download>🪟 Tải cho Windows</a>
-      <a href="/api/download?platform=mac" class="btn btn-primary" download>🍎 Tải cho macOS</a><p id="jfb-mac-note" style="display:block;margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.6;color:#94a3b8;">Trên macOS, lần mở đầu tiên có thể cần một thiết lập bổ sung, vì chương trình do một nhà phát triển cá nhân tạo ra.</p><a id="jfb-install-help-link" href="install-help?lang=vi" style="display:block;margin:14px auto 0;max-width:640px;text-align:center;font-size:14px;line-height:1.6;color:#2dd4bf;text-decoration:underline;">Do một nhà phát triển cá nhân tạo ra — Windows và macOS đều chặn lần chạy đầu tiên. Lý do và cách mở trên từng hệ điều hành →</a>
+      <a href="/api/download?platform=mac" class="btn btn-primary" download>🍎 Tải cho macOS</a><p id="jfb-mac-note" style="display:block;margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.6;color:#94a3b8;">Trên macOS, lần mở đầu tiên có thể cần một thiết lập bổ sung, vì chương trình do một nhà phát triển cá nhân tạo ra.</p><a href="#" id="jfb-android-dl" class="btn btn-primary" style="margin-top:10px;">🤖 Tải cho Android (APK)</a>
+<p id="jfb-android-note" style="display:block;margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.6;color:#cbd5e1;">Chạy trên chiếc điện thoại Android cũ đang nằm trong ngăn kéo, cắm sạc liên tục. Bạn cần một máy có thể để bật cả ngày.</p>
+<p id="jfb-android-fine" style="display:block;margin:6px auto 0;max-width:640px;text-align:center;font-size:12.5px;line-height:1.6;color:#94a3b8;">Cài trực tiếp file APK, không qua Play Store — Android sẽ hiện màn hình cảnh báo khi cài. Không có bản cho iOS.</p>
+<a id="jfb-install-help-link" href="install-help?lang=vi" style="display:block;margin:14px auto 0;max-width:640px;text-align:center;font-size:14px;line-height:1.6;color:#2dd4bf;text-decoration:underline;">Do một nhà phát triển cá nhân tạo ra — Windows và macOS đều chặn lần chạy đầu tiên. Lý do và cách mở trên từng hệ điều hành →</a>
     </div>
     <p class="dl-gate-help">Bạn có thắc mắc trong quá trình cài đặt? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">Hãy hỏi trong cộng đồng Telegram</a>.</p>
   </div>
@@ -902,5 +905,54 @@ document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
       });
     })();
     </script>
+<!-- ===== Android install gate (consumer-psychologist approved 2026-09-11) ===== -->
+<div id="jfb-androidgate" style="position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:0 20px;">
+  <div style="position:relative;width:100%;max-width:480px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:34px 30px;text-align:left;max-height:88vh;overflow-y:auto;">
+    <button type="button" id="jfb-androidgate-x" aria-label="Close" style="position:absolute;top:12px;right:14px;background:none;border:none;color:var(--faint);font-size:22px;cursor:pointer;line-height:1;">&times;</button>
+    <div style="font-size:28px;margin-bottom:14px;text-align:center;">&#129302;</div>
+    <h3 style="font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:14px;color:var(--text);text-align:center;">Trước khi cài — chọn máy nào mới là điều quan trọng nhất</h3>
+    <p style="font-size:13.5px;line-height:1.75;color:var(--faint);margin-bottom:14px;">JaviD Future Bot chỉ đặt lệnh khi đang chạy. Nếu ứng dụng dừng — máy tắt nguồn, tính năng tiết kiệm pin đóng ứng dụng chạy nền, bản cập nhật hệ thống khởi động lại máy, Wi-Fi rớt — thì trong khoảng đó lệnh cắt lỗ và chốt lời không được gửi đi. Vị thế vẫn mở trên thị trường. Đây là hợp đồng tương lai có đòn bẩy, nên khoản lỗ trong khoảng đó là lỗ thật.</p>
+    <p style="font-size:13.5px;line-height:1.75;color:var(--faint);margin-bottom:14px;">Vì vậy nó cần một máy riêng: cắm sạc, bật cả ngày, và không cầm lên để xem thông báo. Một chiếc điện thoại cũ trong ngăn kéo là hợp nhất.</p>
+    <p style="font-size:14px;line-height:1.7;color:var(--text);font-weight:600;margin-bottom:18px;">Chiếc máy bạn sắp cài có phải là máy có thể để bật cả ngày không?</p>
+    <p style="font-size:12px;line-height:1.65;color:#94a3b8;margin-bottom:20px;">Máy sạc liên tục cả ngày có thể bị phồng pin hoặc nóng lên — máy càng cũ càng dễ. Hãy tháo ốp, đặt nơi thoáng mát, và tắt máy một lúc nếu sờ thấy nóng.</p>
+    <a id="jfb-androidgate-yes" href="#" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;">Có — máy này sẽ dành riêng cho nó</a>
+    <button type="button" id="jfb-androidgate-no" class="btn" style="width:100%;justify-content:center;background:transparent;border:1px solid var(--line);color:var(--faint);">Không — xem bản Windows / macOS</button>
+  </div>
+</div>
+<script>
+(function jfbAndroidGate(){
+  // APK 가 R2 에 올라가기 전까지 false. 올린 뒤 true 로 바꾸면 바로 다운로드로 연결된다.
+  var APK_READY = false;
+  var TELEGRAM  = "https://t.me/+P_CukTNNKRI4ZDVl";
+  var modal = document.getElementById("jfb-androidgate");
+  var btn   = document.getElementById("jfb-android-dl");
+  if (!modal || !btn) return;
+  var yes = document.getElementById("jfb-androidgate-yes");
+  function open(e){ if (e) e.preventDefault(); modal.style.display = "flex"; }
+  function close(){ modal.style.display = "none"; }
+  btn.addEventListener("click", open);
+  document.getElementById("jfb-androidgate-x").addEventListener("click", close);
+  // "아니요" 는 막다른 길이 아니라 데스크톱 버전으로 보내는 출구다 — 전용기가 없는
+  // 사람도 버릴 리드가 아니라 PC 리드이기 때문(심리 게이트 지적).
+  document.getElementById("jfb-androidgate-no").addEventListener("click", function(){
+    close();
+    var t = document.getElementById("download");
+    if (t) t.scrollIntoView({behavior: "smooth"});
+  });
+  if (APK_READY) {
+    yes.setAttribute("href", "/api/download?platform=android");
+    yes.setAttribute("download", "");
+  } else {
+    yes.textContent = "C\u00f3 \u2014 h\u00e3y b\u00e1o t\u00f4i khi s\u1eb5n s\u00e0ng";
+    yes.setAttribute("href", TELEGRAM);
+    yes.setAttribute("target", "_blank");
+    yes.setAttribute("rel", "noopener");
+    var fine = document.getElementById("jfb-android-fine");
+    if (fine) fine.textContent = "B\u1ea3n Android \u0111ang \u0111\u01b0\u1ee3c chu\u1ea9n b\u1ecb. Tham gia c\u1ed9ng \u0111\u1ed3ng Telegram \u0111\u1ec3 nh\u1eadn tin s\u1edbm nh\u1ea5t.";
+  }
+  modal.addEventListener("click", function(ev){ if (ev.target === modal) close(); });
+})();
+</script>
+
 </body>
 </html>

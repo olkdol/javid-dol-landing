@@ -648,7 +648,10 @@
     <p class="mb-4 text-[12.5px] font-bold text-slate-500" data-i18n="dl_free_note">Téléchargement gratuit et instantané — sans code, sans inscription requise</p>
     <div class="flex flex-wrap justify-center gap-3">
       <a href="/api/download?platform=windows" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 jfb-dl-btn"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</a>
-      <a href="/api/download?platform=mac" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 jfb-dl-btn"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</a><p id="jfb-mac-note" style="display:block;margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.6;color:#94a3b8;">Sur macOS, la première ouverture peut demander un réglage supplémentaire, car le programme a été créé par un développeur indépendant.</p><a id="jfb-install-help-link" href="install-help?lang=fr" style="display:block;margin:14px auto 0;max-width:640px;text-align:center;font-size:14px;line-height:1.6;color:#2dd4bf;text-decoration:underline;">Créé par un développeur indépendant — Windows et macOS bloquent le premier lancement. Pourquoi, et comment l'ouvrir sur chaque système →</a>
+      <a href="/api/download?platform=mac" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 jfb-dl-btn"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</a><p id="jfb-mac-note" style="display:block;margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.6;color:#94a3b8;">Sur macOS, la première ouverture peut demander un réglage supplémentaire, car le programme a été créé par un développeur indépendant.</p><a href="#" id="jfb-android-dl" class="btn btn-primary" style="margin-top:10px;">🤖 Télécharger pour Android (APK)</a>
+<p id="jfb-android-note" style="display:block;margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.6;color:#cbd5e1;">Fonctionne sur le vieil Android qui dort dans un tiroir, laissé branché. Il vous faut un téléphone que vous pouvez laisser allumé toute la journée.</p>
+<p id="jfb-android-fine" style="display:block;margin:6px auto 0;max-width:640px;text-align:center;font-size:12.5px;line-height:1.6;color:#94a3b8;">Installation directe de l’APK, pas via le Play Store — Android affichera un écran d’avertissement pendant l’installation. Il n’existe pas de version iOS.</p>
+<a id="jfb-install-help-link" href="install-help?lang=fr" style="display:block;margin:14px auto 0;max-width:640px;text-align:center;font-size:14px;line-height:1.6;color:#2dd4bf;text-decoration:underline;">Créé par un développeur indépendant — Windows et macOS bloquent le premier lancement. Pourquoi, et comment l'ouvrir sur chaque système →</a>
     </div>
     <script>
     // 다운로드 클릭 시 캡처해둔 유입 출처를 쿼리로 첨부. href는 그대로 두고
@@ -2269,6 +2272,55 @@ document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
     tagged.forEach(function(el){ io.observe(el); });
     setTimeout(function(){ tagged.forEach(function(el){ el.classList.add('jr-in'); }); }, 3000); // safety: never leave hidden
   });
+})();
+</script>
+
+<!-- ===== Android install gate (consumer-psychologist approved 2026-09-11) ===== -->
+<div id="jfb-androidgate" style="position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:0 20px;">
+  <div style="position:relative;width:100%;max-width:480px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:34px 30px;text-align:left;max-height:88vh;overflow-y:auto;">
+    <button type="button" id="jfb-androidgate-x" aria-label="Close" style="position:absolute;top:12px;right:14px;background:none;border:none;color:var(--faint);font-size:22px;cursor:pointer;line-height:1;">&times;</button>
+    <div style="font-size:28px;margin-bottom:14px;text-align:center;">&#129302;</div>
+    <h3 style="font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:14px;color:var(--text);text-align:center;">Avant d’installer — le choix du téléphone compte le plus</h3>
+    <p style="font-size:13.5px;line-height:1.75;color:var(--faint);margin-bottom:14px;">JaviD Future Bot ne passe des ordres que lorsqu’il tourne. Si l’application s’arrête — le téléphone s’éteint, l’optimisation de batterie la ferme en arrière-plan, une mise à jour le redémarre, le Wi-Fi coupe — aucun ordre stop-loss ni take-profit ne part pendant ce temps. La position reste ouverte sur le marché. Ce sont des futures à effet de levier : une perte dans cet intervalle est une perte réelle.</p>
+    <p style="font-size:13.5px;line-height:1.75;color:var(--faint);margin-bottom:14px;">C’est pourquoi il lui faut un téléphone dédié : branché, allumé toute la journée, et que vous ne prenez pas en main pour consulter vos notifications. Un vieux téléphone dans un tiroir convient parfaitement.</p>
+    <p style="font-size:14px;line-height:1.7;color:var(--text);font-weight:600;margin-bottom:18px;">Le téléphone sur lequel vous allez l’installer peut-il rester allumé toute la journée ?</p>
+    <p style="font-size:12px;line-height:1.65;color:#94a3b8;margin-bottom:20px;">Un téléphone en charge en permanence peut gonfler ou chauffer — surtout s’il est ancien. Retirez la coque, gardez-le dans un endroit frais, et éteignez-le un moment s’il est brûlant au toucher.</p>
+    <a id="jfb-androidgate-yes" href="#" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;">Oui — ce téléphone lui sera dédié</a>
+    <button type="button" id="jfb-androidgate-no" class="btn" style="width:100%;justify-content:center;background:transparent;border:1px solid var(--line);color:var(--faint);">Non — voir la version Windows / macOS</button>
+  </div>
+</div>
+<script>
+(function jfbAndroidGate(){
+  // APK 가 R2 에 올라가기 전까지 false. 올린 뒤 true 로 바꾸면 바로 다운로드로 연결된다.
+  var APK_READY = false;
+  var TELEGRAM  = "https://t.me/+P_CukTNNKRI4ZDVl";
+  var modal = document.getElementById("jfb-androidgate");
+  var btn   = document.getElementById("jfb-android-dl");
+  if (!modal || !btn) return;
+  var yes = document.getElementById("jfb-androidgate-yes");
+  function open(e){ if (e) e.preventDefault(); modal.style.display = "flex"; }
+  function close(){ modal.style.display = "none"; }
+  btn.addEventListener("click", open);
+  document.getElementById("jfb-androidgate-x").addEventListener("click", close);
+  // "아니요" 는 막다른 길이 아니라 데스크톱 버전으로 보내는 출구다 — 전용기가 없는
+  // 사람도 버릴 리드가 아니라 PC 리드이기 때문(심리 게이트 지적).
+  document.getElementById("jfb-androidgate-no").addEventListener("click", function(){
+    close();
+    var t = document.getElementById("download");
+    if (t) t.scrollIntoView({behavior: "smooth"});
+  });
+  if (APK_READY) {
+    yes.setAttribute("href", "/api/download?platform=android");
+    yes.setAttribute("download", "");
+  } else {
+    yes.textContent = "Oui \u2014 pr\u00e9venez-moi quand ce sera pr\u00eat";
+    yes.setAttribute("href", TELEGRAM);
+    yes.setAttribute("target", "_blank");
+    yes.setAttribute("rel", "noopener");
+    var fine = document.getElementById("jfb-android-fine");
+    if (fine) fine.textContent = "La version Android est en pr\u00e9paration. Rejoignez la communaut\u00e9 Telegram pour \u00eatre inform\u00e9 en premier.";
+  }
+  modal.addEventListener("click", function(ev){ if (ev.target === modal) close(); });
 })();
 </script>
 

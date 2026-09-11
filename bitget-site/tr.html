@@ -528,7 +528,10 @@
   </div>
     <div class="dl-gate-buttons">
       <a href="/api/download?platform=windows" class="btn btn-primary" download>🪟 Windows için indir</a>
-      <a href="/api/download?platform=mac" class="btn btn-primary" download>🍎 macOS için indir</a><p id="jfb-mac-note" style="display:block;margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.6;color:#94a3b8;">macOS'ta ilk açılışta, bireysel bir geliştirici tarafından yapıldığı için ek bir ayar gerekebilir.</p><a id="jfb-install-help-link" href="install-help?lang=tr" style="display:block;margin:14px auto 0;max-width:640px;text-align:center;font-size:14px;line-height:1.6;color:#2dd4bf;text-decoration:underline;">Bireysel bir geliştirici tarafından yapıldı — Windows ve macOS ilk çalıştırmayı engelliyor. Nedeni ve her iki sistemde nasıl açılacağı →</a>
+      <a href="/api/download?platform=mac" class="btn btn-primary" download>🍎 macOS için indir</a><p id="jfb-mac-note" style="display:block;margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.6;color:#94a3b8;">macOS'ta ilk açılışta, bireysel bir geliştirici tarafından yapıldığı için ek bir ayar gerekebilir.</p><a href="#" id="jfb-android-dl" class="btn btn-primary" style="margin-top:10px;">🤖 Android için indir (APK)</a>
+<p id="jfb-android-note" style="display:block;margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.6;color:#cbd5e1;">Çekmecede duran eski Android telefonunuzda, şarjda takılı olarak çalışır. Gün boyu açık bırakabileceğiniz bir telefona ihtiyacınız var.</p>
+<p id="jfb-android-fine" style="display:block;margin:6px auto 0;max-width:640px;text-align:center;font-size:12.5px;line-height:1.6;color:#94a3b8;">Play Store’dan değil, doğrudan APK kurulumu — kurulum sırasında Android bir uyarı ekranı gösterir. iOS sürümü yoktur.</p>
+<a id="jfb-install-help-link" href="install-help?lang=tr" style="display:block;margin:14px auto 0;max-width:640px;text-align:center;font-size:14px;line-height:1.6;color:#2dd4bf;text-decoration:underline;">Bireysel bir geliştirici tarafından yapıldı — Windows ve macOS ilk çalıştırmayı engelliyor. Nedeni ve her iki sistemde nasıl açılacağı →</a>
     </div>
     <p class="dl-gate-help">Kurulum sırasında sorunuz mu var? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">Telegram topluluğunda sorun</a>.</p>
   </div>
@@ -902,5 +905,54 @@ document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
       });
     })();
     </script>
+<!-- ===== Android install gate (consumer-psychologist approved 2026-09-11) ===== -->
+<div id="jfb-androidgate" style="position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:0 20px;">
+  <div style="position:relative;width:100%;max-width:480px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:34px 30px;text-align:left;max-height:88vh;overflow-y:auto;">
+    <button type="button" id="jfb-androidgate-x" aria-label="Close" style="position:absolute;top:12px;right:14px;background:none;border:none;color:var(--faint);font-size:22px;cursor:pointer;line-height:1;">&times;</button>
+    <div style="font-size:28px;margin-bottom:14px;text-align:center;">&#129302;</div>
+    <h3 style="font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:14px;color:var(--text);text-align:center;">Kurmadan önce — en önemlisi hangi telefona kuracağınız</h3>
+    <p style="font-size:13.5px;line-height:1.75;color:var(--faint);margin-bottom:14px;">JaviD Future Bot yalnızca çalışırken emir gönderir. Uygulama durursa — telefon kapanırsa, pil optimizasyonu arka planda kapatırsa, sistem güncellemesi yeniden başlatırsa, Wi-Fi giderse — o süre boyunca zarar durdur ve kâr al emirleri gönderilmez. Pozisyon piyasada açık kalır. Bu kaldıraçlı vadeli işlem olduğu için, o aralıkta oluşan zarar gerçek zarardır.</p>
+    <p style="font-size:13.5px;line-height:1.75;color:var(--faint);margin-bottom:14px;">Bu yüzden kendine ait bir telefona ihtiyacı var: şarjda, gün boyu açık ve bildirimlere bakmak için elinize almadığınız bir telefon. Çekmecedeki eski telefon tam uygun.</p>
+    <p style="font-size:14px;line-height:1.7;color:var(--text);font-weight:600;margin-bottom:18px;">Kuracağınız telefon gün boyu açık bırakabileceğiniz bir telefon mu?</p>
+    <p style="font-size:12px;line-height:1.65;color:#94a3b8;margin-bottom:20px;">Gün boyu şarjda kalan bir telefonun pili şişebilir veya ısınabilir — özellikle eski modellerde. Kılıfını çıkarın, serin bir yerde tutun ve dokunulamayacak kadar sıcaksa bir süre kapatın.</p>
+    <a id="jfb-androidgate-yes" href="#" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;">Evet — bu telefon buna ayrılmış olacak</a>
+    <button type="button" id="jfb-androidgate-no" class="btn" style="width:100%;justify-content:center;background:transparent;border:1px solid var(--line);color:var(--faint);">Hayır — Windows / macOS sürümünü göster</button>
+  </div>
+</div>
+<script>
+(function jfbAndroidGate(){
+  // APK 가 R2 에 올라가기 전까지 false. 올린 뒤 true 로 바꾸면 바로 다운로드로 연결된다.
+  var APK_READY = false;
+  var TELEGRAM  = "https://t.me/+P_CukTNNKRI4ZDVl";
+  var modal = document.getElementById("jfb-androidgate");
+  var btn   = document.getElementById("jfb-android-dl");
+  if (!modal || !btn) return;
+  var yes = document.getElementById("jfb-androidgate-yes");
+  function open(e){ if (e) e.preventDefault(); modal.style.display = "flex"; }
+  function close(){ modal.style.display = "none"; }
+  btn.addEventListener("click", open);
+  document.getElementById("jfb-androidgate-x").addEventListener("click", close);
+  // "아니요" 는 막다른 길이 아니라 데스크톱 버전으로 보내는 출구다 — 전용기가 없는
+  // 사람도 버릴 리드가 아니라 PC 리드이기 때문(심리 게이트 지적).
+  document.getElementById("jfb-androidgate-no").addEventListener("click", function(){
+    close();
+    var t = document.getElementById("download");
+    if (t) t.scrollIntoView({behavior: "smooth"});
+  });
+  if (APK_READY) {
+    yes.setAttribute("href", "/api/download?platform=android");
+    yes.setAttribute("download", "");
+  } else {
+    yes.textContent = "Evet \u2014 haz\u0131r olunca haber verin";
+    yes.setAttribute("href", TELEGRAM);
+    yes.setAttribute("target", "_blank");
+    yes.setAttribute("rel", "noopener");
+    var fine = document.getElementById("jfb-android-fine");
+    if (fine) fine.textContent = "Android s\u00fcr\u00fcm\u00fc haz\u0131rlan\u0131yor. \u0130lk siz duymak i\u00e7in Telegram toplulu\u011funa kat\u0131l\u0131n.";
+  }
+  modal.addEventListener("click", function(ev){ if (ev.target === modal) close(); });
+})();
+</script>
+
 </body>
 </html>

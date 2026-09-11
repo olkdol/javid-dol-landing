@@ -648,7 +648,10 @@
     <p class="mb-4 text-[12.5px] font-bold text-slate-500" data-i18n="dl_free_note">無料・即ダウンロード — コード不要、登録不要</p>
     <div class="flex flex-wrap justify-center gap-3">
       <a href="/api/download?platform=windows" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 jfb-dl-btn"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</a>
-      <a href="/api/download?platform=mac" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 jfb-dl-btn"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</a><p id="jfb-mac-note" style="display:block;margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.6;color:#94a3b8;">macOSでは、個人開発者が作ったプログラムのため、初回起動時に別途設定が必要な場合があります。</p><a id="jfb-install-help-link" href="install-help?lang=ja" style="display:block;margin:14px auto 0;max-width:640px;text-align:center;font-size:14px;line-height:1.6;color:#2dd4bf;text-decoration:underline;">個人の開発者が作ったプログラムです — WindowsもmacOSも初回起動をブロックします。その理由と、それぞれのOSでの開き方 →</a>
+      <a href="/api/download?platform=mac" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 jfb-dl-btn"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</a><p id="jfb-mac-note" style="display:block;margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.6;color:#94a3b8;">macOSでは、個人開発者が作ったプログラムのため、初回起動時に別途設定が必要な場合があります。</p><a href="#" id="jfb-android-dl" class="btn btn-primary" style="margin-top:10px;">🤖 Android版をダウンロード (APK)</a>
+<p id="jfb-android-note" style="display:block;margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.6;color:#cbd5e1;">引き出しで眠っている古いAndroid端末を、24時間専用機として使います。充電器につないで一日中つけておける端末が1台必要です。</p>
+<p id="jfb-android-fine" style="display:block;margin:6px auto 0;max-width:640px;text-align:center;font-size:12.5px;line-height:1.6;color:#94a3b8;">Playストアではなく APK の直接インストールです — インストール時にAndroidの警告画面が出ます。iOS版はありません。</p>
+<a id="jfb-install-help-link" href="install-help?lang=ja" style="display:block;margin:14px auto 0;max-width:640px;text-align:center;font-size:14px;line-height:1.6;color:#2dd4bf;text-decoration:underline;">個人の開発者が作ったプログラムです — WindowsもmacOSも初回起動をブロックします。その理由と、それぞれのOSでの開き方 →</a>
     </div>
     <script>
     // 다운로드 클릭 시 캡처해둔 유입 출처를 쿼리로 첨부. href는 그대로 두고
@@ -2269,6 +2272,55 @@ document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
     tagged.forEach(function(el){ io.observe(el); });
     setTimeout(function(){ tagged.forEach(function(el){ el.classList.add('jr-in'); }); }, 3000); // safety: never leave hidden
   });
+})();
+</script>
+
+<!-- ===== Android install gate (consumer-psychologist approved 2026-09-11) ===== -->
+<div id="jfb-androidgate" style="position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:0 20px;">
+  <div style="position:relative;width:100%;max-width:480px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:34px 30px;text-align:left;max-height:88vh;overflow-y:auto;">
+    <button type="button" id="jfb-androidgate-x" aria-label="Close" style="position:absolute;top:12px;right:14px;background:none;border:none;color:var(--faint);font-size:22px;cursor:pointer;line-height:1;">&times;</button>
+    <div style="font-size:28px;margin-bottom:14px;text-align:center;">&#129302;</div>
+    <h3 style="font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:14px;color:var(--text);text-align:center;">インストール前に — どの端末に入れるかが最も重要です</h3>
+    <p style="font-size:13.5px;line-height:1.75;color:var(--faint);margin-bottom:14px;">JaviD Future Bot は起動している間だけ注文を出します。アプリが止まると — 端末の電源が切れる、省電力機能がバックグラウンドのアプリを終了する、システム更新で再起動する、Wi-Fi が切れる — その間は損切り・利確の注文が出ません。ポジションは市場に残ったままです。レバレッジ先物なので、その間に出た損失は実際の損失です。</p>
+    <p style="font-size:13.5px;line-height:1.75;color:var(--faint);margin-bottom:14px;">だから専用の端末が1台必要です。充電器につないで一日中つけたままにし、通知を見るために手に取らない端末。引き出しの古い端末がちょうど良いです。</p>
+    <p style="font-size:14px;line-height:1.7;color:var(--text);font-weight:600;margin-bottom:18px;">これからインストールする端末は、一日中つけたままにできる端末ですか？</p>
+    <p style="font-size:12px;line-height:1.65;color:#94a3b8;margin-bottom:20px;">一日中充電したままにすると、バッテリーが膨らんだり熱くなったりすることがあります — 古い端末ほどそうです。ケースは外し、涼しい場所に置き、触って熱いときはしばらく電源を切ってください。</p>
+    <a id="jfb-androidgate-yes" href="#" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;">はい — つけたままにできる端末です</a>
+    <button type="button" id="jfb-androidgate-no" class="btn" style="width:100%;justify-content:center;background:transparent;border:1px solid var(--line);color:var(--faint);">いいえ — Windows / macOS 版を見る</button>
+  </div>
+</div>
+<script>
+(function jfbAndroidGate(){
+  // APK 가 R2 에 올라가기 전까지 false. 올린 뒤 true 로 바꾸면 바로 다운로드로 연결된다.
+  var APK_READY = false;
+  var TELEGRAM  = "https://t.me/+P_CukTNNKRI4ZDVl";
+  var modal = document.getElementById("jfb-androidgate");
+  var btn   = document.getElementById("jfb-android-dl");
+  if (!modal || !btn) return;
+  var yes = document.getElementById("jfb-androidgate-yes");
+  function open(e){ if (e) e.preventDefault(); modal.style.display = "flex"; }
+  function close(){ modal.style.display = "none"; }
+  btn.addEventListener("click", open);
+  document.getElementById("jfb-androidgate-x").addEventListener("click", close);
+  // "아니요" 는 막다른 길이 아니라 데스크톱 버전으로 보내는 출구다 — 전용기가 없는
+  // 사람도 버릴 리드가 아니라 PC 리드이기 때문(심리 게이트 지적).
+  document.getElementById("jfb-androidgate-no").addEventListener("click", function(){
+    close();
+    var t = document.getElementById("download");
+    if (t) t.scrollIntoView({behavior: "smooth"});
+  });
+  if (APK_READY) {
+    yes.setAttribute("href", "/api/download?platform=android");
+    yes.setAttribute("download", "");
+  } else {
+    yes.textContent = "\u306f\u3044 \u2014 \u6e96\u5099\u3067\u304d\u305f\u3089\u77e5\u3089\u305b\u3066\u304f\u3060\u3055\u3044";
+    yes.setAttribute("href", TELEGRAM);
+    yes.setAttribute("target", "_blank");
+    yes.setAttribute("rel", "noopener");
+    var fine = document.getElementById("jfb-android-fine");
+    if (fine) fine.textContent = "Android\u7248\u306f\u6e96\u5099\u4e2d\u3067\u3059\u3002\u30c6\u30ec\u30b0\u30e9\u30e0\u306e\u30b3\u30df\u30e5\u30cb\u30c6\u30a3\u3067\u516c\u958b\u306e\u304a\u77e5\u3089\u305b\u3092\u5148\u306b\u53d7\u3051\u53d6\u308c\u307e\u3059\u3002";
+  }
+  modal.addEventListener("click", function(ev){ if (ev.target === modal) close(); });
 })();
 </script>
 
