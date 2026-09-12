@@ -657,22 +657,27 @@
     // 다운로드 클릭 시 캡처해둔 유입 출처를 쿼리로 첨부. href는 그대로 두고
     // 클릭 시점에 갱신하므로 브라우저 네이티브 다운로드 동작이 유지된다.
     (function attachDownloadSource() {
-      document.querySelectorAll('a[href^="/api/download"]').forEach(function (a) {
-        a.addEventListener("click", function () {
-          try {
-            var raw = sessionStorage.getItem("jfb_src");
-            if (!raw) return;
-            var s = JSON.parse(raw);
-            var u = new URL(a.href, location.href);
-            if (s.r) u.searchParams.set("r", s.r);
-            if (s.us) u.searchParams.set("us", s.us);
-            if (s.um) u.searchParams.set("um", s.um);
-            if (s.uc) u.searchParams.set("uc", s.uc);
-            if (s.lp) u.searchParams.set("lp", s.lp);
-            a.href = u.pathname + u.search;
-          } catch (e) {}
-        });
-      });
+      // 문서 전체에서 위임으로 받는다(캡처 단계). 예전엔 로드 시점에 href 가
+      // "/api/download" 로 시작하던 링크에만 핸들러를 붙여서, 안드로이드 버튼처럼
+      // href 가 **나중에** 채워지는 링크는 유입 출처 없이 집계됐다(2026-09-12 발견).
+      // href 는 그대로 두고 클릭 시점에 갱신하므로 브라우저 네이티브 다운로드
+      // 동작이 유지된다. 이 핸들러는 링크의 기본 동작보다 먼저 끝난다.
+      document.addEventListener("click", function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[href^="/api/download"]') : null;
+        if (!a) return;
+        try {
+          var raw = sessionStorage.getItem("jfb_src");
+          if (!raw) return;
+          var s = JSON.parse(raw);
+          var u = new URL(a.href, location.href);
+          if (s.r) u.searchParams.set("r", s.r);
+          if (s.us) u.searchParams.set("us", s.us);
+          if (s.um) u.searchParams.set("um", s.um);
+          if (s.uc) u.searchParams.set("uc", s.uc);
+          if (s.lp) u.searchParams.set("lp", s.lp);
+          a.href = u.pathname + u.search;
+        } catch (err) {}
+      }, true);
     })();
     </script>
 <script>
@@ -2292,7 +2297,7 @@ document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
 <script>
 (function jfbAndroidGate(){
   // APK 가 R2 에 올라가기 전까지 false. 올린 뒤 true 로 바꾸면 바로 다운로드로 연결된다.
-  var APK_READY = false;
+  var APK_READY = true;
   var TELEGRAM  = "https://t.me/+P_CukTNNKRI4ZDVl";
   var modal = document.getElementById("jfb-androidgate");
   var btn   = document.getElementById("jfb-android-dl");
