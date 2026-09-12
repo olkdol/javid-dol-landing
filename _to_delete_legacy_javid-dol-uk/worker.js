@@ -24,6 +24,20 @@ export default {
     const url = new URL(request.url);
     const { pathname } = url;
     const base = { request, env, ctx, params: {} };
+    const host = url.hostname.toLowerCase();
+
+    // ── 구 비트겟 도메인 → bg (2026-09-12) ─────────────────────────────────
+    // javidfuturebot2.javid-dol.uk 는 bg.javidtrading.com 과 같은 워커에 붙어 **같은 사이트를
+    // 바이트 단위로 그대로** 서빙하고 있었다. 그래서 옛 링크로 들어온 사람은 무엇을 눌러도
+    // 옛 도메인에 머물렀다("커뮤니티 보드를 누르면 javid-dol.uk 로 간다" — 사용자 지적).
+    // 같은 사이트이므로 경로를 이어붙여도 404 가 나지 않는다 → 경로·쿼리를 보존한다.
+    // API 보다 **먼저** 보낸다: 이 워커의 API 는 구 바이낸스 D1·R2 에 묶여 있어서, 여기서
+    // 받으면 비트겟 다운로드·게시글이 바이낸스 쪽으로 들어간다. GET/HEAD 가 아니면 308 로
+    // 보내 메서드와 본문을 유지한다(301 이면 브라우저가 POST 를 GET 으로 바꿔 글쓰기가 깨진다).
+    if (host === "javidfuturebot2.javid-dol.uk") {
+      const status = (request.method === "GET" || request.method === "HEAD") ? 301 : 308;
+      return Response.redirect("https://bg.javidtrading.com" + pathname + url.search, status);
+    }
 
     try {
       if (pathname === "/api/download") {
@@ -74,7 +88,12 @@ export default {
     //                                          것이라 주력인 비트겟으로 보낸다.)
     //    기본값은 bg — 주력 거래소이고, 모르는 호스트를 레거시 바이낸스로 보낼 이유가 없다.
     if (!pathname.startsWith("/images/") && !pathname.startsWith("/screenshots/")) {
-      const host = url.hostname.toLowerCase();
+      // 게시판만은 경로를 살린다(2026-09-12). 옛 javid-dol.uk 게시판은 bn 과 **같은 D1**
+      // (javid-board-db)을 쓰므로 글이 bn 게시판에 그대로 있다. 첫 화면으로 보내면 옛
+      // 게시판 링크로 온 사람이 게시판에 도착하지 못한다.
+      if (pathname === "/board" || pathname === "/board.html") {
+        return Response.redirect("https://bn.javidtrading.com/board" + url.search, 301);
+      }
       let target = "https://bg.javidtrading.com";
       if (host === "javidfuturebot.javid-dol.uk") target = "https://bn.javidtrading.com";
       else if (host === "javid-dol.uk" || host === "www.javid-dol.uk") target = "https://www.javidtrading.com";
