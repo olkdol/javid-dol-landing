@@ -314,6 +314,35 @@
 
 <div id="toast" role="status" aria-live="polite"></div>
 
+<script>
+// 허브를 거쳐 거래소 페이지로 이동할 때 유입 출처 유실 방지 — 쿼리스트링을 거래소 링크에 이어붙인다.
+// 영어·일본어·스페인어·프랑스어판에만 있고 이 페이지엔 빠져 있어서, 이 언어로 들어온 유입은
+// 전부 direct 로 잡혔다(2026-09-15 발견). (REQUEST_landing-agent_download-attribution.md 참고)
+(function forwardQueryToExchangeLinks() {
+  try {
+    var params = new URLSearchParams(location.search);
+    // UTM 없이 들어온 외부 유입(검색·AI 답변·다른 사이트)은 거래소 페이지로 넘어가는 순간 referrer 가
+    // 허브로 바뀌어 출처가 사라진다. 원래 출처 호스트를 UTM 으로 옮겨 싣는다.
+    if (!params.get("utm_source")) {
+      var ref = "";
+      try { ref = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) {}
+      if (ref && !/(^|\.)javidtrading\.com$/.test(ref)) {
+        params.set("utm_source", ref.replace(/^www\./, ""));
+        params.set("utm_medium", "referral");
+      }
+    }
+    if (!params.toString()) return;
+    document.querySelectorAll('a[href^="https://bn.javidtrading.com"], a[href^="https://bg.javidtrading.com"], a[href^="https://bb.javidtrading.com"], a[href^="https://okx.javidtrading.com"]').forEach(function (a) {
+      try {
+        var u = new URL(a.href);
+        params.forEach(function (v, k) { u.searchParams.set(k, v); });
+        a.href = u.toString();
+      } catch (e) {}
+    });
+  } catch (e) {}
+})();
+</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

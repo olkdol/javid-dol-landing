@@ -407,8 +407,18 @@
 // (마케팅팀 REQUEST_landingagent_downloadattribution.md 참고: 이게 빠지면 허브 경유 유입이 전부 direct 로 잡힘)
 (function forwardQueryToExchangeLinks() {
   try {
-    if (!location.search) return;
     var params = new URLSearchParams(location.search);
+    // UTM 없이 들어온 외부 유입(검색·AI 답변·다른 사이트)은 거래소 페이지로 넘어가는 순간 referrer 가
+    // 허브로 바뀌어 출처가 사라진다(2026-09-15 발견). 원래 출처 호스트를 UTM 으로 옮겨 싣는다.
+    if (!params.get("utm_source")) {
+      var ref = "";
+      try { ref = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) {}
+      if (ref && !/(^|\.)javidtrading\.com$/.test(ref)) {
+        params.set("utm_source", ref.replace(/^www\./, ""));
+        params.set("utm_medium", "referral");
+      }
+    }
+    if (!params.toString()) return;
     document.querySelectorAll('a[href^="https://bn.javidtrading.com"], a[href^="https://bg.javidtrading.com"], a[href^="https://bb.javidtrading.com"], a[href^="https://okx.javidtrading.com"]').forEach(function (a) {
       try {
         var u = new URL(a.href);

@@ -53,6 +53,25 @@ function clip(value) {
   return s.length ? s : null;
 }
 
+// 사람/기계 구분 신호. 원본 User-Agent 는 저장하지 않고 **분류 결과만** 남긴다(개인정보 원칙 유지).
+// 2026-09-12 전수 분석: 집계 대부분이 랜딩을 거치지 않은 직접 호출이었고, 절반은 같은 국가에서
+// 수 초 간격으로 mac+windows 를 연달아 받는 크롤러 패턴이었다. UA 가 없어 사후 필터가 불가능했다.
+// ⚠️ "telegram" 같은 앱 이름은 넣지 말 것 — 텔레그램 인앱 브라우저(사람)의 UA 에도 들어 있다.
+//    링크 미리보기 봇은 이름에 bot/preview 가 있어 아래 패턴으로 이미 걸린다.
+// ⚠️ 이 INSERT 는 D1 에 ua_class·fetch_site 컬럼이 있어야 성공한다. 없으면 실패가 삼켜져
+//    다운로드 기록이 **조용히 사라진다** — 컬럼 추가(ALTER)를 먼저 하고 배포할 것.
+const BOT_UA = /bot\b|bot\/|crawl|spider|slurp|preview|scanner|headless|lighthouse|facebookexternalhit|embedly|^whatsapp\//i;
+const SCRIPT_UA = /^(curl|wget|python|go-http|java\/|okhttp|axios|node|undici|libwww|httpie|aiohttp|scrapy|php|ruby|dart)/i;
+
+function classifyClient(request) {
+  const ua = request.headers.get("user-agent") || "";
+  if (!ua) return "empty";
+  if (BOT_UA.test(ua)) return "bot";
+  if (SCRIPT_UA.test(ua)) return "script";
+  if (/^Mozilla\//.test(ua)) return "browser";
+  return "other";
+}
+
 function logDownload(env, ctx, request, platform) {
   if (!env.BOARD_DB) return;
   const url = new URL(request.url);
@@ -62,13 +81,17 @@ function logDownload(env, ctx, request, platform) {
   const utmCampaign = clip(url.searchParams.get("uc"));
   const landingPath = clip(url.searchParams.get("lp"));
   const country = clip(request.cf && request.cf.country);
+  const uaClass = classifyClient(request);
+  // 브라우저가 붙이는 헤더: 우리 페이지 버튼이면 same-origin, 외부 링크에서 바로 받으면 cross-site,
+  // 주소창 직접 입력이면 none. 스크립트·크롤러는 대개 보내지 않는다.
+  const fetchSite = clip(request.headers.get("sec-fetch-site"));
   const task = env.BOARD_DB
     .prepare(
       `INSERT INTO download_events
-         (site, platform, downloaded_at, referrer_host, utm_source, utm_medium, utm_campaign, landing_path, country)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+         (site, platform, downloaded_at, referrer_host, utm_source, utm_medium, utm_campaign, landing_path, country, ua_class, fetch_site)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     )
-    .bind(SITE, platform, new Date().toISOString(), referrerHost, utmSource, utmMedium, utmCampaign, landingPath, country)
+    .bind(SITE, platform, new Date().toISOString(), referrerHost, utmSource, utmMedium, utmCampaign, landingPath, country, uaClass, fetchSite)
     .run()
     .catch(() => {});
   if (ctx && ctx.waitUntil) ctx.waitUntil(task);
