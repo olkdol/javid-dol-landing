@@ -91,6 +91,35 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
 .lang-menu button:hover{background:rgba(255,255,255,.06);}
 .lang-menu button.active{color:var(--accent);background:rgba(0,240,255,.08);}
 </style>
+
+<style id="okx-theme">
+/* OKX 톤 — 인디고 액센트를 OKX 블랙 계열로 치환한다(토큰만 덮어써서 되돌리기 쉽게). */
+:root{
+  --color-indigo-50:#f4f5f7;--color-indigo-100:#e9eaee;--color-indigo-200:#d5d8de;
+  --color-indigo-300:#a8aeb8;--color-indigo-400:#6b7280;--color-indigo-500:#2c3038;
+  --color-indigo-600:#101114;--color-indigo-700:#000000;
+  --accent:#101114;--accent-soft:#f4f5f7;
+}
+.grad-ring{background:linear-gradient(135deg,#101114,#3a3f47) !important;}
+details.faq-item[open]{border-color:#101114 !important;box-shadow:0 0 0 1px #101114 !important;}
+.jfb-modal-btn-primary{background:#101114 !important;}
+.jfb-modal-btn-primary:hover{background:#000 !important;}
+.jfb-popup-header{background:linear-gradient(135deg,#101114,#2c3038) !important;}
+.jfb-popup-cta{background:#101114 !important;}
+.jfb-dl-btn:hover{box-shadow:0 10px 22px -6px rgba(0,0,0,.45) !important;}
+/* OKX 가입 배너 */
+.jfb-okx-banner{display:flex;align-items:center;gap:14px;max-width:460px;margin:22px auto 0;
+  padding:13px 16px;border-radius:12px;background:#0b0b0e;color:#fff;text-decoration:none;
+  box-shadow:0 12px 26px -12px rgba(0,0,0,.55);transition:transform .15s ease,box-shadow .15s ease;}
+.jfb-okx-banner:hover{transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(0,0,0,.65);}
+.jfb-okx-mark{flex:0 0 auto;font-size:15px;font-weight:900;letter-spacing:.14em;color:#fff;
+  border:1.5px solid rgba(255,255,255,.55);border-radius:7px;padding:5px 8px;line-height:1;}
+.jfb-okx-copy{display:flex;flex-direction:column;gap:2px;text-align:left;flex:1 1 auto;}
+.jfb-okx-title{font-size:14px;font-weight:800;color:#fff;}
+.jfb-okx-sub{font-size:11.5px;font-weight:600;color:#a9aeb8;}
+.jfb-okx-go{flex:0 0 auto;font-size:17px;font-weight:800;color:#fff;}
+@media (max-width:420px){.jfb-okx-sub{font-size:11px;}}
+</style>
 </head>
 <body>
 
@@ -115,7 +144,7 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
 
 <header class="hero"><div class="wrap">
   <span class="kicker" data-i18n="kicker">🧭 Setup Guide</span>
-  <h1 data-i18n="h1">How to Create a OKX Account &amp; Futures API Key</h1>
+  <h1 data-i18n="h1">How to Create an OKX Account &amp; Futures API Key</h1>
   <p class="sub" data-i18n="hero_sub">Everything you need before your first trade with JaviD Future Bot on OKX — account signup, identity verification, enabling Futures, and generating an API key with the correct permissions.</p>
   <p class="updated" data-i18n="updated">Written for the current OKX web flow · Last checked July 2026</p>
 </div></header>
@@ -126,7 +155,7 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
     <ol>
       <li><a href="#part1" data-i18n="toc_1">Create your OKX account</a></li>
       <li><a href="#part2" data-i18n="toc_2">Complete identity verification (KYC)</a></li>
-      <li><a href="#part3" data-i18n="toc_3">Enable your USDT-M Futures account</a></li>
+      <li><a href="#part3" data-i18n="toc_3">Enable your USDT Perpetual Futures account</a></li>
       <li><a href="#part4" data-i18n="toc_4">Create your API key</a></li>
       <li><a href="#part5" data-i18n="toc_5">Set the correct permissions (the step people miss)</a></li>
       <li><a href="#part6" data-i18n="toc_6">Connect it to JaviD Future Bot</a></li>
@@ -170,12 +199,12 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
 <!-- PART 3 -->
 <section class="part" id="part3"><div class="wrap">
   <div class="part-num">3</div>
-  <h2 data-i18n="p3_h2">Enable Your USDT-M Futures Account — Before You Create an API Key</h2>
+  <h2 data-i18n="p3_h2">Enable Your USDT Perpetual Futures Account — Before You Create an API Key</h2>
   <p data-i18n="p3_p">This step is easy to do out of order, and doing it out of order is the single most common setup mistake.</p>
   <ul class="steplist">
     <li data-i18n="p3_li1"><b>Open the [Futures] menu</b> from the top navigation.</li>
     <li data-i18n="p3_li2"><b>Complete the futures risk questionnaire</b> if this is your first time — a short quiz confirming you understand leveraged trading risk.</li>
-    <li data-i18n="p3_li3"><b>Activate your USDT-M Futures account.</b><small>Once active, you'll see a Futures wallet alongside your Spot wallet, and you'll need to transfer some USDT into it to trade.</small></li>
+    <li data-i18n="p3_li3"><b>Activate your USDT Perpetual Futures account.</b><small>Once active, you'll see a Futures wallet alongside your Spot wallet, and you'll need to transfer some USDT into it to trade.</small></li>
   </ul>
   <div class="callout danger" data-i18n="p3_danger"><b>Do this before Part 4:</b> enable Futures first, API key second, so the key can be granted futures permission from the start.</div>
 </div></section>
@@ -281,13 +310,13 @@ var I18N = {
     "nav_board": "Community Board",
     "nav_cta": "Download Now",
     "kicker": "🧭 Setup Guide",
-    "h1": "How to Create a OKX Account &amp; Futures API Key",
+    "h1": "How to Create an OKX Account &amp; Futures API Key",
     "hero_sub": "Everything you need before your first trade with JaviD Future Bot on OKX — account signup, identity verification, enabling Futures, and generating an API key with the correct permissions.",
     "updated": "Written for the current OKX web flow · Last checked July 2026",
     "toc_title": "On this page",
     "toc_1": "Create your OKX account",
     "toc_2": "Complete identity verification (KYC)",
-    "toc_3": "Enable your USDT-M Futures account",
+    "toc_3": "Enable your USDT Perpetual Futures account",
     "toc_4": "Create your API key",
     "toc_5": "Set the correct permissions (the step people miss)",
     "toc_6": "Connect it to JaviD Future Bot",
@@ -308,11 +337,11 @@ var I18N = {
     "p2_li2": "<b>Upload photos of your ID</b>, then complete the facial verification (a quick selfie/liveness check).",
     "p2_li3": "<b>Wait for approval</b> — this usually clears in a few minutes to a few hours. Your profile status changes to <i>Verified</i> once approved.",
     "p2_warn": "<b>Note:</b> Some regions require an extra address/proof-of-residence step for higher trading or withdrawal limits. Check your account's verification level if you hit a limit later.",
-    "p3_h2": "Enable Your USDT-M Futures Account — Before You Create an API Key",
+    "p3_h2": "Enable Your USDT Perpetual Futures Account — Before You Create an API Key",
     "p3_p": "This step is easy to do out of order, and doing it out of order is the single most common setup mistake.",
     "p3_li1": "<b>Open the [Futures] menu</b> from the top navigation.",
     "p3_li2": "<b>Complete the futures risk questionnaire</b> if this is your first time — a short quiz confirming you understand leveraged trading risk.",
-    "p3_li3": "<b>Activate your USDT-M Futures account.</b><small>Once active, you'll see a Futures wallet alongside your Spot wallet, and you'll need to transfer some USDT into it to trade.</small>",
+    "p3_li3": "<b>Activate your USDT Perpetual Futures account.</b><small>Once active, you'll see a Futures wallet alongside your Spot wallet, and you'll need to transfer some USDT into it to trade.</small>",
     "p3_danger": "<b>Do this before Part 4:</b> enable Futures first, API key second, so the key can be granted futures permission from the start.",
     "p4_h2": "Create Your API Key",
     "p4_p": "Before you can create a key, OKX requires 2FA (or phone verification) enabled and completed identity verification — both covered in Parts 1–2.",
@@ -882,7 +911,7 @@ var I18N = {
   "toc_title": "Bu sayfada",
   "toc_1": "OKX hesabınızı oluşturun",
   "toc_2": "Kimlik doğrulamasını (KYC) tamamlayın",
-  "toc_3": "USDT-M Futures hesabınızı etkinleştirin",
+  "toc_3": "USDT Perpetual Futures hesabınızı etkinleştirin",
   "toc_4": "API anahtarınızı oluşturun",
   "toc_5": "Doğru izinleri ayarlayın (insanların kaçırdığı adım)",
   "toc_6": "JaviD Future Bot'a bağlayın",
@@ -903,11 +932,11 @@ var I18N = {
   "p2_li2": "<b>Kimliğinizin fotoğraflarını yükleyin</b>, ardından yüz doğrulamasını (hızlı bir selfie/canlılık kontrolü) tamamlayın.",
   "p2_li3": "<b>Onay için bekleyin</b> — bu genellikle birkaç dakika ile birkaç saat içinde tamamlanır. Onaylandığında profil durumunuz <i>Doğrulandı</i> olarak değişir.",
   "p2_warn": "<b>Not:</b> Bazı bölgeler, daha yüksek işlem veya çekim limitleri için ek bir adres/ikametgah kanıtı adımı gerektirir. Daha sonra bir limitle karşılaşırsanız hesabınızın doğrulama seviyesini kontrol edin.",
-  "p3_h2": "USDT-M Futures Hesabınızı Etkinleştirin — API Anahtarı Oluşturmadan Önce",
+  "p3_h2": "USDT Perpetual Futures Hesabınızı Etkinleştirin — API Anahtarı Oluşturmadan Önce",
   "p3_p": "Bu adım sırayla yapılmamaya çok müsaittir ve sırayla yapmamak, en yaygın kurulum hatasıdır.",
   "p3_li1": "<b>Üst gezinme çubuğundan [Futures] menüsünü açın.</b>",
   "p3_li2": "<b>İlk kez yapıyorsanız futures risk anketini tamamlayın</b> — kaldıraçlı işlem riskini anladığınızı doğrulayan kısa bir test.",
-  "p3_li3": "<b>USDT-M Futures hesabınızı etkinleştirin.</b><small>Etkinleştirildikten sonra, Spot cüzdanınızın yanında bir Futures cüzdanı göreceksiniz ve işlem yapmak için içine biraz USDT aktarmanız gerekecek.</small>",
+  "p3_li3": "<b>USDT Perpetual Futures hesabınızı etkinleştirin.</b><small>Etkinleştirildikten sonra, Spot cüzdanınızın yanında bir Futures cüzdanı göreceksiniz ve işlem yapmak için içine biraz USDT aktarmanız gerekecek.</small>",
   "p3_danger": "<b>Bunu Bölüm 4'ten önce yapın:</b> önce Futures'ı etkinleştirin, sonra API anahtarını oluşturun; böylece anahtara baştan itibaren futures izni verilebilir.",
   "p4_h2": "API Anahtarınızı Oluşturun",
   "p4_p": "Bir anahtar oluşturabilmeniz için OKX, 2FA'nın (veya telefon doğrulamasının) etkin olmasını ve kimlik doğrulamasının tamamlanmış olmasını gerektirir — her ikisi de Bölüm 1-2'de ele alınmıştır.",

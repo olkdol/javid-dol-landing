@@ -208,6 +208,35 @@
   .tg-cta h3{font-family:var(--serif); font-size:22px; margin-bottom:12px; font-weight:600;}
   .tg-cta p{color:var(--faint); font-size:14.5px; margin-bottom:22px;}
 </style>
+
+<style id="okx-theme">
+/* OKX 톤 — 인디고 액센트를 OKX 블랙 계열로 치환한다(토큰만 덮어써서 되돌리기 쉽게). */
+:root{
+  --color-indigo-50:#f4f5f7;--color-indigo-100:#e9eaee;--color-indigo-200:#d5d8de;
+  --color-indigo-300:#a8aeb8;--color-indigo-400:#6b7280;--color-indigo-500:#2c3038;
+  --color-indigo-600:#101114;--color-indigo-700:#000000;
+  --accent:#101114;--accent-soft:#f4f5f7;
+}
+.grad-ring{background:linear-gradient(135deg,#101114,#3a3f47) !important;}
+details.faq-item[open]{border-color:#101114 !important;box-shadow:0 0 0 1px #101114 !important;}
+.jfb-modal-btn-primary{background:#101114 !important;}
+.jfb-modal-btn-primary:hover{background:#000 !important;}
+.jfb-popup-header{background:linear-gradient(135deg,#101114,#2c3038) !important;}
+.jfb-popup-cta{background:#101114 !important;}
+.jfb-dl-btn:hover{box-shadow:0 10px 22px -6px rgba(0,0,0,.45) !important;}
+/* OKX 가입 배너 */
+.jfb-okx-banner{display:flex;align-items:center;gap:14px;max-width:460px;margin:22px auto 0;
+  padding:13px 16px;border-radius:12px;background:#0b0b0e;color:#fff;text-decoration:none;
+  box-shadow:0 12px 26px -12px rgba(0,0,0,.55);transition:transform .15s ease,box-shadow .15s ease;}
+.jfb-okx-banner:hover{transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(0,0,0,.65);}
+.jfb-okx-mark{flex:0 0 auto;font-size:15px;font-weight:900;letter-spacing:.14em;color:#fff;
+  border:1.5px solid rgba(255,255,255,.55);border-radius:7px;padding:5px 8px;line-height:1;}
+.jfb-okx-copy{display:flex;flex-direction:column;gap:2px;text-align:left;flex:1 1 auto;}
+.jfb-okx-title{font-size:14px;font-weight:800;color:#fff;}
+.jfb-okx-sub{font-size:11.5px;font-weight:600;color:#a9aeb8;}
+.jfb-okx-go{flex:0 0 auto;font-size:17px;font-weight:800;color:#fff;}
+@media (max-width:420px){.jfb-okx-sub{font-size:11px;}}
+</style>
 </head>
 <body>
 
@@ -486,21 +515,25 @@
     <div class="jfb-step-line"></div>
     <div class="jfb-step"><div class="jfb-step-num">3</div><div class="jfb-step-label">Connect API</div></div>
   </div>
-    <p class="dl-gate-help" style="color:var(--warn);font-weight:700;margin-bottom:6px;">🔜 Sắp ra mắt — tệp cài đặt sẽ sớm được tải lên.</p>
+    <p class="dl-gate-help" style="font-weight:700;margin-bottom:6px;">⬇ Tải xuống miễn phí — Windows &amp; macOS · phiên bản OKX</p>
     <div class="dl-gate-buttons">
-      <a href="#" onclick="return false;" aria-disabled="true" tabindex="-1" class="btn btn-primary jfb-dl-disabled">🪟 Tải cho Windows</a>
-      <a href="#" onclick="return false;" aria-disabled="true" tabindex="-1" class="btn btn-primary jfb-dl-disabled">🍎 Tải cho macOS</a>
+      <a href="/api/download?platform=windows" download class="btn btn-primary">🪟 Tải cho Windows</a>
+      <a href="/api/download?platform=mac" download class="btn btn-primary">🍎 Tải cho macOS</a>
     </div>
-    <p class="dl-gate-help">Bạn có thắc mắc trong quá trình cài đặt? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">Hãy hỏi trong cộng đồng Telegram</a>.</p>
+    
+<a class="jfb-okx-banner" href="https://okx.com/join/40752336" target="_blank" rel="noopener sponsored"><span class="jfb-okx-mark">OKX</span><span class="jfb-okx-copy"><span class="jfb-okx-title">Mở tài khoản OKX</span><span class="jfb-okx-sub">Hợp đồng vĩnh cửu USDT · khoảng 5 phút · liên kết giới thiệu</span></span><span class="jfb-okx-go" aria-hidden="true">&rarr;</span></a>
+<p class="dl-gate-help">Bạn có thắc mắc trong quá trình cài đặt? <a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">Hãy hỏi trong cộng đồng Telegram</a>.</p>
   </div>
 </div></section>
 
 <!-- ================= REFERRAL ================= -->
 <section class="section" style="padding-top:0;"><div class="wrap" style="text-align:center;">
-  <p style="color:var(--faint);font-size:14px;">Bạn chưa có tài khoản sàn giao dịch? <a href="https://okx.com/join/40752336" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">Đăng ký qua liên kết đối tác chính thức →</a></p>
+  <p style="color:var(--faint);font-size:14px;">Bạn chưa có tài khoản OKX? <a href="https://okx.com/join/40752336" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">Tạo tài khoản OKX của bạn →</a></p>
 </div></section>
 
 
+
+<p style="max-width:760px;margin:18px auto 0;text-align:center;font-size:11.5px;line-height:1.7;color:var(--faint);">OKX là thương hiệu của chủ sở hữu tương ứng. JaviD Future Bot là công cụ độc lập của bên thứ ba, không liên kết với OKX, không được OKX bảo trợ hay vận hành.</p>
 <div id="jfb-dlgate" style="position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:0 20px;">
   <div style="position:relative;width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:34px 30px;text-align:center;">
     <button type="button" id="jfb-dlgate-x" aria-label="Close" style="position:absolute;top:12px;right:14px;background:none;border:none;color:var(--faint);font-size:22px;cursor:pointer;line-height:1;">&times;</button>

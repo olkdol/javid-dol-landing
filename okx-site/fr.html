@@ -41,13 +41,13 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="JaviD Future Bot">
 <meta property="og:title" content="JaviD Future Bot — Automated OKX Futures Trading, 24/7">
-<meta property="og:description" content="Trade OKX futures around the clock with an automated program instead of impulse. Three quant strategies, tick-level exits, 100% local execution. Free forever.">
+<meta property="og:description" content="Trade OKX futures around the clock with an automated program instead of impulse. Three quant strategies, tick-level exits, 100% local execution. No subscription.">
 <meta property="og:url" content="https://okx.javidtrading.com/">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="JaviD Future Bot — Automated OKX Futures Trading">
-<meta name="twitter:description" content="Trade OKX futures 24/7 with an automated program. Free forever, 100% local execution.">
+<meta name="twitter:description" content="Trade OKX USDT perpetual futures 24/7 with an automated program. No subscription, 100% local execution.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -55,7 +55,7 @@
   "name": "JaviD Future Bot",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Windows, macOS",
-  "description": "An automated trading program for OKX USDT-M futures. Runs three quant-built strategies 24/7 without emotional interference, with every order executed locally on the user's own PC.",
+  "description": "An automated trading program for OKX USDT perpetual futures. Runs three quant-built strategies 24/7 without emotional interference, with every order executed locally on the user's own PC.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "url": "https://okx.javidtrading.com/"
 }
@@ -65,7 +65,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"Is it really free? No hidden costs?","acceptedAnswer":{"@type":"Answer","text":"Yes — no subscription, no purchase price, no performance fee. Revenue comes solely from OKX's official Broker Program: a share of the trading fee you already pay OKX is rebated to us by OKX. You never pay anything extra."}},
+    {"@type":"Question","name":"Is it really free? No hidden costs?","acceptedAnswer":{"@type":"Answer","text":"Yes — no subscription, no purchase price, no performance fee. If you open your OKX account through the referral link on this page, OKX shares part of the trading fee you already pay with us. Your fee rate is the same either way and you never pay anything extra. JaviD Future Bot is an independent third-party tool, not affiliated with or endorsed by OKX."}},
     {"@type":"Question","name":"Is my API key safe?","acceptedAnswer":{"@type":"Answer","text":"Your API key is encrypted and stored locally on your own PC — it is never sent to any external server. Withdrawal permission is never required, so even if a key leaked, funds could not be withdrawn."}},
     {"@type":"Question","name":"Are profits guaranteed?","acceptedAnswer":{"@type":"Answer","text":"No. JaviD Future Bot is a tool that executes a defined strategy without emotion — it does not guarantee profits. Crypto futures trading carries a high risk of loss, and all trading decisions and outcomes are the user's responsibility."}},
     {"@type":"Question","name":"Do I need to know how to code?","acceptedAnswer":{"@type":"Answer","text":"No. Download, double-click start.bat, paste your API key, pick your coins, and start. No code is ever written."}}
@@ -97,6 +97,35 @@
   .lang-menu button{display:flex;width:100%;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:none;background:none;font-size:13px;font-weight:600;text-align:left;cursor:pointer;color:#0f172a;}
   .lang-menu button:hover{background:#f1f5f9;}
   .lang-menu button.active{color:#4f46e5;background:#eef2ff;}
+</style>
+
+<style id="okx-theme">
+/* OKX 톤 — 인디고 액센트를 OKX 블랙 계열로 치환한다(토큰만 덮어써서 되돌리기 쉽게). */
+:root{
+  --color-indigo-50:#f4f5f7;--color-indigo-100:#e9eaee;--color-indigo-200:#d5d8de;
+  --color-indigo-300:#a8aeb8;--color-indigo-400:#6b7280;--color-indigo-500:#2c3038;
+  --color-indigo-600:#101114;--color-indigo-700:#000000;
+  --accent:#101114;--accent-soft:#f4f5f7;
+}
+.grad-ring{background:linear-gradient(135deg,#101114,#3a3f47) !important;}
+details.faq-item[open]{border-color:#101114 !important;box-shadow:0 0 0 1px #101114 !important;}
+.jfb-modal-btn-primary{background:#101114 !important;}
+.jfb-modal-btn-primary:hover{background:#000 !important;}
+.jfb-popup-header{background:linear-gradient(135deg,#101114,#2c3038) !important;}
+.jfb-popup-cta{background:#101114 !important;}
+.jfb-dl-btn:hover{box-shadow:0 10px 22px -6px rgba(0,0,0,.45) !important;}
+/* OKX 가입 배너 */
+.jfb-okx-banner{display:flex;align-items:center;gap:14px;max-width:460px;margin:22px auto 0;
+  padding:13px 16px;border-radius:12px;background:#0b0b0e;color:#fff;text-decoration:none;
+  box-shadow:0 12px 26px -12px rgba(0,0,0,.55);transition:transform .15s ease,box-shadow .15s ease;}
+.jfb-okx-banner:hover{transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(0,0,0,.65);}
+.jfb-okx-mark{flex:0 0 auto;font-size:15px;font-weight:900;letter-spacing:.14em;color:#fff;
+  border:1.5px solid rgba(255,255,255,.55);border-radius:7px;padding:5px 8px;line-height:1;}
+.jfb-okx-copy{display:flex;flex-direction:column;gap:2px;text-align:left;flex:1 1 auto;}
+.jfb-okx-title{font-size:14px;font-weight:800;color:#fff;}
+.jfb-okx-sub{font-size:11.5px;font-weight:600;color:#a9aeb8;}
+.jfb-okx-go{flex:0 0 auto;font-size:17px;font-weight:800;color:#fff;}
+@media (max-width:420px){.jfb-okx-sub{font-size:11px;}}
 </style>
 </head>
 <body class="min-h-screen bg-white font-sans text-slate-700 antialiased">
@@ -171,10 +200,12 @@
       <a href="#shadow-mode" class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-7 py-3.5 text-[15px] font-bold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600" data-i18n="hero_cta_secondary">Essayer d'abord le Mode Shadow</a>
     </div>
     <div class="mx-auto mt-8 flex max-w-md items-center justify-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-[12.5px] font-semibold text-slate-500 shadow-sm" data-i18n="hero_partner_badge">
-<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#00F0FF] text-[9px] font-black text-black">B</span>
-      Inscription rapide via notre lien partenaire officiel OKX — mêmes frais, aucun coût supplémentaire
+<span class="flex h-5 items-center justify-center rounded-full bg-black px-2 text-[9px] font-black tracking-wider text-white">OKX</span>
+      Conçu pour les futures perpétuels USDT de OKX — ouvrir un compte OKX prend environ 5 minutes
     </div>
-    <p class="mt-4 text-[12.5px] text-slate-400" data-i18n="hero_footnote">0 $ d'abonnement · Gratuit à vie · Windows &amp; macOS · Sans carte bancaire</p>
+    <p class="mt-4 text-[12.5px] text-slate-400" data-i18n="hero_footnote">0 $ par mois · Sans carte bancaire · Windows &amp; macOS · Fonctionne avec votre propre compte OKX</p>
+<a class="jfb-okx-banner" href="https://okx.com/join/40752336" target="_blank" rel="noopener sponsored"><span class="jfb-okx-mark">OKX</span><span class="jfb-okx-copy"><span class="jfb-okx-title" data-i18n="okx_banner_title">Open an OKX account</span><span class="jfb-okx-sub" data-i18n="okx_banner_sub">USDT perpetual futures · about 5 minutes · referral link</span></span><span class="jfb-okx-go" aria-hidden="true">&rarr;</span></a>
+
   </div>
   <div class="relative mx-auto mt-14 max-w-5xl px-6">
     <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/10">
@@ -202,7 +233,7 @@
       <summary class="flex cursor-pointer list-none items-center justify-between gap-3">
         <div class="flex items-center gap-3">
           <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="activity" class="h-5 w-5"></i></span>
-          <div><div class="text-[15.5px] font-bold text-slate-900" data-i18n="strat_a_title">Strategy-A · JaviD AIS</div><div class="text-[12px] text-slate-400" data-i18n="strat_sub">OKX USDT-M Futures</div></div>
+          <div><div class="text-[15.5px] font-bold text-slate-900" data-i18n="strat_a_title">Strategy-A · JaviD AIS</div><div class="text-[12px] text-slate-400" data-i18n="strat_sub">OKX USDT Perpetual Futures</div></div>
         </div>
         <i data-lucide="chevron-down" class="chev h-5 w-5 text-slate-400"></i>
       </summary>
@@ -212,7 +243,7 @@
       <summary class="flex cursor-pointer list-none items-center justify-between gap-3">
         <div class="flex items-center gap-3">
           <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="repeat" class="h-5 w-5"></i></span>
-          <div><div class="text-[15.5px] font-bold text-slate-900" data-i18n="strat_b_title">Strategy-B · Retour à la Moyenne</div><div class="text-[12px] text-slate-400" data-i18n="strat_sub">OKX USDT-M Futures</div></div>
+          <div><div class="text-[15.5px] font-bold text-slate-900" data-i18n="strat_b_title">Strategy-B · Retour à la Moyenne</div><div class="text-[12px] text-slate-400" data-i18n="strat_sub">OKX USDT Perpetual Futures</div></div>
         </div>
         <i data-lucide="chevron-down" class="chev h-5 w-5 text-slate-400"></i>
       </summary>
@@ -222,7 +253,7 @@
       <summary class="flex cursor-pointer list-none items-center justify-between gap-3">
         <div class="flex items-center gap-3">
           <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="trending-up" class="h-5 w-5"></i></span>
-          <div><div class="text-[15.5px] font-bold text-slate-900" data-i18n="strat_c_title">Strategy-C · Cassure</div><div class="text-[12px] text-slate-400" data-i18n="strat_sub">OKX USDT-M Futures</div></div>
+          <div><div class="text-[15.5px] font-bold text-slate-900" data-i18n="strat_c_title">Strategy-C · Cassure</div><div class="text-[12px] text-slate-400" data-i18n="strat_sub">OKX USDT Perpetual Futures</div></div>
         </div>
         <i data-lucide="chevron-down" class="chev h-5 w-5 text-slate-400"></i>
       </summary>
@@ -236,7 +267,7 @@
   <div class="mx-auto mb-10 max-w-2xl text-center">
     <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-400" data-i18n="lp_eyebrow">Preuve en Direct</div>
     <h2 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl" data-i18n="lp_h2">Avant le discours commercial, voici un compte qui tourne en ce moment même</h2>
-    <p id="liveProofSub" class="mt-3 text-[15px] text-slate-400" data-i18n="lp_sub">Un instantané de compte en Mode Shadow, extrait directement d'un rapport Telegram en direct — données de marché OKX réelles, USDT virtuels, zéro capital réel en jeu.</p>
+    <p id="liveProofSub" class="mt-3 text-[15px] text-slate-400" data-i18n="lp_sub">Un instantané de compte en Mode Shadow, extrait directement d'un rapport Telegram en direct — données de marché en direct de la plateforme, USDT virtuels, zéro capital réel en jeu. Capture réalisée sur une version antérieure du même programme, avant la sortie de l'édition OKX.</p>
     <p id="liveBadge" class="mt-2 hidden items-center justify-center gap-1.5 text-[13px] font-bold text-emerald-400" data-i18n="lp_badge"><span class="h-2 w-2 rounded-full bg-emerald-400"></span>En direct — mis à jour il y a <span id="liveUpdated"></span></p>
   </div>
   <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -245,7 +276,7 @@
     <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"><div class="text-[28px] font-extrabold text-emerald-400" id="lpReturn">+3.28%</div><div class="mt-1.5 text-[12px] leading-snug text-slate-400" data-i18n="lp_return_label">Rendement cumulé depuis le début du Mode Shadow</div></div>
     <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"><div class="text-[28px] font-extrabold text-indigo-400" id="lpWinRate">81.4%</div><div class="mt-1.5 text-[12px] leading-snug text-slate-400" data-i18n="lp_winrate_label">Taux de réussite sur la même période</div></div>
   </div>
-  <p class="mx-auto mt-6 max-w-3xl text-center text-[12px] leading-relaxed text-slate-500" id="lpNote" data-i18n="lp_note">Instantané pris le 2026-07-05 à 05:04 (KST) — 7 positions ouvertes à ce moment-là, avec un mélange de gains et pertes latents. Le Mode Shadow trade sur des données de marché OKX réelles avec un solde virtuel ; ce n'est pas un historique de trading en argent réel. Un historique distinct du tableau de bord réel est publié capture par capture sur la page <a class="font-bold text-indigo-400 hover:underline" href="results.html">Résultats Réels</a>.</p>
+  <p class="mx-auto mt-6 max-w-3xl text-center text-[12px] leading-relaxed text-slate-500" id="lpNote" data-i18n="lp_note">Instantané pris le 2026-07-05 à 05:04 (KST) — 7 positions ouvertes à ce moment-là, avec un mélange de gains et pertes latents. Le Mode Shadow trade sur des données de marché en direct de la plateforme avec un solde virtuel ; ce n'est pas un historique de trading en argent réel. Un historique distinct du tableau de bord réel est publié capture par capture sur la page <a class="font-bold text-indigo-400 hover:underline" href="results.html">Résultats Réels</a>.</p>
 </div></section>
 
 <script>
@@ -272,9 +303,9 @@
     document.getElementById('lpWinRate').textContent = Number(data.win_rate).toFixed(1) + '%';
     document.getElementById('liveUpdated').textContent = timeAgo(data.updated_at);
     var badge = document.getElementById('liveBadge'); badge.classList.remove('hidden'); badge.classList.add('flex');
-    document.getElementById('liveProofSub').textContent = 'Live account snapshot, pulled directly from the running bot — real OKX market data, virtual USDT, zero real capital at risk.';
+    document.getElementById('liveProofSub').textContent = 'Live account snapshot, pulled directly from the running bot — live exchange market data, virtual USDT, zero real capital at risk. Captured on an earlier build of the same program, before the OKX edition was released.';
     var openTxt = data.open_positions != null ? data.open_positions + ' positions open right now, ' : '';
-    document.getElementById('lpNote').innerHTML = 'Live data, refreshed automatically — ' + openTxt + 'a mix of floating gains and losses as the bot\'s exit logic manages them in real time. Shadow Mode trades live OKX market data against a virtual balance; this is not a record of real-money trading. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.';
+    document.getElementById('lpNote').innerHTML = 'Live data, refreshed automatically — ' + openTxt + 'a mix of floating gains and losses as the bot\'s exit logic manages them in real time. Shadow Mode trades live exchange market data against a virtual balance; this is not a record of real-money trading. A separate real-dashboard record is published screenshot-by-screenshot on the <a href="results.html" class="font-bold text-indigo-400 hover:underline">Real Results</a> page.';
   }).catch(function(){});
 })();
 </script>
@@ -363,7 +394,7 @@
     <div class="rounded-2xl border border-slate-200 bg-white p-7">
       <span class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="terminal-square" class="h-5.5 w-5.5"></i></span>
       <h3 class="text-[16.5px] font-bold text-slate-900" data-i18n="aud3_title">Utilisateurs soucieux de sécurité &amp; techniques</h3>
-      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500" data-i18n="aud3_desc">Ouvrez votre pare-feu ou votre moniteur réseau pendant l'exécution — la seule connexion que vous verrez est OKX. Jamais de serveur intermédiaire. Consultez le <a class="font-bold text-indigo-600 hover:underline" href="#transparency">détail de l'architecture</a>.</p>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500" data-i18n="aud3_desc">Ouvrez votre pare-feu ou votre moniteur réseau pendant l'exécution — les seules connexions sortantes sont OKX et un CDN public qui fournit les fichiers de l'interface — jamais un serveur à nous. Jamais de serveur intermédiaire. Consultez le <a class="font-bold text-indigo-600 hover:underline" href="#transparency">détail de l'architecture</a>.</p>
     </div>
   </div>
 </div></section>
@@ -457,8 +488,8 @@
   <div class="grid items-center gap-6 rounded-2xl border border-slate-200 bg-gradient-to-br from-indigo-50 to-white p-9 sm:grid-cols-[auto_1fr_auto]">
     <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#00F0FF]/15 text-2xl font-black text-[#00F0FF]">B</span>
     <div>
-      <h3 class="text-[18px] font-bold text-slate-900" data-i18n="exch_title">Officiellement conçu pour les Futures USDT-M de OKX</h3>
-      <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500" data-i18n="exch_desc">Un seul exchange, mais fait correctement — plus de 500 symboles, connexion WebSocket directe, latence de 0,1 s. Inscrivez-vous via notre lien partenaire officiel et payez à OKX exactement les mêmes frais ; c'est ce reversement de parrainage qui permet à JaviD de rester gratuit à vie.</p>
+      <h3 class="text-[18px] font-bold text-slate-900" data-i18n="exch_title">Conçu pour les Futures Perpétuels USDT de OKX</h3>
+      <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-500" data-i18n="exch_desc">Une seule plateforme, mais faite correctement — plus de 500 symboles, connexion WebSocket directe vers OKX, latence de 0,1 s. Chaque ordre est signé avec votre propre clé API OKX et envoyé depuis votre PC directement vers OKX. Il vous faut un compte OKX avec les futures perpétuels USDT activés ; son ouverture prend environ cinq minutes.</p>
     </div>
     <a href="https://okx.com/join/40752336" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-[#00F0FF] px-6 py-3.5 text-[14px] font-extrabold text-black shadow-sm transition hover:brightness-105" data-i18n="exch_cta">Créer un compte OKX <i class="h-4 w-4" data-lucide="arrow-right"></i></a>
   </div>
@@ -487,7 +518,7 @@
     <div class="rounded-2xl border border-slate-200 p-7">
       <i data-lucide="badge-dollar-sign" class="mb-3 h-6 w-6 text-indigo-600"></i>
       <h3 class="text-[17px] font-bold text-slate-900" data-i18n="fee_title">Nous ne touchons qu'une infime part des frais de l'exchange</h3>
-      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500" data-i18n="fee_desc">OKX prélève déjà de faibles frais de trading sur chaque ordre — avec ou sans JaviD. Une partie de ces frais existants nous est reversée par OKX, pas par vous. Aucun abonnement, aucune commission sur performance, jamais.</p>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-500" data-i18n="fee_desc">JaviD n'est pas vendu et n'a aucun abonnement. Si vous ouvrez votre compte OKX via le lien de parrainage de cette page, OKX partage avec nous une partie des frais que vous payez déjà — votre taux est identique dans les deux cas et rien ne s'ajoute à vos coûts. JaviD Future Bot est un outil tiers indépendant, non affilié à OKX, ni approuvé ni exploité par OKX.</p>
     </div>
   </div>
   <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
@@ -541,7 +572,7 @@
   <div class="mx-auto mb-10 max-w-2xl text-center">
     <div class="mb-2 text-[13px] font-bold uppercase tracking-widest text-indigo-400" data-i18n="sec_eyebrow">Sécurité &amp; Confiance</div>
     <h2 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl" data-i18n="sec_h2">Sécurisé par conception. Local. Vérifiable.</h2>
-    <p class="mt-3 text-[15px] text-slate-400" data-i18n="sec_sub">Plutôt que de vous demander de nous faire confiance — ouvrez votre pare-feu ou votre moniteur réseau pendant que l'application tourne. La seule connexion que vous verrez est OKX.</p>
+    <p class="mt-3 text-[15px] text-slate-400" data-i18n="sec_sub">Plutôt que de vous demander de nous faire confiance — ouvrez votre pare-feu ou votre moniteur réseau pendant que l'application tourne. Les seules connexions sortantes sont OKX et un CDN public qui fournit les fichiers de l'interface — jamais un serveur à nous.</p>
   </div>
   <div class="grid gap-4 md:grid-cols-3">
     <div class="rounded-2xl border border-white/10 bg-white/5 p-7">
@@ -572,7 +603,7 @@
   <div class="mx-auto grid max-w-5xl gap-3 md:grid-cols-2">
     <details class="faq-item rounded-xl border border-slate-200 bg-white" open>
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900" data-i18n="faq_q1">Est-ce vraiment gratuit ? Aucun frais caché ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i></summary>
-      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a1">Oui — <b class="text-slate-800">aucun abonnement, aucun prix d'achat, aucune commission sur performance.</b> La seule source de revenus est le Programme Broker officiel de OKX : une partie des frais de trading que vous payez déjà à OKX nous est reversée par OKX.</div>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a1">Oui — <b class="text-slate-800">aucun abonnement, aucun prix d'achat, aucune commission sur performance.</b> Si vous ouvrez votre compte OKX via le lien de parrainage de cette page, OKX partage avec nous une partie des frais que vous payez déjà. Votre taux est identique dans les deux cas et nous ne vous facturons jamais rien.</div>
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900" data-i18n="faq_q2">Est-il sûr de saisir ma clé API ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i></summary>
@@ -604,7 +635,7 @@
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900" data-i18n="faq_q9">Quels exchanges et marchés sont pris en charge ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i></summary>
-      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a9">Actuellement uniquement les <b class="text-slate-800">Futures USDT-M de OKX</b>, avec plus de 500 symboles surveillés simultanément.</div>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a9">Actuellement uniquement les <b class="text-slate-800">Futures Perpétuels USDT de OKX</b>, avec plus de 500 symboles surveillés simultanément.</div>
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900" data-i18n="faq_q10">Fonctionne-t-il sous Windows et macOS ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i></summary>
@@ -612,7 +643,7 @@
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900" data-i18n="faq_q11">Dois-je m'inscrire via votre lien de parrainage ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i></summary>
-      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a11">Vous pouvez utiliser un compte existant, mais seules les inscriptions via le lien partenaire génèrent le reversement de frais qui maintient ce logiciel gratuit.</div>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a11">Vous pouvez utiliser un compte OKX existant : le logiciel fonctionne exactement de la même façon. S'inscrire via le lien de parrainage de cette page finance simplement le développement, sans coût supplémentaire pour vous.</div>
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900" data-i18n="faq_q12">Comment configurer les alertes Telegram ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i></summary>
@@ -646,8 +677,8 @@
 <div class="mx-auto mt-9 max-w-md rounded-2xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-900/5">
     <p class="mb-4 text-[12.5px] font-bold text-slate-500" data-i18n="dl_free_note">Téléchargement gratuit et instantané — sans code, sans inscription requise</p>
     <div class="flex flex-wrap justify-center gap-3">
-      <a href="#" onclick="return false;" aria-disabled="true" tabindex="-1" class="inline-flex items-center gap-2 rounded-lg bg-slate-300 px-6 py-3.5 text-[14.5px] font-extrabold text-slate-500 shadow-sm jfb-dl-btn jfb-dl-disabled"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</a>
-      <a href="#" onclick="return false;" aria-disabled="true" tabindex="-1" class="inline-flex items-center gap-2 rounded-lg bg-slate-300 px-6 py-3.5 text-[14.5px] font-extrabold text-slate-500 shadow-sm jfb-dl-btn jfb-dl-disabled"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</a>
+      <a href="/api/download?platform=windows" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 jfb-dl-btn"><i data-lucide="app-window" class="h-4.5 w-4.5"></i> Windows</a>
+      <a href="/api/download?platform=mac" download class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-[14.5px] font-extrabold text-white shadow-sm transition hover:bg-indigo-700 jfb-dl-btn"><i data-lucide="apple" class="h-4.5 w-4.5"></i> macOS</a>
     </div>
     <script>
     // 다운로드 클릭 시 캡처해둔 유입 출처를 쿼리로 첨부. href는 그대로 두고
@@ -704,7 +735,9 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
 });
 </script>
 
-    <p class="mt-3.5 text-[12.5px] text-slate-400" data-i18n="dl_okx_note">Pas encore de compte OKX ? <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">Inscrivez-vous via notre lien partenaire officiel</a>.</p>
+    
+<a class="jfb-okx-banner" href="https://okx.com/join/40752336" target="_blank" rel="noopener sponsored"><span class="jfb-okx-mark">OKX</span><span class="jfb-okx-copy"><span class="jfb-okx-title" data-i18n="okx_banner_title">Open an OKX account</span><span class="jfb-okx-sub" data-i18n="okx_banner_sub">USDT perpetual futures · about 5 minutes · referral link</span></span><span class="jfb-okx-go" aria-hidden="true">&rarr;</span></a>
+<p class="mt-3.5 text-[12.5px] text-slate-400" data-i18n="dl_okx_note">Pas encore de compte OKX ? <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">Créez votre compte OKX</a>.</p>
   </div>
 
   <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12.5px] font-semibold text-slate-500">
@@ -716,6 +749,7 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
   <p class="mt-1.5 text-[12.5px] text-slate-400" data-i18n="dl_contact">Des questions ? Écrivez à <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a> ou posez-les sur le <a class="font-bold text-indigo-600 hover:underline" href="board.html">Forum Communautaire</a>.</p>
 
   <p class="mx-auto mt-12 max-w-2xl border-t border-slate-200 pt-6 text-[11.5px] leading-relaxed text-slate-400" data-i18n="dl_disclaimer">Le trading de futures sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. JaviD Future Bot est un outil d'exécution autonome — il ne garantit pas de profits. Les chiffres de performance présentés sur cette page proviennent de données du Mode Shadow (solde virtuel) et de captures d'écran du tableau de bord réel sur des périodes spécifiques. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne détient aucun fonds en dépôt, et n'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API OKX.</p>
+  <p class="mx-auto mt-3 max-w-2xl text-[11.5px] leading-relaxed text-slate-400" data-i18n="okx_trademark">OKX is a trademark of its respective owner. JaviD Future Bot is an independent third-party tool and is not affiliated with, endorsed by, or operated by OKX.</p>
 </div></section>
 
 
@@ -780,7 +814,7 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
   <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
     <div class="lg:col-span-1">
       <a href="index.html" class="flex items-center gap-2 font-extrabold text-slate-900"><span class="grad-ring flex h-6 w-6 items-center justify-center rounded-md text-white"><i data-lucide="zap" class="h-3.5 w-3.5"></i></span>JaviD Future Bot</a>
-      <p class="mt-3 text-[12.5px] leading-relaxed text-slate-500" data-i18n="footer_tagline">Exécution automatisée des Futures USDT-M sur OKX — 100% locale, non custodiale, gratuite à vie.</p>
+      <p class="mt-3 text-[12.5px] leading-relaxed text-slate-500" data-i18n="footer_tagline">Exécution automatisée des futures perpétuels USDT sur OKX — 100% locale, non custodiale, sans abonnement.</p>
     </div>
     <div>
       <h4 class="mb-3 text-[11.5px] font-extrabold uppercase tracking-wide text-slate-400" data-i18n="footer_product_h">Produit</h4>
@@ -904,19 +938,22 @@ var I18N = {
     nav_community: 'Community<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">NEW</span>',
     cta_free_download: 'Free Download',
     nav_community_board: 'Community Board',
-    hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> OKX USDT-M Futures Automation\n    ',
+    hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> OKX USDT Perpetual Futures Automation\n    ',
     hero_h1: 'Crypto Trading Bot for OKX Futures, Built to Run 24/7',
     hero_sub: 'Automate your OKX futures trading to reduce stress and emotional mistakes. No emotion, no missed entries, no staying up all night — tick-level precision, 100% local execution.',
     hero_cta_primary: '<i class="h-4.5 w-4.5" data-lucide="download"></i> Start Free — Download Now',
     hero_cta_secondary: 'Try Shadow Mode First',
-    hero_partner_badge: '\n<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#00F0FF] text-[9px] font-black text-black">B</span>\n      Fast signup via our official OKX partner link — same fees, zero extra cost\n    ',
-    hero_footnote: '$0 subscription · Free forever · Windows &amp; macOS · No credit card',
+    hero_partner_badge: '\n<span class="flex h-5 items-center justify-center rounded-full bg-black px-2 text-[9px] font-black tracking-wider text-white">OKX</span>\n      Built for OKX USDT perpetual futures — opening an OKX account takes about 5 minutes\n    ',
+    hero_footnote: '$0 subscription · No credit card · Windows &amp; macOS · Runs on your own OKX account',
+    okx_banner_title: 'Open an OKX account',
+    okx_banner_sub: 'USDT perpetual futures · about 5 minutes · referral link',
+    okx_trademark: 'OKX is a trademark of its respective owner. JaviD Future Bot is an independent third-party tool and is not affiliated with, endorsed by, or operated by OKX.',
     hero_terminal_label: '🔒 localhost:8002 — runs 100% on your PC',
     strat_eyebrow: 'Strategy Engine',
     strat_h2: 'Three Quant-Built Strategies, Scanning in Parallel',
     strat_intro: 'Each strategy was designed and refined through AI-driven quantitative analysis before a single rule was locked in. Run one, or run all three together.',
     strat_a_title: 'Strategy-A · JaviD AIS',
-    strat_sub: 'OKX USDT-M Futures',
+    strat_sub: 'OKX USDT Perpetual Futures',
     strat_a_desc: 'JaviD\'s core adaptive-grid &amp; trend logic. Reads ATR bands and VWAP deviation to time entries, and manages exits with tick-level precision every 10 seconds.',
     strat_b_title: 'Strategy-B · Mean Reversion',
     strat_b_desc: 'Mean reversion is a classic trading concept — after a price move stretches too far from its average, it tends to snap back before continuing. This strategy was designed by JaviD\'s AI-driven quantitative analysis to trade exactly that pattern. Watches CVD flow and volume-spike thresholds for overextended moves, then trades the snap-back with liquidation-avoidance sizing baked in.',
@@ -924,13 +961,13 @@ var I18N = {
     strat_c_desc: 'Breakout trading works on a different premise — once price finally breaks out of a tight consolidation range on rising volume, it tends to keep moving rather than reverse. This strategy was designed by JaviD\'s AI-driven quantitative analysis to capture exactly that move. Built for volatility expansion — ATR trailing stops and VWAP reversion protect the position once a breakout is confirmed and momentum is in play.',
     lp_eyebrow: 'Live Proof',
     lp_h2: 'Before the Pitch, Here\'s an Account Running Right Now',
-    lp_sub: 'A Shadow Mode account snapshot pulled straight from a live Telegram report — real OKX market data, virtual USDT, zero real capital at risk.',
+    lp_sub: 'A Shadow Mode account snapshot pulled straight from a live Telegram report — live exchange market data, virtual USDT, zero real capital at risk. Captured on an earlier build of the same program, before the OKX edition was released.',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>Live — updated <span id="liveUpdated"></span> ago',
     lp_balance_label: 'Balance (USDT) — Shadow Mode, virtual funds',
     lp_pnl_label: 'Cumulative P&amp;L (USDT) across 97 trades',
     lp_return_label: 'Cumulative return since Shadow Mode start',
     lp_winrate_label: 'Win rate over the same run',
-    lp_note: 'Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live OKX market data against a virtual balance; this is not a record of real-money trading. A separate real-dashboard record is published screenshot-by-screenshot on the <a class="font-bold text-indigo-400 hover:underline" href="results.html">Real Results</a> page.',
+    lp_note: 'Snapshot taken 2026-07-05, 05:04 KST — 7 positions open at that moment, a mix of floating gains and losses. Shadow Mode trades live exchange market data against a virtual balance; this is not a record of real-money trading. A separate real-dashboard record is published screenshot-by-screenshot on the <a class="font-bold text-indigo-400 hover:underline" href="results.html">Real Results</a> page.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'Three Reasons Traders Switch to JaviD',
     why1_title: 'Zero servers in the middle',
@@ -962,7 +999,7 @@ var I18N = {
     aud2_title: 'Experienced traders',
     aud2_desc: 'Fine-tune with Aggressive/Normal/Stable sizing modes, run all three strategies in parallel across 500+ symbols, and monitor everything from a live dashboard.',
     aud3_title: 'Security-conscious &amp; technical users',
-    aud3_desc: 'Open your firewall or network monitor while it runs — the only connection you\'ll see is OKX. No middle server, ever. See the <a class="font-bold text-indigo-600 hover:underline" href="#transparency">architecture breakdown</a>.',
+    aud3_desc: 'Open your firewall or network monitor while it runs — outbound traffic goes only to OKX and to one public CDN that serves the dashboard UI files — never to a server of ours. No middle server, ever. See the <a class="font-bold text-indigo-600 hover:underline" href="#transparency">architecture breakdown</a>.',
     feat_eyebrow: 'JaviD Trading Toolkit',
     feat_h2: 'Built Like a Quant Desk. Runs Like an App.',
     feat_sub: 'New to bots? Start with the green tags. The indigo tags are the professional-grade engine working underneath.',
@@ -980,7 +1017,7 @@ var I18N = {
     feat5_desc: 'Five signal layers guarding every open position, not just a stop-loss line.',
     feat6_title: 'Sized to Your Risk Tolerance',
     feat6_desc: 'Aggressive, Normal, or Stable modes size every entry as a fraction of balance.',
-    feat7_title: 'Built for USDT-M Futures, Not Adapted',
+    feat7_title: 'Built for USDT Perpetual Futures, Not Adapted',
     feat7_desc: 'Every strategy, exit rule, and risk model is engineered for perpetual futures from the ground up — not retrofitted from a spot bot.',
     feat8_title: 'Every Trade Logged, P&amp;L Tracked',
     feat8_desc: 'Balance, cumulative P&amp;L, ROI and win rate are calculated automatically from your real trade history — nothing rounded in your favor.',
@@ -989,22 +1026,22 @@ var I18N = {
     sc_h2: 'Not Mockups. Actual Dashboard Screens.',
     sc_cap1: 'Cumulative P&amp;L and win rate — the same market-trend panel the bot references live',
     sc_more_btn: 'See the full screenshot record <i class="h-4 w-4" data-lucide="arrow-right"></i>',
-    exch_title: 'Officially built for OKX USDT-M Futures',
-    exch_desc: 'One exchange, done properly — 500+ symbols, direct WebSocket connection, 0.1s latency. Sign up through our official partner link and pay OKX the exact same fees; that referral rebate is what keeps JaviD free forever.',
+    exch_title: 'Built for OKX USDT Perpetual Futures',
+    exch_desc: 'One exchange, done properly — 500+ symbols, a direct WebSocket connection to OKX, 0.1s latency. Every order is signed with your own OKX API key and sent from your PC straight to OKX. You need an OKX account with USDT perpetual futures enabled; opening one takes about five minutes.',
     exch_cta: 'Create OKX Account <i class="h-4 w-4" data-lucide="arrow-right"></i>',
     shadow_title: '<i class="h-6 w-6 text-indigo-600" data-lucide="flask-conical"></i> Try It Before You Risk a Single Dollar',
     shadow_desc: 'Shadow Mode runs every strategy on the exchange\'s real-time live market data and live API — the exact same feed real trading uses — with a virtual balance standing in for real funds. That\'s a different thing from a testnet or a typical paper-trading simulator: a testnet is a separate sandbox exchange with its own fake, disconnected price data, and most mock-trading tools run on delayed or simulated prices. Shadow Mode\'s data is 100% real and live; only the money is virtual.',
     shadow_cta: 'Download &amp; Try Shadow Mode',
     size_title: 'Why 1,000 USDT Minimum',
     size_desc: 'Each entry sizes at up to 1/300th of your balance per trade, spreading risk across dozens of positions. Below ~1,000 USDT, exchange minimum-notional limits and fees start cutting into the edge.',
-    fee_title: 'We Split a Sliver of the Exchange Fee',
-    fee_desc: 'OKX already charges a small trading fee on every order — with or without JaviD. A portion of that existing fee is rebated to us by OKX, not by you. No subscription, no performance fee, ever.',
+    fee_title: 'How This Stays Free',
+    fee_desc: 'JaviD is not sold and has no subscription. If you open your OKX account through the referral link on this page, OKX shares part of the trading fee you already pay with us — your fee rate is identical either way and nothing is added to your costs. JaviD Future Bot is an independent third-party tool and is not affiliated with, endorsed by, or operated by OKX.',
     size_img_caption: 'Real screenshot — the actual Investment Mode panel, balance ÷ 300 / 500 / 700',
     cmp_h2: 'How It Stacks Up Against Subscription Bots and Signal Groups',
     cmp_col_cloud: 'Cloud Subscription Bots',
     cmp_col_telegram: 'Telegram Signal Groups',
     cmp_row1_label: 'Cost',
-    cmp_row1_javid: '$0 — free forever',
+    cmp_row1_javid: '$0 — no subscription, no purchase price',
     cmp_row1_cloud: '$20–$100+/month',
     cmp_row1_telegram: 'Monthly fee + zero accountability',
     cmp_row2_label: 'Where it runs',
@@ -1032,7 +1069,7 @@ var I18N = {
     comm_btn2: '<i class="h-4.5 w-4.5" data-lucide="message-square"></i> Community Board',
     sec_eyebrow: 'Security &amp; Trust',
     sec_h2: 'Secure by Design. Local. Verifiable.',
-    sec_sub: 'Instead of asking you to trust us — open your firewall or network monitor while the app runs. The only connection you\'ll see is OKX.',
+    sec_sub: 'Instead of asking you to trust us — open your firewall or network monitor while the app runs. Outbound traffic goes only to OKX and to one public CDN that serves the dashboard UI files — never to a server of ours.',
     sec1_title: 'Zero Middle Servers',
     sec1_desc: 'No JaviD-owned server ever sees your orders, balance, or strategy data. There is no point of attack because there is no point in between.',
     sec2_title: 'Funds Solely Accessible By You',
@@ -1043,7 +1080,7 @@ var I18N = {
     faq_h2: 'The Questions You\'d Ask Before Paying',
     faq_sub: '…except there\'s nothing to pay. It\'s free. Still, here\'s what you\'ll want to know:',
     faq_q1: 'Is it really free? No hidden costs?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a1: 'Yes — <b class="text-slate-800">no subscription, no purchase price, no performance fee.</b> The only revenue source is OKX\'s official Broker Program: a share of the trading fee you already pay OKX gets rebated to us, by OKX.',
+    faq_a1: 'Yes — <b class="text-slate-800">no subscription, no purchase price, no performance fee.</b> If you open your OKX account through the referral link on this page, OKX shares part of the trading fee you already pay with us. Your fee rate is the same either way, and we never charge you anything.',
     faq_q2: 'Is it safe to enter my API key?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a2: 'Your API key is <b class="text-slate-800">encrypted and stored locally on your own PC</b> — it is never transmitted anywhere, and withdrawal permission is never required.',
     faq_q3: 'Are profits guaranteed?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1059,11 +1096,11 @@ var I18N = {
     faq_q8: 'Can I use it without knowing how to code?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a8: 'Yes — download, double-click start.bat, paste your API key, pick coins, start. No code, anywhere. The <a class="font-bold text-indigo-600 hover:underline" href="manual.html">User Manual</a> covers it in 9 real screens.',
     faq_q9: 'Which exchanges and markets are supported?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a9: 'Currently <b class="text-slate-800">OKX USDT-M Futures</b> only, monitoring 500+ symbols simultaneously.',
+    faq_a9: 'Currently <b class="text-slate-800">OKX USDT perpetual futures</b> only, monitoring 500+ symbols simultaneously.',
     faq_q10: 'Does it run on Windows and macOS?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a10: 'Yes — both. No high-end hardware needed, just a PC that stays on 24/7 with an internet connection.',
     faq_q11: 'Do I have to sign up through your referral link?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a11: 'You can use an existing account, but only partner-link signups generate the fee rebate that keeps this software free.',
+    faq_a11: 'You can use an existing OKX account — the software behaves exactly the same either way. Signing up through the referral link on this page is simply what funds development, at no extra cost to you.',
     faq_q12: 'How do I set up Telegram alerts?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a12: 'Enter your bot token and chat ID in Settings — you\'ll get balance, P&amp;L, ROI, win rate and open-position reports on request or on schedule.',
     faq_q13: 'What\'s the refund policy?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1072,15 +1109,15 @@ var I18N = {
     faq_a14: 'New versions are announced on this page and in the <a class="font-bold text-indigo-600 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">Telegram channel</a>. Download and overwrite — settings are preserved.',
     dl_h2: 'Why Aren\'t You Trading Yet?',
     dl_sub: 'Let JaviD take care of the tedious tasks — while you keep your keys, your funds, your control, on every single trade.',
-    dl_free_note: '🔜 Coming soon — installer files are being finalized',
-    dl_okx_note: 'Don\'t have a OKX account yet? <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">Sign up through our official partner link</a>.',
+    dl_free_note: '⬇ Free download — Windows &amp; macOS · OKX edition',
+    dl_okx_note: 'Don\'t have an OKX account yet? <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">Create your OKX account</a>.',
     dl_badge1: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>No obligations',
     dl_badge2: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>No hidden fees',
     dl_badge3: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>No credit card',
     dl_howto: 'Click your OS → unzip → run <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. First time? Follow along with the <a class="font-bold text-indigo-600 hover:underline" href="manual.html">User Manual</a>.',
     dl_contact: 'Questions? Email <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a> or ask on the <a class="font-bold text-indigo-600 hover:underline" href="board.html">Community Board</a>.',
     dl_disclaimer: 'Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. JaviD Future Bot is a standalone execution tool — it does not guarantee profits. Performance figures on this page are Shadow Mode (virtual balance) data and snapshots of real dashboard records from specific periods; they do not guarantee or imply future results. All trading decisions and their outcomes are the sole responsibility of the user. JaviD Future Bot does not provide investment advice, does not custody funds, and does not execute trades on any server — every order is placed directly from your own device using your own OKX API credentials.',
-    footer_tagline: 'Automated OKX USDT-M futures execution — 100% local, non-custodial, free forever.',
+    footer_tagline: 'Automated OKX USDT perpetual futures execution — 100% local, non-custodial, no subscription.',
     footer_product_h: 'Product',
     footer_link_shadow: 'Shadow Mode',
     footer_resources_h: 'Resources',
@@ -1092,7 +1129,7 @@ var I18N = {
     footer_legal1: 'Not investment advice',
     footer_legal2: 'No custody of funds',
     footer_legal3: 'Trading involves risk of loss',
-    footer_bottom_tagline: 'OKX USDT-M Futures automation · Windows &amp; macOS',
+    footer_bottom_tagline: 'OKX USDT Perpetual Futures automation · Windows &amp; macOS',
     sc_cap2: 'Positions open simultaneously — floating gains and losses side by side, unedited',
     sc_cap3: 'Daily return record — the good days and the bad days both stay in',
     sc_cap4: 'Individual trade records — entry, exit, and P&L logged per trade',
@@ -1113,19 +1150,22 @@ var I18N = {
     nav_community: '커뮤니티<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">신규</span>',
     cta_free_download: '무료 다운로드',
     nav_community_board: '커뮤니티 게시판',
-    hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> OKX USDT-M 선물 자동매매\n    ',
+    hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> OKX USDT 무기한 선물 자동매매\n    ',
     hero_h1: '24시간 쉬지 않고 작동하는 OKX 선물 자동매매 봇',
     hero_sub: 'OKX 선물 거래를 자동화해 스트레스와 감정적 실수를 줄이세요. 감정 개입 없이, 진입 타이밍을 놓치지 않고, 밤새 지켜볼 필요 없이 — 틱 단위 정밀도와 100% 로컬 실행.',
     hero_cta_primary: '<i class="h-4.5 w-4.5" data-lucide="download"></i> 무료로 시작 — 지금 다운로드',
     hero_cta_secondary: '섀도우 모드 먼저 체험하기',
-    hero_partner_badge: '\n<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#00F0FF] text-[9px] font-black text-black">B</span>\n      공식 OKX 파트너 링크로 빠르게 가입 — 수수료는 동일, 추가 비용 없음\n    ',
-    hero_footnote: '월 구독료 $0 · 영구 무료 · Windows &amp; macOS · 신용카드 불필요',
+    hero_partner_badge: '\n<span class="flex h-5 items-center justify-center rounded-full bg-black px-2 text-[9px] font-black tracking-wider text-white">OKX</span>\n      OKX USDT 무기한 선물 전용 — OKX 계좌 개설은 약 5분이면 끝납니다\n    ',
+    hero_footnote: '월 구독료 $0 · 신용카드 불필요 · Windows &amp; macOS · 본인 OKX 계좌로 작동',
+    okx_banner_title: 'OKX 계좌 만들기',
+    okx_banner_sub: 'USDT 무기한 선물 · 약 5분 소요 · 레퍼럴 링크',
+    okx_trademark: 'OKX는 해당 권리자의 상표입니다. JaviD Future Bot은 독립된 제3자 도구이며 OKX와 제휴·보증·운영 관계가 없습니다.',
     hero_terminal_label: '🔒 localhost:8002 — 내 PC에서 100% 실행',
     strat_eyebrow: '전략 엔진',
     strat_h2: '퀀트로 설계된 세 가지 전략, 동시에 시장을 스캔',
     strat_intro: '각 전략은 단 하나의 규칙도 확정되기 전에 AI 기반 정량 분석을 통해 설계되고 다듬어졌습니다. 하나만 실행할 수도, 세 개를 동시에 실행할 수도 있습니다.',
     strat_a_title: 'Strategy-A · JaviD AIS',
-    strat_sub: 'OKX USDT-M Futures',
+    strat_sub: 'OKX USDT Perpetual Futures',
     strat_a_desc: 'JaviD의 핵심 적응형 그리드 &amp; 추세 로직입니다. ATR 밴드와 VWAP 이격도를 읽어 진입 시점을 잡고, 10초마다 틱 단위 정밀도로 청산을 관리합니다.',
     strat_b_title: 'Strategy-B · 평균 회귀',
     strat_b_desc: '평균 회귀(Mean Reversion)는 잘 알려진 트레이딩 개념입니다 — 가격이 평균에서 지나치게 벌어지면 다시 평균 쪽으로 되돌아오려는 경향이 있다는 것이죠. 이 전략은 JaviD의 AI 기반 정량 분석을 통해 바로 이 패턴을 거래하도록 설계되었습니다. CVD 흐름과 거래량 급증 임계값을 관찰해 과도하게 확장된 움직임을 포착한 뒤, 청산 회피 사이징을 내장한 상태로 되돌림을 노립니다.',
@@ -1133,13 +1173,13 @@ var I18N = {
     strat_c_desc: '브레이크아웃(Breakout) 전략은 다른 전제에서 출발합니다 — 가격이 좁은 박스권을 거래량 증가와 함께 돌파하면, 되돌아가기보다 그 방향으로 계속 움직이는 경향이 있다는 것이죠. 이 전략은 JaviD의 AI 기반 정량 분석을 통해 바로 이 움직임을 포착하도록 설계되었습니다. 변동성 확장에 대응하도록 설계되었습니다 — 브레이크아웃이 확인되고 모멘텀이 살아있는 동안 ATR 트레일링 스탑과 VWAP 회귀가 포지션을 보호합니다.',
     lp_eyebrow: '실시간 증거',
     lp_h2: '설명하기 전에, 지금 실제로 돌아가고 있는 계좌를 보여드립니다',
-    lp_sub: '실시간 텔레그램 리포트에서 그대로 가져온 섀도우 모드 계좌 스냅샷입니다 — 실제 OKX 시세 데이터, 가상 USDT, 실제 자본 위험 없음.',
+    lp_sub: '실시간 텔레그램 리포트에서 그대로 가져온 섀도우 모드 계좌 스냅샷입니다 — 거래소 실시간 시세 데이터, 가상 USDT, 실제 자본 위험 없음. OKX 전용판 출시 전, 같은 프로그램의 이전 빌드에서 기록한 화면입니다.',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>실시간 — <span id="liveUpdated"></span> 전 업데이트',
     lp_balance_label: '잔고(USDT) — 섀도우 모드, 가상 자금',
     lp_pnl_label: '누적 손익(P&amp;L, USDT) — 97건 거래 기준',
     lp_return_label: '섀도우 모드 시작 이후 누적 수익률',
     lp_winrate_label: '같은 기간 승률',
-    lp_note: '2026-07-05 05:04(KST) 기준 스냅샷 — 해당 시점 7개 포지션 보유 중이며 평가 이익과 손실이 혼재되어 있습니다. 섀도우 모드는 실제 OKX 시세 데이터를 가상 잔고로 거래하는 것으로, 실제 자금 거래 기록이 아닙니다. 실제 대시보드 기록은 <a class="font-bold text-indigo-400 hover:underline" href="results.html">실제 결과</a> 페이지에 스크린샷 단위로 별도 게시되어 있습니다.',
+    lp_note: '2026-07-05 05:04(KST) 기준 스냅샷 — 해당 시점 7개 포지션 보유 중이며 평가 이익과 손실이 혼재되어 있습니다. 섀도우 모드는 거래소 실시간 시세 데이터를 가상 잔고로 거래하는 것으로, 실제 자금 거래 기록이 아닙니다. 실제 대시보드 기록은 <a class="font-bold text-indigo-400 hover:underline" href="results.html">실제 결과</a> 페이지에 스크린샷 단위로 별도 게시되어 있습니다.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: '트레이더들이 JaviD로 갈아타는 세 가지 이유',
     why1_title: '중간 서버가 전혀 없습니다',
@@ -1171,7 +1211,7 @@ var I18N = {
     aud2_title: '경험 많은 트레이더',
     aud2_desc: '공격적/보통/안정 사이징 모드로 세밀하게 조정하고, 500개 이상의 심볼에서 세 가지 전략을 동시에 실행하며, 실시간 대시보드로 모든 것을 모니터링하세요.',
     aud3_title: '보안에 민감한 &amp; 기술적인 사용자',
-    aud3_desc: '실행 중에 방화벽이나 네트워크 모니터를 열어보세요 — 보이는 연결은 OKX뿐입니다. 중간 서버는 절대 없습니다. <a class="font-bold text-indigo-600 hover:underline" href="#transparency">아키텍처 상세 설명</a>을 확인하세요.',
+    aud3_desc: '실행 중에 방화벽이나 네트워크 모니터를 열어보세요 — 나가는 연결은 OKX와, 대시보드 화면 파일을 내려받는 공개 CDN 한 곳뿐입니다 — 저희 서버는 없습니다. 중간 서버는 절대 없습니다. <a class="font-bold text-indigo-600 hover:underline" href="#transparency">아키텍처 상세 설명</a>을 확인하세요.',
     feat_eyebrow: 'JaviD 트레이딩 툴킷',
     feat_h2: '퀀트 데스크처럼 설계되고, 앱처럼 작동합니다',
     feat_sub: '봇이 처음이신가요? 초록색 태그부터 시작하세요. 인디고 태그는 그 아래에서 작동하는 전문가급 엔진입니다.',
@@ -1198,8 +1238,8 @@ var I18N = {
     sc_h2: '목업이 아닙니다. 실제 대시보드 화면입니다.',
     sc_cap1: '누적 손익(P&amp;L)과 승률 — 봇이 실시간으로 참조하는 것과 동일한 시장 추세 패널',
     sc_more_btn: '전체 스크린샷 기록 보기 <i class="h-4 w-4" data-lucide="arrow-right"></i>',
-    exch_title: 'OKX USDT-M 선물 전용으로 공식 제작',
-    exch_desc: '하나의 거래소를 제대로 — 500개 이상 심볼, 직접 웹소켓 연결, 0.1초 지연 시간. 공식 파트너 링크로 가입해도 수수료는 동일하며, 그 리퍼럴 리베이트 덕분에 JaviD는 영구 무료로 운영됩니다.',
+    exch_title: 'OKX USDT 무기한 선물 전용 설계',
+    exch_desc: '하나의 거래소를 제대로 — 500개 이상 심볼, OKX 직접 웹소켓 연결, 0.1초 지연 시간. 모든 주문은 본인 OKX API 키로 서명되어 내 PC에서 OKX로 곧바로 전송됩니다. USDT 무기한 선물이 활성화된 OKX 계좌가 필요하며, 개설은 약 5분이면 끝납니다.',
     exch_cta: 'OKX 계정 만들기 <i class="h-4 w-4" data-lucide="arrow-right"></i>',
     shadow_title: '<i class="h-6 w-6 text-indigo-600" data-lucide="flask-conical"></i> 단 1달러도 걸기 전에 먼저 체험해보세요',
     shadow_desc: '섀도우 모드는 실제 거래소의 실시간 시세 데이터와 라이브 API를 그대로 사용해 모든 전략을 실행합니다 — 실전과 완전히 동일한 데이터입니다 — 다만 실제 자금 대신 가상 잔고로 거래합니다. 이는 테스트넷이나 일반적인 모의투자 시뮬레이터와는 다른 개념입니다. 테스트넷은 실제 시장과 분리된 가짜 시세로 돌아가는 별도의 샌드박스 거래소이고, 대부분의 모의투자 툴은 지연되거나 시뮬레이션된 가격을 사용합니다. 섀도우 모드의 데이터는 100% 실시간 실제 데이터이며, 오직 자금만 가상입니다.',
@@ -1207,13 +1247,13 @@ var I18N = {
     size_title: '왜 최소 1,000 USDT인가',
     size_desc: '각 진입은 거래당 잔고의 최대 1/300까지 사이징되어, 리스크를 수십 개 포지션에 분산시킵니다. 약 1,000 USDT 미만에서는 거래소 최소 명목가 제한과 수수료가 수익 우위를 갉아먹기 시작합니다.',
     fee_title: '거래소 수수료의 극히 일부만 나눠 받습니다',
-    fee_desc: 'OKX은 JaviD 사용 여부와 관계없이 모든 주문에 소액의 거래 수수료를 이미 부과합니다. 그 기존 수수료의 일부가 사용자가 아닌 OKX으로부터 저희에게 리베이트됩니다. 구독료도, 성과 보수도 절대 없습니다.',
+    fee_desc: 'JaviD는 판매하지 않으며 구독료도 없습니다. 이 페이지의 레퍼럴 링크로 OKX 계좌를 만드시면, 어차피 내시게 될 거래 수수료의 일부를 OKX가 저희와 나눕니다 — 수수료율은 어느 쪽이든 동일하며 사용자에게 추가되는 비용은 없습니다. JaviD Future Bot은 독립된 제3자 도구이며 OKX와 제휴·보증·운영 관계가 없습니다.',
     size_img_caption: '실제 스크린샷 — 실제 투자 모드 패널, 잔고 ÷ 300 / 500 / 700',
     cmp_h2: '구독형 봇 및 시그널 그룹과의 비교',
     cmp_col_cloud: '클라우드 구독형 봇',
     cmp_col_telegram: '텔레그램 시그널 그룹',
     cmp_row1_label: '비용',
-    cmp_row1_javid: '$0 — 영구 무료',
+    cmp_row1_javid: '$0 — 구독료 없음, 구매 비용 없음',
     cmp_row1_cloud: '월 $20~$100 이상',
     cmp_row1_telegram: '월 구독료 + 책임 소재 없음',
     cmp_row2_label: '실행 위치',
@@ -1241,7 +1281,7 @@ var I18N = {
     comm_btn2: '<i class="h-4.5 w-4.5" data-lucide="message-square"></i> 커뮤니티 게시판',
     sec_eyebrow: '보안 &amp; 신뢰',
     sec_h2: '설계부터 안전합니다. 로컬. 검증 가능.',
-    sec_sub: '저희를 믿어달라고 요구하는 대신 — 앱이 실행되는 동안 방화벽이나 네트워크 모니터를 직접 열어보세요. 보이는 연결은 OKX뿐입니다.',
+    sec_sub: '저희를 믿어달라고 요구하는 대신 — 앱이 실행되는 동안 방화벽이나 네트워크 모니터를 직접 열어보세요. 나가는 연결은 OKX와, 대시보드 화면 파일을 내려받는 공개 CDN 한 곳뿐입니다 — 저희 서버는 없습니다.',
     sec1_title: '중간 서버 제로',
     sec1_desc: 'JaviD 소유 서버는 당신의 주문, 잔고, 전략 데이터를 절대 볼 수 없습니다. 중간 지점이 없으니 공격 지점도 없습니다.',
     sec2_title: '자금은 오직 당신만 접근할 수 있습니다',
@@ -1252,7 +1292,7 @@ var I18N = {
     faq_h2: '결제하기 전에 물어볼 만한 질문들',
     faq_sub: '…사실 결제할 것이 없습니다. 무료니까요. 그래도 알아두면 좋은 내용을 정리했습니다:',
     faq_q1: '정말 무료인가요? 숨겨진 비용은 없나요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a1: '네 — <b class="text-slate-800">구독료도, 구매 비용도, 성과 보수도 없습니다.</b> 유일한 수익원은 OKX의 공식 브로커 프로그램입니다. 이미 OKX에 내고 있는 거래 수수료의 일부가 OKX으로부터 저희에게 리베이트됩니다.',
+    faq_a1: '네 — <b class="text-slate-800">구독료도, 구매 비용도, 성과 보수도 없습니다.</b> 이 페이지의 레퍼럴 링크로 OKX 계좌를 만드시면, 이미 OKX에 내고 있는 거래 수수료의 일부를 OKX가 저희와 나눕니다. 수수료율은 어느 쪽이든 동일하며, 저희가 사용자에게 청구하는 금액은 전혀 없습니다.',
     faq_q2: '내 API 키를 입력해도 안전한가요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a2: '내 API 키는 <b class="text-slate-800">암호화되어 내 PC에만 로컬로 저장</b>됩니다 — 어디로도 전송되지 않으며, 출금 권한은 절대 필요하지 않습니다.',
     faq_q3: '수익이 보장되나요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1268,11 +1308,11 @@ var I18N = {
     faq_q8: '코딩을 몰라도 사용할 수 있나요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a8: '네 — 다운로드, start.bat 더블클릭, API 키 붙여넣기, 코인 선택, 시작. 코드는 전혀 필요 없습니다. <a class="font-bold text-indigo-600 hover:underline" href="manual.html">사용 설명서</a>가 실제 화면 9개로 전 과정을 안내합니다.',
     faq_q9: '어떤 거래소와 시장을 지원하나요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a9: '현재는 <b class="text-slate-800">OKX USDT-M 선물</b>만 지원하며, 500개 이상의 심볼을 동시에 모니터링합니다.',
+    faq_a9: '현재는 <b class="text-slate-800">OKX USDT 무기한 선물</b>만 지원하며, 500개 이상의 심볼을 동시에 모니터링합니다.',
     faq_q10: 'Windows와 macOS에서 모두 작동하나요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a10: '네 — 둘 다 지원합니다. 고사양 하드웨어는 필요 없고, 인터넷에 연결된 채로 24시간 켜져 있는 PC만 있으면 됩니다.',
     faq_q11: '꼭 추천 링크로 가입해야 하나요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a11: '기존 계정을 사용할 수도 있지만, 이 소프트웨어를 무료로 유지시켜주는 수수료 리베이트는 파트너 링크로 가입한 경우에만 발생합니다.',
+    faq_a11: '기존 OKX 계정을 그대로 쓰셔도 됩니다 — 프로그램 동작은 어느 쪽이든 완전히 같습니다. 이 페이지의 레퍼럴 링크로 가입하시면 개발 비용에 보탬이 될 뿐, 사용자에게 추가되는 비용은 없습니다.',
     faq_q12: '텔레그램 알림은 어떻게 설정하나요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a12: '설정 화면에 봇 토큰과 채팅 ID를 입력하세요 — 요청 시 또는 예약된 일정에 맞춰 잔고, 손익(P&amp;L), ROI, 승률, 보유 포지션 리포트를 받을 수 있습니다.',
     faq_q13: '환불 정책은 어떻게 되나요?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1281,15 +1321,15 @@ var I18N = {
     faq_a14: '새 버전은 이 페이지와 <a class="font-bold text-indigo-600 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">텔레그램 채널</a>에 공지됩니다. 다운로드 후 덮어쓰면 되며 설정은 그대로 유지됩니다.',
     dl_h2: '아직도 매매를 시작하지 않으셨나요?',
     dl_sub: '번거로운 작업은 JaviD에게 맡기세요 — 모든 거래에서 키도, 자금도, 통제권도 언제나 당신의 것입니다.',
-    dl_free_note: '🔜 준비 중 — 설치 파일을 곧 업로드합니다',
-    dl_okx_note: '아직 OKX 계정이 없으신가요? <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">공식 파트너 링크로 가입하기</a>.',
+    dl_free_note: '⬇ 무료 다운로드 — Windows &amp; macOS · OKX 전용판',
+    dl_okx_note: '아직 OKX 계정이 없으신가요? <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">OKX 계좌 만들기</a>.',
     dl_badge1: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>의무 사항 없음',
     dl_badge2: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>숨겨진 수수료 없음',
     dl_badge3: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>신용카드 불필요',
     dl_howto: '내 OS 클릭 → 압축 해제 → <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code> 실행. 처음이신가요? <a class="font-bold text-indigo-600 hover:underline" href="manual.html">사용 설명서</a>를 따라해보세요.',
     dl_contact: '궁금한 점이 있으신가요? <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a>로 메일을 보내거나 <a class="font-bold text-indigo-600 hover:underline" href="board.html">커뮤니티 게시판</a>에 질문하세요.',
     dl_disclaimer: '암호화폐 선물 거래는 높은 위험을 수반하며 모든 투자자에게 적합하지 않을 수 있습니다. JaviD Future Bot은 독립 실행형 매매 도구이며 수익을 보장하지 않습니다. 이 페이지의 성과 수치는 섀도우 모드(가상 잔고) 데이터와 특정 기간의 실제 대시보드 기록 스냅샷이며, 미래 결과를 보장하거나 암시하지 않습니다. 모든 매매 판단과 그 결과에 대한 책임은 전적으로 사용자에게 있습니다. JaviD Future Bot은 투자 자문을 제공하지 않고, 자금을 커스터디하지 않으며, 어떤 서버에서도 거래를 실행하지 않습니다 — 모든 주문은 사용자 본인의 기기에서 본인의 OKX API 자격 증명으로 직접 실행됩니다.',
-    footer_tagline: 'OKX USDT-M 선물 자동 실행 — 100% 로컬, 논커스터디얼, 영구 무료.',
+    footer_tagline: 'OKX USDT 무기한 선물 자동 실행 — 100% 로컬, 논커스터디얼, 구독료 없음.',
     footer_product_h: '제품',
     footer_link_shadow: '섀도우 모드',
     footer_resources_h: '리소스',
@@ -1301,7 +1341,7 @@ var I18N = {
     footer_legal1: '투자 자문이 아닙니다',
     footer_legal2: '자금을 커스터디하지 않습니다',
     footer_legal3: '거래에는 손실 위험이 따릅니다',
-    footer_bottom_tagline: 'OKX USDT-M 선물 자동매매 · Windows &amp; macOS',
+    footer_bottom_tagline: 'OKX USDT 무기한 선물 자동매매 · Windows &amp; macOS',
     sc_cap2: '동시에 열려 있는 포지션들 — 평가 이익과 손실을 가감 없이 나란히',
     sc_cap3: '일별 수익률 기록 — 좋은 날도 나쁜 날도 그대로',
     sc_cap4: '개별 거래 기록 — 거래마다 진입, 청산, 손익(P&L)을 기록',
@@ -1322,19 +1362,22 @@ var I18N = {
     nav_community: 'コミュニティ<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">新着</span>',
     cta_free_download: '無料ダウンロード',
     nav_community_board: 'コミュニティ掲示板',
-    hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> OKX USDT-M先物 自動売買\n    ',
+    hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> OKX USDT無期限先物 自動売買\n    ',
     hero_h1: '24時間365日稼働する、OKX先物自動売買ボット',
     hero_sub: 'OKX先物取引を自動化し、ストレスと感情的なミスを減らしましょう。感情なし、エントリー逃しなし、徹夜での監視も不要 — ティック単位の精度と100%ローカル実行。',
     hero_cta_primary: '<i class="h-4.5 w-4.5" data-lucide="download"></i> 無料で始める — 今すぐダウンロード',
     hero_cta_secondary: 'まずはシャドーモードを試す',
-    hero_partner_badge: '\n<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#00F0FF] text-[9px] font-black text-black">B</span>\n      公式OKXパートナーリンクで素早く登録 — 手数料は同じ、追加費用なし\n    ',
-    hero_footnote: '月額$0 · 永久無料 · Windows &amp; macOS · クレジットカード不要',
+    hero_partner_badge: '\n<span class="flex h-5 items-center justify-center rounded-full bg-black px-2 text-[9px] font-black tracking-wider text-white">OKX</span>\n      OKX USDT無期限先物専用 — OKXの口座開設は約5分で完了します\n    ',
+    hero_footnote: '月額$0 · クレジットカード不要 · Windows &amp; macOS · ご自身のOKX口座で動作',
+    okx_banner_title: 'OKX口座を開設する',
+    okx_banner_sub: 'USDT無期限先物 · 約5分 · 紹介リンク',
+    okx_trademark: 'OKXは各権利者の商標です。JaviD Future Botは独立した第三者ツールであり、OKXとの提携・推奨・運営関係はありません。',
     hero_terminal_label: '🔒 localhost:8002 — 自分のPCで100%実行',
     strat_eyebrow: '戦略エンジン',
     strat_h2: 'クオンツ設計の3つの戦略が並行してスキャン',
     strat_intro: '各戦略は、ルールが1つでも確定される前にAIによる定量分析を通じて設計・改良されました。1つだけ実行することも、3つ同時に実行することもできます。',
     strat_a_title: 'Strategy-A · JaviD AIS',
-    strat_sub: 'OKX USDT-M Futures',
+    strat_sub: 'OKX USDT Perpetual Futures',
     strat_a_desc: 'JaviDのコアとなるアダプティブグリッド &amp; トレンドロジック。ATRバンドとVWAP乖離を読み取ってエントリーのタイミングを計り、10秒ごとにティック単位の精度でイグジットを管理します。',
     strat_b_title: 'Strategy-B · 平均回帰',
     strat_b_desc: '平均回帰（Mean Reversion）は、価格が平均から大きく乖離すると再び平均に戻ろうとする傾向がある、というよく知られたトレーディングの概念です。この戦略は、JaviDのAI駆動の定量分析によって、まさにこのパターンを狙うよう設計されています。 CVDの流れと出来高急増のしきい値を監視して行き過ぎた値動きを検知し、清算回避サイジングを組み込んだ形で反発を狙います。',
@@ -1342,13 +1385,13 @@ var I18N = {
     strat_c_desc: 'ブレイクアウト（Breakout）戦略は異なる前提に基づいています — 価格が出来高の増加を伴って狭いレンジを抜けると、反転せずにその方向へ動き続ける傾向がある、というものです。この戦略は、JaviDのAI駆動の定量分析によって、まさにこの動きを捉えるよう設計されています。 ボラティリティ拡大に対応する設計 — ブレイクアウトが確認されモメンタムが続く間、ATRトレーリングストップとVWAP回帰がポジションを保護します。',
     lp_eyebrow: 'ライブ実績',
     lp_h2: '説明の前に、今まさに稼働中のアカウントをご覧ください',
-    lp_sub: 'ライブのTelegramレポートからそのまま取得したシャドーモードのアカウントスナップショットです — 実際のOKX市場データ、仮想USDT、実資金リスクはゼロ。',
+    lp_sub: 'ライブのTelegramレポートからそのまま取得したシャドーモードのアカウントスナップショットです — 取引所のリアルタイム市場データ、仮想USDT、実資金リスクはゼロ。OKX版のリリース前に、同じプログラムの旧ビルドで記録した画面です。',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>ライブ — <span id="liveUpdated"></span>前に更新',
     lp_balance_label: '残高（USDT）— シャドーモード、仮想資金',
     lp_pnl_label: '累計損益（P&amp;L、USDT）— 97件の取引',
     lp_return_label: 'シャドーモード開始からの累計リターン',
     lp_winrate_label: '同期間の勝率',
-    lp_note: '2026-07-05 05:04（KST）時点のスナップショット — その時点で7ポジションを保有中で、含み益と含み損が混在しています。シャドーモードは実際のOKX市場データを仮想残高で取引するもので、実資金取引の記録ではなく、過去の実績が将来の結果を保証するものではありません。実際のダッシュボード記録はスクリーンショット単位で<a class="font-bold text-indigo-400 hover:underline" href="results.html">実績</a>ページに別途掲載しています。',
+    lp_note: '2026-07-05 05:04（KST）時点のスナップショット — その時点で7ポジションを保有中で、含み益と含み損が混在しています。シャドーモードは取引所のリアルタイム市場データを仮想残高で取引するもので、実資金取引の記録ではなく、過去の実績が将来の結果を保証するものではありません。実際のダッシュボード記録はスクリーンショット単位で<a class="font-bold text-indigo-400 hover:underline" href="results.html">実績</a>ページに別途掲載しています。',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'トレーダーがJaviDに乗り換える3つの理由',
     why1_title: '中間サーバーがゼロ',
@@ -1380,7 +1423,7 @@ var I18N = {
     aud2_title: '経験豊富なトレーダー',
     aud2_desc: 'アグレッシブ／ノーマル／ステーブルのサイジングモードで細かく調整し、500以上の銘柄で3つの戦略を並行実行、すべてをライブダッシュボードで監視できます。',
     aud3_title: 'セキュリティ重視 &amp; 技術志向のユーザー',
-    aud3_desc: '稼働中にファイアウォールやネットワークモニターを開いてみてください — 見える接続先はOKXだけです。中間サーバーは一切ありません。<a class="font-bold text-indigo-600 hover:underline" href="#transparency">アーキテクチャの詳細</a>をご覧ください。',
+    aud3_desc: '稼働中にファイアウォールやネットワークモニターを開いてみてください — 外部接続はOKXと、ダッシュボードのUIファイルを配信する公開CDN1か所だけです — 当方のサーバーはありません。中間サーバーは一切ありません。<a class="font-bold text-indigo-600 hover:underline" href="#transparency">アーキテクチャの詳細</a>をご覧ください。',
     feat_eyebrow: 'JaviD トレーディングツールキット',
     feat_h2: 'クオンツデスクのように設計され、アプリのように動く',
     feat_sub: 'ボットが初めての方は緑色のタグから。インディゴのタグはその裏側で動くプロ仕様のエンジンです。',
@@ -1407,8 +1450,8 @@ var I18N = {
     sc_h2: 'モックアップではありません。実際のダッシュボード画面です。',
     sc_cap1: '累計損益（P&amp;L）と勝率 — ボットがライブで参照しているのと同じ市場トレンドパネル',
     sc_more_btn: 'スクリーンショット全記録を見る <i class="h-4 w-4" data-lucide="arrow-right"></i>',
-    exch_title: 'OKX USDT-M先物向けに正式開発',
-    exch_desc: '1つの取引所を徹底的に — 500以上の銘柄、直接WebSocket接続、0.1秒のレイテンシー。公式パートナーリンクから登録しても手数料はまったく同じで、その紹介リベートがJaviDを永久無料にしています。',
+    exch_title: 'OKX USDT無期限先物のために設計',
+    exch_desc: '1つの取引所を徹底的に — 500以上の銘柄、OKXへの直接WebSocket接続、0.1秒のレイテンシー。すべての注文はご自身のOKX APIキーで署名され、お使いのPCからOKXへ直接送信されます。USDT無期限先物を有効にしたOKX口座が必要で、開設は約5分です。',
     exch_cta: 'OKXアカウントを作成 <i class="h-4 w-4" data-lucide="arrow-right"></i>',
     shadow_title: '<i class="h-6 w-6 text-indigo-600" data-lucide="flask-conical"></i> 1ドルもリスクにさらす前にまず試す',
     shadow_desc: 'シャドーモードは、実際の取引所のリアルタイム相場データとライブAPIをそのまま使ってすべての戦略を実行します — 実取引とまったく同じデータです — 実資金の代わりに仮想残高で取引するだけです。これはテストネットや一般的な模擬売買シミュレーターとは異なる概念です。テストネットは実際の市場と切り離された偽の価格データで動く別のサンドボックス取引所であり、多くの模擬売買ツールは遅延データやシミュレーションされた価格を使用します。シャドーモードのデータは100%リアルタイムの実データであり、仮想なのは資金だけです。',
@@ -1416,13 +1459,13 @@ var I18N = {
     size_title: 'なぜ最低1,000 USDTが必要か',
     size_desc: '各エントリーは取引あたり残高の最大1/300までサイジングされ、リスクが数十のポジションに分散されます。約1,000 USDTを下回ると、取引所の最小想定元本の制限や手数料が優位性を削り始めます。',
     fee_title: '取引所手数料のごく一部を分けてもらっているだけです',
-    fee_desc: 'OKXは、JaviDの利用有無に関わらず、すべての注文にすでに少額の取引手数料を課しています。その既存手数料の一部が、ユーザーではなくOKXから私たちにリベートされます。サブスクリプションも成果報酬も一切ありません。',
+    fee_desc: 'JaviDは販売しておらず、サブスクリプションもありません。このページの紹介リンクからOKX口座を開設された場合、すでにお支払いの取引手数料の一部をOKXが当方と分け合います — 手数料率はどちらでも同じで、追加費用は一切ありません。JaviD Future Botは独立した第三者ツールであり、OKXとの提携・推奨・運営関係はありません。',
     size_img_caption: '実際のスクリーンショット — 実際の投資モード画面、残高 ÷ 300 / 500 / 700',
     cmp_h2: 'サブスクリプション型ボットやシグナルグループとの比較',
     cmp_col_cloud: 'クラウド型サブスクリプションボット',
     cmp_col_telegram: 'Telegramシグナルグループ',
     cmp_row1_label: 'コスト',
-    cmp_row1_javid: '$0 — 永久無料',
+    cmp_row1_javid: '$0 — サブスクなし、購入費用なし',
     cmp_row1_cloud: '月額$20〜$100以上',
     cmp_row1_telegram: '月額料金 + 説明責任ゼロ',
     cmp_row2_label: '実行環境',
@@ -1450,7 +1493,7 @@ var I18N = {
     comm_btn2: '<i class="h-4.5 w-4.5" data-lucide="message-square"></i> コミュニティ掲示板',
     sec_eyebrow: 'セキュリティ &amp; 信頼性',
     sec_h2: '設計段階から安全。ローカル。検証可能。',
-    sec_sub: '私たちを信じてくださいとお願いする代わりに — アプリ稼働中にファイアウォールやネットワークモニターを開いてみてください。見える接続先はOKXだけです。',
+    sec_sub: '私たちを信じてくださいとお願いする代わりに — アプリ稼働中にファイアウォールやネットワークモニターを開いてみてください。外部接続はOKXと、ダッシュボードのUIファイルを配信する公開CDN1か所だけです — 当方のサーバーはありません。',
     sec1_title: '中間サーバーゼロ',
     sec1_desc: 'JaviD運営のサーバーが、あなたの注文・残高・戦略データを見ることは一切ありません。間に何もないので、攻撃される接点自体が存在しません。',
     sec2_title: '資金にアクセスできるのはあなただけ',
@@ -1461,7 +1504,7 @@ var I18N = {
     faq_h2: 'お支払い前に聞きたくなる質問',
     faq_sub: '…とはいえ、支払うものは何もありません。無料ですから。それでも知っておきたいポイントをまとめました：',
     faq_q1: '本当に無料ですか？隠れたコストはありませんか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a1: 'はい — <b class="text-slate-800">サブスクリプション料金も、購入費用も、成果報酬も一切ありません。</b>唯一の収益源はOKXの公式ブローカープログラムです。あなたがすでにOKXに支払っている取引手数料の一部が、OKXから私たちにリベートされます。',
+    faq_a1: 'はい — <b class="text-slate-800">サブスクリプション料金も、購入費用も、成果報酬も一切ありません。</b>このページの紹介リンクからOKX口座を開設された場合、すでにOKXへお支払いの取引手数料の一部をOKXが当方と分け合います。手数料率はどちらでも同じで、当方があなたに請求する金額は一切ありません。',
     faq_q2: 'APIキーを入力しても安全ですか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a2: 'あなたのAPIキーは<b class="text-slate-800">暗号化されて自分のPCにのみローカル保存</b>されます — どこにも送信されず、出金権限も一切不要です。',
     faq_q3: '利益は保証されますか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1477,11 +1520,11 @@ var I18N = {
     faq_q8: 'コードが分からなくても使えますか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a8: 'はい — ダウンロードしてstart.batをダブルクリックし、APIキーを貼り付けてコインを選び、開始するだけです。コードは一切不要です。<a class="font-bold text-indigo-600 hover:underline" href="manual.html">ユーザーマニュアル</a>が実際の画面9枚で全工程を案内します。',
     faq_q9: 'どの取引所・市場に対応していますか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a9: '現時点では<b class="text-slate-800">OKX USDT-M先物</b>のみに対応しており、500以上の銘柄を同時に監視しています。',
+    faq_a9: '現時点では<b class="text-slate-800">OKX USDT無期限先物</b>のみに対応しており、500以上の銘柄を同時に監視しています。',
     faq_q10: 'WindowsとmacOSの両方で動きますか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a10: 'はい、両方対応しています。ハイスペックな機材は不要で、インターネットに接続された状態で24時間365日稼働できるPCがあれば十分です。',
     faq_q11: '紹介リンクからの登録は必須ですか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a11: '既存のアカウントを使うこともできますが、このソフトウェアを無料に保つ手数料リベートは、パートナーリンク経由の登録でのみ発生します。',
+    faq_a11: '既存のOKX口座をそのままお使いいただけます — プログラムの動作はどちらでも全く同じです。このページの紹介リンクから登録いただくと開発費の支えになりますが、追加費用は一切かかりません。',
     faq_q12: 'Telegram通知はどう設定しますか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a12: '設定画面でボットトークンとチャットIDを入力してください — リクエスト時またはスケジュールに沿って、残高、損益（P&amp;L）、ROI、勝率、保有ポジションのレポートを受け取れます。',
     faq_q13: '返金ポリシーはどうなっていますか？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1490,15 +1533,15 @@ var I18N = {
     faq_a14: '新しいバージョンはこのページと<a class="font-bold text-indigo-600 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">Telegramチャンネル</a>でお知らせします。ダウンロードして上書きするだけで、設定はそのまま維持されます。',
     dl_h2: 'まだ取引を始めていないのですか？',
     dl_sub: '面倒な作業はJaviDにお任せください — すべての取引で、鍵も、資金も、コントロールも常にあなたのものです。',
-    dl_free_note: '🔜 近日公開 — インストーラーを準備中です',
-    dl_okx_note: 'まだOKXアカウントをお持ちでない方へ？ <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">公式パートナーリンクから登録する</a>。',
+    dl_free_note: '⬇ 無料ダウンロード — Windows &amp; macOS · OKX版',
+    dl_okx_note: 'まだOKXアカウントをお持ちでない方へ？ <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">OKXの口座を開設する</a>。',
     dl_badge1: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>義務なし',
     dl_badge2: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>隠れた手数料なし',
     dl_badge3: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>クレジットカード不要',
     dl_howto: 'お使いのOSをクリック → 解凍 → <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>を実行。初めての方は<a class="font-bold text-indigo-600 hover:underline" href="manual.html">ユーザーマニュアル</a>を参考にしてください。',
     dl_contact: 'ご質問がありますか？ <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a>までメールするか、<a class="font-bold text-indigo-600 hover:underline" href="board.html">コミュニティ掲示板</a>でお尋ねください。',
     dl_disclaimer: '暗号資産の先物取引には高いリスクが伴い、すべての投資家に適しているわけではありません。JaviD Future Botは独立した実行ツールであり、利益を保証するものではありません。このページの実績数値はシャドーモード（仮想残高）データ、および特定期間の実際のダッシュボード記録のスナップショットであり、将来の結果を保証または示唆するものではありません。すべての取引判断とその結果に対する責任は、すべてユーザー自身にあります。JaviD Future Botは投資助言を提供せず、資金を保管せず、いかなるサーバー上でも取引を実行しません — すべての注文は、ユーザー自身のデバイスから、ユーザー自身のOKX API認証情報を使って直接実行されます。',
-    footer_tagline: 'OKX USDT-M先物の自動実行 — 100%ローカル、非保管型、永久無料。',
+    footer_tagline: 'OKX USDT無期限先物の自動実行 — 100%ローカル、非保管型、サブスクなし。',
     footer_product_h: '製品',
     footer_link_shadow: 'シャドーモード',
     footer_resources_h: 'リソース',
@@ -1510,7 +1553,7 @@ var I18N = {
     footer_legal1: '投資助言ではありません',
     footer_legal2: '資金を保管しません',
     footer_legal3: '取引には損失リスクが伴います',
-    footer_bottom_tagline: 'OKX USDT-M先物自動売買 · Windows &amp; macOS',
+    footer_bottom_tagline: 'OKX USDT無期限先物自動売買 · Windows &amp; macOS',
     sc_cap2: '同時に保有中のポジション — 含み益と含み損をそのまま並べて表示',
     sc_cap3: '日次リターン記録 — 良い日も悪い日もそのまま記録',
     sc_cap4: '個別の取引記録 — 取引ごとのエントリー、イグジット、損益（P&L）を記録',
@@ -1531,19 +1574,22 @@ var I18N = {
     nav_community: '社区<span class="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-600">新</span>',
     cta_free_download: '免费下载',
     nav_community_board: '社区版块',
-    hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> OKX USDT-M 合约自动化交易\n    ',
+    hero_badge: '\n<i class="h-3.5 w-3.5" data-lucide="zap"></i> OKX USDT 永续合约自动化交易\n    ',
     hero_h1: '为 OKX 合约打造，全天候 24/7 运行的加密货币交易机器人',
     hero_sub: '自动化您的 OKX 合约交易，减少压力与情绪化失误。没有情绪干扰、不错过入场时机、无需彻夜盯盘 — 逐笔级精度，100% 本地执行。',
     hero_cta_primary: '<i class="h-4.5 w-4.5" data-lucide="download"></i> 免费开始 — 立即下载',
     hero_cta_secondary: '先体验影子模式',
-    hero_partner_badge: '\n<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#00F0FF] text-[9px] font-black text-black">B</span>\n      通过官方 OKX 合作伙伴链接快速注册 — 手续费相同，无额外费用\n    ',
-    hero_footnote: '订阅费 $0 · 永久免费 · Windows &amp; macOS · 无需信用卡',
+    hero_partner_badge: '\n<span class="flex h-5 items-center justify-center rounded-full bg-black px-2 text-[9px] font-black tracking-wider text-white">OKX</span>\n      专为 OKX USDT 永续合约打造 — 注册 OKX 账户约需 5 分钟\n    ',
+    hero_footnote: '订阅费 $0 · 无需信用卡 · Windows &amp; macOS · 使用您自己的 OKX 账户',
+    okx_banner_title: '注册 OKX 账户',
+    okx_banner_sub: 'USDT 永续合约 · 约 5 分钟 · 推荐链接',
+    okx_trademark: 'OKX 是其各自所有者的商标。JaviD Future Bot 是独立的第三方工具，与 OKX 无关联、未获背书，也不由其运营。',
     hero_terminal_label: '🔒 localhost:8002 — 100% 在您的电脑上运行',
     strat_eyebrow: '策略引擎',
     strat_h2: '三套量化策略，并行扫描市场',
     strat_intro: '每一套策略在锁定任何一条规则之前，都经过 AI 驱动的量化分析反复设计与打磨。可以只运行一套，也可以三套同时运行。',
     strat_a_title: 'Strategy-A · JaviD AIS',
-    strat_sub: 'OKX USDT-M Futures',
+    strat_sub: 'OKX USDT Perpetual Futures',
     strat_a_desc: 'JaviD 的核心自适应网格 &amp; 趋势逻辑。通过读取 ATR 通道与 VWAP 偏离来把握入场时机，并以每 10 秒一次的逐笔级精度管理离场。',
     strat_b_title: 'Strategy-B · 均值回归',
     strat_b_desc: '均值回归（Mean Reversion）是一个经典的交易理念——当价格过度偏离其均值时，往往会出现回归均值的倾向。这套策略正是由 JaviD 的 AI 驱动量化分析专门设计，用来捕捉这种模式。 监测 CVD 资金流向和成交量异动阈值，捕捉过度延伸的行情，并在内置防爆仓仓位管理的前提下交易反弹回归。',
@@ -1551,13 +1597,13 @@ var I18N = {
     strat_c_desc: '突破（Breakout）交易的逻辑不同——一旦价格在成交量放大的情况下突破狭窄的盘整区间，往往会顺势延续而非反转。这套策略正是由 JaviD 的 AI 驱动量化分析专门设计，用来捕捉这种行情。 专为波动率扩张而设计 — 一旦突破确认且动能延续，ATR 移动止损与 VWAP 回归将持续保护仓位。',
     lp_eyebrow: '实盘验证',
     lp_h2: '在介绍之前，先看看这个正在实时运行的账户',
-    lp_sub: '直接来自实时 Telegram 报告的影子模式账户快照 — 真实 OKX 行情数据，虚拟 USDT，零真实资金风险。',
+    lp_sub: '直接来自实时 Telegram 报告的影子模式账户快照 — 交易所实时行情数据，虚拟 USDT，零真实资金风险。该记录来自 OKX 版发布之前、同一程序的早期版本。',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>实时 — <span id="liveUpdated"></span>前更新',
     lp_balance_label: '余额（USDT）— 影子模式，虚拟资金',
     lp_pnl_label: '累计盈亏（P&amp;L，USDT）— 共 97 笔交易',
     lp_return_label: '自影子模式启动以来的累计收益率',
     lp_winrate_label: '同期胜率',
-    lp_note: '快照拍摄于 2026-07-05 05:04（KST）— 当时持有 7 个仓位，浮盈浮亏并存。影子模式使用真实 OKX 行情数据对虚拟余额进行交易，并非真实资金交易记录，过往表现不代表未来结果。真实仪表盘记录以逐张截图的形式单独发布在<a class="font-bold text-indigo-400 hover:underline" href="results.html">真实业绩</a>页面。',
+    lp_note: '快照拍摄于 2026-07-05 05:04（KST）— 当时持有 7 个仓位，浮盈浮亏并存。影子模式使用交易所实时行情数据对虚拟余额进行交易，并非真实资金交易记录，过往表现不代表未来结果。真实仪表盘记录以逐张截图的形式单独发布在<a class="font-bold text-indigo-400 hover:underline" href="results.html">真实业绩</a>页面。',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: '交易者转投 JaviD 的三大理由',
     why1_title: '中间零服务器',
@@ -1589,7 +1635,7 @@ var I18N = {
     aud2_title: '经验丰富的交易者',
     aud2_desc: '通过激进/普通/稳健仓位模式精细调整，在 500 多个交易对上并行运行三套策略，并通过实时仪表盘监控一切。',
     aud3_title: '注重安全 &amp; 技术型用户',
-    aud3_desc: '运行期间打开您的防火墙或网络监控工具看看 — 唯一可见的连接就是 OKX。从来没有中间服务器。查看<a class="font-bold text-indigo-600 hover:underline" href="#transparency">架构详解</a>。',
+    aud3_desc: '运行期间打开您的防火墙或网络监控工具看看 — 对外连接只有 OKX，以及一个提供仪表盘界面文件的公共 CDN — 没有我们自己的服务器。从来没有中间服务器。查看<a class="font-bold text-indigo-600 hover:underline" href="#transparency">架构详解</a>。',
     feat_eyebrow: 'JaviD 交易工具集',
     feat_h2: '设计如量化交易台，使用如手机应用',
     feat_sub: '刚接触机器人？从绿色标签开始。靛蓝色标签代表其背后运行的专业级引擎。',
@@ -1616,8 +1662,8 @@ var I18N = {
     sc_h2: '不是效果图，是真实的仪表盘界面。',
     sc_cap1: '累计盈亏（P&amp;L）与胜率 — 与机器人实时参考的同一市场趋势面板',
     sc_more_btn: '查看完整截图记录 <i class="h-4 w-4" data-lucide="arrow-right"></i>',
-    exch_title: '专为 OKX USDT-M 合约官方打造',
-    exch_desc: '专注一个交易所，做到极致 — 500 多个交易对，直连 WebSocket，0.1 秒延迟。通过我们的官方合作伙伴链接注册，手续费与直接注册完全相同；正是这笔推荐返佣让 JaviD 得以永久免费。',
+    exch_title: '专为 OKX USDT 永续合约打造',
+    exch_desc: '专注一个交易所，做到极致 — 500 多个交易对，直连 OKX WebSocket，0.1 秒延迟。每一笔订单都用您自己的 OKX API 密钥签名，从您的电脑直接发送到 OKX。您需要一个已开通 USDT 永续合约的 OKX 账户，注册约需五分钟。',
     exch_cta: '创建 OKX 账户 <i class="h-4 w-4" data-lucide="arrow-right"></i>',
     shadow_title: '<i class="h-6 w-6 text-indigo-600" data-lucide="flask-conical"></i> 在承担任何风险之前先试用',
     shadow_desc: '影子模式直接使用真实交易所的实时行情数据和实盘 API 来运行每一套策略 —— 与真实交易完全相同的数据源 —— 只是用虚拟余额代替真实资金。这与模拟盘(testnet)或普通模拟交易工具是完全不同的概念：模拟盘是一个与真实市场隔离的沙盒交易所，使用虚假、脱节的行情数据；而大多数模拟交易工具使用的是延迟或模拟的价格。影子模式的数据 100% 真实、实时，只有资金是虚拟的。',
@@ -1625,13 +1671,13 @@ var I18N = {
     size_title: '为何建议最低 1,000 USDT',
     size_desc: '每笔入场最高按余额的 1/300 计算仓位，将风险分散到数十个持仓中。若余额低于约 1,000 USDT，交易所的最小名义价值限制和手续费将开始侵蚀策略优势。',
     fee_title: '我们只分得交易所手续费中极小的一部分',
-    fee_desc: '无论是否使用 JaviD，OKX 都已对每笔订单收取少量交易手续费。这笔既有手续费的一部分由 OKX 返还给我们，而非由您额外支付。永远没有订阅费，也没有业绩提成。',
+    fee_desc: 'JaviD 不出售，也没有订阅费。如果您通过本页的推荐链接注册 OKX 账户，OKX 会将您本来就要支付的部分交易手续费分给我们 — 两种方式下您的费率完全相同，不会增加您的任何成本。JaviD Future Bot 是独立的第三方工具，与 OKX 没有关联、未获其背书，也不由其运营。',
     size_img_caption: '真实截图 — 实际的投资模式面板，余额 ÷ 300 / 500 / 700',
     cmp_h2: '与订阅制机器人及信号群组的对比',
     cmp_col_cloud: '云端订阅制机器人',
     cmp_col_telegram: 'Telegram 信号群组',
     cmp_row1_label: '费用',
-    cmp_row1_javid: '$0 — 永久免费',
+    cmp_row1_javid: '$0 — 无订阅费，无购买费用',
     cmp_row1_cloud: '每月 $20–$100 以上',
     cmp_row1_telegram: '按月收费，且零问责',
     cmp_row2_label: '运行位置',
@@ -1659,7 +1705,7 @@ var I18N = {
     comm_btn2: '<i class="h-4.5 w-4.5" data-lucide="message-square"></i> 社区版块',
     sec_eyebrow: '安全与信任',
     sec_h2: '设计即安全，本地运行，可自行验证。',
-    sec_sub: '我们不要求您单凭信任 — 应用运行时您可以随时打开防火墙或网络监控工具亲自查看。唯一可见的连接就是 OKX。',
+    sec_sub: '我们不要求您单凭信任 — 应用运行时您可以随时打开防火墙或网络监控工具亲自查看。对外连接只有 OKX，以及一个提供仪表盘界面文件的公共 CDN — 没有我们自己的服务器。',
     sec1_title: '零中间服务器',
     sec1_desc: '任何 JaviD 拥有的服务器都不会看到您的订单、余额或策略数据。没有中间环节，也就没有可攻击的节点。',
     sec2_title: '资金只有您能动用',
@@ -1670,7 +1716,7 @@ var I18N = {
     faq_h2: '在付费之前你可能会问的问题',
     faq_sub: '……不过其实没有什么需要付费的，它是免费的。尽管如此，以下是您可能想了解的内容：',
     faq_q1: '真的免费吗？没有隐藏费用？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a1: '是的 — <b class="text-slate-800">没有订阅费，没有购买费用，也没有业绩提成。</b>唯一的收入来源是 OKX 官方经纪商计划：您原本就要支付给 OKX 的一部分交易手续费，会由 OKX 返还给我们。',
+    faq_a1: '是的 — <b class="text-slate-800">没有订阅费，没有购买费用，也没有业绩提成。</b>如果您通过本页的推荐链接注册 OKX 账户，OKX 会将您原本就要支付的部分交易手续费分给我们。两种方式下您的费率相同，我们从不向您收取任何费用。',
     faq_q2: '输入我的 API 密钥安全吗？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a2: '您的 API 密钥会被<b class="text-slate-800">加密并仅存储在您自己的电脑上</b> — 从不会被传输到任何地方，也从不需要提现权限。',
     faq_q3: '能保证盈利吗？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1686,11 +1732,11 @@ var I18N = {
     faq_q8: '不会写代码也能使用吗？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a8: '可以 — 下载、双击 start.bat、粘贴您的 API 密钥、选择币种、开始运行即可。全程无需编写代码。<a class="font-bold text-indigo-600 hover:underline" href="manual.html">使用手册</a>以 9 个真实界面完整讲解。',
     faq_q9: '支持哪些交易所和市场？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a9: '目前仅支持<b class="text-slate-800">OKX USDT-M 合约</b>，可同时监控 500 多个交易对。',
+    faq_a9: '目前仅支持<b class="text-slate-800">OKX USDT 永续合约</b>，可同时监控 500 多个交易对。',
     faq_q10: 'Windows 和 macOS 都能运行吗？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a10: '可以，两者均支持。不需要高端硬件，只要有一台能保持 24/7 联网开机的电脑即可。',
     faq_q11: '必须通过您的推荐链接注册吗？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a11: '您可以使用现有账户，但只有通过合作伙伴链接注册，才能产生让这款软件保持免费的手续费返佣。',
+    faq_a11: '您可以使用现有的 OKX 账户 — 两种方式下程序行为完全相同。通过本页推荐链接注册只是为开发提供资金支持，不会给您增加任何成本。',
     faq_q12: '如何设置 Telegram 提醒？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a12: '在设置中输入您的机器人 Token 和聊天 ID — 即可按需或按计划接收余额、盈亏（P&amp;L）、ROI、胜率及持仓报告。',
     faq_q13: '退款政策是怎样的？<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1699,15 +1745,15 @@ var I18N = {
     faq_a14: '新版本会在本页面以及<a class="font-bold text-indigo-600 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">Telegram 频道</a>公布。直接下载并覆盖安装即可，设置会被完整保留。',
     dl_h2: '还在等什么，现在就开始交易？',
     dl_sub: '把繁琐的工作交给 JaviD 处理 — 每一笔交易，密钥、资金与控制权始终掌握在您自己手中。',
-    dl_free_note: '🔜 即将推出 — 安装文件正在准备中',
-    dl_okx_note: '还没有 OKX 账户？ <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">通过我们的官方合作伙伴链接注册</a>。',
+    dl_free_note: '⬇ 免费下载 — Windows &amp; macOS · OKX 版',
+    dl_okx_note: '还没有 OKX 账户？ <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">注册 OKX 账户</a>。',
     dl_badge1: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>无任何义务',
     dl_badge2: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>无隐藏费用',
     dl_badge3: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>无需信用卡',
     dl_howto: '点击您的操作系统 → 解压 → 运行 <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>。第一次使用？可以参考<a class="font-bold text-indigo-600 hover:underline" href="manual.html">使用手册</a>。',
     dl_contact: '有疑问？发邮件至 <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a>，或前往<a class="font-bold text-indigo-600 hover:underline" href="board.html">社区版块</a>提问。',
     dl_disclaimer: '加密货币合约交易存在较高风险，并非适合所有投资者。JaviD Future Bot 是一款独立的执行工具 — 并不保证盈利。本页面展示的业绩数据来自影子模式（虚拟余额）数据，以及特定时期真实仪表盘记录的截图快照；它们并不保证或暗示未来结果。所有交易决策及其结果均由用户自行承担全部责任。JaviD Future Bot 不提供投资建议，不托管任何资金，也不在任何服务器上执行交易 — 每一笔订单都直接从您自己的设备、使用您自己的 OKX API 凭证发出。',
-    footer_tagline: 'OKX USDT-M 合约自动化执行 — 100% 本地运行，非托管，永久免费。',
+    footer_tagline: 'OKX USDT 永续合约自动化执行 — 100% 本地运行，非托管，无订阅费。',
     footer_product_h: '产品',
     footer_link_shadow: '影子模式',
     footer_resources_h: '资源',
@@ -1719,7 +1765,7 @@ var I18N = {
     footer_legal1: '非投资建议',
     footer_legal2: '不托管资金',
     footer_legal3: '交易存在亏损风险',
-    footer_bottom_tagline: 'OKX USDT-M 合约自动化交易 · Windows &amp; macOS',
+    footer_bottom_tagline: 'OKX USDT 永续合约自动化交易 · Windows &amp; macOS',
     sc_cap2: '同时持有的仓位 — 浮盈浮亏并列展示，未经修饰',
     sc_cap3: '每日收益记录 — 好的日子和差的日子都如实保留',
     sc_cap4: '单笔交易记录 — 每笔交易的入场、离场和盈亏（P&L）',
@@ -1745,14 +1791,17 @@ var I18N = {
     hero_sub: 'Automatiza tu trading de futuros en OKX para reducir el estrés y los errores emocionales. Sin emociones, sin entradas perdidas, sin trasnochar frente a la pantalla — precisión a nivel de tick y ejecución 100% local.',
     hero_cta_primary: '<i class="h-4.5 w-4.5" data-lucide="download"></i> Empieza gratis — Descarga ahora',
     hero_cta_secondary: 'Prueba primero el Modo Shadow',
-    hero_partner_badge: '\n<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#00F0FF] text-[9px] font-black text-black">B</span>\n      Regístrate en segundos con nuestro enlace oficial de socio de OKX — mismas comisiones, sin coste adicional\n    ',
-    hero_footnote: 'Suscripción $0 · Gratis para siempre · Windows &amp; macOS · Sin tarjeta de crédito',
+    hero_partner_badge: '\n<span class="flex h-5 items-center justify-center rounded-full bg-black px-2 text-[9px] font-black tracking-wider text-white">OKX</span>\n      Creado para los futuros perpetuos USDT de OKX — abrir una cuenta en OKX lleva unos 5 minutos\n    ',
+    hero_footnote: 'Suscripción $0 · Sin tarjeta de crédito · Windows &amp; macOS · Funciona con tu propia cuenta de OKX',
+    okx_banner_title: 'Abre una cuenta en OKX',
+    okx_banner_sub: 'Futuros perpetuos USDT · unos 5 minutos · enlace de referido',
+    okx_trademark: 'OKX es una marca de su respectivo propietario. JaviD Future Bot es una herramienta independiente de terceros y no está afiliada a OKX, ni respaldada ni operada por OKX.',
     hero_terminal_label: '🔒 localhost:8002 — se ejecuta 100% en tu PC',
     strat_eyebrow: 'Motor de estrategias',
     strat_h2: 'Tres estrategias diseñadas con quant, escaneando en paralelo',
     strat_intro: 'Cada estrategia fue diseñada y perfeccionada mediante análisis cuantitativo impulsado por IA antes de fijar una sola regla. Ejecuta una sola, o las tres a la vez.',
     strat_a_title: 'Strategy-A · JaviD AIS',
-    strat_sub: 'OKX USDT-M Futures',
+    strat_sub: 'OKX USDT Perpetual Futures',
     strat_a_desc: 'La lógica central de grid adaptativo &amp; tendencia de JaviD. Analiza bandas ATR y la desviación del VWAP para calcular el momento de entrada, y gestiona las salidas con precisión a nivel de tick cada 10 segundos.',
     strat_b_title: 'Strategy-B · Reversión a la Media',
     strat_b_desc: 'La reversión a la media es un concepto de trading clásico: cuando el precio se aleja demasiado de su promedio, tiende a regresar antes de continuar. Esta estrategia fue diseñada mediante el análisis cuantitativo impulsado por IA de JaviD para operar exactamente ese patrón. Vigila el flujo de CVD y los umbrales de picos de volumen para detectar movimientos sobreextendidos, y opera el rebote con un dimensionamiento que evita liquidaciones ya integrado.',
@@ -1760,13 +1809,13 @@ var I18N = {
     strat_c_desc: 'El trading de ruptura parte de otra premisa: cuando el precio finalmente rompe un rango de consolidación estrecho con volumen creciente, tiende a seguir moviéndose en esa dirección en lugar de revertir. Esta estrategia fue diseñada mediante el análisis cuantitativo impulsado por IA de JaviD para capturar exactamente ese movimiento. Diseñada para la expansión de volatilidad — los stops dinámicos ATR y la reversión al VWAP protegen la posición una vez confirmada la ruptura y mientras dure el impulso.',
     lp_eyebrow: 'Prueba en Vivo',
     lp_h2: 'Antes de venderte nada, mira una cuenta que está operando ahora mismo',
-    lp_sub: 'Una instantánea de una cuenta en Modo Shadow, tomada directamente de un informe en vivo de Telegram — datos reales del mercado de OKX, USDT virtual, cero capital real en riesgo.',
+    lp_sub: 'Una instantánea de una cuenta en Modo Shadow, tomada directamente de un informe en vivo de Telegram — datos de mercado en vivo del exchange, USDT virtual, cero capital real en riesgo. Capturado en una versión anterior del mismo programa, antes de publicar la edición para OKX.',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>En vivo — actualizado hace <span id="liveUpdated"></span>',
     lp_balance_label: 'Saldo (USDT) — Modo Shadow, fondos virtuales',
     lp_pnl_label: 'P&amp;L acumulado (USDT) en 97 operaciones',
     lp_return_label: 'Rendimiento acumulado desde el inicio del Modo Shadow',
     lp_winrate_label: 'Tasa de acierto durante el mismo periodo',
-    lp_note: 'Instantánea tomada el 2026-07-05, 05:04 (KST) — 7 posiciones abiertas en ese momento, con una mezcla de ganancias y pérdidas flotantes. El Modo Shadow opera con datos reales del mercado de OKX sobre un saldo virtual; no es un registro de trading con dinero real. Un registro independiente del dashboard real se publica captura por captura en la página de <a class="font-bold text-indigo-400 hover:underline" href="results.html">Resultados Reales</a>.',
+    lp_note: 'Instantánea tomada el 2026-07-05, 05:04 (KST) — 7 posiciones abiertas en ese momento, con una mezcla de ganancias y pérdidas flotantes. El Modo Shadow opera con datos de mercado en vivo del exchange sobre un saldo virtual; no es un registro de trading con dinero real. Un registro independiente del dashboard real se publica captura por captura en la página de <a class="font-bold text-indigo-400 hover:underline" href="results.html">Resultados Reales</a>.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'Tres razones por las que los traders cambian a JaviD',
     why1_title: 'Cero servidores en el medio',
@@ -1798,7 +1847,7 @@ var I18N = {
     aud2_title: 'Traders con experiencia',
     aud2_desc: 'Ajusta con precisión los modos de dimensionamiento Agresivo/Normal/Estable, ejecuta las tres estrategias en paralelo en más de 500 símbolos, y supervisa todo desde un dashboard en vivo.',
     aud3_title: 'Usuarios técnicos &amp; preocupados por la seguridad',
-    aud3_desc: 'Abre tu firewall o monitor de red mientras se ejecuta — la única conexión que verás es OKX. Nunca hay un servidor intermedio. Consulta el <a class="font-bold text-indigo-600 hover:underline" href="#transparency">desglose de la arquitectura</a>.',
+    aud3_desc: 'Abre tu firewall o monitor de red mientras se ejecuta — las únicas conexiones salientes son OKX y una CDN pública que sirve los archivos de la interfaz — nunca un servidor nuestro. Nunca hay un servidor intermedio. Consulta el <a class="font-bold text-indigo-600 hover:underline" href="#transparency">desglose de la arquitectura</a>.',
     feat_eyebrow: 'Kit de Trading de JaviD',
     feat_h2: 'Construido como una mesa quant. Funciona como una app.',
     feat_sub: '¿Nuevo en bots? Empieza por las etiquetas verdes. Las etiquetas índigo son el motor de nivel profesional que trabaja por debajo.',
@@ -1825,8 +1874,8 @@ var I18N = {
     sc_h2: 'Nada de maquetas. Pantallas reales del dashboard.',
     sc_cap1: 'P&amp;L acumulado y tasa de acierto — el mismo panel de tendencia de mercado que usa el bot en vivo',
     sc_more_btn: 'Ver el registro completo de capturas <i class="h-4 w-4" data-lucide="arrow-right"></i>',
-    exch_title: 'Construido oficialmente para Futuros USDT-M de OKX',
-    exch_desc: 'Un solo exchange, hecho bien — más de 500 símbolos, conexión directa por WebSocket, 0.1 s de latencia. Regístrate con nuestro enlace oficial de socio y paga a OKX exactamente las mismas comisiones; ese reembolso por referido es lo que mantiene a JaviD gratis para siempre.',
+    exch_title: 'Creado para los Futuros Perpetuos USDT de OKX',
+    exch_desc: 'Un solo exchange, hecho bien — más de 500 símbolos, conexión WebSocket directa con OKX, 0.1 s de latencia. Cada orden se firma con tu propia clave API de OKX y se envía desde tu PC directamente a OKX. Necesitas una cuenta de OKX con futuros perpetuos USDT habilitados; abrirla lleva unos cinco minutos.',
     exch_cta: 'Crear cuenta en OKX <i class="h-4 w-4" data-lucide="arrow-right"></i>',
     shadow_title: '<i class="h-6 w-6 text-indigo-600" data-lucide="flask-conical"></i> Pruébalo antes de arriesgar un solo dólar',
     shadow_desc: 'El Modo Shadow ejecuta cada estrategia con los datos de mercado en tiempo real y la API en vivo del exchange real — el mismo feed que usa el trading real — con un saldo virtual en lugar de fondos reales. Esto es un concepto distinto de un testnet o un simulador de trading de papel habitual: el testnet es un exchange de prueba separado con datos de precios falsos y desconectados, y la mayoría de las herramientas de trading simulado usan precios retrasados o simulados. Los datos del Modo Shadow son 100% reales y en vivo; solo el dinero es virtual.',
@@ -1834,13 +1883,13 @@ var I18N = {
     size_title: 'Por qué recomendamos un mínimo de 1.000 USDT',
     size_desc: 'Cada entrada se dimensiona hasta 1/300 de tu saldo por operación, repartiendo el riesgo en decenas de posiciones. Por debajo de aproximadamente 1.000 USDT, los límites de nocional mínimo del exchange y las comisiones empiezan a reducir la ventaja.',
     fee_title: 'Compartimos solo una pequeña parte de la comisión del exchange',
-    fee_desc: 'OKX ya cobra una pequeña comisión de trading en cada orden — con o sin JaviD. Una parte de esa comisión existente nos la reembolsa OKX, no tú. Sin suscripción, sin comisión por rendimiento, nunca.',
+    fee_desc: 'JaviD no se vende y no tiene suscripción. Si abres tu cuenta de OKX con el enlace de referido de esta página, OKX comparte con nosotros parte de la comisión que ya pagas — tu tarifa es idéntica en ambos casos y no se añade nada a tus costes. JaviD Future Bot es una herramienta independiente de terceros y no está afiliada a OKX, ni respaldada ni operada por OKX.',
     size_img_caption: 'Captura real — el panel real del Modo de Inversión, saldo ÷ 300 / 500 / 700',
     cmp_h2: 'Cómo se compara con bots por suscripción y grupos de señales',
     cmp_col_cloud: 'Bots por suscripción en la nube',
     cmp_col_telegram: 'Grupos de señales en Telegram',
     cmp_row1_label: 'Coste',
-    cmp_row1_javid: '$0 — gratis para siempre',
+    cmp_row1_javid: '$0 — sin suscripción, sin precio de compra',
     cmp_row1_cloud: '$20–$100+/mes',
     cmp_row1_telegram: 'Cuota mensual + cero responsabilidad',
     cmp_row2_label: 'Dónde se ejecuta',
@@ -1868,7 +1917,7 @@ var I18N = {
     comm_btn2: '<i class="h-4.5 w-4.5" data-lucide="message-square"></i> Foro de la Comunidad',
     sec_eyebrow: 'Seguridad &amp; Confianza',
     sec_h2: 'Seguro por diseño. Local. Verificable.',
-    sec_sub: 'En lugar de pedirte que confíes en nosotros — abre tu firewall o monitor de red mientras la app se ejecuta. La única conexión que verás es OKX.',
+    sec_sub: 'En lugar de pedirte que confíes en nosotros — abre tu firewall o monitor de red mientras la app se ejecuta. Las únicas conexiones salientes son OKX y una CDN pública que sirve los archivos de la interfaz — nunca un servidor nuestro.',
     sec1_title: 'Cero servidores intermedios',
     sec1_desc: 'Ningún servidor propiedad de JaviD ve jamás tus órdenes, tu saldo o los datos de tu estrategia. No hay punto de ataque porque no hay ningún punto intermedio.',
     sec2_title: 'Fondos accesibles únicamente por ti',
@@ -1879,7 +1928,7 @@ var I18N = {
     faq_h2: 'Las preguntas que harías antes de pagar',
     faq_sub: '…solo que aquí no hay nada que pagar. Es gratis. Aun así, esto es lo que querrás saber:',
     faq_q1: '¿Es realmente gratis? ¿Sin costes ocultos?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a1: 'Sí — <b class="text-slate-800">sin suscripción, sin precio de compra, sin comisión por rendimiento.</b> La única fuente de ingresos es el Programa de Bróker oficial de OKX: una parte de la comisión de trading que ya pagas a OKX nos la reembolsa OKX.',
+    faq_a1: 'Sí — <b class="text-slate-800">sin suscripción, sin precio de compra, sin comisión por rendimiento.</b> Si abres tu cuenta de OKX con el enlace de referido de esta página, OKX comparte con nosotros parte de la comisión que ya pagas. Tu tarifa es la misma en ambos casos y nunca te cobramos nada.',
     faq_q2: '¿Es seguro introducir mi API key?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a2: 'Tu API key está <b class="text-slate-800">cifrada y almacenada localmente en tu propio PC</b> — nunca se transmite a ningún sitio, y nunca se requiere permiso de retiro.',
     faq_q3: '¿Se garantizan las ganancias?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1895,11 +1944,11 @@ var I18N = {
     faq_q8: '¿Puedo usarlo sin saber programar?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a8: 'Sí — descarga, haz doble clic en start.bat, pega tu API key, elige monedas, empieza. Sin código, en ningún momento. El <a class="font-bold text-indigo-600 hover:underline" href="manual.html">Manual de Usuario</a> lo explica en 9 pantallas reales.',
     faq_q9: '¿Qué exchanges y mercados son compatibles?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a9: 'Actualmente solo <b class="text-slate-800">Futuros USDT-M de OKX</b>, monitorizando más de 500 símbolos simultáneamente.',
+    faq_a9: 'Actualmente solo <b class="text-slate-800">Futuros Perpetuos USDT de OKX</b>, monitorizando más de 500 símbolos simultáneamente.',
     faq_q10: '¿Funciona en Windows y macOS?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a10: 'Sí — en ambos. No necesitas hardware de alta gama, solo un PC que permanezca encendido 24/7 con conexión a internet.',
     faq_q11: '¿Tengo que registrarme con vuestro enlace de referido?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a11: 'Puedes usar una cuenta existente, pero solo los registros con el enlace de socio generan el reembolso de comisión que mantiene gratis este software.',
+    faq_a11: 'Puedes usar una cuenta de OKX existente: el software funciona exactamente igual en ambos casos. Registrarte con el enlace de referido de esta página simplemente financia el desarrollo, sin coste adicional para ti.',
     faq_q12: '¿Cómo configuro las alertas de Telegram?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a12: 'Introduce tu token de bot y tu chat ID en Ajustes — recibirás informes de saldo, P&amp;L, ROI, tasa de acierto y posiciones abiertas, a petición o de forma programada.',
     faq_q13: '¿Cuál es la política de reembolsos?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -1908,15 +1957,15 @@ var I18N = {
     faq_a14: 'Las nuevas versiones se anuncian en esta página y en el <a class="font-bold text-indigo-600 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">canal de Telegram</a>. Descarga y sobrescribe — la configuración se conserva.',
     dl_h2: '¿Por qué aún no estás operando?',
     dl_sub: 'Deja que JaviD se encargue de las tareas tediosas — mientras tú conservas tus claves, tus fondos y tu control, en cada operación.',
-    dl_free_note: '🔜 Próximamente — los archivos de instalación se están preparando',
-    dl_okx_note: '¿Aún no tienes cuenta en OKX? <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">Regístrate con nuestro enlace oficial de socio</a>.',
+    dl_free_note: '⬇ Descarga gratuita — Windows &amp; macOS · edición OKX',
+    dl_okx_note: '¿Aún no tienes cuenta en OKX? <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">Crea tu cuenta de OKX</a>.',
     dl_badge1: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>Sin compromisos',
     dl_badge2: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>Sin comisiones ocultas',
     dl_badge3: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>Sin tarjeta de crédito',
     dl_howto: 'Haz clic en tu sistema operativo → descomprime → ejecuta <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. ¿Primera vez? Sigue el <a class="font-bold text-indigo-600 hover:underline" href="manual.html">Manual de Usuario</a>.',
     dl_contact: '¿Preguntas? Escribe a <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a> o pregunta en el <a class="font-bold text-indigo-600 hover:underline" href="board.html">Foro de la Comunidad</a>.',
     dl_disclaimer: 'El trading de futuros de criptomonedas conlleva un alto nivel de riesgo y no es adecuado para todos los inversores. JaviD Future Bot es una herramienta de ejecución independiente — no garantiza beneficios. Las cifras de rendimiento en esta página corresponden a datos del Modo Shadow (saldo virtual) y a capturas de registros reales del dashboard de periodos específicos. Todas las decisiones de trading y sus resultados son responsabilidad exclusiva del usuario. JaviD Future Bot no ofrece asesoramiento de inversión, no custodia fondos y no ejecuta operaciones en ningún servidor — cada orden se envía directamente desde tu propio dispositivo, usando tus propias credenciales de API de OKX.',
-    footer_tagline: 'Ejecución automatizada de Futuros USDT-M en OKX — 100% local, sin custodia, gratis para siempre.',
+    footer_tagline: 'Ejecución automatizada de futuros perpetuos USDT en OKX — 100% local, sin custodia, sin suscripción.',
     footer_product_h: 'Producto',
     footer_link_shadow: 'Modo Shadow',
     footer_resources_h: 'Recursos',
@@ -1954,14 +2003,17 @@ var I18N = {
     hero_sub: 'Automatisez votre trading de futures sur OKX pour réduire le stress et les erreurs émotionnelles. Aucune émotion, aucune entrée manquée, plus besoin de veiller toute la nuit — précision au tick près, exécution 100% locale.',
     hero_cta_primary: '<i class="h-4.5 w-4.5" data-lucide="download"></i> Commencer gratuitement — Télécharger maintenant',
     hero_cta_secondary: 'Essayer d\'abord le Mode Shadow',
-    hero_partner_badge: '\n<span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#00F0FF] text-[9px] font-black text-black">B</span>\n      Inscription rapide via notre lien partenaire officiel OKX — mêmes frais, aucun coût supplémentaire\n    ',
-    hero_footnote: '0 $ d\'abonnement · Gratuit à vie · Windows &amp; macOS · Sans carte bancaire',
+    hero_partner_badge: '\n<span class="flex h-5 items-center justify-center rounded-full bg-black px-2 text-[9px] font-black tracking-wider text-white">OKX</span>\n      Conçu pour les futures perpétuels USDT de OKX — ouvrir un compte OKX prend environ 5 minutes\n    ',
+    hero_footnote: '0 $ par mois · Sans carte bancaire · Windows &amp; macOS · Fonctionne avec votre propre compte OKX',
+    okx_banner_title: 'Ouvrir un compte OKX',
+    okx_banner_sub: 'Futures perpétuels USDT · environ 5 minutes · lien de parrainage',
+    okx_trademark: 'OKX est une marque de son propriétaire respectif. JaviD Future Bot est un outil tiers indépendant, non affilié à OKX, ni approuvé ni exploité par OKX.',
     hero_terminal_label: '🔒 localhost:8002 — s\'exécute à 100% sur votre PC',
     strat_eyebrow: 'Moteur de stratégies',
     strat_h2: 'Trois stratégies conçues par des quants, scannant en parallèle',
     strat_intro: 'Chaque stratégie a été conçue et affinée grâce à une analyse quantitative pilotée par IA avant même qu\'une seule règle ne soit figée. Lancez-en une seule, ou les trois ensemble.',
     strat_a_title: 'Strategy-A · JaviD AIS',
-    strat_sub: 'OKX USDT-M Futures',
+    strat_sub: 'OKX USDT Perpetual Futures',
     strat_a_desc: 'La logique cœur de grille adaptative &amp; de tendance de JaviD. Elle analyse les bandes ATR et l\'écart au VWAP pour calibrer les entrées, et gère les sorties avec une précision au tick près toutes les 10 secondes.',
     strat_b_title: 'Strategy-B · Retour à la Moyenne',
     strat_b_desc: 'Le retour à la moyenne est un concept de trading classique : lorsque le prix s\'éloigne trop de sa moyenne, il a tendance à y revenir avant de poursuivre sa route. Cette stratégie a été conçue par l\'analyse quantitative pilotée par IA de JaviD pour trader précisément ce schéma. Surveille le flux CVD et les seuils de pics de volume pour repérer les mouvements excessifs, puis trade le retour de balancier avec un dimensionnement anti-liquidation intégré.',
@@ -1969,13 +2021,13 @@ var I18N = {
     strat_c_desc: 'Le trading de cassure repose sur un principe différent : une fois que le prix sort enfin d\'une zone de consolidation étroite avec un volume en hausse, il a tendance à poursuivre son mouvement plutôt qu\'à s\'inverser. Cette stratégie a été conçue par l\'analyse quantitative pilotée par IA de JaviD pour capturer précisément ce mouvement. Conçue pour l\'expansion de volatilité — les stops suiveurs ATR et la réversion au VWAP protègent la position dès que la cassure est confirmée et tant que le momentum se poursuit.',
     lp_eyebrow: 'Preuve en Direct',
     lp_h2: 'Avant le discours commercial, voici un compte qui tourne en ce moment même',
-    lp_sub: 'Un instantané de compte en Mode Shadow, extrait directement d\'un rapport Telegram en direct — données de marché OKX réelles, USDT virtuels, zéro capital réel en jeu.',
+    lp_sub: 'Un instantané de compte en Mode Shadow, extrait directement d\'un rapport Telegram en direct — données de marché en direct de la plateforme, USDT virtuels, zéro capital réel en jeu. Capture réalisée sur une version antérieure du même programme, avant la sortie de l'édition OKX.',
     lp_badge: '<span class="h-2 w-2 rounded-full bg-emerald-400"></span>En direct — mis à jour il y a <span id="liveUpdated"></span>',
     lp_balance_label: 'Solde (USDT) — Mode Shadow, fonds virtuels',
     lp_pnl_label: 'P&amp;L cumulé (USDT) sur 97 trades',
     lp_return_label: 'Rendement cumulé depuis le début du Mode Shadow',
     lp_winrate_label: 'Taux de réussite sur la même période',
-    lp_note: 'Instantané pris le 2026-07-05 à 05:04 (KST) — 7 positions ouvertes à ce moment-là, avec un mélange de gains et pertes latents. Le Mode Shadow trade sur des données de marché OKX réelles avec un solde virtuel ; ce n\'est pas un historique de trading en argent réel. Un historique distinct du tableau de bord réel est publié capture par capture sur la page <a class="font-bold text-indigo-400 hover:underline" href="results.html">Résultats Réels</a>.',
+    lp_note: 'Instantané pris le 2026-07-05 à 05:04 (KST) — 7 positions ouvertes à ce moment-là, avec un mélange de gains et pertes latents. Le Mode Shadow trade sur des données de marché en direct de la plateforme avec un solde virtuel ; ce n\'est pas un historique de trading en argent réel. Un historique distinct du tableau de bord réel est publié capture par capture sur la page <a class="font-bold text-indigo-400 hover:underline" href="results.html">Résultats Réels</a>.',
     eyebrow_why_javid: 'Why JaviD',
     why_h2: 'Trois raisons qui poussent les traders à passer à JaviD',
     why1_title: 'Zéro serveur intermédiaire',
@@ -2007,7 +2059,7 @@ var I18N = {
     aud2_title: 'Traders expérimentés',
     aud2_desc: 'Affinez avec les modes de dimensionnement Agressif/Normal/Stable, exécutez les trois stratégies en parallèle sur plus de 500 symboles, et surveillez tout depuis un tableau de bord en direct.',
     aud3_title: 'Utilisateurs soucieux de sécurité &amp; techniques',
-    aud3_desc: 'Ouvrez votre pare-feu ou votre moniteur réseau pendant l\'exécution — la seule connexion que vous verrez est OKX. Jamais de serveur intermédiaire. Consultez le <a class="font-bold text-indigo-600 hover:underline" href="#transparency">détail de l\'architecture</a>.',
+    aud3_desc: 'Ouvrez votre pare-feu ou votre moniteur réseau pendant l\'exécution — les seules connexions sortantes sont OKX et un CDN public qui fournit les fichiers de l'interface — jamais un serveur à nous. Jamais de serveur intermédiaire. Consultez le <a class="font-bold text-indigo-600 hover:underline" href="#transparency">détail de l\'architecture</a>.',
     feat_eyebrow: 'Boîte à outils de trading JaviD',
     feat_h2: 'Conçu comme une salle de marché quant. Fonctionne comme une app.',
     feat_sub: 'Nouveau dans les bots ? Commencez par les étiquettes vertes. Les étiquettes indigo représentent le moteur de niveau professionnel qui tourne en dessous.',
@@ -2034,8 +2086,8 @@ var I18N = {
     sc_h2: 'Pas de maquettes. De vrais écrans du tableau de bord.',
     sc_cap1: 'P&amp;L cumulé et taux de réussite — le même panneau de tendance de marché que le bot consulte en direct',
     sc_more_btn: 'Voir l\'historique complet des captures <i class="h-4 w-4" data-lucide="arrow-right"></i>',
-    exch_title: 'Officiellement conçu pour les Futures USDT-M de OKX',
-    exch_desc: 'Un seul exchange, mais fait correctement — plus de 500 symboles, connexion WebSocket directe, latence de 0,1 s. Inscrivez-vous via notre lien partenaire officiel et payez à OKX exactement les mêmes frais ; c\'est ce reversement de parrainage qui permet à JaviD de rester gratuit à vie.',
+    exch_title: 'Conçu pour les Futures Perpétuels USDT de OKX',
+    exch_desc: 'Une seule plateforme, mais faite correctement — plus de 500 symboles, connexion WebSocket directe vers OKX, latence de 0,1 s. Chaque ordre est signé avec votre propre clé API OKX et envoyé depuis votre PC directement vers OKX. Il vous faut un compte OKX avec les futures perpétuels USDT activés ; son ouverture prend environ cinq minutes.',
     exch_cta: 'Créer un compte OKX <i class="h-4 w-4" data-lucide="arrow-right"></i>',
     shadow_title: '<i class="h-6 w-6 text-indigo-600" data-lucide="flask-conical"></i> Essayez-le avant de risquer le moindre dollar',
     shadow_desc: 'Le Mode Shadow exécute chaque stratégie avec les données de marché en direct et l\'API en direct du véritable exchange — exactement le même flux que le trading réel — mais avec un solde virtuel à la place de fonds réels. C\'est un concept différent d\'un testnet ou d\'un simulateur de trading papier classique : le testnet est une plateforme de test séparée avec des données de prix factices et déconnectées, et la plupart des outils de trading simulé utilisent des prix retardés ou simulés. Les données du Mode Shadow sont 100 % réelles et en direct ; seul l\'argent est virtuel.',
@@ -2043,13 +2095,13 @@ var I18N = {
     size_title: 'Pourquoi un minimum de 1 000 USDT',
     size_desc: 'Chaque entrée est dimensionnée jusqu\'à 1/300ᵉ de votre solde par trade, répartissant le risque sur des dizaines de positions. En dessous d\'environ 1 000 USDT, les limites de notionnel minimum de l\'exchange et les frais commencent à entamer l\'avantage.',
     fee_title: 'Nous ne touchons qu\'une infime part des frais de l\'exchange',
-    fee_desc: 'OKX prélève déjà de faibles frais de trading sur chaque ordre — avec ou sans JaviD. Une partie de ces frais existants nous est reversée par OKX, pas par vous. Aucun abonnement, aucune commission sur performance, jamais.',
+    fee_desc: 'JaviD n'est pas vendu et n'a aucun abonnement. Si vous ouvrez votre compte OKX via le lien de parrainage de cette page, OKX partage avec nous une partie des frais que vous payez déjà — votre taux est identique dans les deux cas et rien ne s'ajoute à vos coûts. JaviD Future Bot est un outil tiers indépendant, non affilié à OKX, ni approuvé ni exploité par OKX.',
     size_img_caption: 'Capture d\'écran réelle — le véritable panneau du Mode Investissement, solde ÷ 300 / 500 / 700',
     cmp_h2: 'Comparé aux bots par abonnement et aux groupes de signaux',
     cmp_col_cloud: 'Bots par abonnement dans le cloud',
     cmp_col_telegram: 'Groupes de signaux Telegram',
     cmp_row1_label: 'Coût',
-    cmp_row1_javid: '0 $ — gratuit à vie',
+    cmp_row1_javid: '0 $ — sans abonnement, sans prix d\'achat',
     cmp_row1_cloud: '20 $ à 100 $+/mois',
     cmp_row1_telegram: 'Frais mensuels + zéro responsabilité',
     cmp_row2_label: 'Où ça tourne',
@@ -2077,7 +2129,7 @@ var I18N = {
     comm_btn2: '<i class="h-4.5 w-4.5" data-lucide="message-square"></i> Forum Communautaire',
     sec_eyebrow: 'Sécurité &amp; Confiance',
     sec_h2: 'Sécurisé par conception. Local. Vérifiable.',
-    sec_sub: 'Plutôt que de vous demander de nous faire confiance — ouvrez votre pare-feu ou votre moniteur réseau pendant que l\'application tourne. La seule connexion que vous verrez est OKX.',
+    sec_sub: 'Plutôt que de vous demander de nous faire confiance — ouvrez votre pare-feu ou votre moniteur réseau pendant que l\'application tourne. Les seules connexions sortantes sont OKX et un CDN public qui fournit les fichiers de l'interface — jamais un serveur à nous.',
     sec1_title: 'Zéro serveur intermédiaire',
     sec1_desc: 'Aucun serveur appartenant à JaviD ne voit jamais vos ordres, votre solde ou les données de votre stratégie. Il n\'y a aucun point d\'attaque possible car il n\'y a aucun intermédiaire.',
     sec2_title: 'Fonds accessibles uniquement par vous',
@@ -2088,7 +2140,7 @@ var I18N = {
     faq_h2: 'Les questions que vous poseriez avant de payer',
     faq_sub: '…sauf qu\'il n\'y a rien à payer. C\'est gratuit. Voici tout de même ce qu\'il est utile de savoir :',
     faq_q1: 'Est-ce vraiment gratuit ? Aucun frais caché ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a1: 'Oui — <b class="text-slate-800">aucun abonnement, aucun prix d\'achat, aucune commission sur performance.</b> La seule source de revenus est le Programme Broker officiel de OKX : une partie des frais de trading que vous payez déjà à OKX nous est reversée par OKX.',
+    faq_a1: 'Oui — <b class="text-slate-800">aucun abonnement, aucun prix d\'achat, aucune commission sur performance.</b> Si vous ouvrez votre compte OKX via le lien de parrainage de cette page, OKX partage avec nous une partie des frais que vous payez déjà. Votre taux est identique dans les deux cas et nous ne vous facturons jamais rien.',
     faq_q2: 'Est-il sûr de saisir ma clé API ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a2: 'Votre clé API est <b class="text-slate-800">chiffrée et stockée localement sur votre propre PC</b> — elle n\'est jamais transmise nulle part, et l\'autorisation de retrait n\'est jamais requise.',
     faq_q3: 'Les profits sont-ils garantis ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -2104,11 +2156,11 @@ var I18N = {
     faq_q8: 'Puis-je l\'utiliser sans savoir coder ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a8: 'Oui — téléchargez, double-cliquez sur start.bat, collez votre clé API, choisissez vos cryptos, démarrez. Aucun code, nulle part. Le <a class="font-bold text-indigo-600 hover:underline" href="manual.html">Manuel Utilisateur</a> couvre tout cela en 9 écrans réels.',
     faq_q9: 'Quels exchanges et marchés sont pris en charge ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a9: 'Actuellement uniquement les <b class="text-slate-800">Futures USDT-M de OKX</b>, avec plus de 500 symboles surveillés simultanément.',
+    faq_a9: 'Actuellement uniquement les <b class="text-slate-800">Futures Perpétuels USDT de OKX</b>, avec plus de 500 symboles surveillés simultanément.',
     faq_q10: 'Fonctionne-t-il sous Windows et macOS ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a10: 'Oui — les deux. Aucun matériel haut de gamme n\'est nécessaire, juste un PC qui reste allumé 24h/24 avec une connexion internet.',
     faq_q11: 'Dois-je m\'inscrire via votre lien de parrainage ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
-    faq_a11: 'Vous pouvez utiliser un compte existant, mais seules les inscriptions via le lien partenaire génèrent le reversement de frais qui maintient ce logiciel gratuit.',
+    faq_a11: 'Vous pouvez utiliser un compte OKX existant : le logiciel fonctionne exactement de la même façon. S'inscrire via le lien de parrainage de cette page finance simplement le développement, sans coût supplémentaire pour vous.',
     faq_q12: 'Comment configurer les alertes Telegram ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
     faq_a12: 'Saisissez votre token de bot et votre chat ID dans les Paramètres — vous recevrez des rapports de solde, P&amp;L, ROI, taux de réussite et positions ouvertes, à la demande ou selon un planning.',
     faq_q13: 'Quelle est la politique de remboursement ?<i class="chev h-4.5 w-4.5 shrink-0 text-indigo-600" data-lucide="chevron-down"></i>',
@@ -2117,15 +2169,15 @@ var I18N = {
     faq_a14: 'Les nouvelles versions sont annoncées sur cette page et sur le <a class="font-bold text-indigo-600 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">canal Telegram</a>. Téléchargez et écrasez l\'ancienne version — les paramètres sont conservés.',
     dl_h2: 'Pourquoi n\'êtes-vous pas encore en train de trader ?',
     dl_sub: 'Laissez JaviD s\'occuper des tâches fastidieuses — pendant que vous gardez vos clés, vos fonds, votre contrôle, sur chaque trade.',
-    dl_free_note: '🔜 Bientôt disponible — les fichiers d\'installation sont en préparation',
-    dl_okx_note: 'Pas encore de compte OKX ? <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">Inscrivez-vous via notre lien partenaire officiel</a>.',
+    dl_free_note: '⬇ Téléchargement gratuit — Windows &amp; macOS · édition OKX',
+    dl_okx_note: 'Pas encore de compte OKX ? <a class="font-bold text-indigo-600 hover:underline" href="https://okx.com/join/40752336" rel="noopener" target="_blank">Créez votre compte OKX</a>.',
     dl_badge1: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>Aucun engagement',
     dl_badge2: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>Aucun frais caché',
     dl_badge3: '<i class="h-4 w-4 text-emerald-500" data-lucide="check"></i>Sans carte bancaire',
     dl_howto: 'Cliquez sur votre OS → décompressez → lancez <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">start.bat</code>. Première fois ? Suivez le <a class="font-bold text-indigo-600 hover:underline" href="manual.html">Manuel Utilisateur</a>.',
     dl_contact: 'Des questions ? Écrivez à <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a> ou posez-les sur le <a class="font-bold text-indigo-600 hover:underline" href="board.html">Forum Communautaire</a>.',
     dl_disclaimer: 'Le trading de futures sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. JaviD Future Bot est un outil d\'exécution autonome — il ne garantit pas de profits. Les chiffres de performance présentés sur cette page proviennent de données du Mode Shadow (solde virtuel) et de captures d\'écran du tableau de bord réel sur des périodes spécifiques. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l\'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne détient aucun fonds en dépôt, et n\'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API OKX.',
-    footer_tagline: 'Exécution automatisée des Futures USDT-M sur OKX — 100% locale, non custodiale, gratuite à vie.',
+    footer_tagline: 'Exécution automatisée des futures perpétuels USDT sur OKX — 100% locale, non custodiale, sans abonnement.',
     footer_product_h: 'Produit',
     footer_link_shadow: 'Mode Shadow',
     footer_resources_h: 'Ressources',
