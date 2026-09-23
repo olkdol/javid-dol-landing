@@ -1,6 +1,26 @@
 <!doctype html>
 <html lang="tr">
 <head>
+<script>
+// 다운로드 유입 출처 캡처 — 첫 진입 시 한 번만 기록, 이후 사이트 내 이동으로는 덮어쓰지 않는다.
+// (마케팅팀 REQUEST_landingagent_downloadattribution.md 참고)
+(function captureSource() {
+  try {
+    if (sessionStorage.getItem("jfb_src")) return;
+    var q = new URLSearchParams(location.search);
+    var refHost = "";
+    try { refHost = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) {}
+    if (refHost && refHost.endsWith("javidtrading.com")) refHost = ""; // 우리 사이트 내부 이동은 출처가 아니다
+    sessionStorage.setItem("jfb_src", JSON.stringify({
+      r: refHost,
+      us: q.get("utm_source") || "",
+      um: q.get("utm_medium") || "",
+      uc: q.get("utm_campaign") || "",
+      lp: location.pathname,
+    }));
+  } catch (e) {}
+})();
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ücretsiz Otomatik Alım Satım Programı — OKX Kripto Vadeli İşlemlerde 7/24 Otomatik Trading | JaviD Future Bot</title>
@@ -242,13 +262,13 @@ details.faq-item[open]{border-color:#101114 !important;box-shadow:0 0 0 1px #101
 
 <nav>
   <div class="nav-row">
-    <a class="nav-logo" href="ko.html">JaviD <b>Future Bot</b></a>
+    <a class="nav-logo" href="ko">JaviD <b>Future Bot</b></a>
     <div class="nav-links">
       <a href="#capabilities">Stratejiler</a>
       <a href="#architecture">Mimari</a>
       <a href="#research">Araştırma</a>
-      <a href="board.html" class="nav-highlight">Topluluk</a>
-      <a href="index.html">English</a>
+      <a href="board" class="nav-highlight">Topluluk</a>
+      <a href="/">English</a>
     </div>
     <a href="#download" class="nav-cta">Ücretsiz İndir</a>
   </div>
@@ -540,7 +560,7 @@ details.faq-item[open]{border-color:#101114 !important;box-shadow:0 0 0 1px #101
     <div style="font-size:28px;margin-bottom:14px;">🔑</div>
     <h3 style="font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:10px;color:var(--text);">İndirmeden Önce</h3>
     <p style="font-size:13.5px;line-height:1.7;color:var(--faint);margin-bottom:22px;">JaviD Future Bot, kendi OKX hesabınızla çalışır — işlem yapmaya başlamadan önce bağlı bir OKX hesabına ve API anahtarına ihtiyacınız var. Henüz hesabınız yok mu? Kayıt olmak yalnızca yaklaşık 5 dakika sürer.</p>
-    <a id="jfb-dlgate-signup" href="okx-signup-api-guide.html" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;">OKX'e Kaydol ve API Al →</a>
+    <a id="jfb-dlgate-signup" href="okx-signup-api-guide" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;">OKX'e Kaydol ve API Al →</a>
     <button type="button" id="jfb-dlgate-confirm" class="btn btn-ghost" style="width:100%;justify-content:center;margin-bottom:10px;">Zaten Bir OKX Hesabım Var</button>
     <button type="button" id="jfb-dlgate-cancel" style="background:none;border:none;color:var(--faint);font-size:12.5px;cursor:pointer;text-decoration:underline;">Daha Sonra</button>
   </div>
@@ -558,9 +578,9 @@ details.faq-item[open]{border-color:#101114 !important;box-shadow:0 0 0 1px #101
     </div>
     <div class="footer-col">
       <div class="footer-col-label">Diğer</div>
-      <a href="board.html">Topluluk Forumu</a>
-      <a href="okx-signup-api-guide.html">Kayıt ve API Kurulum Rehberi</a>
-      <a href="index.html">English</a>
+      <a href="board">Topluluk Forumu</a>
+      <a href="okx-signup-api-guide">Kayıt ve API Kurulum Rehberi</a>
+      <a href="/">English</a>
       <a href="https://www.javidtrading.com/ko">Borsa Seçimi (Merkez)</a>
       <a href="https://bn.javidtrading.com/ko">Binance Sürümü</a>
       <a href="mailto:javidfuturebot@javid-dol.uk">İletişim</a>
@@ -824,5 +844,27 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
 })();
 </script>
 
+<script>
+    // 다운로드 클릭 시 캡처해둔 유입 출처를 쿼리로 첨부. href는 그대로 두고
+    // 클릭 시점에 갱신하므로 브라우저 네이티브 다운로드 동작이 유지된다.
+    (function attachDownloadSource() {
+      document.querySelectorAll('a[href^="/api/download"]').forEach(function (a) {
+        a.addEventListener("click", function () {
+          try {
+            var raw = sessionStorage.getItem("jfb_src");
+            if (!raw) return;
+            var s = JSON.parse(raw);
+            var u = new URL(a.href, location.href);
+            if (s.r) u.searchParams.set("r", s.r);
+            if (s.us) u.searchParams.set("us", s.us);
+            if (s.um) u.searchParams.set("um", s.um);
+            if (s.uc) u.searchParams.set("uc", s.uc);
+            if (s.lp) u.searchParams.set("lp", s.lp);
+            a.href = u.pathname + u.search;
+          } catch (e) {}
+        });
+      });
+    })();
+    </script>
 </body>
 </html>

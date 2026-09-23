@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+# 설치 파일 엔드포인트. 링크를 따라오는 크롤러가 받아 가면 다운로드 집계가 부풀려진다(2026-09-15).
+# ⚠️ 이 줄이 okx 에만 빠져 있었다(2026-09-23 발견) — 주간 SEO 점검이 bg/bn 만 보고 있어서
+#    9/16 개설 이후 아무도 보지 못했다. 점검 대상은 weekly_seo_check.py 에서 확장했다.
+Disallow: /api/download
 
 Sitemap: https://okx.javidtrading.com/sitemap.xml
