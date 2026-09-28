@@ -455,7 +455,7 @@
     <div class="stat-card"><div class="stat-num" id="lpReturn">+3.28%</div><div class="stat-label">Lợi nhuận lũy kế kể từ khi bắt đầu Shadow Mode</div></div>
     <div class="stat-card"><div class="stat-num" id="lpWinRate">81.4%</div><div class="stat-label">Tỷ lệ thắng trong cùng giai đoạn</div></div>
   </div>
-  <p class="sim-note" id="lpNote">Ảnh chụp tính đến 2026-07-05 05:04 giờ KST — tại thời điểm đó đang giữ 7 vị thế mở, với lãi/lỗ chưa hiện thực hóa xen kẽ dương âm đúng như thực tế (khi logic đóng lệnh vẫn đang tiếp tục quản lý). Shadow Mode giao dịch bằng dữ liệu thị trường thực trên số dư ảo, <strong>đây không phải là bản ghi giao dịch bằng tiền thật.</strong> Hiệu suất trong quá khứ không đảm bảo lợi nhuận trong tương lai.</p>
+  <p class="sim-note" id="lpNote">Ảnh chụp tính đến 2026-07-05 05:04 giờ KST — tại thời điểm đó đang giữ 7 vị thế mở, với lãi/lỗ chưa hiện thực hóa xen kẽ dương âm đúng như thực tế (khi logic đóng lệnh vẫn đang tiếp tục quản lý). Shadow Mode giao dịch bằng dữ liệu thị trường thực trên số dư ảo, <strong>đây không phải là bản ghi giao dịch bằng tiền thật.</strong> Hiệu suất trong quá khứ là ghi nhận của một giai đoạn đã kết thúc; với hợp đồng tương lai có đòn bẩy, bạn có thể mất toàn bộ số tiền đã nạp.</p>
 </div></section>
 
 <!-- ================= SHOWCASE ================= -->
@@ -564,7 +564,7 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 JaviD Future Bot · bn.javidtrading.com</span>
-    <span>Giao dịch hợp đồng tương lai tiền mã hóa tiềm ẩn rủi ro rất cao. Do sử dụng đòn bẩy, bạn có thể mất toàn bộ vốn (bị thanh lý). JaviD Future Bot chỉ là một công cụ thực thi độc lập, không đảm bảo lợi nhuận và không cung cấp tư vấn đầu tư. Mọi quyết định đầu tư cùng hậu quả của nó hoàn toàn thuộc trách nhiệm của bạn.</span>
+    <span>Giao dịch hợp đồng tương lai tiền mã hóa tiềm ẩn rủi ro rất cao. Do sử dụng đòn bẩy, bạn có thể mất toàn bộ vốn (bị thanh lý). JaviD Future Bot chỉ là một công cụ thực thi độc lập, không giữ tiền của bạn và không cung cấp tư vấn đầu tư. Đây là hợp đồng tương lai có đòn bẩy — bạn có thể mất toàn bộ số tiền đã nạp. Mọi quyết định đầu tư cùng hậu quả của nó hoàn toàn thuộc trách nhiệm của bạn.</span>
   </div>
 </div></footer>
 
@@ -746,7 +746,7 @@ document.querySelectorAll('.netCanvas').forEach(function(canvas){
     document.getElementById('liveBadge').style.display = 'block';
     document.getElementById('liveProofSub').textContent = 'Ảnh chụp tài khoản theo thời gian thực, lấy trực tiếp từ bot đang vận hành — dữ liệu thị trường thực, USDT ảo, rủi ro tài sản thật bằng 0.';
     var openTxt = data.open_positions != null ? 'Đang giữ ' + data.open_positions + ' vị thế, ' : '';
-    document.getElementById('lpNote').innerHTML = 'Dữ liệu thời gian thực, tự động cập nhật — ' + openTxt + 'lãi/lỗ chưa hiện thực hóa đang xen kẽ dương âm vì logic đóng lệnh đang quản lý theo thời gian thực. Hiệu suất trong quá khứ không đảm bảo lợi nhuận trong tương lai.';
+    document.getElementById('lpNote').innerHTML = 'Dữ liệu thời gian thực, tự động cập nhật — ' + openTxt + 'lãi/lỗ chưa hiện thực hóa đang xen kẽ dương âm vì logic đóng lệnh đang quản lý theo thời gian thực. Hiệu suất trong quá khứ là ghi nhận của một giai đoạn đã kết thúc; với hợp đồng tương lai có đòn bẩy, bạn có thể mất toàn bộ số tiền đã nạp.';
   }).catch(function(){});
 })();
 

@@ -428,7 +428,7 @@
     <div class="stat-card"><div class="stat-num" id="lpReturn">+3.28%</div><div class="stat-label">Retorno acumulado desde o início do modo sombra</div></div>
     <div class="stat-card"><div class="stat-num" id="lpWinRate">81.4%</div><div class="stat-label">Taxa de acerto no mesmo período</div></div>
   </div>
-  <p class="sim-note" id="lpNote">Snapshot com base em 2026-07-05 05:04 (KST) — no momento, havia 7 posições abertas, com lucros e perdas não realizados mistos (a lógica de liquidação ainda estava gerenciando ativamente essas posições). O modo sombra negocia dados reais de mercado usando um saldo virtual e <strong>não é um histórico de negociação com fundos reais.</strong> Desempenho passado não garante retornos futuros.</p>
+  <p class="sim-note" id="lpNote">Snapshot com base em 2026-07-05 05:04 (KST) — no momento, havia 7 posições abertas, com lucros e perdas não realizados mistos (a lógica de liquidação ainda estava gerenciando ativamente essas posições). O modo sombra negocia dados reais de mercado usando um saldo virtual e <strong>não é um histórico de negociação com fundos reais.</strong> O desempenho passado é o registro de um período que já terminou, e nos futuros alavancados você pode perder todo o valor depositado.</p>
 </div></section>
 
 <!-- ================= SHOWCASE ================= -->
@@ -535,7 +535,7 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 JaviD Future Bot · bb.javidtrading.com</span>
-    <span>A negociação de futuros de criptomoedas envolve risco muito elevado. A alavancagem pode resultar na perda total do capital (liquidação). O JaviD Future Bot é apenas uma ferramenta de execução independente; ele não garante lucros nem oferece aconselhamento de investimento. Todas as decisões de investimento e suas consequências são de exclusiva responsabilidade do usuário.</span>
+    <span>A negociação de futuros de criptomoedas envolve risco muito elevado. A alavancagem pode resultar na perda total do capital (liquidação). O JaviD Future Bot é apenas uma ferramenta de execução independente; ele não custodia fundos nem oferece aconselhamento de investimento. São futuros alavancados — você pode perder todo o valor depositado. Todas as decisões de investimento e suas consequências são de exclusiva responsabilidade do usuário.</span>
   </div>
 </div></footer>
 
@@ -717,7 +717,7 @@ document.querySelectorAll('.netCanvas').forEach(function(canvas){
     document.getElementById('liveBadge').style.display = 'block';
     document.getElementById('liveProofSub').textContent = 'Snapshot da conta em tempo real, obtido diretamente do bot em execução — dados reais de mercado, USDT virtual, zero risco de fundos reais.';
     var openTxt = data.open_positions != null ? data.open_positions + ' posições abertas, ' : '';
-    document.getElementById('lpNote').innerHTML = 'Dados em tempo real, atualização automática — ' + openTxt + 'como a lógica de liquidação está gerenciando ativamente as posições, os lucros e perdas não realizados aparecem mistos. Desempenho passado não garante retornos futuros.';
+    document.getElementById('lpNote').innerHTML = 'Dados em tempo real, atualização automática — ' + openTxt + 'como a lógica de liquidação está gerenciando ativamente as posições, os lucros e perdas não realizados aparecem mistos. O desempenho passado é o registro de um período que já terminou, e nos futuros alavancados você pode perder todo o valor depositado.';
   }).catch(function(){});
 })();
 

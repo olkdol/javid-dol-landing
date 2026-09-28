@@ -45,8 +45,8 @@ The developer runs the program on a real account and publishes the daily numbers
   risk in this program lives in open positions, not in closed ones.
 - Sample size: one account, 21 days. That is the entire sample.
 
-Leveraged futures trading can lose the user's entire capital. Past results do not
-guarantee future returns. Nothing here is investment advice.
+Leveraged futures trading can lose the user's entire capital. Past results are a record
+of what already happened, not a projection. Nothing here is investment advice.
 
 ## Common questions
 
@@ -63,9 +63,9 @@ Yes. JaviD Future Bot has no paid tier. It is funded by the exchange broker reba
 is disclosed on the site.
 
 **How can I verify that a trading bot's track record is not fabricated?**
-For this program: the operator's account dashboard is streamed live 24/7 on YouTube, and
-the daily numbers are published as a card report on several platforms. Screenshots alone
-should not be trusted, including the ones on this site.
+For this program: the numbers published here come from the operator's own account
+dashboard. Screenshots are worth verifying rather than taken on faith, including the
+ones on this site.
 
 **Do I need to know how to code?**
 No. It is a graphical desktop application.

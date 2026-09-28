@@ -455,7 +455,7 @@
     <div class="stat-card"><div class="stat-num" id="lpReturn">+3.28%</div><div class="stat-label">Retorno acumulado desde o início do modo sombra</div></div>
     <div class="stat-card"><div class="stat-num" id="lpWinRate">81.4%</div><div class="stat-label">Taxa de acerto no mesmo período</div></div>
   </div>
-  <p class="sim-note" id="lpNote">Snapshot de 05/07/2026, 05h04 (horário da Coreia) — no momento havia 7 posições abertas, com resultados não realizados mistos entre positivos e negativos, exatamente como estavam (a lógica de saída ainda estava gerenciando essas posições naquele instante). O modo sombra negocia dados reais de mercado com um saldo virtual e <strong>não é um registro de trading com fundos reais.</strong> Desempenho passado não garante retorno futuro.</p>
+  <p class="sim-note" id="lpNote">Snapshot de 05/07/2026, 05h04 (horário da Coreia) — no momento havia 7 posições abertas, com resultados não realizados mistos entre positivos e negativos, exatamente como estavam (a lógica de saída ainda estava gerenciando essas posições naquele instante). O modo sombra negocia dados reais de mercado com um saldo virtual e <strong>não é um registro de trading com fundos reais.</strong> O desempenho passado é o registro de um período que já terminou, e nos futuros alavancados você pode perder todo o valor depositado.</p>
 </div></section>
 
 <!-- ================= SHOWCASE ================= -->
@@ -564,7 +564,7 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 JaviD Future Bot · bn.javidtrading.com</span>
-    <span>O trading de futuros de criptomoedas envolve risco muito elevado. A alavancagem pode causar a perda total do capital (liquidação). O JaviD Future Bot é apenas uma ferramenta de execução independente, não garante lucros e não presta consultoria de investimento. Toda decisão de investimento e suas consequências são de sua exclusiva responsabilidade.</span>
+    <span>O trading de futuros de criptomoedas envolve risco muito elevado. A alavancagem pode causar a perda total do capital (liquidação). O JaviD Future Bot é apenas uma ferramenta de execução independente, não custodia fundos e não presta consultoria de investimento. São futuros alavancados — você pode perder todo o valor depositado. Toda decisão de investimento e suas consequências são de sua exclusiva responsabilidade.</span>
   </div>
 </div></footer>
 
@@ -746,7 +746,7 @@ document.querySelectorAll('.netCanvas').forEach(function(canvas){
     document.getElementById('liveBadge').style.display = 'block';
     document.getElementById('liveProofSub').textContent = 'Snapshot de conta em tempo real, obtido diretamente do bot em operação — dados reais de mercado, USDT virtual, zero risco de capital real.';
     var openTxt = data.open_positions != null ? data.open_positions + ' posições abertas, ' : '';
-    document.getElementById('lpNote').innerHTML = 'Dados em tempo real, atualização automática — ' + openTxt + 'como a lógica de saída está gerenciando as posições em tempo real, os resultados não realizados aparecem mistos entre positivos e negativos. Desempenho passado não garante retorno futuro.';
+    document.getElementById('lpNote').innerHTML = 'Dados em tempo real, atualização automática — ' + openTxt + 'como a lógica de saída está gerenciando as posições em tempo real, os resultados não realizados aparecem mistos entre positivos e negativos. O desempenho passado é o registro de um período que já terminou, e nos futuros alavancados você pode perder todo o valor depositado.';
   }).catch(function(){});
 })();
 

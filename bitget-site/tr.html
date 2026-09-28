@@ -468,7 +468,7 @@
     <div class="stat-card"><div class="stat-num" id="lpReturn">+%3,28</div><div class="stat-label">Gölge mod başlangıcından bu yana kümülatif getiri</div></div>
     <div class="stat-card"><div class="stat-num" id="lpWinRate">%81,4</div><div class="stat-label">Aynı dönemde kazanma oranı</div></div>
   </div>
-  <p class="sim-note" id="lpNote">05.07.2026 05:04 KST itibarıyla anlık görüntü — o sırada 7 açık pozisyon vardı ve değerleme kâr/zararı pozitif-negatif karışık haldeydi (çıkış mantığı o anda hâlâ yönetiyordu). Gölge mod, gerçek piyasa verilerini sanal bir bakiye üzerinde işleme sokan bir yöntemdir ve <strong>gerçek fonlarla yapılmış bir işlem kaydı değildir.</strong> Geçmiş performans gelecekteki getiriyi garanti etmez.</p>
+  <p class="sim-note" id="lpNote">05.07.2026 05:04 KST itibarıyla anlık görüntü — o sırada 7 açık pozisyon vardı ve değerleme kâr/zararı pozitif-negatif karışık haldeydi (çıkış mantığı o anda hâlâ yönetiyordu). Gölge mod, gerçek piyasa verilerini sanal bir bakiye üzerinde işleme sokan bir yöntemdir ve <strong>gerçek fonlarla yapılmış bir işlem kaydı değildir.</strong> Geçmiş performans, sona ermiş bir dönemin kaydıdır; kaldıraçlı vadeli işlemlerde yatırdığınız tutarın tamamını kaybedebilirsiniz.</p>
 </div></section>
 
 <!-- ================= SHOWCASE ================= -->
@@ -577,7 +577,7 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 JaviD Future Bot · bg.javidtrading.com</span>
-    <span>Kripto vadeli işlem alım satımı çok yüksek risk taşır. Kaldıraç nedeniyle ana paranın tamamının kaybedilmesi (likidasyon) söz konusu olabilir. JaviD Future Bot yalnızca bağımsız bir çalıştırma aracıdır; kâr garanti etmez ve yatırım danışmanlığı sunmaz. Tüm yatırım kararları ve bunların sonuçlarına ilişkin sorumluluk tamamen kullanıcıya aittir.</span>
+    <span>Kripto vadeli işlem alım satımı çok yüksek risk taşır. Kaldıraç nedeniyle ana paranın tamamının kaybedilmesi (likidasyon) söz konusu olabilir. JaviD Future Bot yalnızca bağımsız bir çalıştırma aracıdır; fonları saklamaz ve yatırım danışmanlığı sunmaz. Kaldıraçlı vadeli işlemlerde yatırdığınız tutarın tamamını kaybedebilirsiniz. Tüm yatırım kararları ve bunların sonuçlarına ilişkin sorumluluk tamamen kullanıcıya aittir.</span>
   </div>
 </div></footer>
 
@@ -759,7 +759,7 @@ document.querySelectorAll('.netCanvas').forEach(function(canvas){
     document.getElementById('liveBadge').style.display = 'block';
     document.getElementById('liveProofSub').textContent = 'Çalışan botun kendisinden alınan gerçek zamanlı hesap anlık görüntüsü — gerçek piyasa verisi, sanal USDT, gerçek fon riski 0.';
     var openTxt = data.open_positions != null ? data.open_positions + ' açık pozisyon, ' : '';
-    document.getElementById('lpNote').innerHTML = 'Gerçek zamanlı veri, otomatik güncelleme — ' + openTxt + 'çıkış mantığı anlık olarak yönetmeye devam ettiğinden değerleme kâr/zararı pozitif-negatif karışık olabilir. Geçmiş performans gelecekteki getiriyi garanti etmez.';
+    document.getElementById('lpNote').innerHTML = 'Gerçek zamanlı veri, otomatik güncelleme — ' + openTxt + 'çıkış mantığı anlık olarak yönetmeye devam ettiğinden değerleme kâr/zararı pozitif-negatif karışık olabilir. Geçmiş performans, sona ermiş bir dönemin kaydıdır; kaldıraçlı vadeli işlemlerde yatırdığınız tutarın tamamını kaybedebilirsiniz.';
   }).catch(function(){});
 })();
 

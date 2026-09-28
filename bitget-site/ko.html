@@ -468,7 +468,7 @@
     <div class="stat-card"><div class="stat-num" id="lpReturn">+3.28%</div><div class="stat-label">쉐도우 모드 시작 이후 누적 수익률</div></div>
     <div class="stat-card"><div class="stat-num" id="lpWinRate">81.4%</div><div class="stat-label">같은 구간 승률</div></div>
   </div>
-  <p class="sim-note" id="lpNote">2026-07-05 05:04 KST 기준 스냅샷 — 당시 7개 포지션 보유 중이었고, 평가손익이 플러스·마이너스로 섞여 있는 상태 그대로입니다(청산 로직이 계속 관리 중이던 시점). 쉐도우 모드는 실제 시장 데이터를 가상 잔고로 거래하는 방식이며, <strong>실제 자금 거래 기록이 아닙니다.</strong> 과거 성과는 미래 수익을 보장하지 않습니다.</p>
+  <p class="sim-note" id="lpNote">2026-07-05 05:04 KST 기준 스냅샷 — 당시 7개 포지션 보유 중이었고, 평가손익이 플러스·마이너스로 섞여 있는 상태 그대로입니다(청산 로직이 계속 관리 중이던 시점). 쉐도우 모드는 실제 시장 데이터를 가상 잔고로 거래하는 방식이며, <strong>실제 자금 거래 기록이 아닙니다.</strong> 과거 성과는 그 기간에 실제로 일어난 일의 기록이며, 레버리지 선물 거래에서는 원금 전액 손실이 가능합니다.</p>
 </div></section>
 
 <!-- ================= SHOWCASE ================= -->
@@ -577,7 +577,7 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 JaviD Future Bot · bg.javidtrading.com</span>
-    <span>암호화폐 선물 거래는 매우 높은 위험을 수반합니다. 레버리지로 인해 원금 전액 손실(청산)이 발생할 수 있습니다. JaviD Future Bot은 독립 실행 도구일 뿐이며, 수익을 보장하지 않고 투자 자문을 제공하지 않습니다. 모든 투자 판단과 그 결과에 대한 책임은 본인에게 있습니다.</span>
+    <span>암호화폐 선물 거래는 매우 높은 위험을 수반합니다. 레버리지로 인해 원금 전액 손실(청산)이 발생할 수 있습니다. JaviD Future Bot은 독립 실행 도구일 뿐이며, 자금을 보관하지 않고 투자 자문을 제공하지 않습니다. 레버리지 선물 거래이므로 원금 전액을 잃을 수 있습니다. 모든 투자 판단과 그 결과에 대한 책임은 본인에게 있습니다.</span>
   </div>
 </div></footer>
 
@@ -759,7 +759,7 @@ document.querySelectorAll('.netCanvas').forEach(function(canvas){
     document.getElementById('liveBadge').style.display = 'block';
     document.getElementById('liveProofSub').textContent = '실행 중인 봇에서 직접 가져온 실시간 계좌 스냅샷 — 실제 시장 데이터, 가상 USDT, 실제 자금 위험 0.';
     var openTxt = data.open_positions != null ? data.open_positions + '개 포지션 보유 중, ' : '';
-    document.getElementById('lpNote').innerHTML = '실시간 데이터, 자동 갱신 — ' + openTxt + '청산 로직이 실시간으로 관리하는 중이라 평가손익은 플러스·마이너스가 섞여 있습니다. 과거 성과는 미래 수익을 보장하지 않습니다.';
+    document.getElementById('lpNote').innerHTML = '실시간 데이터, 자동 갱신 — ' + openTxt + '청산 로직이 실시간으로 관리하는 중이라 평가손익은 플러스·마이너스가 섞여 있습니다. 과거 성과는 그 기간에 실제로 일어난 일의 기록이며, 레버리지 선물 거래에서는 원금 전액 손실이 가능합니다.';
   }).catch(function(){});
 })();
 

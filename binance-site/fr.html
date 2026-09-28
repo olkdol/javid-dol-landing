@@ -68,7 +68,7 @@
   "mainEntity": [
     {"@type":"Question","name":"Is it really free? No hidden costs?","acceptedAnswer":{"@type":"Answer","text":"Yes — no subscription, no purchase price, no performance fee. Revenue comes solely from Binance's official Broker Program: a share of the trading fee you already pay Binance is rebated to us by Binance. You never pay anything extra."}},
     {"@type":"Question","name":"Is my API key safe?","acceptedAnswer":{"@type":"Answer","text":"Your API key is encrypted and stored locally on your own PC — it is never sent to any external server. Withdrawal permission is never required, so even if a key leaked, funds could not be withdrawn."}},
-    {"@type":"Question","name":"Are profits guaranteed?","acceptedAnswer":{"@type":"Answer","text":"No. JaviD Future Bot is a tool that executes a defined strategy without emotion — it does not guarantee profits. Crypto futures trading carries a high risk of loss, and all trading decisions and outcomes are the user's responsibility."}},
+    {"@type":"Question","name":"How much can I lose?","acceptedAnswer":{"@type":"Answer","text":"Up to everything you put in. These are leveraged futures on a real exchange — a position can be liquidated and your entire deposit can go to zero. Every order is placed from your own device with your own API key, so the account, the funds and the outcome stay yours. You can start it with no API key connected: Shadow Mode trades live prices against a virtual balance, so you can watch how it behaves before any real money is involved."}},
     {"@type":"Question","name":"Do I need to know how to code?","acceptedAnswer":{"@type":"Answer","text":"No. Download, double-click JaviD_Future_Bot, paste your API key, pick your coins, and start. No code is ever written."}}
   ]
 }
@@ -580,8 +580,8 @@
       <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a2">Votre clé API est <b class="text-slate-800">chiffrée et stockée localement sur votre propre PC</b> — elle n'est jamais transmise où que ce soit, et l'autorisation de retrait n'est jamais requise.</div>
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
-      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900"><span data-i18n="faq_q3">Les profits sont-ils garantis ?</span><i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
-      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a3"><b class="text-slate-800">Non.</b> C'est un outil qui exécute une stratégie définie 24h/24 sans émotion. Le trading de contrats à terme crypto comporte un risque de perte sérieux — validez en Shadow Mode avant de passer en réel.</div>
+      <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900"><span data-i18n="faq_q3">Combien puis-je perdre ?<i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
+      <div class="px-5 pb-5 text-[13px] leading-relaxed text-slate-500" data-i18n="faq_a3"><b class="text-slate-800">La totalité de ce que vous déposez.</b> Ce sont des futures à effet de levier sur un exchange réel : une position peut être liquidée et votre dépôt peut tomber à zéro. Chaque ordre part de votre propre appareil avec votre propre clé API — le compte, les fonds et le résultat restent les vôtres. Vous pouvez le lancer sans connecter la moindre clé API : le Mode Shadow trade les prix réels en temps réel sur un solde virtuel, pour que vous voyiez comment il se comporte avant d'engager de l'argent réel.</div>
     </details>
     <details class="faq-item rounded-xl border border-slate-200 bg-white">
       <summary class="flex items-center justify-between gap-4 px-5 py-4 text-[14px] font-bold text-slate-900"><span data-i18n="faq_q4">À quel point le Shadow Mode est-il proche du trading réel ?</span><i data-lucide="chevron-down" class="chev h-4.5 w-4.5 shrink-0 text-indigo-600"></i></summary>
@@ -728,7 +728,7 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
   <p class="mt-4 text-[12.5px] text-slate-400" data-i18n="dl_flow_note">Cliquez sur votre système → décompressez → exécutez <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">JaviD_Future_Bot</code>. L'app démarre dans la barre d'état système ; cliquez sur l'icône pour ouvrir le tableau de bord. Première fois ? Suivez le <a class="font-bold text-indigo-600 hover:underline" href="manual">manuel d'utilisation</a>.</p>
   <p class="mt-1.5 text-[12.5px] text-slate-400" data-i18n="dl_contact_note">Des questions ? Écrivez à <a class="font-bold text-indigo-600 hover:underline" href="mailto:javidfuturebot@javid-dol.uk">javidfuturebot@javid-dol.uk</a> ou posez votre question sur le <a class="font-bold text-indigo-600 hover:underline" href="board">forum communautaire</a>.</p>
 
-  <p class="mx-auto mt-12 max-w-2xl border-t border-slate-200 pt-6 text-[11.5px] leading-relaxed text-slate-400" data-i18n="final_disclaimer">Le trading de contrats à terme sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. JaviD Future Bot est un outil d'exécution autonome — il ne garantit pas de profits. Les chiffres de performance sur cette page sont des données du Shadow Mode (solde virtuel) et des instantanés de relevés réels du tableau de bord pour des périodes spécifiques ; ils ne garantissent ni ne laissent présager des résultats futurs. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne conserve aucun fonds en dépôt et n'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API Binance.</p>
+  <p class="mx-auto mt-12 max-w-2xl border-t border-slate-200 pt-6 text-[11.5px] leading-relaxed text-slate-400" data-i18n="final_disclaimer">Le trading de futures sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. Avec l'effet de levier, une position peut être liquidée et vous pouvez perdre la totalité de votre dépôt. Cette page ne contient aucune projection : chaque chiffre affiché est l'enregistrement de ce qui s'est déjà produit. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne détient aucun fonds en dépôt, et n'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API Binance.</p>
 </div></section>
 
 
@@ -963,7 +963,7 @@ var I18N = {
   "faq_a13": "The price is $0, so there's nothing to refund. Delete it anytime — no cancellation flow, no penalty.",
   "faq_a14": "New versions are announced on this page and in the <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Telegram channel</a>. Download and overwrite — settings are preserved.",
   "faq_a2": "Your API key is <b class=\"text-slate-800\">encrypted and stored locally on your own PC</b> — it is never transmitted anywhere, and withdrawal permission is never required.",
-  "faq_a3": "<b class=\"text-slate-800\">No.</b> It's a tool that executes a defined strategy 24/7 without emotion. Crypto futures carry a serious risk of loss — validate in Shadow Mode before going live.",
+  "faq_a3": "<b class=\"text-slate-800\">Up to everything you put in.</b> These are leveraged futures on a real exchange — a position can be liquidated and your entire deposit can go to zero. Every order is placed from your own device with your own API key, so the account, the funds and the outcome stay yours. You can start it with no API key connected: Shadow Mode trades live prices against a virtual balance, so you can watch how it behaves before any real money is involved.",
   "faq_a4": "Shadow Mode uses <b class=\"text-slate-800\">the real exchange's live API</b> with <b class=\"text-slate-800\">virtual USDT</b> — signals, timing, and data are identical to live trading; only the real orders are withheld. This is not a testnet and not a generic paper-trading simulator — those run on separate sandbox data that can lag or diverge from the real market. Shadow Mode trades against the same live order book everyone else sees.",
   "faq_a5": "New entries and position management stop. Positions already open remain on the exchange, and the bot re-detects and resumes managing them on restart. An always-on mini PC or low-cost cloud VM is recommended.",
   "faq_a6": "We recommend <b class=\"text-slate-800\">1,000 USDT or more</b> so per-trade sizing (up to 1/300th of balance) stays above exchange minimum-notional limits.",
@@ -979,7 +979,7 @@ var I18N = {
   "faq_q13": "What's the refund policy?",
   "faq_q14": "How do updates work?",
   "faq_q2": "Is it safe to enter my API key?",
-  "faq_q3": "Are profits guaranteed?",
+  "faq_q3": "How much can I lose?",
   "faq_q4": "How close is Shadow Mode to real trading?",
   "faq_q5": "What happens if my PC shuts down mid-trade?",
   "faq_q6": "What's the minimum capital?",
@@ -1005,7 +1005,7 @@ var I18N = {
   "feat_8_title": "Every Trade Logged, P&amp;L Tracked",
   "fee_model_desc": "Binance already charges a small trading fee on every order — with or without JaviD. A portion of that existing fee is rebated to us by Binance, not by you. No subscription, no performance fee, ever.",
   "fee_model_title": "We Split a Sliver of the Exchange Fee",
-  "final_disclaimer": "Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. JaviD Future Bot is a standalone execution tool — it does not guarantee profits. Performance figures on this page are Shadow Mode (virtual balance) data and snapshots of real dashboard records from specific periods; they do not guarantee or imply future results. All trading decisions and their outcomes are the sole responsibility of the user. JaviD Future Bot does not provide investment advice, does not custody funds, and does not execute trades on any server — every order is placed directly from your own device using your own Binance API credentials.",
+  "final_disclaimer": "Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. Leverage means a position can be liquidated and you can lose your entire deposit. Nothing on this page is a projection — every number shown is a record of something that already happened. All trading decisions and their outcomes are the sole responsibility of the user. JaviD Future Bot does not provide investment advice, does not custody funds, and does not execute trades on any server — every order is placed directly from your own device using your own Binance API credentials.",
   "final_h2": "Why Aren't You Trading Yet?",
   "final_sub": "Let JaviD take care of the tedious tasks — while you keep your keys, your funds, your control, on every single trade.",
   "footer_binance_guide": "Binance Setup Guide",
@@ -1176,7 +1176,7 @@ var I18N = {
   "faq_a13": "가격이 $0이므로 환불할 것이 없습니다. 언제든 삭제하세요 — 해지 절차도, 위약금도 없습니다.",
   "faq_a14": "새 버전은 이 페이지와 <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">텔레그램 채널</a>에 공지됩니다. 다운로드 후 덮어쓰기만 하면 되며 — 설정은 그대로 유지됩니다.",
   "faq_a2": "API 키는 <b class=\"text-slate-800\">암호화되어 사용자의 PC에만 로컬로 저장</b>됩니다 — 어디로도 전송되지 않으며, 출금 권한은 절대 필요하지 않습니다.",
-  "faq_a3": "<b class=\"text-slate-800\">아니요.</b> 정해진 전략을 감정 없이 24시간 실행하는 도구입니다. 크립토 선물 거래는 심각한 손실 위험을 수반하므로 — 실거래 전에 반드시 Shadow Mode로 검증하세요.",
+  "faq_a3": "<b class=\"text-slate-800\">넣은 돈 전부입니다.</b> 실제 거래소의 레버리지 선물이라 포지션이 청산되면 원금이 0이 될 수 있습니다. 모든 주문은 본인 기기에서 본인 API 키로 나가며, 계좌도 자금도 결과도 전부 본인 것입니다. API 키를 연결하지 않은 상태로도 켤 수 있습니다 — 섀도우 모드가 실시간 시세를 가상 잔고로 거래하니, 실제 돈이 들어가기 전에 어떻게 움직이는지 먼저 보세요.",
   "faq_a4": "Shadow Mode는 <b class=\"text-slate-800\">실제 거래소의 실시간 API</b>와 <b class=\"text-slate-800\">가상 USDT</b>를 사용합니다 — 신호, 타이밍, 데이터는 실거래와 동일하며, 실제 주문만 실행되지 않습니다. 테스트넷도 아니고 일반적인 모의투자 시뮬레이터도 아닙니다 — 그런 툴들은 실제 시장과 어긋나거나 지연될 수 있는 별도의 샌드박스 데이터를 사용합니다. Shadow Mode는 모두가 보는 것과 동일한 실시간 호가창을 기준으로 거래합니다.",
   "faq_a5": "신규 진입과 포지션 관리가 중단됩니다. 이미 보유 중인 포지션은 거래소에 그대로 남아 있으며, 봇이 재시작 시 이를 다시 감지해 관리를 재개합니다. 상시 전원이 켜진 미니 PC나 저렴한 클라우드 VM 사용을 권장합니다.",
   "faq_a6": "<b class=\"text-slate-800\">1,000 USDT 이상</b>을 권장합니다. 거래당 사이징(잔고의 최대 1/300)이 거래소 최소 명목가 기준을 넘도록 유지하기 위함입니다.",
@@ -1192,7 +1192,7 @@ var I18N = {
   "faq_q13": "환불 정책은 어떻게 되나요?",
   "faq_q14": "업데이트는 어떻게 진행되나요?",
   "faq_q2": "API 키를 입력해도 안전한가요?",
-  "faq_q3": "수익이 보장되나요?",
+  "faq_q3": "얼마나 잃을 수 있나요?",
   "faq_q4": "Shadow Mode는 실제 거래와 얼마나 비슷한가요?",
   "faq_q5": "거래 중 PC가 꺼지면 어떻게 되나요?",
   "faq_q6": "최소 자본금은 얼마인가요?",
@@ -1218,7 +1218,7 @@ var I18N = {
   "feat_8_title": "모든 거래 기록, 손익 추적",
   "fee_model_desc": "바이낸스는 JaviD 사용 여부와 관계없이 모든 주문에 소액의 거래 수수료를 부과합니다. 그 기존 수수료의 일부가 사용자가 아닌 바이낸스로부터 저희에게 리베이트됩니다. 구독료도, 성과 수수료도 절대 없습니다.",
   "fee_model_title": "거래소 수수료의 일부를 나눠 받습니다",
-  "final_disclaimer": "암호화폐 선물 거래는 높은 수준의 위험을 수반하며 모든 투자자에게 적합하지 않을 수 있습니다. JaviD Future Bot은 독립 실행형 거래 실행 도구이며 — 수익을 보장하지 않습니다. 이 페이지의 성과 수치는 Shadow Mode(가상 잔고) 데이터와 특정 기간의 실제 대시보드 기록 스냅샷이며, 향후 결과를 보장하거나 암시하지 않습니다. 모든 거래 결정과 그 결과에 대한 책임은 전적으로 사용자에게 있습니다. JaviD Future Bot은 투자 자문을 제공하지 않고, 자금을 수탁하지 않으며, 어떤 서버에서도 거래를 실행하지 않습니다 — 모든 주문은 사용자 본인의 기기에서 본인의 바이낸스 API 자격 증명으로 직접 실행됩니다.",
+  "final_disclaimer": "암호화폐 선물 거래는 높은 위험을 수반하며 모든 투자자에게 적합하지 않을 수 있습니다. 레버리지 거래이므로 포지션이 청산되면 원금 전액을 잃을 수 있습니다. 이 페이지에 예측은 없습니다 — 보이는 숫자는 전부 이미 일어난 일의 기록입니다. 모든 매매 판단과 그 결과에 대한 책임은 전적으로 사용자에게 있습니다. JaviD Future Bot은 투자 자문을 제공하지 않고, 자금을 커스터디하지 않으며, 어떤 서버에서도 거래를 실행하지 않습니다 — 모든 주문은 사용자 본인의 기기에서 본인의 Binance API 자격 증명으로 직접 실행됩니다.",
   "final_h2": "아직도 거래를 시작하지 않으셨나요?",
   "final_sub": "번거로운 작업은 JaviD에게 맡기세요 — 모든 거래에서 키도, 자금도, 통제권도 계속 사용자가 직접 보유합니다.",
   "footer_binance_guide": "바이낸스 설정 가이드",
@@ -1248,7 +1248,7 @@ var I18N = {
   "live_h2": "홍보이기 전에, 지금 실제로 운용 중인 계정을 먼저 보여드립니다",
   "live_sub": "실시간 텔레그램 리포트에서 그대로 가져온 Shadow Mode 계정 스냅샷 — 실제 바이낸스 시장 데이터, 가상 USDT, 실제 자본 위험 없음.",
   "lp_balance_label": "잔고 (USDT) — Shadow Mode, 가상 자금",
-  "lp_note": "2026-07-05 05:04 KST 기준 스냅샷 — 해당 시점 7개 포지션 보유 중, 평가손익이 혼재되어 있습니다. Shadow Mode는 실제 바이낸스 시장 데이터를 가상 잔고로 거래하며, 이는 실제 자금 거래 기록이 아니고 과거 성과가 향후 결과를 보장하지 않습니다. 별도의 실계좌 대시보드 기록은 <a class=\"font-bold text-indigo-400 hover:underline\" href=\"results.html\">실제 결과</a> 페이지에 화면 캡처 단위로 공개되어 있습니다.",
+  "lp_note": "2026-07-05 05:04 KST 기준 스냅샷 — 해당 시점 7개 포지션 보유 중, 평가손익이 혼재되어 있습니다. Shadow Mode는 실제 바이낸스 시장 데이터를 가상 잔고로 거래하며, 이는 실제 자금 거래 기록이 아닙니다. 보이는 숫자는 단일 계좌·단일 기간에 이미 일어난 일의 기록입니다. 별도의 실계좌 대시보드 기록은 <a class=\"font-bold text-indigo-400 hover:underline\" href=\"results.html\">실제 결과</a> 페이지에 화면 캡처 단위로 공개되어 있습니다.",
   "lp_pnl_label": "누적 손익 (USDT), 97건의 거래 기준",
   "lp_return_label": "Shadow Mode 시작 이후 누적 수익률",
   "lp_winrate_label": "같은 기간 승률",
@@ -1389,7 +1389,7 @@ var I18N = {
   "faq_a13": "価格が$0なので返金するものがありません。いつでも削除してください — 解約手続きも違約金もありません。",
   "faq_a14": "新バージョンはこのページと<a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Telegramチャンネル</a>で告知されます。ダウンロードして上書きするだけで — 設定はそのまま保持されます。",
   "faq_a2": "APIキーは<b class=\"text-slate-800\">暗号化され、あなた自身のPCにローカル保存</b>されます — どこにも送信されず、出金権限は一切不要です。",
-  "faq_a3": "<b class=\"text-slate-800\">いいえ。</b>定められた戦略を感情を挟まず24時間実行するツールです。暗号資産先物取引には深刻な損失リスクが伴うため — 実運用前にShadow Modeで必ず検証してください。",
+  "faq_a3": "<b class=\"text-slate-800\">入れた資金の全額です。</b>実際の取引所でのレバレッジ先物なので、ポジションが強制決済（清算）されれば元本がゼロになることもあります。注文はすべてご自身の端末から、ご自身のAPIキーで発注されます。口座も資金も、その結果もすべてご本人のものです。APIキーを接続しないままでも起動できます。シャドーモードは実際の値動きを仮想残高で売買するので、実際の資金を入れる前に、どう動くかをご自身で確かめられます。",
   "faq_a4": "Shadow Modeは<b class=\"text-slate-800\">実際の取引所のライブAPI</b>と<b class=\"text-slate-800\">仮想USDT</b>を使用します — シグナル、タイミング、データは実運用と同一で、実際の注文だけが見送られます。テストネットでも、一般的な模擬売買シミュレーターでもありません — それらは実際の市場からずれたり遅延したりする別のサンドボックスデータを使用します。Shadow Modeは、誰もが見ているのと同じライブ板情報を基準に取引します。",
   "faq_a5": "新規エントリーとポジション管理が停止します。すでに保有中のポジションは取引所側にそのまま残り、再起動時にボットがそれを再検知して管理を再開します。常時電源が入ったミニPCや低コストのクラウドVMの利用を推奨します。",
   "faq_a6": "<b class=\"text-slate-800\">1,000 USDT以上</b>を推奨します。1取引あたりのサイジング(残高の最大1/300)を取引所の最小名目金額基準より上に保つためです。",
@@ -1405,7 +1405,7 @@ var I18N = {
   "faq_q13": "返金ポリシーはどうなっていますか?",
   "faq_q14": "アップデートはどのように行われますか?",
   "faq_q2": "APIキーを入力しても安全ですか?",
-  "faq_q3": "利益は保証されますか?",
+  "faq_q3": "どれくらい損をする可能性がありますか？",
   "faq_q4": "Shadow Modeは実際の取引にどれくらい近いですか?",
   "faq_q5": "取引中にPCがシャットダウンしたらどうなりますか?",
   "faq_q6": "最低資金はいくらですか?",
@@ -1431,7 +1431,7 @@ var I18N = {
   "feat_8_title": "すべての取引を記録、損益を追跡",
   "fee_model_desc": "BinanceはJaviDの利用有無にかかわらず、すべての注文に少額の取引手数料を課しています。その既存手数料の一部が、ユーザーではなくBinanceから当社にリベートされます。サブスクリプションも成果報酬も一切ありません。",
   "fee_model_title": "取引所手数料のごく一部をシェアしています",
-  "final_disclaimer": "暗号資産先物取引には高いリスクが伴い、すべての投資家に適しているわけではありません。JaviD Future Botはスタンドアロンの実行ツールであり — 利益を保証するものではありません。このページの実績数値はShadow Mode(仮想残高)のデータ、および特定期間の実口座ダッシュボード記録のスナップショットであり、将来の結果を保証または示唆するものではありません。すべての取引判断とその結果に対する責任はユーザー本人にあります。JaviD Future Botは投資助言を提供せず、資金を管理せず、いかなるサーバー上でも取引を実行しません — すべての注文はユーザー自身のデバイスから、ユーザー自身のBinance API認証情報を使って直接発注されます。",
+  "final_disclaimer": "暗号資産の先物取引には高いリスクが伴い、すべての投資家に適しているわけではありません。レバレッジ取引のため、ポジションが清算されると元本の全額を失うことがあります。このページに将来の予測はありません。表示されている数値は、すべてすでに起きたことの記録です。取引の判断とその結果に対する責任は、すべてユーザー自身にあります。JaviD Future Botは投資助言を提供せず、資金を保管せず、いかなるサーバー上でも取引を実行しません — すべての注文は、ユーザー自身のデバイスから、ユーザー自身のBinance API認証情報を使って直接実行されます。",
   "final_h2": "まだ取引を始めていないのですか?",
   "final_sub": "面倒な作業はJaviDに任せましょう — すべての取引で、鍵も、資金も、コントロールもあなた自身が持ち続けます。",
   "footer_binance_guide": "Binanceセットアップガイド",
@@ -1461,7 +1461,7 @@ var I18N = {
   "live_h2": "宣伝の前に、今まさに稼働中のアカウントをご覧ください",
   "live_sub": "ライブのTelegramレポートからそのまま取得したShadow Modeアカウントのスナップショット — 実際のBinance市場データ、仮想USDT、実資本のリスクはゼロ。",
   "lp_balance_label": "残高(USDT) — Shadow Mode、仮想資金",
-  "lp_note": "2026年7月5日 05:04 KST時点のスナップショット — その時点で7ポジション保有中、含み益と含み損が混在しています。Shadow Modeは実際のBinance市場データを仮想残高で取引するもので、実資金取引の記録ではなく、過去の実績が将来の結果を保証するものでもありません。実口座ダッシュボードの記録はスクリーンショット単位で<a class=\"font-bold text-indigo-400 hover:underline\" href=\"results.html\">実績</a>ページに別途公開しています。",
+  "lp_note": "2026年7月5日 05:04 KST時点のスナップショット — その時点で7ポジション保有中、含み益と含み損が混在しています。Shadow Modeは実際のBinance市場データを仮想残高で売買するもので、実資金による取引の記録ではありません。表示されている数値は、単一口座・単一期間にすでに起きたことの記録です。実口座ダッシュボードの記録はスクリーンショット単位で<a class=\"font-bold text-indigo-400 hover:underline\" href=\"results.html\">実績</a>ページに別途公開しています。",
   "lp_pnl_label": "累積損益(USDT)、97件の取引ベース",
   "lp_return_label": "Shadow Mode開始以降の累積リターン",
   "lp_winrate_label": "同期間の勝率",
@@ -1602,7 +1602,7 @@ var I18N = {
   "faq_a13": "价格是 $0,所以没有什么可退的。随时可以卸载 — 没有取消流程,也没有任何违约金。",
   "faq_a14": "新版本会在本页面和<a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">Telegram 频道</a>公布。下载后覆盖安装即可 — 设置会保留。",
   "faq_a2": "你的 API 密钥会<b class=\"text-slate-800\">加密并仅保存在你自己的电脑上</b> — 从不会被发送到任何地方,也从不需要提现权限。",
-  "faq_a3": "<b class=\"text-slate-800\">不能。</b>这是一个不带情绪、24 小时执行既定策略的工具。加密货币合约交易存在严重的亏损风险 — 请务必先在 Shadow Mode 中验证,再切换实盘。",
+  "faq_a3": "<b class=\"text-slate-800\">最多亏光你投入的全部资金。</b>这是真实交易所上的杠杆合约 — 仓位可能被强制平仓，本金可能归零。每一笔订单都从你自己的设备、用你自己的 API 密钥发出，账户、资金和结果始终都是你的。你也可以在不连接任何 API 密钥的情况下直接启动：影子模式用真实实时行情在虚拟余额上交易，让你在投入真钱之前先看清它是怎么跑的。",
   "faq_a4": "Shadow Mode 使用<b class=\"text-slate-800\">真实交易所的实时 API</b>和<b class=\"text-slate-800\">虚拟 USDT</b> — 信号、时机和数据都与实盘完全一致,只是不会真正下单。这既不是模拟盘(testnet),也不是普通的模拟交易工具 —— 那些工具使用的是可能滞后或偏离真实市场的沙盒数据。Shadow Mode 交易的是所有人看到的同一个实时盘口。",
   "faq_a5": "新开仓和持仓管理会停止。已经持有的仓位仍留在交易所,重启后机器人会重新识别并恢复管理。建议使用常开的迷你主机或低成本云主机。",
   "faq_a6": "我们建议<b class=\"text-slate-800\">1,000 USDT 或以上</b>,以确保单笔仓位规模(最高为余额的 1/300)高于交易所的最小名义价值限制。",
@@ -1618,7 +1618,7 @@ var I18N = {
   "faq_q13": "退款政策是怎样的?",
   "faq_q14": "更新是怎么进行的?",
   "faq_q2": "输入 API 密钥安全吗?",
-  "faq_q3": "能保证盈利吗?",
+  "faq_q3": "我可能亏损多少？",
   "faq_q4": "Shadow Mode 和真实交易有多接近?",
   "faq_q5": "如果交易过程中电脑关机会怎样?",
   "faq_q6": "最低资金是多少?",
@@ -1644,7 +1644,7 @@ var I18N = {
   "feat_8_title": "每笔交易都有记录,盈亏全程追踪",
   "fee_model_desc": "无论是否使用 JaviD,币安都会对每笔订单收取小额交易手续费。这笔既有手续费的一部分会由币安返佣给我们,而不是由你额外支付。没有订阅费,也没有业绩提成,永远不会有。",
   "fee_model_title": "我们分享的是交易所手续费的一小部分",
-  "final_disclaimer": "加密货币合约交易具有高风险,并非适合所有投资者。JaviD Future Bot 是一款独立的执行工具 — 它不保证盈利。本页面的业绩数据均为 Shadow Mode(虚拟余额)数据,以及特定时期真实账户仪表盘记录的快照,并不保证或暗示未来结果。所有交易决策及其后果均由用户自行承担。JaviD Future Bot 不提供投资建议,不托管资金,也不在任何服务器上执行交易 — 每一笔订单都直接从你自己的设备、使用你自己的币安 API 凭证发出。",
+  "final_disclaimer": "加密货币合约交易存在较高风险，并非适合所有投资者。由于使用杠杆，仓位可能被强制平仓，你可能亏损全部本金。本页面没有任何预测 — 所显示的每一个数字都是已经发生过的记录。所有交易决策及其结果均由用户自行承担全部责任。JaviD Future Bot 不提供投资建议，不托管任何资金，也不在任何服务器上执行交易 — 每一笔订单都直接从您自己的设备、使用您自己的 Binance API 凭证发出。",
   "final_h2": "还在等什么,为什么还没开始交易?",
   "final_sub": "把繁琐的工作交给 JaviD — 每一笔交易中,密钥、资金和控制权始终都在你自己手中。",
   "footer_binance_guide": "币安设置指南",
@@ -1815,7 +1815,7 @@ var I18N = {
   "faq_a13": "El precio es $0, así que no hay nada que reembolsar. Bórralo cuando quieras — sin proceso de cancelación, sin penalización.",
   "faq_a14": "Las nuevas versiones se anuncian en esta página y en el <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">canal de Telegram</a>. Descarga y sobrescribe — la configuración se conserva.",
   "faq_a2": "Tu clave API se <b class=\"text-slate-800\">cifra y se almacena localmente en tu propio PC</b> — nunca se transmite a ningún lugar, y nunca se requiere permiso de retiro.",
-  "faq_a3": "<b class=\"text-slate-800\">No.</b> Es una herramienta que ejecuta una estrategia definida las 24 horas sin emociones. El trading de futuros de criptomonedas conlleva un riesgo serio de pérdida — valida en Shadow Mode antes de pasar a real.",
+  "faq_a3": "<b class=\"text-slate-800\">Todo lo que ingreses.</b> Son futuros apalancados en un exchange real: una posición puede liquidarse y tu depósito puede quedar en cero. Cada orden se envía desde tu propio dispositivo con tu propia clave API, así que la cuenta, los fondos y el resultado siguen siendo tuyos. Puedes arrancarlo sin conectar ninguna clave API: el Modo Shadow opera con precios reales en tiempo real sobre un saldo virtual, para que veas cómo se comporta antes de poner dinero real.",
   "faq_a4": "Shadow Mode usa <b class=\"text-slate-800\">la API en vivo del exchange real</b> con <b class=\"text-slate-800\">USDT virtual</b> — las señales, los tiempos y los datos son idénticos a operar en real; solo se retienen las órdenes reales. No es un testnet ni un simulador de trading de papel genérico — esas herramientas usan datos de un entorno aislado que pueden retrasarse o diferir del mercado real. Shadow Mode opera sobre el mismo libro de órdenes en vivo que ve todo el mundo.",
   "faq_a5": "Las nuevas entradas y la gestión de posiciones se detienen. Las posiciones ya abiertas permanecen en el exchange, y el bot las vuelve a detectar y retoma su gestión al reiniciar. Se recomienda un mini PC siempre encendido o una VM en la nube de bajo coste.",
   "faq_a6": "Recomendamos <b class=\"text-slate-800\">1.000 USDT o más</b> para que el dimensionado por operación (hasta 1/300 del saldo) se mantenga por encima de los límites de valor nocional mínimo del exchange.",
@@ -1831,7 +1831,7 @@ var I18N = {
   "faq_q13": "¿Cuál es la política de reembolsos?",
   "faq_q14": "¿Cómo funcionan las actualizaciones?",
   "faq_q2": "¿Es seguro introducir mi clave API?",
-  "faq_q3": "¿Se garantizan las ganancias?",
+  "faq_q3": "¿Cuánto puedo perder?",
   "faq_q4": "¿Qué tan cerca está el Shadow Mode de operar de verdad?",
   "faq_q5": "¿Qué pasa si mi PC se apaga en medio de una operación?",
   "faq_q6": "¿Cuál es el capital mínimo?",
@@ -1857,7 +1857,7 @@ var I18N = {
   "feat_8_title": "Cada operación registrada, P&amp;L rastreado",
   "fee_model_desc": "Binance ya cobra una pequeña comisión de trading en cada orden — con o sin JaviD. Una parte de esa comisión existente nos la reembolsa Binance, no tú. Sin suscripción, sin comisión por rendimiento, nunca.",
   "fee_model_title": "Compartimos una pequeña parte de la comisión del exchange",
-  "final_disclaimer": "El trading de futuros de criptomonedas conlleva un alto nivel de riesgo y no es adecuado para todos los inversores. JaviD Future Bot es una herramienta de ejecución independiente — no garantiza beneficios. Las cifras de rendimiento en esta página son datos de Shadow Mode (saldo virtual) e instantáneas de registros reales del panel correspondientes a periodos concretos. Todas las decisiones de trading y sus resultados son responsabilidad exclusiva del usuario. JaviD Future Bot no ofrece asesoramiento de inversión, no custodia fondos y no ejecuta operaciones en ningún servidor — cada orden se envía directamente desde tu propio dispositivo usando tus propias credenciales de API de Binance.",
+  "final_disclaimer": "El trading de futuros de criptomonedas conlleva un alto nivel de riesgo y no es adecuado para todos los inversores. Al operar con apalancamiento, una posición puede liquidarse y puedes perder la totalidad de tu depósito. En esta página no hay proyecciones: cada cifra mostrada es el registro de algo que ya ocurrió. Todas las decisiones de trading y sus resultados son responsabilidad exclusiva del usuario. JaviD Future Bot no ofrece asesoramiento de inversión, no custodia fondos y no ejecuta operaciones en ningún servidor — cada orden se envía directamente desde tu propio dispositivo, usando tus propias credenciales de API de Binance.",
   "final_h2": "¿Por qué aún no estás operando?",
   "final_sub": "Deja que JaviD se encargue de las tareas tediosas — mientras tú conservas tus claves, tus fondos y tu control, en cada una de las operaciones.",
   "footer_binance_guide": "Guía de configuración de Binance",
@@ -2028,7 +2028,7 @@ var I18N = {
   "faq_a13": "Le prix est de 0 $, il n'y a donc rien à rembourser. Supprimez-le quand vous voulez — aucune procédure d'annulation, aucune pénalité.",
   "faq_a14": "Les nouvelles versions sont annoncées sur cette page et sur le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"https://t.me/+P_CukTNNKRI4ZDVl\" rel=\"noopener\" target=\"_blank\">canal Telegram</a>. Téléchargez et écrasez l'ancienne version — les paramètres sont conservés.",
   "faq_a2": "Votre clé API est <b class=\"text-slate-800\">chiffrée et stockée localement sur votre propre PC</b> — elle n'est jamais transmise où que ce soit, et l'autorisation de retrait n'est jamais requise.",
-  "faq_a3": "<b class=\"text-slate-800\">Non.</b> C'est un outil qui exécute une stratégie définie 24h/24 sans émotion. Le trading de contrats à terme crypto comporte un risque de perte sérieux — validez en Shadow Mode avant de passer en réel.",
+  "faq_a3": "<b class=\"text-slate-800\">La totalité de ce que vous déposez.</b> Ce sont des futures à effet de levier sur un exchange réel : une position peut être liquidée et votre dépôt peut tomber à zéro. Chaque ordre part de votre propre appareil avec votre propre clé API — le compte, les fonds et le résultat restent les vôtres. Vous pouvez le lancer sans connecter la moindre clé API : le Mode Shadow trade les prix réels en temps réel sur un solde virtuel, pour que vous voyiez comment il se comporte avant d'engager de l'argent réel.",
   "faq_a4": "Le Shadow Mode utilise <b class=\"text-slate-800\">l'API en direct de la plateforme réelle</b> avec de l'<b class=\"text-slate-800\">USDT virtuel</b> — les signaux, le timing et les données sont identiques au trading réel ; seuls les ordres réels ne sont pas passés. Ce n'est ni un testnet, ni un simulateur de trading papier classique — ces outils utilisent des données d'un bac à sable séparé qui peuvent être décalées ou différer du marché réel. Le Shadow Mode trade sur le même carnet d'ordres en direct que tout le monde voit.",
   "faq_a5": "Les nouvelles entrées et la gestion des positions s'arrêtent. Les positions déjà ouvertes restent sur la plateforme, et le bot les redétecte et reprend leur gestion au redémarrage. Un mini PC toujours allumé ou une VM cloud à faible coût est recommandé.",
   "faq_a6": "Nous recommandons <b class=\"text-slate-800\">1 000 USDT ou plus</b> afin que le dimensionnement par trade (jusqu'à 1/300e du solde) reste au-dessus des limites de valeur notionnelle minimale de la plateforme.",
@@ -2044,7 +2044,7 @@ var I18N = {
   "faq_q13": "Quelle est la politique de remboursement ?",
   "faq_q14": "Comment fonctionnent les mises à jour ?",
   "faq_q2": "Est-il sûr de saisir ma clé API ?",
-  "faq_q3": "Les profits sont-ils garantis ?",
+  "faq_q3": "Combien puis-je perdre ?",
   "faq_q4": "À quel point le Shadow Mode est-il proche du trading réel ?",
   "faq_q5": "Que se passe-t-il si mon PC s'éteint en pleine opération ?",
   "faq_q6": "Quel est le capital minimum ?",
@@ -2070,7 +2070,7 @@ var I18N = {
   "feat_8_title": "Chaque trade enregistré, P&amp;L suivi",
   "fee_model_desc": "Binance facture déjà des frais de trading modestes sur chaque ordre — avec ou sans JaviD. Une partie de ces frais existants nous est reversée par Binance, pas par vous. Aucun abonnement, aucune commission sur performance, jamais.",
   "fee_model_title": "Nous partageons une infime part des frais de la plateforme",
-  "final_disclaimer": "Le trading de contrats à terme sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. JaviD Future Bot est un outil d'exécution autonome — il ne garantit pas de profits. Les chiffres de performance sur cette page sont des données du Shadow Mode (solde virtuel) et des instantanés de relevés réels du tableau de bord pour des périodes spécifiques ; ils ne garantissent ni ne laissent présager des résultats futurs. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne conserve aucun fonds en dépôt et n'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API Binance.",
+  "final_disclaimer": "Le trading de futures sur cryptomonnaies comporte un niveau de risque élevé et ne convient pas à tous les investisseurs. Avec l'effet de levier, une position peut être liquidée et vous pouvez perdre la totalité de votre dépôt. Cette page ne contient aucune projection : chaque chiffre affiché est l'enregistrement de ce qui s'est déjà produit. Toutes les décisions de trading et leurs conséquences relèvent de la seule responsabilité de l'utilisateur. JaviD Future Bot ne fournit aucun conseil en investissement, ne détient aucun fonds en dépôt, et n'exécute aucun trade sur un quelconque serveur — chaque ordre est passé directement depuis votre propre appareil, avec vos propres identifiants API Binance.",
   "final_h2": "Pourquoi n'êtes-vous pas encore en train de trader ?",
   "final_sub": "Laissez JaviD s'occuper des tâches fastidieuses — pendant que vous gardez vos clés, vos fonds, votre contrôle, sur chaque trade.",
   "footer_binance_guide": "Guide de configuration Binance",

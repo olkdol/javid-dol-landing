@@ -291,12 +291,7 @@ footer { border-top:1px solid var(--line); padding:34px 0; }
     <tr><th data-i18n="faq_th1">Symptom</th><th data-i18n="faq_th2">Cause / Fix</th></tr>
     <tr><td data-i18n="faq_q1">HTTP 451 error</td><td data-i18n="faq_a1">Binance blocks Futures API access from some regions, including Korean IPs. Run the bot from an overseas VPS or through a VPN.</td></tr>
     <tr><td data-i18n="faq_q2">-2015 error on Test Connection</td><td data-i18n="faq_a2">Your IP restriction hasn't propagated yet, or you entered the wrong IP. Wait 5–10 minutes and re-check the address.</td></tr>
-    <tr><td data-i18n="faq_q3">-1022 Signature error</td><td data-i18n="faq_a3">Almost always a Secret Key copy/paste issue — re-copy it, watching for hidden line breaks or spaces.</td></tr>
-    <tr><td data-i18n="faq_q4">-1021 Timestamp error</td><td data-i18n="faq_a4">Your PC's clock has drifted. Turn on automatic time sync in Windows settings.</td></tr>
-    <tr><td data-i18n="faq_q5">Can't enable Futures permission on the key</td><td data-i18n="faq_a5">The key was created before your Futures account was activated (see Part 3). Delete it and create a new one, in the right order.</td></tr>
-    <tr><td data-i18n="faq_q6">Can't enable any permission beyond Read</td><td data-i18n="faq_a6">You skipped the IP restriction step in Part 5 — it's mandatory for any non-read permission.</td></tr>
-  </table>
-</div></section>
+    <tr><td data-i18n="faq_q3">-1022 Signature error</td><td data-i18n="faq_a3"><b class="text-slate-800">Up to everything you put in.</b> These are leveraged futures on a real exchange — a position can be liquidated and your entire deposit can go to zero. Every order is placed from your own device with your own API key, so the account, the funds and the outcome stay yours. You can start it with no API key connected: Shadow Mode trades live prices against a virtual balance, so you can watch how it behaves before any real money is involved.</div></section>
 
 <section class="cta-band"><div class="wrap">
   <h3 data-i18n="cta_h3">Ready to connect your key?</h3>
@@ -406,8 +401,8 @@ var I18N = {
     "faq_a1": "Binance blocks Futures API access from some regions, including Korean IPs. Run the bot from an overseas VPS or through a VPN.",
     "faq_q2": "-2015 error on Test Connection",
     "faq_a2": "Your IP restriction hasn't propagated yet, or you entered the wrong IP. Wait 5–10 minutes and re-check the address.",
-    "faq_q3": "-1022 Signature error",
-    "faq_a3": "Almost always a Secret Key copy/paste issue — re-copy it, watching for hidden line breaks or spaces.",
+    "faq_q3": "How much can I lose?",
+    "faq_a3": "<b class=\"text-slate-800\">Up to everything you put in.</b> These are leveraged futures on a real exchange — a position can be liquidated and your entire deposit can go to zero. Every order is placed from your own device with your own API key, so the account, the funds and the outcome stay yours. You can start it with no API key connected: Shadow Mode trades live prices against a virtual balance, so you can watch how it behaves before any real money is involved.",
     "faq_q4": "-1021 Timestamp error",
     "faq_a4": "Your PC's clock has drifted. Turn on automatic time sync in Windows settings.",
     "faq_q5": "Can't enable Futures permission on the key",
@@ -511,8 +506,8 @@ var I18N = {
     "faq_a1": "바이낸스는 한국 IP를 포함한 일부 지역에서 선물 API 접근을 차단합니다. 해외 VPS나 VPN을 통해 봇을 실행하세요.",
     "faq_q2": "Test Connection에서 -2015 오류",
     "faq_a2": "IP 제한이 아직 반영되지 않았거나 잘못된 IP를 입력한 경우입니다. 5~10분 기다린 뒤 주소를 다시 확인하세요.",
-    "faq_q3": "-1022 서명(Signature) 오류",
-    "faq_a3": "거의 항상 시크릿 키 복사/붙여넣기 문제입니다 — 숨겨진 줄바꿈이나 공백이 없는지 확인하며 다시 복사하세요.",
+    "faq_q3": "얼마나 잃을 수 있나요?",
+    "faq_a3": "<b class=\"text-slate-800\">넣은 돈 전부입니다.</b> 실제 거래소의 레버리지 선물이라 포지션이 청산되면 원금이 0이 될 수 있습니다. 모든 주문은 본인 기기에서 본인 API 키로 나가며, 계좌도 자금도 결과도 전부 본인 것입니다. API 키를 연결하지 않은 상태로도 켤 수 있습니다 — 섀도우 모드가 실시간 시세를 가상 잔고로 거래하니, 실제 돈이 들어가기 전에 어떻게 움직이는지 먼저 보세요.",
     "faq_q4": "-1021 타임스탬프 오류",
     "faq_a4": "PC 시계가 어긋난 상태입니다. Windows 설정에서 자동 시간 동기화를 켜세요.",
     "faq_q5": "키에서 선물 권한을 켤 수 없음",
@@ -616,8 +611,8 @@ var I18N = {
     "faq_a1": "Binanceは韓国のIPを含む一部の地域からの先物APIアクセスをブロックしています。海外のVPSまたはVPN経由でBotを実行してください。",
     "faq_q2": "Test Connectionで-2015エラー",
     "faq_a2": "IP制限がまだ反映されていないか、誤ったIPを入力しています。5〜10分待ってからアドレスを再確認してください。",
-    "faq_q3": "-1022 署名(Signature)エラー",
-    "faq_a3": "ほとんどの場合、シークレットキーのコピー&ペーストの問題です — 非表示の改行やスペースが入っていないか確認しながら再度コピーしてください。",
+    "faq_q3": "どれくらい損をする可能性がありますか？",
+    "faq_a3": "<b class=\"text-slate-800\">入れた資金の全額です。</b>実際の取引所でのレバレッジ先物なので、ポジションが強制決済（清算）されれば元本がゼロになることもあります。注文はすべてご自身の端末から、ご自身のAPIキーで発注されます。口座も資金も、その結果もすべてご本人のものです。APIキーを接続しないままでも起動できます。シャドーモードは実際の値動きを仮想残高で売買するので、実際の資金を入れる前に、どう動くかをご自身で確かめられます。",
     "faq_q4": "-1021 タイムスタンプエラー",
     "faq_a4": "PCの時計がずれています。Windowsの設定で自動時刻同期をオンにしてください。",
     "faq_q5": "キーで先物権限を有効にできない",
@@ -721,8 +716,8 @@ var I18N = {
     "faq_a1": "币安会屏蔽部分地区(包括韩国IP)对合约API的访问。请从海外VPS或通过VPN运行机器人。",
     "faq_q2": "Test Connection时出现-2015错误",
     "faq_a2": "你的IP限制尚未生效,或者输入了错误的IP。请等待5至10分钟后重新核对地址。",
-    "faq_q3": "-1022签名(Signature)错误",
-    "faq_a3": "几乎总是Secret Key复制粘贴出了问题——请重新复制,并注意是否混入了隐藏的换行或空格。",
+    "faq_q3": "我可能亏损多少？",
+    "faq_a3": "<b class=\"text-slate-800\">最多亏光你投入的全部资金。</b>这是真实交易所上的杠杆合约 — 仓位可能被强制平仓，本金可能归零。每一笔订单都从你自己的设备、用你自己的 API 密钥发出，账户、资金和结果始终都是你的。你也可以在不连接任何 API 密钥的情况下直接启动：影子模式用真实实时行情在虚拟余额上交易，让你在投入真钱之前先看清它是怎么跑的。",
     "faq_q4": "-1021时间戳(Timestamp)错误",
     "faq_a4": "你的电脑时钟出现了偏差。请在Windows设置中开启自动时间同步。",
     "faq_q5": "无法在密钥上开启合约权限",
@@ -826,8 +821,8 @@ var I18N = {
     "faq_a1": "Binance bloquea el acceso a la API de Futuros desde algunas regiones, incluidas IPs de Corea. Ejecuta el bot desde un VPS en el extranjero o mediante una VPN.",
     "faq_q2": "Error -2015 al probar la conexión",
     "faq_a2": "Tu restricción de IP aún no se ha propagado, o introdujiste la IP incorrecta. Espera de 5 a 10 minutos y vuelve a comprobar la dirección.",
-    "faq_q3": "Error de firma (Signature) -1022",
-    "faq_a3": "Casi siempre es un problema al copiar/pegar la Secret Key — vuelve a copiarla, prestando atención a saltos de línea o espacios ocultos.",
+    "faq_q3": "¿Cuánto puedo perder?",
+    "faq_a3": "<b class=\"text-slate-800\">Todo lo que ingreses.</b> Son futuros apalancados en un exchange real: una posición puede liquidarse y tu depósito puede quedar en cero. Cada orden se envía desde tu propio dispositivo con tu propia clave API, así que la cuenta, los fondos y el resultado siguen siendo tuyos. Puedes arrancarlo sin conectar ninguna clave API: el Modo Shadow opera con precios reales en tiempo real sobre un saldo virtual, para que veas cómo se comporta antes de poner dinero real.",
     "faq_q4": "Error de marca de tiempo (Timestamp) -1021",
     "faq_a4": "El reloj de tu PC se ha desincronizado. Activa la sincronización automática de hora en la configuración de Windows.",
     "faq_q5": "No se puede activar el permiso de Futuros en la clave",
@@ -931,8 +926,8 @@ var I18N = {
     "faq_a1": "Binance bloque l'accès à l'API Futures depuis certaines régions, y compris les IP coréennes. Exécutez le bot depuis un VPS à l'étranger ou via un VPN.",
     "faq_q2": "Erreur -2015 lors du Test Connection",
     "faq_a2": "Votre restriction d'IP ne s'est pas encore propagée, ou vous avez saisi la mauvaise IP. Attendez 5 à 10 minutes et revérifiez l'adresse.",
-    "faq_q3": "Erreur de signature (Signature) -1022",
-    "faq_a3": "Presque toujours un problème de copier/coller de la Secret Key — recopiez-la, en faisant attention aux sauts de ligne ou espaces cachés.",
+    "faq_q3": "Combien puis-je perdre ?",
+    "faq_a3": "<b class=\"text-slate-800\">La totalité de ce que vous déposez.</b> Ce sont des futures à effet de levier sur un exchange réel : une position peut être liquidée et votre dépôt peut tomber à zéro. Chaque ordre part de votre propre appareil avec votre propre clé API — le compte, les fonds et le résultat restent les vôtres. Vous pouvez le lancer sans connecter la moindre clé API : le Mode Shadow trade les prix réels en temps réel sur un solde virtuel, pour que vous voyiez comment il se comporte avant d'engager de l'argent réel.",
     "faq_q4": "Erreur d'horodatage (Timestamp) -1021",
     "faq_a4": "L'horloge de votre PC a dérivé. Activez la synchronisation automatique de l'heure dans les paramètres Windows.",
     "faq_q5": "Impossible d'activer la permission Futures sur la clé",
@@ -1036,8 +1031,8 @@ vi: {
   "faq_a1": "Binance chặn quyền truy cập API Futures từ một số khu vực, bao gồm cả IP Hàn Quốc. Hãy chạy bot từ một VPS ở nước ngoài hoặc thông qua VPN.",
   "faq_q2": "Lỗi -2015 khi Kiểm tra kết nối",
   "faq_a2": "Giới hạn IP của bạn chưa được cập nhật xong, hoặc bạn đã nhập sai IP. Chờ 5–10 phút và kiểm tra lại địa chỉ.",
-  "faq_q3": "Lỗi chữ ký -1022",
-  "faq_a3": "Hầu như luôn là do sự cố sao chép/dán Secret Key — hãy sao chép lại, chú ý các dấu xuống dòng hoặc khoảng trắng ẩn.",
+  "faq_q3": "Tôi có thể mất bao nhiêu?",
+  "faq_a3": "<b class=\"text-slate-800\">Toàn bộ số tiền bạn nạp vào.</b> Đây là hợp đồng tương lai có đòn bẩy trên sàn thật — một vị thế có thể bị thanh lý và số tiền ký quỹ của bạn có thể về 0. Mọi lệnh đều được gửi từ chính thiết bị của bạn bằng API key của bạn, nên tài khoản, tiền và kết quả đều là của bạn. Bạn có thể chạy mà không cần kết nối API key nào: Shadow Mode giao dịch theo giá thật theo thời gian thực trên số dư ảo, để bạn xem nó chạy ra sao trước khi bỏ tiền thật vào.",
   "faq_q4": "Lỗi dấu thời gian -1021",
   "faq_a4": "Đồng hồ máy tính của bạn bị lệch. Hãy bật đồng bộ thời gian tự động trong cài đặt Windows.",
   "faq_q5": "Không thể bật quyền Futures cho khóa",
@@ -1141,8 +1136,8 @@ tr: {
   "faq_a1": "Binance, Kore IP'leri dahil bazı bölgelerden Vadeli İşlem API erişimini engeller. Botu yurt dışındaki bir VPS'ten veya bir VPN üzerinden çalıştırın.",
   "faq_q2": "Bağlantı Testinde -2015 hatası",
   "faq_a2": "IP kısıtlamanız henüz yayılmadı veya yanlış IP girdiniz. 5–10 dakika bekleyip adresi tekrar kontrol edin.",
-  "faq_q3": "-1022 İmza hatası",
-  "faq_a3": "Neredeyse her zaman bir Gizli Anahtar kopyalama/yapıştırma sorunudur — gizli satır sonlarına veya boşluklara dikkat ederek yeniden kopyalayın.",
+  "faq_q3": "Ne kadar kaybedebilirim?",
+  "faq_a3": "<b class=\"text-slate-800\">Yatırdığınız paranın tamamını.</b> Bunlar gerçek bir borsada kaldıraçlı vadeli işlemler — bir pozisyon tasfiye edilebilir ve teminatınız sıfıra inebilir. Her emir kendi cihazınızdan, kendi API anahtarınızla gönderilir; hesap da, para da, sonuç da sizindir. Hiçbir API anahtarı bağlamadan da çalıştırabilirsiniz: Shadow Mode gerçek zamanlı fiyatlarla sanal bakiye üzerinde işlem yapar, böylece gerçek para koymadan önce nasıl davrandığını kendiniz görürsünüz.",
   "faq_q4": "-1021 Zaman damgası hatası",
   "faq_a4": "Bilgisayarınızın saati kaymış. Windows ayarlarında otomatik saat senkronizasyonunu açın.",
   "faq_q5": "Anahtarda Vadeli İşlem izni etkinleştirilemiyor",
@@ -1246,8 +1241,8 @@ pt: {
   "faq_a1": "A Binance bloqueia o acesso à API de Futuros de algumas regiões, incluindo IPs da Coreia. Execute o bot em uma VPS no exterior ou por meio de uma VPN.",
   "faq_q2": "Erro -2015 ao Testar Conexão",
   "faq_a2": "Sua restrição de IP ainda não se propagou, ou você digitou o IP errado. Aguarde de 5 a 10 minutos e verifique novamente o endereço.",
-  "faq_q3": "Erro de assinatura -1022",
-  "faq_a3": "Quase sempre é um problema de copiar/colar a Secret Key — copie-a novamente, prestando atenção a quebras de linha ou espaços ocultos.",
+  "faq_q3": "Quanto posso perder?",
+  "faq_a3": "<b class=\"text-slate-800\">Tudo o que você depositar.</b> São futuros alavancados em uma corretora real — uma posição pode ser liquidada e o seu depósito pode ir a zero. Cada ordem sai do seu próprio dispositivo com a sua própria chave de API, então a conta, o dinheiro e o resultado continuam sendo seus. Você pode rodar sem conectar nenhuma chave de API: o Shadow Mode opera com preços reais em tempo real sobre um saldo virtual, para você ver como ele se comporta antes de colocar dinheiro de verdade.",
   "faq_q4": "Erro de timestamp -1021",
   "faq_a4": "O relógio do seu computador está dessincronizado. Ative a sincronização automática de horário nas configurações do Windows.",
   "faq_q5": "Não é possível ativar a permissão de Futuros na chave",
