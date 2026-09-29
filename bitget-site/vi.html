@@ -258,6 +258,7 @@
       <a href="#capabilities">Chiến lược</a>
       <a href="#architecture">Kiến trúc</a>
       <a href="#research">Nghiên cứu</a>
+      <a href="#backtest">Backtest</a>
       <a href="board" class="nav-highlight">Cộng đồng</a>
       <a href="/">English</a>
     </div>
@@ -471,6 +472,27 @@
   <p class="sim-note" id="lpNote">Ảnh chụp nhanh tính đến 05:04 KST ngày 05/07/2026 — tại thời điểm đó có 7 vị thế đang mở, với lãi/lỗ chưa thực hiện lẫn lộn giữa dương và âm (đúng lúc logic thoát lệnh vẫn đang quản lý các vị thế này). Shadow Mode giao dịch bằng dữ liệu thị trường thực nhưng trên số dư ảo, và <strong>đây không phải là lịch sử giao dịch bằng vốn thực.</strong> Hiệu suất trong quá khứ là ghi nhận của một giai đoạn đã kết thúc; với hợp đồng tương lai có đòn bẩy, bạn có thể mất toàn bộ số tiền đã nạp.</p>
 </div></section>
 
+<!-- ================= BACKTEST ================= -->
+<section class="section" id="backtest"><div class="wrap">
+  <div class="section-label">Backtest</div>
+  <div class="section-title">Backtest: chạy lại hai năm</div>
+  <p class="section-sub" style="max-width:760px;">Chúng tôi lọc ra toàn bộ các đợt tăng mạnh từ tháng 9/2024 đến tháng 9/2026 - 805 đoạn trên 425 đồng coin từng tăng gấp ba trở lên trong vòng một tháng - tải về đầy đủ nến 1 phút của các đoạn đó, rồi cho chương trình chạy lại trên đúng thị trường thời điểm ấy, từng nến một. Mọi lệnh vào, lệnh nhồi và lệnh đóng đều do chính đoạn mã trong bản chương trình bạn tải về quyết định. Dữ liệu giá là nến 1 phút thật của hợp đồng vĩnh cửu USDT trong hai năm đó.</p>
+  <!-- .stats-grid 는 4열(데스크톱)/2열(760px 이하)뿐이라 어느 폭에서도
+       카드 3(청산 0)과 4(-64%)가 같은 행에 남는다. -->
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num">805</div><div class="stat-label">Đợt tăng mạnh</div></div>
+    <div class="stat-card"><div class="stat-num">425</div><div class="stat-label">Đồng coin</div></div>
+    <div class="stat-card"><div class="stat-num">0</div><div class="stat-label">Lần bị thanh lý</div></div>
+    <div class="stat-card"><div class="stat-num">−64%</div><div class="stat-label">Đáy sâu nhất</div></div>
+  </div>
+  <p class="sim-note" style="font-size:14px;">Giữa năm 2025, tài khoản rơi xuống −64% so với vốn ban đầu, tức là mất hơn một nửa. Đi qua đoạn đó, không có một lần thanh lý bắt buộc nào. Ở thời điểm ôm vị thế nặng nhất, tỷ lệ ký quỹ là 38,2% - còn cách mức thanh lý khoảng 15 lần, và đây là con số tính theo ngưỡng thanh lý ngặt nhất. Trong hai năm có 2.023 lệnh, kết quả cuối là +96%. Con số −64% và +96% đến từ cùng một lần chạy, nên hãy đọc chúng cùng nhau.</p>
+  <div class="faq-list" style="margin-top:28px;">
+    <div class="faq-item"><h4>Điều gì đã chặn thanh lý</h4><p>Chạy lại đúng 805 đoạn đó mà tắt bộ lọc này thì ngày 09/10/2025 tài khoản bị thanh lý bắt buộc. Thứ xóa được nó chỉ là một quy tắc: không vào lệnh với coin niêm yết chưa đủ 90 ngày. Bật bộ lọc 90 ngày lên, cùng hai năm ấy không còn lần thanh lý nào. Chúng tôi cũng thử thu khoảng cách nhồi lệnh từ 30% xuống 20%: thanh lý quay trở lại, và lần chạy đó kết thúc ở −30,5%. Coin đã có thông báo hủy niêm yết (kể cả thông báo gỡ khỏi spot) cũng bị chặn.</p></div>
+    <div class="faq-item"><h4>Những gì phép thử này không nói được</h4><p>Mẫu chỉ gồm 805 đợt tăng mạnh, không có gì khác. Các lệnh phát sinh trong thị trường bình thường - cả lãi lẫn lỗ - đều nằm ngoài, nên đường vốn của một tài khoản thật không có hình dạng như thế này. Chúng tôi chỉ quét những coin hiện còn tra cứu được, nên coin đã bị hủy niêm yết trong khoảng thời gian đó ngay từ đầu đã không nằm trong danh sách (thiên lệch sống sót). Kiểu biến động chưa từng xuất hiện trong hai năm này thì ở đây cũng không có. Việc không bị thanh lý là chuyện xảy ra bên trong 805 đoạn đó; không con số nào ở đây nói được điều gì về phần bên ngoài. Phí giao dịch đã được tính, còn phí funding và trượt giá thì chưa - nếu cộng cả hai, kết quả sẽ xấu hơn con số bạn đang thấy.</p></div>
+  </div>
+  <p class="sim-note">Giao dịch futures có đòn bẩy có thể khiến bạn mất toàn bộ số vốn. Các con số ở trên là kết quả tính lại trên dữ liệu giá quá khứ có thật, không phải lịch sử giao dịch của một tài khoản thật - bạn có thể tự xem chính đoạn mã đó ra quyết định trên dữ liệu thời gian thực bằng Shadow Mode với số dư ảo.</p>
+</div></section>
+
 <!-- ================= SHOWCASE ================= -->
 <section class="section"><div class="wrap">
   <div class="section-label">Giao diện thực tế</div>
@@ -563,6 +585,7 @@
       <a href="#capabilities">Chiến lược</a>
       <a href="#architecture">Kiến trúc</a>
       <a href="#research">Nghiên cứu</a>
+      <a href="#backtest">Backtest</a>
       <a href="#download">Tải xuống</a>
     </div>
     <div class="footer-col">

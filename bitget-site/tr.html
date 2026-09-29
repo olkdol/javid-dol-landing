@@ -258,6 +258,7 @@
       <a href="#capabilities">Stratejiler</a>
       <a href="#architecture">Mimari</a>
       <a href="#research">Araştırma</a>
+      <a href="#backtest">Backtest</a>
       <a href="board" class="nav-highlight">Topluluk</a>
       <a href="/">English</a>
     </div>
@@ -471,6 +472,27 @@
   <p class="sim-note" id="lpNote">05.07.2026 05:04 KST itibarıyla anlık görüntü — o sırada 7 açık pozisyon vardı ve değerleme kâr/zararı pozitif-negatif karışık haldeydi (çıkış mantığı o anda hâlâ yönetiyordu). Gölge mod, gerçek piyasa verilerini sanal bir bakiye üzerinde işleme sokan bir yöntemdir ve <strong>gerçek fonlarla yapılmış bir işlem kaydı değildir.</strong> Geçmiş performans, sona ermiş bir dönemin kaydıdır; kaldıraçlı vadeli işlemlerde yatırdığınız tutarın tamamını kaybedebilirsiniz.</p>
 </div></section>
 
+<!-- ================= BACKTEST ================= -->
+<section class="section" id="backtest"><div class="wrap">
+  <div class="section-label">Backtest</div>
+  <div class="section-title">Backtest: iki yıl yeniden</div>
+  <p class="section-sub" style="max-width:760px;">Eylül 2024 ile Eylül 2026 arasında bir ay içinde üç katına ya da fazlasına çıkan tüm sert yükseliş dönemlerini ayıkladık - 425 coinde 805 dönem -, bu dönemlerin 1 dakikalık mumlarının tamamını indirdik ve programı o günün piyasasında mum mum yeniden çalıştırdık. Girişleri, kademeli eklemeleri ve çıkışları, indirdiğiniz programın kendi kodu verdi. Fiyat verisi, o iki yıla ait USDT vadeli (perpetual) piyasasının gerçek 1 dakikalık mumlarıdır.</p>
+  <!-- .stats-grid 는 4열(데스크톱)/2열(760px 이하)뿐이라 어느 폭에서도
+       카드 3(청산 0)과 4(-64%)가 같은 행에 남는다. -->
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num">805</div><div class="stat-label">Yükseliş dönemi</div></div>
+    <div class="stat-card"><div class="stat-num">425</div><div class="stat-label">Coin</div></div>
+    <div class="stat-card"><div class="stat-num">0</div><div class="stat-label">Zorunlu tasfiye</div></div>
+    <div class="stat-card"><div class="stat-num">−64%</div><div class="stat-label">En dip nokta</div></div>
+  </div>
+  <p class="sim-note" style="font-size:14px;">2025 ortasında hesap, başlangıç sermayesine göre −64%'e kadar indi; yani yarısının da altına. Bu bölümden geçerken tek bir zorunlu tasfiye yaşanmadı. Pozisyonun en ağır olduğu anda teminat oranı 38,2% idi - tasfiye çizgisine yaklaşık 15 kat mesafe vardı ve bu, tasfiye eşiklerinin en sıkısına göre hesaplandı. İki yılda 2.023 işlem yapıldı, sonuç +96% oldu. −64% ile +96% aynı çalışmanın iki ucu; ikisini birlikte okuyun.</p>
+  <div class="faq-list" style="margin-top:28px;">
+    <div class="faq-item"><h4>Tasfiyeyi ne engelledi</h4><p>Aynı 805 dönemi bu kural kapalıyken çalıştırdığımızda 9 Ekim 2025'te zorunlu tasfiye geliyor. Onu ortadan kaldıran tek bir kural vardı: listelenmesinin üzerinden 90 gün geçmemiş coinlere giriş yok. 90 günlük bu filtre devredeyken aynı iki yılda hiç tasfiye olmadı. Kademe aralığını %30'dan %20'ye daralttığımız denemede ise tasfiye geri geldi ve o çalışma −30,5% ile bitti. Listeden çıkarılma duyurusu bulunan coinler (spot listeden çıkarma duyuruları dahil) de engelleniyor.</p></div>
+    <div class="faq-item"><h4>Bu testin kapsamadıkları</h4><p>Örneklem yalnızca 805 sert yükseliş dönemi, başka hiçbir şey değil. Sıradan piyasada oluşan işlemler, kârıyla zararıyla, burada hiç yok; dolayısıyla gerçek bir hesabın eğrisi bu biçimde olmaz. Yalnızca bugün sorgulanabilen coinleri taradık, yani bu arada listeden çıkarılanlar en baştan aday bile olmadı (hayatta kalma yanlılığı). Bu iki yıl içinde görülmemiş bir hareket biçimi de burada yok. Tasfiyenin olmaması bu 805 dönemin içinde geçerli; dışarısı hakkında bir şey söyleyen tek bir sayı yok. İşlem komisyonları dahil edildi, fonlama ücreti ve kayma (slippage) edilmedi - onlar da eklenseydi sonuç gördüğünüzden daha kötü olurdu.</p></div>
+  </div>
+  <p class="sim-note">Kaldıraçlı vadeli işlemlerde ana paranızın tamamını kaybedebilirsiniz. Yukarıdaki sayılar geçmişteki gerçek fiyatlar üzerinden yeniden hesaplanmıştır, gerçek bir hesabın işlem kaydı değildir - aynı kodun canlı veride nasıl karar verdiğini Gölge Mod'da sanal bakiyeyle kendiniz izleyebilirsiniz.</p>
+</div></section>
+
 <!-- ================= SHOWCASE ================= -->
 <section class="section"><div class="wrap">
   <div class="section-label">Uygulama Ekranı</div>
@@ -563,6 +585,7 @@
       <a href="#capabilities">Stratejiler</a>
       <a href="#architecture">Mimari</a>
       <a href="#research">Araştırma</a>
+      <a href="#backtest">Backtest</a>
       <a href="#download">İndir</a>
     </div>
     <div class="footer-col">

@@ -48,6 +48,35 @@ The developer runs the program on a real account and publishes the daily numbers
 Leveraged futures trading can lose the user's entire capital. Past results are a record
 of what already happened, not a projection. Nothing here is investment advice.
 
+## Backtest over two years of real price history (added 2026-09-29)
+
+Separate from the live account above, the program was re-run over past market data.
+
+- Sample: every pump window between September 2024 and September 2026 in which a coin
+  tripled or more inside a single month — 805 windows across 425 coins.
+- Method: the full 1-minute candles of those windows were downloaded and the program was
+  run over them bar by bar. Entries, add-ons and exits were decided by the same program
+  code that is distributed, not by a model fitted to the chart. The price data is the real
+  1-minute history of USDT perpetual futures across those two years.
+- Result: 2,023 trades, zero forced liquidations, deepest point −64% of starting equity
+  (mid-2025), final +96%. The −64% and the +96% come from the same run and belong together.
+- At the most crowded moment the margin ratio read 38.2%, roughly 15x of room before the
+  liquidation line, measured against the strictest of the liquidation thresholds.
+- What removed liquidation was one rule: no entry into a coin listed less than 90 days ago.
+  With the gate switched off, the same 805 windows produce a forced liquidation on
+  2025-10-09. Tightening the add-on spacing from 30% to 20% also brought liquidation back
+  and ended at −30.5%. Coins under a delisting notice are blocked as well.
+- Limits, which matter as much as the result: the sample is 805 pump windows and nothing
+  else, so trades from ordinary market conditions — gains and losses alike — are absent and
+  a real account curve does not look like this. Only coins that can still be queried today
+  were scanned, so anything delisted in between was never a candidate (survivorship bias).
+  Market behaviour that did not occur within these two years is not represented. The zero
+  liquidations hold inside these 805 windows and say nothing about what lies outside them.
+  Trading fees are included; funding and slippage are not, and with those added the result
+  would have been worse.
+
+These are recalculated figures over past prices, not the trade record of a live account.
+
 ## Common questions
 
 **Is there a crypto trading bot that runs on my own PC instead of a cloud server?**

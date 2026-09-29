@@ -258,6 +258,7 @@
       <a href="#capabilities">전략</a>
       <a href="#architecture">구조</a>
       <a href="#research">리서치</a>
+      <a href="#backtest">백테스트</a>
       <a href="board" class="nav-highlight">커뮤니티</a>
       <a href="/">English</a>
     </div>
@@ -471,6 +472,27 @@
   <p class="sim-note" id="lpNote">2026-07-05 05:04 KST 기준 스냅샷 — 당시 7개 포지션 보유 중이었고, 평가손익이 플러스·마이너스로 섞여 있는 상태 그대로입니다(청산 로직이 계속 관리 중이던 시점). 쉐도우 모드는 실제 시장 데이터를 가상 잔고로 거래하는 방식이며, <strong>실제 자금 거래 기록이 아닙니다.</strong> 과거 성과는 그 기간에 실제로 일어난 일의 기록이며, 레버리지 선물 거래에서는 원금 전액 손실이 가능합니다.</p>
 </div></section>
 
+<!-- ================= BACKTEST ================= -->
+<section class="section" id="backtest"><div class="wrap">
+  <div class="section-label">백테스트</div>
+  <div class="section-title">백테스트 — 2년 실데이터 재생</div>
+  <p class="section-sub" style="max-width:760px;">2024년 9월부터 2026년 9월까지, 한 달 안에 3배 이상 오른 급등 구간 805개(425종목)를 뽑아 그 구간의 1분봉을 통째로 내려받고, 프로그램을 그 시점의 시장에 다시 실행했습니다. 진입·분할·청산 판단은 전부 여러분이 받는 것과 같은 프로그램 코드가 했습니다. 시세는 그 2년간 USDT 무기한 선물의 실제 1분봉입니다.</p>
+  <!-- .stats-grid 는 4열(데스크톱)/2열(760px 이하)뿐이라 어느 폭에서도
+       카드 3(청산 0)과 4(-64%)가 같은 행에 남는다. -->
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num">805</div><div class="stat-label">급등 구간</div></div>
+    <div class="stat-card"><div class="stat-num">425</div><div class="stat-label">종목</div></div>
+    <div class="stat-card"><div class="stat-num">0</div><div class="stat-label">강제청산</div></div>
+    <div class="stat-card"><div class="stat-num">−64%</div><div class="stat-label">최저점</div></div>
+  </div>
+  <p class="sim-note" style="font-size:14px;">2025년 중반, 계좌는 시작 자산 대비 −64%까지 내려갔습니다. 반토막 아래입니다. 그 구간을 지나는 동안 강제청산은 한 번도 없었습니다. 가장 몰렸던 순간의 증거금율은 38.2%로 청산선까지 약 15배가 남아 있었고, 청산 기준 중 가장 빡빡한 쪽을 적용한 수치입니다. 2년 동안 거래는 2,023회였고 최종 결과는 +96%였습니다. −64%와 +96%는 같은 한 번의 재생에서 나온 숫자이니 둘을 같이 보셔야 합니다.</p>
+  <div class="faq-list" style="margin-top:28px;">
+    <div class="faq-item"><h4>무엇이 청산을 없앴나</h4><p>같은 805개 구간을 게이트 없이 돌리면 2025년 10월 9일에 강제청산이 났습니다. 청산을 없앤 건 규칙 하나였습니다 — 상장한 지 90일이 안 된 종목에는 진입하지 않는다. 이 90일 게이트를 넣자 같은 2년에서 청산이 사라졌습니다. 분할 간격을 30%에서 20%로 좁혀서도 돌려봤는데, 청산이 다시 났고 결과는 −30.5%로 끝났습니다. 상장폐지 예고가 뜬 종목(현물 상폐 공지 포함)도 함께 차단됩니다.</p></div>
+    <div class="faq-item"><h4>이 테스트가 말해주지 않는 것</h4><p>표본은 급등 구간 805개가 전부입니다. 평범한 장에서 나오는 거래는 이익도 손실도 통째로 빠져 있어서, 실제 계좌 곡선은 이 모양이 아닙니다. 지금 조회되는 종목만 훑었기 때문에 그사이 상장폐지된 종목은 애초에 후보에 없었습니다(생존 편향). 2년 안에 나오지 않은 형태의 움직임 역시 여기에 없습니다. 강제청산이 없었던 것은 이 805개 구간 안에서의 일이고, 그 바깥을 말해 주는 숫자는 여기에 없습니다. 거래 수수료는 반영했지만 펀딩비와 체결 미끄러짐은 넣지 않았습니다 — 그것까지 넣었다면 결과는 지금 보이는 것보다 나빴을 겁니다.</p></div>
+  </div>
+  <p class="sim-note">레버리지 선물 거래는 원금 전액 손실이 가능합니다. 위 수치는 과거 실제 시세로 다시 계산한 결과이고 실제 계좌의 거래 기록이 아닙니다 — 같은 코드가 실시간 시세에서 어떻게 판단하는지는 가상 잔고로 도는 쉐도우 모드에서 직접 확인해 보세요.</p>
+</div></section>
+
 <!-- ================= SHOWCASE ================= -->
 <section class="section"><div class="wrap">
   <div class="section-label">실행 화면</div>
@@ -563,6 +585,7 @@
       <a href="#capabilities">전략</a>
       <a href="#architecture">구조</a>
       <a href="#research">리서치</a>
+      <a href="#backtest">백테스트</a>
       <a href="#download">다운로드</a>
     </div>
     <div class="footer-col">

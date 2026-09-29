@@ -181,6 +181,7 @@
       <a href="#features" class="transition hover:text-indigo-600" data-i18n="nav_features">Features</a>
       <a href="#how-it-works" class="transition hover:text-indigo-600" data-i18n="nav_how_it_works">How It Works</a>
       <a href="#compare" class="transition hover:text-indigo-600" data-i18n="nav_compare">Compare</a>
+      <a href="#backtest" class="transition hover:text-indigo-600" data-i18n="nav_backtest">Backtest</a>
       <a href="#faq" class="transition hover:text-indigo-600" data-i18n="nav_faq">FAQ</a>
       <a href="results" class="transition hover:text-indigo-600" data-i18n="nav_real_results">Real Results</a>
       <a href="manual" class="transition hover:text-indigo-600" data-i18n="nav_user_manual">User Manual</a>
@@ -213,6 +214,7 @@
       <a href="#features" class="rounded-lg px-2 py-2 hover:bg-slate-50" data-i18n="nav_features">Features</a>
       <a href="#how-it-works" class="rounded-lg px-2 py-2 hover:bg-slate-50" data-i18n="nav_how_it_works">How It Works</a>
       <a href="#compare" class="rounded-lg px-2 py-2 hover:bg-slate-50" data-i18n="nav_compare">Compare</a>
+      <a href="#backtest" class="rounded-lg px-2 py-2 hover:bg-slate-50" data-i18n="nav_backtest">Backtest</a>
       <a href="#faq" class="rounded-lg px-2 py-2 hover:bg-slate-50" data-i18n="nav_faq">FAQ</a>
       <a href="results" class="rounded-lg px-2 py-2 hover:bg-slate-50" data-i18n="nav_real_results">Real Results</a>
       <a href="manual" class="rounded-lg px-2 py-2 hover:bg-slate-50" data-i18n="nav_user_manual">User Manual</a>
@@ -447,6 +449,50 @@
   }).catch(function(){});
 })();
 </script>
+
+<!-- ============ BACKTEST ============ -->
+<section id="backtest" class="border-t border-slate-100 bg-slate-50 py-16"><div class="mx-auto max-w-5xl px-6">
+  <div class="mx-auto mb-8 max-w-3xl text-center">
+    <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl" data-i18n="bt_title">Backtest: Two Years Replayed</h2>
+    <p class="mt-4 text-left text-[14.5px] leading-relaxed text-slate-600 sm:text-center" data-i18n="bt_lead">We pulled every pump window between September 2024 and September 2026 - 805 windows across 425 coins that tripled or more inside a single month - downloaded their full 1-minute candles, and ran the program again over that market, bar by bar. Every entry, every add-on and every exit was decided by the same program code you download, not by a model fitted to the chart. The price data is the real 1-minute history of USDT perpetual futures across those two years.</p>
+  </div>
+
+  <!-- 2열/4열만 쓴다. 3열 구간이 생기면 카드 4(-64%)가 다음 줄로 밀려
+       "0 강제청산"만 담긴 스크린샷을 만들 수 있다. -->
+  <div class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 lg:grid-cols-4">
+      <div class="bg-white p-6 text-center">
+        <div class="text-[28px] font-extrabold leading-none text-slate-900 sm:text-[34px]" data-i18n="bt_stat1_v">805</div>
+        <div class="mt-2 text-[12px] font-semibold leading-snug text-slate-500" data-i18n="bt_stat1_l">Pump windows</div>
+      </div>
+      <div class="bg-white p-6 text-center">
+        <div class="text-[28px] font-extrabold leading-none text-slate-900 sm:text-[34px]" data-i18n="bt_stat2_v">425</div>
+        <div class="mt-2 text-[12px] font-semibold leading-snug text-slate-500" data-i18n="bt_stat2_l">Coins</div>
+      </div>
+      <div class="bg-white p-6 text-center">
+        <div class="text-[28px] font-extrabold leading-none text-slate-900 sm:text-[34px]" data-i18n="bt_stat3_v">0</div>
+        <div class="mt-2 text-[12px] font-semibold leading-snug text-slate-500" data-i18n="bt_stat3_l">Forced liquidations</div>
+      </div>
+      <div class="bg-white p-6 text-center">
+        <div class="text-[28px] font-extrabold leading-none text-slate-900 sm:text-[34px]" data-i18n="bt_stat4_v">−64%</div>
+        <div class="mt-2 text-[12px] font-semibold leading-snug text-slate-500" data-i18n="bt_stat4_l">Deepest point</div>
+      </div>
+  </div>
+
+  <p class="mt-6 text-[14px] leading-relaxed text-slate-600" data-i18n="bt_body">In mid-2025 the account fell to −64% of its starting equity - below half of what it began with. It came through that stretch without a single forced liquidation. At the most crowded moment the margin ratio read 38.2%, roughly 15x of room left before the liquidation line, measured against the strictest of the liquidation thresholds. Over the two years the engine took 2,023 trades and finished at +96%. The −64% and the +96% come from the same run, so read them together.</p>
+
+  <div class="mt-6 grid gap-4 md:grid-cols-2">
+    <div class="rounded-2xl border border-slate-200 bg-white p-6">
+      <h3 class="text-[16px] font-bold text-slate-900" data-i18n="bt_def_title">What kept liquidation away</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600" data-i18n="bt_def_body">Run those same 805 windows with the gate switched off and a forced liquidation lands on 2025-10-09. One rule removed it: no entry into a coin listed less than 90 days ago. With the 90-day gate in place, the same two years produced zero liquidations. We also tried tightening the add-on spacing from 30% to 20% - liquidation came back, and that run ended at −30.5%. Coins under a delisting notice (including spot delisting announcements) are blocked as well.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-6">
+      <h3 class="text-[16px] font-bold text-slate-900" data-i18n="bt_limit_title">What this test does not cover</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600" data-i18n="bt_limit_body">The sample is 805 pump windows and nothing else. Trades from ordinary market conditions - the gains and the losses alike - are simply absent, so a real account curve does not look like this. We scanned only the coins that can still be queried today, so anything delisted in between was never even a candidate (survivorship bias). Market behaviour that did not occur within these two years is not in here either. The zero liquidations happened inside these 805 windows; no number here says anything about what lies outside them. Trading fees are included, but funding and slippage are not - with those added, the result would have been worse than what you see.</p>
+    </div>
+  </div>
+
+  <p class="mt-6 text-[12.5px] leading-relaxed text-slate-500" data-i18n="bt_foot">Leveraged futures trading can lose your entire principal. The figures above are a recalculation over real past market prices, not the trade record of a live account - Shadow Mode lets you watch that same code decide on live data with a virtual balance, so you can see it run for yourself.</p>
+</div></section>
 
 <!-- ============ THREE REASONS ============ -->
 <section class="py-16"><div class="mx-auto max-w-6xl px-6">
@@ -1026,6 +1072,7 @@ document.addEventListener('DOMContentLoaded', function jfbUpdatePopup(){
         <li><a href="#features" class="hover:text-indigo-600" data-i18n="nav_features">Features</a></li>
         <li><a href="#how-it-works" class="hover:text-indigo-600" data-i18n="nav_how_it_works">How It Works</a></li>
         <li><a href="#compare" class="hover:text-indigo-600" data-i18n="nav_compare">Compare</a></li>
+        <li><a href="#backtest" class="hover:text-indigo-600" data-i18n="nav_backtest">Backtest</a></li>
         <li><a href="#shadow-mode" class="hover:text-indigo-600" data-i18n="footer_link_shadow">Shadow Mode</a></li>
         <li><a href="#download" class="hover:text-indigo-600" data-i18n="cta_free_download">Free Download</a></li>
       </ul>
@@ -1130,6 +1177,23 @@ window.initIcons = initIcons;
 <script>
 var I18N = {
   en: {
+    "bt_title": "Backtest: Two Years Replayed",
+    "bt_lead": "We pulled every pump window between September 2024 and September 2026 - 805 windows across 425 coins that tripled or more inside a single month - downloaded their full 1-minute candles, and ran the program again over that market, bar by bar. Every entry, every add-on and every exit was decided by the same program code you download, not by a model fitted to the chart. The price data is the real 1-minute history of USDT perpetual futures across those two years.",
+    "bt_stat1_v": "805",
+    "bt_stat1_l": "Pump windows",
+    "bt_stat2_v": "425",
+    "bt_stat2_l": "Coins",
+    "bt_stat3_v": "0",
+    "bt_stat3_l": "Forced liquidations",
+    "bt_stat4_v": "−64%",
+    "bt_stat4_l": "Deepest point",
+    "bt_body": "In mid-2025 the account fell to −64% of its starting equity - below half of what it began with. It came through that stretch without a single forced liquidation. At the most crowded moment the margin ratio read 38.2%, roughly 15x of room left before the liquidation line, measured against the strictest of the liquidation thresholds. Over the two years the engine took 2,023 trades and finished at +96%. The −64% and the +96% come from the same run, so read them together.",
+    "bt_def_title": "What kept liquidation away",
+    "bt_def_body": "Run those same 805 windows with the gate switched off and a forced liquidation lands on 2025-10-09. One rule removed it: no entry into a coin listed less than 90 days ago. With the 90-day gate in place, the same two years produced zero liquidations. We also tried tightening the add-on spacing from 30% to 20% - liquidation came back, and that run ended at −30.5%. Coins under a delisting notice (including spot delisting announcements) are blocked as well.",
+    "bt_limit_title": "What this test does not cover",
+    "bt_limit_body": "The sample is 805 pump windows and nothing else. Trades from ordinary market conditions - the gains and the losses alike - are simply absent, so a real account curve does not look like this. We scanned only the coins that can still be queried today, so anything delisted in between was never even a candidate (survivorship bias). Market behaviour that did not occur within these two years is not in here either. The zero liquidations happened inside these 805 windows; no number here says anything about what lies outside them. Trading fees are included, but funding and slippage are not - with those added, the result would have been worse than what you see.",
+    "bt_foot": "Leveraged futures trading can lose your entire principal. The figures above are a recalculation over real past market prices, not the trade record of a live account - Shadow Mode lets you watch that same code decide on live data with a virtual balance, so you can see it run for yourself.",
+    "nav_backtest": "Backtest",
   "symbols_coverage": "Pick from BTC, ETH, XAU and 500+ other USDⓈ-M futures symbols — you decide which ones run. The three strategies are currently tuned for high-volatility altcoins; a large-cap preset is still in development.",
     nav_features: 'Features',
     nav_how_it_works: 'How It Works',
@@ -1359,6 +1423,23 @@ var I18N = {
     sc_cap7: 'More trade records — every closed position, in order',
   },
   ko: {
+    "bt_title": "백테스트 — 2년 실데이터 재생",
+    "bt_lead": "2024년 9월부터 2026년 9월까지, 한 달 안에 3배 이상 오른 급등 구간 805개(425종목)를 뽑아 그 구간의 1분봉을 통째로 내려받고, 프로그램을 그 시점의 시장에 다시 실행했습니다. 진입·분할·청산 판단은 전부 여러분이 받는 것과 같은 프로그램 코드가 했습니다. 시세는 그 2년간 USDT 무기한 선물의 실제 1분봉입니다.",
+    "bt_stat1_v": "805",
+    "bt_stat1_l": "급등 구간",
+    "bt_stat2_v": "425",
+    "bt_stat2_l": "종목",
+    "bt_stat3_v": "0",
+    "bt_stat3_l": "강제청산",
+    "bt_stat4_v": "−64%",
+    "bt_stat4_l": "최저점",
+    "bt_body": "2025년 중반, 계좌는 시작 자산 대비 −64%까지 내려갔습니다. 반토막 아래입니다. 그 구간을 지나는 동안 강제청산은 한 번도 없었습니다. 가장 몰렸던 순간의 증거금율은 38.2%로 청산선까지 약 15배가 남아 있었고, 청산 기준 중 가장 빡빡한 쪽을 적용한 수치입니다. 2년 동안 거래는 2,023회였고 최종 결과는 +96%였습니다. −64%와 +96%는 같은 한 번의 재생에서 나온 숫자이니 둘을 같이 보셔야 합니다.",
+    "bt_def_title": "무엇이 청산을 없앴나",
+    "bt_def_body": "같은 805개 구간을 게이트 없이 돌리면 2025년 10월 9일에 강제청산이 났습니다. 청산을 없앤 건 규칙 하나였습니다 — 상장한 지 90일이 안 된 종목에는 진입하지 않는다. 이 90일 게이트를 넣자 같은 2년에서 청산이 사라졌습니다. 분할 간격을 30%에서 20%로 좁혀서도 돌려봤는데, 청산이 다시 났고 결과는 −30.5%로 끝났습니다. 상장폐지 예고가 뜬 종목(현물 상폐 공지 포함)도 함께 차단됩니다.",
+    "bt_limit_title": "이 테스트가 말해주지 않는 것",
+    "bt_limit_body": "표본은 급등 구간 805개가 전부입니다. 평범한 장에서 나오는 거래는 이익도 손실도 통째로 빠져 있어서, 실제 계좌 곡선은 이 모양이 아닙니다. 지금 조회되는 종목만 훑었기 때문에 그사이 상장폐지된 종목은 애초에 후보에 없었습니다(생존 편향). 2년 안에 나오지 않은 형태의 움직임 역시 여기에 없습니다. 강제청산이 없었던 것은 이 805개 구간 안에서의 일이고, 그 바깥을 말해 주는 숫자는 여기에 없습니다. 거래 수수료는 반영했지만 펀딩비와 체결 미끄러짐은 넣지 않았습니다 — 그것까지 넣었다면 결과는 지금 보이는 것보다 나빴을 겁니다.",
+    "bt_foot": "레버리지 선물 거래는 원금 전액 손실이 가능합니다. 위 수치는 과거 실제 시세로 다시 계산한 결과이고 실제 계좌의 거래 기록이 아닙니다 — 같은 코드가 실시간 시세에서 어떻게 판단하는지는 가상 잔고로 도는 쉐도우 모드에서 직접 확인해 보세요.",
+    "nav_backtest": "백테스트",
   "symbols_coverage": "BTC·ETH·XAU를 포함한 500개 이상의 USDⓈ-M 선물 심볼 중에서 직접 골라 돌립니다. 현재 3개 전략은 변동성이 큰 알트코인에 맞춰져 있고, 대형 종목 전용 프리셋은 아직 개발 중입니다.",
     nav_features: '기능',
     nav_how_it_works: '이용 방법',
@@ -1588,6 +1669,23 @@ var I18N = {
     sc_cap7: '추가 거래 기록 — 청산된 모든 포지션을 순서대로',
   },
   ja: {
+    "bt_title": "バックテスト — 2年間の再現",
+    "bt_lead": "2024年9月から2026年9月までの間に1か月で3倍以上に跳ねた急騰局面をすべて抜き出し（805件・425銘柄）、その1分足を丸ごと取得して、当時の相場にプログラムをもう一度走らせました。エントリーも分割も決済も、判断したのは配布しているものと同じプログラムのコードです。価格データは、その2年間のUSDT無期限先物の実際の1分足です。",
+    "bt_stat1_v": "805",
+    "bt_stat1_l": "急騰局面",
+    "bt_stat2_v": "425",
+    "bt_stat2_l": "銘柄",
+    "bt_stat3_v": "0",
+    "bt_stat3_l": "強制ロスカット",
+    "bt_stat4_v": "−64%",
+    "bt_stat4_l": "最も沈んだ地点",
+    "bt_body": "2025年半ば、口座は開始時の資産に対して−64%まで沈みました。半分を割り込んだということです。その区間を通り抜ける間、強制ロスカットは一度も起きていません。最も建玉が膨らんだ瞬間の証拠金率は38.2%で、ロスカットラインまで約15倍の余裕が残っていました（ロスカット基準のうち最も厳しいもので計算しています）。2年間の取引回数は2,023回、最終結果は+96%です。−64%と+96%は同じ一度の再現から出た数字なので、切り離さずに見てください。",
+    "bt_def_title": "ロスカットを消したもの",
+    "bt_def_body": "同じ805件をゲートなしで走らせると、2025年10月9日に強制ロスカットが発生します。それを消したのはルール1つです——上場から90日に満たない銘柄には新規で入らない。このゲートを入れた途端、同じ2年間でロスカットは消えました。分割の間隔を30%から20%に狭めた条件も試しましたが、ロスカットは再発し、結果は−30.5%で終わっています。上場廃止が予告された銘柄（現物の上場廃止告知を含む）も同じく除外されます。",
+    "bt_limit_title": "このテストで分からないこと",
+    "bt_limit_body": "サンプルは急騰局面805件だけです。平常時の相場で生まれる取引は、利益も損失もまるごと入っていないので、実際の口座の曲線はこの形にはなりません。現在照会できる銘柄しか走査していないため、その間に上場廃止になった銘柄はそもそも候補に入っていません（生存バイアス）。この2年間に現れなかった値動きも、ここにはありません。ロスカットが無かったのはこの805件の中での話で、その外側について語る数字はここにはありません。取引手数料は含めていますが、資金調達料（ファンディング）とスリッページは含めていません——それらを入れれば、結果は今見えているものより悪くなっていたはずです。",
+    "bt_foot": "レバレッジをかけた先物取引では、預けた資金の全額を失うことがあります。上の数字は過去の実際の価格をもとに計算し直したもので、実際の口座の取引記録ではありません——同じコードがリアルタイムの相場でどう判断するかは、仮想残高で動くシャドーモードでご自身で確かめられます。",
+    "nav_backtest": "バックテスト",
   "symbols_coverage": "BTC・ETH・XAUを含む500以上のUSDⓈ-M先物銘柄から、ご自身で選んで稼働できます。現在の3つの戦略はボラティリティの高いアルトコイン向けに調整されており、大型銘柄向けのプリセットはまだ開発中です。",
     nav_features: '機能',
     nav_how_it_works: '使い方',
@@ -1817,6 +1915,23 @@ var I18N = {
     sc_cap7: 'さらなる取引記録 — クローズした全ポジションを順番に',
   },
   zh: {
+    "bt_title": "回测 — 两年真实行情重跑",
+    "bt_lead": "我们把2024年9月到2026年9月之间、一个月内涨幅超过三倍的急涨行情全部挑了出来，共805段、涉及425个币种，下载这些时段完整的1分钟K线，让程序回到当时的行情里重新跑一遍。开仓、加仓、平仓的每一次判断，都是由你下载到的同一份程序代码做出的。行情数据是那两年USDT永续合约的真实1分钟K线。",
+    "bt_stat1_v": "805",
+    "bt_stat1_l": "急涨行情段",
+    "bt_stat2_v": "425",
+    "bt_stat2_l": "币种",
+    "bt_stat3_v": "0",
+    "bt_stat3_l": "强制平仓",
+    "bt_stat4_v": "−64%",
+    "bt_stat4_l": "最深的低点",
+    "bt_body": "2025年年中，账户一度跌到起始资金的−64%，也就是腰斩之下。而在走过这一段的过程中，没有出现过一次强制平仓。持仓最重的那一刻，保证金率为38.2%，距离强平线还有大约15倍的空间，这个数字用的是最严格的那一档强平标准。两年里共成交2,023笔，最终为+96%。−64%和+96%来自同一次重跑，请放在一起看。",
+    "bt_def_title": "是什么让强平没有发生",
+    "bt_def_body": "把同样这805段行情在关掉该规则的情况下重跑，2025年10月9日就会出现强制平仓。让它消失的只有一条规则：上市不满90天的币种一律不开仓。加上这道90天门槛后，同样的两年里强平没有再出现。我们也试过把加仓间距从30%收紧到20%，强平随即重新发生，那一次跑完收在−30.5%。已发布退市预告的币种（包括现货下架公告）同样会被排除。",
+    "bt_limit_title": "这次测试没有覆盖的部分",
+    "bt_limit_body": "样本只有805段急涨行情，没有别的。平常行情里产生的交易，无论盈亏都完全不在其中，所以真实账户的曲线不会是这个形状。我们只扫描了如今还能查到的币种，中途已经退市的币种从一开始就不在候选里（幸存者偏差）。这两年里没有出现过的行情形态，这里同样没有。没有强平这件事，只发生在这805段之内，这里没有任何一个数字能说明它之外的情况。交易手续费已经计入，但资金费率和滑点没有计入——把它们算进去，结果会比你看到的更差。",
+    "bt_foot": "杠杆合约交易可能导致本金全部亏损。以上数字是基于过去真实行情重新计算的结果，不是真实账户的成交记录——同一份代码在实时行情下怎么判断，可以用虚拟余额的影子模式（Shadow Mode）自己看一遍。",
+    "nav_backtest": "回测",
   "symbols_coverage": "可从 BTC、ETH、XAU 等 500 多个 USDⓈ-M 合约标的中自行挑选运行。目前三套策略针对高波动的山寨币调校，大型币种专用预设仍在开发中。",
     nav_features: '功能',
     nav_how_it_works: '使用流程',
@@ -2046,6 +2161,23 @@ var I18N = {
     sc_cap7: '更多交易记录 — 按顺序展示每一笔已平仓的仓位',
   },
   es: {
+    "bt_title": "Backtest: dos años repetidos",
+    "bt_lead": "Tomamos todos los tramos de subida explosiva entre septiembre de 2024 y septiembre de 2026 - 805 tramos en 425 monedas que se multiplicaron por tres o más en menos de un mes -, descargamos sus velas de 1 minuto completas y volvimos a ejecutar el programa sobre aquel mercado, vela a vela. Cada entrada, cada añadido y cada cierre los decidió el mismo código que tú descargas. Los datos de precio son las velas de 1 minuto reales de los futuros perpetuos USDT de esos dos años.",
+    "bt_stat1_v": "805",
+    "bt_stat1_l": "Tramos de subida",
+    "bt_stat2_v": "425",
+    "bt_stat2_l": "Monedas",
+    "bt_stat3_v": "0",
+    "bt_stat3_l": "Liquidaciones forzosas",
+    "bt_stat4_v": "−64%",
+    "bt_stat4_l": "Punto más bajo",
+    "bt_body": "A mediados de 2025 la cuenta llegó a −64% respecto al capital inicial: menos de la mitad de lo que tenía al empezar. Atravesó ese tramo sin una sola liquidación forzosa. En el momento de mayor exposición, el ratio de margen marcaba 38,2%, unas 15 veces de margen antes de la línea de liquidación, calculado con el más estricto de los criterios de liquidación. En los dos años hubo 2.023 operaciones y el resultado final fue +96%. El −64% y el +96% salen de la misma ejecución: hay que leerlos juntos.",
+    "bt_def_title": "Qué evitó la liquidación",
+    "bt_def_body": "Si se repiten esos mismos 805 tramos con la regla desactivada, la liquidación forzosa llega el 9 de octubre de 2025. Lo que la eliminó fue una sola regla: no abrir posición en monedas listadas hace menos de 90 días. Con ese filtro de 90 días, los mismos dos años terminaron sin ninguna liquidación. También probamos a estrechar el espaciado de los añadidos del 30% al 20%: la liquidación volvió y esa ejecución acabó en −30,5%. Las monedas con aviso de deslistado (incluidos los anuncios de retirada en spot) también quedan bloqueadas.",
+    "bt_limit_title": "Lo que esta prueba no cubre",
+    "bt_limit_body": "La muestra son 805 tramos de subida explosiva y nada más. Las operaciones de un mercado normal, con sus ganancias y sus pérdidas, no están aquí, así que la curva de una cuenta real no tiene esta forma. Solo recorrimos las monedas que hoy se pueden consultar, de modo que las deslistadas por el camino nunca llegaron a ser candidatas (sesgo de supervivencia). Lo que no ocurrió dentro de estos dos años tampoco aparece. Que no hubiera liquidaciones ocurrió dentro de estos 805 tramos; ningún número de aquí dice nada sobre lo que hay fuera. Las comisiones de trading sí están incluidas; el funding y el slippage no - con ellos, el resultado habría sido peor que el que ves.",
+    "bt_foot": "En futuros con apalancamiento se puede perder todo el capital. Las cifras de arriba son un recálculo sobre precios reales del pasado, no el historial de una cuenta real - con el Modo Sombra puedes ver ese mismo código decidiendo sobre datos en vivo con saldo virtual y comprobarlo tú mismo.",
+    "nav_backtest": "Backtest",
   "symbols_coverage": "Elige entre BTC, ETH, XAU y más de 500 símbolos de futuros USDⓈ-M: tú decides cuáles operan. Las tres estrategias están ajustadas actualmente para altcoins de alta volatilidad; un preajuste para grandes capitalizaciones sigue en desarrollo.",
     nav_features: 'Funciones',
     nav_how_it_works: 'Cómo funciona',
@@ -2275,6 +2407,23 @@ var I18N = {
     sc_cap7: 'Más registros de operaciones — cada posición cerrada, en orden',
   },
   fr: {
+    "bt_title": "Backtest : deux ans rejoués",
+    "bt_lead": "Nous avons repris toutes les phases de flambée entre septembre 2024 et septembre 2026 - 805 séquences sur 425 cryptos ayant triplé en moins d'un mois -, téléchargé l'intégralité de leurs bougies 1 minute et relancé le programme sur le marché de l'époque, bougie après bougie. Chaque entrée, chaque renfort et chaque sortie ont été décidés par le code même que vous téléchargez. Les données de prix sont les bougies 1 minute réelles des futures perpétuels USDT sur ces deux années.",
+    "bt_stat1_v": "805",
+    "bt_stat1_l": "Phases de flambée",
+    "bt_stat2_v": "425",
+    "bt_stat2_l": "Cryptos",
+    "bt_stat3_v": "0",
+    "bt_stat3_l": "Liquidations forcées",
+    "bt_stat4_v": "−64%",
+    "bt_stat4_l": "Point le plus bas",
+    "bt_body": "Mi-2025, le compte est descendu à −64% du capital de départ, soit moins de la moitié. Il a traversé cette phase sans une seule liquidation forcée. Au moment où l'exposition était la plus forte, le ratio de marge affichait 38,2%, environ 15 fois de marge avant la ligne de liquidation, calculé avec le plus strict des seuils de liquidation. Sur les deux ans : 2 023 trades, résultat final +96%. Le −64% et le +96% viennent du même run - il faut les lire ensemble.",
+    "bt_def_title": "Ce qui a écarté la liquidation",
+    "bt_def_body": "En rejouant ces mêmes 805 séquences sans ce filtre, la liquidation forcée tombe le 9 octobre 2025. Une seule règle l'a fait disparaître : aucune entrée sur une crypto listée depuis moins de 90 jours. Avec ce filtre de 90 jours, les mêmes deux ans se terminent sans aucune liquidation. Nous avons aussi resserré l'espacement des renforts de 30% à 20% : la liquidation est revenue et ce run s'est terminé à −30,5%. Les cryptos faisant l'objet d'un avis de retrait (y compris les annonces de delisting spot) sont également écartées.",
+    "bt_limit_title": "Ce que ce test ne couvre pas",
+    "bt_limit_body": "L'échantillon, ce sont 805 phases de flambée, rien d'autre. Les trades d'un marché ordinaire - gains comme pertes - en sont absents, donc la courbe d'un compte réel n'a pas cette forme. Nous n'avons parcouru que les cryptos encore interrogeables aujourd'hui : celles retirées entre-temps n'ont jamais été candidates (biais du survivant). Ce qui ne s'est pas produit sur ces deux ans n'y figure pas non plus. L'absence de liquidation vaut à l'intérieur de ces 805 séquences ; aucun chiffre ici ne dit quoi que ce soit de ce qu'il y a en dehors. Les frais de trading sont inclus, mais ni le funding ni le slippage ne le sont - avec eux, le résultat aurait été moins bon que celui affiché.",
+    "bt_foot": "Sur les futures à effet de levier, la perte peut aller jusqu'à la totalité du capital. Les chiffres ci-dessus sont un recalcul sur des prix passés réels, pas l'historique d'un compte réel - le Mode Ombre vous laisse voir ce même code décider en direct avec un solde virtuel, et le constater par vous-même.",
+    "nav_backtest": "Backtest",
   "symbols_coverage": "Choisissez parmi BTC, ETH, XAU et plus de 500 symboles de futures USDⓈ-M : vous décidez lesquels tournent. Les trois stratégies sont actuellement calibrées pour les altcoins très volatils ; un préréglage grandes capitalisations est encore en développement.",
     nav_features: 'Fonctionnalités',
     nav_how_it_works: 'Fonctionnement',
@@ -2504,6 +2653,23 @@ var I18N = {
     sc_cap7: 'Plus de registres de trades — chaque position clôturée, dans l\'ordre',
   },
 vi: {
+  "bt_title": "Backtest: chạy lại hai năm",
+  "bt_lead": "Chúng tôi lọc ra toàn bộ các đợt tăng mạnh từ tháng 9/2024 đến tháng 9/2026 - 805 đoạn trên 425 đồng coin từng tăng gấp ba trở lên trong vòng một tháng - tải về đầy đủ nến 1 phút của các đoạn đó, rồi cho chương trình chạy lại trên đúng thị trường thời điểm ấy, từng nến một. Mọi lệnh vào, lệnh nhồi và lệnh đóng đều do chính đoạn mã trong bản chương trình bạn tải về quyết định. Dữ liệu giá là nến 1 phút thật của hợp đồng vĩnh cửu USDT trong hai năm đó.",
+  "bt_stat1_v": "805",
+  "bt_stat1_l": "Đợt tăng mạnh",
+  "bt_stat2_v": "425",
+  "bt_stat2_l": "Đồng coin",
+  "bt_stat3_v": "0",
+  "bt_stat3_l": "Lần bị thanh lý",
+  "bt_stat4_v": "−64%",
+  "bt_stat4_l": "Đáy sâu nhất",
+  "bt_body": "Giữa năm 2025, tài khoản rơi xuống −64% so với vốn ban đầu, tức là mất hơn một nửa. Đi qua đoạn đó, không có một lần thanh lý bắt buộc nào. Ở thời điểm ôm vị thế nặng nhất, tỷ lệ ký quỹ là 38,2% - còn cách mức thanh lý khoảng 15 lần, và đây là con số tính theo ngưỡng thanh lý ngặt nhất. Trong hai năm có 2.023 lệnh, kết quả cuối là +96%. Con số −64% và +96% đến từ cùng một lần chạy, nên hãy đọc chúng cùng nhau.",
+  "bt_def_title": "Điều gì đã chặn thanh lý",
+  "bt_def_body": "Chạy lại đúng 805 đoạn đó mà tắt bộ lọc này thì ngày 09/10/2025 tài khoản bị thanh lý bắt buộc. Thứ xóa được nó chỉ là một quy tắc: không vào lệnh với coin niêm yết chưa đủ 90 ngày. Bật bộ lọc 90 ngày lên, cùng hai năm ấy không còn lần thanh lý nào. Chúng tôi cũng thử thu khoảng cách nhồi lệnh từ 30% xuống 20%: thanh lý quay trở lại, và lần chạy đó kết thúc ở −30,5%. Coin đã có thông báo hủy niêm yết (kể cả thông báo gỡ khỏi spot) cũng bị chặn.",
+  "bt_limit_title": "Những gì phép thử này không nói được",
+  "bt_limit_body": "Mẫu chỉ gồm 805 đợt tăng mạnh, không có gì khác. Các lệnh phát sinh trong thị trường bình thường - cả lãi lẫn lỗ - đều nằm ngoài, nên đường vốn của một tài khoản thật không có hình dạng như thế này. Chúng tôi chỉ quét những coin hiện còn tra cứu được, nên coin đã bị hủy niêm yết trong khoảng thời gian đó ngay từ đầu đã không nằm trong danh sách (thiên lệch sống sót). Kiểu biến động chưa từng xuất hiện trong hai năm này thì ở đây cũng không có. Việc không bị thanh lý là chuyện xảy ra bên trong 805 đoạn đó; không con số nào ở đây nói được điều gì về phần bên ngoài. Phí giao dịch đã được tính, còn phí funding và trượt giá thì chưa - nếu cộng cả hai, kết quả sẽ xấu hơn con số bạn đang thấy.",
+  "bt_foot": "Giao dịch futures có đòn bẩy có thể khiến bạn mất toàn bộ số vốn. Các con số ở trên là kết quả tính lại trên dữ liệu giá quá khứ có thật, không phải lịch sử giao dịch của một tài khoản thật - bạn có thể tự xem chính đoạn mã đó ra quyết định trên dữ liệu thời gian thực bằng Shadow Mode với số dư ảo.",
+  "nav_backtest": "Backtest",
   "symbols_coverage": "Chọn trong số BTC, ETH, XAU và hơn 500 mã hợp đồng tương lai USDⓈ-M khác — bạn quyết định mã nào chạy. Ba chiến lược hiện được tinh chỉnh cho các altcoin biến động cao; bộ cấu hình dành cho vốn hóa lớn vẫn đang được phát triển.",
     nav_features: 'Tính năng',
     nav_how_it_works: 'Cách hoạt động',
@@ -2733,6 +2899,23 @@ vi: {
     sc_cap7: 'Thêm bản ghi giao dịch — mọi vị thế đã đóng, theo thứ tự',
   },
 tr: {
+  "bt_title": "Backtest: iki yıl yeniden",
+  "bt_lead": "Eylül 2024 ile Eylül 2026 arasında bir ay içinde üç katına ya da fazlasına çıkan tüm sert yükseliş dönemlerini ayıkladık - 425 coinde 805 dönem -, bu dönemlerin 1 dakikalık mumlarının tamamını indirdik ve programı o günün piyasasında mum mum yeniden çalıştırdık. Girişleri, kademeli eklemeleri ve çıkışları, indirdiğiniz programın kendi kodu verdi. Fiyat verisi, o iki yıla ait USDT vadeli (perpetual) piyasasının gerçek 1 dakikalık mumlarıdır.",
+  "bt_stat1_v": "805",
+  "bt_stat1_l": "Yükseliş dönemi",
+  "bt_stat2_v": "425",
+  "bt_stat2_l": "Coin",
+  "bt_stat3_v": "0",
+  "bt_stat3_l": "Zorunlu tasfiye",
+  "bt_stat4_v": "−64%",
+  "bt_stat4_l": "En dip nokta",
+  "bt_body": "2025 ortasında hesap, başlangıç sermayesine göre −64%'e kadar indi; yani yarısının da altına. Bu bölümden geçerken tek bir zorunlu tasfiye yaşanmadı. Pozisyonun en ağır olduğu anda teminat oranı 38,2% idi - tasfiye çizgisine yaklaşık 15 kat mesafe vardı ve bu, tasfiye eşiklerinin en sıkısına göre hesaplandı. İki yılda 2.023 işlem yapıldı, sonuç +96% oldu. −64% ile +96% aynı çalışmanın iki ucu; ikisini birlikte okuyun.",
+  "bt_def_title": "Tasfiyeyi ne engelledi",
+  "bt_def_body": "Aynı 805 dönemi bu kural kapalıyken çalıştırdığımızda 9 Ekim 2025'te zorunlu tasfiye geliyor. Onu ortadan kaldıran tek bir kural vardı: listelenmesinin üzerinden 90 gün geçmemiş coinlere giriş yok. 90 günlük bu filtre devredeyken aynı iki yılda hiç tasfiye olmadı. Kademe aralığını %30'dan %20'ye daralttığımız denemede ise tasfiye geri geldi ve o çalışma −30,5% ile bitti. Listeden çıkarılma duyurusu bulunan coinler (spot listeden çıkarma duyuruları dahil) de engelleniyor.",
+  "bt_limit_title": "Bu testin kapsamadıkları",
+  "bt_limit_body": "Örneklem yalnızca 805 sert yükseliş dönemi, başka hiçbir şey değil. Sıradan piyasada oluşan işlemler, kârıyla zararıyla, burada hiç yok; dolayısıyla gerçek bir hesabın eğrisi bu biçimde olmaz. Yalnızca bugün sorgulanabilen coinleri taradık, yani bu arada listeden çıkarılanlar en baştan aday bile olmadı (hayatta kalma yanlılığı). Bu iki yıl içinde görülmemiş bir hareket biçimi de burada yok. Tasfiyenin olmaması bu 805 dönemin içinde geçerli; dışarısı hakkında bir şey söyleyen tek bir sayı yok. İşlem komisyonları dahil edildi, fonlama ücreti ve kayma (slippage) edilmedi - onlar da eklenseydi sonuç gördüğünüzden daha kötü olurdu.",
+  "bt_foot": "Kaldıraçlı vadeli işlemlerde ana paranızın tamamını kaybedebilirsiniz. Yukarıdaki sayılar geçmişteki gerçek fiyatlar üzerinden yeniden hesaplanmıştır, gerçek bir hesabın işlem kaydı değildir - aynı kodun canlı veride nasıl karar verdiğini Gölge Mod'da sanal bakiyeyle kendiniz izleyebilirsiniz.",
+  "nav_backtest": "Backtest",
   "symbols_coverage": "BTC, ETH, XAU ve 500'den fazla diğer USDⓈ-M vadeli işlem sembolü arasından seçim yapın — hangilerinin çalışacağına siz karar verirsiniz. Üç strateji şu anda yüksek oynaklığa sahip altcoinler için ayarlanmıştır; büyük piyasa değerine sahip coinler için bir ön ayar hâlâ geliştirme aşamasındadır.",
     nav_features: 'Özellikler',
     nav_how_it_works: 'Nasıl Çalışır',
@@ -2962,6 +3145,23 @@ tr: {
     sc_cap7: 'Daha fazla işlem kaydı — sırayla kapanan her pozisyon',
   },
 pt: {
+  "bt_title": "Backtest: dois anos reexecutados",
+  "bt_lead": "Separamos todos os trechos de alta explosiva entre setembro de 2024 e setembro de 2026 - 805 trechos em 425 moedas que triplicaram em menos de um mês -, baixamos todos os candles de 1 minuto desses períodos e rodamos o programa de novo sobre o mercado da época, candle a candle. Cada entrada, cada aporte e cada saída foram decididos pelo mesmo código que você baixa. Os dados de preço são os candles de 1 minuto reais dos perpétuos USDT desses dois anos.",
+  "bt_stat1_v": "805",
+  "bt_stat1_l": "Trechos de alta",
+  "bt_stat2_v": "425",
+  "bt_stat2_l": "Moedas",
+  "bt_stat3_v": "0",
+  "bt_stat3_l": "Liquidações forçadas",
+  "bt_stat4_v": "−64%",
+  "bt_stat4_l": "Ponto mais baixo",
+  "bt_body": "Em meados de 2025 a conta caiu para −64% do capital inicial - menos da metade do que tinha no começo. Ela atravessou esse trecho sem uma única liquidação forçada. No momento de maior exposição, a taxa de margem marcava 38,2%, cerca de 15 vezes de folga até a linha de liquidação, calculada pelo mais rígido dos critérios de liquidação. Nos dois anos foram 2.023 operações e o resultado final ficou em +96%. O −64% e o +96% vêm da mesma execução: leia os dois juntos.",
+  "bt_def_title": "O que manteve a conta longe da liquidação",
+  "bt_def_body": "Rodando esses mesmos 805 trechos com a regra desligada, a liquidação forçada acontece em 09/10/2025. O que a eliminou foi uma regra só: não entrar em moedas listadas há menos de 90 dias. Com esse filtro de 90 dias, os mesmos dois anos terminaram sem nenhuma liquidação. Também testamos apertar o espaçamento dos aportes de 30% para 20%: a liquidação voltou e essa execução terminou em −30,5%. Moedas com aviso de deslistagem (incluindo anúncios de retirada no spot) também ficam bloqueadas.",
+  "bt_limit_title": "O que este teste não cobre",
+  "bt_limit_body": "A amostra são 805 trechos de alta explosiva e nada além disso. As operações de um mercado comum, com seus ganhos e suas perdas, estão todas de fora - por isso a curva de uma conta real não tem esse formato. Varremos apenas as moedas que ainda podem ser consultadas hoje, então as deslistadas no meio do caminho nunca chegaram a ser candidatas (viés de sobrevivência). O que não apareceu nesses dois anos também não está aqui. A ausência de liquidação vale dentro desses 805 trechos; nenhum número daqui diz qualquer coisa sobre o que está fora. As taxas de negociação entraram na conta, mas funding e slippage não - com eles, o resultado teria sido pior do que o que você vê.",
+  "bt_foot": "Em futuros com alavancagem é possível perder todo o capital. Os números acima são um recálculo sobre preços reais do passado, não o histórico de uma conta real - no Modo Sombra você acompanha esse mesmo código decidindo em dados ao vivo com saldo virtual e confere por conta própria.",
+  "nav_backtest": "Backtest",
   "symbols_coverage": "Escolha entre BTC, ETH, XAU e mais de 500 outros símbolos de futuros USDⓈ-M — você decide quais serão executados. As três estratégias estão atualmente ajustadas para altcoins de alta volatilidade; um perfil para large caps ainda está em desenvolvimento.",
     nav_features: 'Recursos',
     nav_how_it_works: 'Como Funciona',
