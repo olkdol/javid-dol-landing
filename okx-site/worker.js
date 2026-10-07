@@ -5,7 +5,7 @@
 // by importing the Pages-Functions-style handlers directly; everything else
 // falls through to the static assets binding.
 
-import { onRequestPost as downloadPost, onRequestGet as downloadGet } from "./functions/api/download.js";
+import { onRequestPost as downloadPost, onRequestGet as downloadGet, onRequestHead as downloadHead } from "./functions/api/download.js";
 import { onRequestGet as boardListGet, onRequestPost as boardListPost } from "./functions/api/board/posts.js";
 import {
   onRequestGet as boardItemGet,
@@ -28,6 +28,9 @@ export default {
       }
 
       if (pathname === "/api/download") {
+        // HEAD is an uncounted probe (downloadHead never calls logDownload), same
+        // as bg/bn/bb. Before, HEAD fell through to downloadGet and was logged.
+        if (request.method === "HEAD") return await downloadHead(base);
         return request.method === "POST" ? await downloadPost(base) : await downloadGet(base);
       }
 

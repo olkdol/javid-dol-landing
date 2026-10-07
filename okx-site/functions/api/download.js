@@ -143,15 +143,30 @@ async function serve(request, env, platform) {
   const fromAssets = await serveFromAssets(request, env, platform);
   if (fromAssets) return fromAssets;
 
-  return json({ error: "file_not_found", file: FILES[platform].r2Key }, 404);
+  return null;
+}
+
+// No file in R2 or assets (e.g. the download is taken down): a short page, not
+// a raw JSON error, and nothing is counted. 404 + no-store so no cache keeps it.
+function unavailable(request) {
+  if (request.method === "HEAD") return new Response(null, { status: 404, headers: { "Cache-Control": "no-store" } });
+  const html = '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
+    '<meta name="robots" content="noindex"><title>Download unavailable - JaviD Future Bot</title>' +
+    '<body style="font:16px/1.6 system-ui,sans-serif;max-width:560px;margin:60px auto;padding:0 20px">' +
+    '<h1 style="font-size:22px">This download is temporarily unavailable.</h1>' +
+    '<p>A new build is being prepared. / 새 빌드를 준비하고 있어 다운로드를 잠시 내렸습니다.</p>' +
+    '<p><a href="/">Back to the main page / 메인으로</a></p></body>';
+  return new Response(html, { status: 404, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" } });
 }
 
 // Primary path: <a href="/api/download?platform=windows">
 export async function onRequestGet({ request, env, ctx }) {
   const url = new URL(request.url);
   const platform = pickPlatform(url.searchParams.get("platform"));
+  const res = await serve(request, env, platform);
+  if (!res) return unavailable(request);   // nothing served -> nothing counted
   logDownload(env, ctx, request, platform);
-  return serve(request, env, platform);
+  return res;
 }
 
 // HEAD, so a browser can probe size before downloading. Not counted — it's
@@ -159,6 +174,7 @@ export async function onRequestGet({ request, env, ctx }) {
 export async function onRequestHead({ request, env }) {
   const url = new URL(request.url);
   const res = await serve(request, env, pickPlatform(url.searchParams.get("platform")));
+  if (!res) return unavailable(request);
   return new Response(null, { status: res.status, headers: res.headers });
 }
 
@@ -173,8 +189,10 @@ export async function onRequestPost({ request, env, ctx }) {
     body = {};
   }
   const platform = pickPlatform(body.platform);
+  const res = await serve(request, env, platform);
+  if (!res) return unavailable(request);
   logDownload(env, ctx, request, platform);
-  return serve(request, env, platform);
+  return res;
 }
 
 function json(data, status = 200) {
