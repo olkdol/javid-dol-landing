@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Why your computer warns about this app — JaviD Future Bot</title>
 <meta name="description" content="Windows SmartScreen and macOS Gatekeeper block apps from individual developers. Here is why it happens, how to verify the file yourself, and how to run it.">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://bb.javidtrading.com/install-help">
 <style>
 /*  랜딩 설치 도움말 페이지 (2026-08-23)
     ⚠️ 스크린샷을 쓰지 않고 CSS 로 재현했다. 이유:
@@ -93,6 +94,7 @@ footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:v
   </div>
 
   <h2 data-t="macT"></h2>
+  <p data-t="macZip"></p>
   <div class="grid">
     <div class="card">
       <div class="step"><strong>macOS 15 (Sequoia)+</strong></div>
@@ -113,6 +115,8 @@ footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:v
       <p class="step" data-t="mac14"></p>
     </div>
   </div>
+  <p class="step" data-t="macVary"></p>
+
 
   <h2 data-t="verT"></h2>
   <p data-t="verB"></p>
@@ -122,6 +126,16 @@ footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:v
          style="white-space:nowrap">virustotal.com&nbsp;↗</a></li>
     <li><span data-t="ver2"></span></li>
   </ul>
+
+  <h3 data-t="hashT" style="margin-top:1.6em"></h3>
+  <p data-t="hashB"></p>
+  <p data-t="hashDate"></p>
+  <pre style="overflow-x:auto;font-size:.82em;line-height:1.7;padding:.9em 1em;border-radius:6px;background:rgba(127,127,127,.12)"><code>JaviD_Future_Bot_Bybit_Windows.zip
+eb6dd52077a7f60ca2d6c2488263da92b7995b2222acd1a8ebe6af96c004368e
+
+JaviD_Future_Bot_Bybit_macOS.zip
+241d84a6420391777e0081e2a07ef8487de5ac4862838465bc659fc8292f34c5</code></pre>
+  <p class="note" data-t="hashN"></p>
 
   <p class="note" data-t="stop"></p>
 
@@ -147,17 +161,23 @@ ssPub:"App: JaviD_Future_Bot.exe   Publisher: Unknown publisher",
 winHint:"There is only a “Don't run” button at this point. The Run option does not exist yet — this is where most people give up.",
 winDone:"Clicking “More info” reveals “Run anyway”. Click it and the app starts normally. Wording varies between Windows versions.",
 macT:"macOS — Gatekeeper does the same thing",
-gk15T:"“JaviD Future Bot” Not Opened", gk15B:"Apple could not verify “JaviD Future Bot” is free of malware that may harm your Mac or compromise your privacy.",
+gk15T:"“start.command” Not Opened", gk15B:"Apple could not verify “start.command” is free of malware that may harm your Mac or compromise your privacy.",
 gkTrash:"Move to Trash", gkOk:"Done",
-gk14T:"“JaviD Future Bot” cannot be opened", gk14B:"because it is from an unidentified developer.",
+gk14T:"“start.command” cannot be opened", gk14B:"because it is from an unidentified developer.",
 gkCancel:"Cancel", gkOpen:"Open",
-mac15:"Try to open it once and let it fail. Then open System Settings → Privacy & Security, scroll down, and click “Open Anyway”. Control-clicking the app no longer works on Sequoia — Apple removed that shortcut.",
-mac14:"Right-click (or Control-click) the app, choose Open, then Open again in the dialog.",
-verT:"Don't take my word for it — check the file yourself",
+mac15:"Open it once and let it fail. Then go to System Settings → Privacy & Security, scroll down, and click “Open Anyway”. I list this route first because it does not depend on which version of macOS you are on.",
+mac14:"Control-click start.command, choose Open, then Open again in the dialog. If Open is not in that menu, use the Settings route above.",
+macZip:"The macOS download is a folder, not an installer. Unzip it and open start.command inside. Python and the libraries it needs are already in that folder, so there is no install step and nothing is added to your Applications folder. Everything it writes — your settings, your logs — stays inside that folder, and dragging the folder to the Trash is the whole uninstall.",
+macVary:"The exact wording differs between macOS versions. If your screen says something close to this but not identical, you are in the right place.",
+hashDate:"These hashes are for the build published on 2026-10-07. If you downloaded before that date your file will not match — that means you have an older build, not a tampered one. Download again from the main page and compare.",
+verT:"Check the file yourself",
 verB:"Both of these work on any file you ever download, not just mine:",
 ver1:"Before running: upload the file to VirusTotal (free) and read the scan from around 70 antivirus engines.",
-ver2:"After running: open Resource Monitor on Windows, or run lsof -i -P on macOS, and read the list of hosts the program connects to. You should find two — your exchange, and a CDN.",
+ver2:"After running: open Resource Monitor on Windows, or run lsof -i -P on macOS, and read the list of hosts the program connects to. You should find Bybit's servers (delivered through Amazon CloudFront) and www.binance.com. The second one is there because the program reads Binance's public delisting announcements once an hour, to keep away from coins about to be delisted; nothing about you or your account is sent there.",
 stop:"If none of that is good enough for you, stopping here is a reasonable decision. You can watch the published account dashboard without installing anything at all.",
+hashT:"Check you have the file I published",
+hashB:"Compare the checksum of the file you downloaded with the ones below. If they match, nobody swapped the file between my server and you. On Windows run certutil -hashfile <file> SHA256. On macOS or Linux run shasum -a 256 <file> — hash the .zip exactly as you downloaded it, before unzipping.",
+hashN:"I have not uploaded these builds to VirusTotal myself, so there is no scan link here yet — only the hashes, which you can check for yourself, independently of anything I say. The Windows build is packaged with PyInstaller, and unsigned PyInstaller executables commonly draw a few generic heuristic flags. The macOS download is not an installer at all — it is a folder of Python files. On any of them, a cluster of named trojans would be a different matter.",
 foot:"JaviD Future Bot — free, runs on your own PC.", back:"Back to the main page"},
 
 ko:{_n:"한국어",
@@ -175,17 +195,23 @@ ssPub:"앱: JaviD_Future_Bot.exe   게시자: 알 수 없는 게시자",
 winHint:"이 화면에는 “실행 안 함” 버튼밖에 없습니다. 실행 버튼은 아직 존재하지 않습니다 — 대부분이 여기서 포기합니다.",
 winDone:"“추가 정보”를 누르면 “실행”이 나타납니다. 그걸 누르면 정상적으로 실행됩니다. 문구는 윈도우 버전에 따라 조금씩 다릅니다.",
 macT:"macOS — 게이트키퍼도 같은 일을 합니다",
-gk15T:"“JaviD Future Bot”이(가) 열리지 않았습니다", gk15B:"Mac에 손상을 주거나 개인정보를 침해할 수 있는 악성 소프트웨어가 없는지 Apple이 확인할 수 없습니다.",
+gk15T:"“start.command”이(가) 열리지 않았습니다", gk15B:"Mac에 손상을 주거나 개인정보를 침해할 수 있는 악성 소프트웨어가 없는지 Apple이 확인할 수 없습니다.",
 gkTrash:"휴지통으로 이동", gkOk:"완료",
-gk14T:"“JaviD Future Bot”을(를) 열 수 없습니다", gk14B:"확인되지 않은 개발자가 배포했기 때문입니다.",
+gk14T:"“start.command”을(를) 열 수 없습니다", gk14B:"확인되지 않은 개발자가 배포했기 때문입니다.",
 gkCancel:"취소", gkOpen:"열기",
-mac15:"일단 한 번 열어보고 실패하게 두세요. 그다음 시스템 설정 → 개인정보 보호 및 보안 으로 가서 아래로 내리면 “무시하고 열기”가 있습니다. 세쿼이아부터는 우클릭 → 열기가 막혔습니다. 애플이 그 경로를 없앴습니다.",
-mac14:"앱을 우클릭(또는 Control-클릭) → 열기 → 다시 열기 를 누르시면 됩니다.",
-verT:"제 말을 믿지 마시고 직접 확인하세요",
+mac15:"일단 한 번 열어 실패하게 두세요. 그다음 시스템 설정 → 개인정보 보호 및 보안 으로 가서 아래로 내리면 “무시하고 열기”가 있습니다. 이 경로를 먼저 적는 이유는 macOS 버전을 타지 않기 때문입니다.",
+mac14:"start.command 를 Control-클릭 → 열기 → 대화상자에서 다시 열기. 메뉴에 “열기”가 없으면 위의 시스템 설정 경로를 쓰세요.",
+macZip:"macOS 배포본은 설치 파일이 아니라 폴더입니다. 압축을 풀고 안에 있는 start.command 를 여세요. 파이썬과 필요한 라이브러리가 이미 그 폴더에 들어 있어서 설치 단계가 없고, 응용 프로그램 폴더에도 아무것도 추가되지 않습니다. 설정도 로그도 전부 그 폴더 안에만 쌓이고, 폴더를 휴지통에 넣는 것이 삭제의 전부입니다.",
+macVary:"정확한 문구는 macOS 버전마다 다릅니다. 화면이 이것과 비슷하지만 똑같지는 않다면, 제대로 온 것이 맞습니다.",
+hashDate:"아래 해시는 2026-10-07 에 게시한 빌드 기준입니다. 그 전에 받으셨다면 값이 맞지 않는데, 그건 파일이 변조된 게 아니라 이전 빌드라는 뜻입니다. 메인 페이지에서 다시 받아 비교해 보세요.",
+verT:"직접 확인하세요",
 verB:"아래 두 가지는 제 프로그램만이 아니라 앞으로 받으실 어떤 파일에도 그대로 씁니다:",
 ver1:"실행 전: 파일을 바이러스토탈(무료)에 올려 약 70개 백신 엔진의 검사 결과를 보세요.",
-ver2:"실행 후: 윈도우는 리소스 모니터, 맥은 lsof -i -P 로 이 프로그램이 접속하는 호스트를 읽어보세요. 두 곳이 나옵니다 — 거래소, 그리고 CDN.",
+ver2:"실행 후: 윈도우는 리소스 모니터, 맥은 lsof -i -P 로 이 프로그램이 접속하는 호스트를 읽어보세요. 바이비트 서버(Amazon CloudFront 경유)와 www.binance.com 이 나옵니다. 뒤의 것은 상장폐지 예정 코인을 피하려고 바이낸스의 공개 상장폐지 공지를 한 시간에 한 번 읽기 때문이며, 여러분이나 계좌에 관한 정보는 그쪽으로 보내지 않습니다.",
 stop:"여기까지 읽고도 미덥지 않으시면 그만두시는 게 맞습니다. 아무것도 설치하지 않고 공개된 계좌 대시보드만 지켜보셔도 됩니다.",
+hashT:"내가 배포한 그 파일이 맞는지 확인하세요",
+hashB:"받으신 파일의 체크섬을 아래 값들과 비교해 보세요. 일치하면 서버에서 여러분에게 오는 사이에 파일이 바뀌지 않은 것입니다. 윈도우는 certutil -hashfile <파일> SHA256, macOS·리눅스는 shasum -a 256 <파일> — 압축은 풀기 전에, 받은 .zip 그대로 계산하세요.",
+hashN:"이 빌드를 제가 직접 VirusTotal 에 올려두지는 않았습니다. 그래서 스캔 링크는 아직 없고 해시만 있습니다 — 이 해시는 제 말과 무관하게 직접 확인하실 수 있습니다. 윈도우 빌드는 PyInstaller 로 묶여 있고, 서명 없는 PyInstaller 실행파일에는 보통 일반 휴리스틱 탐지가 몇 건 붙습니다. macOS 배포본은 설치 파일이 아니라 파이썬 파일이 든 폴더입니다. 어느 쪽이든 이름이 붙은 트로이목마가 무더기로 나온다면 그건 전혀 다른 이야기입니다.",
 foot:"JaviD Future Bot — 무료, 본인 PC에서 실행됩니다.", back:"메인으로 돌아가기"},
 
 ja:{_n:"日本語",
@@ -203,17 +229,23 @@ ssPub:"アプリ: JaviD_Future_Bot.exe   発行元: 不明な発行元",
 winHint:"この画面には「実行しない」しかありません。実行ボタンはまだ存在しません — ほとんどの人がここで諦めます。",
 winDone:"「詳細情報」を押すと「実行」が現れます。それを押せば正常に起動します。文言は Windows のバージョンによって多少異なります。",
 macT:"macOS — Gatekeeper も同じことをします",
-gk15T:"「JaviD Future Bot」は開けませんでした", gk15B:"Mac に損害を与えたりプライバシーを侵害する可能性のあるマルウェアが含まれていないことを Apple は確認できません。",
+gk15T:"「start.command」は開けませんでした", gk15B:"Mac に損害を与えたりプライバシーを侵害する可能性のあるマルウェアが含まれていないことを Apple は確認できません。",
 gkTrash:"ゴミ箱に入れる", gkOk:"完了",
-gk14T:"「JaviD Future Bot」は開けません", gk14B:"開発元を確認できないためです。",
+gk14T:"「start.command」は開けません", gk14B:"開発元を確認できないためです。",
 gkCancel:"キャンセル", gkOpen:"開く",
-mac15:"まず一度開いて失敗させてください。その後、システム設定 → プライバシーとセキュリティ を開いて下にスクロールすると「このまま開く」があります。Sequoia からは Control-クリックによる回避が削除されました。",
-mac14:"アプリを右クリック（または Control-クリック）→ 開く → もう一度「開く」を押します。",
-verT:"私の言葉を信じず、ご自身で確認してください",
+mac15:"まず一度開いて失敗させてください。その後、システム設定 → プライバシーとセキュリティ を開いて下にスクロールすると「このまま開く」があります。この経路を先に書くのは、macOS のバージョンに左右されないからです。",
+mac14:"start.command を Control-クリック → 開く → ダイアログでもう一度「開く」。メニューに「開く」がない場合は、上のシステム設定の経路を使ってください。",
+macZip:"macOS 版はインストーラではなくフォルダです。展開して中の start.command を開いてください。Python も必要なライブラリもすでにそのフォルダに入っているため、インストール作業はなく、アプリケーションフォルダにも何も追加されません。設定もログもすべてそのフォルダの中だけに書かれ、フォルダをゴミ箱に入れればアンインストールは完了です。",
+macVary:"正確な文言は macOS のバージョンによって異なります。画面がこれに近いけれど同一でなくても、場所は合っています。",
+hashDate:"下のハッシュは 2026-10-07 に公開したビルドのものです。それ以前にダウンロードした場合は一致しませんが、それは改ざんではなく古いビルドという意味です。メインページから取り直して比べてください。",
+verT:"ご自身で確認してください",
 verB:"次の二つは私のプログラムに限らず、今後ダウンロードするどんなファイルにも使えます:",
 ver1:"実行前: ファイルを VirusTotal（無料）にアップロードし、約70のウイルス対策エンジンの結果を見てください。",
-ver2:"実行後: Windows はリソースモニター、Mac は lsof -i -P で接続先ホストを読んでください。二つ出ます — 取引所と CDN です。",
+ver2:"実行後: Windows はリソースモニター、Mac は lsof -i -P で接続先ホストを読んでください。Bybit のサーバー（Amazon CloudFront 経由）と www.binance.com が出ます。後者は、上場廃止予定のコインを避けるため Binance の公開上場廃止告知を1時間に1回読んでいるためで、あなたや口座に関する情報はそこへ送っていません。",
 stop:"それでも納得できなければ、ここでやめるのが妥当な判断です。何もインストールせずに公開中の口座ダッシュボードを見るだけでも構いません。",
+hashT:"私が公開したファイルかどうか確認してください",
+hashB:"ダウンロードしたファイルのチェックサムを下の値と比べてください。一致すれば、サーバーからあなたに届くまでに差し替えられていません。Windows は certutil -hashfile <ファイル> SHA256、macOS・Linux は shasum -a 256 <ファイル> — 展開する前の .zip のまま計算してください。",
+hashN:"このビルドを私自身が VirusTotal に上げてはいないので、スキャンのリンクはまだありません。あるのはハッシュだけですが、これは私の言葉とは無関係にご自身で確認できます。Windows 版は PyInstaller でまとめてあり、未署名の PyInstaller 実行ファイルには一般的なヒューリスティック検出がいくつか付くのが普通です。macOS 版はインストーラではなく、Python ファイルの入ったフォルダです。いずれにせよ、名前付きのトロイの木馬が並ぶなら話は別です。",
 foot:"JaviD Future Bot — 無料、ご自身の PC で動作します。", back:"メインページに戻る"},
 
 es:{_n:"Español",
@@ -231,17 +263,23 @@ ssPub:"App: JaviD_Future_Bot.exe   Editor: Editor desconocido",
 winHint:"En este punto solo hay un botón “No ejecutar”. La opción de ejecutar todavía no existe — aquí es donde la mayoría abandona.",
 winDone:"Al pulsar “Más información” aparece “Ejecutar de todas formas”. Púlsalo y la app arranca con normalidad. El texto varía según la versión de Windows.",
 macT:"macOS — Gatekeeper hace lo mismo",
-gk15T:"No se abrió “JaviD Future Bot”", gk15B:"Apple no pudo verificar que “JaviD Future Bot” esté libre de malware que pueda dañar tu Mac o comprometer tu privacidad.",
+gk15T:"No se abrió “start.command”", gk15B:"Apple no pudo verificar que “start.command” esté libre de malware que pueda dañar tu Mac o comprometer tu privacidad.",
 gkTrash:"Mover a la papelera", gkOk:"Listo",
-gk14T:"No se puede abrir “JaviD Future Bot”", gk14B:"porque proviene de un desarrollador no identificado.",
+gk14T:"No se puede abrir “start.command”", gk14B:"porque proviene de un desarrollador no identificado.",
 gkCancel:"Cancelar", gkOpen:"Abrir",
-mac15:"Intenta abrirla una vez y deja que falle. Luego ve a Ajustes del Sistema → Privacidad y seguridad, baja del todo y pulsa “Abrir igualmente”. En Sequoia ya no funciona pulsar Control y hacer clic — Apple eliminó ese atajo.",
-mac14:"Haz clic derecho (o Control-clic) en la app, elige Abrir y vuelve a pulsar Abrir en el diálogo.",
-verT:"No me creas — comprueba el archivo tú mismo",
+mac15:"Ábrelo una vez y deja que falle. Luego ve a Ajustes del Sistema → Privacidad y seguridad, baja del todo y pulsa “Abrir igualmente”. Pongo esta ruta primero porque no depende de la versión de macOS que tengas.",
+mac14:"Control-clic en start.command, elige Abrir y vuelve a pulsar Abrir en el diálogo. Si Abrir no aparece en ese menú, usa la ruta de Ajustes de arriba.",
+macZip:"La descarga de macOS es una carpeta, no un instalador. Descomprímela y abre start.command dentro. Python y las librerías que necesita ya están en esa carpeta, así que no hay ningún paso de instalación y no se añade nada a tu carpeta de Aplicaciones. Todo lo que escribe — tus ajustes, tus registros — se queda dentro de esa carpeta, y arrastrarla a la Papelera es toda la desinstalación.",
+macVary:"El texto exacto cambia según la versión de macOS. Si tu pantalla dice algo parecido pero no idéntico, estás en el sitio correcto.",
+hashDate:"Estos hashes corresponden a la compilación publicada el 2026-10-07. Si descargaste antes de esa fecha tu archivo no coincidirá — eso significa que tienes una versión anterior, no un archivo manipulado. Descárgalo de nuevo desde la página principal y compara.",
+verT:"Comprueba el archivo tú mismo",
 verB:"Ambas cosas sirven para cualquier archivo que descargues, no solo el mío:",
 ver1:"Antes de ejecutar: sube el archivo a VirusTotal (gratis) y lee el análisis de unos 70 motores antivirus.",
-ver2:"Después de ejecutar: abre el Monitor de recursos en Windows, o ejecuta lsof -i -P en macOS, y lee los hosts a los que se conecta. Deberías encontrar dos — tu exchange y una CDN.",
+ver2:"Después de ejecutar: abre el Monitor de recursos en Windows, o ejecuta lsof -i -P en macOS, y lee los hosts a los que se conecta. Deberías encontrar los servidores de Bybit (servidos a través de Amazon CloudFront) y www.binance.com. Este último aparece porque el programa lee una vez por hora los avisos públicos de exclusión de Binance, para evitar monedas a punto de ser retiradas; no se envía allí nada sobre ti ni sobre tu cuenta.",
 stop:"Si aun así no te convence, parar aquí es una decisión razonable. Puedes seguir el panel de la cuenta publicado sin instalar nada.",
+hashT:"Comprueba que tienes el archivo que publiqué",
+hashB:"Compara la suma de verificación del archivo que descargaste con las de abajo. Si coinciden, nadie cambió el archivo entre mi servidor y tú. En Windows ejecuta certutil -hashfile <archivo> SHA256. En macOS o Linux ejecuta shasum -a 256 <archivo> — calcula el .zip tal como lo descargaste, antes de descomprimirlo.",
+hashN:"No he subido yo mismo estas versiones a VirusTotal, así que aquí todavía no hay enlace de análisis, solo los hashes — que puedes comprobar por tu cuenta, al margen de lo que yo diga. La versión de Windows está empaquetada con PyInstaller, y los ejecutables de PyInstaller sin firmar suelen recibir algunas detecciones heurísticas genéricas. La descarga de macOS no es un instalador: es una carpeta con archivos de Python. En cualquiera de ellos, un grupo de troyanos con nombre propio sería otra cosa.",
 foot:"JaviD Future Bot — gratis, se ejecuta en tu propio PC.", back:"Volver a la página principal"},
 
 fr:{_n:"Français",
@@ -259,17 +297,23 @@ ssPub:"Application : JaviD_Future_Bot.exe   Éditeur : Éditeur inconnu",
 winHint:"À ce stade il n'y a qu'un bouton « Ne pas exécuter ». L'option d'exécution n'existe pas encore — c'est ici que la plupart abandonnent.",
 winDone:"Cliquer sur « Informations complémentaires » fait apparaître « Exécuter quand même ». Cliquez dessus et l'application démarre normalement. Le texte varie selon la version de Windows.",
 macT:"macOS — Gatekeeper fait la même chose",
-gk15T:"« JaviD Future Bot » n'a pas été ouvert", gk15B:"Apple n'a pas pu vérifier que « JaviD Future Bot » est exempt de logiciels malveillants susceptibles d'endommager votre Mac ou de compromettre votre vie privée.",
+gk15T:"« start.command » n'a pas été ouvert", gk15B:"Apple n'a pas pu vérifier que « start.command » est exempt de logiciels malveillants susceptibles d'endommager votre Mac ou de compromettre votre vie privée.",
 gkTrash:"Placer dans la corbeille", gkOk:"Terminé",
-gk14T:"Impossible d'ouvrir « JaviD Future Bot »", gk14B:"car il provient d'un développeur non identifié.",
+gk14T:"Impossible d'ouvrir « start.command »", gk14B:"car il provient d'un développeur non identifié.",
 gkCancel:"Annuler", gkOpen:"Ouvrir",
-mac15:"Essayez de l'ouvrir une fois et laissez échouer. Allez ensuite dans Réglages Système → Confidentialité et sécurité, faites défiler vers le bas et cliquez sur « Ouvrir quand même ». Sur Sequoia, le Control-clic ne fonctionne plus — Apple a supprimé ce raccourci.",
-mac14:"Faites un clic droit (ou Control-clic) sur l'app, choisissez Ouvrir, puis Ouvrir à nouveau dans la boîte de dialogue.",
-verT:"Ne me croyez pas sur parole — vérifiez le fichier vous-même",
+mac15:"Ouvrez-le une fois et laissez échouer. Allez ensuite dans Réglages Système → Confidentialité et sécurité, faites défiler vers le bas et cliquez sur « Ouvrir quand même ». Je place cette voie en premier parce qu'elle ne dépend pas de votre version de macOS.",
+mac14:"Control-clic sur start.command, choisissez Ouvrir, puis Ouvrir à nouveau dans la boîte de dialogue. Si Ouvrir n'apparaît pas dans ce menu, utilisez la voie des Réglages ci-dessus.",
+macZip:"Le téléchargement macOS est un dossier, pas un installateur. Décompressez-le et ouvrez start.command à l'intérieur. Python et les bibliothèques nécessaires sont déjà dans ce dossier : il n'y a aucune étape d'installation et rien n'est ajouté à votre dossier Applications. Tout ce qu'il écrit — vos réglages, vos journaux — reste dans ce dossier, et le glisser à la Corbeille constitue la désinstallation complète.",
+macVary:"Le libellé exact varie selon les versions de macOS. Si votre écran affiche quelque chose de proche mais pas identique, vous êtes au bon endroit.",
+hashDate:"Ces empreintes correspondent à la version publiée le 2026-10-07. Si vous avez téléchargé avant cette date, votre fichier ne correspondra pas — cela signifie que vous avez une version antérieure, pas un fichier altéré. Téléchargez à nouveau depuis la page principale et comparez.",
+verT:"Vérifiez le fichier vous-même",
 verB:"Ces deux méthodes valent pour n'importe quel fichier téléchargé, pas seulement le mien :",
 ver1:"Avant l'exécution : envoyez le fichier sur VirusTotal (gratuit) et lisez l'analyse d'environ 70 moteurs antivirus.",
-ver2:"Après l'exécution : ouvrez le Moniteur de ressources sous Windows, ou lancez lsof -i -P sous macOS, et lisez les hôtes auxquels le programme se connecte. Vous devriez en trouver deux — votre plateforme et un CDN.",
+ver2:"Après l'exécution : ouvrez le Moniteur de ressources sous Windows, ou lancez lsof -i -P sous macOS, et lisez les hôtes auxquels le programme se connecte. Vous devriez trouver les serveurs de Bybit (servis via Amazon CloudFront) et www.binance.com. Ce dernier apparaît parce que le programme lit une fois par heure les annonces publiques de retrait de cotation de Binance, pour éviter les jetons sur le point d'être retirés ; rien sur vous ni sur votre compte n'y est envoyé.",
 stop:"Si cela ne vous suffit pas, s'arrêter ici est une décision raisonnable. Vous pouvez suivre le tableau de bord publié sans rien installer.",
+hashT:"Vérifiez que vous avez bien le fichier que j'ai publié",
+hashB:"Comparez la somme de contrôle du fichier téléchargé avec celles ci-dessous. Si elles correspondent, personne n'a remplacé le fichier entre mon serveur et vous. Sous Windows : certutil -hashfile <fichier> SHA256. Sous macOS ou Linux : shasum -a 256 <fichier> — calculez le .zip tel que vous l'avez téléchargé, avant de le décompresser.",
+hashN:"Je n'ai pas moi-même envoyé ces versions sur VirusTotal, il n'y a donc pas encore de lien d'analyse ici, seulement les empreintes — que vous pouvez vérifier par vous-même, indépendamment de ce que je dis. La version Windows est empaquetée avec PyInstaller, et les exécutables PyInstaller non signés déclenchent couramment quelques détections heuristiques génériques. Le téléchargement macOS n'est pas un installeur : c'est un dossier de fichiers Python. Sur l'un comme sur l'autre, une série de chevaux de Troie nommés serait tout autre chose.",
 foot:"JaviD Future Bot — gratuit, fonctionne sur votre propre PC.", back:"Retour à la page principale"},
 
 vi:{_n:"Tiếng Việt",
@@ -287,17 +331,23 @@ ssPub:"Ứng dụng: JaviD_Future_Bot.exe   Nhà phát hành: Không xác địn
 winHint:"Ở bước này chỉ có nút “Không chạy”. Tùy chọn chạy chưa xuất hiện — phần lớn mọi người bỏ cuộc ở đây.",
 winDone:"Bấm “Thông tin thêm” sẽ hiện “Vẫn chạy”. Bấm vào đó và ứng dụng khởi động bình thường. Câu chữ khác nhau tùy phiên bản Windows.",
 macT:"macOS — Gatekeeper làm điều tương tự",
-gk15T:"Không mở được “JaviD Future Bot”", gk15B:"Apple không thể xác minh “JaviD Future Bot” không chứa phần mềm độc hại có thể gây hại cho máy Mac hoặc xâm phạm quyền riêng tư của bạn.",
+gk15T:"Không mở được “start.command”", gk15B:"Apple không thể xác minh “start.command” không chứa phần mềm độc hại có thể gây hại cho máy Mac hoặc xâm phạm quyền riêng tư của bạn.",
 gkTrash:"Chuyển vào Thùng rác", gkOk:"Xong",
-gk14T:"Không thể mở “JaviD Future Bot”", gk14B:"vì nó đến từ một nhà phát triển không xác định.",
+gk14T:"Không thể mở “start.command”", gk14B:"vì nó đến từ một nhà phát triển không xác định.",
 gkCancel:"Hủy", gkOpen:"Mở",
-mac15:"Hãy thử mở một lần và để nó thất bại. Sau đó vào Cài đặt Hệ thống → Quyền riêng tư & Bảo mật, cuộn xuống và bấm “Vẫn mở”. Từ Sequoia, cách Control-click không còn dùng được — Apple đã bỏ lối tắt đó.",
-mac14:"Nhấp chuột phải (hoặc Control-click) vào ứng dụng, chọn Mở, rồi bấm Mở lần nữa trong hộp thoại.",
-verT:"Đừng tin lời tôi — hãy tự kiểm tra tệp",
+mac15:"Hãy mở một lần và để nó thất bại. Sau đó vào Cài đặt Hệ thống → Quyền riêng tư & Bảo mật, cuộn xuống và bấm “Vẫn mở”. Tôi đặt cách này lên trước vì nó không phụ thuộc vào phiên bản macOS bạn đang dùng.",
+mac14:"Control-click vào start.command, chọn Mở, rồi bấm Mở lần nữa trong hộp thoại. Nếu không thấy Mở trong menu đó, hãy dùng cách Cài đặt ở trên.",
+macZip:"Bản tải cho macOS là một thư mục, không phải trình cài đặt. Hãy giải nén và mở start.command bên trong. Python và các thư viện cần thiết đã có sẵn trong thư mục đó, nên không có bước cài đặt nào và không có gì được thêm vào thư mục Applications. Mọi thứ chương trình ghi ra — cấu hình, nhật ký — đều nằm trong thư mục đó, và kéo thư mục vào Thùng rác là toàn bộ việc gỡ cài đặt.",
+macVary:"Câu chữ chính xác khác nhau giữa các phiên bản macOS. Nếu màn hình của bạn gần giống nhưng không trùng khớp, bạn vẫn đang đúng chỗ.",
+hashDate:"Các giá trị băm dưới đây là của bản dựng phát hành ngày 2026-10-07. Nếu bạn tải trước ngày đó, tệp sẽ không khớp — điều đó nghĩa là bạn có bản cũ, không phải bản bị sửa đổi. Hãy tải lại từ trang chính rồi so sánh.",
+verT:"Hãy tự kiểm tra tệp",
 verB:"Cả hai cách này dùng được cho bất kỳ tệp nào bạn tải về, không chỉ tệp của tôi:",
 ver1:"Trước khi chạy: tải tệp lên VirusTotal (miễn phí) và đọc kết quả từ khoảng 70 công cụ diệt virus.",
-ver2:"Sau khi chạy: mở Resource Monitor trên Windows, hoặc chạy lsof -i -P trên macOS, rồi đọc danh sách host mà chương trình kết nối. Bạn sẽ thấy hai — sàn của bạn và một CDN.",
+ver2:"Sau khi chạy: mở Resource Monitor trên Windows, hoặc chạy lsof -i -P trên macOS, rồi đọc danh sách host mà chương trình kết nối. Bạn sẽ thấy máy chủ của Bybit (qua Amazon CloudFront) và www.binance.com. Host thứ hai xuất hiện vì chương trình đọc thông báo hủy niêm yết công khai của Binance mỗi giờ một lần để tránh các coin sắp bị hủy niêm yết; không có thông tin nào về bạn hay tài khoản của bạn được gửi đến đó.",
 stop:"Nếu vẫn chưa đủ với bạn, dừng lại ở đây là quyết định hợp lý. Bạn có thể theo dõi bảng điều khiển tài khoản được công bố mà không cần cài gì cả.",
+hashT:"Kiểm tra xem bạn có đúng tệp tôi đã phát hành không",
+hashB:"Hãy so checksum của tệp bạn tải với các giá trị bên dưới. Nếu khớp, không ai tráo tệp trên đường từ máy chủ của tôi đến bạn. Trên Windows chạy certutil -hashfile <tệp> SHA256. Trên macOS hoặc Linux chạy shasum -a 256 <tệp> — hãy tính trên tệp .zip đúng như lúc tải, trước khi giải nén.",
+hashN:"Tôi chưa tự tải các bản dựng này lên VirusTotal, nên ở đây chưa có liên kết quét — chỉ có mã băm, thứ bạn có thể tự kiểm chứng, độc lập với bất cứ điều gì tôi nói. Bản Windows được đóng gói bằng PyInstaller, và tệp thực thi PyInstaller không ký thường bị vài cảnh báo heuristic chung. Bản macOS không phải trình cài đặt — đó là một thư mục chứa các tệp Python. Ở bất kỳ bản nào, một loạt trojan có tên cụ thể lại là chuyện khác.",
 foot:"JaviD Future Bot — miễn phí, chạy trên máy tính của chính bạn.", back:"Quay lại trang chính"},
 
 tr:{_n:"Türkçe",
@@ -315,17 +365,23 @@ ssPub:"Uygulama: JaviD_Future_Bot.exe   Yayıncı: Bilinmeyen yayıncı",
 winHint:"Bu aşamada yalnızca “Çalıştırma” düğmesi var. Çalıştırma seçeneği henüz yok — çoğu kişi tam burada vazgeçiyor.",
 winDone:"“Ek bilgi”ye basınca “Yine de çalıştır” görünür. Ona basın, uygulama normal şekilde açılır. Metin Windows sürümüne göre değişebilir.",
 macT:"macOS — Gatekeeper de aynısını yapar",
-gk15T:"“JaviD Future Bot” açılmadı", gk15B:"Apple, “JaviD Future Bot” içinde Mac'inize zarar verebilecek veya gizliliğinizi tehlikeye atabilecek kötü amaçlı yazılım olmadığını doğrulayamadı.",
+gk15T:"“start.command” açılmadı", gk15B:"Apple, “start.command” içinde Mac'inize zarar verebilecek veya gizliliğinizi tehlikeye atabilecek kötü amaçlı yazılım olmadığını doğrulayamadı.",
 gkTrash:"Çöp Kutusuna Taşı", gkOk:"Tamam",
-gk14T:"“JaviD Future Bot” açılamıyor", gk14B:"çünkü kimliği doğrulanmamış bir geliştiriciden geliyor.",
+gk14T:"“start.command” açılamıyor", gk14B:"çünkü kimliği doğrulanmamış bir geliştiriciden geliyor.",
 gkCancel:"İptal", gkOpen:"Aç",
-mac15:"Önce bir kez açmayı deneyin ve başarısız olmasına izin verin. Sonra Sistem Ayarları → Gizlilik ve Güvenlik bölümüne gidip aşağı kaydırın ve “Yine de Aç”a tıklayın. Sequoia'da Control-tıklama artık çalışmıyor — Apple bu kısayolu kaldırdı.",
-mac14:"Uygulamaya sağ tıklayın (veya Control-tıklayın), Aç'ı seçin, ardından iletişim kutusunda tekrar Aç'a basın.",
-verT:"Sözüme güvenmeyin — dosyayı kendiniz kontrol edin",
+mac15:"Bir kez açın ve başarısız olmasına izin verin. Sonra Sistem Ayarları → Gizlilik ve Güvenlik bölümüne gidip aşağı kaydırın ve “Yine de Aç”a tıklayın. Bu yolu önce yazıyorum çünkü hangi macOS sürümünde olduğunuza bağlı değil.",
+mac14:"start.command dosyasına Control-tıklayın, Aç'ı seçin, ardından iletişim kutusunda tekrar Aç'a basın. Menüde Aç yoksa yukarıdaki Ayarlar yolunu kullanın.",
+macZip:"macOS indirmesi bir kurulum dosyası değil, bir klasördür. Arşivi açın ve içindeki start.command dosyasını açın. Python ve ihtiyaç duyduğu kütüphaneler zaten o klasörün içinde, yani kurulum adımı yok ve Uygulamalar klasörünüze hiçbir şey eklenmiyor. Yazdığı her şey — ayarlarınız, günlükleriniz — o klasörün içinde kalır; klasörü Çöp Kutusu'na sürüklemek kaldırma işleminin tamamıdır.",
+macVary:"Tam ifade macOS sürümüne göre değişir. Ekranınızda buna yakın ama birebir aynı olmayan bir şey yazıyorsa, doğru yerdesiniz.",
+hashDate:"Aşağıdaki özetler 2026-10-07 tarihinde yayınlanan sürüme aittir. Bu tarihten önce indirdiyseniz dosyanız eşleşmeyecektir — bu, dosyanın kurcalandığı değil, elinizde eski bir sürüm olduğu anlamına gelir. Ana sayfadan yeniden indirip karşılaştırın.",
+verT:"Dosyayı kendiniz kontrol edin",
 verB:"Bu iki yöntem yalnızca benim dosyam için değil, indireceğiniz her dosya için geçerlidir:",
 ver1:"Çalıştırmadan önce: dosyayı VirusTotal'a (ücretsiz) yükleyin ve yaklaşık 70 antivirüs motorunun sonucunu okuyun.",
-ver2:"Çalıştırdıktan sonra: Windows'ta Kaynak İzleyicisi'ni açın veya macOS'ta lsof -i -P çalıştırın ve programın bağlandığı host listesini okuyun. İki tane bulmalısınız — borsanız ve bir CDN.",
+ver2:"Çalıştırdıktan sonra: Windows'ta Kaynak İzleyicisi'ni açın veya macOS'ta lsof -i -P çalıştırın ve programın bağlandığı host listesini okuyun. Bybit sunucularını (Amazon CloudFront üzerinden) ve www.binance.com'u görmelisiniz. İkincisi oradadır çünkü program, listeden çıkarılmak üzere olan coinlerden uzak durmak için Binance'in herkese açık listeden çıkarma duyurularını saatte bir okur; oraya sizinle ya da hesabınızla ilgili hiçbir şey gönderilmez.",
 stop:"Bunlar da size yetmiyorsa burada durmak makul bir karardır. Hiçbir şey kurmadan yayınlanan hesap panelini izleyebilirsiniz.",
+hashT:"Yayınladığım dosyanın elinizde olduğunu doğrulayın",
+hashB:"İndirdiğiniz dosyanın sağlama toplamını aşağıdaki değerlerle karşılaştırın. Eşleşiyorsa dosya sunucumla sizin aranızda değiştirilmemiş demektir. Windows'ta certutil -hashfile <dosya> SHA256. macOS veya Linux'ta shasum -a 256 <dosya> — .zip dosyasını indirdiğiniz haliyle, açmadan önce hesaplayın.",
+hashN:"Bu sürümleri VirusTotal'a kendim yüklemedim, bu yüzden burada henüz bir tarama bağlantısı yok — yalnızca özetler var ve onları, benim söylediklerimden bağımsız olarak kendiniz doğrulayabilirsiniz. Windows sürümü PyInstaller ile paketlenmiştir ve imzasız PyInstaller çalıştırılabilir dosyaları çoğu zaman birkaç genel sezgisel uyarı alır. macOS indirmesi bir kurulum dosyası değil, Python dosyalarından oluşan bir klasördür. Bunların herhangi birinde adı konmuş truva atlarının öbeklenmesi bambaşka bir şeydir.",
 foot:"JaviD Future Bot — ücretsiz, kendi bilgisayarınızda çalışır.", back:"Ana sayfaya dön"},
 
 pt:{_n:"Português",
@@ -343,17 +399,23 @@ ssPub:"Aplicativo: JaviD_Future_Bot.exe   Editor: Editor desconhecido",
 winHint:"Nesse ponto só existe o botão “Não executar”. A opção de executar ainda não existe — é aqui que a maioria desiste.",
 winDone:"Clicar em “Mais informações” revela “Executar assim mesmo”. Clique nele e o app abre normalmente. O texto varia conforme a versão do Windows.",
 macT:"macOS — o Gatekeeper faz a mesma coisa",
-gk15T:"“JaviD Future Bot” não foi aberto", gk15B:"A Apple não conseguiu verificar se o “JaviD Future Bot” está livre de malware que possa danificar seu Mac ou comprometer sua privacidade.",
+gk15T:"“start.command” não foi aberto", gk15B:"A Apple não conseguiu verificar se o “start.command” está livre de malware que possa danificar seu Mac ou comprometer sua privacidade.",
 gkTrash:"Mover para o Lixo", gkOk:"Concluído",
-gk14T:"“JaviD Future Bot” não pode ser aberto", gk14B:"porque é de um desenvolvedor não identificado.",
+gk14T:"“start.command” não pode ser aberto", gk14B:"porque é de um desenvolvedor não identificado.",
 gkCancel:"Cancelar", gkOpen:"Abrir",
-mac15:"Tente abrir uma vez e deixe falhar. Depois vá em Ajustes do Sistema → Privacidade e Segurança, role até o fim e clique em “Abrir Mesmo Assim”. No Sequoia, o Control-clique não funciona mais — a Apple removeu esse atalho.",
-mac14:"Clique com o botão direito (ou Control-clique) no app, escolha Abrir e clique em Abrir novamente na caixa de diálogo.",
-verT:"Não acredite em mim — verifique o arquivo você mesmo",
+mac15:"Abra uma vez e deixe falhar. Depois vá a Ajustes do Sistema → Privacidade e Segurança, role até ao fim e clique em “Abrir Mesmo Assim”. Coloco este caminho primeiro porque não depende da versão do macOS que tem.",
+mac14:"Control-clique no start.command, escolha Abrir e clique em Abrir novamente na caixa de diálogo. Se Abrir não estiver nesse menu, use o caminho dos Ajustes acima.",
+macZip:"O download para macOS é uma pasta, não um instalador. Descompacte-a e abra o start.command lá dentro. O Python e as bibliotecas de que ele precisa já estão nessa pasta, por isso não há passo de instalação e nada é adicionado à sua pasta de Aplicações. Tudo o que o programa escreve — as suas definições, os seus registos — fica dentro dessa pasta, e arrastá-la para o Lixo é toda a desinstalação.",
+macVary:"O texto exato varia entre versões do macOS. Se o seu ecrã mostrar algo parecido mas não igual, está no sítio certo.",
+hashDate:"Estes hashes correspondem à compilação publicada a 2026-10-07. Se descarregou antes dessa data o seu ficheiro não vai coincidir — isso significa que tem uma versão anterior, não um ficheiro adulterado. Descarregue de novo a partir da página principal e compare.",
+verT:"Verifique o arquivo você mesmo",
 verB:"Os dois métodos servem para qualquer arquivo que você baixe, não só o meu:",
 ver1:"Antes de executar: envie o arquivo ao VirusTotal (grátis) e leia a análise de cerca de 70 motores antivírus.",
-ver2:"Depois de executar: abra o Monitor de Recursos no Windows, ou rode lsof -i -P no macOS, e leia os hosts aos quais o programa se conecta. Você deve encontrar dois — sua corretora e uma CDN.",
+ver2:"Depois de executar: abra o Monitor de Recursos no Windows, ou rode lsof -i -P no macOS, e leia os hosts aos quais o programa se conecta. Você deve encontrar os servidores da Bybit (entregues pela Amazon CloudFront) e www.binance.com. O segundo aparece porque o programa lê uma vez por hora os avisos públicos de deslistagem da Binance, para ficar longe de moedas prestes a serem deslistadas; nada sobre você ou sua conta é enviado para lá.",
 stop:"Se nada disso for suficiente para você, parar aqui é uma decisão razoável. Você pode acompanhar o painel da conta publicado sem instalar nada.",
+hashT:"Confirme que tem o ficheiro que publiquei",
+hashB:"Compare a soma de verificação do ficheiro que descarregou com os valores abaixo. Se coincidirem, ninguém trocou o ficheiro entre o meu servidor e si. No Windows execute certutil -hashfile <ficheiro> SHA256. No macOS ou Linux execute shasum -a 256 <ficheiro> — calcule sobre o .zip tal como o descarregou, antes de descompactar.",
+hashN:"Não fui eu que enviei estas versões para o VirusTotal, por isso ainda não há aqui uma ligação de análise — apenas os hashes, que pode confirmar por si próprio, independentemente do que eu diga. A versão de Windows é empacotada com PyInstaller, e executáveis PyInstaller não assinados costumam receber algumas deteções heurísticas genéricas. O download para macOS não é um instalador: é uma pasta com ficheiros Python. Em qualquer um deles, um conjunto de troianos com nome próprio já seria outra coisa.",
 foot:"JaviD Future Bot — grátis, roda no seu próprio PC.", back:"Voltar à página principal"}
 };
 
@@ -376,41 +438,5 @@ ORDER.forEach(l=>{
 const q = new URLSearchParams(location.search).get("lang");
 apply(T[q] ? q : (ORDER.find(l => (navigator.language||"en").toLowerCase().startsWith(l)) || "en"));
 </script>
-<!-- JaviD scroll-reveal (progressive enhancement: content stays visible if JS/observer/reduced-motion) -->
-<style>
-@media (prefers-reduced-motion: no-preference){
-  .jr{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1);will-change:opacity,transform;}
-  .jr.jr-in{opacity:1;transform:none;}
-}
-</style>
-<script>
-(function(){
-  if (!('IntersectionObserver' in window)) return;
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.addEventListener('DOMContentLoaded', function(){
-    var sel = 'section h2, section h3, section > p, section img, section [class*="grid"] > *, section [class*="flex"] > *';
-    var raw = Array.prototype.slice.call(document.querySelectorAll(sel));
-    var seen = [], tagged = [];
-    raw.forEach(function(el){
-      if (seen.indexOf(el) !== -1) return; seen.push(el);
-      if (el.closest && el.closest('#jfb-update-popup')) return;      // leave the popup alone
-      for (var i=0;i<tagged.length;i++){ if (tagged[i].contains(el)) return; } // skip nested-in-already-tagged
-      tagged.push(el);
-    });
-    tagged.forEach(function(el){
-      el.classList.add('jr');
-      var sibs = el.parentNode ? Array.prototype.filter.call(el.parentNode.children, function(c){ return c.classList && c.classList.contains('jr'); }) : [];
-      var idx = sibs.indexOf(el);
-      if (idx > 0) el.style.transitionDelay = Math.min(idx*80, 400) + 'ms';
-    });
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('jr-in'); io.unobserve(e.target); } });
-    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
-    tagged.forEach(function(el){ io.observe(el); });
-    setTimeout(function(){ tagged.forEach(function(el){ el.classList.add('jr-in'); }); }, 3000); // safety: never leave hidden
-  });
-})();
-</script>
-
 </body>
 </html>
