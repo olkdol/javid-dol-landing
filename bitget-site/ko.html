@@ -248,6 +248,14 @@
 .jfb-popup-dismiss{margin-top:10px;width:100%;background:none;border:none;color:#94a3b8;font-weight:600;font-size:12.5px;cursor:pointer;}
 .jfb-popup-dismiss:hover{color:#475569;}
 </style>
+<!-- ===== 안드로이드 다운로드 일시 숨김 (2026-10-13) =====
+     왜: V19.7(전체 PyArmor 난독화) 안드로이드판은 PyArmor 런타임이 Chaquopy 에서 로드되지 않아
+     보류됐다(ImportError: PyBytes_AsStringAndSize). 지금 R2 에 있는 기존 APK 도 대시보드가 404 로
+     안 열린다(옛 bot_entry 결함). 사용자 결정(2026-10-13): 작동하는 앱이 나올 때까지 버튼·안내·
+     설치 확인 모달을 숨긴다. 이번 배포본은 Windows + macOS 만.
+     되돌리기: 이 <style id="jfb-android-hold"> 블록 하나만 지우면 된다. 아래 jfbAndroidGate 스크립트는
+     이 블록이 있으면 스스로 꺼지고, 없으면 원래대로 동작한다. (워커의 platform=android 매핑은 그대로 둠) -->
+<style id="jfb-android-hold">#jfb-android-dl,#jfb-android-note,#jfb-android-fine,#jfb-androidgate{display:none!important}</style>
 </head>
 <body>
 
@@ -821,14 +829,14 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
 });
 </script>
 
-<!-- JaviD update popup (V19.3.1) -->
+<!-- JaviD update popup (V19.7) -->
 <div id="jfb-update-popup" class="jfb-popup-overlay">
   <div class="jfb-popup-card">
     <button type="button" id="jfb-update-x" aria-label="닫기" class="jfb-popup-close" style="font-size:20px;font-weight:700;line-height:1;">&#10005;</button>
     <div class="jfb-popup-header">
       <div class="jfb-popup-icon">🚀</div>
-      <div class="jfb-popup-badge">V19.3.1</div>
-      <h3 class="jfb-popup-title">V19.3.1 업데이트 완료!</h3>
+      <div class="jfb-popup-badge">V19.7</div>
+      <h3 class="jfb-popup-title">V19.7 업데이트 완료!</h3>
       <p class="jfb-popup-sub">안정성 개선 업데이트입니다. 다운로드 후 덮어쓰기 하세요 — 설정은 그대로 유지됩니다.</p>
     </div>
     <div class="jfb-popup-features">
@@ -857,7 +865,7 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
 document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
   var modal = document.getElementById("jfb-update-popup");
   if (!modal) return;
-  var VERSION_KEY = "jfb_seen_update_v19.3.1";
+  var VERSION_KEY = "jfb_seen_update_v19.7";
   function openModal(){ modal.classList.add("jfb-open"); }
   function closeModal(){ modal.classList.remove("jfb-open"); try { localStorage.setItem(VERSION_KEY,"1"); } catch(e){} }
   var already; try { already = localStorage.getItem(VERSION_KEY); } catch(e){}
@@ -949,6 +957,8 @@ document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
 </div>
 <script>
 (function jfbAndroidGate(){
+  // 2026-10-13 안드로이드 보류: <head> 의 #jfb-android-hold 가 있으면 모달을 아예 연결하지 않는다.
+  if (document.getElementById("jfb-android-hold")) return;
   // APK 가 R2 에 올라가기 전까지 false. 올린 뒤 true 로 바꾸면 바로 다운로드로 연결된다.
   var APK_READY = true;
   var TELEGRAM  = "https://t.me/+P_CukTNNKRI4ZDVl";

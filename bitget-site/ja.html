@@ -99,13 +99,16 @@
   .lang-menu button:hover{background:#f1f5f9;}
   .lang-menu button.active{color:#4f46e5;background:#eef2ff;}
 </style>
+<!-- ===== 안드로이드 다운로드 일시 숨김 (2026-10-13) =====
+     왜: V19.7(전체 PyArmor 난독화) 안드로이드판은 PyArmor 런타임이 Chaquopy 에서 로드되지 않아
+     보류됐다(ImportError: PyBytes_AsStringAndSize). 지금 R2 에 있는 기존 APK 도 대시보드가 404 로
+     안 열린다(옛 bot_entry 결함). 사용자 결정(2026-10-13): 작동하는 앱이 나올 때까지 버튼·안내·
+     설치 확인 모달을 숨긴다. 이번 배포본은 Windows + macOS 만.
+     되돌리기: 이 <style id="jfb-android-hold"> 블록 하나만 지우면 된다. 아래 jfbAndroidGate 스크립트는
+     이 블록이 있으면 스스로 꺼지고, 없으면 원래대로 동작한다. (워커의 platform=android 매핑은 그대로 둠) -->
+<style id="jfb-android-hold">#jfb-android-dl,#jfb-android-note,#jfb-android-fine,#jfb-androidgate{display:none!important}</style>
 </head>
 <body class="min-h-screen bg-white font-sans text-slate-700 antialiased">
-
-<!-- ============ PROMO BANNER ============ -->
-<div class="bg-slate-900 px-6 py-2.5 text-center text-[13px] font-medium text-white" data-i18n="promo_banner">
-  🚀 JaviD Future Bot <b>V18</b> 公開 — トレイモード、シャドーモードのライブデータなど新機能が追加されました。 <a class="font-bold text-indigo-300 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">新機能を見る →</a>
-</div>
 
 <!-- ============ NAV ============ -->
 <nav class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
@@ -113,7 +116,6 @@
     <a href="/" class="flex items-center gap-2 font-extrabold tracking-tight text-slate-900">
       <img src="images/javid-icon.png" alt="JaviD Future Bot" class="h-9 w-9 rounded-full object-cover">
       JaviD Future Bot
-      <span class="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[11px] font-bold text-indigo-600">V18</span>
     </a>
     <div class="hidden items-center gap-6 text-[13.5px] font-semibold text-slate-600 lg:flex">
       <a href="#features" class="transition hover:text-indigo-600" data-i18n="nav_features">機能</a>
@@ -965,7 +967,6 @@ var I18N = {
     "bt_foot": "Leveraged futures trading can lose your entire principal. The figures above are a recalculation over real past market prices, not the trade record of a live account - Shadow Mode lets you watch that same code decide on live data with a virtual balance, so you can see it run for yourself.",
     "nav_backtest": "Backtest",
   "symbols_coverage": "Pick from BTC, ETH, XAU and 500+ other USDⓈ-M futures symbols — you decide which ones run. The three strategies are currently tuned for high-volatility altcoins; a large-cap preset is still in development.",
-    promo_banner: '\n  🚀 JaviD Future Bot <b>V18</b> is live — tray mode, Shadow Mode live data, and more. <a class="font-bold text-indigo-300 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">See what\'s new →</a>\n',
     nav_features: 'Features',
     nav_how_it_works: 'How It Works',
     nav_compare: 'Compare',
@@ -1191,7 +1192,6 @@ var I18N = {
     "bt_foot": "레버리지 선물 거래는 원금 전액 손실이 가능합니다. 위 수치는 과거 실제 시세로 다시 계산한 결과이고 실제 계좌의 거래 기록이 아닙니다 — 같은 코드가 실시간 시세에서 어떻게 판단하는지는 가상 잔고로 도는 쉐도우 모드에서 직접 확인해 보세요.",
     "nav_backtest": "백테스트",
   "symbols_coverage": "BTC·ETH·XAU를 포함한 500개 이상의 USDⓈ-M 선물 심볼 중에서 직접 골라 돌립니다. 현재 3개 전략은 변동성이 큰 알트코인에 맞춰져 있고, 대형 종목 전용 프리셋은 아직 개발 중입니다.",
-    promo_banner: '\n  🚀 JaviD Future Bot <b>V18</b> 출시 — 트레이 모드, 섀도우 모드 실시간 데이터 등 다양한 기능이 추가되었습니다. <a class="font-bold text-indigo-300 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">새 소식 보기 →</a>\n',
     nav_features: '기능',
     nav_how_it_works: '이용 방법',
     nav_compare: '비교',
@@ -1417,7 +1417,6 @@ var I18N = {
     "bt_foot": "レバレッジをかけた先物取引では、預けた資金の全額を失うことがあります。上の数字は過去の実際の価格をもとに計算し直したもので、実際の口座の取引記録ではありません——同じコードがリアルタイムの相場でどう判断するかは、仮想残高で動くシャドーモードでご自身で確かめられます。",
     "nav_backtest": "バックテスト",
   "symbols_coverage": "BTC・ETH・XAUを含む500以上のUSDⓈ-M先物銘柄から、ご自身で選んで稼働できます。現在の3つの戦略はボラティリティの高いアルトコイン向けに調整されており、大型銘柄向けのプリセットはまだ開発中です。",
-    promo_banner: '\n  🚀 JaviD Future Bot <b>V18</b> 公開 — トレイモード、シャドーモードのライブデータなど新機能が追加されました。 <a class="font-bold text-indigo-300 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">新機能を見る →</a>\n',
     nav_features: '機能',
     nav_how_it_works: '使い方',
     nav_compare: '比較',
@@ -1643,7 +1642,6 @@ var I18N = {
     "bt_foot": "杠杆合约交易可能导致本金全部亏损。以上数字是基于过去真实行情重新计算的结果，不是真实账户的成交记录——同一份代码在实时行情下怎么判断，可以用虚拟余额的影子模式（Shadow Mode）自己看一遍。",
     "nav_backtest": "回测",
   "symbols_coverage": "可从 BTC、ETH、XAU 等 500 多个 USDⓈ-M 合约标的中自行挑选运行。目前三套策略针对高波动的山寨币调校，大型币种专用预设仍在开发中。",
-    promo_banner: '\n  🚀 JaviD Future Bot <b>V18</b> 现已上线 — 托盘模式、影子模式实时数据等更多功能。 <a class="font-bold text-indigo-300 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">查看新功能 →</a>\n',
     nav_features: '功能',
     nav_how_it_works: '使用流程',
     nav_compare: '对比',
@@ -1869,7 +1867,6 @@ var I18N = {
     "bt_foot": "En futuros con apalancamiento se puede perder todo el capital. Las cifras de arriba son un recálculo sobre precios reales del pasado, no el historial de una cuenta real - con el Modo Sombra puedes ver ese mismo código decidiendo sobre datos en vivo con saldo virtual y comprobarlo tú mismo.",
     "nav_backtest": "Backtest",
   "symbols_coverage": "Elige entre BTC, ETH, XAU y más de 500 símbolos de futuros USDⓈ-M: tú decides cuáles operan. Las tres estrategias están ajustadas actualmente para altcoins de alta volatilidad; un preajuste para grandes capitalizaciones sigue en desarrollo.",
-    promo_banner: '\n  🚀 Ya está disponible JaviD Future Bot <b>V18</b> — modo bandeja, datos en vivo del Modo Shadow y mucho más. <a class="font-bold text-indigo-300 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">Descubre las novedades →</a>\n',
     nav_features: 'Funciones',
     nav_how_it_works: 'Cómo funciona',
     nav_compare: 'Comparativa',
@@ -2095,7 +2092,6 @@ var I18N = {
     "bt_foot": "Sur les futures à effet de levier, la perte peut aller jusqu'à la totalité du capital. Les chiffres ci-dessus sont un recalcul sur des prix passés réels, pas l'historique d'un compte réel - le Mode Ombre vous laisse voir ce même code décider en direct avec un solde virtuel, et le constater par vous-même.",
     "nav_backtest": "Backtest",
   "symbols_coverage": "Choisissez parmi BTC, ETH, XAU et plus de 500 symboles de futures USDⓈ-M : vous décidez lesquels tournent. Les trois stratégies sont actuellement calibrées pour les altcoins très volatils ; un préréglage grandes capitalisations est encore en développement.",
-    promo_banner: '\n  🚀 JaviD Future Bot <b>V18</b> est disponible — mode réduit dans la barre système, données en direct du Mode Shadow, et bien plus. <a class="font-bold text-indigo-300 hover:underline" href="https://t.me/+P_CukTNNKRI4ZDVl" rel="noopener" target="_blank">Découvrir les nouveautés →</a>\n',
     nav_features: 'Fonctionnalités',
     nav_how_it_works: 'Fonctionnement',
     nav_compare: 'Comparatif',
@@ -2344,14 +2340,14 @@ function applyLang(lang){
 })();
 </script>
 
-<!-- JaviD update popup (V19.3.1) -->
+<!-- JaviD update popup (V19.7) -->
 <div id="jfb-update-popup" class="jfb-popup-overlay">
   <div class="jfb-popup-card">
     <button type="button" id="jfb-update-x" aria-label="閉じる" class="jfb-popup-close" style="font-size:20px;font-weight:700;line-height:1;">&#10005;</button>
     <div class="jfb-popup-header">
       <div class="jfb-popup-icon">🚀</div>
-      <div class="jfb-popup-badge">V19.3.1</div>
-      <h3 class="jfb-popup-title">V19.3.1 アップデート完了！</h3>
+      <div class="jfb-popup-badge">V19.7</div>
+      <h3 class="jfb-popup-title">V19.7 アップデート完了！</h3>
       <p class="jfb-popup-sub">安定性の修正です。ダウンロードして上書きしてください — 設定はそのまま保持されます。</p>
     </div>
     <div class="jfb-popup-features">
@@ -2380,7 +2376,7 @@ function applyLang(lang){
 document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
   var modal = document.getElementById("jfb-update-popup");
   if (!modal) return;
-  var VERSION_KEY = "jfb_seen_update_v19.3.1";
+  var VERSION_KEY = "jfb_seen_update_v19.7";
   function openModal(){ modal.classList.add("jfb-open"); }
   function closeModal(){ modal.classList.remove("jfb-open"); try { localStorage.setItem(VERSION_KEY,"1"); } catch(e){} }
   var already; try { already = localStorage.getItem(VERSION_KEY); } catch(e){}
@@ -2445,6 +2441,8 @@ document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
 </div>
 <script>
 (function jfbAndroidGate(){
+  // 2026-10-13 안드로이드 보류: <head> 의 #jfb-android-hold 가 있으면 모달을 아예 연결하지 않는다.
+  if (document.getElementById("jfb-android-hold")) return;
   // APK 가 R2 에 올라가기 전까지 false. 올린 뒤 true 로 바꾸면 바로 다운로드로 연결된다.
   var APK_READY = true;
   var TELEGRAM  = "https://t.me/+P_CukTNNKRI4ZDVl";

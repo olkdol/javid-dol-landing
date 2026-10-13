@@ -167,6 +167,14 @@
   .lang-menu button:hover{background:#f1f5f9;}
   .lang-menu button.active{color:#4f46e5;background:#eef2ff;}
 </style>
+<!-- ===== 안드로이드 다운로드 일시 숨김 (2026-10-13) =====
+     왜: V19.7(전체 PyArmor 난독화) 안드로이드판은 PyArmor 런타임이 Chaquopy 에서 로드되지 않아
+     보류됐다(ImportError: PyBytes_AsStringAndSize). 지금 R2 에 있는 기존 APK 도 대시보드가 404 로
+     안 열린다(옛 bot_entry 결함). 사용자 결정(2026-10-13): 작동하는 앱이 나올 때까지 버튼·안내·
+     설치 확인 모달을 숨긴다. 이번 배포본은 Windows + macOS 만.
+     되돌리기: 이 <style id="jfb-android-hold"> 블록 하나만 지우면 된다. 아래 jfbAndroidGate 스크립트는
+     이 블록이 있으면 스스로 꺼지고, 없으면 원래대로 동작한다. (워커의 platform=android 매핑은 그대로 둠) -->
+<style id="jfb-android-hold">#jfb-android-dl,#jfb-android-note,#jfb-android-fine,#jfb-androidgate{display:none!important}</style>
 </head>
 <body class="min-h-screen bg-white font-sans text-slate-700 antialiased">
 
@@ -780,7 +788,7 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
 document.addEventListener('DOMContentLoaded', function jfbUpdatePopup(){
   var modal = document.getElementById('jfb-update-popup');
   if (!modal) return;
-  var VERSION_KEY = 'jfb_seen_update_v18.2.10';
+  var VERSION_KEY = 'jfb_seen_update_v19.7';
   function openModal(){ modal.classList.add('jfb-open'); }
   function closeModal(){
     modal.classList.remove('jfb-open');
@@ -818,7 +826,7 @@ document.addEventListener('DOMContentLoaded', function jfbUpdatePopup(){
     <span class="flex items-center gap-1.5"><i data-lucide="check" class="h-4 w-4 text-emerald-500"></i><span data-i18n="dl_perk_2">No hidden fees</span></span>
     <span class="flex items-center gap-1.5"><i data-lucide="check" class="h-4 w-4 text-emerald-500"></i><span data-i18n="dl_perk_3">No credit card</span></span>
   </div>
-  <p class="mt-4 text-[12.5px] text-slate-400" data-i18n="dl_flow_note">Click your OS → unzip → run <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">JaviD_Future_Bot</code>. It starts in your system tray; click the tray icon to open the dashboard. First time? Follow along with the <a href="manual" class="font-bold text-indigo-600 hover:underline">User Manual</a>.</p>
+  <p class="mt-4 text-[12.5px] text-slate-400" data-i18n="dl_flow_note">Click your OS → unzip → run <code class="rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600">JaviD_Future_Bot</code>. A console window opens, then your browser opens the dashboard. First time? Follow along with the <a href="manual" class="font-bold text-indigo-600 hover:underline">User Manual</a>.</p>
   <p class="mt-1.5 text-[12.5px] text-slate-400" data-i18n="dl_contact_note">Questions? Email <a href="mailto:support@javidtrading.com" class="font-bold text-indigo-600 hover:underline">support@javidtrading.com</a> or ask on the <a href="board" class="font-bold text-indigo-600 hover:underline">Community Board</a>.</p>
 
   <p class="mx-auto mt-12 max-w-2xl border-t border-slate-200 pt-6 text-[11.5px] leading-relaxed text-slate-400" data-i18n="final_disclaimer">Cryptocurrency futures trading carries a high level of risk and is not suitable for all investors. Leverage means a position can be liquidated and you can lose your entire deposit. Nothing on this page is a projection — every number shown is a record of something that already happened. All trading decisions and their outcomes are the sole responsibility of the user. JaviD Future Bot does not provide investment advice, does not custody funds, and does not execute trades on any server — every order is placed directly from your own device using your own Binance API credentials.</p>
@@ -886,8 +894,8 @@ document.addEventListener('DOMContentLoaded', function jfbUpdatePopup(){
     <button type="button" id="jfb-update-x" aria-label="Close" class="jfb-popup-close"><i data-lucide="x" style="width:18px;height:18px"></i></button>
     <div class="jfb-popup-header">
       <div class="jfb-popup-icon">🚀</div>
-      <div class="jfb-popup-badge">V18.2.10</div>
-      <h3 class="jfb-popup-title" data-i18n="updatepopup_title">V18.2.10 Update Is Live!</h3>
+      <div class="jfb-popup-badge">V19.7</div>
+      <h3 class="jfb-popup-title" data-i18n="updatepopup_title">V19.7 Update Is Live!</h3>
       <p class="jfb-popup-sub" data-i18n="updatepopup_sub">Download the latest version now and get the newest features.</p>
     </div>
     <div class="jfb-popup-actions">
@@ -1056,10 +1064,10 @@ var I18N = {
   "compare_withdrawal_javid": "Never required",
   "cta_free_download": "Free Download",
   "dl_contact_note": "Questions? Email <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:support@javidtrading.com\">support@javidtrading.com</a> or ask on the <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">Community Board</a>.",
-  "dl_flow_note": "Click your OS → unzip → run <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. It starts in your system tray; click the tray icon to open the dashboard. First time? Follow along with the <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">User Manual</a>.",
+  "dl_flow_note": "Click your OS → unzip → run <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. A console window opens, then your browser opens the dashboard. First time? Follow along with the <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">User Manual</a>.",
   "hedge_mode_notice": "In the Binance app, go to <span class=\"whitespace-nowrap\">Futures → Position Mode</span> and set it to <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> before you start.",
   "dl_label": "Free download — no access code required",
-  "updatepopup_title": "V18.2.10 Update Is Live!",
+  "updatepopup_title": "V19.7 Update Is Live!",
   "updatepopup_sub": "Download the latest version now and get the newest features.",
   "updatepopup_cta": "Download Now →",
   "updatepopup_dismiss": "Maybe Later",
@@ -1277,10 +1285,10 @@ var I18N = {
   "compare_withdrawal_javid": "절대 필요 없음",
   "cta_free_download": "무료 다운로드",
   "dl_contact_note": "문의사항이 있으신가요? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:support@javidtrading.com\">support@javidtrading.com</a>로 이메일을 보내시거나 <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">커뮤니티 게시판</a>에 남겨주세요.",
-  "dl_flow_note": "OS 선택 → 압축 해제 → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code> 실행. 작업 표시줄 트레이에서 시작되며, 트레이 아이콘을 클릭하면 대시보드가 열립니다. 처음이신가요? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">사용 설명서</a>를 따라 해보세요.",
+  "dl_flow_note": "OS 선택 → 압축 해제 → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code> 실행. 콘솔 창이 열리고 이어서 브라우저에 대시보드가 열립니다. 처음이신가요? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">사용 설명서</a>를 따라 해보세요.",
   "hedge_mode_notice": "시작하기 전에 바이낸스 앱에서 <span class=\"whitespace-nowrap\">Futures → Position Mode</span>로 이동해 <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span>(헷지 모드)로 설정하세요.",
   "dl_label": "무료 다운로드 — 액세스 코드가 필요 없습니다",
-  "updatepopup_title": "V18.2.10 업그레이드 완료!",
+  "updatepopup_title": "V19.7 업그레이드 완료!",
   "updatepopup_sub": "지금 다운로드하고 최신 기능을 만나보세요.",
   "updatepopup_cta": "지금 다운로드 →",
   "updatepopup_dismiss": "나중에 하기",
@@ -1498,10 +1506,10 @@ var I18N = {
   "compare_withdrawal_javid": "一切不要",
   "cta_free_download": "無料ダウンロード",
   "dl_contact_note": "ご質問がありますか?<a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:support@javidtrading.com\">support@javidtrading.com</a>までメールするか、<a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">コミュニティ掲示板</a>でお尋ねください。",
-  "dl_flow_note": "OSをクリック → 解凍 → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>を実行。システムトレイで起動し、トレイアイコンをクリックするとダッシュボードが開きます。初めての方は<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">取扱説明書</a>を参考にしてください。",
+  "dl_flow_note": "OSをクリック → 解凍 → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>を実行。コンソール画面が開き、続いてブラウザにダッシュボードが開きます。初めての方は<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">取扱説明書</a>を参考にしてください。",
   "hedge_mode_notice": "開始前に、Binanceアプリで<span class=\"whitespace-nowrap\">Futures → Position Mode</span>に移動し、<span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span>(ヘッジモード)に設定してください。",
   "dl_label": "無料ダウンロード — アクセスコードは不要です",
-  "updatepopup_title": "V18.2.10 アップデート完了！",
+  "updatepopup_title": "V19.7 アップデート完了！",
   "updatepopup_sub": "今すぐダウンロードして最新機能をお試しください。",
   "updatepopup_cta": "今すぐダウンロード →",
   "updatepopup_dismiss": "後で",
@@ -1719,10 +1727,10 @@ var I18N = {
   "compare_withdrawal_javid": "从不需要",
   "cta_free_download": "免费下载",
   "dl_contact_note": "有问题?发邮件至 <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:support@javidtrading.com\">support@javidtrading.com</a>,或前往<a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">社区论坛</a>提问。",
-  "dl_flow_note": "选择系统 → 解压 → 运行 <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>。程序会在系统托盘启动,点击托盘图标即可打开面板。第一次使用?可以参考<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">使用手册</a>。",
+  "dl_flow_note": "选择系统 → 解压 → 运行 <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>。程序会打开一个控制台窗口,随后浏览器会打开面板。第一次使用?可以参考<a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">使用手册</a>。",
   "hedge_mode_notice": "开始前,请在币安 App 中进入<span class=\"whitespace-nowrap\">Futures → Position Mode</span>,将其设置为<span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span>(对冲模式)。",
   "dl_label": "免费下载 — 无需访问码",
-  "updatepopup_title": "V18.2.10 更新已完成！",
+  "updatepopup_title": "V19.7 更新已完成！",
   "updatepopup_sub": "立即下载，体验最新功能。",
   "updatepopup_cta": "立即下载 →",
   "updatepopup_dismiss": "以后再说",
@@ -1940,10 +1948,10 @@ var I18N = {
   "compare_withdrawal_javid": "Nunca requerido",
   "cta_free_download": "Descarga gratis",
   "dl_contact_note": "¿Preguntas? Escribe a <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:support@javidtrading.com\">support@javidtrading.com</a> o pregunta en el <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">foro de la comunidad</a>.",
-  "dl_flow_note": "Elige tu sistema operativo → descomprime → ejecuta <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. Se inicia en la bandeja del sistema; haz clic en el icono para abrir el panel. ¿Primera vez? Sigue la guía del <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manual de usuario</a>.",
+  "dl_flow_note": "Elige tu sistema operativo → descomprime → ejecuta <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. Se abre una ventana de consola y luego el navegador abre el panel. ¿Primera vez? Sigue la guía del <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manual de usuario</a>.",
   "hedge_mode_notice": "Antes de empezar, en la app de Binance ve a <span class=\"whitespace-nowrap\">Futures → Position Mode</span> y configúralo en <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> (modo cobertura).",
   "dl_label": "Descarga gratuita: no necesitas código de acceso",
-  "updatepopup_title": "¡Actualización V18.2.10 disponible!",
+  "updatepopup_title": "¡Actualización V19.7 disponible!",
   "updatepopup_sub": "Descarga la última versión ahora y prueba las nuevas funciones.",
   "updatepopup_cta": "Descargar ahora →",
   "updatepopup_dismiss": "Más tarde",
@@ -2161,10 +2169,10 @@ var I18N = {
   "compare_withdrawal_javid": "Jamais requise",
   "cta_free_download": "Téléchargement gratuit",
   "dl_contact_note": "Des questions ? Écrivez à <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:support@javidtrading.com\">support@javidtrading.com</a> ou posez votre question sur le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">forum communautaire</a>.",
-  "dl_flow_note": "Cliquez sur votre système → décompressez → exécutez <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. L'app démarre dans la barre d'état système ; cliquez sur l'icône pour ouvrir le tableau de bord. Première fois ? Suivez le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manuel d'utilisation</a>.",
+  "dl_flow_note": "Cliquez sur votre système → décompressez → exécutez <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. Une fenêtre de console s'ouvre, puis votre navigateur ouvre le tableau de bord. Première fois ? Suivez le <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">manuel d'utilisation</a>.",
   "hedge_mode_notice": "Avant de commencer, dans l'application Binance, allez dans <span class=\"whitespace-nowrap\">Futures → Position Mode</span> et réglez-le sur <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> (mode couverture).",
   "dl_label": "Téléchargement gratuit — aucun code d'accès requis",
-  "updatepopup_title": "Mise à jour V18.2.10 disponible !",
+  "updatepopup_title": "Mise à jour V19.7 disponible !",
   "updatepopup_sub": "Téléchargez la dernière version dès maintenant et découvrez les nouveautés.",
   "updatepopup_cta": "Télécharger maintenant →",
   "updatepopup_dismiss": "Plus tard",
@@ -2382,10 +2390,10 @@ vi: {
   "compare_withdrawal_javid": "Không bao giờ yêu cầu",
   "cta_free_download": "Tải Miễn Phí",
   "dl_contact_note": "Có thắc mắc? Gửi email tới <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:support@javidtrading.com\">support@javidtrading.com</a> hoặc hỏi trên <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">Bảng Cộng Đồng</a>.",
-  "dl_flow_note": "Nhấp vào hệ điều hành của bạn → giải nén → chạy <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. Ứng dụng khởi động trong khay hệ thống; nhấp vào biểu tượng khay để mở bảng điều khiển. Lần đầu sử dụng? Hãy làm theo <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">Sổ Tay Hướng Dẫn Sử Dụng</a>.",
+  "dl_flow_note": "Nhấp vào hệ điều hành của bạn → giải nén → chạy <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. Một cửa sổ console sẽ mở, sau đó trình duyệt mở bảng điều khiển. Lần đầu sử dụng? Hãy làm theo <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">Sổ Tay Hướng Dẫn Sử Dụng</a>.",
   "hedge_mode_notice": "Trong ứng dụng Binance, vào <span class=\"whitespace-nowrap\">Futures → Position Mode</span> và đặt thành <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> trước khi bắt đầu.",
   "dl_label": "Tải miễn phí — không cần mã truy cập",
-  "updatepopup_title": "Đã Cập Nhật V18.2.10!",
+  "updatepopup_title": "Đã Cập Nhật V19.7!",
   "updatepopup_sub": "Tải phiên bản mới nhất ngay bây giờ để trải nghiệm các tính năng mới.",
   "updatepopup_cta": "Tải Về Ngay →",
   "updatepopup_dismiss": "Để Sau",
@@ -2603,10 +2611,10 @@ tr: {
   "compare_withdrawal_javid": "Asla gerekmez",
   "cta_free_download": "Ücretsiz İndir",
   "dl_contact_note": "Sorularınız mı var? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:support@javidtrading.com\">support@javidtrading.com</a> adresine e-posta gönderin veya <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">Topluluk Panosu</a>'nda sorun.",
-  "dl_flow_note": "İşletim sisteminize tıklayın → zip dosyasını açın → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code> uygulamasını çalıştırın. Sistem tepsinizde başlar; kontrol panelini açmak için tepsi simgesine tıklayın. İlk kez mi? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">Kullanıcı Kılavuzu</a>'nu takip edin.",
+  "dl_flow_note": "İşletim sisteminize tıklayın → zip dosyasını açın → <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code> uygulamasını çalıştırın. Bir konsol penceresi açılır, ardından tarayıcınız kontrol panelini açar. İlk kez mi? <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">Kullanıcı Kılavuzu</a>'nu takip edin.",
   "hedge_mode_notice": "Binance uygulamasında, <span class=\"whitespace-nowrap\">Futures → Position Mode</span> bölümüne gidin ve başlamadan önce <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> olarak ayarlayın.",
   "dl_label": "Ücretsiz indirme — erişim kodu gerekmez",
-  "updatepopup_title": "V18.2.10 Güncellemesi Yayında!",
+  "updatepopup_title": "V19.7 Güncellemesi Yayında!",
   "updatepopup_sub": "En son sürümü şimdi indirin ve yeni özellikleri keşfedin.",
   "updatepopup_cta": "Şimdi İndir →",
   "updatepopup_dismiss": "Daha Sonra",
@@ -2824,10 +2832,10 @@ pt: {
   "compare_withdrawal_javid": "Nunca exigida",
   "cta_free_download": "Download Gratuito",
   "dl_contact_note": "Dúvidas? Envie um e-mail para <a class=\"font-bold text-indigo-600 hover:underline\" href=\"mailto:support@javidtrading.com\">support@javidtrading.com</a> ou pergunte no <a class=\"font-bold text-indigo-600 hover:underline\" href=\"board.html\">Mural da Comunidade</a>.",
-  "dl_flow_note": "Clique no seu sistema operacional → descompacte → execute <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. Ele inicia na bandeja do sistema; clique no ícone da bandeja para abrir o painel. Primeira vez? Siga o <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">Manual do Usuário</a>.",
+  "dl_flow_note": "Clique no seu sistema operacional → descompacte → execute <code class=\"rounded bg-slate-100 px-1.5 py-0.5 text-indigo-600\">JaviD_Future_Bot</code>. Uma janela de console abre e, em seguida, o navegador abre o painel. Primeira vez? Siga o <a class=\"font-bold text-indigo-600 hover:underline\" href=\"manual.html\">Manual do Usuário</a>.",
   "hedge_mode_notice": "No app da Binance, vá em <span class=\"whitespace-nowrap\">Futures → Position Mode</span> e defina para <span class=\"whitespace-nowrap\" style=\"background:#f59e0b;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800;\">Hedge Mode</span> antes de começar.",
   "dl_label": "Download gratuito — nenhum código de acesso necessário",
-  "updatepopup_title": "Atualização V18.2.10 Disponível!",
+  "updatepopup_title": "Atualização V19.7 Disponível!",
   "updatepopup_sub": "Baixe a versão mais recente agora e conheça os novos recursos.",
   "updatepopup_cta": "Baixar Agora →",
   "updatepopup_dismiss": "Depois",
@@ -3099,6 +3107,8 @@ function applyLang(lang){
 </div>
 <script>
 (function jfbAndroidGate(){
+  // 2026-10-13 안드로이드 보류: <head> 의 #jfb-android-hold 가 있으면 모달을 아예 연결하지 않는다.
+  if (document.getElementById("jfb-android-hold")) return;
   // APK 가 R2 에 올라가기 전까지 false. 올린 뒤 true 로 바꾸면 바로 다운로드로 연결된다.
   var APK_READY = true;
   var TELEGRAM  = "https://t.me/+P_CukTNNKRI4ZDVl";
