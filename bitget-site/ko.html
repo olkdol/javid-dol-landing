@@ -863,6 +863,11 @@ document.addEventListener('DOMContentLoaded', function jfbDownloadGate(){
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function jfbUpdatePopup(){
+  // 2026-10-13 업데이트 팝업 일시 중지: 본문(데드락 수정·-1960% 청산 로직·'덮어쓰기, 설정 유지')이 V19.3.1
+  // 기준이라 V19.7 배포본 설명으로는 맞지 않는다(V19.7 은 exe/start.command 구조로 바뀜). V19.7 본문이 생기면
+  // 아래 값을 false 로 바꾸면 다시 뜬다(VERSION_KEY 는 이미 jfb_seen_update_v19.7).
+  var JFB_UPDATE_POPUP_OFF = true;
+  if (JFB_UPDATE_POPUP_OFF) return;
   var modal = document.getElementById("jfb-update-popup");
   if (!modal) return;
   var VERSION_KEY = "jfb_seen_update_v19.7";
