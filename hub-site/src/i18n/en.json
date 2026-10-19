@@ -19,6 +19,7 @@
  "live_no": "No live data",
  "copy_soon": "Copy trading: preparing",
  "copy_live": "Copy trading available",
+ "ct_join": "Join",
  "badge_available": "Available",
  "badge_dev": "In development",
  "badge_hold": "On hold",

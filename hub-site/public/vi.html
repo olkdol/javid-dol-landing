@@ -32,7 +32,7 @@
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=9df42ec0f1">
+<link rel="stylesheet" href="/assets/css/site.css?v=2aa5ba4cf3">
 <script>window.JFB={"lang":"vi","t":{"nav_menu":"Menu","nav_close":"Đóng menu","perf_captured":"Chụp lúc {time}","perf_stale":"Chưa cập nhật kể từ {time}. Tác vụ chụp hoặc màn hình trực tiếp đang ngừng; bên dưới là ảnh chụp hợp lệ cuối cùng.","perf_none":"Chưa có ảnh chụp nào được đăng. Không hiển thị gì ở đây cho đến khi có ảnh chụp thật.","perf_error":"Hiện không tải được ảnh chụp. Không hiển thị gì thay thế.","view_dashboard":"Dashboard","view_positions":"Vị thế đang mở (không tính trong các con số)","perf_zoom":"Mở kích thước đầy đủ","hero_shot_alt":"Ảnh chụp mỗi giờ mới nhất của dashboard tài khoản thật","m_trades":"Giao dịch đã đóng","m_wins":"Đóng có lãi","m_wins_val":"{w} trên {n}","m_realized":"Lãi/lỗ đã thực hiện","m_worst":"Giao dịch đã đóng có kết quả kém nhất","m_down":"Số ngày có lỗ ròng đã thực hiện","m_down_val":"{d} trên {n} ngày","m_funding":"Phí funding (tính trong lãi/lỗ đã thực hiện)","m_period":"{from} – {to}, giờ Hàn Quốc (UTC+9)","m_unavailable":"Ảnh chụp mới nhất không có số liệu từ lịch sử giao dịch.","chart_aria":"Biểu đồ đường lãi/lỗ đã thực hiện lũy kế theo ngày","time_now":"vừa xong","ago_min":"{n} phút trước","ago_h":"{n} giờ trước","ago_d":"{n} ngày trước","bd_secret_label":"Bài riêng tư","bd_password":"Mật khẩu (cho bài riêng tư)","bd_open":"Mở bằng mật khẩu","bd_reply":"Trả lời","bd_empty":"Chưa có bài đăng nào.","bd_loading":"Đang tải bài đăng…","bd_error":"Hiện không tải được bảng.","bd_posted":"Đã đăng. Cảm ơn bạn.","bd_post_error":"Không đăng được. Vui lòng kiểm tra các trường và thử lại.","bd_wrong_pw":"Sai mật khẩu.","m_settings":"Cài đặt của tài khoản này tại thời điểm chụp: Investment Mode {mode} (số dư ÷ {div}), đòn bẩy {lev}x, hard stop {hs}, cài đặt chế độ vào lệnh “{entry}”. Bản cài mới bắt đầu ở Normal (số dư ÷ 500) và 10x.","m_open":"Vị thế đang mở hiện tại: {k} (không tính trong các con số ở trên)","hs_on":"bật","hs_off":"tắt"}};</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.javidtrading.com/#org","name":"JaviD Future Bot","url":"https://www.javidtrading.com/","logo":"https://www.javidtrading.com/assets/img/logo-96.png","email":"support@javidtrading.com","sameAs":["https://t.me/+P_CukTNNKRI4ZDVl","https://www.youtube.com/@javidfuture"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.javidtrading.com/#website","name":"JaviD Future Bot","url":"https://www.javidtrading.com/","inLanguage":["en","ko","ja","es","fr","vi","tr","pt"]}</script>
@@ -73,31 +73,31 @@
 
 <section class="section" id="exchanges"><div class="wrap">
   <div class="section-head"><div><h2>Chọn sàn giao dịch</h2><p>Mỗi sàn có bản build riêng. Chọn sàn bạn đang dùng, bạn sẽ nhận được tệp dành riêng cho sàn đó.</p></div></div>
-  <div class="grid g4"><a class="card ex-card" data-ex-card="binance" href="/vi/download?exchange=binance">
+  <div class="grid g4"><div class="card ex-card" data-ex-card="binance">
       <div class="logo"><img src="/assets/img/binance-logo.png" alt="Binance" width="104" height="42" loading="lazy"></div>
       <div class="name">Binance</div>
       <div class="meta"><span class="badge b-ok">Có thể tải xuống</span><span class="badge b-live">Dữ liệu tài khoản thật</span><span class="badge b-off">Copy trading: đang chuẩn bị</span></div>
       <div class="note">Windows · macOS</div>
-      <span class="go">Tải bản build cho Binance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-    </a><a class="card ex-card" data-ex-card="bitget" href="/vi/download?exchange=bitget">
+      <a class="go" href="/vi/download?exchange=binance">Tải bản build cho Binance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div><div class="card ex-card" data-ex-card="bitget">
       <div class="logo"><img src="/assets/img/bitget-logo.png" alt="Bitget" width="104" height="42" loading="lazy"></div>
       <div class="name">Bitget</div>
-      <div class="meta"><span class="badge b-ok">Có thể tải xuống</span><span class="badge b-off">Không có dữ liệu trực tiếp</span><span class="badge b-ok">Có copy trading</span></div>
+      <div class="meta"><span class="badge b-ok">Có thể tải xuống</span><span class="badge b-off">Không có dữ liệu trực tiếp</span><span class="copy-row"><span class="badge b-ok">Có copy trading</span><a class="ct-join" href="https://share.glassgs.com/sl/0756VRB2MT0J" target="_blank" rel="noopener nofollow sponsored" title="Đây là liên kết mời copy trading của sàn và có chứa mã mời của sàn. Đây không phải liên kết đăng ký được dùng ở những nơi khác trên trang này." aria-label="Mở trang copy trading chính thức của Bitget">Tham gia ↗</a></span></div>
       <div class="note">Windows · macOS · cần API passphrase</div>
-      <span class="go">Tải bản build cho Bitget <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-    </a><a class="card ex-card" data-ex-card="bybit" href="/vi/download?exchange=bybit">
+      <a class="go" href="/vi/download?exchange=bitget">Tải bản build cho Bitget <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div><div class="card ex-card" data-ex-card="bybit">
       <div class="logo"><img src="/assets/img/bybit-logo.png" alt="Bybit" width="104" height="42" loading="lazy"></div>
       <div class="name">Bybit</div>
-      <div class="meta"><span class="badge b-ok">Có thể tải xuống</span><span class="badge b-off">Không có dữ liệu trực tiếp</span><span class="badge b-ok">Có copy trading</span></div>
+      <div class="meta"><span class="badge b-ok">Có thể tải xuống</span><span class="badge b-off">Không có dữ liệu trực tiếp</span><span class="copy-row"><span class="badge b-ok">Có copy trading</span><a class="ct-join" href="https://bybit.onelink.me/EhY6/6t5au21d?action=inviteToCopy" target="_blank" rel="noopener nofollow sponsored" title="Đây là liên kết mời copy trading của sàn và có chứa mã mời của sàn. Đây không phải liên kết đăng ký được dùng ở những nơi khác trên trang này." aria-label="Mở trang copy trading chính thức của Bybit">Tham gia ↗</a></span></div>
       <div class="note">Windows · macOS</div>
-      <span class="go">Tải bản build cho Bybit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-    </a><a class="card ex-card" data-ex-card="okx" href="/vi/download?exchange=okx">
+      <a class="go" href="/vi/download?exchange=bybit">Tải bản build cho Bybit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div><div class="card ex-card" data-ex-card="okx">
       <div class="logo"><img src="/assets/img/okx-logo.png" alt="OKX" width="104" height="42" loading="lazy"></div>
       <div class="name">OKX</div>
       <div class="meta"><span class="badge b-wait">Đang chuẩn bị</span><span class="badge b-off">Không có dữ liệu trực tiếp</span><span class="badge b-off">Copy trading: đang chuẩn bị</span></div>
       <div class="note">Tạm dừng tải xuống trong khi chuẩn bị bản build mới</div>
-      <span class="go">Xem trạng thái <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-    </a></div>
+      <a class="go" href="/vi/download?exchange=okx">Xem trạng thái <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div></div>
 </div></section>
 
 <section class="section-tight" id="live"><div class="wrap"><div class="card card-pad">

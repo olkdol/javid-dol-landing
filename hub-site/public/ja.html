@@ -32,7 +32,7 @@
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=9df42ec0f1">
+<link rel="stylesheet" href="/assets/css/site.css?v=2aa5ba4cf3">
 <script>window.JFB={"lang":"ja","t":{"nav_menu":"メニュー","nav_close":"メニューを閉じる","perf_captured":"キャプチャ：{time}","perf_stale":"{time} 以降、更新されていません。キャプチャ処理またはライブ画面が停止しています。下は最後に正常に取得できたキャプチャです。","perf_none":"まだキャプチャが公開されていません。実際のキャプチャができるまで、ここには何も表示しません。","perf_error":"現在、キャプチャを読み込めません。代わりの画面は表示しません。","view_dashboard":"ダッシュボード","view_positions":"保有中のポジション（数値には含まれません）","perf_zoom":"原寸で開く","hero_shot_alt":"実口座ダッシュボードの最新の1時間ごとのキャプチャ","m_trades":"決済済み取引","m_wins":"利益で決済","m_wins_val":"{n}件中{w}件","m_realized":"実現損益","m_worst":"最も悪い決済取引","m_down":"実現損益が純額でマイナスだった日","m_down_val":"{n}日中{d}日","m_funding":"資金調達率手数料（ファンディング手数料、実現損益に含む）","m_period":"{from} – {to}、韓国時間（UTC+9）","m_unavailable":"最新のキャプチャには取引記録の数値がありません。","chart_aria":"日別の累積実現損益の折れ線グラフ","time_now":"たった今","ago_min":"{n}分前","ago_h":"{n}時間前","ago_d":"{n}日前","bd_secret_label":"非公開の投稿","bd_password":"パスワード（非公開の投稿用）","bd_open":"パスワードで開く","bd_reply":"回答","bd_empty":"まだ投稿はありません。","bd_loading":"投稿を読み込んでいます…","bd_error":"現在、掲示板を読み込めません。","bd_posted":"投稿しました。ありがとうございます。","bd_post_error":"投稿できませんでした。入力内容を確認して、もう一度お試しください。","bd_wrong_pw":"パスワードが違います。","m_settings":"キャプチャ時点のこの口座の設定：Investment Mode {mode}（残高 ÷ {div}）、レバレッジ {lev}x、ハードストップ {hs}、エントリーモードの設定値 “{entry}”。新規インストール時は Normal（残高 ÷ 500）と 10x で始まります。","m_open":"現在保有中のポジション：{k}（上記の数値には含まれません）","hs_on":"オン","hs_off":"オフ"}};</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.javidtrading.com/#org","name":"JaviD Future Bot","url":"https://www.javidtrading.com/","logo":"https://www.javidtrading.com/assets/img/logo-96.png","email":"support@javidtrading.com","sameAs":["https://t.me/+P_CukTNNKRI4ZDVl","https://www.youtube.com/@javidfuture"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.javidtrading.com/#website","name":"JaviD Future Bot","url":"https://www.javidtrading.com/","inLanguage":["en","ko","ja","es","fr","vi","tr","pt"]}</script>
@@ -73,31 +73,31 @@
 
 <section class="section" id="exchanges"><div class="wrap">
   <div class="section-head"><div><h2>取引所を選ぶ</h2><p>取引所ごとに専用のビルドがあります。お使いの取引所を選ぶと、その取引所用に作られたファイルを入手できます。</p></div></div>
-  <div class="grid g4"><a class="card ex-card" data-ex-card="binance" href="/ja/download?exchange=binance">
+  <div class="grid g4"><div class="card ex-card" data-ex-card="binance">
       <div class="logo"><img src="/assets/img/binance-logo.png" alt="Binance" width="104" height="42" loading="lazy"></div>
       <div class="name">Binance</div>
       <div class="meta"><span class="badge b-ok">ダウンロード可能</span><span class="badge b-live">実口座データあり</span><span class="badge b-off">コピートレード：準備中</span></div>
       <div class="note">Windows · macOS</div>
-      <span class="go">Binance 版を入手 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-    </a><a class="card ex-card" data-ex-card="bitget" href="/ja/download?exchange=bitget">
+      <a class="go" href="/ja/download?exchange=binance">Binance 版を入手 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div><div class="card ex-card" data-ex-card="bitget">
       <div class="logo"><img src="/assets/img/bitget-logo.png" alt="Bitget" width="104" height="42" loading="lazy"></div>
       <div class="name">Bitget</div>
-      <div class="meta"><span class="badge b-ok">ダウンロード可能</span><span class="badge b-off">ライブデータなし</span><span class="badge b-ok">コピートレード利用可能</span></div>
+      <div class="meta"><span class="badge b-ok">ダウンロード可能</span><span class="badge b-off">ライブデータなし</span><span class="copy-row"><span class="badge b-ok">コピートレード利用可能</span><a class="ct-join" href="https://share.glassgs.com/sl/0756VRB2MT0J" target="_blank" rel="noopener nofollow sponsored" title="これは取引所のコピートレード招待リンクで、取引所の招待コードが含まれています。このサイトの他の場所で使っている登録リンクではありません。" aria-label="Bitget 公式コピートレードページを開く">参加する ↗</a></span></div>
       <div class="note">Windows · macOS · API パスフレーズが必要</div>
-      <span class="go">Bitget 版を入手 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-    </a><a class="card ex-card" data-ex-card="bybit" href="/ja/download?exchange=bybit">
+      <a class="go" href="/ja/download?exchange=bitget">Bitget 版を入手 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div><div class="card ex-card" data-ex-card="bybit">
       <div class="logo"><img src="/assets/img/bybit-logo.png" alt="Bybit" width="104" height="42" loading="lazy"></div>
       <div class="name">Bybit</div>
-      <div class="meta"><span class="badge b-ok">ダウンロード可能</span><span class="badge b-off">ライブデータなし</span><span class="badge b-ok">コピートレード利用可能</span></div>
+      <div class="meta"><span class="badge b-ok">ダウンロード可能</span><span class="badge b-off">ライブデータなし</span><span class="copy-row"><span class="badge b-ok">コピートレード利用可能</span><a class="ct-join" href="https://bybit.onelink.me/EhY6/6t5au21d?action=inviteToCopy" target="_blank" rel="noopener nofollow sponsored" title="これは取引所のコピートレード招待リンクで、取引所の招待コードが含まれています。このサイトの他の場所で使っている登録リンクではありません。" aria-label="Bybit 公式コピートレードページを開く">参加する ↗</a></span></div>
       <div class="note">Windows · macOS</div>
-      <span class="go">Bybit 版を入手 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-    </a><a class="card ex-card" data-ex-card="okx" href="/ja/download?exchange=okx">
+      <a class="go" href="/ja/download?exchange=bybit">Bybit 版を入手 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div><div class="card ex-card" data-ex-card="okx">
       <div class="logo"><img src="/assets/img/okx-logo.png" alt="OKX" width="104" height="42" loading="lazy"></div>
       <div class="name">OKX</div>
       <div class="meta"><span class="badge b-wait">準備中</span><span class="badge b-off">ライブデータなし</span><span class="badge b-off">コピートレード：準備中</span></div>
       <div class="note">新しいビルドの準備中のため、ダウンロードを一時停止しています</div>
-      <span class="go">状況を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-    </a></div>
+      <a class="go" href="/ja/download?exchange=okx">状況を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div></div>
 </div></section>
 
 <section class="section-tight" id="live"><div class="wrap"><div class="card card-pad">

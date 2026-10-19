@@ -32,7 +32,7 @@
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=9df42ec0f1">
+<link rel="stylesheet" href="/assets/css/site.css?v=2aa5ba4cf3">
 <script>window.JFB={"lang":"fr","t":{"nav_menu":"Menu","nav_close":"Fermer le menu","perf_captured":"Capturé le {time}","perf_stale":"Pas de mise à jour depuis le {time}. La tâche de capture ou l'écran en direct est arrêté ; ci-dessous, la dernière capture valide.","perf_none":"Aucune capture n'a encore été publiée. Rien n'est affiché ici tant qu'une capture réelle n'existe pas.","perf_error":"La capture n'a pas pu être chargée pour le moment. Rien n'est affiché à sa place.","view_dashboard":"Tableau de bord","view_positions":"Positions ouvertes (hors des chiffres)","perf_zoom":"Ouvrir en taille réelle","hero_shot_alt":"Dernière capture horaire du tableau de bord du compte réel","m_trades":"Trades clôturés","m_wins":"Clôturés en bénéfice","m_wins_val":"{w} sur {n}","m_realized":"P&L réalisé","m_worst":"Pire trade clôturé","m_down":"Jours avec une perte réalisée nette","m_down_val":"{d} jours sur {n}","m_funding":"Frais de financement (funding), inclus dans le P&L réalisé","m_period":"{from} – {to}, heure de Corée (UTC+9)","m_unavailable":"Les chiffres issus de l'historique des trades ne sont pas disponibles dans la dernière capture.","chart_aria":"Graphique linéaire du profit et de la perte réalisés cumulés par jour","time_now":"à l'instant","ago_min":"il y a {n} min","ago_h":"il y a {n} h","ago_d":"il y a {n} jours","bd_secret_label":"Message privé","bd_password":"Mot de passe (pour les messages privés)","bd_open":"Ouvrir avec le mot de passe","bd_reply":"Réponse","bd_empty":"Aucun message pour l'instant.","bd_loading":"Chargement des messages…","bd_error":"Le forum n'a pas pu être chargé pour le moment.","bd_posted":"Publié. Merci.","bd_post_error":"Impossible de publier. Vérifiez les champs et réessayez.","bd_wrong_pw":"Mot de passe incorrect.","m_settings":"Paramètres de ce compte au moment de la capture : Investment Mode {mode} (solde ÷ {div}), effet de levier {lev}x, hard stop {hs}, réglage du mode d'entrée « {entry} ». Une nouvelle installation démarre en Normal (solde ÷ 500) et 10x.","m_open":"Positions ouvertes en ce moment : {k} (non incluses dans les chiffres ci-dessus)","hs_on":"activé","hs_off":"désactivé"}};</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.javidtrading.com/#org","name":"JaviD Future Bot","url":"https://www.javidtrading.com/","logo":"https://www.javidtrading.com/assets/img/logo-96.png","email":"support@javidtrading.com","sameAs":["https://t.me/+P_CukTNNKRI4ZDVl","https://www.youtube.com/@javidfuture"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.javidtrading.com/#website","name":"JaviD Future Bot","url":"https://www.javidtrading.com/","inLanguage":["en","ko","ja","es","fr","vi","tr","pt"]}</script>
@@ -73,31 +73,31 @@
 
 <section class="section" id="exchanges"><div class="wrap">
   <div class="section-head"><div><h2>Choisissez votre plateforme</h2><p>Chaque plateforme a sa propre version. Choisissez la plateforme que vous utilisez et vous obtenez le fichier conçu pour elle.</p></div></div>
-  <div class="grid g4"><a class="card ex-card" data-ex-card="binance" href="/fr/download?exchange=binance">
+  <div class="grid g4"><div class="card ex-card" data-ex-card="binance">
       <div class="logo"><img src="/assets/img/binance-logo.png" alt="Binance" width="104" height="42" loading="lazy"></div>
       <div class="name">Binance</div>
       <div class="meta"><span class="badge b-ok">Téléchargement disponible</span><span class="badge b-live">Données d&#39;un compte réel en direct</span><span class="badge b-off">Copy trading : en préparation</span></div>
       <div class="note">Windows · macOS</div>
-      <span class="go">Obtenir la version Binance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-    </a><a class="card ex-card" data-ex-card="bitget" href="/fr/download?exchange=bitget">
+      <a class="go" href="/fr/download?exchange=binance">Obtenir la version Binance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div><div class="card ex-card" data-ex-card="bitget">
       <div class="logo"><img src="/assets/img/bitget-logo.png" alt="Bitget" width="104" height="42" loading="lazy"></div>
       <div class="name">Bitget</div>
-      <div class="meta"><span class="badge b-ok">Téléchargement disponible</span><span class="badge b-off">Pas de données en direct</span><span class="badge b-ok">Copy trading disponible</span></div>
+      <div class="meta"><span class="badge b-ok">Téléchargement disponible</span><span class="badge b-off">Pas de données en direct</span><span class="copy-row"><span class="badge b-ok">Copy trading disponible</span><a class="ct-join" href="https://share.glassgs.com/sl/0756VRB2MT0J" target="_blank" rel="noopener nofollow sponsored" title="Il s&#39;agit du lien d&#39;invitation au copy trading de la plateforme, qui contient le code d&#39;invitation de la plateforme. Ce n&#39;est pas le lien d&#39;inscription utilisé ailleurs sur ce site." aria-label="Ouvrir la page officielle de copy trading Bitget">Rejoindre ↗</a></span></div>
       <div class="note">Windows · macOS · passphrase API requise</div>
-      <span class="go">Obtenir la version Bitget <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-    </a><a class="card ex-card" data-ex-card="bybit" href="/fr/download?exchange=bybit">
+      <a class="go" href="/fr/download?exchange=bitget">Obtenir la version Bitget <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div><div class="card ex-card" data-ex-card="bybit">
       <div class="logo"><img src="/assets/img/bybit-logo.png" alt="Bybit" width="104" height="42" loading="lazy"></div>
       <div class="name">Bybit</div>
-      <div class="meta"><span class="badge b-ok">Téléchargement disponible</span><span class="badge b-off">Pas de données en direct</span><span class="badge b-ok">Copy trading disponible</span></div>
+      <div class="meta"><span class="badge b-ok">Téléchargement disponible</span><span class="badge b-off">Pas de données en direct</span><span class="copy-row"><span class="badge b-ok">Copy trading disponible</span><a class="ct-join" href="https://bybit.onelink.me/EhY6/6t5au21d?action=inviteToCopy" target="_blank" rel="noopener nofollow sponsored" title="Il s&#39;agit du lien d&#39;invitation au copy trading de la plateforme, qui contient le code d&#39;invitation de la plateforme. Ce n&#39;est pas le lien d&#39;inscription utilisé ailleurs sur ce site." aria-label="Ouvrir la page officielle de copy trading Bybit">Rejoindre ↗</a></span></div>
       <div class="note">Windows · macOS</div>
-      <span class="go">Obtenir la version Bybit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-    </a><a class="card ex-card" data-ex-card="okx" href="/fr/download?exchange=okx">
+      <a class="go" href="/fr/download?exchange=bybit">Obtenir la version Bybit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div><div class="card ex-card" data-ex-card="okx">
       <div class="logo"><img src="/assets/img/okx-logo.png" alt="OKX" width="104" height="42" loading="lazy"></div>
       <div class="name">OKX</div>
       <div class="meta"><span class="badge b-wait">En préparation</span><span class="badge b-off">Pas de données en direct</span><span class="badge b-off">Copy trading : en préparation</span></div>
       <div class="note">Téléchargement suspendu pendant la préparation de la nouvelle version</div>
-      <span class="go">Voir l&#39;état <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-    </a></div>
+      <a class="go" href="/fr/download?exchange=okx">Voir l&#39;état <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div></div>
 </div></section>
 
 <section class="section-tight" id="live"><div class="wrap"><div class="card card-pad">

@@ -237,7 +237,9 @@ function exStatusBadges(t, e) {
   return [
     e.status === "available" ? badge("b-ok", t.txt("st_available")) : badge("b-wait", t.txt("st_preparing")),
     e.live_data ? badge("b-live", t.txt("live_yes")) : badge("b-off", t.txt("live_no")),
-    prof.status === "live" ? badge("b-ok", t.txt("copy_live")) : badge("b-off", t.txt("copy_soon")),
+    prof.status === "live" && prof.profile_url
+      ? `<span class="copy-row">${badge("b-ok", t.txt("copy_live"))}<a class="ct-join" href="${esc(prof.profile_url)}" target="_blank" rel="noopener nofollow sponsored" title="${t.txt("ct_invite_note")}" aria-label="${t.txt("ct_live_btn", { name: e.name })}">${t.txt("ct_join")} ↗</a></span>`
+      : badge("b-off", t.txt("copy_soon")),
   ].join("");
 }
 
@@ -284,13 +286,15 @@ function pageHome(lang) {
   const cards = EX.order.map((id) => {
     const e = EX.exchanges[id];
     const target = href(lang, "download") + "?exchange=" + id;
-    return `<a class="card ex-card" data-ex-card="${id}" href="${target}">
+    // The card is a container, not one big <a>: it holds a second link (copy-trading Join), and
+    // nested anchors are invalid HTML. The whole card stays clickable through .go's ::after overlay.
+    return `<div class="card ex-card" data-ex-card="${id}">
       <div class="logo"><img src="${e.logo}" alt="${esc(e.name)}" width="104" height="42" loading="lazy"></div>
       <div class="name">${esc(e.name)}</div>
       <div class="meta">${exStatusBadges(t, e)}</div>
       <div class="note">${t.txt(e.notes_key)}</div>
-      <span class="go">${e.status === "available" ? t.txt("ex_cta", { name: e.name }) : t.txt("ex_cta_prep")} ${ico("arrow")}</span>
-    </a>`;
+      <a class="go" href="${target}">${e.status === "available" ? t.txt("ex_cta", { name: e.name }) : t.txt("ex_cta_prep")} ${ico("arrow")}</a>
+    </div>`;
   }).join("");
   const feats = [["monitor", "f1", "badge_available"], ["eye", "f2", "badge_available"], ["layers", "f3", "badge_available"], ["shield", "f4", "badge_available"],
     ["filter", "f5", "badge_available"], ["alert", "f6", "badge_available"], ["cpu", "f7", "badge_dev"], ["phone", "f8", "badge_hold"]];

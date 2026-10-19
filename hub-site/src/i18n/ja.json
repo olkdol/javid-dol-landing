@@ -19,6 +19,7 @@
  "live_no": "ライブデータなし",
  "copy_soon": "コピートレード：準備中",
  "copy_live": "コピートレード利用可能",
+ "ct_join": "参加する",
  "badge_available": "利用可能",
  "badge_dev": "開発中",
  "badge_hold": "保留中",

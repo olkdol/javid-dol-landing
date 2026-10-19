@@ -152,8 +152,17 @@ main { display: block; }
 
 /* ── exchange cards ── */
 .ex-card { display: flex; flex-direction: column; gap: 10px; padding: 18px; text-decoration: none; color: inherit; transition: border-color .15s, box-shadow .15s, transform .15s; height: 100%; }
-a.ex-card.picked { border-color: var(--green-700); box-shadow: 0 0 0 2px var(--mint-100), var(--shadow-lg); }
-a.ex-card:hover { border-color: var(--emerald-500); box-shadow: var(--shadow-lg); transform: translateY(-1px); color: inherit; }
+.ex-card[data-ex-card] { position: relative; }
+.ex-card[data-ex-card].picked { border-color: var(--green-700); box-shadow: 0 0 0 2px var(--mint-100), var(--shadow-lg); }
+.ex-card[data-ex-card]:hover { border-color: var(--emerald-500); box-shadow: var(--shadow-lg); transform: translateY(-1px); color: inherit; }
+.ex-card[data-ex-card] .go { text-decoration: none; }
+.ex-card[data-ex-card] .go::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.ex-card[data-ex-card] .go:focus-visible { outline: none; }
+.ex-card[data-ex-card]:has(.go:focus-visible) { outline: 2px solid var(--green-700); outline-offset: 2px; }
+.copy-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ct-join { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 800; line-height: 1.4; padding: 3px 11px; border-radius: 999px; background: var(--green-700); color: #fff; text-decoration: none; }
+.ct-join:hover, .ct-join:focus-visible { background: var(--emerald-500); color: #fff; }
+.ct-join:focus-visible { outline: 2px solid var(--green-700); outline-offset: 2px; }
 .ex-card .logo { width: 104px; height: 42px; border-radius: 10px; background: #000; overflow: hidden; }
 .ex-card .logo img { width: 100%; height: 100%; object-fit: contain; }
 .ex-card .name { font-weight: 800; font-size: 17px; color: var(--navy-900); }
