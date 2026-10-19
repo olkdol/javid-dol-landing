@@ -12,6 +12,7 @@
 // Pages-Functions-style handlers directly. Everything else (index.html,
 // board.html, images, etc.) falls through to the static assets binding.
 
+import { legacyRedirect } from "./legacy_redirect.js";
 import {
   onRequestPost as downloadPost,
   onRequestGet as downloadGet,
@@ -69,6 +70,10 @@ export default {
     }
 
     // No API route matched — serve the static file.
+    // 2026-10-19: pages moved to www.javidtrading.com — HTML routes answer 301 (API above untouched)
+    const moved = legacyRedirect("binance", request);
+    if (moved) return moved;
+
     return env.ASSETS.fetch(request);
   },
 };

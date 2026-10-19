@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{if(sessionStorage.getItem("jfb_src"))return;var q=new URLSearchParams(location.search),r="";try{r=document.referrer?new URL(document.referrer).hostname:""}catch(e){}if(/(^|\.)javidtrading\.com$/.test(r))r="";sessionStorage.setItem("jfb_src",JSON.stringify({r:r,us:q.get("utm_source")||"",um:q.get("utm_medium")||"",uc:q.get("utm_campaign")||"",lp:location.pathname}))}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>거래소별 운영 성과 — 실계좌 캡처</title>
+<meta name="description" content="실제 운용 중인 계좌 1개의 대시보드를 1시간마다 캡처하고, 그 계좌의 거래 기록으로 수치를 계산합니다. 시뮬레이션 그래프는 쓰지 않으며, 백테스트는 검증을 통과한 뒤 따로 표시합니다.">
+<link rel="canonical" href="https://www.javidtrading.com/ko/exchange">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="alternate" hreflang="en" href="https://www.javidtrading.com/exchange">
+<link rel="alternate" hreflang="ko" href="https://www.javidtrading.com/ko/exchange">
+<link rel="alternate" hreflang="ja" href="https://www.javidtrading.com/ja/exchange">
+<link rel="alternate" hreflang="es" href="https://www.javidtrading.com/es/exchange">
+<link rel="alternate" hreflang="fr" href="https://www.javidtrading.com/fr/exchange">
+<link rel="alternate" hreflang="vi" href="https://www.javidtrading.com/vi/exchange">
+<link rel="alternate" hreflang="tr" href="https://www.javidtrading.com/tr/exchange">
+<link rel="alternate" hreflang="pt" href="https://www.javidtrading.com/pt/exchange">
+<link rel="alternate" hreflang="x-default" href="https://www.javidtrading.com/exchange">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JaviD Future Bot">
+<meta property="og:title" content="거래소별 운영 성과 — 실계좌 캡처">
+<meta property="og:description" content="실제 운용 중인 계좌 1개의 대시보드를 1시간마다 캡처하고, 그 계좌의 거래 기록으로 수치를 계산합니다. 시뮬레이션 그래프는 쓰지 않으며, 백테스트는 검증을 통과한 뒤 따로 표시합니다.">
+<meta property="og:url" content="https://www.javidtrading.com/ko/exchange">
+<meta property="og:image" content="https://www.javidtrading.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#065f46">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=9df42ec0f1">
+<script>window.JFB={"lang":"ko","t":{"nav_menu":"메뉴","nav_close":"메뉴 닫기","perf_captured":"캡처 시각 {time}","perf_stale":"{time} 이후 갱신되지 않았습니다. 캡처 작업이나 라이브 화면이 멈춘 상태이며, 아래는 마지막으로 정상 캡처된 화면입니다.","perf_none":"아직 게시된 캡처가 없습니다. 실제 캡처가 생기기 전에는 아무것도 표시하지 않습니다.","perf_error":"지금은 캡처를 불러올 수 없습니다. 그 자리에 다른 화면을 대신 넣지 않습니다.","view_dashboard":"대시보드","view_positions":"보유 포지션 (위 숫자 미포함)","perf_zoom":"원본 크기로 보기","hero_shot_alt":"실계좌 대시보드의 최신 1시간 단위 캡처","m_trades":"청산 거래","m_wins":"이익으로 청산","m_wins_val":"{n}건 중 {w}건","m_realized":"실현손익","m_worst":"가장 나쁜 청산 거래","m_down":"실현손익이 마이너스였던 날","m_down_val":"{n}일 중 {d}일","m_funding":"펀딩비 (실현손익에 포함)","m_period":"{from} ~ {to}, 한국시간(UTC+9)","m_unavailable":"최신 캡처에 거래 기록 수치가 없습니다.","chart_aria":"일별 실현손익 누적 선 그래프","time_now":"방금","ago_min":"{n}분 전","ago_h":"{n}시간 전","ago_d":"{n}일 전","bd_secret_label":"비밀글","bd_password":"비밀번호 (비밀글용)","bd_open":"비밀번호로 열기","bd_reply":"답변","bd_empty":"아직 글이 없습니다.","bd_loading":"글을 불러오는 중…","bd_error":"지금은 게시판을 불러올 수 없습니다.","bd_posted":"등록했습니다. 감사합니다.","bd_post_error":"등록하지 못했습니다. 입력 내용을 확인하고 다시 시도해 주세요.","bd_wrong_pw":"비밀번호가 맞지 않습니다.","m_settings":"캡처 시점 이 계좌의 설정: 투자모드 {mode}(잔고 ÷ {div}) · 레버리지 {lev}배 · 하드스톱 {hs} · 진입 모드 설정값 “{entry}”. 새로 설치하면 Normal(잔고 ÷ 500) · 10배로 시작합니다.","m_open":"지금 열린 포지션 {k}개 — 위 숫자에 들어가지 않습니다","hs_on":"켜짐","hs_off":"꺼짐"}};</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"JaviD Future Bot","item":"https://www.javidtrading.com/ko"},{"@type":"ListItem","position":2,"name":"거래소 성과","item":"https://www.javidtrading.com/ko/exchange"}]}</script>
+</head><body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="wrap hdr">
+    <a class="brand" href="/ko"><img src="/assets/img/logo-96.png" alt="" width="30" height="30"><span class="brand-name">JaviD Future Bot</span></a>
+    <nav class="nav" aria-label="Main"><a href="/ko/how-it-works">제품 소개</a><a href="/ko/exchange" aria-current="page">거래소 성과</a><a href="/ko/guide">사용 방법</a><a href="/ko/risk-disclosure">위험 고지</a></nav>
+    <div class="hdr-tools">
+      <label class="lang"><span class="sr-only">언어</span><select data-lang-switch aria-label="언어"><option value="en" data-href="/exchange">English</option><option value="ko" data-href="/ko/exchange" selected>한국어</option><option value="ja" data-href="/ja/exchange">日本語</option><option value="es" data-href="/es/exchange">Español</option><option value="fr" data-href="/fr/exchange">Français</option><option value="vi" data-href="/vi/exchange">Tiếng Việt</option><option value="tr" data-href="/tr/exchange">Türkçe</option><option value="pt" data-href="/pt/exchange">Português</option></select></label>
+      <a class="btn btn-primary btn-sm hdr-cta" href="/ko/download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>프로그램 다운로드</a>
+      <button class="menu-btn" type="button" aria-controls="mnav" aria-expanded="false" aria-label="메뉴"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+  <nav id="mnav" class="mnav" aria-label="Mobile"><a href="/ko/how-it-works">제품 소개</a><a href="/ko/exchange" aria-current="page">거래소 성과</a><a href="/ko/guide">사용 방법</a><a href="/ko/risk-disclosure">위험 고지</a><a href="/ko/download">프로그램 다운로드</a></nav>
+</header>
+<main id="main"><div class="wrap page-head"><h1>거래소별 운영 성과</h1><p>확인할 수 있는 기록만 싣습니다. 실계좌 대시보드의 1시간 단위 캡처와, 그 계좌의 거래 기록으로 계산한 수치입니다. 시뮬레이션 그래프는 없습니다.</p></div>
+<section class="section-tight" data-tabroot><div class="wrap">
+  <div class="ex-tabs" role="tablist" aria-label="거래소" data-tabs data-default="binance"><button class="ex-tab" role="tab" type="button" id="tab-binance" data-ex="binance" aria-controls="panel-binance" aria-selected="false"><img src="/assets/img/binance-logo.png" alt="" width="64" height="26">Binance</button><button class="ex-tab" role="tab" type="button" id="tab-bitget" data-ex="bitget" aria-controls="panel-bitget" aria-selected="false"><img src="/assets/img/bitget-logo.png" alt="" width="64" height="26">Bitget</button><button class="ex-tab" role="tab" type="button" id="tab-bybit" data-ex="bybit" aria-controls="panel-bybit" aria-selected="false"><img src="/assets/img/bybit-logo.png" alt="" width="64" height="26">Bybit</button><button class="ex-tab" role="tab" type="button" id="tab-okx" data-ex="okx" aria-controls="panel-okx" aria-selected="false"><img src="/assets/img/okx-logo.png" alt="" width="64" height="26">OKX</button></div>
+  <div class="mt-16"><div class="panel" role="tabpanel" id="panel-binance" aria-labelledby="tab-binance" data-panel="binance"><div class="card card-pad"><div class="perf-head"><h2>실제 운용 성과 (Binance)</h2><span class="badge b-live">1시간마다 갱신</span></div>
+          <p class="perf-what">지금 실제로 운용 중인 계좌 1개의 프로그램 대시보드를 1시간마다 그대로 캡처한 화면입니다. 유튜브 라이브로 송출하는 화면과 같습니다. 표본은 이 계좌 하나가 전부입니다.</p><div data-live>
+    <div class="grid g2 mt-16">
+      <figure style="margin:0"><figcaption class="small" style="font-weight:700;margin-bottom:6px">대시보드</figcaption><div class="shot" data-shot="dashboard"><div class="ph">최신 캡처를 불러오는 중…</div></div></figure>
+      <figure style="margin:0"><figcaption class="small" style="font-weight:700;margin-bottom:6px">보유 포지션 (위 숫자 미포함)</figcaption><div class="shot" data-shot="positions"><div class="ph">최신 캡처를 불러오는 중…</div></div></figure>
+    </div>
+    <noscript><p class="small muted mt-8">실계좌 캡처를 보려면 JavaScript 가 필요합니다. 같은 대시보드를 유튜브 라이브에서도 볼 수 있습니다.</p></noscript>
+    <div class="shot-meta"><span data-live-status></span><a href="https://www.youtube.com/@javidfuture/live" target="_blank" rel="noopener" class="ext">같은 대시보드를 유튜브 라이브로 송출합니다</a></div>
+    <p class="stale" data-live-stale hidden></p>
+    <p class="tiny muted mt-8">대시보드 상단 제목은 “V18.4”로 표시되지만, 프로그램이 보고하는 버전(/health)은 19.7입니다.</p>
+    <div data-metrics-wrap hidden>
+      <div class="chart-top mt-24"><h3>실제 운용 중인 계좌 1개의 거래 기록에서 계산한 값</h3><div class="seg" role="group" aria-label="기간"><button type="button" data-period="7" aria-pressed="false">7일</button><button type="button" data-period="30" aria-pressed="false">30일</button><button type="button" data-period="90" aria-pressed="false">90일</button><button type="button" data-period="all" aria-pressed="true">전체</button></div></div>
+      <p class="small muted" data-period-label></p>
+      <div class="metrics" data-metrics></div>
+      <div class="scope"><p data-open-count hidden></p><p>청산된 거래와 펀딩비만 계산했습니다. 이 프로그램은 기본값에 손절이 없어, 상장폐지 대응 청산이나 강제청산(liquidation)이 아니면 손실 중인 포지션을 스스로 닫지 않습니다. 그래서 손실은 포지션이 손실로 닫혀야 이 숫자에 나타나고, 그 전까지는 열린 포지션에 남습니다. 열린 포지션은 이 숫자에 들어가지 않으며, 대시보드가 보여주는 그대로 ‘보유 포지션’ 캡처에서 볼 수 있습니다.</p><p>대시보드의 “Total N Trades”와 Win Rate 에는 펀딩비 정산 기록도 들어 있습니다. 여기서는 펀딩비를 따로 세기 때문에 두 숫자가 다르게 보입니다. 손익이 정확히 0인 청산 거래는 이익도 손실도 아닌 것으로 셉니다.</p><p data-settings hidden></p></div>
+      <div class="card card-pad chart-card">
+        <h3>일별 실현손익 누적 (USDT)</h3>
+        <div class="chart" data-chart></div>
+        <p class="chart-note">하루 단위 청산 손익과 펀딩비를 차례로 더한 값입니다. 계좌 잔고 곡선이 아니며, 열린 포지션의 평가손실은 이 선에 나타나지 않습니다.</p>
+      </div>
+      <div class="card card-pad mt-16" data-trades-wrap hidden><h3>최근 청산 거래</h3>
+        <div class="tbl-wrap mt-8"><table class="tbl"><thead><tr><th>청산 시각</th><th>종목</th><th>방향</th><th style="text-align:right">손익(USDT)</th><th style="text-align:right">ROE</th></tr></thead><tbody data-trades></tbody></table></div>
+        <p class="tiny muted mt-8">펀딩비 기록과 열린 포지션은 목록에 넣지 않습니다. 시각은 한국시간(UTC+9)입니다.</p></div>
+    </div>
+  </div>
+          <div class="note-box mt-24"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>데이터 출처</h3><p>실제 바이낸스 계좌 1개(V19.7)의 프로그램 대시보드입니다. 집에 있는 미니PC 화면을 API 키·토큰을 가리는 로컬 프록시로 받아 1시간마다 캡처합니다. 수치는 같은 계좌의 거래 기록을 스크린샷과 같은 실행에서 읽어 계산합니다.</p></div></div></div><div class="panel" role="tabpanel" id="panel-bitget" aria-labelledby="tab-bitget" data-panel="bitget"><div class="empty"><b>Bitget 실시간 데이터 없음</b><p>이 사이트에 연결된 Bitget 실계좌 데이터가 없습니다. 시뮬레이션 그래프를 대신 넣지 않고 비워 둡니다.</p>
+          <p class="mt-16"><a class="btn btn-outline btn-sm" href="/ko/download?exchange=bitget">Bitget용 프로그램 받기</a></p></div></div><div class="panel" role="tabpanel" id="panel-bybit" aria-labelledby="tab-bybit" data-panel="bybit"><div class="empty"><b>Bybit 실시간 데이터 없음</b><p>이 사이트에 연결된 Bybit 실계좌 데이터가 없습니다. 시뮬레이션 그래프를 대신 넣지 않고 비워 둡니다.</p>
+          <p class="mt-16"><a class="btn btn-outline btn-sm" href="/ko/download?exchange=bybit">Bybit용 프로그램 받기</a></p></div></div><div class="panel" role="tabpanel" id="panel-okx" aria-labelledby="tab-okx" data-panel="okx"><div class="empty"><b>OKX 실시간 데이터 없음</b><p>이 사이트에 연결된 OKX 실계좌 데이터가 없습니다. 시뮬레이션 그래프를 대신 넣지 않고 비워 둡니다.</p>
+          <p class="mt-16"><a class="btn btn-outline btn-sm" href="/ko/download?exchange=okx">상태 보기</a></p></div></div></div>
+</div></section>
+<section class="section-tight" id="backtest"><div class="wrap">
+  <div class="section-head"><h2>백테스트</h2></div>
+  <div class="empty"><b>검증된 백테스트 결과가 아직 없습니다.</b><p>이전에 공개했던 백테스트는 집계 오류(시간 창이 겹쳐 일부 포지션을 두 번 셈)가 있어 내렸습니다. 아래 검사를 모두 통과한 백테스트만 여기에 싣고, 실계좌 기록과는 절대 합산하지 않습니다. 다른 곳에서 이 사이트의 이전 백테스트 수치를 보셨다면, 그 수치는 철회된 것입니다.</p></div>
+  <div class="card card-pad mt-16"><h3>공개 규칙</h3><ol class="rules mt-8"><li>배포 빌드와 같은 전략 코드·기본 설정을 쓰고, 빌드 버전을 적습니다.</li><li>기간, 종목 범위, 가격 데이터 출처를 적습니다.</li><li>거래 수수료·펀딩비·슬리피지를 각각 반영했는지 표시합니다.</li><li>생존 편향 여부(상장폐지 종목 포함 여부)를 적습니다.</li><li>각 포지션은 한 번만 셉니다(겹친 창 중복 집계 검사).</li><li>거래 목록으로 다시 계산한 대표 수치가 일치해야 합니다.</li><li>가장 최근에 검증된 1건을 보여주고, 이전 결과와 바뀐 이유는 변경 기록에 남깁니다.</li><li>실계좌 기록과 분리해서 보여주며, 서로 합산하지 않습니다.</li></ol></div>
+</div></section>
+<section class="section-tight"><div class="wrap"><div class="riskbox"><p>레버리지 선물은 원금 전액 손실이 가능하고, 청산은 빠르게 일어날 수 있습니다. 기본값에는 손절이 없어 포지션이 큰 손실 상태로 오래 남을 수 있습니다. 이 사이트의 기록은 계좌 1개의 제한된 기간 기록이며, 다른 계좌의 결과는 다를 수 있습니다. 이 사이트의 어떤 내용도 투자 조언이 아닙니다.</p><p><a href="/ko/risk-disclosure">위험 고지 전체 보기 →</a></p></div></div></section></main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-about">
+        <a class="brand" href="/ko"><img src="/assets/img/logo-96.png" alt="" width="28" height="28" loading="lazy">JaviD Future Bot</a>
+        <p>내 컴퓨터에서 실행되는 소프트웨어입니다. 자금을 보관하지 않으며 투자 조언을 하지 않습니다.</p>
+      </div>
+      <div><h3>제품</h3><ul>
+        <li><a href="/ko/how-it-works">제품 소개</a></li><li><a href="/ko/exchange">거래소 성과</a></li><li><a href="/ko/download">프로그램 다운로드</a></li><li><a href="/ko/guide">사용 방법</a></li><li><a href="/ko/copy-trading">카피 트레이딩</a></li>
+      </ul></div>
+      <div><h3>지원</h3><ul>
+        <li><a href="/ko/faq">자주 묻는 질문</a></li><li><a href="/ko/board">커뮤니티 게시판</a></li><li><a href="/ko/contact">문의</a></li><li><a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">텔레그램 커뮤니티</a></li><li><a href="/api-guide/bitget">API 키 발급 가이드</a></li>
+      </ul></div>
+      <div><h3>정책</h3><ul>
+        <li><a href="/ko/risk-disclosure">위험 고지</a></li><li><a href="/ko/privacy">개인정보 처리</a></li><li><a href="/ko/terms">이용약관</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-risk">
+      <p><b>레버리지 선물은 원금 전액 손실이 가능합니다.</b> 거래소 이름과 로고는 각 소유자의 것입니다. 이 사이트는 어떤 거래소도 운영하지 않습니다.</p>
+      <p>© 2026 JaviD Future Bot · javidtrading.com</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js?v=d811c5509a" defer></script>
+</body>
+</html>

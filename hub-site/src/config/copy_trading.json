@@ -1,0 +1,32 @@
+{
+  "_comment": "Copy-trading profiles shown on /copy-trading, the home page and the exchange cards. Links are the exchanges' own copy-trading invite links supplied by the user on 2026-10-19 (not sign-up referral links). Both carry the exchange's invite code; the site says so next to the button. The build fails if a live entry's URL is outside allowed_domains. Never copy returns, follower counts, profit-share figures or any other numbers into this file or onto the site - link to the exchange page instead. 'qr' stays null unless a QR was captured from the official page AND decoded to the same link; never generate or fabricate one.",
+  "allowed_domains": {
+    "binance": ["binance.com"],
+    "bitget": ["bitget.com", "share.glassgs.com"],
+    "bybit": ["bybit.com", "bybit.onelink.me"],
+    "okx": ["okx.com"]
+  },
+  "profiles": {
+    "binance": { "status": "coming_soon", "profile_url": null, "updated": null },
+    "bitget": {
+      "status": "live",
+      "profile_url": "https://share.glassgs.com/sl/0756VRB2MT0J",
+      "resolved_url": "https://www.bitget.com/copy-trading/futures-trader/1494818877774102528/",
+      "resolved_checked": "2026-10-19: headless Chromium (desktop + iPhone UA) lands on Bitget's app mid-page; 'Continue' opens the Bitget futures copy-trading trader page 1494818877774102528 (profile name Javid_Trading). Link carries shareInviteCode/commonCode 'bszn'.",
+      "contains_invite_code": true,
+      "qr": null,
+      "qr_note": "No QR is rendered on the share page or the trader page without logging in (the share button redirects to the Bitget login). Not captured, not generated.",
+      "updated": "2026-10-19"
+    },
+    "bybit": {
+      "status": "live",
+      "profile_url": "https://bybit.onelink.me/EhY6/6t5au21d?action=inviteToCopy",
+      "resolved_url": "https://www.bybit.com/copyTrading/en/profile?leaderMark=S16YhX0fWuC3TnlO9pay4Q%3D%3D",
+      "resolved_checked": "2026-10-19: curl -L resolves to www.bybit.com/copyTrading/en/profile (leaderMark S16YhX0fWuC3TnlO9pay4Q==). Link carries ref=JNY4XP.",
+      "contains_invite_code": true,
+      "qr": null,
+      "updated": "2026-10-19"
+    },
+    "okx": { "status": "coming_soon", "profile_url": null, "updated": null }
+  }
+}

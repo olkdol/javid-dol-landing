@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{if(sessionStorage.getItem("jfb_src"))return;var q=new URLSearchParams(location.search),r="";try{r=document.referrer?new URL(document.referrer).hostname:""}catch(e){}if(/(^|\.)javidtrading\.com$/.test(r))r="";sessionStorage.setItem("jfb_src",JSON.stringify({r:r,us:q.get("utm_source")||"",um:q.get("utm_medium")||"",uc:q.get("utm_campaign")||"",lp:location.pathname}))}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JaviD Future Bot の仕組み</title>
+<meta name="description" content="プログラムとは何か、どこで動くのか、開発者はどのように収入を得ているのか、そしてご自身で何を確認できるのか。">
+<link rel="canonical" href="https://www.javidtrading.com/ja/how-it-works">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="alternate" hreflang="en" href="https://www.javidtrading.com/how-it-works">
+<link rel="alternate" hreflang="ko" href="https://www.javidtrading.com/ko/how-it-works">
+<link rel="alternate" hreflang="ja" href="https://www.javidtrading.com/ja/how-it-works">
+<link rel="alternate" hreflang="es" href="https://www.javidtrading.com/es/how-it-works">
+<link rel="alternate" hreflang="fr" href="https://www.javidtrading.com/fr/how-it-works">
+<link rel="alternate" hreflang="vi" href="https://www.javidtrading.com/vi/how-it-works">
+<link rel="alternate" hreflang="tr" href="https://www.javidtrading.com/tr/how-it-works">
+<link rel="alternate" hreflang="pt" href="https://www.javidtrading.com/pt/how-it-works">
+<link rel="alternate" hreflang="x-default" href="https://www.javidtrading.com/how-it-works">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JaviD Future Bot">
+<meta property="og:title" content="JaviD Future Bot の仕組み">
+<meta property="og:description" content="プログラムとは何か、どこで動くのか、開発者はどのように収入を得ているのか、そしてご自身で何を確認できるのか。">
+<meta property="og:url" content="https://www.javidtrading.com/ja/how-it-works">
+<meta property="og:image" content="https://www.javidtrading.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#065f46">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=9df42ec0f1">
+<script>window.JFB={"lang":"ja","t":{"nav_menu":"メニュー","nav_close":"メニューを閉じる","perf_captured":"キャプチャ：{time}","perf_stale":"{time} 以降、更新されていません。キャプチャ処理またはライブ画面が停止しています。下は最後に正常に取得できたキャプチャです。","perf_none":"まだキャプチャが公開されていません。実際のキャプチャができるまで、ここには何も表示しません。","perf_error":"現在、キャプチャを読み込めません。代わりの画面は表示しません。","view_dashboard":"ダッシュボード","view_positions":"保有中のポジション（数値には含まれません）","perf_zoom":"原寸で開く","hero_shot_alt":"実口座ダッシュボードの最新の1時間ごとのキャプチャ","m_trades":"決済済み取引","m_wins":"利益で決済","m_wins_val":"{n}件中{w}件","m_realized":"実現損益","m_worst":"最も悪い決済取引","m_down":"実現損益が純額でマイナスだった日","m_down_val":"{n}日中{d}日","m_funding":"資金調達率手数料（ファンディング手数料、実現損益に含む）","m_period":"{from} – {to}、韓国時間（UTC+9）","m_unavailable":"最新のキャプチャには取引記録の数値がありません。","chart_aria":"日別の累積実現損益の折れ線グラフ","time_now":"たった今","ago_min":"{n}分前","ago_h":"{n}時間前","ago_d":"{n}日前","bd_secret_label":"非公開の投稿","bd_password":"パスワード（非公開の投稿用）","bd_open":"パスワードで開く","bd_reply":"回答","bd_empty":"まだ投稿はありません。","bd_loading":"投稿を読み込んでいます…","bd_error":"現在、掲示板を読み込めません。","bd_posted":"投稿しました。ありがとうございます。","bd_post_error":"投稿できませんでした。入力内容を確認して、もう一度お試しください。","bd_wrong_pw":"パスワードが違います。","m_settings":"キャプチャ時点のこの口座の設定：Investment Mode {mode}（残高 ÷ {div}）、レバレッジ {lev}x、ハードストップ {hs}、エントリーモードの設定値 “{entry}”。新規インストール時は Normal（残高 ÷ 500）と 10x で始まります。","m_open":"現在保有中のポジション：{k}（上記の数値には含まれません）","hs_on":"オン","hs_off":"オフ"}};</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"JaviD Future Bot","item":"https://www.javidtrading.com/ja"},{"@type":"ListItem","position":2,"name":"製品紹介","item":"https://www.javidtrading.com/ja/how-it-works"}]}</script>
+</head><body>
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="site-header">
+  <div class="wrap hdr">
+    <a class="brand" href="/ja"><img src="/assets/img/logo-96.png" alt="" width="30" height="30"><span class="brand-name">JaviD Future Bot</span></a>
+    <nav class="nav" aria-label="Main"><a href="/ja/how-it-works" aria-current="page">製品紹介</a><a href="/ja/exchange">運用実績</a><a href="/ja/guide">使い方</a><a href="/ja/risk-disclosure">リスク告知</a></nav>
+    <div class="hdr-tools">
+      <label class="lang"><span class="sr-only">言語</span><select data-lang-switch aria-label="言語"><option value="en" data-href="/how-it-works">English</option><option value="ko" data-href="/ko/how-it-works">한국어</option><option value="ja" data-href="/ja/how-it-works" selected>日本語</option><option value="es" data-href="/es/how-it-works">Español</option><option value="fr" data-href="/fr/how-it-works">Français</option><option value="vi" data-href="/vi/how-it-works">Tiếng Việt</option><option value="tr" data-href="/tr/how-it-works">Türkçe</option><option value="pt" data-href="/pt/how-it-works">Português</option></select></label>
+      <a class="btn btn-primary btn-sm hdr-cta" href="/ja/download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>ダウンロード</a>
+      <button class="menu-btn" type="button" aria-controls="mnav" aria-expanded="false" aria-label="メニュー"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+  <nav id="mnav" class="mnav" aria-label="Mobile"><a href="/ja/how-it-works" aria-current="page">製品紹介</a><a href="/ja/exchange">運用実績</a><a href="/ja/guide">使い方</a><a href="/ja/risk-disclosure">リスク告知</a><a href="/ja/download">ダウンロード</a></nav>
+</header>
+<main id="main"><div class="wrap page-head"><h1>仕組み</h1><p>JaviD Future Bot は USDⓈ-M 無期限先物向けのデスクトッププログラムです。1人の個人開発者が開発・配布しています。</p></div>
+<section class="section-tight"><div class="wrap"><div class="card card-pad prose">
+  <h2>どこで動くのか</h2><p>ご自身の Windows または macOS のコンピューターで動きます。取引所で API キーを作成し、プログラムの Settings に入力すると、プログラムがご自身のPCから注文を出します。キーはご自身のコンピューターに保存されます。取引中はPCの電源を入れたままにしておく必要があります。</p><h2>何を判断するのか</h2><p>3つのクオンツ戦略が選択された銘柄を監視し、それぞれのルールに従ってポジションを建て、追加します。V19.7 の初期設定の安全装置：上場から90日未満の銘柄には新規エントリーしない。同じ銘柄・同じ方向で24時間以内に新規エントリーが3回あると、1回目から48時間が経過するまで新規エントリーを停止する（保有中のポジションへの追加は数えない）。そして上場廃止フィルター。初期設定ではストップロスはありません。任意で 60% ハードストップをオンにできます。</p>
+  <h2>私の収入の仕組み</h2><p>プログラムは無料です。サブスクリプションも、ライセンスキーも、有料プランもありません。</p><p>取引所がブローカープログラムを運営している場合、あなたがすでに支払っている取引手数料の一部が開発者に分配されます。あなたの手数料はどちらの場合も同じです。</p>
+  <ul><li><b>Bitget</b> — あなたがすでに支払っている取引手数料の12%。新規アカウント・既存アカウントのどちらも対象です。</li><li><b>Binance</b> — 開発者がプログラムに参加した後に開設されたアカウントのみが対象です。すでに Binance アカウントをお持ちの場合、あなたの取引から開発者が得る収入はありません。これを変えるために2つ目の Binance アカウントを開設しないでください。Binance が禁止しています。</li><li><b>Bybit と OKX</b> — 利用可能な場合、プログラムには取引所のブローカー識別子またはリファラル識別子が組み込まれています。あなたの手数料は変わりません。</li><li><b>コピートレード（Bitget、Bybit）</b> — プロフィールのリーダーとして、開発者は取引所が定めた利益分配をフォロワーの利益から受け取ります。招待リンクには取引所の招待コードが含まれています。</li></ul><p>このウェブサイトの登録リンクは取引所の通常の登録ページであり、リファラルリンクではありません。</p>
+  <h2>利益相反について、率直に記載します</h2><p>取引ごとに収入を得る仕組みは、開発者に取引回数を増やしたい動機を与えます。各ビルドに含まれるエントリールールと初期設定は開発者が決めており、高度な戦略設定はパスワードでロックされています。その初期設定には、取引を減らすルールも含まれています：1銘柄あたり24時間で新規エントリーは最大3回です。あなたの設定はご自身のコンピューター上のファイルに保存され、プログラムの実行中に開発者がそれを見たり変更したりすることはできません。シャドーモードでは、お金をかける前にどのくらいの頻度で取引するかを確認できます。</p>
+  <h2>ご自身で確認できること</h2><ul><li>ダウンロードしたファイルの SHA-256 チェックサムを、ダウンロードページに記載された値と比べてください。</li><li>実行中に接続先のホストを一覧表示してください（Windows ではリソースモニター、macOS では <code>lsof -i -P</code>）。</li><li>実口座のダッシュボードを見てください — このサイトの1時間ごとのキャプチャと YouTube のライブ配信。</li><li>実際の資金を接続する前に、好きなだけシャドーモードで動かしてください。</li></ul>
+  <h2>確認できないこと</h2><p>ソースコードは公開していません。Windows 版と macOS 版はパッケージ化・難読化されているため、戦略のコードを読むことはできません。使う前にボットのコードをすべて読む必要がある場合は、Freqtrade や Hummingbot などのオープンソースプロジェクトのほうがその目的に適しています。</p>
+  <div class="riskbox mt-24"><p><b>レバレッジをかけた先物取引では、元本をすべて失う可能性があります。</b></p></div>
+</div></div></section></main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-about">
+        <a class="brand" href="/ja"><img src="/assets/img/logo-96.png" alt="" width="28" height="28" loading="lazy">JaviD Future Bot</a>
+        <p>ご自身のコンピューターで動作するソフトウェアです。資金をお預かりすることはなく、投資助言も行いません。</p>
+      </div>
+      <div><h3>製品</h3><ul>
+        <li><a href="/ja/how-it-works">製品紹介</a></li><li><a href="/ja/exchange">運用実績</a></li><li><a href="/ja/download">ダウンロード</a></li><li><a href="/ja/guide">使い方</a></li><li><a href="/ja/copy-trading">コピートレード</a></li>
+      </ul></div>
+      <div><h3>サポート</h3><ul>
+        <li><a href="/ja/faq">よくある質問</a></li><li><a href="/ja/board">コミュニティ掲示板</a></li><li><a href="/ja/contact">お問い合わせ</a></li><li><a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">Telegram コミュニティ</a></li><li><a href="/api-guide/bitget">API キー発行ガイド</a></li>
+      </ul></div>
+      <div><h3>規約・ポリシー</h3><ul>
+        <li><a href="/ja/risk-disclosure">リスク告知</a></li><li><a href="/ja/privacy">プライバシー</a></li><li><a href="/ja/terms">利用規約</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-risk">
+      <p><b>レバレッジをかけた先物取引では、元本をすべて失う可能性があります。</b> 取引所の名称とロゴは各所有者に帰属します。このサイトはいずれの取引所も運営していません。</p>
+      <p>© 2026 JaviD Future Bot · javidtrading.com</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js?v=d811c5509a" defer></script>
+</body>
+</html>

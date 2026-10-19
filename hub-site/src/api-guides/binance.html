@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binance Account &amp; API Key Setup Guide | JaviD Future Bot</title>
+<meta name="description" content="Everything to set up before your first automated trade — Binance account signup, identity verification, enabling Futures, a correctly-permissioned API key, and running the bot 24/7.">
+<meta name="keywords" content="binance api key setup, binance futures api setup, binance account signup guide">
+<link rel="canonical" href="https://bn.javidtrading.com/binance-signup-api-guide">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Binance Account &amp; API Key Setup Guide — JaviD Future Bot">
+<meta property="og:description" content="From account creation to API key permissions and a 24/7 runtime setup — every step needed to run the bot.">
+<meta property="og:url" content="https://bn.javidtrading.com/binance-signup-api-guide">
+<style>
+:root {
+  --bg: #0a0d12; --surface:#0f131a; --panel:#111823; --panel-2:#131b27; --inset:#0d1420;
+  --line:#1c2530; --line-2:#27303f; --text:#dbe4f0; --muted:#7d8aa0; --faint:#5f6b7d;
+  --accent:#2dd4bf; --accent-dim:#14655c; --accent-bg:#0e3b34; --violet:#8b5cf6;
+  --up:#34d399; --down:#fb7185; --warn:#fbbf24;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'Segoe UI', system-ui, -apple-system, sans-serif; letter-spacing:-0.01em; line-height:1.6; }
+a { color:var(--accent); }
+.wrap { max-width: 860px; margin:0 auto; padding:0 24px; }
+code { background:var(--inset); border:1px solid var(--line); padding:2px 7px; border-radius:5px; font-size:.92em; color:var(--accent); }
+
+.nav { position:sticky; top:0; z-index:50; display:flex; padding:16px 24px; background:rgba(10,13,18,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.nav-inner { max-width:1180px; margin:0 auto; width:100%; display:flex; align-items:center; justify-content:space-between; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:16px; }
+.brand-mark { width:22px; height:22px; background:conic-gradient(from 210deg, var(--accent), var(--violet), var(--accent)); clip-path:polygon(50% 0,100% 28%,100% 72%,50% 100%,0 72%,0 28%); }
+.brand em { font-style:normal; color:var(--accent); font-size:12px; font-weight:700; margin-left:2px; }
+.nav-links { display:flex; align-items:center; gap:28px; font-size:13.5px; color:var(--muted); font-weight:600; }
+.nav-links a:hover { color:var(--text); }
+.nav-cta { background: linear-gradient(135deg,#14b8a6,#0d9488); color:#04211d; padding:9px 18px; border-radius:999px; font-weight:800; font-size:13px; }
+.nav-highlight { position:relative; color:var(--accent) !important; }
+.nav-highlight .nh-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--violet); margin-left:5px; vertical-align:middle; }
+@media (max-width:760px) { .nav-links { display:none; } }
+
+.hero { padding:64px 0 20px; text-align:center; }
+.kicker { display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); background:var(--accent-bg); border:1px solid var(--accent-dim); padding:6px 14px; border-radius:999px; margin-bottom:20px; }
+h1 { font-size:36px; font-weight:800; letter-spacing:-0.02em; margin-bottom:16px; }
+.hero p.sub { color:var(--muted); font-size:16px; max-width:600px; margin:0 auto 8px; }
+.updated { font-size:12px; color:var(--faint); margin-top:14px; }
+
+.toc { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px 26px; margin:40px 0; }
+.toc h4 { font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin-bottom:12px; }
+.toc ol { padding-left:20px; color:var(--text); font-size:14.5px; }
+.toc li { margin-bottom:6px; }
+.toc a { color:var(--text); }
+.toc a:hover { color:var(--accent); }
+
+.part { padding:44px 0; border-top:1px solid var(--line); }
+.part-num { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:9px; background:var(--accent-bg); color:var(--accent); font-weight:800; font-size:15px; margin-bottom:16px; }
+.part h2 { font-size:24px; margin-bottom:14px; }
+.part p { color:var(--muted); margin-bottom:16px; font-size:15px; }
+.steplist { list-style:none; counter-reset: step; margin:20px 0; }
+.steplist li { counter-increment: step; position:relative; padding-left:38px; margin-bottom:16px; font-size:14.5px; color:var(--text); }
+.steplist li::before { content: counter(step); position:absolute; left:0; top:0; width:24px; height:24px; border-radius:7px; background:var(--panel); border:1px solid var(--line-2); color:var(--accent); font-weight:800; font-size:12px; display:flex; align-items:center; justify-content:center; }
+.steplist li b { color:var(--text); }
+.steplist li small { display:block; color:var(--faint); margin-top:2px; }
+
+.callout { border-radius:12px; padding:18px 22px; margin:22px 0; font-size:14px; line-height:1.65; }
+.callout.warn { background:rgba(251,191,36,.08); border:1px solid rgba(251,191,36,.35); color:#f4d99b; }
+.callout.danger { background:rgba(251,113,133,.08); border:1px solid rgba(251,113,133,.35); color:#f6b9c4; }
+.callout.tip { background:rgba(45,212,191,.08); border:1px solid var(--accent-dim); color:#a9ece3; }
+.callout b { color:#fff; }
+
+table.faq { width:100%; border-collapse:collapse; margin:18px 0; font-size:13.5px; }
+table.faq th, table.faq td { border:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top; }
+table.faq th { background:var(--panel); color:var(--muted); font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; }
+table.faq td { color:var(--muted); }
+table.faq td:first-child { color:var(--text); font-weight:600; white-space:nowrap; }
+
+.cta-band { text-align:center; padding:60px 0; }
+.cta-band h3 { font-size:24px; margin-bottom:12px; }
+.cta-band p { color:var(--muted); margin-bottom:24px; }
+.btn { display:inline-flex; align-items:center; gap:9px; padding:14px 28px; border-radius:10px; font-weight:800; font-size:14.5px; background:linear-gradient(135deg,#14b8a6,#0d9488); color:#04211d; box-shadow:0 12px 30px -10px rgba(20,184,166,.55); }
+
+footer { border-top:1px solid var(--line); padding:34px 0; }
+.footer-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:12.5px; color:var(--faint); }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { color:var(--faint); }
+.footer-links a:hover { color:var(--accent); }
+
+@media (max-width:640px){ h1{font-size:28px;} .part h2{font-size:20px;} }
+
+/* ===== PAIN-POINT TICKER ===== */
+.ticker { position: sticky; top: 57px; z-index: 45; background: linear-gradient(180deg, rgba(15,19,26,.97), rgba(10,13,18,.97)); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); overflow: hidden; }
+.ticker-inner { max-width: 860px; margin: 0 auto; padding: 12px 24px; min-height: 84px; display:flex; align-items:center; justify-content:center; position:relative; }
+.ticker-slide { position:absolute; left:24px; right:24px; display:flex; align-items:center; justify-content:center; gap:14px; opacity:0; text-align:left; text-decoration:none; animation: tickerCycle 27s ease-in-out infinite; }
+.ticker-slide .tk-icon { font-size:26px; flex-shrink:0; }
+.ticker-slide .tk-text { text-align:left; }
+.ticker-slide .tk-text b { display:block; color:var(--accent); font-size:14px; font-weight:800; letter-spacing:-0.01em; }
+.ticker-slide .tk-text span { display:block; color:var(--text); font-size:13px; margin-top:3px; }
+.ticker-slide .tk-text small { display:block; color:var(--faint); font-size:11px; margin-top:3px; }
+.ticker-slide.t1 { animation-delay: 0s; }
+.ticker-slide.t2 { animation-delay: 4.5s; }
+.ticker-slide.t3 { animation-delay: 9s; }
+.ticker-slide.t4 { animation-delay: 13.5s; }
+.ticker-slide.t5 { animation-delay: 18s; }
+.ticker-slide.t6 { animation-delay: 22.5s; }
+@keyframes tickerCycle {
+  0%   { opacity: 0; transform: translateY(6px); }
+  3%   { opacity: 1; transform: translateY(0); }
+  15%  { opacity: 1; }
+  18%  { opacity: 0; transform: translateY(-6px); }
+  100% { opacity: 0; }
+}
+@media (max-width:640px) { .ticker-inner { min-height:96px; padding:10px 16px; } .ticker-slide { left:16px; right:16px; } .ticker-slide .tk-icon { font-size:22px; } }
+
+.lang-switch{position:relative;}
+.lang-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border:1px solid var(--line);background:transparent;color:var(--text);padding:7px 12px;border-radius:100px;cursor:pointer;}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent);}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:60;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);min-width:150px;padding:6px;display:none;}
+.lang-menu.open{display:block;}
+.lang-menu button{display:flex;width:100%;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:none;background:none;font-size:13px;font-weight:600;text-align:left;cursor:pointer;color:var(--text);}
+.lang-menu button:hover{background:rgba(255,255,255,.06);}
+.lang-menu button.active{color:var(--accent);background:rgba(0,240,255,.08);}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="/" class="brand"><span class="brand-mark"></span>JaviD Future Bot <em>V19.7</em></a>
+  <div class="nav-links">
+    <a href="/#features" data-i18n="nav_features">Features</a>
+    <a href="/#how-it-works" data-i18n="nav_how_it_works">How It Works</a>
+    <a href="/#shadow-mode" data-i18n="nav_shadow_mode">Shadow Mode</a>
+    <a href="results" data-i18n="nav_real_results">Real Results</a>
+    <a href="manual" data-i18n="nav_user_manual">User Manual</a>
+    <a href="binance-signup-api-guide" data-i18n="nav_new_to_binance">New to Binance?</a>
+    <a href="board" class="nav-highlight"><span data-i18n="nav_community_board">Community Board</span><span class="nh-dot"></span></a>
+  </div>
+  <div class="lang-switch">
+    <button type="button" id="langBtn" class="lang-btn" aria-haspopup="true" aria-expanded="false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" style="width:14px;height:14px"><circle cx="10" cy="10" r="7.25"/><path d="M2.75 10h14.5M10 2.75c2.4 2.4 2.4 12.1 0 14.5M10 2.75c-2.4 2.4-2.4 12.1 0 14.5"/></svg>
+      Language
+    </button>
+    <div id="langMenu" class="lang-menu" role="menu"></div>
+  </div>
+  <a href="/#download" class="nav-cta" data-i18n="nav_cta_download">Download Now</a>
+</div></nav>
+
+<div class="ticker"><div class="ticker-inner">
+  <div class="ticker-slide t1"><span class="tk-icon">🌙</span><span class="tk-text" data-i18n="tk1"><b>Still watching charts and trading through the night?</b><span>Let an AI-built strategy judge and execute for you, 24/7.</span></span></div>
+  <div class="ticker-slide t2"><span class="tk-icon">🛡️</span><span class="tk-text" data-i18n="tk2"><b>Not sure you can trust an auto-trading program?</b><span>Run Shadow Mode first — switch to live trading once you trust it.</span><small>Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small></span></div>
+  <a class="ticker-slide t3" href="results"><span class="tk-icon">📊</span><span class="tk-text" data-i18n="tk3"><b>Curious what the real win rate looks like?</b><span>Check the real trading results on this site and judge for yourself.</span></span></a>
+  <div class="ticker-slide t4"><span class="tk-icon">🪙</span><span class="tk-text" data-i18n="tk4"><b>Only trading Bitcoin futures?</b><span>You choose from 500+ USDⓈ-M futures, altcoins included.</span></span></div>
+  <div class="ticker-slide t5"><span class="tk-icon">⚖️</span><span class="tk-text" data-i18n="tk5"><b>Worried about liquidation on leveraged futures?</b><span>Each entry is sized from your balance (1/300, 1/500 or 1/700), which keeps entries small.</span><small>Liquidation is still possible — leveraged futures can lose your entire capital.</small></span></div>
+  <div class="ticker-slide t6"><span class="tk-icon">🌱</span><span class="tk-text" data-i18n="tk6"><b>Think your starting amount is too small?</b><span>Entry size resizes daily off your live balance — feel what compounding does.</span></span></div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <span class="kicker" data-i18n="hero_kicker">🧭 Setup Guide</span>
+  <h1 data-i18n="hero_h1">How to Create a Binance Account &amp; Futures API Key</h1>
+  <p class="sub" data-i18n="hero_sub">Everything you need before your first trade with JaviD Future Bot — account signup, identity verification, enabling Futures, and generating an API key with the correct permissions.</p>
+  <p class="updated" data-i18n="hero_updated">Written for the current Binance web flow · Last checked July 2026</p>
+</div></header>
+
+<div class="wrap">
+  <div class="toc">
+    <h4 data-i18n="toc_title">On this page</h4>
+    <ol>
+      <li><a href="#part1" data-i18n="toc1">Create your Binance account</a></li>
+      <li><a href="#part2" data-i18n="toc2">Complete identity verification (KYC)</a></li>
+      <li><a href="#part3" data-i18n="toc3">Enable your Futures account</a></li>
+      <li><a href="#part4" data-i18n="toc4">Create your API key</a></li>
+      <li><a href="#part5" data-i18n="toc5">Set the correct permissions (the step people miss)</a></li>
+      <li><a href="#part6" data-i18n="toc6">Connect it to JaviD Future Bot</a></li>
+      <li><a href="#part7" data-i18n="toc7">Keep it running 24/7 (cloud VM or mini PC)</a></li>
+      <li><a href="#faq" data-i18n="toc8">Troubleshooting &amp; FAQ</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- PART 1 -->
+<section class="part" id="part1"><div class="wrap">
+  <div class="part-num">1</div>
+  <h2 data-i18n="p1_h2">Create Your Binance Account</h2>
+  <p data-i18n="p1_p1">Registration takes about 5 minutes. Sign up on Binance's official registration page, linked below.</p>
+  <div class="callout tip" style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;">
+    <span data-i18n="p1_callout1"><b>Don't have an account yet?</b> Sign up on Binance's official registration page.</span>
+    <a href="https://accounts.binance.com/register" target="_blank" rel="noopener" class="btn" style="background:#f0b90b;color:#1c1505;white-space:nowrap;" data-i18n="p1_cta">Create Account →</a>
+  </div>
+  <ul class="steplist">
+    <li data-i18n="p1_step1"><b>Go to binance.com and click Register.</b><small>You can sign up with an email address, a phone number, or continue with your Google/Apple account.</small></li>
+    <li data-i18n="p1_step2"><b>Set your password.</b><small>Minimum 8 characters with at least one uppercase letter and one number — we'd recommend adding a symbol too for a stronger key.</small></li>
+    <li data-i18n="p1_step3"><b>Enter the 6-digit verification code</b> sent to your email or phone.<small>The code is time-limited (typically ~30 minutes), so check your inbox/spam folder right away.</small></li>
+    <li data-i18n="p1_step4"><b>Turn on Two-Factor Authentication (2FA) immediately</b> from your account security settings.<small>Google Authenticator or a Passkey both work. You'll need 2FA active later to create an API key.</small></li>
+  </ul>
+  <div class="callout tip" data-i18n="p1_tip"><b>Tip:</b> Use a password manager and a dedicated email for exchange accounts — it's the single easiest way to avoid account-takeover phishing.</div>
+</div></section>
+
+<!-- PART 2 -->
+<section class="part" id="part2"><div class="wrap">
+  <div class="part-num">2</div>
+  <h2 data-i18n="p2_h2">Complete Identity Verification (KYC)</h2>
+  <p data-i18n="p2_p1">Registering alone doesn't unlock trading. You need identity verification before you can deposit meaningfully or trade Futures.</p>
+  <ul class="steplist">
+    <li data-i18n="p2_step1"><b>Open your profile menu → Identification.</b><small>Select your country/region of residence and the ID document type (national ID card, driver's license, or passport).</small></li>
+    <li data-i18n="p2_step2"><b>Upload photos of your ID</b>, then complete the facial verification (a quick selfie/liveness check).</li>
+    <li data-i18n="p2_step3"><b>Wait for approval</b> — this usually clears in 5–15 minutes. Your profile status changes from <i>Unverified</i> to <i>Verified</i> once approved.</li>
+  </ul>
+  <div class="callout warn" data-i18n="p2_warn"><b>Note:</b> Some higher-tier API permissions now require the "Verified Plus" identity level rather than basic verification. If your API Management page shows restrictions you can't clear, check whether your account needs the additional verification step.</div>
+</div></section>
+
+<!-- PART 3 -->
+<section class="part" id="part3"><div class="wrap">
+  <div class="part-num">3</div>
+  <h2 data-i18n="p3_h2">Enable Your Futures Account — Before You Create an API Key</h2>
+  <img src="images/futures-native.webp" alt="Futures contract illustration" style="max-width:340px; width:100%; margin:0 auto 22px; display:block; border-radius:12px; border:1px solid var(--line-2); box-shadow:0 20px 50px -20px rgba(0,0,0,.5);">
+  <p data-i18n="p3_p1">This step is easy to do out of order, and doing it out of order is the single most common setup mistake.</p>
+  <ul class="steplist">
+    <li data-i18n="p3_step1"><b>Open the [Futures] menu</b> from the top navigation.</li>
+    <li data-i18n="p3_step2"><b>Complete the futures risk questionnaire</b> if this is your first time — a short quiz confirming you understand leveraged trading risk.</li>
+    <li data-i18n="p3_step3"><b>Activate your USDⓈ-M Futures account.</b><small>Once active, you'll see a Futures wallet alongside your Spot wallet.</small></li>
+  </ul>
+  <div class="callout danger" data-i18n="p3_danger"><b>Do this before Part 4:</b> if your API key already existed before you activated Futures (or if you have Portfolio Margin enabled), that key will never be able to get Futures permission — you'll have to delete it and create a fresh one. Enable Futures first, API key second.</div>
+</div></section>
+
+<!-- PART 4 -->
+<section class="part" id="part4"><div class="wrap">
+  <div class="part-num">4</div>
+  <h2 data-i18n="p4_h2">Create Your API Key</h2>
+  <p data-i18n="p4_p1">Before you can create a key, Binance requires: 2FA enabled, at least a token deposit into your Spot wallet (to activate the account), and completed identity verification — all covered in Parts 1–2.</p>
+  <ul class="steplist">
+    <li data-i18n="p4_step1"><b>Profile icon → Account → API Management.</b></li>
+    <li data-i18n="p4_step2"><b>Click Create API</b>, then choose <b>System generated</b>.<small>This uses standard HMAC authentication and gives you an API Key + Secret Key — the pairing JaviD Future Bot expects.</small></li>
+    <li data-i18n="p4_step3"><b>Give it a label</b>, e.g. <code>JaviD-Bot</code>, so you can recognize it later.</li>
+    <li data-i18n="p4_step4"><b>Verify with 2FA</b> (authenticator code, passkey, or email confirmation).</li>
+    <li data-i18n="p4_step5"><b>Your key is created</b> — but by default it can only read data. Continue to Part 5 before using it.</li>
+  </ul>
+</div></section>
+
+<!-- PART 5 -->
+<section class="part" id="part5"><div class="wrap">
+  <div class="part-num">5</div>
+  <h2 data-i18n="p5_h2">Set the Correct Permissions</h2>
+  <p data-i18n="p5_p1">A freshly created key defaults to <b>Enable Reading</b> only. To let JaviD Future Bot place orders — and nothing more than that — you need to edit the key and check exactly three boxes.</p>
+  <div class="callout tip">
+    <b data-i18n="p5_tip_title">✅ Check exactly these three, nothing else:</b>
+    <ul style="margin:10px 0 0; padding-left:22px; line-height:1.9;">
+      <li data-i18n="p5_tip_li1">Enable Reading <small style="color:var(--faint);">(already on by default)</small></li>
+      <li data-i18n="p5_tip_li2">Enable Spot &amp; Margin &amp; Stock Trading</li>
+      <li data-i18n="p5_tip_li3">Enable Futures</li>
+    </ul>
+  </div>
+  <div class="callout danger">
+    <b data-i18n="p5_danger_title">❌ Leave every other box unchecked:</b> <span data-i18n="p5_danger_list">Enable Margin Loan, Repay &amp; Transfer · Permits Universal Transfer · Enable Withdrawals · Enable Prediction Trading · Enable Symbol Whitelist.</span>
+    <p style="margin-top:8px; color:inherit;" data-i18n="p5_danger_p">None of these are needed for JaviD Future Bot to trade. Leaving them off means that even in a worst-case scenario where your API key was ever exposed, no one could move funds off the exchange, transfer between wallets, or touch anything beyond placing and managing futures trades — your assets stay yours.</p>
+  </div>
+  <ul class="steplist">
+    <li data-i18n="p5_step1"><b>Add an IP restriction — this is mandatory, not optional.</b><small>Since a January 2023 policy change, Binance will not grant any permission beyond read-only unless the key is restricted to specific IPs. Choose "Restrict access to trusted IPs only" and enter the public IPv4 address of the machine that will run the bot (search "what is my ip", or use JaviD's built-in "Run Connection Diagnostics" button, which detects and reports it for you).</small></li>
+    <li data-i18n="p5_step2"><b>Leave "Enable Withdrawals" OFF.</b><small>A trading bot never needs withdrawal permission. If anything you're configuring asks you to turn this on, stop and reconsider.</small></li>
+    <li data-i18n="p5_step3"><b>Save, then wait 5–10 minutes</b> for the IP whitelist change to fully propagate before testing the connection.</li>
+  </ul>
+  <div class="callout warn" data-i18n="p5_warn"><b>Copy your Secret Key now:</b> it is shown exactly once. If you navigate away without saving it, you'll need to delete the key and generate a new one.</div>
+</div></section>
+
+<!-- PART 6 -->
+<section class="part" id="part6"><div class="wrap">
+  <div class="part-num">6</div>
+  <h2 data-i18n="p6_h2">Connect It to JaviD Future Bot</h2>
+  <ul class="steplist">
+    <li data-i18n="p6_step1"><b>Launch JaviD Future Bot</b> — your browser opens automatically to the dashboard.</li>
+    <li data-i18n="p6_step2"><b>Go to the Settings tab</b> and paste your Access Key and Secret Key.<small>Watch for accidental leading/trailing spaces when pasting.</small></li>
+    <li data-i18n="p6_step3"><b>Click Save, then Test Connection.</b> A green checkmark means you're ready to go.</li>
+    <li data-i18n="p6_step4"><b>Turn on Shadow Mode</b> and verify the bot's behavior for a few days before ever switching to live trading.</li>
+  </ul>
+</div></section>
+
+<!-- PART 7 -->
+<section class="part" id="part7"><div class="wrap">
+  <div class="part-num">7</div>
+  <h2 data-i18n="p7_h2">Keep It Running 24/7</h2>
+  <p data-i18n="p7_p1">JaviD Future Bot only trades while it's actually running — Binance's futures market never closes, so the machine running the bot needs to stay powered on and connected 24 hours a day, 365 days a year. Your everyday laptop works for a first test, but most users move to one of these two setups once they go live:</p>
+  <ul class="steplist">
+    <li data-i18n="p7_step1"><b>A cloud virtual machine</b> (Amazon AWS EC2, or any comparable VPS provider).<small>Rented by the month, always on, remotely accessible from anywhere, and no need to leave your personal laptop running or worry about it sleeping, updating, or losing power. A small/low-tier instance is enough — the bot itself is lightweight.</small></li>
+    <li data-i18n="p7_step2"><b>A dedicated mini PC or spare desktop, left on at home.</b><small>An Intel NUC-class mini PC (or any always-on machine you don't otherwise need) draws very little power, stays quiet, and can be plugged into a UPS to survive short outages. Just make sure Windows sleep/hibernate is disabled and the internet connection is stable.</small></li>
+  </ul>
+  <div class="callout tip" data-i18n="p7_tip"><b>Either option works equally well.</b> The only requirements are: the machine stays powered on, stays connected to the internet, and (per Part 5) has its IP address whitelisted on your Binance API key. If you move the bot to a new machine or your IP changes, just update the IP restriction on the key.</div>
+  <div class="callout warn" data-i18n="p7_warn"><b>Reminder:</b> if the machine restarts or loses power while a position is open, close that position manually from the Binance app under Futures before restarting the bot — see the <a href="manual">User Manual</a> for details.</div>
+</div></section>
+
+<!-- FAQ -->
+<section class="part" id="faq"><div class="wrap">
+  <div class="part-num">?</div>
+  <h2 data-i18n="faq_h2">Troubleshooting &amp; FAQ</h2>
+  <table class="faq">
+    <tr><th data-i18n="faq_th1">Symptom</th><th data-i18n="faq_th2">Cause / Fix</th></tr>
+    <tr><td data-i18n="faq_q1">HTTP 451 error</td><td data-i18n="faq_a1">Binance blocks Futures API access from some regions, including Korean IPs. Run the bot from an overseas VPS or through a VPN.</td></tr>
+    <tr><td data-i18n="faq_q2">-2015 error on Test Connection</td><td data-i18n="faq_a2">Your IP restriction hasn't propagated yet, or you entered the wrong IP. Wait 5–10 minutes and re-check the address.</td></tr>
+    <tr><td data-i18n="faq_q3">-1022 Signature error</td><td data-i18n="faq_a3"><b class="text-slate-800">Up to everything you put in.</b> These are leveraged futures on a real exchange — a position can be liquidated and your entire deposit can go to zero. Every order is placed from your own device with your own API key, so the account, the funds and the outcome stay yours. You can start it with no API key connected: Shadow Mode trades live prices against a virtual balance, so you can watch how it behaves before any real money is involved.</div></section>
+
+<section class="cta-band"><div class="wrap">
+  <h3 data-i18n="cta_h3">Ready to connect your key?</h3>
+  <p data-i18n="cta_p">Head back to the dashboard and finish setup in under a minute.</p>
+  <a href="/#download" class="btn" data-i18n="cta_btn">⬇ Back to JaviD Future Bot</a>
+</div></section>
+
+<footer><div class="wrap footer-row">
+  <span>© 2026 JaviD Future Bot · bn.javidtrading.com</span>
+  <div class="footer-links">
+    <a href="/" data-i18n="footer_home">Home</a>
+    <a href="results" data-i18n="footer_results">Real Results</a>
+    <a href="manual" data-i18n="footer_manual">User Manual</a>
+    <a href="/#features" data-i18n="footer_features">Features</a>
+    <a href="https://github.com/olkdol/javid-future-bot" target="_blank" rel="noopener">GitHub</a>
+    <a href="board" data-i18n="footer_board">Community Board</a>
+    <a href="mailto:support@javidtrading.com" data-i18n="footer_contact">Contact</a>
+  </div>
+</div></footer>
+
+<script>
+var I18N = {
+  en: {
+    "nav_features": "Features",
+    "nav_how_it_works": "How It Works",
+    "nav_shadow_mode": "Shadow Mode",
+    "nav_real_results": "Real Results",
+    "nav_user_manual": "User Manual",
+    "nav_new_to_binance": "New to Binance?",
+    "nav_community_board": "Community Board",
+    "nav_cta_download": "Download Now",
+    "tk1": "<b>Still watching charts and trading through the night?</b><span>Let an AI-built strategy judge and execute for you, 24/7.</span>",
+    "tk2": "<b>Not sure you can trust an auto-trading program?</b><span>Run Shadow Mode first — switch to live trading once you trust it.</span><small>Tip: start live with 1000+ USDT — smaller balances may see very few entries.</small>",
+    "tk3": "<b>Curious what the real win rate looks like?</b><span>Check the real trading results on this site and judge for yourself.</span>",
+    "tk4": "<b>Only trading Bitcoin futures?</b><span>You choose from 500+ USDⓈ-M futures, altcoins included.</span>",
+    "tk5": "<b>Worried about liquidation on leveraged futures?</b><span>Each entry is sized from your balance (1/300, 1/500 or 1/700), which keeps entries small.</span><small>Liquidation is still possible — leveraged futures can lose your entire capital.</small>",
+    "tk6": "<b>Think your starting amount is too small?</b><span>Entry size resizes daily off your live balance — feel what compounding does.</span>",
+    "hero_kicker": "🧭 Setup Guide",
+    "hero_h1": "How to Create a Binance Account &amp; Futures API Key",
+    "hero_sub": "Everything you need before your first trade with JaviD Future Bot — account signup, identity verification, enabling Futures, and generating an API key with the correct permissions.",
+    "hero_updated": "Written for the current Binance web flow · Last checked July 2026",
+    "toc_title": "On this page",
+    "toc1": "Create your Binance account",
+    "toc2": "Complete identity verification (KYC)",
+    "toc3": "Enable your Futures account",
+    "toc4": "Create your API key",
+    "toc5": "Set the correct permissions (the step people miss)",
+    "toc6": "Connect it to JaviD Future Bot",
+    "toc7": "Keep it running 24/7 (cloud VM or mini PC)",
+    "toc8": "Troubleshooting &amp; FAQ",
+    "p1_h2": "Create Your Binance Account",
+    "p1_p1": "Registration takes about 5 minutes. Sign up on Binance's official registration page, linked below.",
+    "p1_callout1": "<b>Don't have an account yet?</b> Sign up on Binance's official registration page.",
+    "p1_cta": "Create Account →",
+    "p1_step1": "<b>Go to binance.com and click Register.</b><small>You can sign up with an email address, a phone number, or continue with your Google/Apple account.</small>",
+    "p1_step2": "<b>Set your password.</b><small>Minimum 8 characters with at least one uppercase letter and one number — we'd recommend adding a symbol too for a stronger key.</small>",
+    "p1_step3": "<b>Enter the 6-digit verification code</b> sent to your email or phone.<small>The code is time-limited (typically ~30 minutes), so check your inbox/spam folder right away.</small>",
+    "p1_step4": "<b>Turn on Two-Factor Authentication (2FA) immediately</b> from your account security settings.<small>Google Authenticator or a Passkey both work. You'll need 2FA active later to create an API key.</small>",
+    "p1_tip": "<b>Tip:</b> Use a password manager and a dedicated email for exchange accounts — it's the single easiest way to avoid account-takeover phishing.",
+    "p2_h2": "Complete Identity Verification (KYC)",
+    "p2_p1": "Registering alone doesn't unlock trading. You need identity verification before you can deposit meaningfully or trade Futures.",
+    "p2_step1": "<b>Open your profile menu → Identification.</b><small>Select your country/region of residence and the ID document type (national ID card, driver's license, or passport).</small>",
+    "p2_step2": "<b>Upload photos of your ID</b>, then complete the facial verification (a quick selfie/liveness check).",
+    "p2_step3": "<b>Wait for approval</b> — this usually clears in 5–15 minutes. Your profile status changes from <i>Unverified</i> to <i>Verified</i> once approved.",
+    "p2_warn": "<b>Note:</b> Some higher-tier API permissions now require the \"Verified Plus\" identity level rather than basic verification. If your API Management page shows restrictions you can't clear, check whether your account needs the additional verification step.",
+    "p3_h2": "Enable Your Futures Account — Before You Create an API Key",
+    "p3_p1": "This step is easy to do out of order, and doing it out of order is the single most common setup mistake.",
+    "p3_step1": "<b>Open the [Futures] menu</b> from the top navigation.",
+    "p3_step2": "<b>Complete the futures risk questionnaire</b> if this is your first time — a short quiz confirming you understand leveraged trading risk.",
+    "p3_step3": "<b>Activate your USDⓈ-M Futures account.</b><small>Once active, you'll see a Futures wallet alongside your Spot wallet.</small>",
+    "p3_danger": "<b>Do this before Part 4:</b> if your API key already existed before you activated Futures (or if you have Portfolio Margin enabled), that key will never be able to get Futures permission — you'll have to delete it and create a fresh one. Enable Futures first, API key second.",
+    "p4_h2": "Create Your API Key",
+    "p4_p1": "Before you can create a key, Binance requires: 2FA enabled, at least a token deposit into your Spot wallet (to activate the account), and completed identity verification — all covered in Parts 1–2.",
+    "p4_step1": "<b>Profile icon → Account → API Management.</b>",
+    "p4_step2": "<b>Click Create API</b>, then choose <b>System generated</b>.<small>This uses standard HMAC authentication and gives you an API Key + Secret Key — the pairing JaviD Future Bot expects.</small>",
+    "p4_step3": "<b>Give it a label</b>, e.g. <code>JaviD-Bot</code>, so you can recognize it later.",
+    "p4_step4": "<b>Verify with 2FA</b> (authenticator code, passkey, or email confirmation).",
+    "p4_step5": "<b>Your key is created</b> — but by default it can only read data. Continue to Part 5 before using it.",
+    "p5_h2": "Set the Correct Permissions",
+    "p5_p1": "A freshly created key defaults to <b>Enable Reading</b> only. To let JaviD Future Bot place orders — and nothing more than that — you need to edit the key and check exactly three boxes.",
+    "p5_tip_title": "✅ Check exactly these three, nothing else:",
+    "p5_tip_li1": "Enable Reading <small style=\"color:var(--faint);\">(already on by default)</small>",
+    "p5_tip_li2": "Enable Spot &amp; Margin &amp; Stock Trading",
+    "p5_tip_li3": "Enable Futures",
+    "p5_danger_title": "❌ Leave every other box unchecked:",
+    "p5_danger_list": "Enable Margin Loan, Repay &amp; Transfer · Permits Universal Transfer · Enable Withdrawals · Enable Prediction Trading · Enable Symbol Whitelist.",
+    "p5_danger_p": "None of these are needed for JaviD Future Bot to trade. Leaving them off means that even in a worst-case scenario where your API key was ever exposed, no one could move funds off the exchange, transfer between wallets, or touch anything beyond placing and managing futures trades — your assets stay yours.",
+    "p5_step1": "<b>Add an IP restriction — this is mandatory, not optional.</b><small>Since a January 2023 policy change, Binance will not grant any permission beyond read-only unless the key is restricted to specific IPs. Choose \"Restrict access to trusted IPs only\" and enter the public IPv4 address of the machine that will run the bot (search \"what is my ip\", or use JaviD's built-in \"Run Connection Diagnostics\" button, which detects and reports it for you).</small>",
+    "p5_step2": "<b>Leave \"Enable Withdrawals\" OFF.</b><small>A trading bot never needs withdrawal permission. If anything you're configuring asks you to turn this on, stop and reconsider.</small>",
+    "p5_step3": "<b>Save, then wait 5–10 minutes</b> for the IP whitelist change to fully propagate before testing the connection.",
+    "p5_warn": "<b>Copy your Secret Key now:</b> it is shown exactly once. If you navigate away without saving it, you'll need to delete the key and generate a new one.",
+    "p6_h2": "Connect It to JaviD Future Bot",
+    "p6_step1": "<b>Launch JaviD Future Bot</b> — your browser opens automatically to the dashboard.",
+    "p6_step2": "<b>Go to the Settings tab</b> and paste your Access Key and Secret Key.<small>Watch for accidental leading/trailing spaces when pasting.</small>",
+    "p6_step3": "<b>Click Save, then Test Connection.</b> A green checkmark means you're ready to go.",
+    "p6_step4": "<b>Turn on Shadow Mode</b> and verify the bot's behavior for a few days before ever switching to live trading.",
+    "p7_h2": "Keep It Running 24/7",
+    "p7_p1": "JaviD Future Bot only trades while it's actually running — Binance's futures market never closes, so the machine running the bot needs to stay powered on and connected 24 hours a day, 365 days a year. Your everyday laptop works for a first test, but most users move to one of these two setups once they go live:",
+    "p7_step1": "<b>A cloud virtual machine</b> (Amazon AWS EC2, or any comparable VPS provider).<small>Rented by the month, always on, remotely accessible from anywhere, and no need to leave your personal laptop running or worry about it sleeping, updating, or losing power. A small/low-tier instance is enough — the bot itself is lightweight.</small>",
+    "p7_step2": "<b>A dedicated mini PC or spare desktop, left on at home.</b><small>An Intel NUC-class mini PC (or any always-on machine you don't otherwise need) draws very little power, stays quiet, and can be plugged into a UPS to survive short outages. Just make sure Windows sleep/hibernate is disabled and the internet connection is stable.</small>",
+    "p7_tip": "<b>Either option works equally well.</b> The only requirements are: the machine stays powered on, stays connected to the internet, and (per Part 5) has its IP address whitelisted on your Binance API key. If you move the bot to a new machine or your IP changes, just update the IP restriction on the key.",
+    "p7_warn": "<b>Reminder:</b> if the machine restarts or loses power while a position is open, close that position manually from the Binance app under Futures before restarting the bot — see the <a href=\"manual.html\">User Manual</a> for details.",
+    "faq_h2": "Troubleshooting &amp; FAQ",
+    "faq_th1": "Symptom",
+    "faq_th2": "Cause / Fix",
+    "faq_q1": "HTTP 451 error",
+    "faq_a1": "Binance blocks Futures API access from some regions, including Korean IPs. Run the bot from an overseas VPS or through a VPN.",
+    "faq_q2": "-2015 error on Test Connection",
+    "faq_a2": "Your IP restriction hasn't propagated yet, or you entered the wrong IP. Wait 5–10 minutes and re-check the address.",
+    "faq_q3": "How much can I lose?",
+    "faq_a3": "<b class=\"text-slate-800\">Up to everything you put in.</b> These are leveraged futures on a real exchange — a position can be liquidated and your entire deposit can go to zero. Every order is placed from your own device with your own API key, so the account, the funds and the outcome stay yours. You can start it with no API key connected: Shadow Mode trades live prices against a virtual balance, so you can watch how it behaves before any real money is involved.",
+    "faq_q4": "-1021 Timestamp error",
+    "faq_a4": "Your PC's clock has drifted. Turn on automatic time sync in Windows settings.",
+    "faq_q5": "Can't enable Futures permission on the key",
+    "faq_a5": "The key was created before your Futures account was activated (see Part 3). Delete it and create a new one, in the right order.",
+    "faq_q6": "Can't enable any permission beyond Read",
+    "faq_a6": "You skipped the IP restriction step in Part 5 — it's mandatory for any non-read permission.",
+    "cta_h3": "Ready to connect your key?",
+    "cta_p": "Head back to the dashboard and finish setup in under a minute.",
+    "cta_btn": "⬇ Back to JaviD Future Bot",
+    "footer_home": "Home",
+    "footer_results": "Real Results",
+    "footer_manual": "User Manual",
+    "footer_features": "Features",
+    "footer_board": "Community Board",
+    "footer_contact": "Contact",
+  },
+  ko: {
+    "nav_features": "기능",
+    "nav_how_it_works": "작동 방식",
+    "nav_shadow_mode": "Shadow Mode",
+    "nav_real_results": "실전 결과",
+    "nav_user_manual": "사용 설명서",
+    "nav_new_to_binance": "바이낸스가 처음이신가요?",
+    "nav_community_board": "커뮤니티 게시판",
+    "nav_cta_download": "지금 다운로드",
+    "tk1": "<b>아직도 밤새 차트를 보며 직접 매매하시나요?</b><span>AI 기반 전략이 24시간 대신 판단하고 실행하게 하세요.</span>",
+    "tk2": "<b>자동매매 프로그램을 믿을 수 있을지 확신이 안 서나요?</b><span>먼저 Shadow Mode로 실행해 보고, 신뢰가 생기면 실거래로 전환하세요.</span><small>팁: 실거래는 1000 USDT 이상으로 시작하세요 — 잔고가 작으면 진입 횟수가 매우 적을 수 있습니다.</small>",
+    "tk3": "<b>실제 승률이 궁금하신가요?</b><span>이 사이트에 공개된 실전 거래 결과를 직접 확인하고 판단해 보세요.</span>",
+    "tk4": "<b>비트코인 선물만 거래하고 계신가요?</b><span>알트코인을 포함한 500개 이상의 USDⓈ-M 선물 중에서 직접 고릅니다.</span>",
+    "tk5": "<b>레버리지 선물에서 청산이 걱정되시나요?</b><span>진입 금액은 잔고 기준(1/300, 1/500, 1/700)으로 정해져 한 번에 들어가는 금액이 작습니다.</span><small>그래도 청산은 일어날 수 있습니다 — 레버리지 선물은 원금 전액 손실이 가능합니다.</small>",
+    "tk6": "<b>시작 자금이 너무 적다고 생각하시나요?</b><span>진입 규모는 매일 실시간 잔고에 맞춰 재조정됩니다 — 복리의 힘을 직접 느껴보세요.</span>",
+    "hero_kicker": "🧭 설정 가이드",
+    "hero_h1": "바이낸스 계정 &amp; 선물 API 키 생성 방법",
+    "hero_sub": "JaviD Future Bot으로 첫 거래를 시작하기 전에 필요한 모든 것 — 계정 가입, 신원 인증, 선물 계좌 활성화, 그리고 올바른 권한의 API 키 생성까지.",
+    "hero_updated": "현재 바이낸스 웹 화면 기준 작성 · 2026년 7월 최종 확인",
+    "toc_title": "이 페이지 목차",
+    "toc1": "바이낸스 계정 만들기",
+    "toc2": "신원 인증(KYC) 완료하기",
+    "toc3": "선물 계좌 활성화하기",
+    "toc4": "API 키 생성하기",
+    "toc5": "올바른 권한 설정하기 (가장 많이 놓치는 단계)",
+    "toc6": "JaviD Future Bot에 연결하기",
+    "toc7": "24시간 계속 실행하기 (클라우드 VM 또는 미니 PC)",
+    "toc8": "문제 해결 &amp; FAQ",
+    "p1_h2": "바이낸스 계정 만들기",
+    "p1_p1": "가입에는 약 5분이 걸립니다. 아래 링크된 바이낸스 공식 가입 페이지에서 가입하세요.",
+    "p1_callout1": "<b>아직 계정이 없으신가요?</b> 바이낸스 공식 가입 페이지에서 가입하세요.",
+    "p1_cta": "계정 만들기 →",
+    "p1_step1": "<b>binance.com에 접속해 Register(가입)를 클릭하세요.</b><small>이메일 주소, 전화번호, 또는 Google/Apple 계정으로 계속하기 중 하나로 가입할 수 있습니다.</small>",
+    "p1_step2": "<b>비밀번호를 설정하세요.</b><small>최소 8자 이상, 대문자 1개와 숫자 1개를 포함해야 합니다 — 더 강력한 비밀번호를 원하면 특수문자도 추가하는 것을 권장합니다.</small>",
+    "p1_step3": "<b>이메일이나 휴대폰으로 전송된 6자리 인증 코드를 입력하세요.</b><small>코드는 시간제한이 있으므로(보통 약 30분) 즉시 받은편지함/스팸함을 확인하세요.</small>",
+    "p1_step4": "<b>계정 보안 설정에서 즉시 2단계 인증(2FA)을 켜세요.</b><small>Google Authenticator나 패스키(Passkey) 모두 사용 가능합니다. API 키를 만들려면 나중에 2FA가 활성화되어 있어야 합니다.</small>",
+    "p1_tip": "<b>팁:</b> 거래소 계정에는 비밀번호 관리자와 전용 이메일을 사용하세요 — 계정 탈취 피싱을 막는 가장 확실한 방법입니다.",
+    "p2_h2": "신원 인증(KYC) 완료하기",
+    "p2_p1": "가입만으로는 거래가 열리지 않습니다. 의미 있는 입금이나 선물 거래를 하려면 신원 인증이 필요합니다.",
+    "p2_step1": "<b>프로필 메뉴 → Identification(신원 인증)을 여세요.</b><small>거주 국가/지역과 신분증 종류(주민등록증, 운전면허증, 여권 중 하나)를 선택하세요.</small>",
+    "p2_step2": "<b>신분증 사진을 업로드</b>한 뒤, 안면 인증(간단한 셀카/라이브니스 체크)을 완료하세요.",
+    "p2_step3": "<b>승인을 기다리세요</b> — 보통 5~15분이면 완료됩니다. 승인이 되면 프로필 상태가 <i>Unverified(미인증)</i>에서 <i>Verified(인증됨)</i>으로 바뀝니다.",
+    "p2_warn": "<b>참고:</b> 일부 상위 등급 API 권한은 이제 기본 인증이 아니라 \"Verified Plus\" 신원 등급을 요구합니다. API Management 페이지에서 해제되지 않는 제한이 보인다면, 계정에 추가 인증 단계가 필요한지 확인하세요.",
+    "p3_h2": "선물 계좌 활성화하기 — API 키를 만들기 전에",
+    "p3_p1": "이 단계는 순서를 놓치기 쉬우며, 순서를 어기는 것이 가장 흔한 설정 실수입니다.",
+    "p3_step1": "<b>상단 내비게이션에서 [Futures](선물) 메뉴를 여세요.</b>",
+    "p3_step2": "<b>처음이라면 선물 리스크 설문을 완료하세요</b> — 레버리지 거래 위험을 이해했는지 확인하는 짧은 퀴즈입니다.",
+    "p3_step3": "<b>USDⓈ-M 선물 계좌를 활성화하세요.</b><small>활성화되면 Spot(현물) 지갑과 함께 Futures(선물) 지갑이 표시됩니다.</small>",
+    "p3_danger": "<b>4단계 전에 반드시 완료하세요:</b> 선물 계좌를 활성화하기 전에 이미 만든 API 키가 있다면(또는 Portfolio Margin이 활성화되어 있다면), 그 키는 절대 선물 권한을 받을 수 없습니다 — 삭제하고 새로 만들어야 합니다. 선물 활성화가 먼저, API 키 생성은 그다음입니다.",
+    "p4_h2": "API 키 생성하기",
+    "p4_p1": "키를 만들기 전에 바이낸스는 다음을 요구합니다: 2FA 활성화, Spot(현물) 지갑에 최소한의 토큰 입금(계정 활성화용), 그리고 완료된 신원 인증 — 모두 1~2단계에서 다룬 내용입니다.",
+    "p4_step1": "<b>프로필 아이콘 → Account(계정) → API Management(API 관리).</b>",
+    "p4_step2": "<b>Create API(API 생성)를 클릭</b>한 뒤 <b>System generated(시스템 생성)</b>를 선택하세요.<small>표준 HMAC 인증 방식을 사용하며, API Key(API 키)와 Secret Key(시크릿 키)가 발급됩니다 — JaviD Future Bot이 요구하는 조합입니다.</small>",
+    "p4_step3": "<b>라벨을 지정하세요</b>, 예: <code>JaviD-Bot</code> — 나중에 알아보기 쉽게 하기 위함입니다.",
+    "p4_step4": "<b>2FA로 인증하세요</b> (인증 앱 코드, 패스키, 또는 이메일 확인).",
+    "p4_step5": "<b>키가 생성되었습니다</b> — 하지만 기본값은 읽기 전용입니다. 사용하기 전에 5단계를 반드시 계속 진행하세요.",
+    "p5_h2": "올바른 권한 설정하기",
+    "p5_p1": "새로 만든 키는 기본적으로 <b>Enable Reading(읽기 허용)</b>만 켜져 있습니다. JaviD Future Bot이 주문을 넣을 수 있게 하려면 — 그 이상은 절대 필요 없습니다 — 키를 편집해서 정확히 세 개의 항목만 체크해야 합니다.",
+    "p5_tip_title": "✅ 정확히 이 세 가지만 체크하세요, 그 외에는 아무것도:",
+    "p5_tip_li1": "Enable Reading(읽기 허용) <small style=\"color:var(--faint);\">(기본적으로 이미 켜져 있음)</small>",
+    "p5_tip_li2": "Enable Spot &amp; Margin &amp; Stock Trading(현물 &amp; 마진 &amp; 주식 거래 허용)",
+    "p5_tip_li3": "Enable Futures(선물 거래 허용)",
+    "p5_danger_title": "❌ 나머지 항목은 모두 체크 해제 상태로 두세요:",
+    "p5_danger_list": "Enable Margin Loan, Repay &amp; Transfer(마진 대출/상환/이체 허용) · Permits Universal Transfer(범용 이체 허용) · Enable Withdrawals(출금 허용) · Enable Prediction Trading(예측 거래 허용) · Enable Symbol Whitelist(심볼 화이트리스트 허용).",
+    "p5_danger_p": "JaviD Future Bot이 거래하는 데 이 항목들은 전혀 필요하지 않습니다. 이 항목들을 꺼두면, 최악의 시나리오로 API 키가 노출되더라도 누구도 거래소 밖으로 자금을 옮기거나, 지갑 간 이체를 하거나, 선물 주문 실행·관리 이외의 어떤 것도 건드릴 수 없습니다 — 자산은 온전히 당신의 것으로 남습니다.",
+    "p5_step1": "<b>IP 제한을 추가하세요 — 이는 선택이 아니라 필수입니다.</b><small>2023년 1월 정책 변경 이후, 바이낸스는 키가 특정 IP로 제한되지 않으면 읽기 전용 이상의 어떤 권한도 부여하지 않습니다. \"Restrict access to trusted IPs only(신뢰할 수 있는 IP만 접근 허용)\"를 선택하고 봇을 실행할 컴퓨터의 공인 IPv4 주소를 입력하세요(\"what is my ip\"를 검색하거나, IP를 자동으로 감지해 알려주는 JaviD의 \"Run Connection Diagnostics(연결 진단 실행)\" 버튼을 이용하세요).</small>",
+    "p5_step2": "<b>\"Enable Withdrawals(출금 허용)\"는 반드시 OFF 상태로 두세요.</b><small>거래 봇은 출금 권한이 절대 필요하지 않습니다. 어떤 설정 과정에서든 이 항목을 켜라고 요구한다면, 즉시 멈추고 다시 생각해 보세요.</small>",
+    "p5_step3": "<b>저장한 뒤 5~10분 기다리세요</b> — IP 화이트리스트 변경 사항이 완전히 반영된 뒤에 연결을 테스트하세요.",
+    "p5_warn": "<b>지금 시크릿 키를 복사해 두세요:</b> 시크릿 키는 단 한 번만 표시됩니다. 저장하지 않고 페이지를 벗어나면 키를 삭제하고 새로 발급받아야 합니다.",
+    "p6_h2": "JaviD Future Bot에 연결하기",
+    "p6_step1": "<b>JaviD Future Bot을 실행하세요</b> — 브라우저가 자동으로 열리며 대시보드로 이동합니다.",
+    "p6_step2": "<b>Settings(설정) 탭으로 이동</b>해 Access Key(액세스 키)와 Secret Key(시크릿 키)를 붙여넣으세요.<small>붙여넣을 때 앞뒤에 실수로 들어간 공백이 없는지 확인하세요.</small>",
+    "p6_step3": "<b>Save(저장)를 클릭한 뒤 Test Connection(연결 테스트)을 클릭하세요.</b> 초록색 체크 표시가 나타나면 준비가 끝난 것입니다.",
+    "p6_step4": "<b>Shadow Mode를 켜고</b> 실거래로 전환하기 전에 며칠 동안 봇의 동작을 확인해 보세요.",
+    "p7_h2": "24시간 계속 실행하기",
+    "p7_p1": "JaviD Future Bot은 실제로 실행 중일 때만 거래합니다 — 바이낸스 선물 시장은 절대 닫히지 않으므로, 봇이 실행되는 기기는 하루 24시간, 1년 365일 전원이 켜진 채 인터넷에 연결되어 있어야 합니다. 처음 테스트할 때는 평소 쓰던 노트북으로도 충분하지만, 실거래를 시작하면 대부분의 사용자는 다음 두 가지 방식 중 하나로 옮겨갑니다.",
+    "p7_step1": "<b>클라우드 가상 머신</b> (Amazon AWS EC2 또는 이에 준하는 VPS 제공업체).<small>월 단위로 대여하며 항상 켜져 있고 어디서든 원격 접속이 가능합니다. 개인 노트북을 계속 켜둘 필요도, 잠자기 모드/업데이트/정전을 걱정할 필요도 없습니다. 소형/저사양 인스턴스로도 충분합니다 — 봇 자체는 가볍습니다.</small>",
+    "p7_step2": "<b>집에 항상 켜두는 전용 미니 PC나 여유 데스크톱.</b><small>Intel NUC급 미니 PC(또는 달리 쓸 일이 없는 상시 가동 기기)는 전력 소모가 매우 적고 조용하며, UPS에 연결해 짧은 정전을 견딜 수 있습니다. Windows의 절전/최대 절전 모드가 꺼져 있는지, 인터넷 연결이 안정적인지 반드시 확인하세요.</small>",
+    "p7_tip": "<b>두 방식 모두 동일하게 효과적입니다.</b> 필요한 조건은 다음뿐입니다: 기기의 전원이 계속 켜져 있을 것, 인터넷에 계속 연결되어 있을 것, 그리고 (5단계에서 다룬 대로) 바이낸스 API 키에 해당 기기의 IP 주소가 화이트리스트로 등록되어 있을 것. 봇을 새 기기로 옮기거나 IP가 바뀌면, 키의 IP 제한만 업데이트하면 됩니다.",
+    "p7_warn": "<b>주의:</b> 포지션이 열려 있는 상태에서 기기가 재시작되거나 전원이 끊기면, 봇을 다시 시작하기 전에 바이낸스 앱의 Futures(선물) 메뉴에서 해당 포지션을 수동으로 청산하세요 — 자세한 내용은 <a href=\"manual.html\">사용 설명서</a>를 참고하세요.",
+    "faq_h2": "문제 해결 &amp; FAQ",
+    "faq_th1": "증상",
+    "faq_th2": "원인 / 해결 방법",
+    "faq_q1": "HTTP 451 오류",
+    "faq_a1": "바이낸스는 한국 IP를 포함한 일부 지역에서 선물 API 접근을 차단합니다. 해외 VPS나 VPN을 통해 봇을 실행하세요.",
+    "faq_q2": "Test Connection에서 -2015 오류",
+    "faq_a2": "IP 제한이 아직 반영되지 않았거나 잘못된 IP를 입력한 경우입니다. 5~10분 기다린 뒤 주소를 다시 확인하세요.",
+    "faq_q3": "얼마나 잃을 수 있나요?",
+    "faq_a3": "<b class=\"text-slate-800\">넣은 돈 전부입니다.</b> 실제 거래소의 레버리지 선물이라 포지션이 청산되면 원금이 0이 될 수 있습니다. 모든 주문은 본인 기기에서 본인 API 키로 나가며, 계좌도 자금도 결과도 전부 본인 것입니다. API 키를 연결하지 않은 상태로도 켤 수 있습니다 — 섀도우 모드가 실시간 시세를 가상 잔고로 거래하니, 실제 돈이 들어가기 전에 어떻게 움직이는지 먼저 보세요.",
+    "faq_q4": "-1021 타임스탬프 오류",
+    "faq_a4": "PC 시계가 어긋난 상태입니다. Windows 설정에서 자동 시간 동기화를 켜세요.",
+    "faq_q5": "키에서 선물 권한을 켤 수 없음",
+    "faq_a5": "선물 계좌를 활성화하기 전에 키가 만들어진 경우입니다(3단계 참고). 키를 삭제하고 올바른 순서로 새로 만드세요.",
+    "faq_q6": "읽기 이상의 어떤 권한도 켤 수 없음",
+    "faq_a6": "5단계의 IP 제한 설정을 건너뛴 경우입니다 — 읽기 전용이 아닌 모든 권한에는 IP 제한이 필수입니다.",
+    "cta_h3": "키 연결 준비가 되셨나요?",
+    "cta_p": "대시보드로 돌아가 1분 안에 설정을 마치세요.",
+    "cta_btn": "⬇ JaviD Future Bot으로 돌아가기",
+    "footer_home": "홈",
+    "footer_results": "실전 결과",
+    "footer_manual": "사용 설명서",
+    "footer_features": "기능",
+    "footer_board": "커뮤니티 게시판",
+    "footer_contact": "문의",
+  },
+  ja: {
+    "nav_features": "機能",
+    "nav_how_it_works": "仕組み",
+    "nav_shadow_mode": "Shadow Mode",
+    "nav_real_results": "実績結果",
+    "nav_user_manual": "ユーザーマニュアル",
+    "nav_new_to_binance": "Binanceが初めての方へ",
+    "nav_community_board": "コミュニティ掲示板",
+    "nav_cta_download": "今すぐダウンロード",
+    "tk1": "<b>まだ夜通しチャートを見ながら手動で取引していますか?</b><span>AIが設計した戦略に判断と執行を任せて、24時間体制にしましょう。</span>",
+    "tk2": "<b>自動売買プログラムを信頼できるか不安ですか?</b><span>まずShadow Modeで動かしてみて、信頼できたら実取引に切り替えましょう。</span><small>ヒント: 実取引は1000 USDT以上で始めるのがおすすめです — 残高が少ないとエントリー回数が非常に少なくなることがあります。</small>",
+    "tk3": "<b>実際の勝率が気になりますか?</b><span>このサイトに公開されている実際の取引結果を、ご自身の目で確かめてください。</span>",
+    "tk4": "<b>ビットコイン先物だけを取引していませんか?</b><span>アルトコインを含む500種類以上のUSDⓈ-M先物から自分で選べます。</span>",
+    "tk5": "<b>レバレッジ先物のロスカット(強制清算)が心配ですか?</b><span>各エントリーは残高連動(1/300、1/500、1/700)で決まり、1回あたりの金額は小さくなります。</span><small>それでも強制清算は起こり得ます。レバレッジ先物は元本をすべて失う可能性があります。</small>",
+    "tk6": "<b>元手が少なすぎると思っていますか?</b><span>エントリーサイズは毎日、実際の残高に応じて自動調整されます — 複利の効果を実感してください。</span>",
+    "hero_kicker": "🧭 セットアップガイド",
+    "hero_h1": "Binanceアカウント &amp; 先物APIキーの作成方法",
+    "hero_sub": "JaviD Future Botでの初回取引前に必要なすべて — アカウント登録、本人確認、先物口座の有効化、そして正しい権限を持つAPIキーの発行まで。",
+    "hero_updated": "現行のBinance Web画面に基づき作成 · 最終確認 2026年7月",
+    "toc_title": "このページの内容",
+    "toc1": "Binanceアカウントを作成する",
+    "toc2": "本人確認(KYC)を完了する",
+    "toc3": "先物口座を有効化する",
+    "toc4": "APIキーを作成する",
+    "toc5": "正しい権限を設定する(見落としがちなステップ)",
+    "toc6": "JaviD Future Botに接続する",
+    "toc7": "24時間365日稼働させ続ける(クラウドVMまたはミニPC)",
+    "toc8": "トラブルシューティング &amp; FAQ",
+    "p1_h2": "Binanceアカウントを作成する",
+    "p1_p1": "登録は約5分で完了します。以下のリンクからBinanceの公式登録ページで登録してください。",
+    "p1_callout1": "<b>まだアカウントをお持ちでないですか?</b> Binanceの公式登録ページから登録してください。",
+    "p1_cta": "アカウントを作成 →",
+    "p1_step1": "<b>binance.comにアクセスし、Register(登録)をクリックします。</b><small>メールアドレス、電話番号、またはGoogle/Appleアカウントでの登録が可能です。</small>",
+    "p1_step2": "<b>パスワードを設定します。</b><small>大文字1文字と数字1文字を含む8文字以上が必要です — より強固にするため記号も追加することをおすすめします。</small>",
+    "p1_step3": "<b>メールまたは電話に届いた6桁の認証コードを入力します。</b><small>コードには有効期限があるため(通常約30分)、すぐに受信トレイ/迷惑メールフォルダを確認してください。</small>",
+    "p1_step4": "<b>アカウントのセキュリティ設定からすぐに二段階認証(2FA)を有効にします。</b><small>Google AuthenticatorまたはPasskeyのどちらでも利用できます。APIキーを作成する際に2FAが有効になっている必要があります。</small>",
+    "p1_tip": "<b>ヒント:</b> 取引所アカウントにはパスワードマネージャーと専用のメールアドレスを使いましょう — アカウント乗っ取り型フィッシングを防ぐ最も簡単な方法です。",
+    "p2_h2": "本人確認(KYC)を完了する",
+    "p2_p1": "登録するだけでは取引は解放されません。本格的な入金や先物取引を行うには本人確認が必要です。",
+    "p2_step1": "<b>プロフィールメニュー → Identification(本人確認)を開きます。</b><small>居住している国/地域と、身分証の種類(国民IDカード、運転免許証、パスポートのいずれか)を選択します。</small>",
+    "p2_step2": "<b>身分証の写真をアップロード</b>し、顔認証(簡単なセルフィー/生体検知チェック)を完了させます。",
+    "p2_step3": "<b>承認を待ちます</b> — 通常5〜15分で完了します。承認されるとプロフィールのステータスが<i>Unverified(未確認)</i>から<i>Verified(確認済み)</i>に変わります。",
+    "p2_warn": "<b>注意:</b> 一部の上位APIパーミッションは、通常の本人確認ではなく「Verified Plus」という本人確認レベルを必要とする場合があります。API Managementページで解除できない制限が表示される場合は、アカウントに追加の確認手続きが必要かどうか確認してください。",
+    "p3_h2": "先物口座を有効化する — APIキーを作成する前に",
+    "p3_p1": "このステップは順序を間違えやすく、順序を間違えることが最もよくあるセットアップミスです。",
+    "p3_step1": "<b>上部ナビゲーションから[Futures](先物)メニューを開きます。</b>",
+    "p3_step2": "<b>初めての場合は先物リスクに関するアンケートに回答します</b> — レバレッジ取引のリスクを理解しているか確認する簡単な設問です。",
+    "p3_step3": "<b>USDⓈ-M先物口座を有効化します。</b><small>有効化すると、Spot(現物)ウォレットと並んでFutures(先物)ウォレットが表示されます。</small>",
+    "p3_danger": "<b>Part 4に進む前に必ず行ってください:</b> 先物口座を有効化する前にすでにAPIキーが存在していた場合(またはPortfolio Marginが有効になっている場合)、そのキーは決して先物権限を取得できません — 削除して新しく作成し直す必要があります。先物の有効化が先、APIキーの作成は後です。",
+    "p4_h2": "APIキーを作成する",
+    "p4_p1": "キーを作成する前に、Binanceは次を要求します: 2FAが有効であること、Spot(現物)ウォレットに最低限のトークンを入金していること(口座を有効化するため)、そして本人確認が完了していること — いずれもPart 1〜2で扱った内容です。",
+    "p4_step1": "<b>プロフィールアイコン → Account(アカウント) → API Management(API管理)。</b>",
+    "p4_step2": "<b>Create API(API作成)をクリックし</b>、<b>System generated(システム生成)</b>を選択します。<small>標準的なHMAC認証方式を使用し、API Key(APIキー)とSecret Key(シークレットキー)が発行されます — これがJaviD Future Botが必要とする組み合わせです。</small>",
+    "p4_step3": "<b>ラベルを付けます</b>。例: <code>JaviD-Bot</code>。後で識別しやすくするためです。",
+    "p4_step4": "<b>2FAで認証します</b>(認証アプリのコード、パスキー、またはメール確認)。",
+    "p4_step5": "<b>キーが作成されました</b> — ただしデフォルトではデータの読み取りしかできません。使用する前に必ずPart 5に進んでください。",
+    "p5_h2": "正しい権限を設定する",
+    "p5_p1": "新規作成したキーはデフォルトで<b>Enable Reading(読み取り許可)</b>のみが有効です。JaviD Future Botに注文を発注させる — それ以上は不要 — ためには、キーを編集して正確に3つのチェックボックスだけをオンにする必要があります。",
+    "p5_tip_title": "✅ 正確にこの3つだけをチェックし、それ以外は何もオンにしないでください:",
+    "p5_tip_li1": "Enable Reading(読み取り許可) <small style=\"color:var(--faint);\">(デフォルトで既にオン)</small>",
+    "p5_tip_li2": "Enable Spot &amp; Margin &amp; Stock Trading(現物・証拠金・株式取引の許可)",
+    "p5_tip_li3": "Enable Futures(先物取引の許可)",
+    "p5_danger_title": "❌ それ以外のすべての項目はオフのままにしてください:",
+    "p5_danger_list": "Enable Margin Loan, Repay &amp; Transfer(証拠金の借入・返済・振替の許可) · Permits Universal Transfer(ユニバーサル振替の許可) · Enable Withdrawals(出金の許可) · Enable Prediction Trading(予測取引の許可) · Enable Symbol Whitelist(銘柄ホワイトリストの許可)。",
+    "p5_danger_p": "これらはJaviD Future Botが取引するために一切必要ありません。オフのままにしておけば、万が一APIキーが漏えいした最悪のケースでも、誰も取引所から資金を移動したり、ウォレット間で資金を振り替えたり、先物の発注・管理以外の操作を行ったりすることはできません — 資産はあなたのものであり続けます。",
+    "p5_step1": "<b>IP制限を追加します — これは任意ではなく必須です。</b><small>2023年1月のポリシー変更以降、Binanceは特定のIPに制限されていないキーには読み取り専用を超える権限を一切付与しません。「Restrict access to trusted IPs only(信頼できるIPのみアクセスを許可)」を選択し、Botを実行するマシンのパブリックIPv4アドレスを入力してください(「what is my ip」で検索するか、IPを自動検出して表示するJaviDの「Run Connection Diagnostics(接続診断の実行)」ボタンを使用してください)。</small>",
+    "p5_step2": "<b>「Enable Withdrawals(出金の許可)」はOFFのままにしてください。</b><small>取引ボットが出金権限を必要とすることは絶対にありません。設定中に何かがこの項目をオンにするよう求めてきたら、そこで手を止めて考え直してください。</small>",
+    "p5_step3": "<b>保存後、5〜10分待ってから</b>接続テストを行い、IPホワイトリストの変更が完全に反映されるのを待ちます。",
+    "p5_warn": "<b>今すぐシークレットキーをコピーしてください:</b> シークレットキーは一度しか表示されません。保存せずにページを離れると、キーを削除して新しく発行し直す必要があります。",
+    "p6_h2": "JaviD Future Botに接続する",
+    "p6_step1": "<b>JaviD Future Botを起動します</b> — ブラウザが自動的に開き、ダッシュボードが表示されます。",
+    "p6_step2": "<b>Settings(設定)タブに移動し</b>、Access Key(アクセスキー)とSecret Key(シークレットキー)を貼り付けます。<small>貼り付ける際、前後に余計なスペースが入っていないか確認してください。</small>",
+    "p6_step3": "<b>Save(保存)をクリックし、次にTest Connection(接続テスト)をクリックします。</b> 緑色のチェックマークが表示されれば準備完了です。",
+    "p6_step4": "<b>Shadow Modeをオンにし</b>、実取引に切り替える前に数日間Botの挙動を確認してください。",
+    "p7_h2": "24時間365日稼働させ続ける",
+    "p7_p1": "JaviD Future Botは実際に稼働している間しか取引を行いません — Binanceの先物市場は決して休場しないため、Botを実行するマシンは1日24時間、年間365日、電源が入り接続された状態を保つ必要があります。最初のテストであれば普段使いのノートPCでも問題ありませんが、実取引を始める段階になると、ほとんどのユーザーは次の2つの構成のいずれかに移行します。",
+    "p7_step1": "<b>クラウド仮想マシン</b>(Amazon AWS EC2、または同等のVPSプロバイダー)。<small>月額課金で常時稼働し、どこからでもリモートアクセス可能です。個人のノートPCを起動したままにしたり、スリープ・アップデート・停電を気にしたりする必要がありません。小型/低スペックのインスタンスで十分です — Bot自体は軽量です。</small>",
+    "p7_step2": "<b>自宅に常時電源を入れておく専用ミニPCまたは予備のデスクトップ。</b><small>Intel NUCクラスのミニPC(または他に使い道のない常時稼働マシン)は消費電力が非常に少なく静音で、UPSに接続すれば短時間の停電にも耐えられます。Windowsのスリープ/休止状態が無効になっていること、インターネット接続が安定していることを必ず確認してください。</small>",
+    "p7_tip": "<b>どちらの方法でも同じように問題なく機能します。</b> 必要な条件は次の3つだけです: マシンの電源が入り続けていること、インターネットに接続され続けていること、そして(Part 5の通り)そのマシンのIPアドレスがBinanceのAPIキーでホワイトリストに登録されていること。Botを新しいマシンに移動したりIPが変わったりした場合は、キーのIP制限を更新するだけで済みます。",
+    "p7_warn": "<b>注意:</b> ポジションを保有した状態でマシンが再起動したり電源を失ったりした場合は、Botを再起動する前にBinanceアプリのFutures(先物)からそのポジションを手動で決済してください — 詳細は<a href=\"manual.html\">ユーザーマニュアル</a>をご覧ください。",
+    "faq_h2": "トラブルシューティング &amp; FAQ",
+    "faq_th1": "症状",
+    "faq_th2": "原因 / 対処法",
+    "faq_q1": "HTTP 451エラー",
+    "faq_a1": "Binanceは韓国のIPを含む一部の地域からの先物APIアクセスをブロックしています。海外のVPSまたはVPN経由でBotを実行してください。",
+    "faq_q2": "Test Connectionで-2015エラー",
+    "faq_a2": "IP制限がまだ反映されていないか、誤ったIPを入力しています。5〜10分待ってからアドレスを再確認してください。",
+    "faq_q3": "どれくらい損をする可能性がありますか？",
+    "faq_a3": "<b class=\"text-slate-800\">入れた資金の全額です。</b>実際の取引所でのレバレッジ先物なので、ポジションが強制決済（清算）されれば元本がゼロになることもあります。注文はすべてご自身の端末から、ご自身のAPIキーで発注されます。口座も資金も、その結果もすべてご本人のものです。APIキーを接続しないままでも起動できます。シャドーモードは実際の値動きを仮想残高で売買するので、実際の資金を入れる前に、どう動くかをご自身で確かめられます。",
+    "faq_q4": "-1021 タイムスタンプエラー",
+    "faq_a4": "PCの時計がずれています。Windowsの設定で自動時刻同期をオンにしてください。",
+    "faq_q5": "キーで先物権限を有効にできない",
+    "faq_a5": "先物口座が有効化される前にキーが作成されています(Part 3参照)。削除して、正しい順序で新しく作成してください。",
+    "faq_q6": "読み取り以上の権限を一切有効にできない",
+    "faq_a6": "Part 5のIP制限手順をスキップしています — 読み取り専用以外のすべての権限にIP制限は必須です。",
+    "cta_h3": "キーの接続準備はできましたか?",
+    "cta_p": "ダッシュボードに戻り、1分以内にセットアップを完了しましょう。",
+    "cta_btn": "⬇ JaviD Future Botに戻る",
+    "footer_home": "ホーム",
+    "footer_results": "実績結果",
+    "footer_manual": "ユーザーマニュアル",
+    "footer_features": "機能",
+    "footer_board": "コミュニティ掲示板",
+    "footer_contact": "お問い合わせ",
+  },
+  zh: {
+    "nav_features": "功能",
+    "nav_how_it_works": "工作原理",
+    "nav_shadow_mode": "Shadow Mode",
+    "nav_real_results": "真实成绩",
+    "nav_user_manual": "用户手册",
+    "nav_new_to_binance": "第一次用币安?",
+    "nav_community_board": "社区板块",
+    "nav_cta_download": "立即下载",
+    "tk1": "<b>还在整夜盯盘手动交易吗?</b><span>让AI构建的策略代替你24小时判断和执行。</span>",
+    "tk2": "<b>不确定能否信任自动交易程序?</b><span>先运行Shadow Mode(影子模式),信任之后再切换到实盘交易。</span><small>提示：实盘建议从1000 USDT以上起步——资金过小可能导致入场次数很少。</small>",
+    "tk3": "<b>好奇真实胜率是多少?</b><span>查看本站公开的真实交易结果,自己判断。</span>",
+    "tk4": "<b>只交易比特币合约吗?</b><span>可从包括山寨币在内的500多种USDⓈ-M合约中自行选择。</span>",
+    "tk5": "<b>担心杠杆合约爆仓吗?</b><span>每次开仓按余额比例(1/300、1/500或1/700)计算,单次金额较小。</span><small>仍然可能被强平——杠杆合约可能损失全部本金。</small>",
+    "tk6": "<b>觉得本金太少?</b><span>入场仓位每天根据实时余额自动调整——亲身感受复利的力量。</span>",
+    "hero_kicker": "🧭 设置指南",
+    "hero_h1": "如何创建币安账户和合约API密钥",
+    "hero_sub": "使用JaviD Future Bot完成首笔交易之前需要准备的一切——账户注册、身份验证、开通合约账户,以及生成权限正确的API密钥。",
+    "hero_updated": "基于当前币安网页流程编写 · 最后核对于2026年7月",
+    "toc_title": "本页内容",
+    "toc1": "创建你的币安账户",
+    "toc2": "完成身份验证(KYC)",
+    "toc3": "开通合约账户",
+    "toc4": "创建API密钥",
+    "toc5": "设置正确的权限(最容易漏掉的一步)",
+    "toc6": "连接到JaviD Future Bot",
+    "toc7": "保持24/7运行(云主机或迷你主机)",
+    "toc8": "故障排查 &amp; 常见问题",
+    "p1_h2": "创建你的币安账户",
+    "p1_p1": "注册大约需要5分钟。请通过下方链接在币安官方注册页面注册。",
+    "p1_callout1": "<b>还没有账户?</b> 请在币安官方注册页面注册。",
+    "p1_cta": "创建账户 →",
+    "p1_step1": "<b>访问binance.com并点击Register(注册)。</b><small>你可以使用邮箱地址、手机号,或通过Google/Apple账户继续注册。</small>",
+    "p1_step2": "<b>设置密码。</b><small>至少8位字符,包含至少一个大写字母和一个数字——建议再加一个符号以获得更强的密码。</small>",
+    "p1_step3": "<b>输入发送到你邮箱或手机的6位验证码。</b><small>验证码有时效限制(通常约30分钟),请立即查看收件箱/垃圾邮件文件夹。</small>",
+    "p1_step4": "<b>立即在账户安全设置中开启双重验证(2FA)。</b><small>Google Authenticator或Passkey(通行密钥)均可使用。稍后创建API密钥时需要2FA处于开启状态。</small>",
+    "p1_tip": "<b>提示：</b> 为交易所账户使用密码管理器和专用邮箱——这是避免账户被盗用钓鱼攻击最简单有效的方法。",
+    "p2_h2": "完成身份验证(KYC)",
+    "p2_p1": "仅完成注册并不能解锁交易权限。要进行有意义的入金或合约交易,你需要完成身份验证。",
+    "p2_step1": "<b>打开个人资料菜单 → Identification(身份验证)。</b><small>选择你的居住国家/地区,以及证件类型(身份证、驾照或护照)。</small>",
+    "p2_step2": "<b>上传证件照片</b>,然后完成人脸验证(快速自拍/活体检测)。",
+    "p2_step3": "<b>等待审核通过</b>——通常5至15分钟内完成。审核通过后,你的账户状态会从<i>Unverified(未验证)</i>变为<i>Verified(已验证)</i>。",
+    "p2_warn": "<b>注意：</b> 部分更高级别的API权限现在需要\"Verified Plus\"身份验证等级,而不只是基础验证。如果你的API Management(API管理)页面显示无法解除的限制,请检查账户是否需要完成额外的验证步骤。",
+    "p3_h2": "开通合约账户——在创建API密钥之前",
+    "p3_p1": "这一步很容易被顺序搞错,而顺序错误正是最常见的设置错误。",
+    "p3_step1": "<b>从顶部导航栏打开[Futures](合约)菜单。</b>",
+    "p3_step2": "<b>如果是第一次使用,请完成合约风险问卷。</b>这是一个简短的测验,用于确认你理解杠杆交易的风险。",
+    "p3_step3": "<b>开通你的USDⓈ-M合约账户。</b><small>开通后,你会在Spot(现货)钱包旁边看到Futures(合约)钱包。</small>",
+    "p3_danger": "<b>请务必在进入第4部分之前完成此步骤：</b> 如果你的API密钥是在开通合约账户之前创建的(或者你开启了Portfolio Margin统一账户),那么该密钥将永远无法获得合约权限——你必须删除它并重新创建一个新密钥。先开通合约账户,再创建API密钥。",
+    "p4_h2": "创建API密钥",
+    "p4_p1": "在创建密钥之前,币安要求：已开启2FA、Spot(现货)钱包中至少有少量入金(用于激活账户)、以及已完成的身份验证——这些都已在第1至2部分说明。",
+    "p4_step1": "<b>个人资料图标 → Account(账户) → API Management(API管理)。</b>",
+    "p4_step2": "<b>点击Create API(创建API)</b>,然后选择<b>System generated(系统生成)</b>。<small>该方式使用标准的HMAC认证,会生成一个API Key(API密钥)和Secret Key(密钥密钥)——这正是JaviD Future Bot所需要的组合。</small>",
+    "p4_step3": "<b>为它设置一个标签</b>,例如<code>JaviD-Bot</code>,方便你以后识别。",
+    "p4_step4": "<b>使用2FA完成验证</b>(验证器代码、通行密钥或邮箱确认)。",
+    "p4_step5": "<b>密钥已创建</b>——但默认情况下它只能读取数据。使用前请务必继续阅读第5部分。",
+    "p5_h2": "设置正确的权限",
+    "p5_p1": "新创建的密钥默认只开启<b>Enable Reading(允许读取)</b>。要让JaviD Future Bot能够下单——且仅限于此,不多不少——你需要编辑该密钥,并精确勾选三个选项。",
+    "p5_tip_title": "✅ 请精确勾选以下这三项,其余一律不要勾选：",
+    "p5_tip_li1": "Enable Reading(允许读取) <small style=\"color:var(--faint);\">(默认已开启)</small>",
+    "p5_tip_li2": "Enable Spot &amp; Margin &amp; Stock Trading(允许现货、杠杆及股票代币交易)",
+    "p5_tip_li3": "Enable Futures(允许合约交易)",
+    "p5_danger_title": "❌ 其余所有选项都必须保持未勾选状态：",
+    "p5_danger_list": "Enable Margin Loan, Repay &amp; Transfer(允许杠杆借币、还币及划转) · Permits Universal Transfer(允许万能划转) · Enable Withdrawals(允许提现) · Enable Prediction Trading(允许预测交易) · Enable Symbol Whitelist(允许交易对白名单)。",
+    "p5_danger_p": "JaviD Future Bot进行交易完全不需要这些权限。保持这些选项关闭意味着,即使在最坏的情况下你的API密钥被泄露,任何人都无法把资金转出交易所、无法在钱包之间划转资金,也无法进行除下单和管理合约仓位之外的任何操作——你的资产始终是你自己的。",
+    "p5_step1": "<b>添加IP限制——这不是可选项,而是强制要求。</b><small>自2023年1月的政策变更以来,除非密钥被限制到指定IP,否则币安不会授予超出只读权限的任何权限。请选择\"Restrict access to trusted IPs only(仅限受信任IP访问)\",并输入运行机器人的机器的公网IPv4地址(可以搜索\"what is my ip\"查询,也可以使用JaviD内置的\"Run Connection Diagnostics(运行连接诊断)\"按钮,它会自动检测并为你显示该地址)。</small>",
+    "p5_step2": "<b>保持\"Enable Withdrawals(允许提现)\"处于关闭状态。</b><small>交易机器人永远不需要提现权限。如果你在配置过程中被要求开启这一项,请立即停下来重新考虑。</small>",
+    "p5_step3": "<b>保存后请等待5至10分钟</b>,让IP白名单变更完全生效之后再测试连接。",
+    "p5_warn": "<b>请现在就复制你的Secret Key(密钥):</b> 它只会显示一次。如果你没有保存就离开了页面,就必须删除该密钥并重新生成一个新的。",
+    "p6_h2": "连接到JaviD Future Bot",
+    "p6_step1": "<b>启动JaviD Future Bot</b>——浏览器会自动打开并进入仪表盘。",
+    "p6_step2": "<b>进入Settings(设置)标签页</b>,粘贴你的Access Key(访问密钥)和Secret Key(密钥)。<small>粘贴时请注意检查前后是否意外带有空格。</small>",
+    "p6_step3": "<b>点击Save(保存),然后点击Test Connection(测试连接)。</b> 出现绿色对勾即表示一切就绪。",
+    "p6_step4": "<b>开启Shadow Mode(影子模式)</b>,先观察机器人的表现几天,再切换到实盘交易。",
+    "p7_h2": "保持24/7全天候运行",
+    "p7_p1": "JaviD Future Bot只有在实际运行时才会进行交易——币安合约市场从不休市,因此运行机器人的设备需要一天24小时、一年365天保持通电和联网。刚开始测试时,你日常使用的笔记本电脑就足够了,但一旦开始实盘交易,大多数用户会转向以下两种方案之一。",
+    "p7_step1": "<b>云端虚拟主机</b>(如Amazon AWS EC2,或任何同类VPS服务商)。<small>按月租用,始终在线,可从任何地方远程访问,你也不需要一直开着自己的笔记本电脑,或担心它进入睡眠、自动更新或断电。一个低配置的小型实例就已经足够——机器人本身运行非常轻量。</small>",
+    "p7_step2": "<b>放在家中、专门保持开机的迷你主机或闲置台式机。</b><small>Intel NUC级别的迷你主机(或任何你不需要另作他用的常开设备)耗电极低、运行安静,并可以接上UPS(不间断电源)以应对短时断电。请务必确认已关闭Windows的睡眠/休眠功能,且网络连接稳定。</small>",
+    "p7_tip": "<b>两种方案效果同样出色。</b> 唯一的要求是：设备始终保持通电、始终保持联网,并且(按照第5部分的要求)该设备的IP地址已在你的币安API密钥中加入白名单。如果你把机器人迁移到新设备,或者IP发生变化,只需更新密钥上的IP限制即可。",
+    "p7_warn": "<b>提醒：</b> 如果设备在有持仓的情况下重启或断电,请在重新启动机器人之前,先在币安App的Futures(合约)页面手动平掉该仓位——详情请参阅<a href=\"manual.html\">用户手册</a>。",
+    "faq_h2": "故障排查 &amp; 常见问题",
+    "faq_th1": "现象",
+    "faq_th2": "原因 / 解决方法",
+    "faq_q1": "HTTP 451错误",
+    "faq_a1": "币安会屏蔽部分地区(包括韩国IP)对合约API的访问。请从海外VPS或通过VPN运行机器人。",
+    "faq_q2": "Test Connection时出现-2015错误",
+    "faq_a2": "你的IP限制尚未生效,或者输入了错误的IP。请等待5至10分钟后重新核对地址。",
+    "faq_q3": "我可能亏损多少？",
+    "faq_a3": "<b class=\"text-slate-800\">最多亏光你投入的全部资金。</b>这是真实交易所上的杠杆合约 — 仓位可能被强制平仓，本金可能归零。每一笔订单都从你自己的设备、用你自己的 API 密钥发出，账户、资金和结果始终都是你的。你也可以在不连接任何 API 密钥的情况下直接启动：影子模式用真实实时行情在虚拟余额上交易，让你在投入真钱之前先看清它是怎么跑的。",
+    "faq_q4": "-1021时间戳(Timestamp)错误",
+    "faq_a4": "你的电脑时钟出现了偏差。请在Windows设置中开启自动时间同步。",
+    "faq_q5": "无法在密钥上开启合约权限",
+    "faq_a5": "该密钥是在你的合约账户开通之前创建的(参见第3部分)。请删除它,并按正确的顺序重新创建一个。",
+    "faq_q6": "无法开启只读以外的任何权限",
+    "faq_a6": "你跳过了第5部分中的IP限制步骤——任何非只读权限都必须先设置IP限制。",
+    "cta_h3": "准备好连接你的密钥了吗?",
+    "cta_p": "回到仪表盘,一分钟内完成设置。",
+    "cta_btn": "⬇ 返回JaviD Future Bot",
+    "footer_home": "首页",
+    "footer_results": "真实成绩",
+    "footer_manual": "用户手册",
+    "footer_features": "功能",
+    "footer_board": "社区板块",
+    "footer_contact": "联系我们",
+  },
+  es: {
+    "nav_features": "Funciones",
+    "nav_how_it_works": "Cómo Funciona",
+    "nav_shadow_mode": "Shadow Mode",
+    "nav_real_results": "Resultados Reales",
+    "nav_user_manual": "Manual de Usuario",
+    "nav_new_to_binance": "¿Nuevo en Binance?",
+    "nav_community_board": "Foro de la Comunidad",
+    "nav_cta_download": "Descargar Ahora",
+    "tk1": "<b>¿Sigues mirando gráficos y operando toda la noche?</b><span>Deja que una estrategia creada con IA decida y ejecute por ti, 24/7.</span>",
+    "tk2": "<b>¿No estás seguro de poder confiar en un programa de trading automático?</b><span>Prueba primero el Shadow Mode — cambia a operativa real cuando confíes en él.</span><small>Consejo: empieza en real con 1000 USDT o más — con saldos menores puede haber muy pocas entradas.</small>",
+    "tk3": "<b>¿Tienes curiosidad por saber cuál es la tasa de acierto real?</b><span>Consulta los resultados reales de trading publicados en este sitio y decide por ti mismo.</span>",
+    "tk4": "<b>¿Solo operas futuros de Bitcoin?</b><span>Eliges entre más de 500 futuros USDⓈ-M, altcoins incluidas.</span>",
+    "tk5": "<b>¿Te preocupa la liquidación en futuros apalancados?</b><span>Cada entrada se dimensiona según tu saldo (1/300, 1/500 o 1/700), lo que mantiene las entradas pequeñas.</span><small>La liquidación sigue siendo posible: los futuros apalancados pueden hacerte perder todo tu capital.</small>",
+    "tk6": "<b>¿Crees que tu capital inicial es demasiado pequeño?</b><span>El tamaño de entrada se recalcula cada día según tu saldo real — comprueba lo que hace el interés compuesto.</span>",
+    "hero_kicker": "🧭 Guía de Configuración",
+    "hero_h1": "Cómo Crear una Cuenta de Binance y una Clave API de Futuros",
+    "hero_sub": "Todo lo que necesitas antes de tu primera operación con JaviD Future Bot — registro de cuenta, verificación de identidad, activación de Futuros y generación de una clave API con los permisos correctos.",
+    "hero_updated": "Escrito para el flujo web actual de Binance · Última revisión en julio de 2026",
+    "toc_title": "En esta página",
+    "toc1": "Crea tu cuenta de Binance",
+    "toc2": "Completa la verificación de identidad (KYC)",
+    "toc3": "Activa tu cuenta de Futuros",
+    "toc4": "Crea tu clave API",
+    "toc5": "Configura los permisos correctos (el paso que la gente se salta)",
+    "toc6": "Conéctala a JaviD Future Bot",
+    "toc7": "Manténla funcionando 24/7 (VM en la nube o mini PC)",
+    "toc8": "Solución de problemas y preguntas frecuentes",
+    "p1_h2": "Crea Tu Cuenta de Binance",
+    "p1_p1": "El registro tarda unos 5 minutos. Regístrate en la página oficial de registro de Binance, enlazada abajo.",
+    "p1_callout1": "<b>¿Aún no tienes cuenta?</b> Regístrate en la página oficial de registro de Binance.",
+    "p1_cta": "Crear Cuenta →",
+    "p1_step1": "<b>Ve a binance.com y haz clic en Register (Registrarse).</b><small>Puedes registrarte con un correo electrónico, un número de teléfono, o continuar con tu cuenta de Google/Apple.</small>",
+    "p1_step2": "<b>Configura tu contraseña.</b><small>Mínimo 8 caracteres, con al menos una letra mayúscula y un número — te recomendamos añadir también un símbolo para una contraseña más fuerte.</small>",
+    "p1_step3": "<b>Introduce el código de verificación de 6 dígitos</b> enviado a tu correo o teléfono.<small>El código tiene un tiempo límite (normalmente unos 30 minutos), así que revisa tu bandeja de entrada/spam de inmediato.</small>",
+    "p1_step4": "<b>Activa la autenticación de dos factores (2FA) de inmediato</b> desde la configuración de seguridad de tu cuenta.<small>Funcionan tanto Google Authenticator como una Passkey. Necesitarás el 2FA activo más adelante para crear una clave API.</small>",
+    "p1_tip": "<b>Consejo:</b> Usa un gestor de contraseñas y un correo dedicado para las cuentas de exchanges — es la forma más sencilla de evitar el phishing de robo de cuenta.",
+    "p2_h2": "Completa la Verificación de Identidad (KYC)",
+    "p2_p1": "Registrarte por sí solo no desbloquea el trading. Necesitas la verificación de identidad antes de poder depositar cantidades significativas u operar Futuros.",
+    "p2_step1": "<b>Abre tu menú de perfil → Identification (Identificación).</b><small>Selecciona tu país/región de residencia y el tipo de documento de identidad (documento nacional de identidad, carné de conducir o pasaporte).</small>",
+    "p2_step2": "<b>Sube fotos de tu documento de identidad</b>, y luego completa la verificación facial (una comprobación rápida de selfie/prueba de vida).",
+    "p2_step3": "<b>Espera la aprobación</b> — normalmente se resuelve en 5–15 minutos. El estado de tu perfil cambiará de <i>Unverified (No verificado)</i> a <i>Verified (Verificado)</i> una vez aprobado.",
+    "p2_warn": "<b>Nota:</b> Algunos permisos de API de nivel superior ahora requieren el nivel de identidad \"Verified Plus\" en lugar de la verificación básica. Si tu página de API Management (Gestión de API) muestra restricciones que no puedes eliminar, comprueba si tu cuenta necesita este paso de verificación adicional.",
+    "p3_h2": "Activa Tu Cuenta de Futuros — Antes de Crear una Clave API",
+    "p3_p1": "Este paso es fácil de hacer en el orden incorrecto, y hacerlo en el orden incorrecto es el error de configuración más común con diferencia.",
+    "p3_step1": "<b>Abre el menú [Futures] (Futuros)</b> desde la navegación superior.",
+    "p3_step2": "<b>Completa el cuestionario de riesgo de futuros</b> si es tu primera vez — un breve test que confirma que entiendes el riesgo del trading apalancado.",
+    "p3_step3": "<b>Activa tu cuenta de Futuros USDⓈ-M.</b><small>Una vez activada, verás una billetera de Futuros junto a tu billetera Spot.</small>",
+    "p3_danger": "<b>Haz esto antes de la Parte 4:</b> si tu clave API ya existía antes de activar Futuros (o si tienes activado Portfolio Margin), esa clave nunca podrá obtener permiso de Futuros — tendrás que eliminarla y crear una nueva. Primero activa Futuros, la clave API en segundo lugar.",
+    "p4_h2": "Crea Tu Clave API",
+    "p4_p1": "Antes de poder crear una clave, Binance requiere: 2FA activado, al menos un depósito simbólico en tu billetera Spot (para activar la cuenta), y la verificación de identidad completada — todo ello cubierto en las Partes 1–2.",
+    "p4_step1": "<b>Icono de perfil → Account (Cuenta) → API Management (Gestión de API).</b>",
+    "p4_step2": "<b>Haz clic en Create API (Crear API)</b>, luego elige <b>System generated (Generada por el sistema)</b>.<small>Esto usa autenticación HMAC estándar y te da una API Key (Clave API) + Secret Key (Clave secreta) — el par que espera JaviD Future Bot.</small>",
+    "p4_step3": "<b>Ponle una etiqueta</b>, por ejemplo <code>JaviD-Bot</code>, para poder reconocerla más adelante.",
+    "p4_step4": "<b>Verifica con 2FA</b> (código del autenticador, passkey o confirmación por correo).",
+    "p4_step5": "<b>Tu clave se ha creado</b> — pero por defecto solo puede leer datos. Continúa con la Parte 5 antes de usarla.",
+    "p5_h2": "Configura los Permisos Correctos",
+    "p5_p1": "Una clave recién creada viene por defecto solo con <b>Enable Reading (Habilitar lectura)</b>. Para que JaviD Future Bot pueda colocar órdenes — y nada más que eso — necesitas editar la clave y marcar exactamente tres casillas.",
+    "p5_tip_title": "✅ Marca exactamente estas tres, nada más:",
+    "p5_tip_li1": "Enable Reading (Habilitar lectura) <small style=\"color:var(--faint);\">(ya activada por defecto)</small>",
+    "p5_tip_li2": "Enable Spot &amp; Margin &amp; Stock Trading (Habilitar trading de Spot, Margen y Acciones)",
+    "p5_tip_li3": "Enable Futures (Habilitar Futuros)",
+    "p5_danger_title": "❌ Deja todas las demás casillas sin marcar:",
+    "p5_danger_list": "Enable Margin Loan, Repay &amp; Transfer (Habilitar préstamo, reembolso y transferencia de margen) · Permits Universal Transfer (Permite transferencia universal) · Enable Withdrawals (Habilitar retiros) · Enable Prediction Trading (Habilitar trading de predicción) · Enable Symbol Whitelist (Habilitar lista blanca de símbolos).",
+    "p5_danger_p": "Ninguna de estas es necesaria para que JaviD Future Bot opere. Dejarlas desactivadas significa que, incluso en el peor escenario posible en el que tu clave API llegara a filtrarse, nadie podría mover fondos fuera del exchange, transferir entre billeteras, ni tocar nada más allá de colocar y gestionar operaciones de futuros — tus activos siguen siendo tuyos.",
+    "p5_step1": "<b>Añade una restricción de IP — esto es obligatorio, no opcional.</b><small>Desde un cambio de política de enero de 2023, Binance no concederá ningún permiso más allá de solo lectura a menos que la clave esté restringida a IPs específicas. Elige \"Restrict access to trusted IPs only\" (Restringir el acceso solo a IPs de confianza) e introduce la dirección IPv4 pública de la máquina que ejecutará el bot (busca \"what is my ip\" [cuál es mi ip], o usa el botón integrado de JaviD \"Run Connection Diagnostics\" [Ejecutar diagnóstico de conexión], que la detecta y te la muestra automáticamente).</small>",
+    "p5_step2": "<b>Deja \"Enable Withdrawals\" (Habilitar retiros) DESACTIVADO.</b><small>Un bot de trading nunca necesita permiso de retiro. Si algo que estás configurando te pide activar esto, detente y reconsidéralo.</small>",
+    "p5_step3": "<b>Guarda y luego espera de 5 a 10 minutos</b> a que el cambio de lista blanca de IP se propague por completo antes de probar la conexión.",
+    "p5_warn": "<b>Copia tu Secret Key (Clave secreta) ahora:</b> se muestra exactamente una vez. Si sales de la página sin guardarla, tendrás que eliminar la clave y generar una nueva.",
+    "p6_h2": "Conéctala a JaviD Future Bot",
+    "p6_step1": "<b>Inicia JaviD Future Bot</b> — tu navegador se abrirá automáticamente en el panel de control.",
+    "p6_step2": "<b>Ve a la pestaña Settings (Configuración)</b> y pega tu Access Key (Clave de acceso) y tu Secret Key (Clave secreta).<small>Ten cuidado con espacios accidentales al principio o al final al pegar.</small>",
+    "p6_step3": "<b>Haz clic en Save (Guardar) y luego en Test Connection (Probar conexión).</b> Una marca verde significa que ya estás listo.",
+    "p6_step4": "<b>Activa el Shadow Mode</b> y verifica el comportamiento del bot durante unos días antes de pasar a operativa real.",
+    "p7_h2": "Manténlo Funcionando 24/7",
+    "p7_p1": "JaviD Future Bot solo opera mientras está realmente en ejecución — el mercado de futuros de Binance nunca cierra, así que la máquina que ejecuta el bot necesita permanecer encendida y conectada las 24 horas del día, los 365 días del año. Tu portátil de uso diario funciona bien para una primera prueba, pero la mayoría de usuarios pasan a una de estas dos configuraciones una vez que operan en real:",
+    "p7_step1": "<b>Una máquina virtual en la nube</b> (Amazon AWS EC2, o cualquier proveedor de VPS comparable).<small>Se alquila por mes, siempre encendida, accesible de forma remota desde cualquier lugar, y no necesitas dejar tu portátil personal encendido ni preocuparte de que se duerma, se actualice o se quede sin energía. Una instancia pequeña/de gama baja es suficiente — el bot en sí es muy ligero.</small>",
+    "p7_step2": "<b>Un mini PC dedicado o un escritorio de repuesto, encendido en casa.</b><small>Un mini PC de la clase Intel NUC (o cualquier máquina siempre encendida que no necesites para otra cosa) consume muy poca energía, es silencioso, y se puede conectar a un SAI para sobrevivir a cortes breves. Solo asegúrate de que el modo de suspensión/hibernación de Windows esté desactivado y de que la conexión a internet sea estable.</small>",
+    "p7_tip": "<b>Ambas opciones funcionan igual de bien.</b> Los únicos requisitos son: que la máquina permanezca encendida, que permanezca conectada a internet, y (según la Parte 5) que su dirección IP esté en la lista blanca de tu clave API de Binance. Si mueves el bot a una máquina nueva o tu IP cambia, simplemente actualiza la restricción de IP en la clave.",
+    "p7_warn": "<b>Recordatorio:</b> si la máquina se reinicia o pierde energía mientras hay una posición abierta, cierra esa posición manualmente desde la app de Binance, en la sección Futures (Futuros), antes de reiniciar el bot — consulta el <a href=\"manual.html\">Manual de Usuario</a> para más detalles.",
+    "faq_h2": "Solución de Problemas y Preguntas Frecuentes",
+    "faq_th1": "Síntoma",
+    "faq_th2": "Causa / Solución",
+    "faq_q1": "Error HTTP 451",
+    "faq_a1": "Binance bloquea el acceso a la API de Futuros desde algunas regiones, incluidas IPs de Corea. Ejecuta el bot desde un VPS en el extranjero o mediante una VPN.",
+    "faq_q2": "Error -2015 al probar la conexión",
+    "faq_a2": "Tu restricción de IP aún no se ha propagado, o introdujiste la IP incorrecta. Espera de 5 a 10 minutos y vuelve a comprobar la dirección.",
+    "faq_q3": "¿Cuánto puedo perder?",
+    "faq_a3": "<b class=\"text-slate-800\">Todo lo que ingreses.</b> Son futuros apalancados en un exchange real: una posición puede liquidarse y tu depósito puede quedar en cero. Cada orden se envía desde tu propio dispositivo con tu propia clave API, así que la cuenta, los fondos y el resultado siguen siendo tuyos. Puedes arrancarlo sin conectar ninguna clave API: el Modo Shadow opera con precios reales en tiempo real sobre un saldo virtual, para que veas cómo se comporta antes de poner dinero real.",
+    "faq_q4": "Error de marca de tiempo (Timestamp) -1021",
+    "faq_a4": "El reloj de tu PC se ha desincronizado. Activa la sincronización automática de hora en la configuración de Windows.",
+    "faq_q5": "No se puede activar el permiso de Futuros en la clave",
+    "faq_a5": "La clave se creó antes de activar tu cuenta de Futuros (consulta la Parte 3). Elimínala y crea una nueva, en el orden correcto.",
+    "faq_q6": "No se puede activar ningún permiso más allá de Read (Lectura)",
+    "faq_a6": "Te saltaste el paso de restricción de IP de la Parte 5 — es obligatorio para cualquier permiso que no sea solo lectura.",
+    "cta_h3": "¿Listo para conectar tu clave?",
+    "cta_p": "Vuelve al panel de control y termina la configuración en menos de un minuto.",
+    "cta_btn": "⬇ Volver a JaviD Future Bot",
+    "footer_home": "Inicio",
+    "footer_results": "Resultados Reales",
+    "footer_manual": "Manual de Usuario",
+    "footer_features": "Funciones",
+    "footer_board": "Foro de la Comunidad",
+    "footer_contact": "Contacto",
+  },
+  fr: {
+    "nav_features": "Fonctionnalités",
+    "nav_how_it_works": "Fonctionnement",
+    "nav_shadow_mode": "Shadow Mode",
+    "nav_real_results": "Résultats Réels",
+    "nav_user_manual": "Manuel Utilisateur",
+    "nav_new_to_binance": "Nouveau sur Binance ?",
+    "nav_community_board": "Forum Communautaire",
+    "nav_cta_download": "Télécharger Maintenant",
+    "tk1": "<b>Vous surveillez encore les graphiques et tradez toute la nuit ?</b><span>Laissez une stratégie conçue par IA juger et exécuter pour vous, 24h/24 et 7j/7.</span>",
+    "tk2": "<b>Vous n'êtes pas sûr de pouvoir faire confiance à un programme de trading automatique ?</b><span>Testez d'abord le Shadow Mode — passez en trading réel une fois que vous lui faites confiance.</span><small>Astuce : démarrez en réel avec 1000 USDT ou plus — des soldes plus faibles peuvent générer très peu d'entrées.</small>",
+    "tk3": "<b>Curieux de connaître le taux de réussite réel ?</b><span>Consultez les résultats de trading réels publiés sur ce site et jugez par vous-même.</span>",
+    "tk4": "<b>Vous ne tradez que les futures Bitcoin ?</b><span>Vous choisissez parmi plus de 500 futures USDⓈ-M, altcoins compris.</span>",
+    "tk5": "<b>Vous craignez la liquidation sur des futures à effet de levier ?</b><span>Chaque entrée est dimensionnée selon votre solde (1/300, 1/500 ou 1/700), ce qui garde les entrées petites.</span><small>La liquidation reste possible : les futures à effet de levier peuvent vous faire perdre tout votre capital.</small>",
+    "tk6": "<b>Vous pensez que votre capital de départ est trop petit ?</b><span>La taille d'entrée est recalculée chaque jour en fonction de votre solde réel — découvrez ce que fait la capitalisation composée.</span>",
+    "hero_kicker": "🧭 Guide de Configuration",
+    "hero_h1": "Comment Créer un Compte Binance et une Clé API Futures",
+    "hero_sub": "Tout ce dont vous avez besoin avant votre premier trade avec JaviD Future Bot — inscription du compte, vérification d'identité, activation des Futures, et génération d'une clé API avec les bonnes permissions.",
+    "hero_updated": "Rédigé pour le parcours web actuel de Binance · Dernière vérification en juillet 2026",
+    "toc_title": "Sur cette page",
+    "toc1": "Créer votre compte Binance",
+    "toc2": "Compléter la vérification d'identité (KYC)",
+    "toc3": "Activer votre compte Futures",
+    "toc4": "Créer votre clé API",
+    "toc5": "Définir les bonnes permissions (l'étape que tout le monde oublie)",
+    "toc6": "La connecter à JaviD Future Bot",
+    "toc7": "La faire tourner 24/7 (VM cloud ou mini PC)",
+    "toc8": "Dépannage &amp; FAQ",
+    "p1_h2": "Créez Votre Compte Binance",
+    "p1_p1": "L'inscription prend environ 5 minutes. Inscrivez-vous sur la page d'inscription officielle de Binance, dont le lien figure ci-dessous.",
+    "p1_callout1": "<b>Vous n'avez pas encore de compte ?</b> Inscrivez-vous sur la page d'inscription officielle de Binance.",
+    "p1_cta": "Créer un Compte →",
+    "p1_step1": "<b>Allez sur binance.com et cliquez sur Register (S'inscrire).</b><small>Vous pouvez vous inscrire avec une adresse e-mail, un numéro de téléphone, ou en continuant avec votre compte Google/Apple.</small>",
+    "p1_step2": "<b>Définissez votre mot de passe.</b><small>Minimum 8 caractères avec au moins une majuscule et un chiffre — nous vous recommandons d'ajouter aussi un symbole pour un mot de passe plus fort.</small>",
+    "p1_step3": "<b>Saisissez le code de vérification à 6 chiffres</b> envoyé à votre e-mail ou téléphone.<small>Le code est limité dans le temps (généralement environ 30 minutes), vérifiez donc immédiatement votre boîte de réception/dossier spam.</small>",
+    "p1_step4": "<b>Activez immédiatement l'authentification à deux facteurs (2FA)</b> depuis les paramètres de sécurité de votre compte.<small>Google Authenticator ou une Passkey fonctionnent tous les deux. Vous aurez besoin du 2FA activé plus tard pour créer une clé API.</small>",
+    "p1_tip": "<b>Astuce :</b> Utilisez un gestionnaire de mots de passe et un e-mail dédié pour les comptes d'exchange — c'est le moyen le plus simple d'éviter le phishing de prise de contrôle de compte.",
+    "p2_h2": "Complétez la Vérification d'Identité (KYC)",
+    "p2_p1": "L'inscription seule ne débloque pas le trading. Vous avez besoin de la vérification d'identité avant de pouvoir déposer des montants significatifs ou trader les Futures.",
+    "p2_step1": "<b>Ouvrez votre menu de profil → Identification.</b><small>Sélectionnez votre pays/région de résidence et le type de document d'identité (carte d'identité nationale, permis de conduire ou passeport).</small>",
+    "p2_step2": "<b>Téléchargez des photos de votre pièce d'identité</b>, puis effectuez la vérification faciale (un rapide contrôle selfie/détection de vivacité).",
+    "p2_step3": "<b>Attendez l'approbation</b> — cela prend généralement 5 à 15 minutes. Le statut de votre profil passe d'<i>Unverified (Non vérifié)</i> à <i>Verified (Vérifié)</i> une fois approuvé.",
+    "p2_warn": "<b>Remarque :</b> Certaines permissions API de niveau supérieur nécessitent désormais le niveau d'identité « Verified Plus » plutôt que la vérification de base. Si votre page API Management (Gestion des API) affiche des restrictions que vous ne pouvez pas lever, vérifiez si votre compte a besoin de cette étape de vérification supplémentaire.",
+    "p3_h2": "Activez Votre Compte Futures — Avant de Créer une Clé API",
+    "p3_p1": "Cette étape est facile à faire dans le mauvais ordre, et le faire dans le mauvais ordre est de loin l'erreur de configuration la plus courante.",
+    "p3_step1": "<b>Ouvrez le menu [Futures]</b> depuis la navigation du haut.",
+    "p3_step2": "<b>Complétez le questionnaire de risque sur les futures</b> si c'est votre première fois — un court quiz confirmant que vous comprenez le risque du trading à effet de levier.",
+    "p3_step3": "<b>Activez votre compte Futures USDⓈ-M.</b><small>Une fois activé, vous verrez un portefeuille Futures aux côtés de votre portefeuille Spot.</small>",
+    "p3_danger": "<b>Faites ceci avant la Partie 4 :</b> si votre clé API existait déjà avant que vous n'activiez les Futures (ou si vous avez le Portfolio Margin activé), cette clé ne pourra jamais obtenir la permission Futures — vous devrez la supprimer et en créer une nouvelle. Activez d'abord les Futures, la clé API en second.",
+    "p4_h2": "Créez Votre Clé API",
+    "p4_p1": "Avant de pouvoir créer une clé, Binance exige : le 2FA activé, au moins un dépôt symbolique dans votre portefeuille Spot (pour activer le compte), et la vérification d'identité complétée — tout cela couvert dans les Parties 1–2.",
+    "p4_step1": "<b>Icône de profil → Account (Compte) → API Management (Gestion des API).</b>",
+    "p4_step2": "<b>Cliquez sur Create API (Créer une API)</b>, puis choisissez <b>System generated (Généré par le système)</b>.<small>Cela utilise l'authentification HMAC standard et vous donne une API Key (Clé API) + Secret Key (Clé secrète) — la paire attendue par JaviD Future Bot.</small>",
+    "p4_step3": "<b>Donnez-lui une étiquette</b>, par ex. <code>JaviD-Bot</code>, pour pouvoir la reconnaître plus tard.",
+    "p4_step4": "<b>Vérifiez avec le 2FA</b> (code de l'authentificateur, passkey, ou confirmation par e-mail).",
+    "p4_step5": "<b>Votre clé est créée</b> — mais par défaut elle ne peut que lire les données. Passez à la Partie 5 avant de l'utiliser.",
+    "p5_h2": "Définissez les Bonnes Permissions",
+    "p5_p1": "Une clé fraîchement créée est par défaut réglée uniquement sur <b>Enable Reading (Activer la lecture)</b>. Pour permettre à JaviD Future Bot de passer des ordres — et rien de plus que cela — vous devez modifier la clé et cocher exactement trois cases.",
+    "p5_tip_title": "✅ Cochez exactement ces trois cases, rien d'autre :",
+    "p5_tip_li1": "Enable Reading (Activer la lecture) <small style=\"color:var(--faint);\">(déjà activé par défaut)</small>",
+    "p5_tip_li2": "Enable Spot &amp; Margin &amp; Stock Trading (Activer le trading Spot, Marge et Actions)",
+    "p5_tip_li3": "Enable Futures (Activer les Futures)",
+    "p5_danger_title": "❌ Laissez toutes les autres cases décochées :",
+    "p5_danger_list": "Enable Margin Loan, Repay &amp; Transfer (Activer l'emprunt, le remboursement et le transfert de marge) · Permits Universal Transfer (Autoriser le transfert universel) · Enable Withdrawals (Activer les retraits) · Enable Prediction Trading (Activer le trading de prédiction) · Enable Symbol Whitelist (Activer la liste blanche de symboles).",
+    "p5_danger_p": "Aucune de ces options n'est nécessaire pour que JaviD Future Bot puisse trader. Les laisser désactivées signifie que même dans le pire des scénarios où votre clé API serait exposée, personne ne pourrait sortir de fonds de l'exchange, transférer entre portefeuilles, ni toucher à quoi que ce soit au-delà de passer et gérer des trades sur les futures — vos actifs restent les vôtres.",
+    "p5_step1": "<b>Ajoutez une restriction d'IP — c'est obligatoire, pas optionnel.</b><small>Depuis un changement de politique de janvier 2023, Binance n'accordera aucune permission au-delà de la lecture seule sauf si la clé est restreinte à des IP spécifiques. Choisissez « Restrict access to trusted IPs only » (Restreindre l'accès aux seules IP de confiance) et saisissez l'adresse IPv4 publique de la machine qui exécutera le bot (recherchez « what is my ip », ou utilisez le bouton intégré de JaviD « Run Connection Diagnostics » (Exécuter le diagnostic de connexion), qui la détecte et vous la communique automatiquement).</small>",
+    "p5_step2": "<b>Laissez « Enable Withdrawals » (Activer les retraits) sur OFF.</b><small>Un bot de trading n'a jamais besoin de la permission de retrait. Si quoi que ce soit que vous configurez vous demande d'activer cette option, arrêtez-vous et reconsidérez.</small>",
+    "p5_step3": "<b>Enregistrez, puis attendez 5 à 10 minutes</b> que le changement de liste blanche d'IP se propage entièrement avant de tester la connexion.",
+    "p5_warn": "<b>Copiez votre Secret Key (Clé secrète) maintenant :</b> elle n'est affichée qu'une seule fois. Si vous quittez la page sans l'avoir enregistrée, vous devrez supprimer la clé et en générer une nouvelle.",
+    "p6_h2": "Connectez-la à JaviD Future Bot",
+    "p6_step1": "<b>Lancez JaviD Future Bot</b> — votre navigateur s'ouvre automatiquement sur le tableau de bord.",
+    "p6_step2": "<b>Allez dans l'onglet Settings (Paramètres)</b> et collez votre Access Key (Clé d'accès) et votre Secret Key (Clé secrète).<small>Attention aux espaces accidentels en début/fin lors du collage.</small>",
+    "p6_step3": "<b>Cliquez sur Save (Enregistrer), puis sur Test Connection (Tester la connexion).</b> Une coche verte signifie que vous êtes prêt.",
+    "p6_step4": "<b>Activez le Shadow Mode</b> et vérifiez le comportement du bot pendant quelques jours avant de passer au trading réel.",
+    "p7_h2": "Faites-le Tourner 24/7",
+    "p7_p1": "JaviD Future Bot ne trade que pendant qu'il tourne réellement — le marché des futures de Binance ne ferme jamais, donc la machine qui exécute le bot doit rester allumée et connectée 24 heures sur 24, 365 jours par an. Votre ordinateur portable habituel convient pour un premier test, mais la plupart des utilisateurs passent à l'une de ces deux configurations une fois en réel :",
+    "p7_step1": "<b>Une machine virtuelle dans le cloud</b> (Amazon AWS EC2, ou tout fournisseur VPS comparable).<small>Louée au mois, toujours allumée, accessible à distance depuis n'importe où, et vous n'avez pas besoin de laisser votre ordinateur portable personnel allumé ni de vous soucier qu'il se mette en veille, se mette à jour ou perde l'alimentation. Une instance petite/d'entrée de gamme suffit — le bot lui-même est très léger.</small>",
+    "p7_step2": "<b>Un mini PC dédié ou un ordinateur de bureau de rechange, laissé allumé à la maison.</b><small>Un mini PC de classe Intel NUC (ou toute machine toujours allumée dont vous n'avez pas besoin par ailleurs) consomme très peu d'énergie, reste silencieux, et peut être branché sur un onduleur (UPS) pour survivre aux courtes coupures. Assurez-vous simplement que la mise en veille/hibernation de Windows est désactivée et que la connexion internet est stable.</small>",
+    "p7_tip": "<b>Les deux options fonctionnent aussi bien l'une que l'autre.</b> Les seules exigences sont : que la machine reste allumée, reste connectée à internet, et (selon la Partie 5) que son adresse IP soit sur liste blanche sur votre clé API Binance. Si vous déplacez le bot vers une nouvelle machine ou si votre IP change, mettez simplement à jour la restriction d'IP sur la clé.",
+    "p7_warn": "<b>Rappel :</b> si la machine redémarre ou perd l'alimentation alors qu'une position est ouverte, fermez cette position manuellement depuis l'application Binance, dans Futures, avant de redémarrer le bot — voir le <a href=\"manual.html\">Manuel Utilisateur</a> pour plus de détails.",
+    "faq_h2": "Dépannage &amp; FAQ",
+    "faq_th1": "Symptôme",
+    "faq_th2": "Cause / Solution",
+    "faq_q1": "Erreur HTTP 451",
+    "faq_a1": "Binance bloque l'accès à l'API Futures depuis certaines régions, y compris les IP coréennes. Exécutez le bot depuis un VPS à l'étranger ou via un VPN.",
+    "faq_q2": "Erreur -2015 lors du Test Connection",
+    "faq_a2": "Votre restriction d'IP ne s'est pas encore propagée, ou vous avez saisi la mauvaise IP. Attendez 5 à 10 minutes et revérifiez l'adresse.",
+    "faq_q3": "Combien puis-je perdre ?",
+    "faq_a3": "<b class=\"text-slate-800\">La totalité de ce que vous déposez.</b> Ce sont des futures à effet de levier sur un exchange réel : une position peut être liquidée et votre dépôt peut tomber à zéro. Chaque ordre part de votre propre appareil avec votre propre clé API — le compte, les fonds et le résultat restent les vôtres. Vous pouvez le lancer sans connecter la moindre clé API : le Mode Shadow trade les prix réels en temps réel sur un solde virtuel, pour que vous voyiez comment il se comporte avant d'engager de l'argent réel.",
+    "faq_q4": "Erreur d'horodatage (Timestamp) -1021",
+    "faq_a4": "L'horloge de votre PC a dérivé. Activez la synchronisation automatique de l'heure dans les paramètres Windows.",
+    "faq_q5": "Impossible d'activer la permission Futures sur la clé",
+    "faq_a5": "La clé a été créée avant que votre compte Futures ne soit activé (voir Partie 3). Supprimez-la et créez-en une nouvelle, dans le bon ordre.",
+    "faq_q6": "Impossible d'activer une permission au-delà de Read (Lecture)",
+    "faq_a6": "Vous avez sauté l'étape de restriction d'IP de la Partie 5 — elle est obligatoire pour toute permission autre que la lecture seule.",
+    "cta_h3": "Prêt à connecter votre clé ?",
+    "cta_p": "Retournez au tableau de bord et terminez la configuration en moins d'une minute.",
+    "cta_btn": "⬇ Retour à JaviD Future Bot",
+    "footer_home": "Accueil",
+    "footer_results": "Résultats Réels",
+    "footer_manual": "Manuel Utilisateur",
+    "footer_features": "Fonctionnalités",
+    "footer_board": "Forum Communautaire",
+    "footer_contact": "Contact",
+  },
+vi: {
+  "nav_features": "Tính năng",
+  "nav_how_it_works": "Cách hoạt động",
+  "nav_shadow_mode": "Chế độ Shadow",
+  "nav_real_results": "Kết quả thực tế",
+  "nav_user_manual": "Hướng dẫn sử dụng",
+  "nav_new_to_binance": "Mới với Binance?",
+  "nav_community_board": "Bảng cộng đồng",
+  "nav_cta_download": "Tải xuống ngay",
+  "tk1": "<b>Vẫn đang thức đêm theo dõi biểu đồ và giao dịch?</b><span>Hãy để một chiến lược được xây dựng bằng AI phán đoán và thực thi thay bạn, 24/7.</span>",
+  "tk2": "<b>Chưa chắc có thể tin tưởng một chương trình giao dịch tự động?</b><span>Hãy chạy Chế độ Shadow trước — chuyển sang giao dịch thực khi bạn đã tin tưởng nó.</span><small>Mẹo: bắt đầu giao dịch thực với 1000+ USDT — số dư nhỏ hơn có thể chỉ thấy rất ít lệnh vào.</small>",
+  "tk3": "<b>Tò mò tỷ lệ thắng thực tế trông như thế nào?</b><span>Xem kết quả giao dịch thực tế trên trang web này và tự đánh giá.</span>",
+  "tk4": "<b>Chỉ giao dịch hợp đồng tương lai Bitcoin?</b><span>Bạn tự chọn trong hơn 500 hợp đồng USDⓈ-M, bao gồm cả altcoin.</span>",
+  "tk5": "<b>Lo lắng về việc bị thanh lý khi giao dịch tương lai đòn bẩy?</b><span>Mỗi lệnh vào được tính theo số dư (1/300, 1/500 hoặc 1/700), nên mỗi lệnh đều nhỏ.</span><small>Vẫn có thể bị thanh lý — hợp đồng tương lai đòn bẩy có thể khiến bạn mất toàn bộ vốn.</small>",
+  "tk6": "<b>Nghĩ rằng số vốn ban đầu của bạn quá nhỏ?</b><span>Kích thước lệnh vào được điều chỉnh lại mỗi ngày dựa trên số dư thực của bạn — hãy cảm nhận sức mạnh của lãi kép.</span>",
+  "hero_kicker": "🧭 Hướng dẫn thiết lập",
+  "hero_h1": "Cách tạo tài khoản Binance &amp; khóa API Futures",
+  "hero_sub": "Mọi thứ bạn cần trước giao dịch đầu tiên với JaviD Future Bot — đăng ký tài khoản, xác minh danh tính, kích hoạt Futures và tạo khóa API với đúng quyền hạn.",
+  "hero_updated": "Viết dựa trên quy trình web hiện tại của Binance · Cập nhật lần cuối tháng 7/2026",
+  "toc_title": "Trong trang này",
+  "toc1": "Tạo tài khoản Binance của bạn",
+  "toc2": "Hoàn tất xác minh danh tính (KYC)",
+  "toc3": "Kích hoạt tài khoản Futures của bạn",
+  "toc4": "Tạo khóa API của bạn",
+  "toc5": "Thiết lập đúng quyền hạn (bước mọi người hay bỏ sót)",
+  "toc6": "Kết nối với JaviD Future Bot",
+  "toc7": "Duy trì hoạt động 24/7 (máy chủ ảo đám mây hoặc mini PC)",
+  "toc8": "Khắc phục sự cố &amp; Câu hỏi thường gặp",
+  "p1_h2": "Tạo tài khoản Binance của bạn",
+  "p1_p1": "Đăng ký chỉ mất khoảng 5 phút. Hãy đăng ký trên trang đăng ký chính thức của Binance được liên kết bên dưới.",
+  "p1_callout1": "<b>Chưa có tài khoản?</b> Đăng ký trên trang đăng ký chính thức của Binance.",
+  "p1_cta": "Tạo tài khoản →",
+  "p1_step1": "<b>Truy cập binance.com và nhấn Đăng ký.</b><small>Bạn có thể đăng ký bằng email, số điện thoại, hoặc tiếp tục bằng tài khoản Google/Apple.</small>",
+  "p1_step2": "<b>Đặt mật khẩu của bạn.</b><small>Tối thiểu 8 ký tự, có ít nhất một chữ hoa và một số — chúng tôi khuyên bạn nên thêm cả ký hiệu để mật khẩu mạnh hơn.</small>",
+  "p1_step3": "<b>Nhập mã xác minh 6 chữ số</b> được gửi đến email hoặc điện thoại của bạn.<small>Mã có thời hạn sử dụng (thường khoảng 30 phút), vì vậy hãy kiểm tra hộp thư đến/thư rác ngay.</small>",
+  "p1_step4": "<b>Bật Xác thực hai yếu tố (2FA) ngay lập tức</b> từ phần cài đặt bảo mật tài khoản.<small>Google Authenticator hoặc Passkey đều hoạt động tốt. Bạn sẽ cần bật 2FA sau này để tạo khóa API.</small>",
+  "p1_tip": "<b>Mẹo:</b> Sử dụng trình quản lý mật khẩu và một email riêng cho các tài khoản sàn giao dịch — đây là cách đơn giản nhất để tránh bị lừa đảo chiếm đoạt tài khoản.",
+  "p2_h2": "Hoàn tất xác minh danh tính (KYC)",
+  "p2_p1": "Chỉ đăng ký thôi thì chưa mở khóa được giao dịch. Bạn cần xác minh danh tính trước khi có thể nạp tiền đáng kể hoặc giao dịch Futures.",
+  "p2_step1": "<b>Mở menu hồ sơ → Xác minh danh tính.</b><small>Chọn quốc gia/khu vực cư trú của bạn và loại giấy tờ tùy thân (chứng minh nhân dân/căn cước, giấy phép lái xe, hoặc hộ chiếu).</small>",
+  "p2_step2": "<b>Tải lên ảnh giấy tờ tùy thân của bạn</b>, sau đó hoàn tất xác minh khuôn mặt (chụp ảnh selfie/kiểm tra sống nhanh).",
+  "p2_step3": "<b>Chờ được phê duyệt</b> — thường mất khoảng 5–15 phút. Trạng thái hồ sơ của bạn sẽ chuyển từ <i>Chưa xác minh</i> sang <i>Đã xác minh</i> sau khi được duyệt.",
+  "p2_warn": "<b>Lưu ý:</b> Một số quyền API cấp cao hơn hiện yêu cầu mức xác minh danh tính \"Verified Plus\" thay vì xác minh cơ bản. Nếu trang Quản lý API của bạn hiển thị các hạn chế mà bạn không thể gỡ bỏ, hãy kiểm tra xem tài khoản của bạn có cần bước xác minh bổ sung hay không.",
+  "p3_h2": "Kích hoạt tài khoản Futures của bạn — Trước khi tạo khóa API",
+  "p3_p1": "Bước này rất dễ bị thực hiện sai thứ tự, và việc làm sai thứ tự chính là lỗi thiết lập phổ biến nhất.",
+  "p3_step1": "<b>Mở menu [Futures]</b> từ thanh điều hướng phía trên.",
+  "p3_step2": "<b>Hoàn thành bảng câu hỏi đánh giá rủi ro futures</b> nếu đây là lần đầu tiên bạn thực hiện — một bài khảo sát ngắn xác nhận bạn hiểu rõ rủi ro giao dịch đòn bẩy.",
+  "p3_step3": "<b>Kích hoạt tài khoản Futures USDⓈ-M của bạn.</b><small>Sau khi kích hoạt, bạn sẽ thấy ví Futures bên cạnh ví Spot.</small>",
+  "p3_danger": "<b>Hãy làm điều này trước Phần 4:</b> nếu khóa API của bạn đã tồn tại trước khi bạn kích hoạt Futures (hoặc nếu bạn đã bật Portfolio Margin), khóa đó sẽ không bao giờ có thể được cấp quyền Futures — bạn sẽ phải xóa nó và tạo một khóa mới. Kích hoạt Futures trước, tạo khóa API sau.",
+  "p4_h2": "Tạo khóa API của bạn",
+  "p4_p1": "Trước khi có thể tạo khóa, Binance yêu cầu: đã bật 2FA, đã nạp ít nhất một khoản nhỏ vào ví Spot (để kích hoạt tài khoản), và đã hoàn tất xác minh danh tính — tất cả đều đã được đề cập trong Phần 1–2.",
+  "p4_step1": "<b>Biểu tượng hồ sơ → Tài khoản → Quản lý API.</b>",
+  "p4_step2": "<b>Nhấn Tạo API</b>, sau đó chọn <b>Hệ thống tự tạo</b>.<small>Cách này sử dụng xác thực HMAC tiêu chuẩn và cung cấp cho bạn API Key + Secret Key — cặp khóa mà JaviD Future Bot yêu cầu.</small>",
+  "p4_step3": "<b>Đặt tên nhãn cho khóa</b>, ví dụ <code>JaviD-Bot</code>, để bạn dễ nhận ra sau này.",
+  "p4_step4": "<b>Xác minh bằng 2FA</b> (mã xác thực, passkey, hoặc xác nhận qua email).",
+  "p4_step5": "<b>Khóa của bạn đã được tạo</b> — nhưng mặc định nó chỉ có thể đọc dữ liệu. Hãy tiếp tục đến Phần 5 trước khi sử dụng.",
+  "p5_h2": "Thiết lập đúng quyền hạn",
+  "p5_p1": "Một khóa vừa tạo mặc định chỉ có <b>Enable Reading</b>. Để cho phép JaviD Future Bot đặt lệnh — và không hơn thế — bạn cần chỉnh sửa khóa và tích chọn đúng ba ô.",
+  "p5_tip_title": "✅ Chỉ tích chọn đúng ba mục này, không gì khác:",
+  "p5_tip_li1": "Enable Reading <small style=\"color:var(--faint);\">(đã bật sẵn theo mặc định)</small>",
+  "p5_tip_li2": "Enable Spot &amp; Margin &amp; Stock Trading",
+  "p5_tip_li3": "Enable Futures",
+  "p5_danger_title": "❌ Để tất cả các ô còn lại ở trạng thái chưa tích:",
+  "p5_danger_list": "Enable Margin Loan, Repay &amp; Transfer · Permits Universal Transfer · Enable Withdrawals · Enable Prediction Trading · Enable Symbol Whitelist.",
+  "p5_danger_p": "Không mục nào trong số này cần thiết để JaviD Future Bot giao dịch. Để chúng ở trạng thái tắt nghĩa là ngay cả trong trường hợp xấu nhất khi khóa API của bạn bị lộ, sẽ không ai có thể rút tiền ra khỏi sàn, chuyển tiền giữa các ví, hoặc chạm vào bất cứ thứ gì ngoài việc đặt và quản lý lệnh futures — tài sản của bạn vẫn thuộc về bạn.",
+  "p5_step1": "<b>Thêm giới hạn IP — đây là bắt buộc, không phải tùy chọn.</b><small>Kể từ thay đổi chính sách vào tháng 1/2023, Binance sẽ không cấp bất kỳ quyền nào ngoài chỉ-đọc trừ khi khóa được giới hạn cho các IP cụ thể. Chọn \"Restrict access to trusted IPs only\" và nhập địa chỉ IPv4 công khai của máy sẽ chạy bot (tìm kiếm \"what is my ip\", hoặc dùng nút \"Run Connection Diagnostics\" tích hợp sẵn của JaviD, nút này sẽ tự phát hiện và báo cho bạn).</small>",
+  "p5_step2": "<b>Giữ \"Enable Withdrawals\" ở trạng thái TẮT.</b><small>Một bot giao dịch không bao giờ cần quyền rút tiền. Nếu bất kỳ cài đặt nào yêu cầu bạn bật mục này, hãy dừng lại và cân nhắc kỹ.</small>",
+  "p5_step3": "<b>Lưu lại, sau đó chờ 5–10 phút</b> để thay đổi danh sách IP được phép hoàn tất trước khi kiểm tra kết nối.",
+  "p5_warn": "<b>Hãy sao chép Secret Key ngay bây giờ:</b> nó chỉ được hiển thị đúng một lần. Nếu bạn rời khỏi trang mà chưa lưu lại, bạn sẽ phải xóa khóa đó và tạo một khóa mới.",
+  "p6_h2": "Kết nối với JaviD Future Bot",
+  "p6_step1": "<b>Khởi chạy JaviD Future Bot</b> — trình duyệt của bạn sẽ tự động mở bảng điều khiển.",
+  "p6_step2": "<b>Vào tab Cài đặt</b> và dán Access Key và Secret Key của bạn vào.<small>Chú ý tránh dấu cách vô tình ở đầu/cuối khi dán.</small>",
+  "p6_step3": "<b>Nhấn Lưu, sau đó Kiểm tra kết nối.</b> Dấu tích xanh nghĩa là bạn đã sẵn sàng.",
+  "p6_step4": "<b>Bật Chế độ Shadow</b> và theo dõi hành vi của bot trong vài ngày trước khi chuyển sang giao dịch thực.",
+  "p7_h2": "Duy trì hoạt động 24/7",
+  "p7_p1": "JaviD Future Bot chỉ giao dịch khi nó thực sự đang chạy — thị trường futures của Binance không bao giờ đóng cửa, vì vậy máy chạy bot cần được bật nguồn và kết nối liên tục 24 giờ một ngày, 365 ngày một năm. Laptop hàng ngày của bạn hoạt động tốt cho lần thử nghiệm đầu tiên, nhưng hầu hết người dùng chuyển sang một trong hai thiết lập sau khi bắt đầu giao dịch thực:",
+  "p7_step1": "<b>Một máy chủ ảo trên đám mây</b> (Amazon AWS EC2, hoặc bất kỳ nhà cung cấp VPS tương đương nào).<small>Thuê theo tháng, luôn bật, có thể truy cập từ xa từ bất kỳ đâu, và không cần để laptop cá nhân chạy liên tục hay lo lắng về việc nó bị ngủ, cập nhật, hoặc mất điện. Một gói dịch vụ nhỏ/cấp thấp là đủ — bản thân bot rất nhẹ.</small>",
+  "p7_step2": "<b>Một mini PC chuyên dụng hoặc máy tính để bàn dự phòng, để bật ở nhà.</b><small>Một mini PC dạng Intel NUC (hoặc bất kỳ máy nào luôn bật mà bạn không dùng vào việc khác) tiêu thụ rất ít điện, hoạt động êm ái, và có thể cắm vào UPS để chịu được các lần mất điện ngắn. Chỉ cần đảm bảo chế độ ngủ/ngủ đông của Windows đã bị tắt và kết nối internet ổn định.</small>",
+  "p7_tip": "<b>Cả hai lựa chọn đều hoạt động tốt như nhau.</b> Yêu cầu duy nhất là: máy luôn bật nguồn, luôn kết nối internet, và (theo Phần 5) có địa chỉ IP được đưa vào danh sách được phép trên khóa API Binance của bạn. Nếu bạn chuyển bot sang máy mới hoặc IP của bạn thay đổi, chỉ cần cập nhật lại giới hạn IP trên khóa.",
+  "p7_warn": "<b>Lưu ý:</b> nếu máy khởi động lại hoặc mất điện trong khi có một vị thế đang mở, hãy đóng vị thế đó thủ công từ ứng dụng Binance trong mục Futures trước khi khởi động lại bot — xem <a href=\"manual.html\">Hướng dẫn sử dụng</a> để biết chi tiết.",
+  "faq_h2": "Khắc phục sự cố &amp; Câu hỏi thường gặp",
+  "faq_th1": "Triệu chứng",
+  "faq_th2": "Nguyên nhân / Cách khắc phục",
+  "faq_q1": "Lỗi HTTP 451",
+  "faq_a1": "Binance chặn quyền truy cập API Futures từ một số khu vực, bao gồm cả IP Hàn Quốc. Hãy chạy bot từ một VPS ở nước ngoài hoặc thông qua VPN.",
+  "faq_q2": "Lỗi -2015 khi Kiểm tra kết nối",
+  "faq_a2": "Giới hạn IP của bạn chưa được cập nhật xong, hoặc bạn đã nhập sai IP. Chờ 5–10 phút và kiểm tra lại địa chỉ.",
+  "faq_q3": "Tôi có thể mất bao nhiêu?",
+  "faq_a3": "<b class=\"text-slate-800\">Toàn bộ số tiền bạn nạp vào.</b> Đây là hợp đồng tương lai có đòn bẩy trên sàn thật — một vị thế có thể bị thanh lý và số tiền ký quỹ của bạn có thể về 0. Mọi lệnh đều được gửi từ chính thiết bị của bạn bằng API key của bạn, nên tài khoản, tiền và kết quả đều là của bạn. Bạn có thể chạy mà không cần kết nối API key nào: Shadow Mode giao dịch theo giá thật theo thời gian thực trên số dư ảo, để bạn xem nó chạy ra sao trước khi bỏ tiền thật vào.",
+  "faq_q4": "Lỗi dấu thời gian -1021",
+  "faq_a4": "Đồng hồ máy tính của bạn bị lệch. Hãy bật đồng bộ thời gian tự động trong cài đặt Windows.",
+  "faq_q5": "Không thể bật quyền Futures cho khóa",
+  "faq_a5": "Khóa được tạo trước khi tài khoản Futures của bạn được kích hoạt (xem Phần 3). Hãy xóa nó và tạo một khóa mới, theo đúng thứ tự.",
+  "faq_q6": "Không thể bật bất kỳ quyền nào ngoài Đọc",
+  "faq_a6": "Bạn đã bỏ qua bước giới hạn IP ở Phần 5 — bước này bắt buộc cho bất kỳ quyền nào không phải chỉ-đọc.",
+  "cta_h3": "Sẵn sàng kết nối khóa của bạn?",
+  "cta_p": "Quay lại bảng điều khiển và hoàn tất thiết lập trong chưa đầy một phút.",
+  "cta_btn": "⬇ Quay lại JaviD Future Bot",
+  "footer_home": "Trang chủ",
+  "footer_results": "Kết quả thực tế",
+  "footer_manual": "Hướng dẫn sử dụng",
+  "footer_features": "Tính năng",
+  "footer_board": "Bảng cộng đồng",
+  "footer_contact": "Liên hệ",
+},
+tr: {
+  "nav_features": "Özellikler",
+  "nav_how_it_works": "Nasıl Çalışır",
+  "nav_shadow_mode": "Gölge Modu",
+  "nav_real_results": "Gerçek Sonuçlar",
+  "nav_user_manual": "Kullanım Kılavuzu",
+  "nav_new_to_binance": "Binance'e Yeni misiniz?",
+  "nav_community_board": "Topluluk Panosu",
+  "nav_cta_download": "Şimdi İndir",
+  "tk1": "<b>Hâlâ geceleri grafik izleyip işlem mi yapıyorsunuz?</b><span>Sizin için 7/24 karar veren ve işlem yapan bir yapay zeka stratejisine bırakın.</span>",
+  "tk2": "<b>Otomatik işlem programına güvenip güvenemeyeceğinizden emin değil misiniz?</b><span>Önce Gölge Modu'nu çalıştırın — ona güvendiğinizde canlı işleme geçin.</span><small>İpucu: canlıya 1000+ USDT ile başlayın — daha küçük bakiyelerde çok az işlem sinyali görülebilir.</small>",
+  "tk3": "<b>Gerçek kazanma oranının nasıl göründüğünü merak mı ediyorsunuz?</b><span>Bu sitedeki gerçek işlem sonuçlarını inceleyin ve kendiniz karar verin.</span>",
+  "tk4": "<b>Sadece Bitcoin vadeli işlem mi yapıyorsunuz?</b><span>Altcoinler dahil 500'den fazla USDⓈ-M vadeli işlem arasından kendiniz seçersiniz.</span>",
+  "tk5": "<b>Kaldıraçlı vadeli işlemlerde tasfiye (likidasyon) riskinden mi endişeleniyorsunuz?</b><span>Her giriş bakiyenize göre (1/300, 1/500 veya 1/700) boyutlandırılır, bu da girişleri küçük tutar.</span><small>Tasfiye yine de mümkündür — kaldıraçlı vadeli işlemler tüm sermayenizi kaybettirebilir.</small>",
+  "tk6": "<b>Başlangıç miktarınızın çok küçük olduğunu mu düşünüyorsunuz?</b><span>Giriş büyüklüğü, canlı bakiyenize göre her gün yeniden ayarlanır — bileşik büyümenin gücünü hissedin.</span>",
+  "hero_kicker": "🧭 Kurulum Kılavuzu",
+  "hero_h1": "Binance Hesabı &amp; Vadeli İşlem API Anahtarı Nasıl Oluşturulur",
+  "hero_sub": "JaviD Future Bot ile ilk işleminizden önce ihtiyacınız olan her şey — hesap kaydı, kimlik doğrulama, Vadeli İşlemleri etkinleştirme ve doğru izinlere sahip bir API anahtarı oluşturma.",
+  "hero_updated": "Güncel Binance web akışına göre yazılmıştır · Son kontrol: Temmuz 2026",
+  "toc_title": "Bu sayfada",
+  "toc1": "Binance hesabınızı oluşturun",
+  "toc2": "Kimlik doğrulamasını (KYC) tamamlayın",
+  "toc3": "Vadeli İşlemler hesabınızı etkinleştirin",
+  "toc4": "API anahtarınızı oluşturun",
+  "toc5": "Doğru izinleri ayarlayın (insanların atladığı adım)",
+  "toc6": "JaviD Future Bot'a bağlayın",
+  "toc7": "7/24 çalışır durumda tutun (bulut sanal makine veya mini PC)",
+  "toc8": "Sorun Giderme &amp; SSS",
+  "p1_h2": "Binance Hesabınızı Oluşturun",
+  "p1_p1": "Kayıt işlemi yaklaşık 5 dakika sürer. Aşağıda bağlantısı verilen resmi Binance kayıt sayfasından kaydolun.",
+  "p1_callout1": "<b>Henüz hesabınız yok mu?</b> Resmi Binance kayıt sayfasından kaydolun.",
+  "p1_cta": "Hesap Oluştur →",
+  "p1_step1": "<b>binance.com adresine gidin ve Kayıt Ol'a tıklayın.</b><small>E-posta adresi, telefon numarası ile kaydolabilir veya Google/Apple hesabınızla devam edebilirsiniz.</small>",
+  "p1_step2": "<b>Şifrenizi belirleyin.</b><small>En az 8 karakter, en az bir büyük harf ve bir rakam içermeli — daha güçlü bir şifre için bir sembol eklemenizi de öneririz.</small>",
+  "p1_step3": "<b>E-postanıza veya telefonunuza gönderilen 6 haneli doğrulama kodunu girin.</b><small>Kodun süresi sınırlıdır (genellikle ~30 dakika), bu yüzden gelen kutunuzu/spam klasörünüzü hemen kontrol edin.</small>",
+  "p1_step4": "<b>Hesap güvenliği ayarlarınızdan İki Faktörlü Kimlik Doğrulamayı (2FA) hemen etkinleştirin.</b><small>Google Authenticator veya bir Passkey de işe yarar. API anahtarı oluşturmak için daha sonra 2FA'nın aktif olması gerekecek.</small>",
+  "p1_tip": "<b>İpucu:</b> Borsa hesaplarınız için bir şifre yöneticisi ve özel bir e-posta adresi kullanın — hesap ele geçirme amaçlı kimlik avından kaçınmanın en kolay yolu budur.",
+  "p2_h2": "Kimlik Doğrulamasını (KYC) Tamamlayın",
+  "p2_p1": "Sadece kayıt olmak işlem yapmanızı sağlamaz. Anlamlı miktarda para yatırabilmeniz veya Vadeli İşlem yapabilmeniz için önce kimlik doğrulaması yapmanız gerekir.",
+  "p2_step1": "<b>Profil menünüzü açın → Kimlik Doğrulama.</b><small>İkamet ettiğiniz ülkeyi/bölgeyi ve kimlik belgesi türünü (nüfus cüzdanı, ehliyet veya pasaport) seçin.</small>",
+  "p2_step2": "<b>Kimliğinizin fotoğraflarını yükleyin</b>, ardından yüz doğrulamasını (hızlı bir selfie/canlılık kontrolü) tamamlayın.",
+  "p2_step3": "<b>Onay bekleyin</b> — bu işlem genellikle 5–15 dakika içinde tamamlanır. Onaylandıktan sonra profil durumunuz <i>Doğrulanmadı</i>'dan <i>Doğrulandı</i>'ya değişir.",
+  "p2_warn": "<b>Not:</b> Bazı üst düzey API izinleri artık temel doğrulama yerine \"Verified Plus\" kimlik seviyesini gerektirmektedir. API Yönetimi sayfanız kaldıramadığınız kısıtlamalar gösteriyorsa, hesabınızın ek doğrulama adımına ihtiyacı olup olmadığını kontrol edin.",
+  "p3_h2": "Vadeli İşlemler Hesabınızı Etkinleştirin — API Anahtarı Oluşturmadan Önce",
+  "p3_p1": "Bu adım sırasının kolayca karıştırılabildiği bir adımdır ve bunu yanlış sırayla yapmak, en sık yapılan kurulum hatasıdır.",
+  "p3_step1": "<b>Üst gezinme menüsünden [Vadeli İşlemler] menüsünü açın.</b>",
+  "p3_step2": "<b>İlk kez yapıyorsanız vadeli işlem risk anketini tamamlayın.</b><small>Kaldıraçlı işlem riskini anladığınızı doğrulayan kısa bir anket.</small>",
+  "p3_step3": "<b>USDⓈ-M Vadeli İşlemler hesabınızı etkinleştirin.</b><small>Etkinleştirildikten sonra, Spot cüzdanınızın yanında bir Vadeli İşlemler cüzdanı göreceksiniz.</small>",
+  "p3_danger": "<b>Bunu Bölüm 4'ten önce yapın:</b> API anahtarınız Vadeli İşlemleri etkinleştirmenizden önce zaten oluşturulmuşsa (veya Portföy Marjini etkinse), bu anahtar hiçbir zaman Vadeli İşlem izni alamaz — silip yenisini oluşturmanız gerekir. Önce Vadeli İşlemleri etkinleştirin, sonra API anahtarını oluşturun.",
+  "p4_h2": "API Anahtarınızı Oluşturun",
+  "p4_p1": "Bir anahtar oluşturabilmeniz için Binance şunları gerektirir: 2FA etkin olmalı, Spot cüzdanınıza en azından sembolik bir miktar yatırılmış olmalı (hesabı etkinleştirmek için) ve kimlik doğrulaması tamamlanmış olmalı — bunların hepsi Bölüm 1–2'de ele alınmıştır.",
+  "p4_step1": "<b>Profil simgesi → Hesap → API Yönetimi.</b>",
+  "p4_step2": "<b>API Oluştur'a tıklayın</b>, ardından <b>Sistem tarafından oluşturulan</b> seçeneğini seçin.<small>Bu, standart HMAC kimlik doğrulamasını kullanır ve size bir API Anahtarı + Gizli Anahtar verir — JaviD Future Bot'un beklediği çift.</small>",
+  "p4_step3": "<b>Ona bir etiket verin</b>, örneğin <code>JaviD-Bot</code>, böylece daha sonra tanıyabilirsiniz.",
+  "p4_step4": "<b>2FA ile doğrulayın</b> (kimlik doğrulayıcı kodu, passkey veya e-posta onayı).",
+  "p4_step5": "<b>Anahtarınız oluşturuldu</b> — ancak varsayılan olarak yalnızca veri okuyabilir. Kullanmadan önce Bölüm 5'e devam edin.",
+  "p5_h2": "Doğru İzinleri Ayarlayın",
+  "p5_p1": "Yeni oluşturulan bir anahtar varsayılan olarak yalnızca <b>Enable Reading</b> iznine sahiptir. JaviD Future Bot'un emir vermesine — ve bundan fazlasına değil — izin vermek için anahtarı düzenlemeniz ve tam olarak üç kutuyu işaretlemeniz gerekir.",
+  "p5_tip_title": "✅ Sadece şu üçünü işaretleyin, başka hiçbir şeyi değil:",
+  "p5_tip_li1": "Enable Reading <small style=\"color:var(--faint);\">(varsayılan olarak zaten açık)</small>",
+  "p5_tip_li2": "Enable Spot &amp; Margin &amp; Stock Trading",
+  "p5_tip_li3": "Enable Futures",
+  "p5_danger_title": "❌ Diğer tüm kutuları işaretsiz bırakın:",
+  "p5_danger_list": "Enable Margin Loan, Repay &amp; Transfer · Permits Universal Transfer · Enable Withdrawals · Enable Prediction Trading · Enable Symbol Whitelist.",
+  "p5_danger_p": "Bunların hiçbiri JaviD Future Bot'un işlem yapması için gerekli değildir. Bunları kapalı bırakmak, API anahtarınızın en kötü senaryoda ele geçirilmesi durumunda bile, hiç kimsenin fonları borsadan çıkaramayacağı, cüzdanlar arasında transfer yapamayacağı veya vadeli işlem emirlerini vermek ve yönetmek dışında hiçbir şeye dokunamayacağı anlamına gelir — varlıklarınız sizin kalır.",
+  "p5_step1": "<b>Bir IP kısıtlaması ekleyin — bu isteğe bağlı değil, zorunludur.</b><small>Ocak 2023'teki politika değişikliğinden bu yana, Binance anahtarınız belirli IP'lerle kısıtlanmadıkça salt okunur dışında herhangi bir izin vermeyecektir. \"Restrict access to trusted IPs only\" seçeneğini seçin ve botu çalıştıracak makinenin genel IPv4 adresini girin (\"what is my ip\" araması yapın veya JaviD'nin dahili \"Run Connection Diagnostics\" düğmesini kullanın; bu düğme adresi sizin için otomatik olarak tespit edip bildirir).</small>",
+  "p5_step2": "<b>\"Enable Withdrawals\" seçeneğini KAPALI bırakın.</b><small>Bir işlem botunun para çekme iznine asla ihtiyacı yoktur. Yapılandırdığınız herhangi bir şey bunu açmanızı istiyorsa, durun ve tekrar düşünün.</small>",
+  "p5_step3": "<b>Kaydedin, ardından bağlantıyı test etmeden önce IP beyaz listesi değişikliğinin tamamen yayılması için 5–10 dakika bekleyin.</b>",
+  "p5_warn": "<b>Gizli Anahtarınızı şimdi kopyalayın:</b> yalnızca bir kez gösterilir. Kaydetmeden sayfadan ayrılırsanız, anahtarı silip yeni bir tane oluşturmanız gerekir.",
+  "p6_h2": "JaviD Future Bot'a Bağlayın",
+  "p6_step1": "<b>JaviD Future Bot'u başlatın</b> — tarayıcınız otomatik olarak kontrol paneline açılır.",
+  "p6_step2": "<b>Ayarlar sekmesine gidin</b> ve Erişim Anahtarınızı ve Gizli Anahtarınızı yapıştırın.<small>Yapıştırırken başta/sonda istenmeyen boşluklara dikkat edin.</small>",
+  "p6_step3": "<b>Kaydet'e, ardından Bağlantıyı Test Et'e tıklayın.</b> Yeşil onay işareti, hazır olduğunuz anlamına gelir.",
+  "p6_step4": "<b>Gölge Modu'nu açın</b> ve canlı işleme geçmeden önce botun davranışını birkaç gün boyunca doğrulayın.",
+  "p7_h2": "7/24 Çalışır Durumda Tutun",
+  "p7_p1": "JaviD Future Bot yalnızca gerçekten çalışırken işlem yapar — Binance'in vadeli işlem piyasası asla kapanmaz, bu yüzden botu çalıştıran makinenin günde 24 saat, yılda 365 gün açık ve bağlı kalması gerekir. Günlük dizüstü bilgisayarınız ilk test için işe yarar, ancak çoğu kullanıcı canlıya geçtiğinde şu iki kurulumdan birine geçer:",
+  "p7_step1": "<b>Bulut sanal makine</b> (Amazon AWS EC2 veya benzer herhangi bir VPS sağlayıcısı).<small>Aylık olarak kiralanır, her zaman açık, her yerden uzaktan erişilebilir ve kişisel dizüstü bilgisayarınızı sürekli açık tutmak veya uyku moduna geçmesi, güncellenmesi ya da elektrik kesintisi yaşaması konusunda endişelenmek zorunda kalmazsınız. Küçük/düşük seviyeli bir örnek yeterlidir — botun kendisi hafiftir.</small>",
+  "p7_step2": "<b>Evde açık bırakılan özel bir mini PC veya yedek masaüstü bilgisayar.</b><small>Intel NUC sınıfı bir mini PC (veya başka amaçla kullanmadığınız her zaman açık bir makine) çok az güç çeker, sessiz çalışır ve kısa süreli elektrik kesintilerine dayanabilmesi için bir UPS'e takılabilir. Sadece Windows uyku/hazırda bekletme modunun devre dışı olduğundan ve internet bağlantısının kararlı olduğundan emin olun.</small>",
+  "p7_tip": "<b>Her iki seçenek de eşit derecede iyi çalışır.</b> Tek gereksinimler şunlardır: makine güç altında kalmalı, internete bağlı kalmalı ve (Bölüm 5'e göre) IP adresi Binance API anahtarınızda beyaz listeye alınmalıdır. Botu yeni bir makineye taşırsanız veya IP'niz değişirse, anahtardaki IP kısıtlamasını güncellemeniz yeterlidir.",
+  "p7_warn": "<b>Hatırlatma:</b> açık bir pozisyon varken makine yeniden başlarsa veya elektrik kesilirse, botu yeniden başlatmadan önce o pozisyonu Binance uygulamasında Vadeli İşlemler bölümünden manuel olarak kapatın — ayrıntılar için <a href=\"manual.html\">Kullanım Kılavuzu</a>'na bakın.",
+  "faq_h2": "Sorun Giderme &amp; SSS",
+  "faq_th1": "Belirti",
+  "faq_th2": "Neden / Çözüm",
+  "faq_q1": "HTTP 451 hatası",
+  "faq_a1": "Binance, Kore IP'leri dahil bazı bölgelerden Vadeli İşlem API erişimini engeller. Botu yurt dışındaki bir VPS'ten veya bir VPN üzerinden çalıştırın.",
+  "faq_q2": "Bağlantı Testinde -2015 hatası",
+  "faq_a2": "IP kısıtlamanız henüz yayılmadı veya yanlış IP girdiniz. 5–10 dakika bekleyip adresi tekrar kontrol edin.",
+  "faq_q3": "Ne kadar kaybedebilirim?",
+  "faq_a3": "<b class=\"text-slate-800\">Yatırdığınız paranın tamamını.</b> Bunlar gerçek bir borsada kaldıraçlı vadeli işlemler — bir pozisyon tasfiye edilebilir ve teminatınız sıfıra inebilir. Her emir kendi cihazınızdan, kendi API anahtarınızla gönderilir; hesap da, para da, sonuç da sizindir. Hiçbir API anahtarı bağlamadan da çalıştırabilirsiniz: Shadow Mode gerçek zamanlı fiyatlarla sanal bakiye üzerinde işlem yapar, böylece gerçek para koymadan önce nasıl davrandığını kendiniz görürsünüz.",
+  "faq_q4": "-1021 Zaman damgası hatası",
+  "faq_a4": "Bilgisayarınızın saati kaymış. Windows ayarlarında otomatik saat senkronizasyonunu açın.",
+  "faq_q5": "Anahtarda Vadeli İşlem izni etkinleştirilemiyor",
+  "faq_a5": "Anahtar, Vadeli İşlemler hesabınız etkinleştirilmeden önce oluşturulmuş (bkz. Bölüm 3). Silip doğru sırayla yeni bir tane oluşturun.",
+  "faq_q6": "Okuma dışında herhangi bir izin etkinleştirilemiyor",
+  "faq_a6": "Bölüm 5'teki IP kısıtlama adımını atladınız — bu, okuma dışındaki herhangi bir izin için zorunludur.",
+  "cta_h3": "Anahtarınızı bağlamaya hazır mısınız?",
+  "cta_p": "Kontrol paneline dönün ve kurulumu bir dakikadan kısa sürede tamamlayın.",
+  "cta_btn": "⬇ JaviD Future Bot'a Dön",
+  "footer_home": "Ana Sayfa",
+  "footer_results": "Gerçek Sonuçlar",
+  "footer_manual": "Kullanım Kılavuzu",
+  "footer_features": "Özellikler",
+  "footer_board": "Topluluk Panosu",
+  "footer_contact": "İletişim",
+},
+pt: {
+  "nav_features": "Recursos",
+  "nav_how_it_works": "Como Funciona",
+  "nav_shadow_mode": "Modo Shadow",
+  "nav_real_results": "Resultados Reais",
+  "nav_user_manual": "Manual do Usuário",
+  "nav_new_to_binance": "Novo na Binance?",
+  "nav_community_board": "Mural da Comunidade",
+  "nav_cta_download": "Baixar Agora",
+  "tk1": "<b>Ainda passando a noite acordado olhando gráficos e operando?</b><span>Deixe uma estratégia construída por IA avaliar e executar por você, 24 horas por dia, 7 dias por semana.</span>",
+  "tk2": "<b>Não tem certeza se pode confiar em um programa de negociação automática?</b><span>Execute primeiro o Modo Shadow — mude para negociação ao vivo quando confiar nele.</span><small>Dica: comece ao vivo com 1000+ USDT — saldos menores podem ter pouquíssimas entradas.</small>",
+  "tk3": "<b>Curioso para saber como é a taxa de acerto real?</b><span>Confira os resultados reais de negociação neste site e julgue por si mesmo.</span>",
+  "tk4": "<b>Só opera futuros de Bitcoin?</b><span>Você escolhe entre mais de 500 futuros USDⓈ-M, incluindo altcoins.</span>",
+  "tk5": "<b>Preocupado com liquidação em futuros alavancados?</b><span>Cada entrada é dimensionada pelo seu saldo (1/300, 1/500 ou 1/700), o que mantém as entradas pequenas.</span><small>A liquidação ainda é possível — futuros alavancados podem fazer você perder todo o capital.</small>",
+  "tk6": "<b>Acha que seu valor inicial é pequeno demais?</b><span>O tamanho da entrada é recalculado diariamente com base no seu saldo real — sinta o efeito dos juros compostos.</span>",
+  "hero_kicker": "🧭 Guia de Configuração",
+  "hero_h1": "Como Criar uma Conta na Binance &amp; uma Chave de API de Futuros",
+  "hero_sub": "Tudo o que você precisa antes da sua primeira operação com o JaviD Future Bot — cadastro da conta, verificação de identidade, ativação de Futuros e geração de uma chave de API com as permissões corretas.",
+  "hero_updated": "Escrito com base no fluxo atual do site da Binance · Última verificação em julho de 2026",
+  "toc_title": "Nesta página",
+  "toc1": "Criar sua conta na Binance",
+  "toc2": "Concluir a verificação de identidade (KYC)",
+  "toc3": "Ativar sua conta de Futuros",
+  "toc4": "Criar sua chave de API",
+  "toc5": "Definir as permissões corretas (a etapa que as pessoas costumam pular)",
+  "toc6": "Conectá-la ao JaviD Future Bot",
+  "toc7": "Mantê-lo funcionando 24/7 (VM na nuvem ou mini PC)",
+  "toc8": "Solução de Problemas &amp; Perguntas Frequentes",
+  "p1_h2": "Crie Sua Conta na Binance",
+  "p1_p1": "O cadastro leva cerca de 5 minutos. Cadastre-se na página oficial de cadastro da Binance, com link abaixo.",
+  "p1_callout1": "<b>Ainda não tem uma conta?</b> Cadastre-se na página oficial de cadastro da Binance.",
+  "p1_cta": "Criar Conta →",
+  "p1_step1": "<b>Acesse binance.com e clique em Cadastrar.</b><small>Você pode se cadastrar com um endereço de e-mail, número de telefone ou continuar com sua conta Google/Apple.</small>",
+  "p1_step2": "<b>Defina sua senha.</b><small>Mínimo de 8 caracteres, com pelo menos uma letra maiúscula e um número — recomendamos adicionar também um símbolo para uma senha mais forte.</small>",
+  "p1_step3": "<b>Digite o código de verificação de 6 dígitos</b> enviado para seu e-mail ou telefone.<small>O código tem tempo limitado (normalmente ~30 minutos), então verifique sua caixa de entrada/spam imediatamente.</small>",
+  "p1_step4": "<b>Ative a Autenticação de Dois Fatores (2FA) imediatamente</b> nas configurações de segurança da sua conta.<small>Google Authenticator ou uma Passkey funcionam. Você precisará do 2FA ativo mais tarde para criar uma chave de API.</small>",
+  "p1_tip": "<b>Dica:</b> Use um gerenciador de senhas e um e-mail dedicado para contas de exchanges — é a maneira mais simples de evitar phishing e tomada de conta.",
+  "p2_h2": "Conclua a Verificação de Identidade (KYC)",
+  "p2_p1": "Apenas se cadastrar não libera a negociação. Você precisa da verificação de identidade antes de poder depositar valores significativos ou operar Futuros.",
+  "p2_step1": "<b>Abra seu menu de perfil → Identificação.</b><small>Selecione seu país/região de residência e o tipo de documento de identidade (carteira de identidade nacional, carteira de motorista ou passaporte).</small>",
+  "p2_step2": "<b>Envie fotos do seu documento de identidade</b>, depois complete a verificação facial (uma selfie/verificação de vivacidade rápida).",
+  "p2_step3": "<b>Aguarde a aprovação</b> — isso geralmente é concluído em 5 a 15 minutos. O status do seu perfil muda de <i>Não Verificado</i> para <i>Verificado</i> assim que aprovado.",
+  "p2_warn": "<b>Observação:</b> Algumas permissões de API de nível superior agora exigem o nível de identidade \"Verified Plus\" em vez da verificação básica. Se sua página de Gerenciamento de API mostrar restrições que você não consegue remover, verifique se sua conta precisa da etapa de verificação adicional.",
+  "p3_h2": "Ative Sua Conta de Futuros — Antes de Criar uma Chave de API",
+  "p3_p1": "Essa etapa é fácil de fazer fora de ordem, e fazê-la fora de ordem é o erro de configuração mais comum.",
+  "p3_step1": "<b>Abra o menu [Futuros]</b> na navegação superior.",
+  "p3_step2": "<b>Complete o questionário de risco de futuros</b>, caso seja sua primeira vez — um breve questionário confirmando que você entende o risco de negociação alavancada.",
+  "p3_step3": "<b>Ative sua conta de Futuros USDⓈ-M.</b><small>Uma vez ativa, você verá uma carteira de Futuros ao lado da sua carteira Spot.</small>",
+  "p3_danger": "<b>Faça isso antes da Parte 4:</b> se sua chave de API já existia antes de você ativar os Futuros (ou se você tiver a Margem de Portfólio ativada), essa chave nunca poderá obter permissão de Futuros — você terá que excluí-la e criar uma nova. Ative os Futuros primeiro, a chave de API depois.",
+  "p4_h2": "Crie Sua Chave de API",
+  "p4_p1": "Antes de poder criar uma chave, a Binance exige: 2FA ativado, pelo menos um depósito simbólico na sua carteira Spot (para ativar a conta) e verificação de identidade concluída — tudo abordado nas Partes 1–2.",
+  "p4_step1": "<b>Ícone de perfil → Conta → Gerenciamento de API.</b>",
+  "p4_step2": "<b>Clique em Criar API</b>, depois escolha <b>Gerado pelo sistema</b>.<small>Isso usa autenticação HMAC padrão e fornece uma API Key + Secret Key — o par que o JaviD Future Bot espera.</small>",
+  "p4_step3": "<b>Dê um rótulo a ela</b>, por exemplo <code>JaviD-Bot</code>, para que você possa reconhecê-la depois.",
+  "p4_step4": "<b>Verifique com 2FA</b> (código do autenticador, passkey ou confirmação por e-mail).",
+  "p4_step5": "<b>Sua chave foi criada</b> — mas, por padrão, ela só pode ler dados. Continue para a Parte 5 antes de usá-la.",
+  "p5_h2": "Defina as Permissões Corretas",
+  "p5_p1": "Uma chave recém-criada tem, por padrão, apenas <b>Enable Reading</b>. Para permitir que o JaviD Future Bot coloque ordens — e nada além disso — você precisa editar a chave e marcar exatamente três caixas.",
+  "p5_tip_title": "✅ Marque exatamente estas três, nada mais:",
+  "p5_tip_li1": "Enable Reading <small style=\"color:var(--faint);\">(já ativada por padrão)</small>",
+  "p5_tip_li2": "Enable Spot &amp; Margin &amp; Stock Trading",
+  "p5_tip_li3": "Enable Futures",
+  "p5_danger_title": "❌ Deixe todas as outras caixas desmarcadas:",
+  "p5_danger_list": "Enable Margin Loan, Repay &amp; Transfer · Permits Universal Transfer · Enable Withdrawals · Enable Prediction Trading · Enable Symbol Whitelist.",
+  "p5_danger_p": "Nenhuma dessas é necessária para o JaviD Future Bot operar. Deixá-las desativadas significa que, mesmo no pior cenário em que sua chave de API fosse exposta, ninguém conseguiria retirar fundos da exchange, transferir entre carteiras ou tocar em qualquer coisa além de colocar e gerenciar operações de futuros — seus ativos permanecem seus.",
+  "p5_step1": "<b>Adicione uma restrição de IP — isso é obrigatório, não opcional.</b><small>Desde uma mudança de política em janeiro de 2023, a Binance não concede nenhuma permissão além de somente leitura, a menos que a chave esteja restrita a IPs específicos. Escolha \"Restrict access to trusted IPs only\" e insira o endereço IPv4 público da máquina que executará o bot (pesquise \"what is my ip\", ou use o botão integrado \"Run Connection Diagnostics\" do JaviD, que detecta e informa isso automaticamente).</small>",
+  "p5_step2": "<b>Deixe \"Enable Withdrawals\" DESATIVADO.</b><small>Um bot de negociação nunca precisa de permissão de saque. Se algo que você estiver configurando pedir para ativar isso, pare e reconsidere.</small>",
+  "p5_step3": "<b>Salve e aguarde de 5 a 10 minutos</b> para que a alteração na lista branca de IPs se propague totalmente antes de testar a conexão.",
+  "p5_warn": "<b>Copie sua Secret Key agora:</b> ela é exibida exatamente uma vez. Se você sair da página sem salvá-la, precisará excluir a chave e gerar uma nova.",
+  "p6_h2": "Conecte-a ao JaviD Future Bot",
+  "p6_step1": "<b>Inicie o JaviD Future Bot</b> — seu navegador abrirá automaticamente o painel.",
+  "p6_step2": "<b>Vá até a aba Configurações</b> e cole sua Access Key e Secret Key.<small>Fique atento a espaços acidentais no início/fim ao colar.</small>",
+  "p6_step3": "<b>Clique em Salvar e depois em Testar Conexão.</b> Uma marca de verificação verde significa que você está pronto para começar.",
+  "p6_step4": "<b>Ative o Modo Shadow</b> e verifique o comportamento do bot por alguns dias antes de mudar para a negociação ao vivo.",
+  "p7_h2": "Mantenha-o Funcionando 24/7",
+  "p7_p1": "O JaviD Future Bot só opera enquanto estiver realmente em execução — o mercado de futuros da Binance nunca fecha, então a máquina que executa o bot precisa permanecer ligada e conectada 24 horas por dia, 365 dias por ano. Seu notebook do dia a dia funciona para um primeiro teste, mas a maioria dos usuários migra para uma destas duas opções ao entrar em operação real:",
+  "p7_step1": "<b>Uma máquina virtual na nuvem</b> (Amazon AWS EC2, ou qualquer provedor de VPS equivalente).<small>Alugada mensalmente, sempre ligada, acessível remotamente de qualquer lugar, sem necessidade de deixar seu notebook pessoal ligado ou se preocupar com ele entrando em suspensão, atualizando ou perdendo energia. Uma instância pequena/de nível básico é suficiente — o bot em si é leve.</small>",
+  "p7_step2": "<b>Um mini PC dedicado ou um desktop reserva, deixado ligado em casa.</b><small>Um mini PC de classe Intel NUC (ou qualquer máquina sempre ligada que você não precise para outra coisa) consome muito pouca energia, é silencioso e pode ser conectado a um nobreak para resistir a quedas de energia curtas. Apenas certifique-se de que o modo de suspensão/hibernação do Windows esteja desativado e que a conexão com a internet seja estável.</small>",
+  "p7_tip": "<b>As duas opções funcionam igualmente bem.</b> Os únicos requisitos são: a máquina permanecer ligada, permanecer conectada à internet e (conforme a Parte 5) ter seu endereço IP na lista branca da sua chave de API da Binance. Se você mudar o bot para uma nova máquina ou seu IP mudar, basta atualizar a restrição de IP na chave.",
+  "p7_warn": "<b>Lembrete:</b> se a máquina reiniciar ou perder energia enquanto uma posição estiver aberta, feche essa posição manualmente pelo aplicativo da Binance, em Futuros, antes de reiniciar o bot — veja o <a href=\"manual.html\">Manual do Usuário</a> para mais detalhes.",
+  "faq_h2": "Solução de Problemas &amp; Perguntas Frequentes",
+  "faq_th1": "Sintoma",
+  "faq_th2": "Causa / Solução",
+  "faq_q1": "Erro HTTP 451",
+  "faq_a1": "A Binance bloqueia o acesso à API de Futuros de algumas regiões, incluindo IPs da Coreia. Execute o bot em uma VPS no exterior ou por meio de uma VPN.",
+  "faq_q2": "Erro -2015 ao Testar Conexão",
+  "faq_a2": "Sua restrição de IP ainda não se propagou, ou você digitou o IP errado. Aguarde de 5 a 10 minutos e verifique novamente o endereço.",
+  "faq_q3": "Quanto posso perder?",
+  "faq_a3": "<b class=\"text-slate-800\">Tudo o que você depositar.</b> São futuros alavancados em uma corretora real — uma posição pode ser liquidada e o seu depósito pode ir a zero. Cada ordem sai do seu próprio dispositivo com a sua própria chave de API, então a conta, o dinheiro e o resultado continuam sendo seus. Você pode rodar sem conectar nenhuma chave de API: o Shadow Mode opera com preços reais em tempo real sobre um saldo virtual, para você ver como ele se comporta antes de colocar dinheiro de verdade.",
+  "faq_q4": "Erro de timestamp -1021",
+  "faq_a4": "O relógio do seu computador está dessincronizado. Ative a sincronização automática de horário nas configurações do Windows.",
+  "faq_q5": "Não é possível ativar a permissão de Futuros na chave",
+  "faq_a5": "A chave foi criada antes que sua conta de Futuros fosse ativada (veja a Parte 3). Exclua-a e crie uma nova, na ordem correta.",
+  "faq_q6": "Não é possível ativar nenhuma permissão além de Leitura",
+  "faq_a6": "Você pulou a etapa de restrição de IP na Parte 5 — ela é obrigatória para qualquer permissão que não seja somente leitura.",
+  "cta_h3": "Pronto para conectar sua chave?",
+  "cta_p": "Volte ao painel e conclua a configuração em menos de um minuto.",
+  "cta_btn": "⬇ Voltar ao JaviD Future Bot",
+  "footer_home": "Início",
+  "footer_results": "Resultados Reais",
+  "footer_manual": "Manual do Usuário",
+  "footer_features": "Recursos",
+  "footer_board": "Mural da Comunidade",
+  "footer_contact": "Contato",
+},
+};
+var LANGS = [
+  {code:'en', label:'English'}, {code:'ko', label:'한국어'}, {code:'ja', label:'日本語'},
+  {code:'zh', label:'中文'}, {code:'es', label:'Español'}, {code:'fr', label:'Français'}, {code:'vi', label:'Tiếng Việt'}, {code:'tr', label:'Türkçe'}, {code:'pt', label:'Português'}
+];
+var STORAGE_KEY = 'javid_lang';
+window.CURRENT_LANG = 'en';
+function applyLang(lang){
+  if (!I18N[lang]) lang = 'en';
+  window.CURRENT_LANG = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    var val = (I18N[lang] && I18N[lang][key] != null) ? I18N[lang][key] : I18N.en[key];
+    if (val != null) el.innerHTML = val;
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+  document.querySelectorAll('.lang-menu button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+}
+(function(){
+  var menu = document.getElementById('langMenu');
+  var btn = document.getElementById('langBtn');
+  LANGS.forEach(function(l){
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('data-lang', l.code); b.setAttribute('role','menuitem');
+    b.textContent = l.label;
+    b.addEventListener('click', function(){ applyLang(l.code); menu.classList.remove('open'); });
+    menu.appendChild(b);
+  });
+  btn.addEventListener('click', function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+  document.addEventListener('click', function(){ menu.classList.remove('open'); });
+  var saved;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch(e){}
+  applyLang(saved || 'en');
+})();
+</script>
+<!-- JaviD scroll-reveal (progressive enhancement: content stays visible if JS/observer/reduced-motion) -->
+<style>
+@media (prefers-reduced-motion: no-preference){
+  .jr{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1);will-change:opacity,transform;}
+  .jr.jr-in{opacity:1;transform:none;}
+}
+</style>
+<script>
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.addEventListener('DOMContentLoaded', function(){
+    var sel = 'section h2, section h3, section > p, section img, section [class*="grid"] > *, section [class*="flex"] > *';
+    var raw = Array.prototype.slice.call(document.querySelectorAll(sel));
+    var seen = [], tagged = [];
+    raw.forEach(function(el){
+      if (seen.indexOf(el) !== -1) return; seen.push(el);
+      if (el.closest && el.closest('#jfb-update-popup')) return;      // leave the popup alone
+      for (var i=0;i<tagged.length;i++){ if (tagged[i].contains(el)) return; } // skip nested-in-already-tagged
+      tagged.push(el);
+    });
+    tagged.forEach(function(el){
+      el.classList.add('jr');
+      var sibs = el.parentNode ? Array.prototype.filter.call(el.parentNode.children, function(c){ return c.classList && c.classList.contains('jr'); }) : [];
+      var idx = sibs.indexOf(el);
+      if (idx > 0) el.style.transitionDelay = Math.min(idx*80, 400) + 'ms';
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('jr-in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    tagged.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ tagged.forEach(function(el){ el.classList.add('jr-in'); }); }, 3000); // safety: never leave hidden
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{if(sessionStorage.getItem("jfb_src"))return;var q=new URLSearchParams(location.search),r="";try{r=document.referrer?new URL(document.referrer).hostname:""}catch(e){}if(/(^|\.)javidtrading\.com$/.test(r))r="";sessionStorage.setItem("jfb_src",JSON.stringify({r:r,us:q.get("utm_source")||"",um:q.get("utm_medium")||"",uc:q.get("utm_campaign")||"",lp:location.pathname}))}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JaviD Future Bot — ご自身のPCで動かす暗号資産先物の自動売買プログラム</title>
+<meta name="description" content="Binance・Bitget・Bybit 向けの無料の暗号資産先物自動売買プログラムです（OKX は準備中）。ご自身の Windows または macOS の PC で、ご自身の API キーを使って動作します。1時間ごとにキャプチャした実際の口座のダッシュボードをご覧いただけます。レバレッジをかけた先物取引では、元本をすべて失う可能性があります。">
+<link rel="canonical" href="https://www.javidtrading.com/ja">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="alternate" hreflang="en" href="https://www.javidtrading.com/">
+<link rel="alternate" hreflang="ko" href="https://www.javidtrading.com/ko">
+<link rel="alternate" hreflang="ja" href="https://www.javidtrading.com/ja">
+<link rel="alternate" hreflang="es" href="https://www.javidtrading.com/es">
+<link rel="alternate" hreflang="fr" href="https://www.javidtrading.com/fr">
+<link rel="alternate" hreflang="vi" href="https://www.javidtrading.com/vi">
+<link rel="alternate" hreflang="tr" href="https://www.javidtrading.com/tr">
+<link rel="alternate" hreflang="pt" href="https://www.javidtrading.com/pt">
+<link rel="alternate" hreflang="x-default" href="https://www.javidtrading.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JaviD Future Bot">
+<meta property="og:title" content="JaviD Future Bot — ご自身のPCで動かす暗号資産先物の自動売買プログラム">
+<meta property="og:description" content="Binance・Bitget・Bybit 向けの無料の暗号資産先物自動売買プログラムです（OKX は準備中）。ご自身の Windows または macOS の PC で、ご自身の API キーを使って動作します。1時間ごとにキャプチャした実際の口座のダッシュボードをご覧いただけます。レバレッジをかけた先物取引では、元本をすべて失う可能性があります。">
+<meta property="og:url" content="https://www.javidtrading.com/ja">
+<meta property="og:image" content="https://www.javidtrading.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#065f46">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=9df42ec0f1">
+<script>window.JFB={"lang":"ja","t":{"nav_menu":"メニュー","nav_close":"メニューを閉じる","perf_captured":"キャプチャ：{time}","perf_stale":"{time} 以降、更新されていません。キャプチャ処理またはライブ画面が停止しています。下は最後に正常に取得できたキャプチャです。","perf_none":"まだキャプチャが公開されていません。実際のキャプチャができるまで、ここには何も表示しません。","perf_error":"現在、キャプチャを読み込めません。代わりの画面は表示しません。","view_dashboard":"ダッシュボード","view_positions":"保有中のポジション（数値には含まれません）","perf_zoom":"原寸で開く","hero_shot_alt":"実口座ダッシュボードの最新の1時間ごとのキャプチャ","m_trades":"決済済み取引","m_wins":"利益で決済","m_wins_val":"{n}件中{w}件","m_realized":"実現損益","m_worst":"最も悪い決済取引","m_down":"実現損益が純額でマイナスだった日","m_down_val":"{n}日中{d}日","m_funding":"資金調達率手数料（ファンディング手数料、実現損益に含む）","m_period":"{from} – {to}、韓国時間（UTC+9）","m_unavailable":"最新のキャプチャには取引記録の数値がありません。","chart_aria":"日別の累積実現損益の折れ線グラフ","time_now":"たった今","ago_min":"{n}分前","ago_h":"{n}時間前","ago_d":"{n}日前","bd_secret_label":"非公開の投稿","bd_password":"パスワード（非公開の投稿用）","bd_open":"パスワードで開く","bd_reply":"回答","bd_empty":"まだ投稿はありません。","bd_loading":"投稿を読み込んでいます…","bd_error":"現在、掲示板を読み込めません。","bd_posted":"投稿しました。ありがとうございます。","bd_post_error":"投稿できませんでした。入力内容を確認して、もう一度お試しください。","bd_wrong_pw":"パスワードが違います。","m_settings":"キャプチャ時点のこの口座の設定：Investment Mode {mode}（残高 ÷ {div}）、レバレッジ {lev}x、ハードストップ {hs}、エントリーモードの設定値 “{entry}”。新規インストール時は Normal（残高 ÷ 500）と 10x で始まります。","m_open":"現在保有中のポジション：{k}（上記の数値には含まれません）","hs_on":"オン","hs_off":"オフ"}};</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.javidtrading.com/#org","name":"JaviD Future Bot","url":"https://www.javidtrading.com/","logo":"https://www.javidtrading.com/assets/img/logo-96.png","email":"support@javidtrading.com","sameAs":["https://t.me/+P_CukTNNKRI4ZDVl","https://www.youtube.com/@javidfuture"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.javidtrading.com/#website","name":"JaviD Future Bot","url":"https://www.javidtrading.com/","inLanguage":["en","ko","ja","es","fr","vi","tr","pt"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"JaviD Future Bot","applicationCategory":"FinanceApplication","operatingSystem":"Windows, macOS","softwareVersion":"19.7","description":"Binance・Bitget・Bybit 向けの無料の暗号資産先物自動売買プログラムです（OKX は準備中）。ご自身の Windows または macOS の PC で、ご自身の API キーを使って動作します。1時間ごとにキャプチャした実際の口座のダッシュボードをご覧いただけます。レバレッジをかけた先物取引では、元本をすべて失う可能性があります。","url":"https://www.javidtrading.com/ja","downloadUrl":"https://www.javidtrading.com/ja/download","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.javidtrading.com/#org"}}</script>
+</head><body>
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="site-header">
+  <div class="wrap hdr">
+    <a class="brand" href="/ja"><img src="/assets/img/logo-96.png" alt="" width="30" height="30"><span class="brand-name">JaviD Future Bot</span></a>
+    <nav class="nav" aria-label="Main"><a href="/ja/how-it-works">製品紹介</a><a href="/ja/exchange">運用実績</a><a href="/ja/guide">使い方</a><a href="/ja/risk-disclosure">リスク告知</a></nav>
+    <div class="hdr-tools">
+      <label class="lang"><span class="sr-only">言語</span><select data-lang-switch aria-label="言語"><option value="en" data-href="/">English</option><option value="ko" data-href="/ko">한국어</option><option value="ja" data-href="/ja" selected>日本語</option><option value="es" data-href="/es">Español</option><option value="fr" data-href="/fr">Français</option><option value="vi" data-href="/vi">Tiếng Việt</option><option value="tr" data-href="/tr">Türkçe</option><option value="pt" data-href="/pt">Português</option></select></label>
+      <a class="btn btn-primary btn-sm hdr-cta" href="/ja/download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>ダウンロード</a>
+      <button class="menu-btn" type="button" aria-controls="mnav" aria-expanded="false" aria-label="メニュー"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+  <nav id="mnav" class="mnav" aria-label="Mobile"><a href="/ja/how-it-works">製品紹介</a><a href="/ja/exchange">運用実績</a><a href="/ja/guide">使い方</a><a href="/ja/risk-disclosure">リスク告知</a><a href="/ja/download">ダウンロード</a></nav>
+</header>
+<main id="main">
+<section class="hero"><div class="wrap hero-grid">
+  <div>
+    <span class="kicker">ご自身のPCで動作 · Windows &amp; macOS</span>
+    <h1>暗号資産先物の<br>自動売買プログラム</h1>
+    <p class="sub">ご自身のコンピューターで、ご自身の取引所 API キーを使って動かします。判断する前に、いま実際に稼働している口座のダッシュボードをご覧ください — 1時間ごとにキャプチャしています。</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="/ja/download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>プログラムをダウンロード（無料）</a>
+      <a class="btn btn-outline" href="#live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg>実口座を見る</a>
+    </div>
+    <div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>無料・サブスクリプションなし</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>出金権限のない API キー、保存先はご自身のPCのみ</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>シャドーモード：まず仮想残高で様子を見る</span></div>
+    <p class="risk">レバレッジをかけた先物取引では、元本をすべて失う可能性があります。</p>
+  </div>
+  <div class="hero-shot" data-live>
+      <div class="frame" data-shot="dashboard"><div class="ph">最新のキャプチャを読み込んでいます…</div></div>
+      <noscript><p class="small muted mt-8">実口座のキャプチャを表示するには JavaScript が必要です。同じダッシュボードは YouTube のライブ配信でもご覧いただけます。</p></noscript>
+      <div class="cap"><span>実口座 · 最新キャプチャ · Binance</span><span data-live-status></span></div>
+    </div>
+</div></section>
+
+<section class="section" id="exchanges"><div class="wrap">
+  <div class="section-head"><div><h2>取引所を選ぶ</h2><p>取引所ごとに専用のビルドがあります。お使いの取引所を選ぶと、その取引所用に作られたファイルを入手できます。</p></div></div>
+  <div class="grid g4"><a class="card ex-card" data-ex-card="binance" href="/ja/download?exchange=binance">
+      <div class="logo"><img src="/assets/img/binance-logo.png" alt="Binance" width="104" height="42" loading="lazy"></div>
+      <div class="name">Binance</div>
+      <div class="meta"><span class="badge b-ok">ダウンロード可能</span><span class="badge b-live">実口座データあり</span><span class="badge b-off">コピートレード：準備中</span></div>
+      <div class="note">Windows · macOS</div>
+      <span class="go">Binance 版を入手 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+    </a><a class="card ex-card" data-ex-card="bitget" href="/ja/download?exchange=bitget">
+      <div class="logo"><img src="/assets/img/bitget-logo.png" alt="Bitget" width="104" height="42" loading="lazy"></div>
+      <div class="name">Bitget</div>
+      <div class="meta"><span class="badge b-ok">ダウンロード可能</span><span class="badge b-off">ライブデータなし</span><span class="badge b-ok">コピートレード利用可能</span></div>
+      <div class="note">Windows · macOS · API パスフレーズが必要</div>
+      <span class="go">Bitget 版を入手 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+    </a><a class="card ex-card" data-ex-card="bybit" href="/ja/download?exchange=bybit">
+      <div class="logo"><img src="/assets/img/bybit-logo.png" alt="Bybit" width="104" height="42" loading="lazy"></div>
+      <div class="name">Bybit</div>
+      <div class="meta"><span class="badge b-ok">ダウンロード可能</span><span class="badge b-off">ライブデータなし</span><span class="badge b-ok">コピートレード利用可能</span></div>
+      <div class="note">Windows · macOS</div>
+      <span class="go">Bybit 版を入手 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+    </a><a class="card ex-card" data-ex-card="okx" href="/ja/download?exchange=okx">
+      <div class="logo"><img src="/assets/img/okx-logo.png" alt="OKX" width="104" height="42" loading="lazy"></div>
+      <div class="name">OKX</div>
+      <div class="meta"><span class="badge b-wait">準備中</span><span class="badge b-off">ライブデータなし</span><span class="badge b-off">コピートレード：準備中</span></div>
+      <div class="note">新しいビルドの準備中のため、ダウンロードを一時停止しています</div>
+      <span class="go">状況を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+    </a></div>
+</div></section>
+
+<section class="section-tight" id="live"><div class="wrap"><div class="card card-pad">
+  <div class="perf-head"><h2>稼働中の実口座をそのまま (Binance)</h2><span class="badge b-live">1時間ごとに更新</span></div>
+  <p class="perf-what">いま稼働している実口座1つについて、プログラム自身のダッシュボードを1時間ごとにキャプチャした画面です。YouTube でライブ配信している画面と同じものです。この1口座が標本のすべてです。</p>
+  <div data-live>
+    <div class="grid g2 mt-16">
+      <figure style="margin:0"><figcaption class="small" style="font-weight:700;margin-bottom:6px">ダッシュボード</figcaption><div class="shot" data-shot="dashboard"><div class="ph">最新のキャプチャを読み込んでいます…</div></div></figure>
+      <figure style="margin:0"><figcaption class="small" style="font-weight:700;margin-bottom:6px">保有中のポジション（数値には含まれません）</figcaption><div class="shot" data-shot="positions"><div class="ph">最新のキャプチャを読み込んでいます…</div></div></figure>
+    </div>
+    <noscript><p class="small muted mt-8">実口座のキャプチャを表示するには JavaScript が必要です。同じダッシュボードは YouTube のライブ配信でもご覧いただけます。</p></noscript>
+    <div class="shot-meta"><span data-live-status></span><a href="https://www.youtube.com/@javidfuture/live" target="_blank" rel="noopener" class="ext">同じダッシュボードを YouTube でライブ配信しています</a></div>
+    <p class="stale" data-live-stale hidden></p>
+    <p class="tiny muted mt-8">ダッシュボードの見出しには “V18.4” と表示されますが、プログラム自体が報告するバージョンは 19.7 です（/health エンドポイントで確認）。</p>
+    <div data-metrics-wrap hidden>
+      <div class="chart-top mt-24"><h3>稼働中の実口座1つの取引記録から算出</h3><div class="seg" role="group" aria-label="期間"><button type="button" data-period="7" aria-pressed="false">7日</button><button type="button" data-period="30" aria-pressed="false">30日</button><button type="button" data-period="90" aria-pressed="false">90日</button><button type="button" data-period="all" aria-pressed="true">全期間</button></div></div>
+      <p class="small muted" data-period-label></p>
+      <div class="metrics" data-metrics></div>
+      <div class="scope"><p data-open-count hidden></p><p>決済済み取引と資金調達率手数料（ファンディング手数料）のみを集計しています。このプログラムは初期設定ではストップロス（損切り）がないため、上場廃止に伴う決済や強制ロスカット（清算）を除き、損失中のポジションを自ら決済しません。損失がこれらの数値に現れるのは、ポジションが損失で決済されたときだけで、それまでは保有中のポジションに残ります。保有中のポジションはこれらの数値に含まれません — ダッシュボードの表示そのままに「保有中のポジション」のスクリーンショットで確認できます。</p><p>ダッシュボードの “Total N Trades” と Win Rate には、ファンディング手数料の記録も含まれています。ここではファンディング手数料を別に数えているため、2つの数値は異なります。 損益がちょうど 0 で決済された取引は、利益にも損失にも数えません。</p><p data-settings hidden></p></div>
+      <div class="card card-pad chart-card">
+        <h3>日別の累積実現損益（USDT）</h3>
+        <div class="chart" data-chart></div>
+        <p class="chart-note">決済済み取引の損益とファンディング手数料を日ごとに合計し、累積したものです。口座残高の推移ではなく、保有中ポジションの含み損はここに表示されません。</p>
+      </div>
+      
+    </div>
+  </div>
+  <p class="mt-16"><a href="/ja/exchange">実績の詳細 →</a></p>
+</div></div></section>
+
+<section class="section" id="features"><div class="wrap">
+  <div class="section-head"><h2>プログラムの機能</h2></div>
+  <div class="grid g2"><div class="card feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><div>
+      <h3>ご自身のPCで動作 <span class="badge b-ok">利用可能</span></h3><p>注文はご自身のコンピューターから、ご自身の API キーで取引所へ直接送られます。間に当方のサーバーはありません。</p></div></div><div class="card feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></div><div>
+      <h3>シャドーモード <span class="badge b-ok">利用可能</span></h3><p>仮想残高を使って実際の価格で戦略を動かすため、実際の注文を出す前に動作を見ることができます。</p></div></div><div class="card feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg></div><div>
+      <h3>3つの戦略、500以上の銘柄 <span class="badge b-ok">利用可能</span></h3><p>どの USDⓈ-M 先物銘柄を監視するかはご自身で選びます。戦略はボラティリティの高いアルトコイン向けに調整されています。</p></div></div><div class="card feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></div><div>
+      <h3>初期設定のエントリー制限 <span class="badge b-ok">利用可能</span></h3><p>上場から90日未満の銘柄は対象外です。同じ銘柄・同じ方向で24時間以内に新規エントリーが3回あると、1回目から48時間が経過するまで新規エントリーを停止します。保有中のポジションへの追加はこの回数に含まれません。</p></div></div><div class="card feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4-2v-4L3 5Z"/></svg></div><div>
+      <h3>上場廃止フィルター <span class="badge b-ok">利用可能</span></h3><p>取引所の公開アナウンスに基づき、上場廃止が告知された銘柄を避けます。</p></div></div><div class="card feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4M12 17h.01"/></svg></div><div>
+      <h3>初期設定ではストップロスなし <span class="badge b-ok">利用可能</span></h3><p>ポジションが大きな損失を抱えたまま長期間残ることがあります。Settings で任意の 60% ハードストップを使えます。</p></div></div><div class="card feat dim"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></div><div>
+      <h3>大型銘柄（BTC/ETH）プリセット <span class="badge b-wait">開発中</span></h3><p>大型銘柄向けに調整したプリセットを開発中です。現在のビルドには含まれていません。</p></div></div><div class="card feat dim"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><div>
+      <h3>Android <span class="badge b-off">保留中</span></h3><p>安定して動作するまで Android 版は保留しています。現時点では Windows と macOS のみです。</p></div></div></div>
+</div></section>
+
+<section class="section-tight" id="ways"><div class="wrap">
+  <div class="section-head"><h2>2つの使い方</h2></div>
+  <div class="grid g2">
+    <div class="card way"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>プログラムを自分で動かす</h3><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>Windows・macOS 向けに無料ダウンロード</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>API キーと資金はご自身の手元に</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>実際の注文なしでシャドーモードから始める</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>銘柄・金額・レバレッジはご自身で設定</span></li></ul>
+      <div class="acts"><a class="btn btn-primary" href="/ja/download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>ダウンロード</a><a class="btn btn-ghost" href="/ja/guide">使い方</a></div></div>
+    <div class="card way"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>取引所でのコピートレード</h3><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>取引所公式のコピートレードページでトレーダーのプロフィールをフォロー</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>インストール不要</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>結果はリーダーとは異なります（タイミング、規模、手数料、利益分配）</span></li></ul>
+      <p class="state">Bitget と Bybit：公式コピートレードページが公開されています。Binance と OKX：準備中です。ここでは数値を再掲しません。</p>
+      <div class="acts"><a class="btn btn-outline" href="/ja/copy-trading">コピートレード</a></div></div>
+  </div>
+</div></section>
+
+<section class="section-tight"><div class="wrap">
+  <div class="riskbox"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4M12 17h.01"/></svg>始める前に</h2><p>レバレッジをかけた先物取引では元本をすべて失う可能性があり、強制ロスカット（清算）は急速に起こることがあります。初期設定ではストップロスがないため、ポジションが大きな損失を抱えたまま長期間残ることがあります。このサイトの記録は1つの口座の限られた期間のものであり、あなたの結果は異なる可能性があります。このサイトのいかなる内容も投資助言ではありません。</p><p><a href="/ja/risk-disclosure">リスク告知の全文を読む →</a></p></div>
+</div></section>
+
+<section class="section"><div class="wrap"><div class="final">
+  <div><h2>資金を入れる前に、まず見てみる</h2><p>インストールしてシャドーモードを動かし、その動作を実口座と比べてください。それでも使いたい場合にのみ、実際の資金を接続してください。</p></div>
+  <div class="acts"><a class="btn btn-primary" href="/ja/download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>プログラムをダウンロード（無料）</a><a class="btn btn-ghost" href="/ja/guide">使い方</a></div>
+</div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-about">
+        <a class="brand" href="/ja"><img src="/assets/img/logo-96.png" alt="" width="28" height="28" loading="lazy">JaviD Future Bot</a>
+        <p>ご自身のコンピューターで動作するソフトウェアです。資金をお預かりすることはなく、投資助言も行いません。</p>
+      </div>
+      <div><h3>製品</h3><ul>
+        <li><a href="/ja/how-it-works">製品紹介</a></li><li><a href="/ja/exchange">運用実績</a></li><li><a href="/ja/download">ダウンロード</a></li><li><a href="/ja/guide">使い方</a></li><li><a href="/ja/copy-trading">コピートレード</a></li>
+      </ul></div>
+      <div><h3>サポート</h3><ul>
+        <li><a href="/ja/faq">よくある質問</a></li><li><a href="/ja/board">コミュニティ掲示板</a></li><li><a href="/ja/contact">お問い合わせ</a></li><li><a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">Telegram コミュニティ</a></li><li><a href="/api-guide/bitget">API キー発行ガイド</a></li>
+      </ul></div>
+      <div><h3>規約・ポリシー</h3><ul>
+        <li><a href="/ja/risk-disclosure">リスク告知</a></li><li><a href="/ja/privacy">プライバシー</a></li><li><a href="/ja/terms">利用規約</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-risk">
+      <p><b>レバレッジをかけた先物取引では、元本をすべて失う可能性があります。</b> 取引所の名称とロゴは各所有者に帰属します。このサイトはいずれの取引所も運営していません。</p>
+      <p>© 2026 JaviD Future Bot · javidtrading.com</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js?v=d811c5509a" defer></script>
+</body>
+</html>

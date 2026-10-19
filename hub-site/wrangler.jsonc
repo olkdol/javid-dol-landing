@@ -4,5 +4,23 @@
   "compatibility_date": "2026-07-13",
   "main": "worker.js",
   "observability": { "enabled": true },
-  "assets": { "directory": ".", "binding": "ASSETS" }
+  // Only the generated site is public. Before 2026-10-19 the directory was "." and the
+  // worker source, wrangler.jsonc and .wrangler/ were downloadable.
+  // Build first: `node src/build.mjs` (writes ./public). public/ is committed so a git-triggered
+  // build without a build command still ships the current site.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
+  },
+  // Hourly dashboard captures uploaded by scripts/live_capture_upload.py (create once:
+  // `npx wrangler r2 bucket create javid-live-captures`). Upload auth: secret LIVE_CAPTURE_KEY
+  // (`npx wrangler secret put LIVE_CAPTURE_KEY`).
+  "r2_buckets": [
+    { "binding": "LIVE_CAPTURES", "bucket_name": "javid-live-captures" }
+  ],
+  // Community board: the SAME D1 as bg.javidtrading.com (existing posts, watcher keeps working).
+  "d1_databases": [
+    { "binding": "BOARD_DB", "database_name": "javid-board-db-bitget", "database_id": "984b1bcb-c257-496e-b5c4-6c73a1c1b994" }
+  ]
 }

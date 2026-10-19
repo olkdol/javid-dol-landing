@@ -1,0 +1,5 @@
+{
+  "_comment": "Pointer to the single verified backtest shown on the site. Written ONLY by tools/backtest_publish.mjs after every check passes (atomic replace). null = nothing verified yet; the site then shows the localized \"no verified backtest yet\" state. Never edit by hand.",
+  "published": null,
+  "history": []
+}

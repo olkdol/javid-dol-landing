@@ -5,6 +5,7 @@
 // by importing the Pages-Functions-style handlers directly; everything else
 // falls through to the static assets binding.
 
+import { legacyRedirect } from "./legacy_redirect.js";
 import { onRequestPost as downloadPost, onRequestGet as downloadGet, onRequestHead as downloadHead } from "./functions/api/download.js";
 import { onRequestGet as boardListGet, onRequestPost as boardListPost } from "./functions/api/board/posts.js";
 import {
@@ -57,6 +58,10 @@ export default {
         headers: { "Content-Type": "application/json" },
       });
     }
+
+    // 2026-10-19: pages moved to www.javidtrading.com — HTML routes answer 301 (API above untouched)
+    const moved = legacyRedirect("bitget", request);
+    if (moved) return moved;
 
     return env.ASSETS.fetch(request);
   },

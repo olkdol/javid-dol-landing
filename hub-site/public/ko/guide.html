@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{if(sessionStorage.getItem("jfb_src"))return;var q=new URLSearchParams(location.search),r="";try{r=document.referrer?new URL(document.referrer).hostname:""}catch(e){}if(/(^|\.)javidtrading\.com$/.test(r))r="";sessionStorage.setItem("jfb_src",JSON.stringify({r:r,us:q.get("utm_source")||"",um:q.get("utm_medium")||"",uc:q.get("utm_campaign")||"",lp:location.pathname}))}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JaviD Future Bot 사용 방법 — 실제 화면으로 보는 설정</title>
+<meta name="description" content="실제 프로그램 화면으로 보는 설정 순서: API 키 입력·저장, 투자금액·진입 모드·레버리지 설정, 심볼 전체 선택·저장, 거래 시작.">
+<link rel="canonical" href="https://www.javidtrading.com/ko/guide">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="alternate" hreflang="en" href="https://www.javidtrading.com/guide">
+<link rel="alternate" hreflang="ko" href="https://www.javidtrading.com/ko/guide">
+<link rel="alternate" hreflang="ja" href="https://www.javidtrading.com/ja/guide">
+<link rel="alternate" hreflang="es" href="https://www.javidtrading.com/es/guide">
+<link rel="alternate" hreflang="fr" href="https://www.javidtrading.com/fr/guide">
+<link rel="alternate" hreflang="vi" href="https://www.javidtrading.com/vi/guide">
+<link rel="alternate" hreflang="tr" href="https://www.javidtrading.com/tr/guide">
+<link rel="alternate" hreflang="pt" href="https://www.javidtrading.com/pt/guide">
+<link rel="alternate" hreflang="x-default" href="https://www.javidtrading.com/guide">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JaviD Future Bot">
+<meta property="og:title" content="JaviD Future Bot 사용 방법 — 실제 화면으로 보는 설정">
+<meta property="og:description" content="실제 프로그램 화면으로 보는 설정 순서: API 키 입력·저장, 투자금액·진입 모드·레버리지 설정, 심볼 전체 선택·저장, 거래 시작.">
+<meta property="og:url" content="https://www.javidtrading.com/ko/guide">
+<meta property="og:image" content="https://www.javidtrading.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#065f46">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=9df42ec0f1">
+<script>window.JFB={"lang":"ko","t":{"nav_menu":"메뉴","nav_close":"메뉴 닫기","perf_captured":"캡처 시각 {time}","perf_stale":"{time} 이후 갱신되지 않았습니다. 캡처 작업이나 라이브 화면이 멈춘 상태이며, 아래는 마지막으로 정상 캡처된 화면입니다.","perf_none":"아직 게시된 캡처가 없습니다. 실제 캡처가 생기기 전에는 아무것도 표시하지 않습니다.","perf_error":"지금은 캡처를 불러올 수 없습니다. 그 자리에 다른 화면을 대신 넣지 않습니다.","view_dashboard":"대시보드","view_positions":"보유 포지션 (위 숫자 미포함)","perf_zoom":"원본 크기로 보기","hero_shot_alt":"실계좌 대시보드의 최신 1시간 단위 캡처","m_trades":"청산 거래","m_wins":"이익으로 청산","m_wins_val":"{n}건 중 {w}건","m_realized":"실현손익","m_worst":"가장 나쁜 청산 거래","m_down":"실현손익이 마이너스였던 날","m_down_val":"{n}일 중 {d}일","m_funding":"펀딩비 (실현손익에 포함)","m_period":"{from} ~ {to}, 한국시간(UTC+9)","m_unavailable":"최신 캡처에 거래 기록 수치가 없습니다.","chart_aria":"일별 실현손익 누적 선 그래프","time_now":"방금","ago_min":"{n}분 전","ago_h":"{n}시간 전","ago_d":"{n}일 전","bd_secret_label":"비밀글","bd_password":"비밀번호 (비밀글용)","bd_open":"비밀번호로 열기","bd_reply":"답변","bd_empty":"아직 글이 없습니다.","bd_loading":"글을 불러오는 중…","bd_error":"지금은 게시판을 불러올 수 없습니다.","bd_posted":"등록했습니다. 감사합니다.","bd_post_error":"등록하지 못했습니다. 입력 내용을 확인하고 다시 시도해 주세요.","bd_wrong_pw":"비밀번호가 맞지 않습니다.","m_settings":"캡처 시점 이 계좌의 설정: 투자모드 {mode}(잔고 ÷ {div}) · 레버리지 {lev}배 · 하드스톱 {hs} · 진입 모드 설정값 “{entry}”. 새로 설치하면 Normal(잔고 ÷ 500) · 10배로 시작합니다.","m_open":"지금 열린 포지션 {k}개 — 위 숫자에 들어가지 않습니다","hs_on":"켜짐","hs_off":"꺼짐"}};</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"JaviD Future Bot","item":"https://www.javidtrading.com/ko"},{"@type":"ListItem","position":2,"name":"사용 방법","item":"https://www.javidtrading.com/ko/guide"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"사용 방법 — JaviD Future Bot","description":"실제 프로그램 화면으로 보는 설정 순서: API 키 입력·저장, 투자금액·진입 모드·레버리지 설정, 심볼 전체 선택·저장, 거래 시작.","step":[{"@type":"HowToStep","position":1,"name":"다운로드 · 압축 해제 · 실행","text":"사용하는 거래소용 파일을 받아 압축을 풉니다. Windows 는 JaviD_Future_Bot.exe, macOS 는 start.command 를 실행합니다. 프로그램은 내 PC의 로컬 주소로 브라우저에서 열립니다. 첫 실행 안내 창을 닫으면 탭이 보입니다."},{"@type":"HowToStep","position":2,"name":"Settings — API 키 입력 후 Save","text":"Settings 탭을 열고, 거래소에서 만든 Access Key 와 Secret Key 를 붙여 넣은 뒤(비트겟·OKX 는 Passphrase 도) Save 를 누릅니다. 옆의 Test Connection 으로 키를 확인할 수 있습니다. 키의 출금 권한은 꺼 두세요.","image":"https://www.javidtrading.com/assets/guide/01-api-keys.png"},{"@type":"HowToStep","position":3,"name":"Settings — 투자금액 (Investment Mode)","text":"Investment Mode (Margin Ratio per Entry) 에서 진입마다 잔고의 얼마를 쓸지 고릅니다: 진입당 증거금 = 잔고 ÷ 100·200·300·500·700. 기본값은 Normal(÷ 500) 이고, 숫자가 클수록 한 번에 들어가는 금액이 작아집니다. 모드를 누르면 바로 적용됩니다. (바이낸스 빌드는 Aggressive·Normal·Stable 세 가지입니다.)","image":"https://www.javidtrading.com/assets/guide/02-investment-amount.png"},{"@type":"HowToStep","position":4,"name":"Settings — 진입 모드","text":"Entry Mode 에서 Conservative (single)(처음 조건이 맞는 전략 하나만) 또는 Multi Mode(전략을 번갈아 사용)를 고릅니다. 고르면 바로 적용됩니다.","image":"https://www.javidtrading.com/assets/guide/03-entry-mode.png"},{"@type":"HowToStep","position":5,"name":"Settings — 레버리지","text":"Leverage 에서 3x·5x·10x·15x 중 고릅니다. 새로 설치하면 10x 입니다. 다음 신규 진입부터 적용되고, 이미 열린 포지션은 기존 레버리지를 유지합니다. 레버리지가 높을수록 청산 가격이 가까워집니다.","image":"https://www.javidtrading.com/assets/guide/04-leverage.png"},{"@type":"HowToStep","position":6,"name":"Symbol Selection — Select All","text":"Symbol Selection 탭에서 Select All 을 누릅니다(원하는 종목만 골라도 됩니다).","image":"https://www.javidtrading.com/assets/guide/05-symbols-select-all.png"},{"@type":"HowToStep","position":7,"name":"Symbol Selection — Save Selection","text":"Save Selection 을 누릅니다. 이후 선택한 모든 종목의 캔들 데이터를 불러오니 끝날 때까지 기다립니다.","image":"https://www.javidtrading.com/assets/guide/06-symbols-save-all.png"},{"@type":"HowToStep","position":8,"name":"Start Trading 누르기","text":"오른쪽 위 Start Trading 을 누릅니다. 오른쪽 Operations Console 의 Shadow Mode(기본값 꺼짐)가 켜져 있으면 가상 잔고로 매매합니다. 쉐도우 모드를 끈 상태라면 실주문 전에 레버리지·증거금 요약 확인 창이 뜹니다.","image":"https://www.javidtrading.com/assets/guide/07-start-trading.png"}]}</script>
+</head><body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="wrap hdr">
+    <a class="brand" href="/ko"><img src="/assets/img/logo-96.png" alt="" width="30" height="30"><span class="brand-name">JaviD Future Bot</span></a>
+    <nav class="nav" aria-label="Main"><a href="/ko/how-it-works">제품 소개</a><a href="/ko/exchange">거래소 성과</a><a href="/ko/guide" aria-current="page">사용 방법</a><a href="/ko/risk-disclosure">위험 고지</a></nav>
+    <div class="hdr-tools">
+      <label class="lang"><span class="sr-only">언어</span><select data-lang-switch aria-label="언어"><option value="en" data-href="/guide">English</option><option value="ko" data-href="/ko/guide" selected>한국어</option><option value="ja" data-href="/ja/guide">日本語</option><option value="es" data-href="/es/guide">Español</option><option value="fr" data-href="/fr/guide">Français</option><option value="vi" data-href="/vi/guide">Tiếng Việt</option><option value="tr" data-href="/tr/guide">Türkçe</option><option value="pt" data-href="/pt/guide">Português</option></select></label>
+      <a class="btn btn-primary btn-sm hdr-cta" href="/ko/download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>프로그램 다운로드</a>
+      <button class="menu-btn" type="button" aria-controls="mnav" aria-expanded="false" aria-label="메뉴"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+  <nav id="mnav" class="mnav" aria-label="Mobile"><a href="/ko/how-it-works">제품 소개</a><a href="/ko/exchange">거래소 성과</a><a href="/ko/guide" aria-current="page">사용 방법</a><a href="/ko/risk-disclosure">위험 고지</a><a href="/ko/download">프로그램 다운로드</a></nav>
+</header>
+<main id="main"><div class="wrap page-head"><h1>사용 방법</h1><p>실제 프로그램 화면입니다(비트겟 빌드, 영문 화면, 가짜 예시 키, 아무것도 연결하지 않은 상태). 다른 거래소 빌드도 탭과 버튼이 같으며, 차이점은 맨 아래에 적었습니다.</p></div>
+<section class="section-tight"><div class="wrap stack">
+  <div class="note-box"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>권장: 쉐도우 모드로 먼저 지켜보기</h3><p>Start Trading 을 누르기 전에 Operations Console 에서 쉐도우 모드를 켜고 며칠 돌려 보세요. 실주문 없이 실제 시세에서 같은 판단을 볼 수 있습니다.</p></div>
+  <div class="card gstep" id="step-0"><div><h2><span class="num">1</span>다운로드 · 압축 해제 · 실행</h2><p>사용하는 거래소용 파일을 받아 압축을 풉니다. Windows 는 <code>JaviD_Future_Bot.exe</code>, macOS 는 <code>start.command</code> 를 실행합니다. 프로그램은 내 PC의 로컬 주소로 브라우저에서 열립니다. 첫 실행 안내 창을 닫으면 탭이 보입니다.</p></div></div><div class="card gstep" id="step-1"><div><h2><span class="num">2</span>Settings — API 키 입력 후 Save</h2><p><b>Settings</b> 탭을 열고, 거래소에서 만든 <b>Access Key</b> 와 <b>Secret Key</b> 를 붙여 넣은 뒤(비트겟·OKX 는 <b>Passphrase</b> 도) <b>Save</b> 를 누릅니다. 옆의 <b>Test Connection</b> 으로 키를 확인할 수 있습니다. 키의 출금 권한은 꺼 두세요.</p></div><figure><a href="/assets/guide/01-api-keys.png" target="_blank" rel="noopener"><img src="/assets/guide/01-api-keys.webp" alt="화면: Settings — API 키 입력 후 Save" width="1162" height="236" loading="eager" decoding="async"></a></figure></div><div class="card gstep" id="step-2"><div><h2><span class="num">3</span>Settings — 투자금액 (Investment Mode)</h2><p><b>Investment Mode (Margin Ratio per Entry)</b> 에서 진입마다 잔고의 얼마를 쓸지 고릅니다: 진입당 증거금 = 잔고 ÷ 100·200·300·500·700. 기본값은 <b>Normal(÷ 500)</b> 이고, 숫자가 클수록 한 번에 들어가는 금액이 작아집니다. 모드를 누르면 바로 적용됩니다. (바이낸스 빌드는 Aggressive·Normal·Stable 세 가지입니다.)</p></div><figure><a href="/assets/guide/02-investment-amount.png" target="_blank" rel="noopener"><img src="/assets/guide/02-investment-amount.webp" alt="화면: Settings — 투자금액 (Investment Mode)" width="1162" height="332" loading="lazy" decoding="async"></a></figure></div><div class="card gstep" id="step-3"><div><h2><span class="num">4</span>Settings — 진입 모드</h2><p><b>Entry Mode</b> 에서 <b>Conservative (single)</b>(처음 조건이 맞는 전략 하나만) 또는 <b>Multi Mode</b>(전략을 번갈아 사용)를 고릅니다. 고르면 바로 적용됩니다.</p></div><figure><a href="/assets/guide/03-entry-mode.png" target="_blank" rel="noopener"><img src="/assets/guide/03-entry-mode.webp" alt="화면: Settings — 진입 모드" width="1162" height="262" loading="lazy" decoding="async"></a></figure></div><div class="card gstep" id="step-4"><div><h2><span class="num">5</span>Settings — 레버리지</h2><p><b>Leverage</b> 에서 3x·5x·10x·15x 중 고릅니다. 새로 설치하면 10x 입니다. 다음 신규 진입부터 적용되고, 이미 열린 포지션은 기존 레버리지를 유지합니다. 레버리지가 높을수록 청산 가격이 가까워집니다.</p></div><figure><a href="/assets/guide/04-leverage.png" target="_blank" rel="noopener"><img src="/assets/guide/04-leverage.webp" alt="화면: Settings — 레버리지" width="1162" height="243" loading="lazy" decoding="async"></a></figure></div><div class="card gstep" id="step-5"><div><h2><span class="num">6</span>Symbol Selection — Select All</h2><p><b>Symbol Selection</b> 탭에서 <b>Select All</b> 을 누릅니다(원하는 종목만 골라도 됩니다).</p></div><figure><a href="/assets/guide/05-symbols-select-all.png" target="_blank" rel="noopener"><img src="/assets/guide/05-symbols-select-all.webp" alt="화면: Symbol Selection — Select All" width="1440" height="900" loading="lazy" decoding="async"></a></figure></div><div class="card gstep" id="step-6"><div><h2><span class="num">7</span>Symbol Selection — Save Selection</h2><p><b>Save Selection</b> 을 누릅니다. 이후 선택한 모든 종목의 캔들 데이터를 불러오니 끝날 때까지 기다립니다.</p></div><figure><a href="/assets/guide/06-symbols-save-all.png" target="_blank" rel="noopener"><img src="/assets/guide/06-symbols-save-all.webp" alt="화면: Symbol Selection — Save Selection" width="1440" height="900" loading="lazy" decoding="async"></a></figure></div><div class="card gstep" id="step-7"><div><h2><span class="num">8</span>Start Trading 누르기</h2><p>오른쪽 위 <b>Start Trading</b> 을 누릅니다. 오른쪽 Operations Console 의 <b>Shadow Mode</b>(기본값 꺼짐)가 켜져 있으면 가상 잔고로 매매합니다. 쉐도우 모드를 끈 상태라면 실주문 전에 레버리지·증거금 요약 확인 창이 뜹니다.</p></div><figure><a href="/assets/guide/07-start-trading.png" target="_blank" rel="noopener"><img src="/assets/guide/07-start-trading.webp" alt="화면: Start Trading 누르기" width="1440" height="900" loading="lazy" decoding="async"></a></figure></div>
+  <div class="card card-pad"><h2>거래소별 빌드 차이</h2><ul class="list-check mt-16">
+    <li>비트겟: Access Key · Secret Key · Passphrase. 키에 선물 조회·거래 권한이 필요합니다.</li><li>바이낸스: Access Key · Secret Key 두 칸뿐입니다. 투자모드는 Aggressive·Normal·Stable 입니다.</li><li>바이비트: API Key · API Secret, 패스프레이즈 없음. 통합 거래 계정(UTA)이어야 하고 USDT 가 있어야 하며, 키에는 계약 주문·포지션 읽기·쓰기 권한이 필요합니다. 바이비트 키는 18자이며 정상입니다.</li><li>OKX: API Key · Secret Key · Passphrase. 계정 모드가 “선물 모드”여야 하고 USDT 가 거래 계정에 있어야 합니다. (다운로드 준비 중)</li><li>모든 빌드: 키의 IP 바인딩을 권장하며, 첫 실행 때 헤지(양방향) 모드가 자동으로 켜집니다.</li></ul></div>
+  <div class="riskbox"><p><b>레버리지 선물은 원금 전액 손실이 가능합니다.</b> 레버리지가 높을수록 청산 가격이 가까워집니다. 기본값에는 손절이 없어 포지션이 큰 손실 상태로 오래 남을 수 있습니다. 60% 하드스톱을 켜면 손실 크기를 제한할 수 있지만, 그 시점에서 손실이 확정됩니다.</p></div>
+  <p class="center"><a class="btn btn-primary" href="/ko/download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>프로그램 무료 다운로드</a></p>
+</div></section></main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-about">
+        <a class="brand" href="/ko"><img src="/assets/img/logo-96.png" alt="" width="28" height="28" loading="lazy">JaviD Future Bot</a>
+        <p>내 컴퓨터에서 실행되는 소프트웨어입니다. 자금을 보관하지 않으며 투자 조언을 하지 않습니다.</p>
+      </div>
+      <div><h3>제품</h3><ul>
+        <li><a href="/ko/how-it-works">제품 소개</a></li><li><a href="/ko/exchange">거래소 성과</a></li><li><a href="/ko/download">프로그램 다운로드</a></li><li><a href="/ko/guide">사용 방법</a></li><li><a href="/ko/copy-trading">카피 트레이딩</a></li>
+      </ul></div>
+      <div><h3>지원</h3><ul>
+        <li><a href="/ko/faq">자주 묻는 질문</a></li><li><a href="/ko/board">커뮤니티 게시판</a></li><li><a href="/ko/contact">문의</a></li><li><a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">텔레그램 커뮤니티</a></li><li><a href="/api-guide/bitget">API 키 발급 가이드</a></li>
+      </ul></div>
+      <div><h3>정책</h3><ul>
+        <li><a href="/ko/risk-disclosure">위험 고지</a></li><li><a href="/ko/privacy">개인정보 처리</a></li><li><a href="/ko/terms">이용약관</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-risk">
+      <p><b>레버리지 선물은 원금 전액 손실이 가능합니다.</b> 거래소 이름과 로고는 각 소유자의 것입니다. 이 사이트는 어떤 거래소도 운영하지 않습니다.</p>
+      <p>© 2026 JaviD Future Bot · javidtrading.com</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js?v=d811c5509a" defer></script>
+</body>
+</html>

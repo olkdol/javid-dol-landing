@@ -10,6 +10,7 @@
 // Pages-Functions-style handlers directly. Everything else (index.html,
 // board.html, images, etc.) falls through to the static assets binding.
 
+import { legacyTarget } from "./legacy_redirect.js";
 import { onRequestPost as downloadPost, onRequestGet as downloadGet } from "./functions/api/download.js";
 import { onRequestGet as boardListGet, onRequestPost as boardListPost } from "./functions/api/board/posts.js";
 import {
@@ -36,7 +37,9 @@ export default {
     // 보내 메서드와 본문을 유지한다(301 이면 브라우저가 POST 를 GET 으로 바꿔 글쓰기가 깨진다).
     if (host === "javidfuturebot2.javid-dol.uk") {
       const status = (request.method === "GET" || request.method === "HEAD") ? 301 : 308;
-      return Response.redirect("https://bg.javidtrading.com" + pathname + url.search, status);
+      // 2026-10-19: pages go straight to www (one hop); API/assets keep the path on bg as before
+      const www = legacyTarget("bitget", request.url);
+      return Response.redirect(www || ("https://bg.javidtrading.com" + pathname + url.search), status);
     }
 
     try {
@@ -92,10 +95,10 @@ export default {
       // (javid-board-db)을 쓰므로 글이 bn 게시판에 그대로 있다. 첫 화면으로 보내면 옛
       // 게시판 링크로 온 사람이 게시판에 도착하지 못한다.
       if (pathname === "/board" || pathname === "/board.html") {
-        return Response.redirect("https://bn.javidtrading.com/board" + url.search, 301);
+        return Response.redirect("https://www.javidtrading.com/board" + url.search, 301);
       }
       let target = "https://bg.javidtrading.com";
-      if (host === "javidfuturebot.javid-dol.uk") target = "https://bn.javidtrading.com";
+      if (host === "javidfuturebot.javid-dol.uk") return Response.redirect("https://www.javidtrading.com/?exchange=binance", 301);
       else if (host === "javid-dol.uk" || host === "www.javid-dol.uk") target = "https://www.javidtrading.com";
       // 경로는 버린다 — 구 사이트의 파일명 구조가 신규 사이트와 다르다.
       // (경로를 이어붙이면 대부분 404 가 되어 301 의 랭크 전달이 오히려 끊긴다.)

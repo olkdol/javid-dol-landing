@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{if(sessionStorage.getItem("jfb_src"))return;var q=new URLSearchParams(location.search),r="";try{r=document.referrer?new URL(document.referrer).hostname:""}catch(e){}if(/(^|\.)javidtrading\.com$/.test(r))r="";sessionStorage.setItem("jfb_src",JSON.stringify({r:r,us:q.get("utm_source")||"",um:q.get("utm_medium")||"",uc:q.get("utm_campaign")||"",lp:location.pathname}))}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JaviD Future Bot 작동 방식</title>
+<meta name="description" content="프로그램이 무엇이고 어디서 실행되는지, 개발자는 어떻게 돈을 버는지, 무엇을 직접 확인할 수 있는지 정리했습니다.">
+<link rel="canonical" href="https://www.javidtrading.com/ko/how-it-works">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="alternate" hreflang="en" href="https://www.javidtrading.com/how-it-works">
+<link rel="alternate" hreflang="ko" href="https://www.javidtrading.com/ko/how-it-works">
+<link rel="alternate" hreflang="ja" href="https://www.javidtrading.com/ja/how-it-works">
+<link rel="alternate" hreflang="es" href="https://www.javidtrading.com/es/how-it-works">
+<link rel="alternate" hreflang="fr" href="https://www.javidtrading.com/fr/how-it-works">
+<link rel="alternate" hreflang="vi" href="https://www.javidtrading.com/vi/how-it-works">
+<link rel="alternate" hreflang="tr" href="https://www.javidtrading.com/tr/how-it-works">
+<link rel="alternate" hreflang="pt" href="https://www.javidtrading.com/pt/how-it-works">
+<link rel="alternate" hreflang="x-default" href="https://www.javidtrading.com/how-it-works">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JaviD Future Bot">
+<meta property="og:title" content="JaviD Future Bot 작동 방식">
+<meta property="og:description" content="프로그램이 무엇이고 어디서 실행되는지, 개발자는 어떻게 돈을 버는지, 무엇을 직접 확인할 수 있는지 정리했습니다.">
+<meta property="og:url" content="https://www.javidtrading.com/ko/how-it-works">
+<meta property="og:image" content="https://www.javidtrading.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#065f46">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=9df42ec0f1">
+<script>window.JFB={"lang":"ko","t":{"nav_menu":"메뉴","nav_close":"메뉴 닫기","perf_captured":"캡처 시각 {time}","perf_stale":"{time} 이후 갱신되지 않았습니다. 캡처 작업이나 라이브 화면이 멈춘 상태이며, 아래는 마지막으로 정상 캡처된 화면입니다.","perf_none":"아직 게시된 캡처가 없습니다. 실제 캡처가 생기기 전에는 아무것도 표시하지 않습니다.","perf_error":"지금은 캡처를 불러올 수 없습니다. 그 자리에 다른 화면을 대신 넣지 않습니다.","view_dashboard":"대시보드","view_positions":"보유 포지션 (위 숫자 미포함)","perf_zoom":"원본 크기로 보기","hero_shot_alt":"실계좌 대시보드의 최신 1시간 단위 캡처","m_trades":"청산 거래","m_wins":"이익으로 청산","m_wins_val":"{n}건 중 {w}건","m_realized":"실현손익","m_worst":"가장 나쁜 청산 거래","m_down":"실현손익이 마이너스였던 날","m_down_val":"{n}일 중 {d}일","m_funding":"펀딩비 (실현손익에 포함)","m_period":"{from} ~ {to}, 한국시간(UTC+9)","m_unavailable":"최신 캡처에 거래 기록 수치가 없습니다.","chart_aria":"일별 실현손익 누적 선 그래프","time_now":"방금","ago_min":"{n}분 전","ago_h":"{n}시간 전","ago_d":"{n}일 전","bd_secret_label":"비밀글","bd_password":"비밀번호 (비밀글용)","bd_open":"비밀번호로 열기","bd_reply":"답변","bd_empty":"아직 글이 없습니다.","bd_loading":"글을 불러오는 중…","bd_error":"지금은 게시판을 불러올 수 없습니다.","bd_posted":"등록했습니다. 감사합니다.","bd_post_error":"등록하지 못했습니다. 입력 내용을 확인하고 다시 시도해 주세요.","bd_wrong_pw":"비밀번호가 맞지 않습니다.","m_settings":"캡처 시점 이 계좌의 설정: 투자모드 {mode}(잔고 ÷ {div}) · 레버리지 {lev}배 · 하드스톱 {hs} · 진입 모드 설정값 “{entry}”. 새로 설치하면 Normal(잔고 ÷ 500) · 10배로 시작합니다.","m_open":"지금 열린 포지션 {k}개 — 위 숫자에 들어가지 않습니다","hs_on":"켜짐","hs_off":"꺼짐"}};</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"JaviD Future Bot","item":"https://www.javidtrading.com/ko"},{"@type":"ListItem","position":2,"name":"제품 소개","item":"https://www.javidtrading.com/ko/how-it-works"}]}</script>
+</head><body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="wrap hdr">
+    <a class="brand" href="/ko"><img src="/assets/img/logo-96.png" alt="" width="30" height="30"><span class="brand-name">JaviD Future Bot</span></a>
+    <nav class="nav" aria-label="Main"><a href="/ko/how-it-works" aria-current="page">제품 소개</a><a href="/ko/exchange">거래소 성과</a><a href="/ko/guide">사용 방법</a><a href="/ko/risk-disclosure">위험 고지</a></nav>
+    <div class="hdr-tools">
+      <label class="lang"><span class="sr-only">언어</span><select data-lang-switch aria-label="언어"><option value="en" data-href="/how-it-works">English</option><option value="ko" data-href="/ko/how-it-works" selected>한국어</option><option value="ja" data-href="/ja/how-it-works">日本語</option><option value="es" data-href="/es/how-it-works">Español</option><option value="fr" data-href="/fr/how-it-works">Français</option><option value="vi" data-href="/vi/how-it-works">Tiếng Việt</option><option value="tr" data-href="/tr/how-it-works">Türkçe</option><option value="pt" data-href="/pt/how-it-works">Português</option></select></label>
+      <a class="btn btn-primary btn-sm hdr-cta" href="/ko/download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>프로그램 다운로드</a>
+      <button class="menu-btn" type="button" aria-controls="mnav" aria-expanded="false" aria-label="메뉴"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+  <nav id="mnav" class="mnav" aria-label="Mobile"><a href="/ko/how-it-works" aria-current="page">제품 소개</a><a href="/ko/exchange">거래소 성과</a><a href="/ko/guide">사용 방법</a><a href="/ko/risk-disclosure">위험 고지</a><a href="/ko/download">프로그램 다운로드</a></nav>
+</header>
+<main id="main"><div class="wrap page-head"><h1>작동 방식</h1><p>JaviD Future Bot 은 USDⓈ-M 무기한 선물용 데스크톱 프로그램입니다. 개인 개발자 한 사람이 만들고 배포합니다.</p></div>
+<section class="section-tight"><div class="wrap"><div class="card card-pad prose">
+  <h2>어디서 실행되나</h2><p>내 Windows·macOS 컴퓨터에서 실행됩니다. 거래소에서 API 키를 만들어 프로그램 설정에 넣으면, 프로그램이 내 PC에서 주문을 냅니다. 키는 내 컴퓨터에 저장됩니다. 매매하는 동안 PC가 켜져 있어야 합니다.</p><h2>무엇을 판단하나</h2><p>전략 3개가 직접 고른 종목을 보면서 규칙에 따라 진입·추가진입합니다. V19.7 기본 안전장치: 상장 90일 미만 종목 진입 금지, 같은 종목·방향에 24시간 안 3회 신규 진입하면 첫 진입부터 48시간까지 신규 진입 잠금(추가진입은 횟수에 들어가지 않음), 상장폐지 필터. 기본값에는 손절이 없으며, 60% 하드스톱을 선택해 켤 수 있습니다.</p>
+  <h2>개발자는 어떻게 돈을 버나</h2><p>프로그램은 무료입니다. 구독도, 라이선스 키도, 유료 등급도 없습니다.</p><p>거래소가 브로커 프로그램을 운영하는 경우, 사용자가 이미 내고 있는 거래 수수료의 일부를 개발자에게 나눠 줍니다. 사용자의 수수료는 어느 쪽이든 같습니다.</p>
+  <ul><li><b>비트겟</b> — 이미 내는 거래 수수료의 12%. 신규·기존 계정 모두 해당합니다.</li><li><b>바이낸스</b> — 개발자가 프로그램에 가입한 뒤 개설된 계정만 해당합니다. 이미 바이낸스 계정이 있다면 개발자는 그 거래에서 아무것도 받지 않습니다. 이를 바꾸려고 두 번째 바이낸스 계정을 만들지는 마세요. 바이낸스가 금지하는 일입니다.</li><li><b>바이비트·OKX</b> — 가능한 경우 프로그램에 거래소의 브로커·레퍼럴 식별자가 들어 있습니다. 사용자의 수수료는 바뀌지 않습니다.</li><li><b>카피 트레이딩(비트겟·바이비트)</b> — 개발자가 프로필의 리더로서 거래소가 정한 비율로 팔로워 수익의 일부를 받습니다. 초대 링크에는 거래소 초대 코드가 들어 있습니다.</li></ul><p>이 웹사이트의 가입 링크는 거래소의 일반 가입 페이지이며, 레퍼럴 링크가 아닙니다.</p>
+  <h2>이해관계를 그대로 밝힙니다</h2><p>거래마다 수수료를 나눠 받으면 개발자는 거래가 많아지길 바랄 이유가 생깁니다. 진입 규칙과 기본값은 개발자가 정해 빌드에 담고, 고급 전략 설정은 비밀번호로 잠겨 있습니다. 그 기본값에는 거래를 줄이는 규칙도 들어 있습니다 — 같은 종목 24시간 3회 신규 진입 상한입니다. 내 설정은 내 컴퓨터의 파일에 저장되며, 개발자는 실행 중인 내 프로그램의 설정을 보거나 바꿀 수 없습니다. 쉐도우 모드로 돈이 걸리기 전에 얼마나 자주 거래하는지 직접 지켜볼 수 있습니다.</p>
+  <h2>직접 확인할 수 있는 것</h2><ul><li>받은 파일의 SHA-256 체크섬을 다운로드 페이지의 값과 비교합니다.</li><li>실행 중에 프로그램이 접속하는 호스트 목록을 봅니다(Windows 리소스 모니터, macOS <code>lsof -i -P</code>).</li><li>실계좌 대시보드를 봅니다 — 이 사이트의 1시간 단위 캡처와 유튜브 라이브.</li><li>실제 자금을 연결하기 전까지 원하는 만큼 쉐도우 모드로 돌려 봅니다.</li></ul>
+  <h2>확인할 수 없는 것</h2><p>소스 코드는 공개하지 않습니다. Windows·macOS 빌드는 패키징·난독화되어 있어 전략 코드를 읽을 수 없습니다. 모든 코드를 읽어 보고 써야 한다면 Freqtrade·Hummingbot 같은 오픈소스 프로젝트가 그 목적에 더 맞습니다.</p>
+  <div class="riskbox mt-24"><p><b>레버리지 선물은 원금 전액 손실이 가능합니다.</b></p></div>
+</div></div></section></main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-about">
+        <a class="brand" href="/ko"><img src="/assets/img/logo-96.png" alt="" width="28" height="28" loading="lazy">JaviD Future Bot</a>
+        <p>내 컴퓨터에서 실행되는 소프트웨어입니다. 자금을 보관하지 않으며 투자 조언을 하지 않습니다.</p>
+      </div>
+      <div><h3>제품</h3><ul>
+        <li><a href="/ko/how-it-works">제품 소개</a></li><li><a href="/ko/exchange">거래소 성과</a></li><li><a href="/ko/download">프로그램 다운로드</a></li><li><a href="/ko/guide">사용 방법</a></li><li><a href="/ko/copy-trading">카피 트레이딩</a></li>
+      </ul></div>
+      <div><h3>지원</h3><ul>
+        <li><a href="/ko/faq">자주 묻는 질문</a></li><li><a href="/ko/board">커뮤니티 게시판</a></li><li><a href="/ko/contact">문의</a></li><li><a href="https://t.me/+P_CukTNNKRI4ZDVl" target="_blank" rel="noopener">텔레그램 커뮤니티</a></li><li><a href="/api-guide/bitget">API 키 발급 가이드</a></li>
+      </ul></div>
+      <div><h3>정책</h3><ul>
+        <li><a href="/ko/risk-disclosure">위험 고지</a></li><li><a href="/ko/privacy">개인정보 처리</a></li><li><a href="/ko/terms">이용약관</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-risk">
+      <p><b>레버리지 선물은 원금 전액 손실이 가능합니다.</b> 거래소 이름과 로고는 각 소유자의 것입니다. 이 사이트는 어떤 거래소도 운영하지 않습니다.</p>
+      <p>© 2026 JaviD Future Bot · javidtrading.com</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js?v=d811c5509a" defer></script>
+</body>
+</html>

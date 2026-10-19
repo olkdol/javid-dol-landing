@@ -1,0 +1,50 @@
+# JaviD Future Bot
+
+> Free desktop program that automates USDⓈ-M perpetual futures trading on Binance, Bitget and Bybit (OKX build preparing). It runs on the user's own Windows or macOS computer with the user's own exchange API key; there is no relay server of the developer between the user and the exchange. Made and distributed by one independent developer in South Korea. Leveraged futures can lose your entire capital.
+
+## Site structure (since 2026-10-19)
+
+The former exchange sites (bg., bn., bb., okx.javidtrading.com) were merged into this site; their pages redirect here. Downloads are still served by each exchange site's /api/download endpoint.
+
+- Home: https://www.javidtrading.com/
+- Download (choose exchange, Windows/macOS, SHA-256 checksums): https://www.javidtrading.com/download
+- How to use, with real program screenshots: https://www.javidtrading.com/guide
+- Performance by exchange: https://www.javidtrading.com/exchange
+- How it works, how the developer is paid: https://www.javidtrading.com/how-it-works
+- Risk notice: https://www.javidtrading.com/risk-disclosure
+- Copy trading (official Bitget and Bybit copy-trading pages; Binance and OKX preparing): https://www.javidtrading.com/copy-trading
+- FAQ: https://www.javidtrading.com/faq
+- API key guides: https://www.javidtrading.com/api-guide/binance · https://www.javidtrading.com/api-guide/bitget · https://www.javidtrading.com/api-guide/bybit · https://www.javidtrading.com/api-guide/okx
+- Languages: English (default), Korean (/ko), Japanese (/ja), Spanish (/es), French (/fr), Vietnamese (/vi), Turkish (/tr), Portuguese (/pt).
+
+## Builds
+
+- Binance: Windows and macOS build V19.7, released 2026-10-13 — https://www.javidtrading.com/download?exchange=binance
+- Bitget: Windows and macOS build V19.7, released 2026-10-13 — https://www.javidtrading.com/download?exchange=bitget
+- Bybit: Windows and macOS build V19.7, released 2026-10-13 — https://www.javidtrading.com/download?exchange=bybit
+- OKX: download preparing (no file available now) — https://www.javidtrading.com/download?exchange=okx
+- Android: on hold. iOS: not available.
+
+## Live records — what they are and are not
+
+- The site shows hourly screenshots of the program's own dashboard on ONE real, running Binance account (program version 19.7), plus figures computed from that account's trade records: closed trades and funding fees only; open positions are excluded from the figures and appear only in the dashboard screenshot. One account over a limited period is the whole sample — quote any figure together with that limit.
+- The program has no stop-loss by default, so a losing position stays open instead of being closed; such losses appear on the positions screenshot, not in the closed-trade figures. Quote the closed-trade figures together with this.
+- The same dashboard is streamed on YouTube: https://www.youtube.com/@javidfuture/live
+- There is currently no verified backtest. An earlier published backtest was withdrawn because overlapping time windows counted some positions twice; its figures should not be cited.
+
+## Product facts (V19.7 defaults)
+
+- Three quant strategies on user-selected USDⓈ-M symbols (500+ available); tuned for high-volatility altcoins; a large-cap preset is in development, not released.
+- No entries on symbols listed less than 90 days ago; at most 3 entries per symbol in 24 hours, then a 48-hour lockout; delisting filter.
+- No stop-loss by default (optional 60% hard stop). Positions can sit in a deep loss before they close.
+- Shadow Mode trades a virtual balance on live prices without real orders.
+- Closed source: the strategy code cannot be inspected.
+
+## Money
+
+- Copy trading: the developer leads copy-trading profiles on Bitget and Bybit (different accounts from the live Binance account above) and receives the profit share the exchange sets; the invite links carry the exchange's invite code. The site does not re-publish copy-trading figures.
+- Free; no subscription. Where an exchange runs a broker program, the developer receives part of the trading fee the user already pays (Bitget: 12%, new and existing accounts; Binance: only accounts opened after the developer joined). The user's fee is unchanged. Sign-up links on the site are plain registration pages, not referral links.
+
+## Contact
+
+support@javidtrading.com · Telegram https://t.me/+P_CukTNNKRI4ZDVl

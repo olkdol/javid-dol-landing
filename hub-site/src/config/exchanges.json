@@ -1,0 +1,119 @@
+{
+  "_comment": "Single source of truth for the four exchange builds shown on www. Sizes are the R2 object sizes (Cloudflare R2 admin API, 2026-10-19); SHA-256 values are the ones published on each exchange site's install-help page for the 2026-10-13 builds. Download links point at each exchange worker's existing /api/download endpoint so D1 counting and landing attribution keep working. Never add a download URL for a file that is not in R2. Android is on hold (PyArmor runtime does not load under Chaquopy) - do not add android entries.",
+  "order": [
+    "binance",
+    "bitget",
+    "bybit",
+    "okx"
+  ],
+  "default": "bitget",
+  "exchanges": {
+    "binance": {
+      "name": "Binance",
+      "logo": "/assets/img/binance-logo.png",
+      "site": "https://bn.javidtrading.com",
+      "signup_url": "https://accounts.binance.com/register",
+      "api_guide_path": "/api-guide/binance",
+      "status": "available",
+      "live_data": true,
+      "copy_trading_key": "binance",
+      "passphrase": false,
+      "version": "V19.7",
+      "build_tag": null,
+      "release_date": "2026-10-13",
+      "downloads": {
+        "windows": {
+          "url": "https://bn.javidtrading.com/api/download?platform=windows",
+          "file": "JaviD_Future_Bot_Windows.zip",
+          "bytes": 19856003,
+          "sha256": "db70a5ed681093ccfbc3122c52dcb69b0114518c5e30a0b87fec82d5d514a2f0"
+        },
+        "mac": {
+          "url": "https://bn.javidtrading.com/api/download?platform=mac",
+          "file": "JaviD_Future_Bot_macOS.zip",
+          "bytes": 66112222,
+          "sha256": "c44bc5ffefffeee155c2eea149e36f9a4a0b8e8b19401894cf0bdbb3c774d8dc"
+        }
+      },
+      "install_help": "binance",
+      "notes_key": "ex_note_binance"
+    },
+    "bitget": {
+      "name": "Bitget",
+      "logo": "/assets/img/bitget-logo.png",
+      "site": "https://bg.javidtrading.com",
+      "signup_url": "https://www.bitget.com/register",
+      "api_guide_path": "/api-guide/bitget",
+      "status": "available",
+      "live_data": false,
+      "copy_trading_key": "bitget",
+      "passphrase": true,
+      "version": "V19.7",
+      "build_tag": null,
+      "release_date": "2026-10-13",
+      "downloads": {
+        "windows": {
+          "url": "https://bg.javidtrading.com/api/download?platform=windows",
+          "file": "JaviD_Future_Bot_Bitget_Windows.zip",
+          "bytes": 23904206,
+          "sha256": "b566d6df21de0125b5498ab76d8818d3035dff3669593decfa8b1bf49a7d62f3"
+        },
+        "mac": {
+          "url": "https://bg.javidtrading.com/api/download?platform=mac",
+          "file": "JaviD_Future_Bot_Bitget_macOS.zip",
+          "bytes": 73841532,
+          "sha256": "083c4525694d4611cf7088b4237b798289ec45790d115e9e8569c59853602eb3"
+        }
+      },
+      "install_help": "bitget",
+      "notes_key": "ex_note_bitget"
+    },
+    "bybit": {
+      "name": "Bybit",
+      "logo": "/assets/img/bybit-logo.png",
+      "site": "https://bb.javidtrading.com",
+      "signup_url": "https://www.bybit.com/register",
+      "api_guide_path": "/api-guide/bybit",
+      "status": "available",
+      "live_data": false,
+      "copy_trading_key": "bybit",
+      "passphrase": false,
+      "version": "V19.7",
+      "build_tag": null,
+      "release_date": "2026-10-13",
+      "downloads": {
+        "windows": {
+          "url": "https://bb.javidtrading.com/api/download?platform=windows",
+          "file": "JaviD_Future_Bot_Bybit_Windows.zip",
+          "bytes": 23967335,
+          "sha256": "0a55c31188bb5158608ddff99f7bcbf5e35e84de5979b2b015e614c91d4657bd"
+        },
+        "mac": {
+          "url": "https://bb.javidtrading.com/api/download?platform=mac",
+          "file": "JaviD_Future_Bot_Bybit_macOS.zip",
+          "bytes": 73941216,
+          "sha256": "4ff157605873e85fee301d99442064bf45b82dc8aabec2573ae35080d26ee608"
+        }
+      },
+      "install_help": "bybit",
+      "notes_key": "ex_note_bybit"
+    },
+    "okx": {
+      "name": "OKX",
+      "logo": "/assets/img/okx-logo.png",
+      "site": "https://okx.javidtrading.com",
+      "signup_url": "https://www.okx.com/account/register",
+      "api_guide_path": "/api-guide/okx",
+      "status": "preparing",
+      "live_data": false,
+      "copy_trading_key": "okx",
+      "passphrase": true,
+      "version": null,
+      "build_tag": null,
+      "release_date": null,
+      "downloads": {},
+      "install_help": null,
+      "notes_key": "ex_note_okx"
+    }
+  }
+}
