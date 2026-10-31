@@ -15,7 +15,7 @@ The former exchange sites (bg., bn., bb., okx.javidtrading.com) were merged into
 - Copy trading (official Bitget and Bybit copy-trading pages; Binance and OKX preparing): https://www.javidtrading.com/copy-trading
 - FAQ: https://www.javidtrading.com/faq
 - API key guides: https://www.javidtrading.com/api-guide/binance · https://www.javidtrading.com/api-guide/bitget · https://www.javidtrading.com/api-guide/bybit · https://www.javidtrading.com/api-guide/okx
-- Languages: English (default), Korean (/ko), Japanese (/ja), Spanish (/es), French (/fr), Vietnamese (/vi), Turkish (/tr), Portuguese (/pt).
+- Languages: English (default), Japanese (/ja), Spanish (/es), French (/fr), Vietnamese (/vi), Turkish (/tr), Portuguese (/pt).
 
 ## Builds
 

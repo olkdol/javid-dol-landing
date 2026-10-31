@@ -4,3 +4,6 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# local Korean preview build (never deployed)
+preview-ko/

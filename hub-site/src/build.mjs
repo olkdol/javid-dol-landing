@@ -12,7 +12,11 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = path.join(ROOT, "src");
-const OUT = path.join(ROOT, "public");
+// Korean is NOT part of the public site (decision 2026-10-31: no Korean-language service).
+// `node src/build.mjs --preview-ko` builds the full site incl. /ko into ./preview-ko (never deployed,
+// gitignored) so the owner can read the Korean copy locally: `preview_ko.bat`.
+const PREVIEW_KO = process.argv.includes("--preview-ko");
+const OUT = path.join(ROOT, PREVIEW_KO ? "preview-ko" : "public");
 const ORIGIN = "https://www.javidtrading.com";
 export const LANGS = ["en", "ko", "ja", "es", "fr", "vi", "tr", "pt"];
 const TELEGRAM = "https://t.me/+P_CukTNNKRI4ZDVl";
@@ -29,7 +33,7 @@ const IH = {};
 for (const n of ["bitget", "binance", "bybit"]) IH[n] = readJSON(path.join(SRC, "install-help", n + ".json"));
 
 const DICT = {};
-const BUILT_LANGS = LANGS.filter((l) => fs.existsSync(path.join(SRC, "i18n", l + ".json")));
+const BUILT_LANGS = LANGS.filter((l) => (PREVIEW_KO || l !== "ko") && fs.existsSync(path.join(SRC, "i18n", l + ".json")));
 for (const l of BUILT_LANGS) DICT[l] = readJSON(path.join(SRC, "i18n", l + ".json"));
 const EN = DICT.en;
 
@@ -643,6 +647,24 @@ table{display:block;max-width:100%;overflow-x:auto}
 #www-bar{background:#065f46;color:#ecfdf5;font:600 14px/1.4 -apple-system,"Segoe UI",sans-serif;padding:10px 16px;text-align:center}
 #www-bar a{color:#fff;text-decoration:underline;margin:0 6px}
 </style>`;
+// The guides carry their own in-page language dictionary (I18N) and menu. Korean is withdrawn from the
+// public site, so the "ko" block and its menu entry are cut out; the preview build keeps them.
+function dropKoreanFromGuide(h, id) {
+  const start = h.indexOf("var I18N = ");
+  const end = h.indexOf("\n};", start);
+  if (start < 0 || end < 0) { errors.push(`guide ${id}: I18N block not found`); return h; }
+  let obj;
+  try { obj = new Function("return " + h.slice(start + "var I18N = ".length, end + 2))(); }
+  catch (e) { errors.push(`guide ${id}: I18N parse: ${e.message}`); return h; }
+  if (!obj.ko) { errors.push(`guide ${id}: no ko block to drop`); return h; }
+  delete obj.ko;
+  h = h.slice(0, start) + "var I18N = " + JSON.stringify(obj, null, 1).replace(/</g, "\\u003c") + h.slice(end + 2);
+  h = h.replace(/\/\*(?:(?!\*\/)[\s\S])*?[가-힣](?:(?!\*\/)[\s\S])*\*\//g, ""); // Korean code comments
+  const before = h;
+  h = h.replace(/\{code:'ko', label:'[^']*'\},\s*/, "");
+  if (h === before) errors.push(`guide ${id}: ko menu entry not found`);
+  return h;
+}
 function buildGuides(repoRoot) {
   const out = {};
   for (const [id, rel] of Object.entries(GUIDE_SRC)) {
@@ -662,7 +684,8 @@ function buildGuides(repoRoot) {
     const map = (p) => {
       const clean = p.replace(/\.html$/, "");
       if (clean === "" || clean === "/" ) return "/?exchange=" + id;
-      if (/^\/?(ko|ja|es|fr|vi|tr|pt)$/.test(clean)) return "/" + clean.replace("/", "") + "?exchange=" + id;
+      if (/^\/?ko$/.test(clean)) return "/?exchange=" + id; // no Korean pages any more
+      if (/^\/?(ja|es|fr|vi|tr|pt)$/.test(clean)) return "/" + clean.replace("/", "") + "?exchange=" + id;
       if (/^\/?(manual)$/.test(clean)) return "/guide?exchange=" + id;
       if (/^\/?(results)$/.test(clean)) return "/exchange?exchange=" + id;
       if (/^\/?(board)$/.test(clean)) return "/board";
@@ -683,6 +706,7 @@ function buildGuides(repoRoot) {
     // images stay on the exchange host (assets there are kept and not redirected)
     h = h.replace(/(src|href)="(?:\/)?(images|screenshots|results)\//g, `$1="https://${sub}.javidtrading.com/$2/`);
     h = h.replace(/url\((['"]?)(?:\/)?(images|screenshots)\//g, `url($1https://${sub}.javidtrading.com/$2/`);
+    if (!PREVIEW_KO) h = dropKoreanFromGuide(h, id);
     const bar = `<div id="www-bar">JaviD Future Bot · <a href="/">Home</a><a href="/download?exchange=${id}">Download</a><a href="/guide">How to use</a><a href="/risk-disclosure">Risk notice</a></div>`;
     h = h.replace("</head>", LIGHT + "\n</head>").replace(/<body([^>]*)>/, `<body$1>\n${bar}`);
     out[id] = h;
@@ -733,7 +757,7 @@ The former exchange sites (bg., bn., bb., okx.javidtrading.com) were merged into
 - Copy trading (official Bitget and Bybit copy-trading pages; Binance and OKX preparing): ${ORIGIN}/copy-trading
 - FAQ: ${ORIGIN}/faq
 - API key guides: ${ORIGIN}/api-guide/binance · ${ORIGIN}/api-guide/bitget · ${ORIGIN}/api-guide/bybit · ${ORIGIN}/api-guide/okx
-- Languages: English (default), Korean (/ko), Japanese (/ja), Spanish (/es), French (/fr), Vietnamese (/vi), Turkish (/tr), Portuguese (/pt).
+- Languages: English (default), Japanese (/ja), Spanish (/es), French (/fr), Vietnamese (/vi), Turkish (/tr), Portuguese (/pt).
 
 ## Builds
 
@@ -811,7 +835,7 @@ export function build() {
   writeOut("_headers", HEADERS);
   writeOut("data/published_backtest.json", JSON.stringify(BT, null, 2));
   if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
-  const missing = LANGS.filter((l) => !BUILT_LANGS.includes(l));
+  const missing = LANGS.filter((l) => !BUILT_LANGS.includes(l) && (PREVIEW_KO || l !== "ko"));
   console.log(`built ${BUILT_LANGS.length} languages (${BUILT_LANGS.join(",")})${missing.length ? " — MISSING: " + missing.join(",") : ""} -> ${OUT}`);
 }
 

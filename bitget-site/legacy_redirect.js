@@ -10,7 +10,7 @@
 // blog posts keep their images and search engines can re-crawl the old URLs and see the 301s.
 
 export const WWW = "https://www.javidtrading.com";
-const LANGS = ["ko", "ja", "es", "fr", "vi", "tr", "pt"];
+const LANGS = ["ja", "es", "fr", "vi", "tr", "pt"];
 // paths that stay on the exchange host even though they look like pages
 const KEEP_PAGES = new Set(["/download-stats", "/download-stats.html"]);
 
@@ -36,9 +36,12 @@ export function legacyTarget(exchange, urlLike) {
   const lang = LANGS.includes(url.searchParams.get("lang")) ? url.searchParams.get("lang") : null;
   const pre = (l) => (l ? "/" + l : "");
   if (p === "/") return withQuery(WWW + "/", url, ex);
-  const m = p.match(/^\/(ko|ja|es|fr|vi|tr|pt)$/);
+  // Korean was withdrawn (2026-10-31): /ko pages map to the English equivalent
+  p = p.replace(/^\/ko(?=\/|$)/, "") || "/";
+  if (p === "/") return withQuery(WWW + "/", url, ex);
+  const m = p.match(/^\/(ja|es|fr|vi|tr|pt)$/);
   if (m) return withQuery(WWW + "/" + m[1], url, ex);
-  const lm = p.match(/^\/(ko|ja|es|fr|vi|tr|pt)\/(.+)$/);
+  const lm = p.match(/^\/(ja|es|fr|vi|tr|pt)\/(.+)$/);
   const l2 = lm ? lm[1] : lang;
   const rest = lm ? "/" + lm[2] : p;
   if (rest === "/results") return withQuery(WWW + pre(l2) + "/exchange", url, ex);

@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PUB = path.join(ROOT, "public");
-const LANGS = ["en", "ko", "ja", "es", "fr", "vi", "tr", "pt"];
+const LANGS = ["en", "ja", "es", "fr", "vi", "tr", "pt"];
 const ORIGIN = "https://www.javidtrading.com";
 const errors = [];
 const err = (m) => errors.push(m);

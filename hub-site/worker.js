@@ -15,7 +15,7 @@ import { v1 } from "./functions/api/v1.js";
 import { onRequestGet as boardListGet, onRequestPost as boardListPost } from "./functions/api/board/posts.js";
 import { onRequestGet as boardItemGet } from "./functions/api/board/posts/[id].js";
 
-const LANGS = ["ko", "ja", "es", "fr", "vi", "tr", "pt"];
+const LANGS = ["ja", "es", "fr", "vi", "tr", "pt"];
 
 function redirect(url, to, status = 301) {
   const target = new URL(to, url.origin);
@@ -52,6 +52,10 @@ export default {
     } catch (err) {
       return new Response(JSON.stringify({ error: "server_error" }), { status: 500, headers: { "Content-Type": "application/json" } });
     }
+
+    // Korean pages were withdrawn (2026-10-31): old /ko links land on the English equivalent.
+    const km = pathname.match(/^\/ko(?:\.html)?(?:\/(.*?))?(?:\.html)?$/);
+    if (km) return redirect(url, "/" + (km[1] || ""));
 
     // legacy hub URLs (the old splitter site) -> new pages
     if (pathname === "/install-help" || pathname === "/install-help.html") {
