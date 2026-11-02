@@ -11,6 +11,7 @@
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",
+    "run_worker_first": true,
     "not_found_handling": "404-page"
   },
   // Hourly dashboard captures uploaded by scripts/live_capture_upload.py (create once:
