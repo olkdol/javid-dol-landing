@@ -1,6 +1,6 @@
 # JaviD Future Bot
 
-> Free desktop program that automates USDⓈ-M perpetual futures trading on Binance, Bitget and Bybit (OKX build preparing). It runs on the user's own Windows or macOS computer with the user's own exchange API key; there is no relay server of the developer between the user and the exchange. Made and distributed by one independent developer in South Korea. Leveraged futures can lose your entire capital.
+> Free desktop program that automates USDⓈ-M perpetual futures trading on Binance, Bitget, Bybit and OKX. It runs on the user's own Windows or macOS computer with the user's own exchange API key; there is no relay server of the developer between the user and the exchange. Made and distributed by one independent developer in South Korea. Leveraged futures can lose your entire capital.
 
 ## Site structure (since 2026-10-19)
 
@@ -22,7 +22,7 @@ The former exchange sites (bg., bn., bb., okx.javidtrading.com) were merged into
 - Binance: Windows and macOS build V19.7, released 2026-10-13 — https://www.javidtrading.com/download?exchange=binance
 - Bitget: Windows and macOS build V19.7, released 2026-10-13 — https://www.javidtrading.com/download?exchange=bitget
 - Bybit: Windows and macOS build V19.7, released 2026-10-13 — https://www.javidtrading.com/download?exchange=bybit
-- OKX: download preparing (no file available now) — https://www.javidtrading.com/download?exchange=okx
+- OKX: Windows and macOS build V19.7, released 2026-11-03 — https://www.javidtrading.com/download?exchange=okx
 - Android: on hold. iOS: not available.
 
 ## Live records — what they are and are not

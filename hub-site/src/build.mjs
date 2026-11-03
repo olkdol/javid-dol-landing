@@ -30,7 +30,7 @@ const EX = readJSON(path.join(SRC, "config/exchanges.json"));
 const CT = readJSON(path.join(SRC, "config/copy_trading.json"));
 const BT = readJSON(path.join(SRC, "data/backtest/published.json"));
 const IH = {};
-for (const n of ["bitget", "binance", "bybit"]) IH[n] = readJSON(path.join(SRC, "install-help", n + ".json"));
+for (const n of ["bitget", "binance", "bybit", "okx"]) IH[n] = readJSON(path.join(SRC, "install-help", n + ".json"));
 
 const DICT = {};
 const BUILT_LANGS = LANGS.filter((l) => (PREVIEW_KO || l !== "ko") && fs.existsSync(path.join(SRC, "i18n", l + ".json")));
@@ -742,7 +742,7 @@ function llms() {
   }).join("\n");
   return `# JaviD Future Bot
 
-> Free desktop program that automates USDⓈ-M perpetual futures trading on Binance, Bitget and Bybit (OKX build preparing). It runs on the user's own Windows or macOS computer with the user's own exchange API key; there is no relay server of the developer between the user and the exchange. Made and distributed by one independent developer in South Korea. Leveraged futures can lose your entire capital.
+> Free desktop program that automates USDⓈ-M perpetual futures trading on Binance, Bitget, Bybit and OKX. It runs on the user's own Windows or macOS computer with the user's own exchange API key; there is no relay server of the developer between the user and the exchange. Made and distributed by one independent developer in South Korea. Leveraged futures can lose your entire capital.
 
 ## Site structure (since 2026-10-19)
 

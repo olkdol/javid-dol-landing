@@ -77,7 +77,7 @@ for (const f of htmlFiles) {
   }
   for (const m of h.matchAll(/<a\b[^>]*href="([^"]*\/api\/download[^"]*)"[^>]*>/g)) {
     dl++;
-    if (!/^https:\/\/(bg|bn|bb)\.javidtrading\.com\/api\/download\?platform=(windows|mac)$/.test(m[1])) err(`${r}: unexpected download href ${m[1]}`);
+    if (!/^https:\/\/(bg|bn|bb|okx)\.javidtrading\.com\/api\/download\?platform=(windows|mac)$/.test(m[1])) err(`${r}: unexpected download href ${m[1]}`);
     if (!/data-dl/.test(m[0])) err(`${r}: download link without data-dl (no attribution) ${m[1]}`);
     if (/platform=android/.test(m[1])) err(`${r}: android download link`);
   }
