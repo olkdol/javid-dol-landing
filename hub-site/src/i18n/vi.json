@@ -306,7 +306,7 @@
  "q7": "Các số liệu thực trên trang này có ý nghĩa gì?",
  "a7": "Chúng đến từ một tài khoản Binance thật: ảnh chụp dashboard mỗi giờ và số liệu tính từ chính lịch sử giao dịch của tài khoản đó (giao dịch đã đóng cộng phí funding, không gồm vị thế đang mở). Vì mặc định không có stop-loss, một vị thế đang lỗ vẫn mở thay vì bị đóng, nên nó xuất hiện trên ảnh chụp vị thế đang mở, không nằm trong số liệu. Toàn bộ mẫu là một tài khoản trong một khoảng thời gian giới hạn.",
  "q8": "Có backtest không?",
- "a8": "Hiện chưa có. Một backtest trước đây đã bị rút lại sau khi phát hiện lỗi đếm. Backtest mới chỉ được hiển thị sau khi kiểm chứng, tách biệt với số liệu thực.",
+ "a8": "Hiện chưa có bản đã xác minh. Backtest trước đây đã bị gỡ sau khi phát hiện lỗi đếm. Bản mới chỉ hiển thị sau khi được xác minh, tách riêng khỏi dữ liệu thực. Một nghiên cứu chạy lại 283 đợt pump altcoin được đăng riêng; đây là mô phỏng trên giá quá khứ, không phải backtest đã xác minh.",
  "q9": "Copy trading khác với chương trình như thế nào?",
  "a9": "Copy trading chạy trên trang của sàn và không cần cài đặt gì. Kết quả của bạn khác với kết quả của người dẫn dắt. Hồ sơ Bitget và Bybit được liệt kê trên trang copy trading; Binance và OKX đang chuẩn bị.",
  "q10": "Tôi đặt câu hỏi ở đâu?",
@@ -385,5 +385,17 @@
  "ct_qr_note": "Trên máy tính: mở liên kết và tiếp tục trong ứng dụng hoặc trang web của sàn. Trên điện thoại: liên kết sẽ mở ứng dụng của sàn nếu ứng dụng đã được cài đặt.",
  "hiw_s3_l4": "<b>Copy trading (Bitget, Bybit)</b> — với tư cách là người dẫn dắt của các hồ sơ, nhà phát triển nhận phần chia lợi nhuận do sàn quy định từ lợi nhuận của người theo dõi. Các liên kết mời có chứa mã mời của sàn.",
  "hs_on": "bật",
- "hs_off": "tắt"
+ "hs_off": "tắt",
+ "nav_study": "Backtest",
+ "foot_study": "Nghiên cứu backtest",
+ "home_study_kicker": "Nghiên cứu backtest",
+ "home_study_h2": "283 đợt pump altcoin, được chạy lại",
+ "home_study_p": "Mỗi lớp bảo vệ thay đổi điều gì và đánh đổi gì khi chạy lại hai năm các đợt pump và ba tháng gần nhất của một tài khoản thật. Trong mô hình, cấu hình mặc định của V19.7 vẫn có thể chạm mức thanh lý ở 3 trong 16 đợt pump lớn nhất.",
+ "home_study_cta": "Đọc nghiên cứu",
+ "home_study_tag": "Chạy lại trên giá quá khứ · không phải kết quả thực · không phải backtest đã xác minh",
+ "home_study_t1": "đợt pump được chạy lại",
+ "home_study_t2": "đợt pump từ 7× trở lên",
+ "home_study_t3": "tích hợp các lớp bảo vệ đã xét",
+ "bt_study_note": "Một nghiên cứu chạy lại (283 đợt pump và ba tháng gần nhất của một tài khoản thật) được đăng riêng. Đây là mô phỏng trên giá quá khứ, không phải backtest đã xác minh.",
+ "bt_study_cta": "Mở nghiên cứu backtest"
 }

@@ -306,7 +306,7 @@
  "q7": "Bu sitedeki canlı rakamlar ne anlama geliyor?",
  "a7": "Tek bir gerçek Binance hesabından gelirler: panelinin saatlik ekran görüntüleri ve kendi işlem kayıtlarından hesaplanan rakamlar (kapanan işlemler artı fonlama ücretleri, açık pozisyonlar hariç). Varsayılan olarak zarar durdur olmadığından, zararda olan bir pozisyon kapatılmak yerine açık kalır; bu yüzden rakamlarda değil, açık pozisyonlar ekran görüntüsünde görünür. Örneklemin tamamı, sınırlı bir dönemdeki tek bir hesaptır.",
  "q8": "Geriye dönük test var mı?",
- "a8": "Şu anda yok. Önceki bir geriye dönük test, bir sayım hatası bulunduktan sonra geri çekildi. Yenisi yalnızca doğrulamadan sonra ve canlı kayıtlardan ayrı olarak gösterilecek.",
+ "a8": "Şu an doğrulanmış olan yok. Önceki bir geriye dönük test, bir sayım hatası bulunduktan sonra geri çekildi. Yenisi yalnızca doğrulamadan sonra, canlı kayıtlardan ayrı gösterilecek. 283 altcoin pump'ının yeniden oynatıldığı ayrı bir çalışma yayımlandı; geçmiş fiyatlar üzerinde bir simülasyondur, doğrulanmış geriye dönük test değildir.",
  "q9": "Kopya işlemin programdan farkı nedir?",
  "a9": "Kopya işlem borsanın sayfasında çalışır ve hiçbir şey kurulmaz. Sizin sonucunuz liderinkinden farklıdır. Bitget ve Bybit profilleri kopya işlem sayfasında listelenmiştir; Binance ve OKX hazırlanıyor.",
  "q10": "Sorularımı nereye sorabilirim?",
@@ -385,5 +385,17 @@
  "ct_qr_note": "Bilgisayarda: bağlantıyı açın ve borsanın uygulamasında veya sitesinde devam edin. Telefonda: borsa uygulaması yüklüyse bağlantı uygulamayı açar.",
  "hiw_s3_l4": "<b>Kopya işlem (Bitget, Bybit)</b> — profillerin lideri olarak geliştirici, takipçilerin kârlarından borsanın belirlediği kâr payını alır. Davet bağlantıları borsanın davet kodunu içerir.",
  "hs_on": "açık",
- "hs_off": "kapalı"
+ "hs_off": "kapalı",
+ "nav_study": "Backtest",
+ "foot_study": "Geriye dönük test çalışması",
+ "home_study_kicker": "Geriye dönük test çalışması",
+ "home_study_h2": "283 altcoin pump'ı, yeniden oynatıldı",
+ "home_study_p": "İki yıllık pump'lar ve gerçek bir hesabın son üç ayı yeniden oynatıldığında her koruma neyi değiştirir ve neye mal olur. Modelde V19.7'nin varsayılan kurulumu, en büyük 16 pump'ın 3'ünde yine de tasfiyeye ulaşabiliyor.",
+ "home_study_cta": "Çalışmayı oku",
+ "home_study_tag": "Geçmiş fiyatlarla yeniden oynatma · canlı sonuç değil · doğrulanmış geriye dönük test değil",
+ "home_study_t1": "yeniden oynatılan pump",
+ "home_study_t2": "7× ve üzeri pump",
+ "home_study_t3": "incelenen korumaları içerir",
+ "bt_study_note": "Ayrı bir yeniden oynatma çalışması (283 pump ve gerçek bir hesabın son üç ayı) yayımlandı. Geçmiş fiyatlar üzerinde bir simülasyondur ve doğrulanmış geriye dönük test değildir.",
+ "bt_study_cta": "Geriye dönük test çalışmasını aç"
 }

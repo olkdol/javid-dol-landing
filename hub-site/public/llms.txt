@@ -10,6 +10,7 @@ The former exchange sites (bg., bn., bb., okx.javidtrading.com) were merged into
 - Download (choose exchange, Windows/macOS, SHA-256 checksums): https://www.javidtrading.com/download
 - How to use, with real program screenshots: https://www.javidtrading.com/guide
 - Performance by exchange: https://www.javidtrading.com/exchange
+- Backtest study (a replay of past prices; NOT the verified backtest): https://www.javidtrading.com/backtest-study
 - How it works, how the developer is paid: https://www.javidtrading.com/how-it-works
 - Risk notice: https://www.javidtrading.com/risk-disclosure
 - Copy trading (official Bitget and Bybit copy-trading pages; Binance and OKX preparing): https://www.javidtrading.com/copy-trading
@@ -31,12 +32,14 @@ The former exchange sites (bg., bn., bb., okx.javidtrading.com) were merged into
 - The program has no stop-loss by default, so a losing position stays open instead of being closed; such losses appear on the positions screenshot, not in the closed-trade figures. Quote the closed-trade figures together with this.
 - The same dashboard is streamed on YouTube: https://www.youtube.com/@javidfuture/live
 - There is currently no verified backtest. An earlier published backtest was withdrawn because overlapping time windows counted some positions twice; its figures should not be cited.
+- A separate study page replays 283 altcoin pumps (Sep 2024 – Sep 2026) and one real account's last three months, to show what each safeguard changes and what it costs. It is a simulation on past prices with a simplified model or an earlier engine build, not a live record and not the verified backtest; quote any figure from it together with that limit. In its model, V19.7's default setup could still reach liquidation in 3 of the 16 largest pumps.
 
 ## Product facts (V19.7 defaults)
 
 - Three quant strategies on user-selected USDⓈ-M symbols (500+ available); tuned for high-volatility altcoins; a large-cap preset is in development, not released.
 - No entries on symbols listed less than 90 days ago; at most 3 entries per symbol in 24 hours, then a 48-hour lockout; delisting filter.
 - No stop-loss by default (optional 60% hard stop). Positions can sit in a deep loss before they close.
+- Also on by default: staged entry when a pump is detected, an emergency partial close, and a default entry size of 1/500 of balance (1/300 can be selected).
 - Shadow Mode trades a virtual balance on live prices without real orders.
 - Closed source: the strategy code cannot be inspected.
 

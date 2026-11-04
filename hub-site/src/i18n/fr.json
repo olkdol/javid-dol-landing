@@ -306,7 +306,7 @@
  "q7": "Que signifient les chiffres réels de ce site ?",
  "a7": "Ils proviennent d'un compte Binance réel : captures d'écran horaires de son tableau de bord et chiffres calculés à partir de son propre historique de trades (trades clôturés plus frais de financement, positions ouvertes exclues). Sans stop-loss par défaut, une position perdante reste ouverte au lieu d'être clôturée ; elle apparaît donc sur la capture des positions ouvertes, pas dans les chiffres. Un seul compte sur une période limitée constitue tout l'échantillon.",
  "q8": "Y a-t-il un backtest ?",
- "a8": "Pas pour le moment. Un backtest précédent a été retiré après la découverte d'une erreur de comptage. Un nouveau ne sera présenté qu'après vérification, séparément des historiques réels.",
+ "a8": "Pas de backtest vérifié pour le moment. Un backtest précédent a été retiré après la découverte d'une erreur de comptage. Un nouveau ne sera affiché qu'après vérification, séparément des enregistrements réels. Une étude de rejeu de 283 pumps d'altcoins est publiée à part ; c'est une simulation sur des prix passés, pas le backtest vérifié.",
  "q9": "En quoi le copy trading diffère-t-il du programme ?",
  "a9": "Le copy trading fonctionne sur la page de la plateforme et rien n'est installé. Votre résultat diffère de celui du leader. Les profils Bitget et Bybit sont listés sur la page copy trading ; Binance et OKX sont en préparation.",
  "q10": "Où poser mes questions ?",
@@ -385,5 +385,17 @@
  "ct_qr_note": "Sur un ordinateur : ouvrez le lien et continuez dans l'application ou sur le site de la plateforme. Sur un téléphone : le lien ouvre l'application de la plateforme si elle est installée.",
  "hiw_s3_l4": "<b>Copy trading (Bitget, Bybit)</b> — en tant que leader des profils, le développeur reçoit la part des bénéfices des followers fixée par la plateforme. Les liens d'invitation contiennent le code d'invitation de la plateforme.",
  "hs_on": "activé",
- "hs_off": "désactivé"
+ "hs_off": "désactivé",
+ "nav_study": "Backtest",
+ "foot_study": "Étude de backtest",
+ "home_study_kicker": "Étude de backtest",
+ "home_study_h2": "283 pumps d'altcoins, rejoués",
+ "home_study_p": "Ce que change chaque garde-fou, et ce qu'il coûte, quand on rejoue deux ans de pumps et les trois derniers mois d'un compte réel. Dans le modèle, la configuration par défaut de V19.7 pourrait encore atteindre la liquidation dans 3 des 16 plus gros pumps.",
+ "home_study_cta": "Lire l'étude",
+ "home_study_tag": "Rejeu de prix passés · pas des résultats en direct · pas le backtest vérifié",
+ "home_study_t1": "pumps rejoués",
+ "home_study_t2": "pumps de 7× ou plus",
+ "home_study_t3": "intègre les garde-fous étudiés",
+ "bt_study_note": "Une étude de rejeu (283 pumps et les trois derniers mois d'un compte réel) est publiée à part. C'est une simulation sur des prix passés, pas le backtest vérifié.",
+ "bt_study_cta": "Ouvrir l'étude de backtest"
 }

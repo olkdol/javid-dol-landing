@@ -306,7 +306,7 @@
  "q7": "What do the live figures on this site mean?",
  "a7": "They come from one real Binance account: hourly screenshots of its dashboard and figures computed from its own trade records (closed trades plus funding fees, open positions excluded). With no stop-loss by default, a losing position stays open instead of being closed, so it appears on the open-positions screenshot, not in the figures. One account over a limited period is the whole sample.",
  "q8": "Is there a backtest?",
- "a8": "Not at the moment. An earlier backtest was withdrawn after a counting error was found. A new one will be shown only after verification, separately from live records.",
+ "a8": "Not a verified one at the moment. An earlier backtest was withdrawn after a counting error was found. A new one will be shown only after verification, separately from live records. A separate replay study of 283 altcoin pumps is published; it is a simulation on past prices, not the verified backtest.",
  "q9": "How is copy trading different from the program?",
  "a9": "Copy trading runs on the exchange's page and nothing is installed. Your result differs from the leader's. Bitget and Bybit profiles are listed on the copy-trading page; Binance and OKX are preparing.",
  "q10": "Where do I ask questions?",
@@ -385,5 +385,17 @@
  "ct_qr_note": "On a computer: open the link and continue in the exchange's app or site. On a phone: the link opens the exchange app if it is installed.",
  "hiw_s3_l4": "<b>Copy trading (Bitget, Bybit)</b> — as the leader of the profiles, the developer receives the profit share the exchange sets from followers' profits. The invite links carry the exchange's invite code.",
  "hs_on": "on",
- "hs_off": "off"
+ "hs_off": "off",
+ "nav_study": "Backtest",
+ "foot_study": "Backtest study",
+ "home_study_kicker": "Backtest study",
+ "home_study_h2": "283 altcoin pumps, replayed",
+ "home_study_p": "What each safeguard changes, and what it costs, when two years of pumps and one real account's last three months are replayed. In the model, V19.7's default setup could still reach liquidation in 3 of the 16 largest pumps.",
+ "home_study_cta": "Read the study",
+ "home_study_tag": "Replay on past prices · not live results · not the verified backtest",
+ "home_study_t1": "pumps replayed",
+ "home_study_t2": "pumps of 7× or more",
+ "home_study_t3": "carries the safeguards examined",
+ "bt_study_note": "A separate replay study (283 pumps and one real account's last three months) is published. It is a simulation on past prices and is not the verified backtest.",
+ "bt_study_cta": "Open the backtest study"
 }

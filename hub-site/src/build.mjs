@@ -9,6 +9,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { loadStudy, studyBody } from "./study.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = path.join(ROOT, "src");
@@ -23,7 +24,7 @@ const TELEGRAM = "https://t.me/+P_CukTNNKRI4ZDVl";
 const YT_LIVE = "https://www.youtube.com/@javidfuture/live";
 const EMAIL = "support@javidtrading.com";
 const FONT_CSS = "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css";
-const LASTMOD = "2026-10-19";
+const LASTMOD = "2026-11-04";
 
 const readJSON = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
 const EX = readJSON(path.join(SRC, "config/exchanges.json"));
@@ -60,6 +61,7 @@ for (const [id, e] of Object.entries(EX.exchanges)) {
     }
   } else if (Object.keys(e.downloads || {}).length) errors.push(`exchange ${id}: not available but has downloads`);
 }
+const STUDY = loadStudy(SRC, BUILT_LANGS, errors);
 if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
 
 // ── helpers ───────────────────────────────────────────────────────────────
@@ -73,7 +75,7 @@ function T(lang) {
   return f;
 }
 const PAGES = {
-  home: "", "how-it-works": "how-it-works", exchange: "exchange", download: "download", guide: "guide",
+  home: "", "how-it-works": "how-it-works", exchange: "exchange", study: "backtest-study", download: "download", guide: "guide",
   "copy-trading": "copy-trading", "risk-disclosure": "risk-disclosure", faq: "faq", board: "board",
   contact: "contact", privacy: "privacy", terms: "terms",
 };
@@ -182,7 +184,7 @@ ${ld.map(jsonld).join("\n")}
 
 function header(lang, active) {
   const t = T(lang);
-  const items = [["how-it-works", "nav_product"], ["exchange", "nav_performance"], ["guide", "nav_guide"], ["risk-disclosure", "nav_risk"]];
+  const items = [["how-it-works", "nav_product"], ["exchange", "nav_performance"], ["study", "nav_study"], ["guide", "nav_guide"], ["risk-disclosure", "nav_risk"]];
   const nav = items.map(([p, k]) => `<a href="${href(lang, p)}"${active === p ? ' aria-current="page"' : ""}>${t.txt(k)}</a>`).join("");
   const opts = BUILT_LANGS.map((l) => `<option value="${l}" data-href="${href(l, active)}"${l === lang ? " selected" : ""}>${esc(DICT[l]._lang_name)}</option>`).join("");
   return `<body>
@@ -214,7 +216,7 @@ function footer(lang) {
         <p>${t("foot_about")}</p>
       </div>
       <div><h3>${t.txt("foot_product")}</h3><ul>
-        ${li(href(lang, "how-it-works"), "nav_product")}${li(href(lang, "exchange"), "nav_performance")}${li(href(lang, "download"), "nav_download")}${li(href(lang, "guide"), "nav_guide")}${li(href(lang, "copy-trading"), "foot_copy")}
+        ${li(href(lang, "how-it-works"), "nav_product")}${li(href(lang, "exchange"), "nav_performance")}${li(href(lang, "study"), "foot_study")}${li(href(lang, "download"), "nav_download")}${li(href(lang, "guide"), "nav_guide")}${li(href(lang, "copy-trading"), "foot_copy")}
       </ul></div>
       <div><h3>${t.txt("foot_support")}</h3><ul>
         ${li(href(lang, "faq"), "foot_faq")}${li(href(lang, "board"), "foot_board")}${li(href(lang, "contact"), "foot_contact")}${li(TELEGRAM, "foot_telegram", true)}${li("/api-guide/bitget", "foot_api_guides")}
@@ -333,6 +335,12 @@ function pageHome(lang) {
   <div class="grid g4">${cards}</div>
 </div></section>
 
+<section class="section-tight" id="backtest-study"><div class="wrap"><div class="st-banner">
+  <div><span class="kicker">${t.txt("home_study_kicker")}</span><h2>${t.txt("home_study_h2")}</h2><p>${t("home_study_p")}</p>
+    <div class="acts"><a class="btn" href="${href(lang, "study")}">${t.txt("home_study_cta")} ${ico("arrow")}</a><span class="tag">${t.txt("home_study_tag")}</span></div></div>
+  <div class="st-banner-tiles"><div><b>${STUDY.D.expect.total}</b><span>${t.txt("home_study_t1")}</span></div><div><b>${STUDY.D.expect.major}</b><span>${t.txt("home_study_t2")}</span></div><div><b>V19.7</b><span>${t.txt("home_study_t3")}</span></div></div>
+</div></div></section>
+
 <section class="section-tight" id="live"><div class="wrap"><div class="card card-pad">
   <div class="perf-head"><h2>${t.txt("perf_h2")} (${t.txt("perf_exchange")})</h2>${badge("b-live", t.txt("perf_badge"))}</div>
   <p class="perf-what">${t("perf_what")}</p>
@@ -422,10 +430,20 @@ function pageExchange(lang) {
 <section class="section-tight" id="backtest"><div class="wrap">
   <div class="section-head"><h2>${t.txt("bt_h2")}</h2></div>
   ${bt}
+  <p class="small mt-16">${t("bt_study_note")} <a href="${href(lang, "study")}">${t.txt("bt_study_cta")} →</a></p>
   <div class="card card-pad mt-16"><h3>${t.txt("bt_rules_h3")}</h3><ol class="rules mt-8">${rules}</ol></div>
 </div></section>
 <section class="section-tight"><div class="wrap"><div class="riskbox"><p>${t("riskbox_p")}</p><p><a href="${href(lang, "risk-disclosure")}">${t.txt("riskbox_cta")} →</a></p></div></div></section>`;
   return simple(lang, "exchange", "exp_title", "exp_desc", "nav_performance", body);
+}
+
+function pageStudy(lang) {
+  const t = T(lang), st = STUDY.dict[lang];
+  const body = studyBody(lang, STUDY, { href, ico, badge }) +
+    `\n<section class="section-tight"><div class="wrap"><div class="riskbox"><p>${t("riskbox_p")}</p><p><a href="${href(lang, "risk-disclosure")}">${t.txt("riskbox_cta")} →</a></p></div></div></section>`;
+  const article = { "@context": "https://schema.org", "@type": "Article", headline: strip(st.h1), description: strip(st.desc), inLanguage: t("_html_lang"), dateModified: LASTMOD,
+    mainEntityOfPage: ORIGIN + href(lang, "study"), author: { "@id": ORIGIN + "/#org" }, publisher: { "@id": ORIGIN + "/#org" } };
+  return head(lang, "study", { title: st.title, desc: strip(st.desc), ld: [crumbs(lang, "study", "nav_study"), article] }) + header(lang, "study") + body + footer(lang);
 }
 
 function installSection(lang) {
@@ -590,7 +608,7 @@ function pageFaq(lang) {
   const ld = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: qs.map((i) => ({ "@type": "Question", name: strip(t("q" + i)), acceptedAnswer: { "@type": "Answer", text: strip(t("a" + i)) } })) };
   const body = `<div class="wrap page-head"><h1>${t.txt("faq_h1")}</h1></div>
 <section class="section-tight"><div class="wrap"><div class="card card-pad">
-  ${qs.map((i) => `<details class="faq"${i === 1 ? " open" : ""}><summary>${t.txt("q" + i)}</summary><div class="ans">${t("a" + i)}</div></details>`).join("")}
+  ${qs.map((i) => `<details class="faq"${i === 1 ? " open" : ""}><summary>${t.txt("q" + i)}</summary><div class="ans">${t("a" + i)}${i === 8 ? ` <a href="${href(lang, "study")}">${t.txt("bt_study_cta")} →</a>` : ""}</div></details>`).join("")}
 </div><div class="riskbox mt-16"><p><b>${t.txt("risk_line")}</b></p></div></div></section>`;
   return simple(lang, "faq", "faq_title", "faq_desc", "foot_faq", body, [ld]);
 }
@@ -752,6 +770,7 @@ The former exchange sites (bg., bn., bb., okx.javidtrading.com) were merged into
 - Download (choose exchange, Windows/macOS, SHA-256 checksums): ${ORIGIN}/download
 - How to use, with real program screenshots: ${ORIGIN}/guide
 - Performance by exchange: ${ORIGIN}/exchange
+- Backtest study (a replay of past prices; NOT the verified backtest): ${ORIGIN}/backtest-study
 - How it works, how the developer is paid: ${ORIGIN}/how-it-works
 - Risk notice: ${ORIGIN}/risk-disclosure
 - Copy trading (official Bitget and Bybit copy-trading pages; Binance and OKX preparing): ${ORIGIN}/copy-trading
@@ -770,12 +789,14 @@ ${ex}
 - The program has no stop-loss by default, so a losing position stays open instead of being closed; such losses appear on the positions screenshot, not in the closed-trade figures. Quote the closed-trade figures together with this.
 - The same dashboard is streamed on YouTube: https://www.youtube.com/@javidfuture/live
 - There is currently no verified backtest. An earlier published backtest was withdrawn because overlapping time windows counted some positions twice; its figures should not be cited.
+- A separate study page replays 283 altcoin pumps (Sep 2024 – Sep 2026) and one real account's last three months, to show what each safeguard changes and what it costs. It is a simulation on past prices with a simplified model or an earlier engine build, not a live record and not the verified backtest; quote any figure from it together with that limit. In its model, V19.7's default setup could still reach liquidation in 3 of the 16 largest pumps.
 
 ## Product facts (V19.7 defaults)
 
 - Three quant strategies on user-selected USDⓈ-M symbols (500+ available); tuned for high-volatility altcoins; a large-cap preset is in development, not released.
 - No entries on symbols listed less than 90 days ago; at most 3 entries per symbol in 24 hours, then a 48-hour lockout; delisting filter.
 - No stop-loss by default (optional 60% hard stop). Positions can sit in a deep loss before they close.
+- Also on by default: staged entry when a pump is detected, an emergency partial close, and a default entry size of 1/500 of balance (1/300 can be selected).
 - Shadow Mode trades a virtual balance on live prices without real orders.
 - Closed source: the strategy code cannot be inspected.
 
@@ -806,7 +827,8 @@ export function build() {
   for (const e of fs.readdirSync(OUT)) fs.rmSync(path.join(OUT, e), { recursive: true, force: true });
   copyDir(path.join(SRC, "assets"), path.join(OUT, "assets"));
   copyDir(path.join(SRC, "static"), OUT);
-  CSS_V = hashFile(path.join(SRC, "assets/css/site.css"));
+  fs.appendFileSync(path.join(OUT, "assets/css/site.css"), fs.readFileSync(path.join(SRC, "study/study.css"))); // backtest-study styles ride along with site.css
+  CSS_V = hashFile(path.join(OUT, "assets/css/site.css"));
   JS_V = hashFile(path.join(SRC, "assets/js/site.js"));
   // guide screenshot sizes (PNG IHDR) for width/height attributes (no layout shift)
   for (const s of GUIDE_SHOTS.filter(Boolean)) {
@@ -817,6 +839,7 @@ export function build() {
     writeOut(outFile(lang, "home"), pageHome(lang));
     writeOut(outFile(lang, "how-it-works"), pageHow(lang));
     writeOut(outFile(lang, "exchange"), pageExchange(lang));
+    writeOut(outFile(lang, "study"), pageStudy(lang));
     writeOut(outFile(lang, "download"), pageDownload(lang));
     writeOut(outFile(lang, "guide"), pageGuide(lang));
     writeOut(outFile(lang, "copy-trading"), pageCopy(lang));

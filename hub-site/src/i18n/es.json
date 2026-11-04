@@ -306,7 +306,7 @@
  "q7": "¿Qué significan las cifras reales de este sitio?",
  "a7": "Provienen de una cuenta real de Binance: capturas horarias de su panel y cifras calculadas a partir de sus propios registros de operaciones (operaciones cerradas más comisiones de financiación, sin incluir las posiciones abiertas). Al no haber stop-loss por defecto, una posición en pérdida permanece abierta en lugar de cerrarse, así que aparece en la captura de posiciones abiertas, no en las cifras. Una cuenta durante un periodo limitado es toda la muestra.",
  "q8": "¿Hay un backtest?",
- "a8": "Por ahora no. Un backtest anterior se retiró tras encontrarse un error de conteo. Uno nuevo se mostrará solo después de su verificación, separado de los registros reales.",
+ "a8": "Verificado, de momento no. Se retiró un backtest anterior al encontrar un error de recuento. Uno nuevo se mostrará solo tras su verificación y por separado de los registros reales. Se publica aparte un estudio de reproducción de 283 pumps de altcoins; es una simulación con precios pasados, no el backtest verificado.",
  "q9": "¿En qué se diferencia el copy trading del programa?",
  "a9": "El copy trading funciona en la página del exchange y no se instala nada. Tu resultado difiere del del líder. Los perfiles de Bitget y Bybit están en la página de copy trading; Binance y OKX están en preparación.",
  "q10": "¿Dónde hago preguntas?",
@@ -385,5 +385,17 @@
  "ct_qr_note": "En un ordenador: abre el enlace y continúa en la app o el sitio web del exchange. En un teléfono: el enlace abre la app del exchange si está instalada.",
  "hiw_s3_l4": "<b>Copy trading (Bitget, Bybit)</b> — como líder de los perfiles, el desarrollador recibe, de las ganancias de los seguidores, el reparto de beneficios que establece el exchange. Los enlaces de invitación llevan el código de invitación del exchange.",
  "hs_on": "activado",
- "hs_off": "desactivado"
+ "hs_off": "desactivado",
+ "nav_study": "Backtest",
+ "foot_study": "Estudio de backtest",
+ "home_study_kicker": "Estudio de backtest",
+ "home_study_h2": "283 pumps de altcoins, reproducidos",
+ "home_study_p": "Qué cambia cada salvaguarda, y qué cuesta, al reproducir dos años de pumps y los últimos tres meses de una cuenta real. En el modelo, la configuración por defecto de V19.7 aún podría llegar a la liquidación en 3 de los 16 pumps más grandes.",
+ "home_study_cta": "Leer el estudio",
+ "home_study_tag": "Reproducción de precios pasados · no son resultados en vivo · no es el backtest verificado",
+ "home_study_t1": "pumps reproducidos",
+ "home_study_t2": "pumps de 7× o más",
+ "home_study_t3": "incluye las salvaguardas analizadas",
+ "bt_study_note": "Se publica aparte un estudio de reproducción (283 pumps y los últimos tres meses de una cuenta real). Es una simulación con precios pasados y no es el backtest verificado.",
+ "bt_study_cta": "Abrir el estudio de backtest"
 }
