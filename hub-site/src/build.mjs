@@ -140,7 +140,7 @@ const JS_KEYS = ["nav_menu", "nav_close", "perf_captured", "perf_stale", "perf_n
   "chart_aria", "time_now", "ago_min", "ago_h", "ago_d", "bd_secret_label", "bd_password", "bd_open", "bd_reply", "bd_empty", "bd_loading",
   "bd_error", "bd_posted", "bd_post_error", "bd_wrong_pw", "m_settings", "m_open", "hs_on", "hs_off"];
 
-const CAPTURE_SRC = `(function(){try{if(sessionStorage.getItem("jfb_src"))return;var q=new URLSearchParams(location.search),r="";try{r=document.referrer?new URL(document.referrer).hostname:""}catch(e){}if(/(^|\\.)javidtrading\\.com$/.test(r))r="";sessionStorage.setItem("jfb_src",JSON.stringify({r:r,us:q.get("utm_source")||"",um:q.get("utm_medium")||"",uc:q.get("utm_campaign")||"",lp:location.pathname}))}catch(e){}})();`;
+const CAPTURE_SRC = `(function(){try{var q=new URLSearchParams(location.search),old=null;try{old=JSON.parse(sessionStorage.getItem("jfb_src")||"null")}catch(e){}var explicit=q.get("utm_source")||"";if(old&&typeof old==="object"&&(old.us||old.r||!explicit))return;var r="";try{r=document.referrer?new URL(document.referrer).hostname:""}catch(e){}if(/(^|\\.)javidtrading\\.com$/.test(r))r="";sessionStorage.setItem("jfb_src",JSON.stringify({r:r,us:explicit,um:q.get("utm_medium")||"",uc:q.get("utm_campaign")||"",lp:location.pathname}))}catch(e){}})();`;
 
 function jsonld(obj) { return `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, "\\u003c")}</script>`; }
 
