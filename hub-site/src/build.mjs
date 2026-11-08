@@ -10,6 +10,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { loadStudy, studyBody } from "./study.mjs";
+import { copyApprovedBlogMedia } from "./blog-media-policy.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = path.join(ROOT, "src");
@@ -857,6 +858,7 @@ export function build() {
   writeOut("llms.txt", llms());
   writeOut("_headers", HEADERS);
   writeOut("data/published_backtest.json", JSON.stringify(BT, null, 2));
+  copyApprovedBlogMedia(path.join(SRC, "blog-media"), path.join(OUT, "blog-media"));
   if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
   const missing = LANGS.filter((l) => !BUILT_LANGS.includes(l) && (PREVIEW_KO || l !== "ko"));
   console.log(`built ${BUILT_LANGS.length} languages (${BUILT_LANGS.join(",")})${missing.length ? " — MISSING: " + missing.join(",") : ""} -> ${OUT}`);

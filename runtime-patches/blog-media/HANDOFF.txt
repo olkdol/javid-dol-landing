@@ -1,0 +1,54 @@
+Apply only this directory to the local marketing runtime. Do not copy the
+sanitized account_daily_card.py, config, or .env over the live originals, and
+do not write the REDACTED_PRIVATE_HOST or REDACTED_CHAT_ID placeholders into
+those live files.
+
+From the runtime root (the directory that contains app/):
+
+  copy runtime-patches/blog-media/app/publishers/blog_media.py
+    to app/publishers/blog_media.py
+  patch -p0 --binary < wordpress_poster.patch
+  patch -p0 --binary < blogger_poster.patch
+
+The originals use CRLF. patch --binary keeps that. account_daily_card.py is
+not modified. publish_all still calls wordpress_poster.publish first and
+blogger_poster.publish second, and still catches each platform's Exception and
+SystemExit. Leave the WordPress step in place. A WordPress failure no longer
+blocks Blogger, because Blogger does not call WordPress media upload.
+
+What the Blogger path does:
+  parse the same markdown
+  map each allowlisted card filename to
+    https://www.javidtrading.com/blog-media/<filename>
+  --dry-run prints those URLs and makes no network call
+  a real publish GETs each URL and stops if status, host, content type, or
+    PNG signature is wrong
+  then the existing Blogger post API runs
+
+WordPress publish is unchanged unless a caller passes resolve_image.
+The default is still _upload_media.
+
+Cards on disk live at cardnews/account/YYYY-MM-DD/acct_YYYYMMDD_<lang>_<kind>.png.
+The public URL uses the filename only. langs: en ja es fr vi tr pt.
+kinds: 1_calendar 2_report. Korean is not included.
+
+Before a real Blogger publish, add that day's PNGs to the hub site and deploy
+them. From a checkout of this landing repo:
+
+  node hub-site/tools/add_blog_media.mjs <cardnews/account/YYYY-MM-DD>
+  node hub-site/src/build.mjs
+  node hub-site/tools/test_blog_media.mjs
+  node hub-site/tools/test_site.mjs
+  node hub-site/tools/make_asset_manifest.mjs
+
+Identical bytes are a no-op. A changed card needs --replace, then the same
+deploy. The URL stays the same. The two English cards from 2026-11-07 are
+already in src/blog-media. The sample post also names ja/es/fr/vi/tr/pt
+calendar files that were not in the attachment set. Do not publish that post
+until those files are added and deployed; Blogger fails closed instead of
+uploading them anywhere.
+
+Do not post to Blogger or WordPress from this change. Do not edit old posts.
+Deployment of www is a separate Cloudflare API upload described in
+hub-site/deploy/cloudflare-assets-protocol.json. Do not point cards at the
+private R2 bucket javid-live-captures.

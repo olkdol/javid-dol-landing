@@ -1,0 +1,512 @@
+{
+  "manifest": {
+    "/404.html": {
+      "hash": "6a339a21865d512fe3f672ca9b6abc5f",
+      "size": 7791
+    },
+    "/6281d0d1caf1a9f2f851f96fd26c4b2e.txt": {
+      "hash": "d622c9ae9489f55373af8d7198fba7ef",
+      "size": 32
+    },
+    "/api-guide/binance.html": {
+      "hash": "5508b00dac026f6d7d431445479a4e99",
+      "size": 151827
+    },
+    "/api-guide/bitget.html": {
+      "hash": "6c5db2727d213e290b7547130b2fb2f3",
+      "size": 117485
+    },
+    "/api-guide/bybit.html": {
+      "hash": "d572d038def12ed4b2ed6612adb57fa7",
+      "size": 119268
+    },
+    "/api-guide/okx.html": {
+      "hash": "ed213f685854bcb4c54f05acbcf7d9ae",
+      "size": 120732
+    },
+    "/assets/css/site.css": {
+      "hash": "9836487906f199240a6ffd5d1d88a586",
+      "size": 38263
+    },
+    "/assets/guide/01-api-keys.png": {
+      "hash": "2086333e536a5a3ace18ab5d3a40f145",
+      "size": 9833
+    },
+    "/assets/guide/01-api-keys.webp": {
+      "hash": "c9a14fe09dccf6dbf4457fe487f96089",
+      "size": 5568
+    },
+    "/assets/guide/02-investment-amount.png": {
+      "hash": "e3b1f555d0022620e5a951ada7721047",
+      "size": 24361
+    },
+    "/assets/guide/02-investment-amount.webp": {
+      "hash": "6b643f57a7946634aa112854858e6847",
+      "size": 15182
+    },
+    "/assets/guide/03-entry-mode.png": {
+      "hash": "bd53922e243c09cf1a3b0e5f993583c7",
+      "size": 23420
+    },
+    "/assets/guide/03-entry-mode.webp": {
+      "hash": "d65ec28b589780e82e1388ec2d7eec19",
+      "size": 15940
+    },
+    "/assets/guide/04-leverage.png": {
+      "hash": "2891263bc569a2748a33cc42a0b6fc47",
+      "size": 17150
+    },
+    "/assets/guide/04-leverage.webp": {
+      "hash": "15e5b257b18b0c56d869d0196ea10c0a",
+      "size": 11424
+    },
+    "/assets/guide/05-symbols-select-all.png": {
+      "hash": "1c84a315ec33b72777da127fa00271ee",
+      "size": 193896
+    },
+    "/assets/guide/05-symbols-select-all.webp": {
+      "hash": "194f3e3c749c85510c0941899eaed94e",
+      "size": 125272
+    },
+    "/assets/guide/06-symbols-save-all.png": {
+      "hash": "293f4afd7065b65888a4c0bbbfc22c74",
+      "size": 193865
+    },
+    "/assets/guide/06-symbols-save-all.webp": {
+      "hash": "4ae8f3518349b3c472657922fb95f550",
+      "size": 124994
+    },
+    "/assets/guide/07-start-trading.png": {
+      "hash": "84ff5bea1c39c1929eb6ace7455c0af9",
+      "size": 153890
+    },
+    "/assets/guide/07-start-trading.webp": {
+      "hash": "29753b404297186dc2b2f97e491a2add",
+      "size": 73540
+    },
+    "/assets/img/apple-touch-icon.png": {
+      "hash": "26b69b348dd2a69a8af0262ac865c622",
+      "size": 24351
+    },
+    "/assets/img/binance-logo.png": {
+      "hash": "2e66ddb5cb8c9e9c45202c8469095460",
+      "size": 10889
+    },
+    "/assets/img/bitget-logo.png": {
+      "hash": "8e4afb51e442afc3dbc393b353fa441d",
+      "size": 8572
+    },
+    "/assets/img/bybit-logo.png": {
+      "hash": "04905953c300562f17d847eb540f55ca",
+      "size": 4297
+    },
+    "/assets/img/favicon-32.png": {
+      "hash": "8279837d29319972478cdc1a051581f6",
+      "size": 1529
+    },
+    "/assets/img/logo-96.png": {
+      "hash": "f4f6c4b50bcd110597a0aafbed05f77f",
+      "size": 19789
+    },
+    "/assets/img/og.png": {
+      "hash": "cf1d553303bad54433aedd30227dfaeb",
+      "size": 63313
+    },
+    "/assets/img/okx-logo.png": {
+      "hash": "f8b7c8bcfe5026a9a7c18fb5ec15b2af",
+      "size": 1890
+    },
+    "/assets/js/site.js": {
+      "hash": "8a349c605e4d759f3f18ca47c1c59926",
+      "size": 18291
+    },
+    "/backtest-study.html": {
+      "hash": "d224de2d6d3cec424e55ba945df83c1e",
+      "size": 107574
+    },
+    "/blog-media/acct_20261107_en_1_calendar.png": {
+      "hash": "70e96b8994594b22f3485e5b251d3880",
+      "size": 282319
+    },
+    "/blog-media/acct_20261107_en_2_report.png": {
+      "hash": "14ccdc79082dbafbb7d851ace8b7eec3",
+      "size": 252784
+    },
+    "/board.html": {
+      "hash": "59eadbe949659b8c9da07dcf2d028cb6",
+      "size": 9641
+    },
+    "/contact.html": {
+      "hash": "f6768325abc202e274340447a9e023c3",
+      "size": 9300
+    },
+    "/copy-trading.html": {
+      "hash": "306243692e9e18fca2930b8ff47d7812",
+      "size": 12909
+    },
+    "/data/published_backtest.json": {
+      "hash": "0a9d4b7e0048c958050a48a50a9b58b0",
+      "size": 321
+    },
+    "/download.html": {
+      "hash": "ae6097627595abf2207c69f36a544c69",
+      "size": 33815
+    },
+    "/es.html": {
+      "hash": "41e0191124de533c6da6de812b81f4a5",
+      "size": 30896
+    },
+    "/es/backtest-study.html": {
+      "hash": "e3a21e077b3427cf73d4fc17310a44f0",
+      "size": 116477
+    },
+    "/es/board.html": {
+      "hash": "a127fbc17572c716939f13fd1f0b41fc",
+      "size": 10296
+    },
+    "/es/contact.html": {
+      "hash": "a77b6a3c0870a429cfba48eb26bb08a8",
+      "size": 9951
+    },
+    "/es/copy-trading.html": {
+      "hash": "a63dd1138fb3398546699d68d4eb8451",
+      "size": 13824
+    },
+    "/es/download.html": {
+      "hash": "c6db85f33e5e46335ffc138ea472603b",
+      "size": 35700
+    },
+    "/es/exchange.html": {
+      "hash": "431006e470e9ea8d854d9aaa84a98ad7",
+      "size": 19257
+    },
+    "/es/faq.html": {
+      "hash": "8fa3e86b2169c682e9dd1a416330f8f2",
+      "size": 16283
+    },
+    "/es/guide.html": {
+      "hash": "1bdaa03cce0fe6b2591e4b2308850ab2",
+      "size": 20310
+    },
+    "/es/how-it-works.html": {
+      "hash": "14cdc3fb2fc66ff5445d2bc49ea1e744",
+      "size": 13303
+    },
+    "/es/privacy.html": {
+      "hash": "a5deb5566f027dd14181701facbeec4e",
+      "size": 11056
+    },
+    "/es/risk-disclosure.html": {
+      "hash": "80c35d35e2d1a603894b13f83523b9c8",
+      "size": 12770
+    },
+    "/es/terms.html": {
+      "hash": "f58908794ea5c9214acaf1dba34feb1a",
+      "size": 10241
+    },
+    "/exchange.html": {
+      "hash": "df66e3ec36ab11aec40b21a199ab92b7",
+      "size": 17625
+    },
+    "/faq.html": {
+      "hash": "91bd16ca49cc40d31c62a2cd572ae735",
+      "size": 15023
+    },
+    "/fr.html": {
+      "hash": "a8e222003d315a95ec9402db1cdcbd69",
+      "size": 31989
+    },
+    "/fr/backtest-study.html": {
+      "hash": "34d946dadcf5a72cc91405f54a972044",
+      "size": 117711
+    },
+    "/fr/board.html": {
+      "hash": "c5e43544816c9d37ce40afafb61b2d6c",
+      "size": 10475
+    },
+    "/fr/contact.html": {
+      "hash": "2a74c8507e7005727b67c350d1d6fb1f",
+      "size": 10101
+    },
+    "/fr/copy-trading.html": {
+      "hash": "f7bf50948c2659d30823f3560a675136",
+      "size": 14232
+    },
+    "/fr/download.html": {
+      "hash": "48044404fc776d23ca14d8bbf2e285b5",
+      "size": 37667
+    },
+    "/fr/exchange.html": {
+      "hash": "163fbfafa20a6dac6755ec871c7fc7c3",
+      "size": 19791
+    },
+    "/fr/faq.html": {
+      "hash": "300ca3418516233c6b5d716e5ed1cffa",
+      "size": 16986
+    },
+    "/fr/guide.html": {
+      "hash": "6bf3838076ec48455c9fb734ebdf2008",
+      "size": 21093
+    },
+    "/fr/how-it-works.html": {
+      "hash": "7d3bac43586fb7bc7517d9bbb2c40f71",
+      "size": 13914
+    },
+    "/fr/privacy.html": {
+      "hash": "fe0b6870dd9718a9f1fb1b37e24c97d5",
+      "size": 11356
+    },
+    "/fr/risk-disclosure.html": {
+      "hash": "fd3219ba415c82cbc4764ebb682519ad",
+      "size": 13219
+    },
+    "/fr/terms.html": {
+      "hash": "3d9479d4c254153fc1c3c6b198728500",
+      "size": 10534
+    },
+    "/guide.html": {
+      "hash": "e3be8a7ad79910629d677af14d3bfa85",
+      "size": 18720
+    },
+    "/how-it-works.html": {
+      "hash": "a1df50bbfe25a24bb7b8be0a2082fcee",
+      "size": 12235
+    },
+    "/index.html": {
+      "hash": "c759f88eef37d5f5a5fdbebd7dd8dc34",
+      "size": 29088
+    },
+    "/ja.html": {
+      "hash": "66346d4969d95b1817176920f8a862fd",
+      "size": 33296
+    },
+    "/ja/backtest-study.html": {
+      "hash": "156e39ba5be003de418040b23c3e66d9",
+      "size": 120287
+    },
+    "/ja/board.html": {
+      "hash": "11b97a776bf8af379a3334b40e7134ad",
+      "size": 10919
+    },
+    "/ja/contact.html": {
+      "hash": "7ee4fd65d304973108f41b6c0810b24f",
+      "size": 10620
+    },
+    "/ja/copy-trading.html": {
+      "hash": "e13de7c09b4f6cbf0240564fde65d8a4",
+      "size": 15008
+    },
+    "/ja/download.html": {
+      "hash": "af977a14e3e68e32b7de3270e789f363",
+      "size": 38830
+    },
+    "/ja/exchange.html": {
+      "hash": "4355bd43795413a6dd7955d778f45a95",
+      "size": 21089
+    },
+    "/ja/faq.html": {
+      "hash": "22be95dc2312eaaa47a98ab521ffda5f",
+      "size": 18622
+    },
+    "/ja/guide.html": {
+      "hash": "20090b7cb5b091b87cd15d7b0fa6603d",
+      "size": 22327
+    },
+    "/ja/how-it-works.html": {
+      "hash": "54f475972cc5cfc9a1e7ffa6bdfa8b2c",
+      "size": 14987
+    },
+    "/ja/privacy.html": {
+      "hash": "3fe3ac8a958b46649c38baea8c69aa83",
+      "size": 12176
+    },
+    "/ja/risk-disclosure.html": {
+      "hash": "1440cdaece5971aa6618ff4f826fa5a6",
+      "size": 14170
+    },
+    "/ja/terms.html": {
+      "hash": "870be2749cd1e898f4d13c109ab47558",
+      "size": 10883
+    },
+    "/llms.txt": {
+      "hash": "b74ac67f02e4128bdad9dd5070927f8d",
+      "size": 5084
+    },
+    "/privacy.html": {
+      "hash": "6da5cf757d030662bf3d5aba6560b94e",
+      "size": 10256
+    },
+    "/pt.html": {
+      "hash": "0556658bc5d5c37a2dc9e1841ed26e20",
+      "size": 30677
+    },
+    "/pt/backtest-study.html": {
+      "hash": "4ac0a7e58b643ba79a9378bbfd87b20c",
+      "size": 113972
+    },
+    "/pt/board.html": {
+      "hash": "d1a1d10dbdb81e889a08c6b75bdcf8a7",
+      "size": 10166
+    },
+    "/pt/contact.html": {
+      "hash": "903369cfe5bb67ded3f5804c22631fa9",
+      "size": 9772
+    },
+    "/pt/copy-trading.html": {
+      "hash": "ee23fa69f07ada6c4b5bdeb7abd2a485",
+      "size": 13601
+    },
+    "/pt/download.html": {
+      "hash": "8bd9eef513664c11e21834a04af3d21d",
+      "size": 35747
+    },
+    "/pt/exchange.html": {
+      "hash": "f19241e1b4dbfa49db929de7d4ee4fe5",
+      "size": 18961
+    },
+    "/pt/faq.html": {
+      "hash": "037876987ed38fc7d5d8126d3926faf4",
+      "size": 16024
+    },
+    "/pt/guide.html": {
+      "hash": "4a864fb847a97e29065af42b46304f33",
+      "size": 19913
+    },
+    "/pt/how-it-works.html": {
+      "hash": "0cd48c73c9459d147cab9a6bf75929d9",
+      "size": 13153
+    },
+    "/pt/privacy.html": {
+      "hash": "3b33fea80efd6f93a0c2920f6a7d5ce4",
+      "size": 10893
+    },
+    "/pt/risk-disclosure.html": {
+      "hash": "ccfdb75c0c265079e639fda4916ab32e",
+      "size": 12553
+    },
+    "/pt/terms.html": {
+      "hash": "0bd671af1b520e684ef369f1389baf21",
+      "size": 10089
+    },
+    "/risk-disclosure.html": {
+      "hash": "8217dbf0a6fa8f71ecf11a22d8162309",
+      "size": 11635
+    },
+    "/robots.txt": {
+      "hash": "b853a11df734c1951628a264a828a4f5",
+      "size": 106
+    },
+    "/sitemap.xml": {
+      "hash": "795c749198b4e257b8b748b73bde1f9b",
+      "size": 74973
+    },
+    "/terms.html": {
+      "hash": "63df6e8857ad2fca2127c7f5eb2b9fc0",
+      "size": 9560
+    },
+    "/tr.html": {
+      "hash": "734b6b94d723d174698248ebef0d61d6",
+      "size": 30871
+    },
+    "/tr/backtest-study.html": {
+      "hash": "2ab6d7cb73a5474086c2e2a91ab9d08c",
+      "size": 113602
+    },
+    "/tr/board.html": {
+      "hash": "21b1069e624c3baf5c835133261a20fe",
+      "size": 10141
+    },
+    "/tr/contact.html": {
+      "hash": "3f50c4f5256937e9d020c7cd3e793fbd",
+      "size": 9785
+    },
+    "/tr/copy-trading.html": {
+      "hash": "00c36e1f4532b04833aa0623025adad5",
+      "size": 13590
+    },
+    "/tr/download.html": {
+      "hash": "bde3a160b154950eae249e445f1f167b",
+      "size": 36545
+    },
+    "/tr/exchange.html": {
+      "hash": "1ab692f87ff6dd9a68f3027bf0d1d74d",
+      "size": 19074
+    },
+    "/tr/faq.html": {
+      "hash": "a0d793dfd0dbd98662495e8e6c19bdfb",
+      "size": 16495
+    },
+    "/tr/guide.html": {
+      "hash": "fefc8f7957fc0bca59b61e7e0a95361c",
+      "size": 20573
+    },
+    "/tr/how-it-works.html": {
+      "hash": "33ee88eb8be3aa8b6d080b3a1f1b76d3",
+      "size": 13282
+    },
+    "/tr/privacy.html": {
+      "hash": "34a6f2adec7f6bcac28d5252e6274e49",
+      "size": 10854
+    },
+    "/tr/risk-disclosure.html": {
+      "hash": "71a9ac49406da474ab6c8aea3452626c",
+      "size": 12688
+    },
+    "/tr/terms.html": {
+      "hash": "7f086dc06c19715b9d9a67558b1a70f8",
+      "size": 10207
+    },
+    "/vi.html": {
+      "hash": "26702cf0b829d59abfa24be9cf80f90f",
+      "size": 32762
+    },
+    "/vi/backtest-study.html": {
+      "hash": "3d8ddce8fd87d8f34f0a408746d14d70",
+      "size": 119381
+    },
+    "/vi/board.html": {
+      "hash": "c0c7a91ff911a582d5be2fa6c080f25b",
+      "size": 10665
+    },
+    "/vi/contact.html": {
+      "hash": "bcd8878d336f26e8ff0bc0c6a887dd6f",
+      "size": 10333
+    },
+    "/vi/copy-trading.html": {
+      "hash": "0c57ed9c786feea249032fdd95110ec7",
+      "size": 14731
+    },
+    "/vi/download.html": {
+      "hash": "310d660bf3f026ae6d7198f3789a531c",
+      "size": 38294
+    },
+    "/vi/exchange.html": {
+      "hash": "8ad5fcb7587fbe2ca1ce5ef348388ac4",
+      "size": 20612
+    },
+    "/vi/faq.html": {
+      "hash": "b4ba53eb2ffadbdd45609d1184f9322f",
+      "size": 17668
+    },
+    "/vi/guide.html": {
+      "hash": "666870412334afee2451826d87a74869",
+      "size": 21297
+    },
+    "/vi/how-it-works.html": {
+      "hash": "4047542c3af9b1ff6c90259cd2f9abd6",
+      "size": 14520
+    },
+    "/vi/privacy.html": {
+      "hash": "5d43fb2b72ae694761bf694f1e0ed929",
+      "size": 11768
+    },
+    "/vi/risk-disclosure.html": {
+      "hash": "218dd099b374e3624f1497bf314c46c9",
+      "size": 13613
+    },
+    "/vi/terms.html": {
+      "hash": "f59fbe85cb0973f46fc910b6e3f419af",
+      "size": 10839
+    }
+  }
+}

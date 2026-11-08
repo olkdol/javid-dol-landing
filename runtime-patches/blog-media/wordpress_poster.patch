@@ -1,0 +1,28 @@
+--- app/publishers/wordpress_poster.py
++++ app/publishers/wordpress_poster.py
+@@ -165,19 +165,23 @@
+     return out["media"][0]["URL"]
+ 
+ 
+-def build_html(parts: list, utm_source: str = "", title: str = "") -> str:
++def build_html(parts: list, utm_source: str = "", title: str = "", resolve_image=None) -> str:
+     """마크다운 조각들을 HTML 로 조립한다.
+ 
++    resolve_image defaults to WordPress media upload. Another caller may pass
++    a resolver that returns an already-public URL and must not upload.
++
+     utm_source 를 주면 본문의 랜딩 링크에 UTM 을 붙인다(신규 발행분 귀속).
+     ⚠️ 2026-09-04 실측 — 발행물 링크 147개 중 UTM 이 0개라 모든 다운로드가
+        `direct` 로만 쌓였고, **어느 채널이 사람을 보내는지 알 수 없었다.**
+        이 함수는 wordpress·blogger·tumblr 가 공유하므로 출처를 인자로 받는다
+        (여기서 하드코딩하면 세 플랫폼이 한 칸에 뭉친다).
+     """
++    resolve = resolve_image or _upload_media
+     html: list[str] = []
+     for p in parts:
+         if isinstance(p, tuple) and p[0] == "__IMG__":
+-            url = _upload_media(p[1])
++            url = resolve(p[1])
+             html.append(f'<img src="{url}" style="max-width:100%;height:auto" />')
+         else:
+             html.append(p)

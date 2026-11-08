@@ -1,0 +1,195 @@
+{
+  "scriptName": "javid-hub-landing",
+  "doNotDeployFromThisArtifactAlone": "Parent connector performs the only deployment. This file is the request recipe. It does not contain an API token.",
+  "verified": {
+    "date": "2026-11-08",
+    "wrangler": "4.158.0",
+    "repoWranglerPin": null,
+    "note": "This repo has no package.json wrangler pin and deploys with npx wrangler. run_worker_first arrays exist in Wrangler since 4.20.0. The hash below is hashFile from wrangler 4.158.0 deploy-helpers. The Workers script-upload schema says boolean true is equivalent to [\"/*\"], negative rules must start with \"!/\", and a negative-only list is rejected.",
+    "docs": [
+      "https://developers.cloudflare.com/workers/static-assets/binding/",
+      "https://developers.cloudflare.com/workers/wrangler/configuration/",
+      "https://developers.cloudflare.com/workers/static-assets/direct-upload/",
+      "https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/"
+    ]
+  },
+  "preserve": {
+    "compatibilityDate": "2026-07-13",
+    "observability": {
+      "enabled": true
+    },
+    "notFoundHandling": "404-page",
+    "htmlHandling": "omit so the platform default auto-trailing-slash stays in effect",
+    "bindings": [
+      {
+        "type": "assets",
+        "name": "ASSETS"
+      },
+      {
+        "type": "r2_bucket",
+        "name": "LIVE_CAPTURES",
+        "bucket_name": "javid-live-captures"
+      },
+      {
+        "type": "d1",
+        "name": "BOARD_DB",
+        "id": "984b1bcb-c257-496e-b5c4-6c73a1c1b994"
+      }
+    ],
+    "keepBindings": [
+      "secret_text",
+      "secret_key"
+    ],
+    "doNotCreate": [
+      "R2 buckets",
+      "D1 databases",
+      "DNS records",
+      "routes",
+      "paid resources"
+    ],
+    "doNotReadOrWrite": "javid-live-captures object data. The binding must stay on the Worker and must not be made public."
+  },
+  "preflight": [
+    "GET /accounts/{account_id}/workers/scripts/javid-hub-landing/deployments and save the version id that has 100% traffic.",
+    "GET /accounts/{account_id}/workers/scripts/javid-hub-landing/settings and abort unless the live bindings are exactly ASSETS, LIVE_CAPTURES on bucket javid-live-captures, and BOARD_DB on database 984b1bcb-c257-496e-b5c4-6c73a1c1b994, plus existing secrets. Abort if any other binding would be dropped.",
+    "Do not call DNS, route, or certificate APIs."
+  ],
+  "assets": {
+    "directory": "hub-site/public",
+    "manifestFile": "hub-site/deploy/workers-assets-manifest.json",
+    "uploadPlanFile": "hub-site/deploy/workers-assets-upload-plan.json",
+    "manifestShape": "The session body is the manifest object only: { \"manifest\": { \"/path\": { \"hash\", \"size\" } } }. Drop contentType from the upload plan before that POST.",
+    "hash": "blake3(base64(raw bytes) + file extension without the dot) as hex, first 32 characters. Extension for a .png file is the string png. This matches wrangler 4.158.0 and is not SHA-256 of the raw bytes.",
+    "excludeFromManifest": [
+      "_headers",
+      "_redirects",
+      ".assetsignore"
+    ],
+    "contentType": "mime@4.0.7 getType, then append '; charset=utf-8' when the type starts with text/ and has no charset. PNG cards are image/png. Use that as the upload part Content-Type. application/null means send no content type.",
+    "fullTreeRequired": "The manifest lists every public file, not only /blog-media. A manifest of the two cards would replace the site with those two files.",
+    "cardVectors": [
+      {
+        "path": "/blog-media/acct_20261107_en_1_calendar.png",
+        "hash": "70e96b8994594b22f3485e5b251d3880",
+        "size": 282319,
+        "contentType": "image/png"
+      },
+      {
+        "path": "/blog-media/acct_20261107_en_2_report.png",
+        "hash": "14ccdc79082dbafbb7d851ace8b7eec3",
+        "size": 252784,
+        "contentType": "image/png"
+      }
+    ]
+  },
+  "upload": {
+    "permission": "Workers Scripts Write on the account token. File bytes use the upload-session JWT, not the account token.",
+    "steps": [
+      {
+        "method": "POST",
+        "path": "/accounts/{account_id}/workers/scripts/javid-hub-landing/assets-upload-session",
+        "auth": "Bearer account token",
+        "body": "workers-assets-manifest.json"
+      },
+      {
+        "method": "POST",
+        "path": "/accounts/{account_id}/workers/assets/upload?base64=true",
+        "when": "Session result.buckets is non-empty AND the session JWT payload does not set wrangler_single_asset_uploads to true.",
+        "auth": "Bearer session jwt (result.jwt). Valid 1 hour.",
+        "body": "multipart/form-data. One part per hash in that bucket. Field name is the hash. Field value is base64 of the raw file. Part Content-Type is the plan contentType. Repeat once per bucket. A 201 response carries result.jwt, the completion token."
+      },
+      {
+        "method": "POST",
+        "path": "/accounts/{account_id}/workers/assets/upload/{hash}",
+        "when": "Session JWT payload wrangler_single_asset_uploads is true (wrangler 4.158 takes this branch). One request per hash, raw bytes, Content-Type from the plan, Authorization Bearer session jwt.",
+        "body": "raw file bytes, not base64"
+      },
+      {
+        "method": "skip",
+        "when": "buckets is empty. The session jwt is already the completion token."
+      }
+    ],
+    "completionTokenTtl": "1 hour"
+  },
+  "scriptUpload": {
+    "method": "PUT",
+    "path": "/accounts/{account_id}/workers/scripts/javid-hub-landing",
+    "note": "This PUT publishes the version. Upload hub-site/deploy/javid-hub-landing.worker.js, which is the wrangler 4.158.0 dry-run bundle of worker.js and its imports. Uploading the unbundled worker.js source fails because of those imports. Regenerate the bundle with: cd hub-site && wrangler deploy --dry-run --outdir <dir> --name javid-hub-landing",
+    "multipart": {
+      "worker.js": "application/javascript+module",
+      "metadata": "application/json"
+    },
+    "metadata": {
+      "main_module": "worker.js",
+      "compatibility_date": "2026-07-13",
+      "observability": {
+        "enabled": true
+      },
+      "keep_bindings": [
+        "secret_text",
+        "secret_key"
+      ],
+      "bindings": [
+        {
+          "type": "assets",
+          "name": "ASSETS"
+        },
+        {
+          "type": "r2_bucket",
+          "name": "LIVE_CAPTURES",
+          "bucket_name": "javid-live-captures"
+        },
+        {
+          "type": "d1",
+          "name": "BOARD_DB",
+          "id": "984b1bcb-c257-496e-b5c4-6c73a1c1b994"
+        }
+      ],
+      "assets": {
+        "jwt": "<completion token>",
+        "config": {
+          "not_found_handling": "404-page",
+          "run_worker_first": [
+            "/*",
+            "!/blog-media/*"
+          ],
+          "_headers": "/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  X-Frame-Options: SAMEORIGIN\n\n/assets/*\n  Cache-Control: public, max-age=604800\n"
+        }
+      }
+    },
+    "doNotSet": [
+      "keep_assets",
+      "html_handling",
+      "secret values",
+      "routes",
+      "workers_dev"
+    ]
+  },
+  "routing": {
+    "runWorkerFirst": [
+      "/*",
+      "!/blog-media/*"
+    ],
+    "why": "true is [\"/*\"]. The negative rule wins, so /blog-media/* is served by the asset worker with no Worker invocation and no Worker request charge. Every other path still invokes the Worker first, including the apex-host 301 and the APIs.",
+    "apexTradeoff": "A request to https://javidtrading.com/blog-media/<card>.png is served directly and is not 301'd to www, because the Worker does not run. Publishers must use the www URL. Other apex paths still 301.",
+    "cache": "Cards keep the asset default Cache-Control: public, max-age=0, must-revalidate, plus an ETag. Replacing a file and redeploying updates the same URL. /assets/* keeps its seven-day cache. Do not mark cards immutable."
+  },
+  "afterDeploy": [
+    "GET https://www.javidtrading.com/ returns 200 text/html",
+    "GET https://www.javidtrading.com/api/v1/exchanges returns 200 JSON",
+    "GET https://www.javidtrading.com/api/live-capture/latest returns JSON and does not return an object from the private bucket",
+    "GET https://javidtrading.com/ returns 301 to https://www.javidtrading.com/",
+    "GET https://www.javidtrading.com/ko returns 301",
+    "GET https://www.javidtrading.com/blog-media/acct_20261107_en_1_calendar.png returns 200 image/png and the PNG signature",
+    "GET https://www.javidtrading.com/blog-media/acct_20261107_en_2_report.png returns 200 image/png",
+    "GET https://www.javidtrading.com/blog-media/acct_20261107_ko_1_calendar.png does not return an image",
+    "POST https://www.javidtrading.com/blog-media/acct_20261107_en_1_calendar.png does not store a body",
+    "Do not request any /api/download URL"
+  ],
+  "rollback": {
+    "before": "The preflight deployment version id is the rollback target.",
+    "action": "POST /accounts/{account_id}/workers/scripts/javid-hub-landing/deployments with strategy percentage and that version id at 100. Equivalent CLI, from hub-site: npx wrangler rollback --name javid-hub-landing",
+    "effect": "Worker code, run_worker_first, and the asset set roll back together. Card URLs then 404. D1, the R2 bucket, secrets, routes, and DNS are not rolled back and must not be deleted.",
+    "doNot": "Do not delete javid-live-captures. Do not set keep_assets on a code-only rollback if the goal is to return to the previous asset set."
+  }
+}

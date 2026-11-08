@@ -1,0 +1,10 @@
+{
+  "name": "javid-hub-landing-tools",
+  "private": true,
+  "type": "module",
+  "description": "Local tools for www card assets. Wrangler itself stays unpinned, matching the rest of this repo.",
+  "dependencies": {
+    "blake3-wasm": "2.1.5",
+    "mime": "4.0.7"
+  }
+}

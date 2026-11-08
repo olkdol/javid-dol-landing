@@ -4,6 +4,9 @@
 !.dev.vars.example
 .env*
 !.env.example
+node_modules/
+__pycache__/
+*.pyc
 
 # local Korean preview build (never deployed)
 preview-ko/

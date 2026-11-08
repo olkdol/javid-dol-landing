@@ -11,7 +11,14 @@
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",
-    "run_worker_first": true,
+    // Workers script-upload schema: boolean true is exactly ["/*"].
+    // Negative rules outrank positive ones and are served by the asset worker
+    // (no Worker invocation, no Worker request charge). A negative-only list
+    // is invalid — at least one non-negative rule is required — so keep "/*"
+    // and exclude only the public card prefix. Checked against wrangler
+    // 4.158.0 definitions.Assets.run_worker_first (boolean | string[]) and
+    // the Workers API run_worker_first oneOf. Patterns must start with "/" or "!/".
+    "run_worker_first": ["/*", "!/blog-media/*"],
     "not_found_handling": "404-page"
   },
   // Hourly dashboard captures uploaded by scripts/live_capture_upload.py (create once:
