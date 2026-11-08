@@ -1,0 +1,13 @@
+--- app/media/account_daily_card.py
++++ app/media/account_daily_card.py
+@@ -755,6 +755,10 @@
+     artifacts = [p for cs in lang_cards.values() for p in cs] + [md, caption_file]
+     save_snapshot(s, out_dir, artifacts)
+ 
++    from ..publishers.blog_media import stage_outbox
++    staged = stage_outbox(out_dir, BASE / "blog-media-outbox")
++    log(f"  blog-media outbox {staged['count']} png (Cloudflare upload is separate)")
++
+     if a.dry_run:
+         log(f"[dry-run] 발행 생략 — {out_dir}")
+         return 0

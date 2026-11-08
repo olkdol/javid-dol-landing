@@ -191,5 +191,26 @@
     "action": "POST /accounts/{account_id}/workers/scripts/javid-hub-landing/deployments with strategy percentage and that version id at 100. Equivalent CLI, from hub-site: npx wrangler rollback --name javid-hub-landing",
     "effect": "Worker code, run_worker_first, and the asset set roll back together. Card URLs then 404. D1, the R2 bucket, secrets, routes, and DNS are not rolled back and must not be deleted.",
     "doNot": "Do not delete javid-live-captures. Do not set keep_assets on a code-only rollback if the goal is to return to the previous asset set."
+  },
+  "dailyCardMerge": {
+    "liveVersion": "451891b6-f86e-4953-9203-b455b5a6df12",
+    "doNot": [
+      "Do not rebuild hub-site/public or resubmit this snapshot as the daily manifest.",
+      "Do not submit a manifest that contains only /blog-media cards.",
+      "Do not use keep_assets for a daily add. keep_assets reuses the previous set and does not add files.",
+      "Do not upload through an unauthenticated endpoint or through R2 javid-live-captures.",
+      "Do not create a token, DNS record, route, or paid resource."
+    ],
+    "whyManifestIsLocal": "GET /workers/scripts/{script}/versions/{version_id} returns id, metadata, and resources.bindings/script/script_runtime. It does not return the asset hash ledger. Preservation depends on the manifest saved from the upload that produced the 100% version.",
+    "baseManifest": "For version 451891b6-f86e-4953-9203-b455b5a6df12 use workers-assets-manifest.json from that deploy. After each daily upload, use the new merged-manifest.json.",
+    "command": "node hub-site/tools/merge_blog_media_upload.mjs --base <live-manifest.json> --cards <blog-media-outbox> --out <daily-upload>",
+    "outputs": [
+      "merged-manifest.json",
+      "card-upload-plan.json",
+      "bytes/<changed-cards-only>"
+    ],
+    "scriptBody": "GET /accounts/{account_id}/workers/scripts/javid-hub-landing/content/v2 and resubmit those modules unchanged.",
+    "automatic": "The 9:10 PC job stages allowlisted PNGs into blog-media-outbox and Blogger fail-closes until the URLs serve image/png.",
+    "notAutomatic": "Cloudflare upload. The parent connector performs it. A Workers Scripts Write token is the only extra credential if the PC job itself must call the API later; this package does not create or contain that token."
   }
 }

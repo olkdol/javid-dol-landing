@@ -11,10 +11,12 @@ sys.path.insert(0, str(ROOT))
 
 from app.publishers.blog_media import (  # noqa: E402
     CARD_FILENAME,
+    CHECK_USER_AGENT,
     assert_deployed,
     card_name,
     image_plan,
     public_url,
+    stage_outbox,
 )
 
 PNG = b"\x89PNG\r\n\x1a\n"
@@ -99,6 +101,11 @@ class Deployed(unittest.TestCase):
 
         def opener(req, timeout=0):
             calls.append(req.full_url)
+            ua = req.get_header("User-agent")
+            if ua != CHECK_USER_AGENT or "Python-urllib" in ua:
+                raise AssertionError(ua)
+            if req.get_header("Cookie") or req.get_header("Authorization"):
+                raise AssertionError("unexpected credential header")
             raise OSError("offline")
 
         self.assertEqual(image_plan([("__IMG__", EN)], f"`{EN}`"), [EN_URL])
@@ -124,6 +131,13 @@ class Deployed(unittest.TestCase):
             return _Resp(url=req.full_url, body=PNG + b"rest")
 
         assert_deployed([EN_URL], opener=ok_opener)
+
+        def forbidden(req, timeout=0):
+            self.assertEqual(req.get_header("User-agent"), CHECK_USER_AGENT)
+            return _Resp(status=403, ctype="text/html", body=b"challenge", url=req.full_url)
+
+        with self.assertRaises(RuntimeError):
+            assert_deployed([EN_URL], opener=forbidden)
 
 
 class PublisherIsolation(unittest.TestCase):
@@ -175,30 +189,56 @@ class PublisherIsolation(unittest.TestCase):
         self.assertIn("media/new", wordpress_calls[0])
         self.assertNotEqual(wordpress_html, blogger_html)
 
-    def test_patches_do_not_touch_live_runtime_or_drop_wordpress(self):
-        patch_dir = ROOT
-        texts = []
-        for name in ("wordpress_poster.patch", "blogger_poster.patch"):
-            body = (patch_dir / name).read_text(encoding="utf-8")
-            texts.append(body)
-            self.assertNotIn("REDACTED", body)
-            self.assertNotIn("account_daily_card", body)
-            self.assertNotIn("LIVE_CAPTURE", body)
-        wordpress, blogger = texts
-        self.assertIn("resolve_image or _upload_media", wordpress)
-        self.assertIn("def build_html", wordpress)
-        self.assertNotIn("from .blog_media", wordpress)
-        self.assertNotIn("assert_deployed", wordpress)
-        self.assertIn("assert_deployed(plan)", blogger)
-        self.assertIn("resolve_image=public_url", blogger)
-        self.assertIn("from .blog_media import", blogger)
-        self.assertNotIn("_upload_media", blogger)
-        self.assertNotIn("media/new", blogger)
-        self.assertIn("if dry_run:", blogger)
-        self.assertNotIn("-        assert_quality", blogger)
-        self.assertNotIn("-    if not dry_run:", blogger)
-        joined = "\n".join(texts)
-        self.assertNotIn("wordpress_poster.publish", joined)
+
+class Outbox(unittest.TestCase):
+    def test_stage_is_local_idempotent_and_skips_non_cards(self):
+        root = pathlib.Path(os_tmpdir())
+        day = root / "2026-11-07"
+        day.mkdir()
+        png = minimal_png()
+        (day / EN).write_bytes(png)
+        (day / REPORT).write_bytes(png)
+        (day / "post.md").write_text("x", encoding="utf-8")
+        (day / "snapshot.json").write_text("{}", encoding="utf-8")
+        (day / "acct_20261107_ko_1_calendar.png").write_bytes(png)
+        out = root / "out"
+        first = stage_outbox(day, out)
+        self.assertEqual(sorted(p.name for p in out.glob("*.png")), [EN, REPORT])
+        self.assertTrue((out / "_cards.json").is_file())
+        second = stage_outbox(day, out)
+        self.assertTrue(all(row["action"] == "unchanged" for row in second["actions"]))
+        self.assertEqual(first["count"], 2)
+        listing = (out / "_cards.json").read_text(encoding="utf-8")
+        self.assertNotIn("snapshot", listing)
+        self.assertNotIn("ko_", listing)
+
+    def test_symlink_and_bad_png_fail_closed(self):
+        root = pathlib.Path(os_tmpdir())
+        day = root / "day"
+        day.mkdir()
+        good = day / EN
+        good.write_bytes(minimal_png())
+        link = day / REPORT
+        link.symlink_to(good)
+        with self.assertRaises(ValueError):
+            stage_outbox(day, root / "out")
+        link.unlink()
+        (day / REPORT).write_bytes(b"not a png")
+        with self.assertRaises(ValueError):
+            stage_outbox(day, root / "out2")
+
+
+def minimal_png() -> bytes:
+    buf = bytearray(24)
+    buf[:8] = PNG
+    buf[8:12] = (13).to_bytes(4, "big")
+    buf[12:16] = b"IHDR"
+    return bytes(buf)
+
+
+def os_tmpdir() -> str:
+    import tempfile
+    return tempfile.mkdtemp(prefix="blog-media-")
 
 
 if __name__ == "__main__":

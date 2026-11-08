@@ -1,54 +1,90 @@
-Apply only this directory to the local marketing runtime. Do not copy the
-sanitized account_daily_card.py, config, or .env over the live originals, and
-do not write the REDACTED_PRIVATE_HOST or REDACTED_CHAT_ID placeholders into
-those live files.
+Apply this directory to the local marketing runtime. Do not copy the sanitized
+account_daily_card.py, config, or .env over the live originals, and do not
+write REDACTED_PRIVATE_HOST or REDACTED_CHAT_ID into those live files.
 
-From the runtime root (the directory that contains app/):
-
-  copy runtime-patches/blog-media/app/publishers/blog_media.py
-    to app/publishers/blog_media.py
+Runtime files:
+  copy app/publishers/blog_media.py to app/publishers/blog_media.py
   patch -p0 --binary < wordpress_poster.patch
   patch -p0 --binary < blogger_poster.patch
+  patch -p0 --binary < account_daily_card.patch
 
-The originals use CRLF. patch --binary keeps that. account_daily_card.py is
-not modified. publish_all still calls wordpress_poster.publish first and
-blogger_poster.publish second, and still catches each platform's Exception and
-SystemExit. Leave the WordPress step in place. A WordPress failure no longer
-blocks Blogger, because Blogger does not call WordPress media upload.
+The poster patches are already applied on the PC. Do not apply them a second
+time. Replace blog_media.py with this copy, then apply only
+account_daily_card.patch. The originals use CRLF. patch --binary keeps that.
 
-What the Blogger path does:
-  parse the same markdown
-  map each allowlisted card filename to
-    https://www.javidtrading.com/blog-media/<filename>
-  --dry-run prints those URLs and makes no network call
-  a real publish GETs each URL and stops if status, host, content type, or
-    PNG signature is wrong
-  then the existing Blogger post API runs
+publish_all still calls WordPress first and Blogger second, and still catches
+each platform error. The account patch only stages files after the cards are
+written. It does not upload and it does not remove the WordPress step.
 
-WordPress publish is unchanged unless a caller passes resolve_image.
-The default is still _upload_media.
+Tests:
+  python -m unittest tests/test_blog_media.py
+That file does not read the patch files. It passes on the handoff tree and on
+the PC after blog_media.py is installed (run it with the handoff directory on
+PYTHONPATH, or from this directory). tests/test_handoff_patches.py is a
+landing-repo audit. It skips when the patch files are absent, so it is not a
+live runtime requirement. Do not treat a missing patch file as a failed card
+check.
 
-Cards on disk live at cardnews/account/YYYY-MM-DD/acct_YYYYMMDD_<lang>_<kind>.png.
-The public URL uses the filename only. langs: en ja es fr vi tr pt.
-kinds: 1_calendar 2_report. Korean is not included.
+Blogger check:
+  The live edge returns 403 for Python-urllib's default User-Agent and 200 for
+  an ordinary browser User-Agent. assert_deployed sends one browser User-Agent.
+  It still requires 200, image/png, the canonical www URL, and a PNG signature.
+  A 403 or any challenge page fails closed. There is no cookie, Authorization
+  header, or second attempt.
 
-Before a real Blogger publish, add that day's PNGs to the hub site and deploy
-them. From a checkout of this landing repo:
+Daily preparation, automatic on the PC:
+  The 9:10 job, after it writes cardnews/account/YYYY-MM-DD, copies allowlisted
+  PNGs into <agent parent>/blog-media-outbox. Markdown, json, logs, snapshots,
+  and Korean names are not copied. The same bytes are a no-op.
+  Manual equivalent:
+    python -m app.publishers.blog_media --stage cardnews/account/YYYY-MM-DD --out blog-media-outbox
+  This step does not call Cloudflare. Seven language files that were not
+  generated yet are not invented. When the job renders all 7 languages, the
+  outbox receives up to 14 PNGs (calendar and report for each language).
 
-  node hub-site/tools/add_blog_media.mjs <cardnews/account/YYYY-MM-DD>
-  node hub-site/src/build.mjs
-  node hub-site/tools/test_blog_media.mjs
-  node hub-site/tools/test_site.mjs
-  node hub-site/tools/make_asset_manifest.mjs
+Daily upload, not automatic:
+  The marketing PC does not have a Cloudflare API token, and this package does
+  not create one. The parent connector already authenticated for the first
+  deploy runs the upload. Do not put a token in the 9:10 job unless the
+  account owner later creates one on purpose.
+  Exact token if that later step is wanted: one Cloudflare API token with
+  Workers Scripts Write on this account only, stored outside git on the
+  machine that will call the API. It is not required for the staged pipeline.
 
-Identical bytes are a no-op. A changed card needs --replace, then the same
-deploy. The URL stays the same. The two English cards from 2026-11-07 are
-already in src/blog-media. The sample post also names ja/es/fr/vi/tr/pt
-calendar files that were not in the attachment set. Do not publish that post
-until those files are added and deployed; Blogger fails closed instead of
-uploading them anywhere.
+  Do not run node src/build.mjs and do not resubmit the original full public
+  tree. That would replace newer site assets. Do not send a manifest that
+  contains only the cards. keep_assets keeps the previous set and does not add
+  cards, so it is the wrong call for a daily add.
 
-Do not post to Blogger or WordPress from this change. Do not edit old posts.
-Deployment of www is a separate Cloudflare API upload described in
-hub-site/deploy/cloudflare-assets-protocol.json. Do not point cards at the
-private R2 bucket javid-live-captures.
+  From a checkout that has hub-site/tools, with the outbox copied beside it:
+    node hub-site/tools/merge_blog_media_upload.mjs \
+      --base <manifest-of-the-version-at-100-percent> \
+      --cards <blog-media-outbox> \
+      --out <daily-upload>
+  The first base is the manifest deployed as version
+  451891b6-f86e-4953-9203-b455b5a6df12, which is workers-assets-manifest.json
+  from that deploy. After each successful upload, the new merged-manifest.json
+  becomes the next base. The tool refuses a base that has no /index.html.
+  card-upload-plan.json and bytes/ contain only cards whose hash changed.
+  Every other manifest entry is copied unchanged.
+
+  Parent connector, still the only caller of the API:
+    1. GET deployments and confirm the 100% version is the one the base
+       manifest belongs to. Abort if it is not.
+    2. GET /accounts/{account_id}/workers/scripts/javid-hub-landing/content/v2
+       and reuse those module bytes. Do not substitute an older worker bundle.
+    3. POST assets-upload-session with daily-upload/merged-manifest.json.
+    4. Upload only the hashes listed in card-upload-plan.json, using bytes/
+       and content type image/png. Unchanged site files are omitted from
+       buckets because Cloudflare already stored them.
+    5. PUT the script with the completion token, the same bindings and
+       keep_bindings as the live version, and the same assets.config
+       (run_worker_first ["/*", "!/blog-media/*"], not_found_handling
+       404-page). Do not create buckets, DNS, or routes.
+  The version API does not return the asset hash ledger, so the saved manifest
+  is the preservation record. There is no unauthenticated upload endpoint and
+  the private javid-live-captures bucket is not used.
+
+Blogger still fail-closes until those URLs return an image. Same-morning
+publish therefore waits on the parent upload. Card generation, outbox staging,
+and the fail-closed check are the automatic parts.

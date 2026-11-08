@@ -5,6 +5,9 @@ Do not copy any other file from the sanitized snapshot over a live original.
 """
 from __future__ import annotations
 
+import argparse
+import hashlib
+import os
 import re
 import urllib.error
 import urllib.request
@@ -18,6 +21,15 @@ CARD_FILENAME = re.compile(
 )
 _BACKTICK_IMAGE = re.compile(r"`([^`]+\.(?:png|jpg|jpeg|webp|gif))`", re.I)
 PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
+MAX_CARD_BYTES = 8 * 1024 * 1024
+# The live edge returns 403 for urllib's default Python-urllib User-Agent and
+# 200 for an ordinary browser User-Agent. One explicit header only: no cookie,
+# no Authorization, and no retry if the response is a challenge.
+CHECK_USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/131.0.0.0 Safari/537.36"
+)
 
 
 def _valid_date(yyyymmdd: str) -> bool:
@@ -82,7 +94,10 @@ def assert_deployed(urls: list[str], opener=None, timeout: float = 20) -> None:
     for url in urls:
         try:
             _canonical(url)
-            req = urllib.request.Request(url, method="GET", headers={"Accept": "image/png"})
+            req = urllib.request.Request(url, method="GET", headers={
+                "User-Agent": CHECK_USER_AGENT,
+                "Accept": "image/png",
+            })
             with opener(req, timeout=timeout) as resp:
                 status = getattr(resp, "status", None) or getattr(resp, "code", None) or 200
                 final = resp.geturl() if hasattr(resp, "geturl") else url
@@ -95,3 +110,87 @@ def assert_deployed(urls: list[str], opener=None, timeout: float = 20) -> None:
             missing.append(url)
     if missing:
         raise RuntimeError("blog-media image is not deployed: " + ", ".join(missing))
+
+
+def _assert_png(data: bytes) -> None:
+    if len(data) < 24 or len(data) > MAX_CARD_BYTES or data[:8] != PNG_MAGIC or data[12:16] != b"IHDR":
+        raise ValueError("png rejected")
+
+
+def stage_outbox(source: Path, dest: Path) -> dict:
+    """Copy allowlisted PNGs into a flat outbox. Does not contact Cloudflare.
+
+    Other files in the card directory (markdown, json, logs, snapshots) are
+    skipped. A second run with the same bytes is unchanged. Existing outbox
+    cards from earlier days are left in place.
+    """
+    source = Path(source)
+    dest = Path(dest)
+    if not source.is_dir() or source.is_symlink():
+        raise ValueError("card directory missing")
+    root = source.resolve()
+    found: dict[str, bytes] = {}
+    for dirpath, dirnames, filenames in os.walk(source, followlinks=False):
+        dirnames[:] = [d for d in dirnames if d not in (".", "..")]
+        for name in filenames:
+            if not CARD_FILENAME.fullmatch(name):
+                continue
+            path = Path(dirpath) / name
+            if path.is_symlink():
+                raise ValueError(f"refusing symlink card: {name}")
+            real = path.resolve()
+            if root != real and root not in real.parents:
+                raise ValueError(f"card path escapes the source directory: {name}")
+            card_name(name)
+            data = path.read_bytes()
+            _assert_png(data)
+            prev = found.get(name)
+            if prev is not None and prev != data:
+                raise ValueError(f"conflicting bytes for {name}")
+            found[name] = data
+    if not found:
+        raise ValueError("no allowlisted cards found")
+    dest.mkdir(parents=True, exist_ok=True)
+    actions = []
+    for name in sorted(found):
+        target = dest / name
+        if target.is_symlink() or (target.exists() and not target.is_file()):
+            raise ValueError(f"refusing to replace {name}")
+        data = found[name]
+        if target.is_file() and target.read_bytes() == data:
+            actions.append({"name": name, "action": "unchanged"})
+            continue
+        action = "replaced" if target.exists() else "added"
+        target.write_bytes(data)
+        actions.append({"name": name, "action": action})
+    listing = {
+        "files": [
+            {
+                "name": name,
+                "size": len(found[name]),
+                "sha256": hashlib.sha256(found[name]).hexdigest(),
+                "url": public_url(name),
+            }
+            for name in sorted(found)
+        ]
+    }
+    (dest / "_cards.json").write_text(
+        __import__("json").dumps(listing, indent=2) + "\n", encoding="utf-8"
+    )
+    return {"count": len(found), "actions": actions, "dest": str(dest)}
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description="Stage allowlisted cards. Does not upload.")
+    ap.add_argument("--stage", type=Path, required=True, help="cardnews/account/YYYY-MM-DD")
+    ap.add_argument("--out", type=Path, required=True, help="flat outbox directory")
+    args = ap.parse_args(argv)
+    report = stage_outbox(args.stage, args.out)
+    for row in report["actions"]:
+        print(f"{row['action']} {row['name']}")
+    print(f"staged {report['count']} {report['dest']}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
