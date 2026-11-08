@@ -210,7 +210,7 @@
       "bytes/<changed-cards-only>"
     ],
     "scriptBody": "GET /accounts/{account_id}/workers/scripts/javid-hub-landing/content/v2 and resubmit those modules unchanged.",
-    "automatic": "The 9:10 PC job stages allowlisted PNGs into blog-media-outbox and Blogger fail-closes until the URLs serve image/png.",
+    "automatic": "The 9:10 PC job stages allowlisted PNGs into blog-media-outbox. A staging error is logged and does not stop the other publishers. Blogger fail-closes until the URLs serve image/png. Repeating the stage with the same bytes is unchanged.",
     "notAutomatic": "Cloudflare upload. The parent connector performs it. A Workers Scripts Write token is the only extra credential if the PC job itself must call the API later; this package does not create or contain that token."
   }
 }

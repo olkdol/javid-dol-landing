@@ -35,6 +35,7 @@ class HandoffPatches(unittest.TestCase):
         self.assertIn("resolve_image=public_url", blogger)
         self.assertNotIn("_upload_media", blogger)
         self.assertNotIn("media/new", blogger)
-        self.assertIn("stage_outbox", account)
+        self.assertIn("stage_outbox_isolated", account)
+        self.assertNotIn("stage_outbox(", account)
         self.assertNotIn("wordpress_poster.publish", account)
         self.assertNotIn("blogger_poster.publish", account)

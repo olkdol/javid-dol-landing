@@ -9,12 +9,18 @@ Runtime files:
   patch -p0 --binary < account_daily_card.patch
 
 The poster patches are already applied on the PC. Do not apply them a second
-time. Replace blog_media.py with this copy, then apply only
-account_daily_card.patch. The originals use CRLF. patch --binary keeps that.
+time. Replace blog_media.py with this copy. If the previous four-line
+stage_outbox call is still in account_daily_card.py, revert only those lines
+first, then apply account_daily_card.patch once. The originals use CRLF.
+patch --binary keeps that.
 
 publish_all still calls WordPress first and Blogger second, and still catches
-each platform error. The account patch only stages files after the cards are
-written. It does not upload and it does not remove the WordPress step.
+each platform error. The account patch calls stage_outbox_isolated after the
+cards are written. A missing directory, corrupt PNG, or IO error is logged
+and does not stop Telegram, YouTube, TikTok, or WordPress. Blogger still
+fail-closes by itself when the public image is not live. The same outbox can
+be staged again; identical bytes are unchanged. The patch does not upload and
+it does not remove the WordPress step.
 
 Tests:
   python -m unittest tests/test_blog_media.py

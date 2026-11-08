@@ -180,6 +180,32 @@ def stage_outbox(source: Path, dest: Path) -> dict:
     return {"count": len(found), "actions": actions, "dest": str(dest)}
 
 
+def stage_outbox_isolated(source: Path, dest: Path, log=None) -> dict:
+    """Stage cards without aborting the rest of the daily publish.
+
+    A missing directory, corrupt PNG, or IO error is logged and returned.
+    Blogger still fail-closes later, on its own, if the public URL is not live.
+    Repeating a successful stage with the same bytes is unchanged.
+    """
+    write = log if log is not None else (lambda _message: None)
+    try:
+        report = stage_outbox(source, dest)
+    except (Exception, SystemExit) as exc:
+        try:
+            write(
+                "  blog-media outbox failed (other channels continue): "
+                f"{type(exc).__name__}: {str(exc)[:160]}"
+            )
+        except (Exception, SystemExit):
+            pass
+        return {"ok": False, "error": f"{type(exc).__name__}: {exc}"}
+    try:
+        write(f"  blog-media outbox {report['count']} png (Cloudflare upload is separate)")
+    except (Exception, SystemExit):
+        pass
+    return {"ok": True, **report}
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Stage allowlisted cards. Does not upload.")
     ap.add_argument("--stage", type=Path, required=True, help="cardnews/account/YYYY-MM-DD")

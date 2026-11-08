@@ -17,6 +17,7 @@ from app.publishers.blog_media import (  # noqa: E402
     image_plan,
     public_url,
     stage_outbox,
+    stage_outbox_isolated,
 )
 
 PNG = b"\x89PNG\r\n\x1a\n"
@@ -212,20 +213,71 @@ class Outbox(unittest.TestCase):
         self.assertNotIn("snapshot", listing)
         self.assertNotIn("ko_", listing)
 
-    def test_symlink_and_bad_png_fail_closed(self):
+    def test_bad_png_fails_closed(self):
+        root = pathlib.Path(os_tmpdir())
+        day = root / "day"
+        day.mkdir()
+        (day / EN).write_bytes(minimal_png())
+        (day / REPORT).write_bytes(b"not a png")
+        with self.assertRaises(ValueError):
+            stage_outbox(day, root / "out")
+
+    def test_symlink_card_fails_closed(self):
         root = pathlib.Path(os_tmpdir())
         day = root / "day"
         day.mkdir()
         good = day / EN
         good.write_bytes(minimal_png())
         link = day / REPORT
-        link.symlink_to(good)
+        try:
+            link.symlink_to(good)
+        except OSError as exc:
+            self.skipTest(f"symlink not permitted on this machine: {type(exc).__name__}: {exc}")
         with self.assertRaises(ValueError):
             stage_outbox(day, root / "out")
-        link.unlink()
-        (day / REPORT).write_bytes(b"not a png")
-        with self.assertRaises(ValueError):
-            stage_outbox(day, root / "out2")
+
+    def test_stage_failure_does_not_block_other_channels(self):
+        """A corrupt card must not raise. Blogger stays fail-closed; other channels run."""
+        root = pathlib.Path(os_tmpdir())
+        day = root / "day"
+        day.mkdir()
+        (day / EN).write_bytes(b"corrupt")
+        messages = []
+        failed = stage_outbox_isolated(day, root / "out", log=messages.append)
+        self.assertFalse(failed["ok"])
+        self.assertTrue(messages)
+        self.assertIn("other channels continue", messages[0])
+
+        results = {}
+
+        def step(name, fn):
+            try:
+                fn()
+                results[name] = "ok"
+            except (Exception, SystemExit):
+                results[name] = "fail"
+
+        step("wordpress", lambda: None)
+        step("telegram", lambda: None)
+        step("youtube", lambda: None)
+        step("tiktok", lambda: None)
+        step("blogger", lambda: assert_deployed(
+            [EN_URL], opener=lambda *_a, **_k: (_ for _ in ()).throw(OSError("not deployed"))
+        ))
+        self.assertEqual(results["wordpress"], "ok")
+        self.assertEqual(results["telegram"], "ok")
+        self.assertEqual(results["youtube"], "ok")
+        self.assertEqual(results["tiktok"], "ok")
+        self.assertEqual(results["blogger"], "fail")
+
+        (day / EN).write_bytes(minimal_png())
+        (day / REPORT).write_bytes(minimal_png())
+        recovered = stage_outbox_isolated(day, root / "out", log=messages.append)
+        self.assertTrue(recovered["ok"])
+        self.assertEqual(recovered["count"], 2)
+        again = stage_outbox_isolated(day, root / "out", log=messages.append)
+        self.assertTrue(again["ok"])
+        self.assertTrue(all(row["action"] == "unchanged" for row in again["actions"]))
 
 
 def minimal_png() -> bytes:
